@@ -8484,16 +8484,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./node_modules/editorjs-inline-image/dist/bundle.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/editorjs-inline-image/dist/bundle.js ***!
-  \***********************************************************/
-/***/ ((module) => {
-
-!function(e,t){ true?module.exports=t():0}(self,(function(){return(()=>{var e={669:(e,t,n)=>{e.exports=n(609)},448:(e,t,n)=>{"use strict";var r=n(867),i=n(26),a=n(372),s=n(327),o=n(97),c=n(109),l=n(985),u=n(61),d=n(655),p=n(263);e.exports=function(e){return new Promise((function(t,n){var h,f=e.data,m=e.headers,g=e.responseType;function v(){e.cancelToken&&e.cancelToken.unsubscribe(h),e.signal&&e.signal.removeEventListener("abort",h)}r.isFormData(f)&&delete m["Content-Type"];var b=new XMLHttpRequest;if(e.auth){var y=e.auth.username||"",w=e.auth.password?unescape(encodeURIComponent(e.auth.password)):"";m.Authorization="Basic "+btoa(y+":"+w)}var x=o(e.baseURL,e.url);function C(){if(b){var r="getAllResponseHeaders"in b?c(b.getAllResponseHeaders()):null,a={data:g&&"text"!==g&&"json"!==g?b.response:b.responseText,status:b.status,statusText:b.statusText,headers:r,config:e,request:b};i((function(e){t(e),v()}),(function(e){n(e),v()}),a),b=null}}if(b.open(e.method.toUpperCase(),s(x,e.params,e.paramsSerializer),!0),b.timeout=e.timeout,"onloadend"in b?b.onloadend=C:b.onreadystatechange=function(){b&&4===b.readyState&&(0!==b.status||b.responseURL&&0===b.responseURL.indexOf("file:"))&&setTimeout(C)},b.onabort=function(){b&&(n(u("Request aborted",e,"ECONNABORTED",b)),b=null)},b.onerror=function(){n(u("Network Error",e,null,b)),b=null},b.ontimeout=function(){var t=e.timeout?"timeout of "+e.timeout+"ms exceeded":"timeout exceeded",r=e.transitional||d.transitional;e.timeoutErrorMessage&&(t=e.timeoutErrorMessage),n(u(t,e,r.clarifyTimeoutError?"ETIMEDOUT":"ECONNABORTED",b)),b=null},r.isStandardBrowserEnv()){var O=(e.withCredentials||l(x))&&e.xsrfCookieName?a.read(e.xsrfCookieName):void 0;O&&(m[e.xsrfHeaderName]=O)}"setRequestHeader"in b&&r.forEach(m,(function(e,t){void 0===f&&"content-type"===t.toLowerCase()?delete m[t]:b.setRequestHeader(t,e)})),r.isUndefined(e.withCredentials)||(b.withCredentials=!!e.withCredentials),g&&"json"!==g&&(b.responseType=e.responseType),"function"==typeof e.onDownloadProgress&&b.addEventListener("progress",e.onDownloadProgress),"function"==typeof e.onUploadProgress&&b.upload&&b.upload.addEventListener("progress",e.onUploadProgress),(e.cancelToken||e.signal)&&(h=function(e){b&&(n(!e||e&&e.type?new p("canceled"):e),b.abort(),b=null)},e.cancelToken&&e.cancelToken.subscribe(h),e.signal&&(e.signal.aborted?h():e.signal.addEventListener("abort",h))),f||(f=null),b.send(f)}))}},609:(e,t,n)=>{"use strict";var r=n(867),i=n(849),a=n(321),s=n(185),o=function e(t){var n=new a(t),o=i(a.prototype.request,n);return r.extend(o,a.prototype,n),r.extend(o,n),o.create=function(n){return e(s(t,n))},o}(n(655));o.Axios=a,o.Cancel=n(263),o.CancelToken=n(972),o.isCancel=n(502),o.VERSION=n(288).version,o.all=function(e){return Promise.all(e)},o.spread=n(713),o.isAxiosError=n(268),e.exports=o,e.exports.default=o},263:e=>{"use strict";function t(e){this.message=e}t.prototype.toString=function(){return"Cancel"+(this.message?": "+this.message:"")},t.prototype.__CANCEL__=!0,e.exports=t},972:(e,t,n)=>{"use strict";var r=n(263);function i(e){if("function"!=typeof e)throw new TypeError("executor must be a function.");var t;this.promise=new Promise((function(e){t=e}));var n=this;this.promise.then((function(e){if(n._listeners){var t,r=n._listeners.length;for(t=0;t<r;t++)n._listeners[t](e);n._listeners=null}})),this.promise.then=function(e){var t,r=new Promise((function(e){n.subscribe(e),t=e})).then(e);return r.cancel=function(){n.unsubscribe(t)},r},e((function(e){n.reason||(n.reason=new r(e),t(n.reason))}))}i.prototype.throwIfRequested=function(){if(this.reason)throw this.reason},i.prototype.subscribe=function(e){this.reason?e(this.reason):this._listeners?this._listeners.push(e):this._listeners=[e]},i.prototype.unsubscribe=function(e){if(this._listeners){var t=this._listeners.indexOf(e);-1!==t&&this._listeners.splice(t,1)}},i.source=function(){var e;return{token:new i((function(t){e=t})),cancel:e}},e.exports=i},502:e=>{"use strict";e.exports=function(e){return!(!e||!e.__CANCEL__)}},321:(e,t,n)=>{"use strict";var r=n(867),i=n(327),a=n(782),s=n(572),o=n(185),c=n(875),l=c.validators;function u(e){this.defaults=e,this.interceptors={request:new a,response:new a}}u.prototype.request=function(e,t){"string"==typeof e?(t=t||{}).url=e:t=e||{},(t=o(this.defaults,t)).method?t.method=t.method.toLowerCase():this.defaults.method?t.method=this.defaults.method.toLowerCase():t.method="get";var n=t.transitional;void 0!==n&&c.assertOptions(n,{silentJSONParsing:l.transitional(l.boolean),forcedJSONParsing:l.transitional(l.boolean),clarifyTimeoutError:l.transitional(l.boolean)},!1);var r=[],i=!0;this.interceptors.request.forEach((function(e){"function"==typeof e.runWhen&&!1===e.runWhen(t)||(i=i&&e.synchronous,r.unshift(e.fulfilled,e.rejected))}));var a,u=[];if(this.interceptors.response.forEach((function(e){u.push(e.fulfilled,e.rejected)})),!i){var d=[s,void 0];for(Array.prototype.unshift.apply(d,r),d=d.concat(u),a=Promise.resolve(t);d.length;)a=a.then(d.shift(),d.shift());return a}for(var p=t;r.length;){var h=r.shift(),f=r.shift();try{p=h(p)}catch(e){f(e);break}}try{a=s(p)}catch(e){return Promise.reject(e)}for(;u.length;)a=a.then(u.shift(),u.shift());return a},u.prototype.getUri=function(e){return e=o(this.defaults,e),i(e.url,e.params,e.paramsSerializer).replace(/^\?/,"")},r.forEach(["delete","get","head","options"],(function(e){u.prototype[e]=function(t,n){return this.request(o(n||{},{method:e,url:t,data:(n||{}).data}))}})),r.forEach(["post","put","patch"],(function(e){u.prototype[e]=function(t,n,r){return this.request(o(r||{},{method:e,url:t,data:n}))}})),e.exports=u},782:(e,t,n)=>{"use strict";var r=n(867);function i(){this.handlers=[]}i.prototype.use=function(e,t,n){return this.handlers.push({fulfilled:e,rejected:t,synchronous:!!n&&n.synchronous,runWhen:n?n.runWhen:null}),this.handlers.length-1},i.prototype.eject=function(e){this.handlers[e]&&(this.handlers[e]=null)},i.prototype.forEach=function(e){r.forEach(this.handlers,(function(t){null!==t&&e(t)}))},e.exports=i},97:(e,t,n)=>{"use strict";var r=n(793),i=n(303);e.exports=function(e,t){return e&&!r(t)?i(e,t):t}},61:(e,t,n)=>{"use strict";var r=n(481);e.exports=function(e,t,n,i,a){var s=new Error(e);return r(s,t,n,i,a)}},572:(e,t,n)=>{"use strict";var r=n(867),i=n(527),a=n(502),s=n(655),o=n(263);function c(e){if(e.cancelToken&&e.cancelToken.throwIfRequested(),e.signal&&e.signal.aborted)throw new o("canceled")}e.exports=function(e){return c(e),e.headers=e.headers||{},e.data=i.call(e,e.data,e.headers,e.transformRequest),e.headers=r.merge(e.headers.common||{},e.headers[e.method]||{},e.headers),r.forEach(["delete","get","head","post","put","patch","common"],(function(t){delete e.headers[t]})),(e.adapter||s.adapter)(e).then((function(t){return c(e),t.data=i.call(e,t.data,t.headers,e.transformResponse),t}),(function(t){return a(t)||(c(e),t&&t.response&&(t.response.data=i.call(e,t.response.data,t.response.headers,e.transformResponse))),Promise.reject(t)}))}},481:e=>{"use strict";e.exports=function(e,t,n,r,i){return e.config=t,n&&(e.code=n),e.request=r,e.response=i,e.isAxiosError=!0,e.toJSON=function(){return{message:this.message,name:this.name,description:this.description,number:this.number,fileName:this.fileName,lineNumber:this.lineNumber,columnNumber:this.columnNumber,stack:this.stack,config:this.config,code:this.code,status:this.response&&this.response.status?this.response.status:null}},e}},185:(e,t,n)=>{"use strict";var r=n(867);e.exports=function(e,t){t=t||{};var n={};function i(e,t){return r.isPlainObject(e)&&r.isPlainObject(t)?r.merge(e,t):r.isPlainObject(t)?r.merge({},t):r.isArray(t)?t.slice():t}function a(n){return r.isUndefined(t[n])?r.isUndefined(e[n])?void 0:i(void 0,e[n]):i(e[n],t[n])}function s(e){if(!r.isUndefined(t[e]))return i(void 0,t[e])}function o(n){return r.isUndefined(t[n])?r.isUndefined(e[n])?void 0:i(void 0,e[n]):i(void 0,t[n])}function c(n){return n in t?i(e[n],t[n]):n in e?i(void 0,e[n]):void 0}var l={url:s,method:s,data:s,baseURL:o,transformRequest:o,transformResponse:o,paramsSerializer:o,timeout:o,timeoutMessage:o,withCredentials:o,adapter:o,responseType:o,xsrfCookieName:o,xsrfHeaderName:o,onUploadProgress:o,onDownloadProgress:o,decompress:o,maxContentLength:o,maxBodyLength:o,transport:o,httpAgent:o,httpsAgent:o,cancelToken:o,socketPath:o,responseEncoding:o,validateStatus:c};return r.forEach(Object.keys(e).concat(Object.keys(t)),(function(e){var t=l[e]||a,i=t(e);r.isUndefined(i)&&t!==c||(n[e]=i)})),n}},26:(e,t,n)=>{"use strict";var r=n(61);e.exports=function(e,t,n){var i=n.config.validateStatus;n.status&&i&&!i(n.status)?t(r("Request failed with status code "+n.status,n.config,null,n.request,n)):e(n)}},527:(e,t,n)=>{"use strict";var r=n(867),i=n(655);e.exports=function(e,t,n){var a=this||i;return r.forEach(n,(function(n){e=n.call(a,e,t)})),e}},655:(e,t,n)=>{"use strict";var r=n(867),i=n(16),a=n(481),s={"Content-Type":"application/x-www-form-urlencoded"};function o(e,t){!r.isUndefined(e)&&r.isUndefined(e["Content-Type"])&&(e["Content-Type"]=t)}var c,l={transitional:{silentJSONParsing:!0,forcedJSONParsing:!0,clarifyTimeoutError:!1},adapter:(("undefined"!=typeof XMLHttpRequest||"undefined"!=typeof process&&"[object process]"===Object.prototype.toString.call(process))&&(c=n(448)),c),transformRequest:[function(e,t){return i(t,"Accept"),i(t,"Content-Type"),r.isFormData(e)||r.isArrayBuffer(e)||r.isBuffer(e)||r.isStream(e)||r.isFile(e)||r.isBlob(e)?e:r.isArrayBufferView(e)?e.buffer:r.isURLSearchParams(e)?(o(t,"application/x-www-form-urlencoded;charset=utf-8"),e.toString()):r.isObject(e)||t&&"application/json"===t["Content-Type"]?(o(t,"application/json"),function(e,t,n){if(r.isString(e))try{return(0,JSON.parse)(e),r.trim(e)}catch(e){if("SyntaxError"!==e.name)throw e}return(0,JSON.stringify)(e)}(e)):e}],transformResponse:[function(e){var t=this.transitional||l.transitional,n=t&&t.silentJSONParsing,i=t&&t.forcedJSONParsing,s=!n&&"json"===this.responseType;if(s||i&&r.isString(e)&&e.length)try{return JSON.parse(e)}catch(e){if(s){if("SyntaxError"===e.name)throw a(e,this,"E_JSON_PARSE");throw e}}return e}],timeout:0,xsrfCookieName:"XSRF-TOKEN",xsrfHeaderName:"X-XSRF-TOKEN",maxContentLength:-1,maxBodyLength:-1,validateStatus:function(e){return e>=200&&e<300},headers:{common:{Accept:"application/json, text/plain, */*"}}};r.forEach(["delete","get","head"],(function(e){l.headers[e]={}})),r.forEach(["post","put","patch"],(function(e){l.headers[e]=r.merge(s)})),e.exports=l},288:e=>{e.exports={version:"0.26.0"}},849:e=>{"use strict";e.exports=function(e,t){return function(){for(var n=new Array(arguments.length),r=0;r<n.length;r++)n[r]=arguments[r];return e.apply(t,n)}}},327:(e,t,n)=>{"use strict";var r=n(867);function i(e){return encodeURIComponent(e).replace(/%3A/gi,":").replace(/%24/g,"$").replace(/%2C/gi,",").replace(/%20/g,"+").replace(/%5B/gi,"[").replace(/%5D/gi,"]")}e.exports=function(e,t,n){if(!t)return e;var a;if(n)a=n(t);else if(r.isURLSearchParams(t))a=t.toString();else{var s=[];r.forEach(t,(function(e,t){null!=e&&(r.isArray(e)?t+="[]":e=[e],r.forEach(e,(function(e){r.isDate(e)?e=e.toISOString():r.isObject(e)&&(e=JSON.stringify(e)),s.push(i(t)+"="+i(e))})))})),a=s.join("&")}if(a){var o=e.indexOf("#");-1!==o&&(e=e.slice(0,o)),e+=(-1===e.indexOf("?")?"?":"&")+a}return e}},303:e=>{"use strict";e.exports=function(e,t){return t?e.replace(/\/+$/,"")+"/"+t.replace(/^\/+/,""):e}},372:(e,t,n)=>{"use strict";var r=n(867);e.exports=r.isStandardBrowserEnv()?{write:function(e,t,n,i,a,s){var o=[];o.push(e+"="+encodeURIComponent(t)),r.isNumber(n)&&o.push("expires="+new Date(n).toGMTString()),r.isString(i)&&o.push("path="+i),r.isString(a)&&o.push("domain="+a),!0===s&&o.push("secure"),document.cookie=o.join("; ")},read:function(e){var t=document.cookie.match(new RegExp("(^|;\\s*)("+e+")=([^;]*)"));return t?decodeURIComponent(t[3]):null},remove:function(e){this.write(e,"",Date.now()-864e5)}}:{write:function(){},read:function(){return null},remove:function(){}}},793:e=>{"use strict";e.exports=function(e){return/^([a-z][a-z\d+\-.]*:)?\/\//i.test(e)}},268:(e,t,n)=>{"use strict";var r=n(867);e.exports=function(e){return r.isObject(e)&&!0===e.isAxiosError}},985:(e,t,n)=>{"use strict";var r=n(867);e.exports=r.isStandardBrowserEnv()?function(){var e,t=/(msie|trident)/i.test(navigator.userAgent),n=document.createElement("a");function i(e){var r=e;return t&&(n.setAttribute("href",r),r=n.href),n.setAttribute("href",r),{href:n.href,protocol:n.protocol?n.protocol.replace(/:$/,""):"",host:n.host,search:n.search?n.search.replace(/^\?/,""):"",hash:n.hash?n.hash.replace(/^#/,""):"",hostname:n.hostname,port:n.port,pathname:"/"===n.pathname.charAt(0)?n.pathname:"/"+n.pathname}}return e=i(window.location.href),function(t){var n=r.isString(t)?i(t):t;return n.protocol===e.protocol&&n.host===e.host}}():function(){return!0}},16:(e,t,n)=>{"use strict";var r=n(867);e.exports=function(e,t){r.forEach(e,(function(n,r){r!==t&&r.toUpperCase()===t.toUpperCase()&&(e[t]=n,delete e[r])}))}},109:(e,t,n)=>{"use strict";var r=n(867),i=["age","authorization","content-length","content-type","etag","expires","from","host","if-modified-since","if-unmodified-since","last-modified","location","max-forwards","proxy-authorization","referer","retry-after","user-agent"];e.exports=function(e){var t,n,a,s={};return e?(r.forEach(e.split("\n"),(function(e){if(a=e.indexOf(":"),t=r.trim(e.substr(0,a)).toLowerCase(),n=r.trim(e.substr(a+1)),t){if(s[t]&&i.indexOf(t)>=0)return;s[t]="set-cookie"===t?(s[t]?s[t]:[]).concat([n]):s[t]?s[t]+", "+n:n}})),s):s}},713:e=>{"use strict";e.exports=function(e){return function(t){return e.apply(null,t)}}},875:(e,t,n)=>{"use strict";var r=n(288).version,i={};["object","boolean","number","function","string","symbol"].forEach((function(e,t){i[e]=function(n){return typeof n===e||"a"+(t<1?"n ":" ")+e}}));var a={};i.transitional=function(e,t,n){function i(e,t){return"[Axios v"+r+"] Transitional option '"+e+"'"+t+(n?". "+n:"")}return function(n,r,s){if(!1===e)throw new Error(i(r," has been removed"+(t?" in "+t:"")));return t&&!a[r]&&(a[r]=!0,console.warn(i(r," has been deprecated since v"+t+" and will be removed in the near future"))),!e||e(n,r,s)}},e.exports={assertOptions:function(e,t,n){if("object"!=typeof e)throw new TypeError("options must be an object");for(var r=Object.keys(e),i=r.length;i-- >0;){var a=r[i],s=t[a];if(s){var o=e[a],c=void 0===o||s(o,a,e);if(!0!==c)throw new TypeError("option "+a+" must be "+c)}else if(!0!==n)throw Error("Unknown option "+a)}},validators:i}},867:(e,t,n)=>{"use strict";var r=n(849),i=Object.prototype.toString;function a(e){return Array.isArray(e)}function s(e){return void 0===e}function o(e){return"[object ArrayBuffer]"===i.call(e)}function c(e){return null!==e&&"object"==typeof e}function l(e){if("[object Object]"!==i.call(e))return!1;var t=Object.getPrototypeOf(e);return null===t||t===Object.prototype}function u(e){return"[object Function]"===i.call(e)}function d(e,t){if(null!=e)if("object"!=typeof e&&(e=[e]),a(e))for(var n=0,r=e.length;n<r;n++)t.call(null,e[n],n,e);else for(var i in e)Object.prototype.hasOwnProperty.call(e,i)&&t.call(null,e[i],i,e)}e.exports={isArray:a,isArrayBuffer:o,isBuffer:function(e){return null!==e&&!s(e)&&null!==e.constructor&&!s(e.constructor)&&"function"==typeof e.constructor.isBuffer&&e.constructor.isBuffer(e)},isFormData:function(e){return"[object FormData]"===i.call(e)},isArrayBufferView:function(e){return"undefined"!=typeof ArrayBuffer&&ArrayBuffer.isView?ArrayBuffer.isView(e):e&&e.buffer&&o(e.buffer)},isString:function(e){return"string"==typeof e},isNumber:function(e){return"number"==typeof e},isObject:c,isPlainObject:l,isUndefined:s,isDate:function(e){return"[object Date]"===i.call(e)},isFile:function(e){return"[object File]"===i.call(e)},isBlob:function(e){return"[object Blob]"===i.call(e)},isFunction:u,isStream:function(e){return c(e)&&u(e.pipe)},isURLSearchParams:function(e){return"[object URLSearchParams]"===i.call(e)},isStandardBrowserEnv:function(){return("undefined"==typeof navigator||"ReactNative"!==navigator.product&&"NativeScript"!==navigator.product&&"NS"!==navigator.product)&&"undefined"!=typeof window&&"undefined"!=typeof document},forEach:d,merge:function e(){var t={};function n(n,r){l(t[r])&&l(n)?t[r]=e(t[r],n):l(n)?t[r]=e({},n):a(n)?t[r]=n.slice():t[r]=n}for(var r=0,i=arguments.length;r<i;r++)d(arguments[r],n);return t},extend:function(e,t,n){return d(t,(function(t,i){e[i]=n&&"function"==typeof t?r(t,n):t})),e},trim:function(e){return e.trim?e.trim():e.replace(/^\s+|\s+$/g,"")},stripBOM:function(e){return 65279===e.charCodeAt(0)&&(e=e.slice(1)),e}}},424:(e,t,n)=>{"use strict";n.d(t,{Z:()=>o});var r=n(81),i=n.n(r),a=n(645),s=n.n(a)()(i());s.push([e.id,".cdx-loader {\n  border: none;\n  margin: auto;\n}\n\n.inline-image .cdx-loader {\n  min-height: 200px;\n}\n\n.inline-image .cdx-input {\n  margin-top: 10px;\n}\n\n.inline-image img {\n  max-width: 100%;\n  vertical-align: bottom;\n}\n\n.inline-image__caption[contentEditable=true][data-placeholder]:empty::before {\n  position: absolute;\n  content: attr(data-placeholder);\n  color: #707684;\n  font-weight: normal;\n  opacity: 0;\n }\n\n.inline-image__caption[contentEditable=true][data-placeholder]:empty::before {\n  opacity: 1;\n}\n\n.inline-image__caption[contentEditable=true][data-placeholder]:empty:focus::before {\n  opacity: 0;\n}\n\n.inline-image__picture--withBackground {\n  background: #eff2f5;\n  padding: 10px;\n  text-align: center;\n}\n\n.inline-image__picture--withBackground img {\n  max-width: 60%;\n  margin: 0 auto;\n}\n\n\n.inline-image__picture--withBorder {\n  border: 1px solid #e8e8eb;\n  padding: 1px;\n}\n\n.inline-image__picture--stretched img {\n  max-width: none;\n  width: 100%;\n}\n\n.inline-image__tab-wrapper {\n  display: flex;\n  margin-bottom: 5px;\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  border-bottom-color: lightgray;\n}\n\n.inline-image__tab {\n  padding: 5px;\n  cursor: pointer;\n}\n\n.inline-image__tab:hover {\n  background: #eff2f5;\n}\n\n.inline-image__tab.active {\n  border-width: 0 0 3px 0;\n  border-style: solid;\n  border-color: #388ae5;\n}\n\n.inline-image__embed-button {\n  width: 50%;\n  background-color: #388ae5;\n  color: white;\n  text-align: center;\n  margin: auto;\n  cursor: pointer;\n}\n\n.inline-image__embed-button:hover {\n  opacity: 0.9;\n}\n\n.inline-image__control-panel {\n  padding: 10px;\n  border-radius: 4px;\n  box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px,\n    rgba(15, 15, 15, 0.1) 0px 3px 6px,\n    rgba(15, 15, 15, 0.2) 0px 9px 24px;\n}\n\n.inline-image__image-gallery {\n  max-height: 400px;\n  display: flex;\n  flex-wrap: wrap;\n  align-content: flex-start;\n  background: white;\n  margin: 5px;\n}\n\n.inline-image__img-wrapper {\n    width: 25%;\n}\n\n.inline-image__thumb {\n  display: block;\n  object-fit: cover;\n  border-radius: 10px;\n  width: 90%;\n  height: 105px;\n  padding: 5px;\n  object-position: center 0%;\n  cursor: pointer;\n}\n\n.inline-image__image-credits {\n  font-size: 12px;\n  text-align: center;\n  margin-bottom: 5px;\n  color: gray;\n}\n\n.inline-image__image-credits a {\n  color: gray;\n}\n\n.inline-image__search {\n  margin: 10px;\n  width: 96%;\n}\n\n.inline-image__no-results{\n  width: 100%;\n  text-align: center;\n  margin: 20px;\n}\n\n.panel-hidden {\n  display: none;\n}\n\n.panel-scroll {\n  overflow-y: scroll;\n}\n\n.modal {\n  z-index: 1;\n  position: fixed;\n  display: none;\n  inset: 0;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden;\n  background-color: rgba(0,0,0,0.8);\n}\n\n.modal-content {\n  position: relative;\n  margin: 0;\n}\n\n.modal-img {\n  object-fit: cover;\n  max-width:100%;\n  max-height:100%;\n}\n\n.close {\n  color: #aaaaaa;\n  font-size: 28px;\n  font-weight: bold;\n  position: absolute;\n  right: 10px;\n}\n\n.close:hover,\n.close:focus {\n  color: #000;\n  text-decoration: none;\n  cursor: pointer;\n}\n",""]);const o=s},645:e=>{"use strict";e.exports=function(e){var t=[];return t.toString=function(){return this.map((function(t){var n="",r=void 0!==t[5];return t[4]&&(n+="@supports (".concat(t[4],") {")),t[2]&&(n+="@media ".concat(t[2]," {")),r&&(n+="@layer".concat(t[5].length>0?" ".concat(t[5]):""," {")),n+=e(t),r&&(n+="}"),t[2]&&(n+="}"),t[4]&&(n+="}"),n})).join("")},t.i=function(e,n,r,i,a){"string"==typeof e&&(e=[[null,e,void 0]]);var s={};if(r)for(var o=0;o<this.length;o++){var c=this[o][0];null!=c&&(s[c]=!0)}for(var l=0;l<e.length;l++){var u=[].concat(e[l]);r&&s[u[0]]||(void 0!==a&&(void 0===u[5]||(u[1]="@layer".concat(u[5].length>0?" ".concat(u[5]):""," {").concat(u[1],"}")),u[5]=a),n&&(u[2]?(u[1]="@media ".concat(u[2]," {").concat(u[1],"}"),u[2]=n):u[2]=n),i&&(u[4]?(u[1]="@supports (".concat(u[4],") {").concat(u[1],"}"),u[4]=i):u[4]="".concat(i)),t.push(u))}},t}},81:e=>{"use strict";e.exports=function(e){return e[1]}},459:(e,t)=>{"use strict";function n(e){return function(t,n,r,i){var a=r/i,s=t/n,o=t,c=n;return(e?a>s:a<s)?c=o/a:o=c*a,{width:o,height:c,x:(t-o)/2,y:(n-c)/2}}}var r=n(!0);n(!1);t.XS=r},379:e=>{"use strict";var t=[];function n(e){for(var n=-1,r=0;r<t.length;r++)if(t[r].identifier===e){n=r;break}return n}function r(e,r){for(var a={},s=[],o=0;o<e.length;o++){var c=e[o],l=r.base?c[0]+r.base:c[0],u=a[l]||0,d="".concat(l," ").concat(u);a[l]=u+1;var p=n(d),h={css:c[1],media:c[2],sourceMap:c[3],supports:c[4],layer:c[5]};if(-1!==p)t[p].references++,t[p].updater(h);else{var f=i(h,r);r.byIndex=o,t.splice(o,0,{identifier:d,updater:f,references:1})}s.push(d)}return s}function i(e,t){var n=t.domAPI(t);return n.update(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap&&t.supports===e.supports&&t.layer===e.layer)return;n.update(e=t)}else n.remove()}}e.exports=function(e,i){var a=r(e=e||[],i=i||{});return function(e){e=e||[];for(var s=0;s<a.length;s++){var o=n(a[s]);t[o].references--}for(var c=r(e,i),l=0;l<a.length;l++){var u=n(a[l]);0===t[u].references&&(t[u].updater(),t.splice(u,1))}a=c}}},569:e=>{"use strict";var t={};e.exports=function(e,n){var r=function(e){if(void 0===t[e]){var n=document.querySelector(e);if(window.HTMLIFrameElement&&n instanceof window.HTMLIFrameElement)try{n=n.contentDocument.head}catch(e){n=null}t[e]=n}return t[e]}(e);if(!r)throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");r.appendChild(n)}},216:e=>{"use strict";e.exports=function(e){var t=document.createElement("style");return e.setAttributes(t,e.attributes),e.insert(t,e.options),t}},565:(e,t,n)=>{"use strict";e.exports=function(e){var t=n.nc;t&&e.setAttribute("nonce",t)}},795:e=>{"use strict";e.exports=function(e){var t=e.insertStyleElement(e);return{update:function(n){!function(e,t,n){var r="";n.supports&&(r+="@supports (".concat(n.supports,") {")),n.media&&(r+="@media ".concat(n.media," {"));var i=void 0!==n.layer;i&&(r+="@layer".concat(n.layer.length>0?" ".concat(n.layer):""," {")),r+=n.css,i&&(r+="}"),n.media&&(r+="}"),n.supports&&(r+="}");var a=n.sourceMap;a&&"undefined"!=typeof btoa&&(r+="\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(a))))," */")),t.styleTagTransform(r,e,t.options)}(t,e,n)},remove:function(){!function(e){if(null===e.parentNode)return!1;e.parentNode.removeChild(e)}(t)}}}},589:e=>{"use strict";e.exports=function(e,t){if(t.styleSheet)t.styleSheet.cssText=e;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(e))}}},330:e=>{e.exports='<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.043 8.265l3.183-3.183h-2.924L4.75 10.636v2.923l4.15-4.15v2.351l-2.158 2.159H8.9v2.137H4.7c-1.215 0-2.2-.936-2.2-2.09v-8.93c0-1.154.985-2.09 2.2-2.09h10.663l.033-.033.034.034c1.178.04 2.12.96 2.12 2.089v3.23H15.3V5.359l-2.906 2.906h-2.35zM7.951 5.082H4.75v3.201l3.201-3.2zm5.099 7.078v3.04h4.15v-3.04h-4.15zm-1.1-2.137h6.35c.635 0 1.15.489 1.15 1.092v5.13c0 .603-.515 1.092-1.15 1.092h-6.35c-.635 0-1.15-.489-1.15-1.092v-5.13c0-.603.515-1.092 1.15-1.092z"></path></svg>'},98:e=>{e.exports='<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.8 10.592v2.043h2.35v2.138H15.8v2.232h-2.25v-2.232h-2.4v-2.138h2.4v-2.28h2.25v.237h1.15-1.15zM1.9 8.455v-3.42c0-1.154.985-2.09 2.2-2.09h4.2v2.137H4.15v3.373H1.9zm0 2.137h2.25v3.325H8.3v2.138H4.1c-1.215 0-2.2-.936-2.2-2.09v-3.373zm15.05-2.137H14.7V5.082h-4.15V2.945h4.2c1.215 0 2.2.936 2.2 2.09v3.42z"></path></svg>'},586:e=>{e.exports='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 24" width="20" height="20"><path d="M19,2H5A3,3,0,0,0,2,5V19a3,3,0,0,0,3,3H19a2.81,2.81,0,0,0,.49-.05l.3-.07.07,0h0l.05,0,.37-.14.13-.07c.1-.06.21-.11.31-.18a3.79,3.79,0,0,0,.38-.32l.07-.09a2.69,2.69,0,0,0,.27-.32l.09-.13a2.31,2.31,0,0,0,.18-.35,1,1,0,0,0,.07-.15c.05-.12.08-.25.12-.38l0-.15A2.6,2.6,0,0,0,22,19V5A3,3,0,0,0,19,2ZM5,20a1,1,0,0,1-1-1V14.69l3.29-3.3h0a1,1,0,0,1,1.42,0L17.31,20Zm15-1a1,1,0,0,1-.07.36,1,1,0,0,1-.08.14.94.94,0,0,1-.09.12l-5.35-5.35.88-.88a1,1,0,0,1,1.42,0h0L20,16.69Zm0-5.14L18.12,12a3.08,3.08,0,0,0-4.24,0l-.88.88L10.12,10a3.08,3.08,0,0,0-4.24,0L4,11.86V5A1,1,0,0,1,5,4H19a1,1,0,0,1,1,1ZM13.5,6A1.5,1.5,0,1,0,15,7.5,1.5,1.5,0,0,0,13.5,6Z"></path></svg>'}},t={};function n(r){var i=t[r];if(void 0!==i)return i.exports;var a=t[r]={id:r,exports:{}};return e[r](a,a.exports,n),a.exports}n.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return n.d(t,{a:t}),t},n.d=(e,t)=>{for(var r in t)n.o(t,r)&&!n.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},n.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t);var r={};return(()=>{"use strict";n.d(r,{default:()=>X});var e=n(379),t=n.n(e),i=n(795),a=n.n(i),s=n(569),o=n.n(s),c=n(565),l=n.n(c),u=n(216),d=n.n(u),p=n(589),h=n.n(p),f=n(424),m={};function g(e){return function(e){if(Array.isArray(e))return v(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(e){if("string"==typeof e)return v(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?v(e,t):void 0}}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function v(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}m.styleTagTransform=h(),m.setAttributes=l(),m.insert=o().bind(null,"head"),m.domAPI=a(),m.insertStyleElement=d(),t()(f.Z,m),f.Z&&f.Z.locals&&f.Z.locals;var b=function(e){var t,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},i=document.createElement(e);return Array.isArray(n)?(t=i.classList).add.apply(t,g(n)):n&&i.classList.add(n),Object.keys(r).forEach((function(e){i[e]=r[e]})),i},y=function(e){var t=e.appName,n=e.author,r=e.profileLink,i=b("div","inline-image__image-credits"),a=b("div",null,{innerHTML:"by ",style:"display: inline;"}),s=b("a","",{href:"".concat(r,"?utm_source=").concat(t,"&utm_medium=referral"),innerHTML:n,target:"_blank"}),o=b("div",null,{innerHTML:" on ",style:"display: inline;"}),c=b("a","",{href:"https://unsplash.com/?utm_source=".concat(t,"&utm_medium=referral"),innerHTML:"Unsplash",target:"_blank"});return i.appendChild(a),i.appendChild(s),i.appendChild(o),i.appendChild(c),i};function w(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}var x=function(){function e(t){var n=t.cssClasses,r=t.settings,i=t.onTuneToggled;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.cssClasses=n,this.onTuneToggled=i,this.settings=r,this.buttons=[]}var t,n;return t=e,(n=[{key:"render",value:function(e){var t=this,n=b("div");return this.buttons=[],this.settings.forEach((function(r){var i=b("div",null,{innerHTML:r.icon,onclick:function(){return t.tuneClicked(r.name)}});i.classList.add(t.cssClasses.settingsButton),i.dataset.tune=r.name,i.classList.toggle(t.cssClasses.settingsButtonActive,e[r.name]),t.buttons.push(i),n.appendChild(i)})),n}},{key:"tuneClicked",value:function(e){var t=this.buttons.find((function(t){return t.dataset.tune===e}));t.classList.toggle(this.cssClasses.settingsButtonActive,!t.classList.contains(this.cssClasses.settingsButtonActive)),this.onTuneToggled(e)}}])&&w(t.prototype,n),Object.defineProperty(t,"prototype",{writable:!1}),e}(),C=n(669),O=n.n(C);function k(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}var _=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.apiUrl=t&&t.apiUrl?t.apiUrl:"https://api.unsplash.com",this.clientId=t&&t.clientId?t.clientId:"",this.perPage=t&&t.maxResults?t.maxResults:30}var t,n;return t=e,(n=[{key:"searchImages",value:function(e,t){var n=this;O().get("".concat(this.apiUrl,"/search/photos"),{params:{client_id:this.clientId,query:e,per_page:this.perPage}}).then((function(e){return t(n.parseResponse(e.data))})).catch((function(){return t([])}))}},{key:"parseResponse",value:function(e){var t=this;return e.results.map((function(e){return t.buildImageObject(e)}))}},{key:"buildImageObject",value:function(e){return{url:e.urls.full,thumb:e.urls.thumb,downloadLocation:e.links.download_location,author:e.user.name,profileLink:e.user.links.html}}},{key:"downloadImage",value:function(e){O().get(e,{params:{client_id:this.clientId}}).catch((function(e){return console.log(e)}))}}])&&k(t.prototype,n),Object.defineProperty(t,"prototype",{writable:!1}),e}();function E(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function T(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?E(Object(n),!0).forEach((function(t){j(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):E(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}function j(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function P(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}var S=function(){function e(t){var n=t.api,r=t.config,i=t.cssClasses,a=t.onSelectImage,s=t.readOnly;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.api=n,this.config=r,this.readOnly=s,this.cssClasses=T(T({},i),{},{controlPanel:"inline-image__control-panel",tabWrapper:"inline-image__tab-wrapper",tab:"inline-image__tab",embedButton:"inline-image__embed-button",search:"inline-image__search",imageGallery:"inline-image__image-gallery",noResults:"inline-image__no-results",imgWrapper:"inline-image__img-wrapper",thumb:"inline-image__thumb",active:"active",hidden:"panel-hidden",scroll:"panel-scroll"}),this.onSelectImage=a,this.nodes={loader:null,embedUrlTab:null,unsplashTab:null,embedUrlPanel:null,unsplashPanel:null,imageGallery:null,searchInput:null},this.unsplashClient=new _(this.config.unsplash),this.searchTimeout=null,this.showEmbedTab=!this.config.embed||this.config.embed.display}var t,n;return t=e,(n=[{key:"render",value:function(){var e=this,t=b("div",this.cssClasses.controlPanel),n=b("div",this.cssClasses.tabWrapper),r=b("div",[this.cssClasses.tab,this.cssClasses.active],{innerHTML:"Embed URL",onclick:function(){return e.showEmbedUrlPanel()}}),i=b("div",[this.cssClasses.tab,this.showEmbedTab?null:this.cssClasses.active],{innerHTML:"Unsplash",onclick:function(){return e.showUnsplashPanel()}}),a=this.renderEmbedUrlPanel(),s=this.renderUnsplashPanel();return this.showEmbedTab&&n.appendChild(r),n.appendChild(i),t.appendChild(n),this.showEmbedTab&&t.appendChild(a),t.appendChild(s),this.nodes.embedUrlPanel=this.showEmbedTab?a:null,this.nodes.unsplashPanel=s,this.nodes.embedUrlTab=this.showEmbedTab?r:null,this.nodes.unsplashTab=i,t}},{key:"showEmbedUrlPanel",value:function(){this.nodes.embedUrlTab.classList.add(this.cssClasses.active),this.nodes.unsplashTab.classList.remove(this.cssClasses.active),this.nodes.embedUrlPanel.classList.remove(this.cssClasses.hidden),this.nodes.unsplashPanel.classList.add(this.cssClasses.hidden)}},{key:"showUnsplashPanel",value:function(){this.nodes.unsplashTab.classList.add(this.cssClasses.active),this.nodes.embedUrlTab.classList.remove(this.cssClasses.active),this.nodes.unsplashPanel.classList.remove(this.cssClasses.hidden),this.nodes.embedUrlPanel.classList.add(this.cssClasses.hidden)}},{key:"renderEmbedUrlPanel",value:function(){var e=this,t=b("div"),n=b("div",[this.cssClasses.input,this.cssClasses.caption],{id:"image-url",contentEditable:!this.readOnly}),r=b("div",[this.cssClasses.embedButton,this.cssClasses.input],{id:"embed-button",innerHTML:"Embed Image",onclick:function(){return e.embedButtonClicked(n.innerHTML)}});return n.dataset.placeholder="Enter image url...",t.appendChild(n),t.appendChild(r),t}},{key:"embedButtonClicked",value:function(e){/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g.test(e)?this.onSelectImage({url:e}):this.api.notifier.show({message:"Please enter a valid url.",style:"error"})}},{key:"renderUnsplashPanel",value:function(){var e=this,t=b("div",this.showEmbedTab?this.cssClasses.hidden:null),n=b("div",this.cssClasses.imageGallery),r=b("div",[this.cssClasses.input,this.cssClasses.caption,this.cssClasses.search],{id:"unsplash-search",contentEditable:!this.readOnly,oninput:function(){return e.searchInputHandler()}});return r.dataset.placeholder="Search for an image...",t.appendChild(r),t.appendChild(n),this.nodes.searchInput=r,this.nodes.imageGallery=n,t}},{key:"searchInputHandler",value:function(){this.showLoader(),this.performSearch()}},{key:"showLoader",value:function(){this.nodes.imageGallery.innerHTML="",this.nodes.loader=b("div",this.cssClasses.loading),this.nodes.imageGallery.appendChild(this.nodes.loader)}},{key:"performSearch",value:function(){var e=this;clearTimeout(this.searchTimeout),this.searchTimeout=setTimeout((function(){var t=e.nodes.searchInput.innerHTML;e.unsplashClient.searchImages(t,(function(t){return e.appendImagesToGallery(t)}))}),1e3)}},{key:"appendImagesToGallery",value:function(e){var t=this;if(this.nodes.imageGallery.innerHTML="",e&&e.length)this.nodes.unsplashPanel.classList.add(this.cssClasses.scroll),e.forEach((function(e){t.createThumbImage(e)}));else{var n=b("div",this.cssClasses.noResults,{innerHTML:"No images found"});this.nodes.imageGallery.appendChild(n),this.nodes.unsplashPanel.classList.remove(this.cssClasses.scroll)}}},{key:"createThumbImage",value:function(e){var t=this,n=b("div",this.cssClasses.imgWrapper),r=b("img",this.cssClasses.thumb,{src:e.thumb,onclick:function(){return t.downloadUnsplashImage(e)}}),i=this.config.unsplash.appName,a=y(T(T({},e),{},{appName:i}));n.appendChild(r),n.appendChild(a),this.nodes.imageGallery.append(n)}},{key:"downloadUnsplashImage",value:function(e){var t=e.url,n=e.author,r=e.profileLink,i=e.downloadLocation;this.onSelectImage({url:t,unsplash:{author:n,profileLink:r}}),this.unsplashClient.downloadImage(i)}}])&&P(t.prototype,n),Object.defineProperty(t,"prototype",{writable:!1}),e}(),L=n(330),I=n.n(L),A=n(98),B=n.n(A),U=n(586),H=n.n(U),N=n(459);function R(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}var M=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.modalHolder=document.getElementById("inline-image__modal"),this.modalHolder||(this.createModal(),this.closeOutside())}var t,n;return t=e,(n=[{key:"createModal",value:function(){var e=this,t=b("div","modal",{id:"inline-image__modal"}),n=b("div","modal-content",{id:"inline-image__modal-content"}),r=b("span","close",{id:"inline-image__modal-close",innerHTML:"&times;",onclick:function(){e.close()}}),i=b("img","modal-img",{id:"inline-image__modal-img",alt:"image"});t.appendChild(n),n.appendChild(r),n.appendChild(i),document.body.appendChild(t)}},{key:"open",value:function(e){this.setImage(e),document.getElementById("inline-image__modal").style.display="flex"}},{key:"setImage",value:function(e){var t=document.getElementById("inline-image__modal-img");t.src=e;var n=document.getElementById("inline-image__modal-content"),r=screen.width-200,i=screen.height-200,a=(0,N.XS)(r,i,t.width,t.height),s=a.width,o=a.height;n.style.maxHeight="".concat(o,"px"),n.style.maxWidth="".concat(s,"px")}},{key:"close",value:function(){document.getElementById("inline-image__modal").style.display="none"}},{key:"closeOutside",value:function(){var e=this;document.addEventListener("click",(function(t){"inline-image__modal"===t.target.id&&e.close()}))}}])&&R(t.prototype,n),Object.defineProperty(t,"prototype",{writable:!1}),e}();function D(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function z(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?D(Object(n),!0).forEach((function(t){q(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):D(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}function q(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function F(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}var J=function(){function e(t){var n=this,r=t.api,i=t.config,a=t.readOnly,s=t.onAddImageData,o=t.onTuneToggled;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.api=r,this.config=i,this.readOnly=a,this.onAddImageData=s,this.onTuneToggled=o,this.CSS={baseClass:this.api.styles.block,loading:this.api.styles.loader,input:this.api.styles.input,wrapper:"inline-image",imageHolder:"inline-image__picture",caption:"inline-image__caption"},this.settings=[{name:"withBorder",icon:B()},{name:"stretched",icon:H()},{name:"withBackground",icon:I()}],this.controlPanel=new S({api:r,config:i,readOnly:a,cssClasses:this.CSS,onSelectImage:function(e){return n.selectImage(e)}}),this.tunes=new x({cssClasses:{settingsButton:this.api.styles.settingsButton,settingsButtonActive:this.api.styles.settingsButtonActive},settings:this.settings,onTuneToggled:o}),this.nodes={wrapper:null,loader:null,imageHolder:null,image:null,caption:null,credits:null},this.modal=new M}var t,n;return t=e,(n=[{key:"render",value:function(e){var t=this,n=b("div",[this.CSS.baseClass,this.CSS.wrapper]),r=b("div",this.CSS.loading),i=b("img","",{onload:function(){return t.onImageLoad()},onerror:function(){return t.onImageLoadError()}}),a=b("div",[this.CSS.input,this.CSS.caption],{contentEditable:!this.readOnly,innerHTML:e.caption||""});if(this.nodes.imageHolder=b("div",this.CSS.imageHolder),a.dataset.placeholder="Enter a caption",e.url)n.appendChild(r),i.src=e.url,this.buildImageCredits(e);else{var s=this.controlPanel.render();this.nodes.controlPanelWrapper=s,n.appendChild(s)}return this.nodes.wrapper=n,this.nodes.loader=r,this.nodes.image=i,this.nodes.caption=a,this.applySettings(e),this.setEvents(),n}},{key:"buildImageCredits",value:function(e){var t=e.unsplash;if(t&&t.author&&t.profileLink){var n=this.config.unsplash.appName,r=y(z(z({},t),{},{appName:n}));this.nodes.imageHolder.appendChild(r),this.nodes.credits=r}}},{key:"onImageLoad",value:function(){this.nodes.imageHolder.prepend(this.nodes.image),this.nodes.wrapper.appendChild(this.nodes.imageHolder),this.nodes.wrapper.appendChild(this.nodes.caption),this.nodes.loader.remove()}},{key:"onImageLoadError",value:function(){this.removeCurrentBlock(),this.api.notifier.show({message:"Can not load the image, try again!",style:"error"})}},{key:"removeCurrentBlock",value:function(){var e=this;Promise.resolve().then((function(){var t=e.api.blocks.getCurrentBlockIndex();e.api.blocks.delete(t)})).catch((function(e){console.error(e)}))}},{key:"renderSettings",value:function(e){return this.tunes.render(e)}},{key:"showLoader",value:function(){this.nodes.controlPanelWrapper.remove(),this.nodes.wrapper.appendChild(this.nodes.loader)}},{key:"selectImage",value:function(e){this.onAddImageData(e),this.showLoader(),this.buildImageCredits(e)}},{key:"applyTune",value:function(e,t){var n=this;this.nodes.imageHolder.classList.toggle("".concat(this.CSS.imageHolder,"--").concat(e),t),"stretched"===e&&Promise.resolve().then((function(){var e=n.api.blocks.getCurrentBlockIndex();n.api.blocks.stretchBlock(e,t)})).catch((function(e){console.error(e)}))}},{key:"applySettings",value:function(e){var t=this;this.settings.forEach((function(n){t.applyTune(n.name,e[n.name])}))}},{key:"setEvents",value:function(){var e=this;this.nodes.image.addEventListener("click",(function(){e.modal.open(e.nodes.image.src)}))}}])&&F(t.prototype,n),Object.defineProperty(t,"prototype",{writable:!1}),e}();function G(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function V(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?G(Object(n),!0).forEach((function(t){Z(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):G(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}function Z(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function W(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}var X=function(){function e(t){var n=this,r=t.data,i=t.api,a=t.config,s=t.readOnly;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.api=i,this.readOnly=s,this.ui=new J({data:r,api:i,config:a,readOnly:s,onAddImageData:function(e){return n.addImageData(e)},onTuneToggled:function(e){return n.tuneToggled(e)}}),this.data={url:r.url||"",caption:r.caption||"",withBorder:void 0!==r.withBorder&&r.withBorder,withBackground:void 0!==r.withBackground&&r.withBackground,stretched:void 0!==r.stretched&&r.stretched,unsplash:r.unsplash}}var t,n,r;return t=e,r=[{key:"toolbox",get:function(){return{title:"InlineImage",icon:H()}}},{key:"sanitize",get:function(){return{url:{},withBorder:{},withBackground:{},stretched:{},caption:{br:!0}}}},{key:"pasteConfig",get:function(){return{patterns:{image:/https?:\/\/\S+\.(gif|jpe?g|tiff|png)$/i},tags:["img"],files:{mimeTypes:["image/*"]}}}},{key:"isReadOnlySupported",get:function(){return!0}}],(n=[{key:"render",value:function(){return this.ui.render(this.data)}},{key:"save",value:function(){var e=this.ui.nodes.caption;return this.data.caption=e.innerHTML,this.data}},{key:"validate",value:function(e){return!!e.url.trim()}},{key:"onDropHandler",value:function(e){var t=new FileReader;return t.readAsDataURL(e),new Promise((function(n){t.onload=function(t){n({url:t.target.result,caption:e.name})}}))}},{key:"onPaste",value:function(e){var t=this;switch(this.ui.showLoader(),e.type){case"tag":this.data={url:e.detail.data.src};break;case"pattern":this.data={url:e.detail.data};break;case"file":this.onDropHandler(e.detail.file).then((function(e){t.data=e}))}}},{key:"addImageData",value:function(e){this.data=e}},{key:"data",get:function(){return this._data},set:function(e){this._data=V(V({},this.data),e),this.ui.nodes.image&&(this.ui.nodes.image.src=this.data.url),this.ui.nodes.caption&&(this.ui.nodes.caption.innerHTML=this.data.caption)}},{key:"renderSettings",value:function(){return this.ui.renderSettings(this.data)}},{key:"tuneToggled",value:function(e){var t=!this.data[e];this.data=Z({},e,t),this.ui.applyTune(e,t)}}])&&W(t.prototype,n),r&&W(t,r),Object.defineProperty(t,"prototype",{writable:!1}),e}()})(),r.default})()}));
-
-/***/ }),
-
 /***/ "./node_modules/react-dom/cjs/react-dom.development.js":
 /*!*************************************************************!*\
   !*** ./node_modules/react-dom/cjs/react-dom.development.js ***!
@@ -39249,37 +39239,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 
-var MyTestController = /** @class */ (function (_super) {
-    __extends(MyTestController, _super);
-    function MyTestController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    MyTestController.prototype.LoadView = function () {
+class MyTestController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIFormController {
+    LoadView() {
         return (
         /* ReactView(
             <PopoverDemo></PopoverDemo>
         ) */
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRouteOutlet)().width('100%').height('100%'));
-    };
-    return MyTestController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIFormController));
-
+    }
+}
 
 
 /***/ }),
@@ -39304,21 +39273,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _views_ContextMenu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/ContextMenu */ "./src/views/ContextMenu.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 
 
 
@@ -39332,36 +39286,32 @@ function process(value) {
         return '';
     }
 }
-var TreeController = /** @class */ (function (_super) {
-    __extends(TreeController, _super);
-    function TreeController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    TreeController.prototype.LoadView = function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _a[0], setIsEditing = _a[1];
-        var isLoading = false;
-        var _b = this.props.config || {}, item = _b.item, onItemSelected = _b.onItemSelected;
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useRealm)().realm;
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useApplet)().applet;
-        var workspaceId = realm.$id;
-        var appletId = applet.$id;
-        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useAppletNavigate)().navigate;
-        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
+class TreeController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController {
+    LoadView() {
+        const [isEditing, setIsEditing] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+        const isLoading = false;
+        const { item, onItemSelected } = this.props.config || {};
+        const { realm } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useRealm)();
+        const { applet } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useApplet)();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
+        const { navigate } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useAppletNavigate)();
+        const { updateDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId);
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.applet-tree')
             .config({
             node: item,
-            workspaceId: workspaceId,
+            workspaceId,
             appletId: item.appletId,
             appletName: item.name,
             iconName: item.iconName,
             iconCategory: item.iconCategory,
             isEditing: isEditing,
             //isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
-            editingChanged: function (status) {
+            editingChanged: (status) => {
                 item.canDrag = !status;
                 setIsEditing(status);
             },
-            titleChanged: function (title) {
+            titleChanged: (title) => {
                 updateDocument({
                     databaseId: 'workspace',
                     collectionId: 'applets',
@@ -39369,7 +39319,7 @@ var TreeController = /** @class */ (function (_super) {
                     data: {
                         name: title
                     }
-                }, function () {
+                }, () => {
                     updateDocument({
                         databaseId: 'workspace',
                         collectionId: 'ws_tree',
@@ -39377,66 +39327,61 @@ var TreeController = /** @class */ (function (_super) {
                         data: {
                             name: title
                         }
-                    }, function () {
+                    }, () => {
                         _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: item });
                     });
                 });
             },
-            subNodes: function (TreeNode, level, nodeType, parentId, workspaceId, appletId) {
+            subNodes: (TreeNode, level, nodeType, parentId, workspaceId, appletId) => {
                 return [];
                 // return subNodes(TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected)
             },
-            requestMenu: function (node) { return (0,_views_ContextMenu__WEBPACK_IMPORTED_MODULE_4__.ContextMenu)(workspaceId, node.appletId, node.$id); },
-            requestEditMenu: function (node) { return [
+            requestMenu: (node) => (0,_views_ContextMenu__WEBPACK_IMPORTED_MODULE_4__.ContextMenu)(workspaceId, node.appletId, node.$id),
+            requestEditMenu: (node) => [
                 {
                     title: 'Rename ' + item.name,
                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__edit', '#151719', '18px', '18px'),
-                    onClick: function () { return setIsEditing(true); }
+                    onClick: () => setIsEditing(true)
                 },
                 {
                     title: 'Applet settings',
                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                    onClick: function () { return navigate("settings/general"); }
+                    onClick: () => navigate(`settings/general`)
                 },
                 {
                     title: 'Applet settings',
                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                    onClick: function () {
-                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.listCollections(workspaceId, appletId).then(function (collections) {
+                    onClick: () => {
+                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.listCollections(workspaceId, appletId).then((collections) => {
                             alert(collections.collections);
-                            for (var _i = 0, _a = collections.collections; _i < _a.length; _i++) {
-                                var collection = _a[_i];
+                            for (let collection of collections.collections) {
                                 _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.deleteAllDocument(workspaceId, appletId, collection.$id);
                             }
                         });
                     }
                 },
-            ]; },
-            requestNavigation: function () {
+            ],
+            requestNavigation: () => {
                 //  alert(JSON.stringify(item));
                 if (onItemSelected == null) {
                     switch (item.type) {
                         case 'folder':
-                            navigate("f/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(item.name), "-[").concat(item.$id, "]"), false);
+                            navigate(`f/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(item.name)}-[${item.$id}]`, false);
                             break;
                         case 'document':
-                            navigate("d/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(item.name), "-[").concat(item.$id, "]"), false);
+                            navigate(`d/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(item.name)}-[${item.$id}]`, false);
                             break;
                     }
                 }
                 else {
                     onItemSelected({
-                        workspaceId: workspaceId,
-                        appletId: item.appletId,
-                        item: item
+                        workspaceId, appletId: item.appletId, item
                     });
                 }
             },
         }));
-    };
-    return TreeController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
+    }
+}
 //FormBuilder.injectAction('saveSpace', SaveSpaceAction);
 
 
@@ -39460,50 +39405,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 
 
 
-var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
-    var invalidateResource = null;
-    var formMutate = null;
-    var createMutate = null;
-    var updateMutate = null;
-    var isFormMutateExcuting = false;
-    var isFormLoading = false;
-    var views = [];
-    var workspaceId = formMeta.workspaceId, appletId = formMeta.appletId;
-    var createWorkspaceTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, 'workspace', 'ws_tree').createDocument;
-    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'documents'), createDocument = _a.createDocument, isLoading = _a.isLoading;
-    var createDocumentContent = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'documentContent').createDocument;
+const SaveDocumentAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(() => {
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+    let invalidateResource = null;
+    let formMutate = null;
+    let createMutate = null;
+    let updateMutate = null;
+    let isFormMutateExcuting = false;
+    let isFormLoading = false;
+    const views = [];
+    const { workspaceId, appletId } = formMeta;
+    const { createDocument: createWorkspaceTreeItem } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, 'workspace', 'ws_tree');
+    const { createDocument, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'documents');
+    const { createDocument: createDocumentContent } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'documentContent');
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Save'))
         .loading(isLoading)
-        .onClick(function () {
-        var data = __assign({}, formController.GetFormData());
+        .onClick(() => {
+        const data = Object.assign({}, formController.GetFormData());
         createDocument({
-            data: __assign({}, data)
-        }, function (document) {
+            data: Object.assign({}, data)
+        }, (document) => {
             createDocumentContent({
                 documentId: document.$id,
                 data: {
                     content: ''
                 }
-            }, function (document) {
+            }, (document) => {
                 createWorkspaceTreeItem({
                     documentId: document.$id,
                     data: {
@@ -39511,23 +39445,22 @@ var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__W
                         type: 'document',
                         parent: data.parent,
                         tree_widget: 'com.celmino.applet.document-management',
-                        appletId: appletId,
+                        appletId,
                         path: (new Date()).getTime().toString(),
                         iconName: 'document',
                         iconCategory: 'SystemIcons',
                         //viewer:'com.tuvalsoft.viewer.document'
                     }
-                }, function (item) {
+                }, (item) => {
                     _tuval_core__WEBPACK_IMPORTED_MODULE_1__.EventBus.Default.fire('applet.added', { treeItem: item });
                     dialog.Hide();
                 });
             });
         });
     }));
-}); };
+});
 SaveDocumentAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.nanoid)();
-var AddDocumentDialog = function (workspaceId, appletId, parent, path, type) {
-    if (type === void 0) { type = 'document'; }
+const AddDocumentDialog = (workspaceId, appletId, parent, path, type = 'document') => {
     if (workspaceId == null) {
         alert("spaceId is null");
     }
@@ -39619,38 +39552,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 
 
 
 
-var SaveFolderAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
-    var invalidateResource = null;
-    var formMutate = null;
-    var createMutate = null;
-    var updateMutate = null;
-    var isFormMutateExcuting = false;
-    var isFormLoading = false;
-    var views = [];
-    var workspaceId = formMeta.workspaceId, appletId = formMeta.appletId;
-    var createWorkspaceTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, 'workspace', 'ws_tree').createDocument;
-    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'folders'), createDocument = _a.createDocument, isLoading = _a.isLoading;
-    var formData = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.useFormState)({
+const SaveFolderAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(() => {
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+    let invalidateResource = null;
+    let formMutate = null;
+    let createMutate = null;
+    let updateMutate = null;
+    let isFormMutateExcuting = false;
+    let isFormLoading = false;
+    const views = [];
+    const { workspaceId, appletId } = formMeta;
+    const { createDocument: createWorkspaceTreeItem } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, 'workspace', 'ws_tree');
+    const { createDocument, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'folders');
+    const formData = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.useFormState)({
         values: true,
         errors: true
     });
@@ -39658,12 +39580,10 @@ var SaveFolderAction = function (formMeta, action) { return (0,_tuval_forms__WEB
         .appearance("primary")
         .label('Save')
         // .type("submit")
-        .onClick(function () {
-        alert(JSON.stringify(formData));
-        return;
+        .onClick(() => {
         createDocument({
-            data: __assign({}, formData.values)
-        }, function (folder) {
+            data: Object.assign({}, formData.values)
+        }, (folder) => {
             createWorkspaceTreeItem({
                 documentId: folder.$id,
                 data: {
@@ -39671,21 +39591,21 @@ var SaveFolderAction = function (formMeta, action) { return (0,_tuval_forms__WEB
                     type: 'folder',
                     parent: formData.values.parent,
                     tree_widget: 'com.celmino.applet.document-management',
-                    appletId: appletId,
+                    appletId,
                     path: (new Date()).getTime().toString(),
                     iconName: 'cu3-icon-sidebarFolder',
                     iconCategory: 'SvgIcons',
                     //viewer:'com.tuvalsoft.viewer.document'
                 }
-            }, function (item) {
+            }, (item) => {
                 _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: item });
                 dialog.Hide();
             });
         });
     });
-}); };
+});
 SaveFolderAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.nanoid)();
-var AddFolderDialog = function (workspaceId, appletId, parent, path) {
+const AddFolderDialog = (workspaceId, appletId, parent, path) => {
     if (workspaceId == null) {
         alert("spaceId is null");
     }
@@ -39747,110 +39667,6 @@ var AddFolderDialog = function (workspaceId, appletId, parent, path) {
 
 /***/ }),
 
-/***/ "./src/dialogs/SelectTreeDialog.ts":
-/*!*****************************************!*\
-  !*** ./src/dialogs/SelectTreeDialog.ts ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SelectTreeDialog": () => (/* binding */ SelectTreeDialog)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-
-
-var SelectTreeDialog = /** @class */ (function (_super) {
-    __extends(SelectTreeDialog, _super);
-    function SelectTreeDialog() {
-        var _this = _super.call(this) || this;
-        _this.Header = 'Form';
-        _this.Width = '624px';
-        _this.Position = 'center';
-        _this.Height = '50%';
-        return _this;
-    }
-    SelectTreeDialog.prototype.BindRouterParams = function (workspaceId) {
-        this.workspaceId = workspaceId;
-    };
-    SelectTreeDialog.prototype.OnOK = function () {
-        this.ShowDialogAsyncResolve();
-        this.Hide();
-    };
-    SelectTreeDialog.prototype.OnCancel = function () {
-        this.Hide();
-    };
-    SelectTreeDialog.prototype.LoadView = function () {
-        var _this = this;
-        var documents = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(this.workspaceId, 'workspace', 'applets', [
-        // Query.equal('opa', 'com.celmino.widget.enterprise-modelling-tree')
-        ]).documents;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })(documents ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: 'cAll', alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray(__spreadArray([], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(documents)(function (applet, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)(applet['opa'])
-                .config({
-                workspaceId: _this.workspaceId,
-                appletId: applet.$id,
-                onItemSelected: function (info) {
-                    _this.ShowDialogAsyncResolve(info);
-                    _this.Hide();
-                }
-            });
-        }), false), [(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('OK')).onClick(function () { return _this.OnOK(); })], false)) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()
-        /*  ...ForEach(spaces)(space =>
-             Text(space.name)
-         ), */
-        ).padding(8));
-    };
-    SelectTreeDialog.Show = function (workspaceId) {
-        var dialog = new SelectTreeDialog();
-        dialog.ShowHeader = false;
-        dialog.BindRouterParams(workspaceId);
-        return dialog.ShowDialogAsync();
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectTreeDialog.prototype, "workspaceId", void 0);
-    return SelectTreeDialog;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView));
-
-
-
-/***/ }),
-
 /***/ "./src/routes/+routes.ts":
 /*!*******************************!*\
   !*** ./src/routes/+routes.ts ***!
@@ -39872,21 +39688,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./settings/+controller */ "./src/routes/settings/+controller.ts");
 /* harmony import */ var _settings_features_controller__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./settings/features/+controller */ "./src/routes/settings/features/+controller.ts");
 /* harmony import */ var _settings_general_controller__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./settings/general/+controller */ "./src/routes/settings/general/+controller.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 
 
 
@@ -39896,45 +39697,22 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var RouteController = /** @class */ (function (_super) {
-    __extends(RouteController, _super);
-    function RouteController() {
-        return _super !== null && _super.apply(this, arguments) || this;
+class RouteController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController {
+    routeView() {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoutes)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/', _AppController__WEBPACK_IMPORTED_MODULE_1__.MyTestController).children(
+        /*    UIRoute('list/:listId', ListController).children(
+               UIRoute('view/:viewId', class extends  ViewController {}),
+           ), */
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('f/:folderId', class extends _folder_folderId_controller__WEBPACK_IMPORTED_MODULE_5__.FolderController {
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('d/:documentId', window.location.hash ? _document_documentId_controller__WEBPACK_IMPORTED_MODULE_3__.DocumentController : class extends _document_documentId_controller__WEBPACK_IMPORTED_MODULE_3__.DocumentController {
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('whiteboard/:whiteboardId', class extends _whiteboard_whiteboardId_controller__WEBPACK_IMPORTED_MODULE_4__.WhiteboardController {
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':view_id', _list_listId_view_viewId_controller__WEBPACK_IMPORTED_MODULE_2__.ViewController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':view_id/*', _list_listId_view_viewId_controller__WEBPACK_IMPORTED_MODULE_2__.ViewController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/settings', _settings_controller__WEBPACK_IMPORTED_MODULE_6__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('features', _settings_features_controller__WEBPACK_IMPORTED_MODULE_7__.FeatureSettingsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_8__.GeneralSettingsController))))
+            .background('var(--primary-background-color)')));
     }
-    RouteController.prototype.routeView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoutes)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/', _AppController__WEBPACK_IMPORTED_MODULE_1__.MyTestController).children(
-            /*    UIRoute('list/:listId', ListController).children(
-                   UIRoute('view/:viewId', class extends  ViewController {}),
-               ), */
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('f/:folderId', /** @class */ (function (_super) {
-                __extends(class_1, _super);
-                function class_1() {
-                    return _super !== null && _super.apply(this, arguments) || this;
-                }
-                return class_1;
-            }(_folder_folderId_controller__WEBPACK_IMPORTED_MODULE_5__.FolderController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('d/:documentId', window.location.hash ? _document_documentId_controller__WEBPACK_IMPORTED_MODULE_3__.DocumentController : /** @class */ (function (_super) {
-                __extends(class_2, _super);
-                function class_2() {
-                    return _super !== null && _super.apply(this, arguments) || this;
-                }
-                return class_2;
-            }(_document_documentId_controller__WEBPACK_IMPORTED_MODULE_3__.DocumentController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('whiteboard/:whiteboardId', /** @class */ (function (_super) {
-                __extends(class_3, _super);
-                function class_3() {
-                    return _super !== null && _super.apply(this, arguments) || this;
-                }
-                return class_3;
-            }(_whiteboard_whiteboardId_controller__WEBPACK_IMPORTED_MODULE_4__.WhiteboardController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':view_id', _list_listId_view_viewId_controller__WEBPACK_IMPORTED_MODULE_2__.ViewController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':view_id/*', _list_listId_view_viewId_controller__WEBPACK_IMPORTED_MODULE_2__.ViewController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/settings', _settings_controller__WEBPACK_IMPORTED_MODULE_6__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('features', _settings_features_controller__WEBPACK_IMPORTED_MODULE_7__.FeatureSettingsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_8__.GeneralSettingsController))))
-                .background('var(--primary-background-color)');
-        }));
-    };
-    RouteController.prototype.LoadView = function () {
+    LoadView() {
         return this.routeView();
-    };
-    return RouteController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
+    }
+}
 
 
 /***/ }),
@@ -39953,153 +39731,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _views_ActionPanel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../views/ActionPanel */ "./src/views/ActionPanel.tsx");
-/* harmony import */ var _views_ViewHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../views/ViewHeader */ "./src/views/ViewHeader.ts");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _tools_SimplePlugin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../tools/SimplePlugin */ "./src/tools/SimplePlugin/index.tsx");
-/* harmony import */ var editorjs_inline_image__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! editorjs-inline-image */ "./node_modules/editorjs-inline-image/dist/bundle.js");
-/* harmony import */ var editorjs_inline_image__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(editorjs_inline_image__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_8__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
 
-
-
-
-
-
-var docs = [
+const docs = [
     { uri: "https://url-to-my-pdf.pdf" }, // Remote file
 ];
-var DocumentController = /** @class */ (function (_super) {
-    __extends(DocumentController, _super);
-    function DocumentController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    DocumentController.prototype.LoadView = function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)().documentId, documentId = _a === void 0 ? this.props.documentId : _a;
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.useRealm)().realm;
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.useApplet)().applet;
-        var workspaceId = realm.$id;
-        var appletId = applet.$id;
-        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useGetDocument)({
+class DocumentController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController {
+    LoadView() {
+        const { documentId = this.props.documentId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)();
+        const { realm } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useRealm)();
+        const { applet } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useApplet)();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
+        const { document, isLoading: isDocumentLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({
             projectId: workspaceId,
             databaseId: appletId,
             collectionId: 'documents',
             documentId: documentId
-        }), document = _b.document, isDocumentLoading = _b.isLoading;
-        var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useGetDocument)({
+        });
+        const { document: content, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({
             projectId: workspaceId,
             databaseId: appletId,
             collectionId: 'documentContent',
             documentId: documentId
-        }), content = _c.document, isLoading = _c.isLoading;
-        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useUpdateDocument)(workspaceId).updateDocument;
+        });
+        const { updateDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDocument)(workspaceId);
         return ((isDocumentLoading || isLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_1__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_2__.DocumentHeader)(document === null || document === void 0 ? void 0 : document.name, function (e) {
-                updateDocument({
-                    databaseId: appletId,
-                    collectionId: 'documents',
-                    documentId: documentId,
-                    data: {
-                        name: e
-                    }
-                });
-            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-                var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
-                return (
-                /*  VStack({ alignment: cTopLeading })(
-                     UIWidget('com.celmino.widget.tldraw')
-                         .config({
-
-
-                         })
-                 ) */
-                window.location.hash ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)(document === null || document === void 0 ? void 0 : document.viewer)
-                        .config({
-                        defaultValue: _tuval_core__WEBPACK_IMPORTED_MODULE_5__.is.nullOrEmpty(content === null || content === void 0 ? void 0 : content.content) ? null : JSON.parse(content.content),
-                        clamp: true,
-                        workspaceId: workspaceId,
-                        appletId: appletId,
-                        tools: {
-                            image: {
-                                class: (editorjs_inline_image__WEBPACK_IMPORTED_MODULE_7___default()),
-                                inlineToolbar: true,
-                                config: {
-                                    embed: {
-                                        display: true,
-                                    },
-                                    unsplash: {
-                                        appName: 'your_app_name',
-                                        clientId: 'your_client_id'
-                                    }
-                                }
-                            },
-                            link: {
-                                class: _tools_SimplePlugin__WEBPACK_IMPORTED_MODULE_6__.SimpleImage,
-                                inlineToolbar: true,
-                                shortcut: 'CMD+SHIFT+W',
-                                config: {
-                                    workspaceId: workspaceId,
-                                    appletId: appletId,
-                                    openDialog: openDialog
-                                },
-                            }
-                        },
-                        onChange: function (data) {
-                            console.log(data);
-                            updateDocument({
-                                databaseId: appletId,
-                                collectionId: 'documentContent',
-                                documentId: documentId,
-                                data: {
-                                    content: JSON.stringify(data)
-                                }
-                            });
-                        }
-                    })
-                    : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('##'));
-            }))
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.tuvalsoft.widget.markdown')
+                .config({}))
                 .background('white')
                 .render())));
-    };
-    return DocumentController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-var HashController = /** @class */ (function (_super) {
-    __extends(HashController, _super);
-    function HashController() {
-        return _super !== null && _super.apply(this, arguments) || this;
     }
-    HashController.prototype.LoadView = function () {
+}
+class HashController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController {
+    LoadView() {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('##'));
-    };
-    return HashController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
+    }
+}
 
 
 /***/ }),
@@ -40124,57 +39800,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _view_FolderView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./view/FolderView */ "./src/routes/folder-[folderId]/view/FolderView.tsx");
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_4__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 
 
 
 
 
-var FolderController = /** @class */ (function (_super) {
-    __extends(FolderController, _super);
-    function FolderController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    FolderController.prototype.LoadView = function () {
-        var folderId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)().folderId;
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useRealm)().realm;
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useApplet)().applet;
-        var workspaceId = realm.$id;
-        var appletId = applet.$id;
-        var document = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({
+class FolderController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController {
+    LoadView() {
+        const { folderId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)();
+        const { realm } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useRealm)();
+        const { applet } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useApplet)();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
+        const { document } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({
             projectId: workspaceId,
             databaseId: appletId,
             collectionId: 'folders',
             documentId: folderId
-        }).document;
-        var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, appletId, 'folders', [
+        });
+        const { documents: folders, isLoading: isFoldersLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, appletId, 'folders', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Query.equal('parent', folderId)
-        ]), folders = _a.documents, isFoldersLoading = _a.isLoading;
-        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, appletId, 'documents', [
+        ]);
+        const { documents: documents, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, appletId, 'documents', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Query.equal('parent', folderId)
-        ]), documents = _b.documents, isLoading = _b.isLoading;
-        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDocument)(workspaceId).updateDocument;
+        ]);
+        const { updateDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDocument)(workspaceId);
         return ((isFoldersLoading || isLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, { title: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolder', '#151719', '18px', '18px')).transform('rotate(90deg)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Folder - ' + (document === null || document === void 0 ? void 0 : document.name))) }, (0,_view_FolderView__WEBPACK_IMPORTED_MODULE_3__.FolderView)(workspaceId, folderId)
                 .render())));
-    };
-    return FolderController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
+    }
+}
 
 
 /***/ }),
@@ -40198,59 +39853,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../views/ActionPanel */ "./src/views/ActionPanel.tsx");
 /* harmony import */ var _views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../views/ViewHeader */ "./src/views/ViewHeader.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 
 
 
 
 
-var ProxyController = /** @class */ (function (_super) {
-    __extends(ProxyController, _super);
-    function ProxyController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    ProxyController.prototype.LoadView = function () {
-        var _a = this.props, workspaceId = _a.workspaceId, appletId = _a.appletId, documentId = _a.documentId;
-        var document = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({
+class ProxyController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController {
+    LoadView() {
+        const { workspaceId, appletId, documentId } = this.props;
+        const { document } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({
             projectId: workspaceId,
             databaseId: appletId,
             collectionId: 'dm_documents',
             documentId: documentId
-        }).document;
-        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({
+        });
+        const { document: content, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({
             projectId: workspaceId,
             databaseId: appletId,
             collectionId: 'dm_document_contents',
             documentId: documentId
-        }), content = _b.document, isLoading = _b.isLoading;
+        });
         return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('sdad'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(appletId), (0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.DocumentHeader)(document === null || document === void 0 ? void 0 : document.name, function (e) {
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('sdad'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(appletId), (0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.DocumentHeader)(document === null || document === void 0 ? void 0 : document.name, (e) => {
             }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)('com.tuvalsoft.widget.editorjs')
                 .config({
                 defaultValue: _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.nullOrEmpty(content === null || content === void 0 ? void 0 : content.content) ? null : JSON.parse(content.content),
-                onChange: function (data) {
+                onChange: (data) => {
                     console.log(data);
                 }
             }))
                 .background('white'));
-    };
-    return ProxyController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController));
-
+    }
+}
 
 
 /***/ }),
@@ -40269,7 +39903,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
-var DocumentName = function (folder) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Heading)(folder === null || folder === void 0 ? void 0 : folder.name).ellipsis(true).ellipsisMaxLines(1).fontSize(14).fontWeight('400'))); };
+const DocumentName = (folder) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Heading)(folder === null || folder === void 0 ? void 0 : folder.name).ellipsis(true).ellipsisMaxLines(1).fontSize(14).fontWeight('400')));
 
 
 /***/ }),
@@ -40292,45 +39926,42 @@ __webpack_require__.r(__webpack_exports__);
 //Icon(isOpen ? SvgIcon('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px') : SvgIcon('cu3-icon-sidebarFolder', '#151719', '18px', '18px'))
 
 
-var fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif';
-var FolderHeader = function (header, onHeaderChange) {
-    if (onHeaderChange === void 0) { onHeaderChange = void 0; }
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-        var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
-        /*  const { access_type, team_id, applet_id, view_id } = useParams();
-     
-         const navigate = useNavigate(); */
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__comment', '#87909e')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Add comment').fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')).foregroundColor('#87909e')
-            .height(28).width().padding('0 15px').cornerRadius(4).background({ hover: 'rgb(240, 241, 243)' })
-            .onClick(function () {
-            openDialog({
-                title: 'Open',
-                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Hans')
-            });
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(
-        //  _StatusMarker(task?.stage_id),
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolder', '#151719', '36px', '36px')), _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.string(header) ?
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.EditableHeader)(header).size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.EditableHeadingSizes.SMALL)
-                .onChange(function (e) { return onHeaderChange(e); })
-                .fontSmoothing('auto')
-                .foregroundColor('#212526')
-                .fontSize(28)
-                //.fontFamily(fontFamily)
-                .fontWeight('500')
-                .lineHeight('1.25')
-                .kerning('-0.003em')
-            :
-                _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is["function"](header) ? header() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()))
-            .background('white')
-            .height()
-            .padding(8).paddingBottom('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('ST').foregroundColor('white').fontSize(10).fontWeight('500').fontFamily(fontFamily).lineHeight('1.33').kerning('-0.003em')).width(20).height(20).cornerRadius('50%').background('rgb(255, 87, 34)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('You').foregroundColor('#87909e')).height().width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Last Updated: 6/29/23 at 11:27 pm').foregroundColor('#87909e')).height().width()).height().padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 15).paddingBottom('5px')).height()
-            .paddingBottom('10px')
-            .borderBottom('1px solid #F2F2F2'))
-            .padding()
-            .paddingBottom('0px')
-            .height());
-    });
-};
+const fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif';
+const FolderHeader = (header, onHeaderChange = void 0) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+    const { openDialog } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)();
+    /*  const { access_type, team_id, applet_id, view_id } = useParams();
+ 
+     const navigate = useNavigate(); */
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__comment', '#87909e')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Add comment').fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')).foregroundColor('#87909e')
+        .height(28).width().padding('0 15px').cornerRadius(4).background({ hover: 'rgb(240, 241, 243)' })
+        .onClick(() => {
+        openDialog({
+            title: 'Open',
+            view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Hans')
+        });
+    }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(
+    //  _StatusMarker(task?.stage_id),
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolder', '#151719', '36px', '36px')), _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.string(header) ?
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.EditableHeader)(header).size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.EditableHeadingSizes.SMALL)
+            .onChange((e) => onHeaderChange(e))
+            .fontSmoothing('auto')
+            .foregroundColor('#212526')
+            .fontSize(28)
+            //.fontFamily(fontFamily)
+            .fontWeight('500')
+            .lineHeight('1.25')
+            .kerning('-0.003em')
+        :
+            _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is["function"](header) ? header() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()))
+        .background('white')
+        .height()
+        .padding(8).paddingBottom('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('ST').foregroundColor('white').fontSize(10).fontWeight('500').fontFamily(fontFamily).lineHeight('1.33').kerning('-0.003em')).width(20).height(20).cornerRadius('50%').background('rgb(255, 87, 34)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('You').foregroundColor('#87909e')).height().width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Last Updated: 6/29/23 at 11:27 pm').foregroundColor('#87909e')).height().width()).height().padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 15).paddingBottom('5px')).height()
+        .paddingBottom('10px')
+        .borderBottom('1px solid #F2F2F2'))
+        .padding()
+        .paddingBottom('0px')
+        .height());
+});
 
 
 /***/ }),
@@ -40349,7 +39980,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
-var FolderName = function (folder) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolder', '#151719', '18px', '18px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Heading)(folder === null || folder === void 0 ? void 0 : folder.name).ellipsis(true).ellipsisMaxLines(1).fontSize(14).fontWeight('400'))); };
+const FolderName = (folder) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolder', '#151719', '18px', '18px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Heading)(folder === null || folder === void 0 ? void 0 : folder.name).ellipsis(true).ellipsisMaxLines(1).fontSize(14).fontWeight('400')));
 
 
 /***/ }),
@@ -40380,32 +40011,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_9__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 
 
 
@@ -40416,23 +40021,23 @@ var __assign = (undefined && undefined.__assign) || function () {
 
 
 
-var FolderView = function (workspaceId, folderId) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-    var appletId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)().appletId;
-    var document = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useGetDocument)({
+const FolderView = (workspaceId, folderId) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+    const { appletId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)();
+    const { document } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useGetDocument)({
         projectId: workspaceId,
         databaseId: 'workspace',
         collectionId: 'ws_tree',
         documentId: folderId
-    }).document;
+    });
     /*  const { documents: folders, isLoading: isFoldersLoading } = useListDocuments(workspaceId, appletId, 'dm_folders', [
          Query.equal('parent', folderId)
      ]); */
-    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useListDocuments)(workspaceId, 'workspace', 'ws_tree', [
+    const { documents: documents, isLoading: isDocumentsLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useListDocuments)(workspaceId, 'workspace', 'ws_tree', [
         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.Query.equal('parent', folderId)
-    ]), documents = _a.documents, isDocumentsLoading = _a.isLoading;
-    var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useUpdateDocument)(workspaceId).updateDocument;
+    ]);
+    const { updateDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useUpdateDocument)(workspaceId);
     return (isDocumentsLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_1__.ActionPanel)(), (0,_FolderHeader__WEBPACK_IMPORTED_MODULE_4__.FolderHeader)(document === null || document === void 0 ? void 0 : document.name, function (e) {
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_1__.ActionPanel)(), (0,_FolderHeader__WEBPACK_IMPORTED_MODULE_4__.FolderHeader)(document === null || document === void 0 ? void 0 : document.name, (e) => {
             updateDocument({
                 databaseId: appletId,
                 collectionId: 'dm_documents',
@@ -40441,8 +40046,8 @@ var FolderView = function (workspaceId, folderId) { return (0,_tuval_forms__WEBP
                     name: e
                 }
             });
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-            var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+            const { openDialog } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)();
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_9__.Table)()
                 .height()
                 .columns([
@@ -40451,47 +40056,42 @@ var FolderView = function (workspaceId, folderId) { return (0,_tuval_forms__WEBP
                     loadingStateType: 'medium-text',
                     title: 'Name',
                     width: '50%',
-                    view: function (row) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(row['type'] === 'folder' ?
+                    view: (row) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(row['type'] === 'folder' ?
                         (0,_FolderName__WEBPACK_IMPORTED_MODULE_5__.FolderName)(row) :
                         row['type'] === 'document' ?
                             (0,_DocumentName__WEBPACK_IMPORTED_MODULE_3__.DocumentName)(row) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
-                        .onClick(function () {
+                        .onClick(() => {
                         row['type'] === 'folder' ?
                             openDialog({
                                 title: row.name,
-                                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+                                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
                                     return (FolderView(workspaceId, row.$id));
                                 })
                             }) :
                             openDialog({
                                 title: row.name,
-                                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-                                    var DocumentProxyController = /** @class */ (function (_super) {
-                                        __extends(DocumentProxyController, _super);
-                                        function DocumentProxyController() {
-                                            return _super !== null && _super.apply(this, arguments) || this;
-                                        }
-                                        return DocumentProxyController;
-                                    }(_ProxyController__WEBPACK_IMPORTED_MODULE_2__.ProxyController));
+                                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+                                    const DocumentProxyController = class extends _ProxyController__WEBPACK_IMPORTED_MODULE_2__.ProxyController {
+                                    };
                                     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_7___default().createElement(DocumentProxyController, { workspaceId: workspaceId, appletId: appletId, documentId: row.$id }, " ")));
                                 })
                             });
-                    })); }
+                    }))
                 },
                 {
                     id: '$createdAt',
                     loadingStateType: 'medium-text',
                     title: 'Created',
                     width: '50%',
-                    format: function (value) { return (0,_tuval_core__WEBPACK_IMPORTED_MODULE_8__.moment)(value).format('DD.MM.YYYY HH:mm:ss'); }
+                    format: (value) => (0,_tuval_core__WEBPACK_IMPORTED_MODULE_8__.moment)(value).format('DD.MM.YYYY HH:mm:ss')
                 }
             ])
                 .isLoading(isDocumentsLoading)
-                .rows([].concat(documents === null || documents === void 0 ? void 0 : documents.map(function (document) { return (__assign({}, document)); }))))
+                .rows([].concat(documents === null || documents === void 0 ? void 0 : documents.map(document => (Object.assign({}, document))))))
                 .padding());
         }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)())
             .background('white'));
-}); };
+});
 
 
 /***/ }),
@@ -40521,53 +40121,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_promise_suspense__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-promise-suspense */ "./node_modules/react-promise-suspense/build/index.js");
 /* harmony import */ var react_promise_suspense__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_promise_suspense__WEBPACK_IMPORTED_MODULE_4__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 
 
 
 
 
-var OPA = /** @class */ (function (_super) {
-    __extends(OPA, _super);
-    function OPA(props) {
-        var _this = _super.call(this, props) || this;
-        _this.state = {};
-        return _this;
+class OPA extends (react__WEBPACK_IMPORTED_MODULE_3___default().Component) {
+    get Name() {
+        return this.props.name;
     }
-    Object.defineProperty(OPA.prototype, "Name", {
-        get: function () {
-            return this.props.name;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    OPA.prototype.render = function () {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+    render() {
         return (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(this.props.controller, { content: this.props.content, onSave: this.props.onSave }));
-    };
-    return OPA;
-}((react__WEBPACK_IMPORTED_MODULE_3___default().Component)));
-
+    }
+}
 function getAppName() {
     try {
-        var regex = /\/app\/com\.([A-Za-z]+)\.([A-Za-z]+)\.([A-Za-z]+)/i;
+        let regex = /\/app\/com\.([A-Za-z]+)\.([A-Za-z]+)\.([A-Za-z]+)/i;
         // Alternative syntax using RegExp constructor
         // const regex = new RegExp('(?:^\\/app\\/+|\\G(?!^)\\.)\\K\\w+', 'g')
-        var str = window.location.href;
-        var m = void 0;
+        const str = window.location.href;
+        let m;
         console.log(m = regex.exec(str));
         return m[3];
     }
@@ -40575,24 +40152,23 @@ function getAppName() {
         return '';
     }
 }
-var AppCache = {};
-var Paths = {};
-var OpaLoader = function (_a) {
-    var view_qn = _a.view_qn, content = _a.content, onSave = _a.onSave;
+const AppCache = {};
+const Paths = {};
+const OpaLoader = ({ view_qn, content, onSave }) => {
     //const { opa_name } = useParams();
-    var opa_name = view_qn;
-    var location = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useLocation)();
-    var controllerPromise = new Promise(function (resolve, reject) {
+    let opa_name = view_qn;
+    const location = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useLocation)();
+    const controllerPromise = new Promise((resolve, reject) => {
         if (AppCache[opa_name]) {
             resolve(AppCache[opa_name]);
         }
         else {
-            var app_path = "/realmocean/store/@/open-testing/".concat(opa_name);
+            const app_path = `/realmocean/store/@/open-testing/${opa_name}`;
             // alert(app_path)
-            var app_path_local = "/system/".concat(opa_name, ".app");
-            _tuval_core__WEBPACK_IMPORTED_MODULE_1__.ModuleLoader.LoadBundledModule(app_path_local, opa_name).then(function (_app) {
+            const app_path_local = `/system/${opa_name}.app`;
+            _tuval_core__WEBPACK_IMPORTED_MODULE_1__.ModuleLoader.LoadBundledModule(app_path_local, opa_name).then((_app) => {
                 if (_app != null) {
-                    var app = new _app();
+                    const app = new _app();
                     AppCache[opa_name] = app.GetMainController();
                     resolve(app.GetMainController());
                 }
@@ -40606,43 +40182,35 @@ var OpaLoader = function (_a) {
           }, 2000
           ) */
     });
-    var fetchController = function (input) { return controllerPromise.then(function (res) { return res; }); };
-    var contoller = react_promise_suspense__WEBPACK_IMPORTED_MODULE_4___default()(fetchController, [opa_name]);
+    const fetchController = input => controllerPromise.then(res => res);
+    const contoller = react_promise_suspense__WEBPACK_IMPORTED_MODULE_4___default()(fetchController, [opa_name]);
     return (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(OPA, { name: opa_name, controller: contoller, content: content, onSave: onSave }));
 };
-var ViewController = /** @class */ (function (_super) {
-    __extends(ViewController, _super);
-    function ViewController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    ViewController.prototype.LoadView = function () {
-        var _this = this;
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId, listId = _a.listId, viewId = _a.viewId;
+class ViewController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController {
+    LoadView() {
+        const { workspaceId, appletId, listId, viewId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
         // alert(viewId)
-        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({
+        const { document: view, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({
             projectId: workspaceId,
             databaseId: appletId,
-            collectionId: "wm_list_".concat(listId, "_views"),
+            collectionId: `wm_list_${listId}_views`,
             documentId: viewId
-        }), view = _b.document, isLoading = _b.isLoading;
+        });
         return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Loading...') :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Suspense), { fallback: react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Spinner)()).render()) },
                 react__WEBPACK_IMPORTED_MODULE_3___default().createElement(ErrorBoundary, null,
-                    react__WEBPACK_IMPORTED_MODULE_3___default().createElement(OpaLoader, { view_qn: view.type, content: {}, onSave: function (content) {
-                            _this.SetValue('content', content);
+                    react__WEBPACK_IMPORTED_MODULE_3___default().createElement(OpaLoader, { view_qn: view.type, content: {}, onSave: (content) => {
+                            this.SetValue('content', content);
                         } })))).frame(true).width('100%').height('100%'))).overflow('hidden')).background('white'))).background('#FAFBFC'))));
-    };
-    return ViewController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController));
-
+    }
+}
 /**
  * NEW: The error boundary has a function component wrapper.
  */
-function ErrorBoundary(_a) {
-    var children = _a.children;
-    var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(false), hasError = _b[0], setHasError = _b[1];
-    var location = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useLocation)();
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+function ErrorBoundary({ children }) {
+    const [hasError, setHasError] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+    const location = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useLocation)();
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
         if (hasError) {
             setHasError(false);
         }
@@ -40658,23 +40226,21 @@ function ErrorBoundary(_a) {
  * NEW: The class component accepts getters and setters for
  *      the parent functional component's error state.
  */
-var ErrorBoundaryInner = /** @class */ (function (_super) {
-    __extends(ErrorBoundaryInner, _super);
-    function ErrorBoundaryInner(props) {
-        var _this = _super.call(this, props) || this;
-        _this.state = { hasError: false };
-        _this.ref = react__WEBPACK_IMPORTED_MODULE_3___default().createRef();
-        return _this;
+class ErrorBoundaryInner extends (react__WEBPACK_IMPORTED_MODULE_3___default().Component) {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+        this.ref = react__WEBPACK_IMPORTED_MODULE_3___default().createRef();
     }
-    ErrorBoundaryInner.getDerivedStateFromError = function (_error) {
+    static getDerivedStateFromError(_error) {
         return { hasError: true };
-    };
-    ErrorBoundaryInner.prototype.componentDidUpdate = function (prevProps, _previousState) {
+    }
+    componentDidUpdate(prevProps, _previousState) {
         if (!this.props.hasError && prevProps.hasError) {
             this.setState({ hasError: false });
         }
-    };
-    ErrorBoundaryInner.prototype.componentDidCatch = function (_error, _errorInfo) {
+    }
+    componentDidCatch(_error, _errorInfo) {
         if (_errorInfo && _errorInfo.componentStack) {
             // The component stack is sometimes useful in development mode
             // In production it can be somewhat obfuscated, so feel free to omit this line.
@@ -40685,14 +40251,13 @@ var ErrorBoundaryInner = /** @class */ (function (_super) {
         //Tracker.track(_error);
         this.props.setHasError(true);
         this.setState({ errorText: JSON.stringify(_error) });
-    };
-    ErrorBoundaryInner.prototype.render = function () {
+    }
+    render() {
         return this.state.hasError
             ? react__WEBPACK_IMPORTED_MODULE_3___default().createElement("p", null, this.state.errorText)
             : this.props.children;
-    };
-    return ErrorBoundaryInner;
-}((react__WEBPACK_IMPORTED_MODULE_3___default().Component)));
+    }
+}
 
 
 /***/ }),
@@ -40715,30 +40280,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 
 
 
@@ -40756,82 +40297,74 @@ function getSettingsName() {
         return;
     }
 }
-var SettingsController = /** @class */ (function (_super) {
-    __extends(SettingsController, _super);
-    function SettingsController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    SettingsController.prototype.LoadView = function () {
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
-        var workspaceId = realm.$id;
-        var appletId = applet.$id;
-        var menu = [
+class SettingsController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController {
+    LoadView() {
+        const { realm } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)();
+        const { applet } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
+        const menu = [
             {
                 id: 'general',
                 title: 'General',
-                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/general"),
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/general`,
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Document Types',
-                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/import`,
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-importIcon')
             },
             {
                 id: 'features',
                 title: 'Features',
-                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/features"),
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/features`,
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'collections',
                 title: 'Collections',
-                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/collections"),
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/collections`,
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Integrations',
-                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/import`,
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-importIcon')
             },
             {
                 id: 'security',
                 title: 'Security & Permissions ',
-                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/security"),
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/security`,
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-protectedAlt')
             },
             {
                 id: 'import',
                 title: 'Imports / Exports',
-                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/import`,
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-importIcon')
             },
         ];
-        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate)().navigate;
+        const { navigate } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate)();
         // 
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('DOCUMENT APPLET').h3().foregroundColor('rgb(101, 111, 125)')
-                .fontSize(11).fontWeight('600')).padding('16px 8px 8px').height()], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(menu)(function (item) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 8 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(item.icon).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(item.title).fontSize(14).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)')
-                .fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')
-                .lineHeight(16)).height(32)
-                .cornerRadius(6)
-                .background({ default: item.id === getSettingsName() ? '#E5E4FC' : '', hover: '#E8EAED' })
-                .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cHorizontal, 8)
-                .cursor('pointer')
-                .onClick(function () {
-                navigate("settings/".concat(item.id));
-            });
-        }), false)).padding()
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('DOCUMENT APPLET').h3().foregroundColor('rgb(101, 111, 125)')
+            .fontSize(11).fontWeight('600')).padding('16px 8px 8px').height(), ...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(menu)(item => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 8 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(item.icon).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(item.title).fontSize(14).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)')
+            .fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')
+            .lineHeight(16)).height(32)
+            .cornerRadius(6)
+            .background({ default: item.id === getSettingsName() ? '#E5E4FC' : '', hover: '#E8EAED' })
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cHorizontal, 8)
+            .cursor('pointer')
+            .onClick(() => {
+            navigate(`settings/${item.id}`);
+        }))).padding()
             .background('#F7F8F9')
             .allWidth(240)
             .margin('0 8px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIRouteOutlet)().width('100%').height('100%')));
-    };
-    return SettingsController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController));
-
+    }
+}
 
 
 /***/ }),
@@ -40851,24 +40384,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 
 
-var settings = [
+const settings = [
     {
         key: 'isVersionManagementActive',
         title: 'Version',
@@ -40895,51 +40413,44 @@ var settings = [
         description: 'Is version management active'
     }
 ];
-var FeatureSettingsController = /** @class */ (function (_super) {
-    __extends(FeatureSettingsController, _super);
-    function FeatureSettingsController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    FeatureSettingsController.prototype.LoadView = function () {
+class FeatureSettingsController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIFormController {
+    LoadView() {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Features').fontSize(24).fontWeight('600')
             .foregroundColor('rgb(42, 46, 52)')
             .lineHeight(32))
             .height()
-            .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(settings)(function (setting) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)()
-                .background('#7f77f1')
-                .cornerRadius('4px 4px 0 0')
-                .height(4), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)('/images/version.png')
-                .maxWidth('100%')
-                .maxHeight('100%'))
-                .width(268)
-                .height(180), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(setting.title)
-                .fontSize(17)
-                .fontWeight('500')
-                .lineHeight(24)
-                .foregroundColor('#505050')
-                .marginBottom('12px')
-                .padding('0 15px')
-                .transition('all .2s cubic-bezier(.785,.135,.15,.86) 0s'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(setting.description)
-                .lineHeight(18)
-                .fontSize(12)
-                .foregroundColor('rgb(42, 46, 52)'))
-                .background('rgb(247, 248, 249)')
-                .border('1px solid rgb(232, 234, 237)')
-                .padding('0 0 30px')
-                .margin('0 8px 30px')
-                .width(270)
-                .transition('all .2s cubic-bezier(.785,.135,.15,.86) 0s')
-                .allHeight(370)
-                .cornerRadius(4)
-                .shadow({ hover: '0 4px 15px #0000001a' });
-        })).wrap('wrap')
+            .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(settings)(setting => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)()
+            .background('#7f77f1')
+            .cornerRadius('4px 4px 0 0')
+            .height(4), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)('/images/version.png')
+            .maxWidth('100%')
+            .maxHeight('100%'))
+            .width(268)
+            .height(180), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(setting.title)
+            .fontSize(17)
+            .fontWeight('500')
+            .lineHeight(24)
+            .foregroundColor('#505050')
+            .marginBottom('12px')
+            .padding('0 15px')
+            .transition('all .2s cubic-bezier(.785,.135,.15,.86) 0s'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(setting.description)
+            .lineHeight(18)
+            .fontSize(12)
+            .foregroundColor('rgb(42, 46, 52)'))
+            .background('rgb(247, 248, 249)')
+            .border('1px solid rgb(232, 234, 237)')
+            .padding('0 0 30px')
+            .margin('0 8px 30px')
+            .width(270)
+            .transition('all .2s cubic-bezier(.785,.135,.15,.86) 0s')
+            .allHeight(370)
+            .cornerRadius(4)
+            .shadow({ hover: '0 4px 15px #0000001a' })))
+            .wrap('wrap')
             .padding('24px 48px'))
             .padding('24px 48px'));
-    };
-    return FeatureSettingsController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIFormController));
-
+    }
+}
 
 
 /***/ }),
@@ -40965,37 +40476,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_4__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 
 
 
 
 
-var GeneralSettingsController = /** @class */ (function (_super) {
-    __extends(GeneralSettingsController, _super);
-    function GeneralSettingsController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    GeneralSettingsController.prototype.LoadView = function () {
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useRealm)().realm;
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useApplet)().applet;
-        var workspaceId = realm.$id;
-        var appletId = applet.$id;
-        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId).updateDocument;
+class GeneralSettingsController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIFormController {
+    LoadView() {
+        const { realm } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useRealm)();
+        const { applet } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useApplet)();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
+        const { updateDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId);
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('General').fontSize(24).fontWeight('600')
             .foregroundColor('rgb(42, 46, 52)')
             .lineHeight(32))
@@ -41018,7 +40510,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
             .foregroundColor('rgb(42, 46, 52)')
             .lineHeight(32)).height().width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
             .config({
-            onChange: function (value) {
+            onChange: (value) => {
                 updateDocument({
                     databaseId: 'workspace',
                     collectionId: 'applets',
@@ -41027,7 +40519,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
                         iconName: value.iconName,
                         iconCategory: value.iconCategory
                     }
-                }, function () {
+                }, () => {
                     updateDocument({
                         databaseId: 'workspace',
                         collectionId: 'ws_tree',
@@ -41036,7 +40528,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
                             iconName: value.iconName,
                             iconCategory: value.iconCategory
                         }
-                    }, function () {
+                    }, () => {
                         _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: value });
                     });
                 });
@@ -41061,10 +40553,8 @@ var GeneralSettingsController = /** @class */ (function (_super) {
             .height()
             .margin('0 0 30px'))
             .padding('24px 48px'));
-    };
-    return GeneralSettingsController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIFormController));
-
+    }
+}
 
 
 /***/ }),
@@ -41090,49 +40580,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_5__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 
 
 
 
 
 
-var WhiteboardController = /** @class */ (function (_super) {
-    __extends(WhiteboardController, _super);
-    function WhiteboardController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    WhiteboardController.prototype.LoadView = function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId, whiteboardId = _a.whiteboardId;
-        var document = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useGetDocument)({
+class WhiteboardController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController {
+    LoadView() {
+        const { workspaceId, appletId, whiteboardId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)();
+        const { document } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useGetDocument)({
             projectId: workspaceId,
             databaseId: appletId,
             collectionId: 'wm_whiteboards',
             documentId: whiteboardId
-        }).document;
-        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useGetDocument)({
+        });
+        const { document: content, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useGetDocument)({
             projectId: workspaceId,
             databaseId: appletId,
             collectionId: 'wm_whiteboard_contents',
             documentId: whiteboardId
-        }), content = _b.document, isLoading = _b.isLoading;
-        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useUpdateDocument)(workspaceId).updateDocument;
+        });
+        const { updateDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useUpdateDocument)(workspaceId);
         return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_1__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_2__.DocumentHeader)(document === null || document === void 0 ? void 0 : document.name, function (e) {
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_1__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_2__.DocumentHeader)(document === null || document === void 0 ? void 0 : document.name, (e) => {
                 updateDocument({
                     databaseId: appletId,
                     collectionId: 'wm_whiteboards',
@@ -41144,7 +40615,7 @@ var WhiteboardController = /** @class */ (function (_super) {
             }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.tuvalsoft.widget.whiteboard')
                 .config({
                 defaultValue: _tuval_core__WEBPACK_IMPORTED_MODULE_5__.is.nullOrEmpty(content === null || content === void 0 ? void 0 : content.content) ? null : JSON.parse(content.content),
-                onChange: function (data) {
+                onChange: (data) => {
                     console.log(data);
                     updateDocument({
                         databaseId: appletId,
@@ -41158,135 +40629,8 @@ var WhiteboardController = /** @class */ (function (_super) {
             }))
                 .background('white')
                 .render())));
-    };
-    return WhiteboardController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/tools/SimplePlugin/index.tsx":
-/*!******************************************!*\
-  !*** ./src/tools/SimplePlugin/index.tsx ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SimpleImage": () => (/* binding */ SimpleImage)
-/* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom/client */ "react-dom/client");
-/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom_client__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _dialogs_SelectTreeDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../dialogs/SelectTreeDialog */ "./src/dialogs/SelectTreeDialog.ts");
-
-
-
-
-
-var DocumentLinkIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_2___default().createElement("g", null,
-        react__WEBPACK_IMPORTED_MODULE_2___default().createElement("path", { d: "M6 4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4.286v-4.286c0-.789.64-1.428 1.428-1.428H16V12h-4v4l4-4V6a2 2 0 0 0-2-2H6Z" })))); };
-var CircleIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", width: "16", height: "16", fill: "currentColor" },
-    react__WEBPACK_IMPORTED_MODULE_2___default().createElement("path", { d: "m10 17.55-1.77 1.72a2.47 2.47 0 0 1-3.5-3.5l4.54-4.55a2.46 2.46 0 0 1 3.39-.09l.12.1a1 1 0 0 0 1.4-1.43 2.75 2.75 0 0 0-.18-.21 4.46 4.46 0 0 0-6.09.22l-4.6 4.55a4.48 4.48 0 0 0 6.33 6.33L11.37 19A1 1 0 0 0 10 17.55ZM20.69 3.31a4.49 4.49 0 0 0-6.33 0L12.63 5A1 1 0 0 0 14 6.45l1.73-1.72a2.47 2.47 0 0 1 3.5 3.5l-4.54 4.55a2.46 2.46 0 0 1-3.39.09l-.12-.1a1 1 0 0 0-1.4 1.43 2.75 2.75 0 0 0 .23.21 4.47 4.47 0 0 0 6.09-.22l4.55-4.55a4.49 4.49 0 0 0 .04-6.33Z", id: "link" }))); };
-var SimpleImage = /** @class */ (function () {
-    function SimpleImage(_a) {
-        var data = _a.data, config = _a.config, api = _a.api, readOnly = _a.readOnly;
-        var _this = this;
-        this.selected = false;
-        this.api = api;
-        this.readOnly = readOnly;
-        this.config = config;
-        this.view = config.view;
-        this.info = data === null || data === void 0 ? void 0 : data.info;
-        this.selected = data === null || data === void 0 ? void 0 : data.selected;
-        /* console.log('AAAA')
-        console.log(args) */
-        if (this.info != null) {
-            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.getDocument(this.info.workspaceId, this.info.appletId, 'dm_tree', this.info.item.$id).then(function (document) {
-                _this.document = document;
-                _this.renderView();
-            });
-        }
     }
-    Object.defineProperty(SimpleImage, "toolbox", {
-        get: function () {
-            return {
-                title: 'Link To Document',
-                icon: '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="ifqe6sa" fill="currentColor" aria-hidden="true" style="display: inline-block; position: relative; top: 0px; left: 0px;"><g><path d="M6 4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4.286v-4.286c0-.789.64-1.428 1.428-1.428H16V12h-4v4l4-4V6a2 2 0 0 0-2-2H6Z"></path></g></svg>'
-            };
-        },
-        enumerable: false,
-        configurable: true
-    });
-    SimpleImage.prototype.render = function () {
-        var _this = this;
-        this.wrapper = document.createElement('div');
-        if (!this.selected) {
-            _dialogs_SelectTreeDialog__WEBPACK_IMPORTED_MODULE_4__.SelectTreeDialog.Show(this.config.workspaceId).then(function (info) {
-                _this.info = info;
-                _this.selected = true;
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.getDocument(_this.info.workspaceId, _this.info.appletId, 'dm_tree', _this.info.item.$id).then(function (document) {
-                    _this.document = document;
-                    _this.renderView();
-                });
-            });
-        }
-        else {
-            /*   Services.Databases.getDocument(this.info.workspaceId, this.info.appletId, 'dm_tree', this.info.item.$id).then((document) => {
-                this.document = document; */
-            this.renderView();
-            //   });
-        }
-        return this.wrapper;
-    };
-    SimpleImage.prototype.renderView = function () {
-        var _this = this;
-        var _a;
-        if (this.wrapper != null) {
-            var root = react_dom_client__WEBPACK_IMPORTED_MODULE_3___default().createRoot(this.wrapper);
-            var view = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(DocumentLinkIcon)).width().height().foregroundColor('#4568FB'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)((_a = this.document) === null || _a === void 0 ? void 0 : _a.name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(CircleIcon)).width().height().foregroundColor('#6D7A83'))
-                // .background('#6D7A83')
-                .cornerRadius(10)
-                .width().height()
-                .padding('.4em 0')
-                .cursor('pointer')
-                .onClick(function () {
-                var _a;
-                _this.config.openDialog({
-                    title: (_a = _this.document) === null || _a === void 0 ? void 0 : _a.name,
-                    view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIWidget)('com.tuvalsoft.viewer.document')
-                            .config({
-                            workspaceId: _this.info.workspaceId,
-                            appletId: _this.info.appletId,
-                            documentId: _this.info.item.$id
-                        }));
-                    })
-                });
-            });
-            root.render(view.render());
-        }
-    };
-    SimpleImage.prototype.validate = function (savedData) {
-        return this.selected;
-    };
-    SimpleImage.prototype.save = function (blockContent) {
-        return {
-            info: this.info,
-            selected: this.selected
-        };
-    };
-    return SimpleImage;
-}());
-
+}
 
 
 /***/ }),
@@ -41309,62 +40653,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var fullSize = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M16.25 3H12a.75.75 0 0 0 0 1.5h2.44l-3.47 3.47a.75.75 0 0 0 1.06 1.06l3.47-3.47V8A.75.75 0 0 0 17 8V3.75a.75.75 0 0 0-.75-.75ZM3.75 17H8a.75.75 0 0 0 0-1.5H5.56l3.47-3.47a.75.75 0 1 0-1.06-1.06L4.5 14.44V12A.75.75 0 0 0 3 12v4.25a.75.75 0 0 0 .75.75Z" }))); };
-var activity = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M5.545 4.07A7.417 7.417 0 1 1 2.583 10a.75.75 0 0 1 1.5 0 5.917 5.917 0 1 0 2.62-4.913h.592a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75v-2.5a.75.75 0 0 1 1.5 0v.733ZM10 5.917a.75.75 0 0 1 .75.75v3.022l1.864 1.864a.75.75 0 0 1-1.061 1.06L9.47 10.53a.75.75 0 0 1-.22-.53V6.667a.75.75 0 0 1 .75-.75Z" }))); };
-var share = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+const fullSize = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M16.25 3H12a.75.75 0 0 0 0 1.5h2.44l-3.47 3.47a.75.75 0 0 0 1.06 1.06l3.47-3.47V8A.75.75 0 0 0 17 8V3.75a.75.75 0 0 0-.75-.75ZM3.75 17H8a.75.75 0 0 0 0-1.5H5.56l3.47-3.47a.75.75 0 1 0-1.06-1.06L4.5 14.44V12A.75.75 0 0 0 3 12v4.25a.75.75 0 0 0 .75.75Z" })));
+const activity = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M5.545 4.07A7.417 7.417 0 1 1 2.583 10a.75.75 0 0 1 1.5 0 5.917 5.917 0 1 0 2.62-4.913h.592a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75v-2.5a.75.75 0 0 1 1.5 0v.733ZM10 5.917a.75.75 0 0 1 .75.75v3.022l1.864 1.864a.75.75 0 0 1-1.061 1.06L9.47 10.53a.75.75 0 0 1-.22-.53V6.667a.75.75 0 0 1 .75-.75Z" })));
+const share = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
     react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M10.53 2.22a.75.75 0 0 0-1.06 0L6.97 4.72a.75.75 0 0 0 1.06 1.06l1.22-1.22v6.69a.75.75 0 1 0 1.499 0V4.56l1.219 1.22a.75.75 0 1 0 1.06-1.06l-2.499-2.5Z" }),
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M5.416 7A2.415 2.415 0 0 0 3 9.417v5.166c0 .225.078.538.17.797.096.267.264.638.537.912.046.046.063.065.085.09.02.022.044.05.099.106.08.085.197.196.363.29.326.182.709.222 1.162.222h9.169c.64 0 1.254-.255 1.707-.708.274-.274.442-.645.537-.912.093-.26.171-.572.171-.797V9.417A2.417 2.417 0 0 0 14.585 7h-.837a.75.75 0 0 0 0 1.5h.837a.916.916 0 0 1 .916.917v5.149c-.001.006-.004.03-.014.074a2.011 2.011 0 0 1-.174.472.57.57 0 0 1-.08.12.916.916 0 0 1-.649.268H5.417c-.282 0-.393-.023-.425-.031a.616.616 0 0 1-.017-.017l-.051-.056-.027-.03a3.96 3.96 0 0 0-.128-.134.569.569 0 0 1-.081-.12 2.039 2.039 0 0 1-.173-.472c-.01-.04-.013-.064-.014-.072V9.416a.917.917 0 0 1 .916-.916h.836a.75.75 0 0 0 0-1.5h-.836Z" }))); };
-var showAttributesPanelIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { width: "18", height: "18", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 20 20", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M5.416 7A2.415 2.415 0 0 0 3 9.417v5.166c0 .225.078.538.17.797.096.267.264.638.537.912.046.046.063.065.085.09.02.022.044.05.099.106.08.085.197.196.363.29.326.182.709.222 1.162.222h9.169c.64 0 1.254-.255 1.707-.708.274-.274.442-.645.537-.912.093-.26.171-.572.171-.797V9.417A2.417 2.417 0 0 0 14.585 7h-.837a.75.75 0 0 0 0 1.5h.837a.916.916 0 0 1 .916.917v5.149c-.001.006-.004.03-.014.074a2.011 2.011 0 0 1-.174.472.57.57 0 0 1-.08.12.916.916 0 0 1-.649.268H5.417c-.282 0-.393-.023-.425-.031a.616.616 0 0 1-.017-.017l-.051-.056-.027-.03a3.96 3.96 0 0 0-.128-.134.569.569 0 0 1-.081-.12 2.039 2.039 0 0 1-.173-.472c-.01-.04-.013-.064-.014-.072V9.416a.917.917 0 0 1 .916-.916h.836a.75.75 0 0 0 0-1.5h-.836Z" })));
+const showAttributesPanelIcon = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { width: "18", height: "18", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 20 20", fill: "currentColor", "aria-hidden": "true" },
     react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M15 12.25a.75.75 0 0 1 0 1.5h-1a.75.75 0 0 1 0-1.5h1ZM15.75 10a.75.75 0 0 0-.75-.75h-1a.75.75 0 0 0 0 1.5h1a.75.75 0 0 0 .75-.75ZM15 6.25a.75.75 0 0 1 0 1.5h-1a.75.75 0 0 1 0-1.5h1Z" }),
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M4.25 3A2.25 2.25 0 0 0 2 5.25v9.5A2.25 2.25 0 0 0 4.25 17h11.5A2.25 2.25 0 0 0 18 14.75v-9.5A2.25 2.25 0 0 0 15.75 3H4.25ZM3.5 5.25a.75.75 0 0 1 .75-.75H11v11H4.25a.75.75 0 0 1-.75-.75v-9.5Zm9 10.25v-11h3.25a.75.75 0 0 1 .75.75v9.5a.75.75 0 0 1-.75.75H12.5Z" }))); };
-var selectAttributesIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M4.25 3A2.25 2.25 0 0 0 2 5.25v9.5A2.25 2.25 0 0 0 4.25 17h11.5A2.25 2.25 0 0 0 18 14.75v-9.5A2.25 2.25 0 0 0 15.75 3H4.25ZM3.5 5.25a.75.75 0 0 1 .75-.75H11v11H4.25a.75.75 0 0 1-.75-.75v-9.5Zm9 10.25v-11h3.25a.75.75 0 0 1 .75.75v9.5a.75.75 0 0 1-.75.75H12.5Z" })));
+const selectAttributesIcon = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
     react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M1 10a6 6 0 0 1 6-6h6a6 6 0 0 1 0 12H7a6 6 0 0 1-6-6Zm1.5 0A4.5 4.5 0 0 1 7 5.5h6a4.5 4.5 0 1 1 0 9H7A4.5 4.5 0 0 1 2.5 10Z" }),
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M13 12.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z" }))); };
-var menuIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M6.5 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm5 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm3.5 1.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" }))); };
-var closeIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M3.728 15.172a.778.778 0 1 0 1.1 1.1L10 11.1l5.172 5.172a.778.778 0 0 0 1.1-1.1L11.1 10l5.172-5.172a.778.778 0 0 0-1.1-1.1L10 8.9 4.828 3.728a.778.778 0 1 0-1.1 1.1L8.9 10l-5.172 5.172Z" }))); };
-var favoriteIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M9.469 1.532a1.195 1.195 0 0 1 1.062 0c.289.143.444.397.524.542.086.154.175.354.268.562l1.643 3.685 4.013.424c.226.024.444.047.617.08.162.033.452.101.677.332.262.267.383.64.329 1.01-.047.32-.242.545-.354.666-.12.13-.283.276-.452.429l-2.997 2.7.837 3.948c.047.223.093.437.114.613.02.163.044.46-.106.746-.173.33-.49.562-.859.624-.318.054-.593-.06-.743-.13-.16-.074-.35-.184-.547-.297L10 15.45l-3.496 2.016c-.197.113-.386.223-.547.297-.15.07-.424.184-.742.13a1.195 1.195 0 0 1-.86-.624c-.15-.286-.125-.582-.105-.746.02-.176.066-.39.114-.613l.837-3.947-2.998-2.701c-.169-.153-.331-.3-.452-.429-.112-.121-.306-.347-.353-.666-.054-.37.067-.743.328-1.01.226-.23.516-.3.678-.331.173-.034.39-.057.617-.081l.029-.003 3.984-.42 1.63-3.66.013-.026c.092-.208.181-.408.268-.562.08-.145.235-.399.524-.542Zm.53 1.82-1.604 3.6-.012.029c-.044.1-.122.279-.254.425a1.195 1.195 0 0 1-.402.292c-.18.08-.375.1-.483.11-.011 0-.021.002-.03.003l-3.92.414 2.928 2.639.023.02c.08.072.227.202.326.373.083.145.136.306.153.472a1.56 1.56 0 0 1-.045.493l-.006.03-.818 3.857 3.415-1.97.026-.015c.094-.055.263-.155.456-.196.163-.034.332-.034.496 0 .193.041.362.14.455.196l.027.015 3.415 1.97-.818-3.857a1.56 1.56 0 0 1-.051-.524c.017-.165.07-.326.153-.471.098-.17.245-.3.326-.373a1.87 1.87 0 0 0 .023-.02l2.928-2.64-3.92-.413-.03-.003a1.56 1.56 0 0 1-.483-.11 1.195 1.195 0 0 1-.402-.292 1.558 1.558 0 0 1-.266-.454L10 3.352Z" }))); };
-var findIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M8.75 15.835a7.055 7.055 0 0 0 4.378-1.515l3.782 3.771a.835.835 0 0 0 1.18-1.182l-3.78-3.768a7.085 7.085 0 1 0-5.56 2.694ZM3.335 8.75a5.415 5.415 0 1 1 10.83 0 5.415 5.415 0 0 1-10.83 0Z" }))); };
-var copyLinkIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "m10.063 10.808 2.06-.03c.55-.001 1.075-.218 1.463-.604a2.054 2.054 0 0 0 .001-2.909 2.07 2.07 0 0 0-1.461-.602L6.757 6.66c-.527 0-1.034.2-1.417.562A2.043 2.043 0 0 0 4.7 8.6l-.011.129a.839.839 0 0 1-1.433.574.829.829 0 0 1-.238-.591A2.276 2.276 0 0 1 3 8.483a3.704 3.704 0 0 1 1.18-2.457 3.739 3.739 0 0 1 2.549-.994L12.133 5c.964.04 1.875.45 2.542 1.142a3.71 3.71 0 0 1-.003 5.154 3.754 3.754 0 0 1-2.543 1.145l-2.02.024a.836.836 0 0 1-.798-.806.83.83 0 0 1 .752-.851Zm-5.024.932a3.726 3.726 0 0 1 1.1-2.628c.7-.697 1.65-1.09 2.64-1.094l2.02-.025a.836.836 0 0 1 .799.807.83.83 0 0 1-.752.85l-2.038.007c-.548 0-1.074.218-1.462.604a2.054 2.054 0 0 0-.001 2.909 2.07 2.07 0 0 0 1.461.601l5.369.004c.527 0 1.035-.201 1.417-.562.383-.361.612-.855.64-1.379l.011-.13a.83.83 0 0 1 .845-.822.837.837 0 0 1 .826.84 3.712 3.712 0 0 1-1.194 2.714 3.747 3.747 0 0 1-2.546.996l-5.375.003a3.756 3.756 0 0 1-2.646-1.075 3.72 3.72 0 0 1-1.114-2.62Z" }))); };
-var smileIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M13 12.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z" })));
+const menuIcon = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M6.5 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm5 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm3.5 1.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" })));
+const closeIcon = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M3.728 15.172a.778.778 0 1 0 1.1 1.1L10 11.1l5.172 5.172a.778.778 0 0 0 1.1-1.1L11.1 10l5.172-5.172a.778.778 0 0 0-1.1-1.1L10 8.9 4.828 3.728a.778.778 0 1 0-1.1 1.1L8.9 10l-5.172 5.172Z" })));
+const favoriteIcon = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M9.469 1.532a1.195 1.195 0 0 1 1.062 0c.289.143.444.397.524.542.086.154.175.354.268.562l1.643 3.685 4.013.424c.226.024.444.047.617.08.162.033.452.101.677.332.262.267.383.64.329 1.01-.047.32-.242.545-.354.666-.12.13-.283.276-.452.429l-2.997 2.7.837 3.948c.047.223.093.437.114.613.02.163.044.46-.106.746-.173.33-.49.562-.859.624-.318.054-.593-.06-.743-.13-.16-.074-.35-.184-.547-.297L10 15.45l-3.496 2.016c-.197.113-.386.223-.547.297-.15.07-.424.184-.742.13a1.195 1.195 0 0 1-.86-.624c-.15-.286-.125-.582-.105-.746.02-.176.066-.39.114-.613l.837-3.947-2.998-2.701c-.169-.153-.331-.3-.452-.429-.112-.121-.306-.347-.353-.666-.054-.37.067-.743.328-1.01.226-.23.516-.3.678-.331.173-.034.39-.057.617-.081l.029-.003 3.984-.42 1.63-3.66.013-.026c.092-.208.181-.408.268-.562.08-.145.235-.399.524-.542Zm.53 1.82-1.604 3.6-.012.029c-.044.1-.122.279-.254.425a1.195 1.195 0 0 1-.402.292c-.18.08-.375.1-.483.11-.011 0-.021.002-.03.003l-3.92.414 2.928 2.639.023.02c.08.072.227.202.326.373.083.145.136.306.153.472a1.56 1.56 0 0 1-.045.493l-.006.03-.818 3.857 3.415-1.97.026-.015c.094-.055.263-.155.456-.196.163-.034.332-.034.496 0 .193.041.362.14.455.196l.027.015 3.415 1.97-.818-3.857a1.56 1.56 0 0 1-.051-.524c.017-.165.07-.326.153-.471.098-.17.245-.3.326-.373a1.87 1.87 0 0 0 .023-.02l2.928-2.64-3.92-.413-.03-.003a1.56 1.56 0 0 1-.483-.11 1.195 1.195 0 0 1-.402-.292 1.558 1.558 0 0 1-.266-.454L10 3.352Z" })));
+const findIcon = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M8.75 15.835a7.055 7.055 0 0 0 4.378-1.515l3.782 3.771a.835.835 0 0 0 1.18-1.182l-3.78-3.768a7.085 7.085 0 1 0-5.56 2.694ZM3.335 8.75a5.415 5.415 0 1 1 10.83 0 5.415 5.415 0 0 1-10.83 0Z" })));
+const copyLinkIcon = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "m10.063 10.808 2.06-.03c.55-.001 1.075-.218 1.463-.604a2.054 2.054 0 0 0 .001-2.909 2.07 2.07 0 0 0-1.461-.602L6.757 6.66c-.527 0-1.034.2-1.417.562A2.043 2.043 0 0 0 4.7 8.6l-.011.129a.839.839 0 0 1-1.433.574.829.829 0 0 1-.238-.591A2.276 2.276 0 0 1 3 8.483a3.704 3.704 0 0 1 1.18-2.457 3.739 3.739 0 0 1 2.549-.994L12.133 5c.964.04 1.875.45 2.542 1.142a3.71 3.71 0 0 1-.003 5.154 3.754 3.754 0 0 1-2.543 1.145l-2.02.024a.836.836 0 0 1-.798-.806.83.83 0 0 1 .752-.851Zm-5.024.932a3.726 3.726 0 0 1 1.1-2.628c.7-.697 1.65-1.09 2.64-1.094l2.02-.025a.836.836 0 0 1 .799.807.83.83 0 0 1-.752.85l-2.038.007c-.548 0-1.074.218-1.462.604a2.054 2.054 0 0 0-.001 2.909 2.07 2.07 0 0 0 1.461.601l5.369.004c.527 0 1.035-.201 1.417-.562.383-.361.612-.855.64-1.379l.011-.13a.83.83 0 0 1 .845-.822.837.837 0 0 1 .826.84 3.712 3.712 0 0 1-1.194 2.714 3.747 3.747 0 0 1-2.546.996l-5.375.003a3.756 3.756 0 0 1-2.646-1.075 3.72 3.72 0 0 1-1.114-2.62Z" })));
+const smileIcon = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
     react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M12.25 6.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM7.75 6.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" }),
     react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10 1.75a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5Zm0 1.5a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5Z" }),
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M8.238 11.643a3.707 3.707 0 0 1-.491-.428l-.149-.168a.75.75 0 0 0-1.198.903l.078.097a5.21 5.21 0 0 0 .878.81c.598.435 1.5.893 2.644.893 1.144 0 2.046-.458 2.644-.893a5.21 5.21 0 0 0 .879-.81l.077-.097a.75.75 0 0 0-1.198-.903l-.149.168c-.11.116-.276.272-.491.428-.433.315-1.031.607-1.762.607-.73 0-1.33-.292-1.762-.607Z" }))); };
-var filterIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M15.676 2c.258 0 .494 0 .692.016.213.018.446.057.677.175.329.168.596.435.764.765.118.23.157.463.175.676.016.198.016.434.016.692V5.287c0 .225.001.465-.063.697a1.749 1.749 0 0 1-.27.562c-.141.195-.33.345-.505.485l-.044.035-3.799 3.04a6.505 6.505 0 0 0-.228.187.477.477 0 0 0-.043.041.25.25 0 0 0-.039.08.44.44 0 0 0-.005.06 6.424 6.424 0 0 0-.004.295v3.586c0 .286.002.591-.097.874-.085.247-.224.47-.407.656-.21.213-.484.348-.74.474l-.066.031-2.478 1.224c-.17.084-.34.169-.488.226-.154.059-.389.133-.661.091a1.25 1.25 0 0 1-.838-.52 1.288 1.288 0 0 1-.21-.634A6.281 6.281 0 0 1 7 16.239V10.5l-.025-.11a.233.233 0 0 0-.066-.098 6.422 6.422 0 0 0-.228-.187L2.882 7.066l-.044-.035c-.176-.14-.364-.29-.505-.485a1.75 1.75 0 0 1-.27-.562c-.064-.232-.064-.472-.063-.697V4.324c0-.258 0-.494.016-.692.018-.213.057-.446.175-.676a1.75 1.75 0 0 1 .765-.765c.23-.118.463-.157.676-.175C3.83 2 4.092 2 4.35 2h11.326ZM3.633 3.529a.627.627 0 0 1 .121-.018c.13-.01.304-.011.596-.011h11.3c.292 0 .467 0 .596.011a.625.625 0 0 1 .12.018.25.25 0 0 1 .105.104.638.638 0 0 1 .018.121c.01.13.011.304.011.596v.881c0 .149 0 .232-.003.295a.456.456 0 0 1-.006.06.252.252 0 0 1-.03.066c.004-.004-.002.005 0 0-.002.004-.022.03-.052.056a6.58 6.58 0 0 1-.228.187l-3.799 3.039-.044.035c-.176.14-.364.29-.505.485-.123.17-.215.36-.27.562-.064.232-.064.472-.063.697v3.57c0 .19 0 .298-.005.38a.516.516 0 0 1-.009.076.249.249 0 0 1-.058.092.51.51 0 0 1-.064.042c-.07.04-.168.089-.338.173l-2.454 1.212-.072.035v-5.58c0-.225.001-.465-.063-.697a1.75 1.75 0 0 0-.27-.562c-.141-.195-.33-.345-.505-.485l-.044-.035-3.799-3.04a6.484 6.484 0 0 1-.228-.186l-.02-.017a.127.127 0 0 1-.024-.025c-.035-.045-.04-.077-.044-.14a6.488 6.488 0 0 1-.003-.295V4.35c0-.292 0-.467.011-.596a.628.628 0 0 1 .018-.12.25.25 0 0 1 .104-.105Z" }))); };
-var colorIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10 3.55a6.45 6.45 0 1 0 0 12.9 1.65 1.65 0 0 0 1.65-1.65v-.532c0-.246 0-.451.029-.636a2.35 2.35 0 0 1 1.953-1.953c.185-.03.39-.03.636-.029h.532A1.65 1.65 0 0 0 16.45 10 6.45 6.45 0 0 0 10 3.55ZM2.05 10a7.95 7.95 0 1 1 15.9 0 3.15 3.15 0 0 1-3.15 3.15h-.48c-.326 0-.402.002-.453.01a.85.85 0 0 0-.707.707c-.008.051-.01.127-.01.453v.48A3.15 3.15 0 0 1 10 17.95 7.95 7.95 0 0 1 2.05 10Zm5.6-3.6a1.15 1.15 0 1 1 2.3 0 1.15 1.15 0 0 1-2.3 0Zm4 .8a1.15 1.15 0 1 1 2.3 0 1.15 1.15 0 0 1-2.3 0Zm-6.4 2.4a1.15 1.15 0 1 1 2.3 0 1.15 1.15 0 0 1-2.3 0Z" }))); };
-var sortIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M13.386 16.777a.75.75 0 0 0 1.061 0l3.333-3.333a.75.75 0 0 0-1.06-1.061l-2.053 2.053V3.75a.75.75 0 0 0-1.5 0v10.686l-2.053-2.053a.75.75 0 0 0-1.061 1.06l3.333 3.334ZM6.083 17a.75.75 0 0 0 .75-.75V5.564l2.053 2.053a.75.75 0 0 0 1.061-1.06L6.614 3.222a.75.75 0 0 0-1.061 0L2.22 6.556a.75.75 0 0 0 1.06 1.061l2.053-2.053V16.25c0 .414.336.75.75.75Z" }))); };
-var ActionsPanelButton = function (icon, action, label) {
-    if (action === void 0) { action = void 0; }
-    if (label === void 0) { label = null; }
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon), label ?
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label)
-            .fontSize(14)
-            .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
-            .fontSmoothing('auto')
-            .foregroundColor('#212526') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
-        .foregroundColor('rgb(109, 122, 131)')
-        .cursor('pointer')
-        .cornerRadius(6)
-        .padding(10)
-        .background({ hover: 'rgba(109, 122, 131, 0.15)' })
-        .transition('all .15s ease-out')
-        .width(label ? '' : '28px')
-        .height('28px')
-        .onClick(function () {
-        action();
-    }));
-};
-var ActionPanel = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-    var closeDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().closeDialog;
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M8.238 11.643a3.707 3.707 0 0 1-.491-.428l-.149-.168a.75.75 0 0 0-1.198.903l.078.097a5.21 5.21 0 0 0 .878.81c.598.435 1.5.893 2.644.893 1.144 0 2.046-.458 2.644-.893a5.21 5.21 0 0 0 .879-.81l.077-.097a.75.75 0 0 0-1.198-.903l-.149.168c-.11.116-.276.272-.491.428-.433.315-1.031.607-1.762.607-.73 0-1.33-.292-1.762-.607Z" })));
+const filterIcon = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M15.676 2c.258 0 .494 0 .692.016.213.018.446.057.677.175.329.168.596.435.764.765.118.23.157.463.175.676.016.198.016.434.016.692V5.287c0 .225.001.465-.063.697a1.749 1.749 0 0 1-.27.562c-.141.195-.33.345-.505.485l-.044.035-3.799 3.04a6.505 6.505 0 0 0-.228.187.477.477 0 0 0-.043.041.25.25 0 0 0-.039.08.44.44 0 0 0-.005.06 6.424 6.424 0 0 0-.004.295v3.586c0 .286.002.591-.097.874-.085.247-.224.47-.407.656-.21.213-.484.348-.74.474l-.066.031-2.478 1.224c-.17.084-.34.169-.488.226-.154.059-.389.133-.661.091a1.25 1.25 0 0 1-.838-.52 1.288 1.288 0 0 1-.21-.634A6.281 6.281 0 0 1 7 16.239V10.5l-.025-.11a.233.233 0 0 0-.066-.098 6.422 6.422 0 0 0-.228-.187L2.882 7.066l-.044-.035c-.176-.14-.364-.29-.505-.485a1.75 1.75 0 0 1-.27-.562c-.064-.232-.064-.472-.063-.697V4.324c0-.258 0-.494.016-.692.018-.213.057-.446.175-.676a1.75 1.75 0 0 1 .765-.765c.23-.118.463-.157.676-.175C3.83 2 4.092 2 4.35 2h11.326ZM3.633 3.529a.627.627 0 0 1 .121-.018c.13-.01.304-.011.596-.011h11.3c.292 0 .467 0 .596.011a.625.625 0 0 1 .12.018.25.25 0 0 1 .105.104.638.638 0 0 1 .018.121c.01.13.011.304.011.596v.881c0 .149 0 .232-.003.295a.456.456 0 0 1-.006.06.252.252 0 0 1-.03.066c.004-.004-.002.005 0 0-.002.004-.022.03-.052.056a6.58 6.58 0 0 1-.228.187l-3.799 3.039-.044.035c-.176.14-.364.29-.505.485-.123.17-.215.36-.27.562-.064.232-.064.472-.063.697v3.57c0 .19 0 .298-.005.38a.516.516 0 0 1-.009.076.249.249 0 0 1-.058.092.51.51 0 0 1-.064.042c-.07.04-.168.089-.338.173l-2.454 1.212-.072.035v-5.58c0-.225.001-.465-.063-.697a1.75 1.75 0 0 0-.27-.562c-.141-.195-.33-.345-.505-.485l-.044-.035-3.799-3.04a6.484 6.484 0 0 1-.228-.186l-.02-.017a.127.127 0 0 1-.024-.025c-.035-.045-.04-.077-.044-.14a6.488 6.488 0 0 1-.003-.295V4.35c0-.292 0-.467.011-.596a.628.628 0 0 1 .018-.12.25.25 0 0 1 .104-.105Z" })));
+const colorIcon = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10 3.55a6.45 6.45 0 1 0 0 12.9 1.65 1.65 0 0 0 1.65-1.65v-.532c0-.246 0-.451.029-.636a2.35 2.35 0 0 1 1.953-1.953c.185-.03.39-.03.636-.029h.532A1.65 1.65 0 0 0 16.45 10 6.45 6.45 0 0 0 10 3.55ZM2.05 10a7.95 7.95 0 1 1 15.9 0 3.15 3.15 0 0 1-3.15 3.15h-.48c-.326 0-.402.002-.453.01a.85.85 0 0 0-.707.707c-.008.051-.01.127-.01.453v.48A3.15 3.15 0 0 1 10 17.95 7.95 7.95 0 0 1 2.05 10Zm5.6-3.6a1.15 1.15 0 1 1 2.3 0 1.15 1.15 0 0 1-2.3 0Zm4 .8a1.15 1.15 0 1 1 2.3 0 1.15 1.15 0 0 1-2.3 0Zm-6.4 2.4a1.15 1.15 0 1 1 2.3 0 1.15 1.15 0 0 1-2.3 0Z" })));
+const sortIcon = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M13.386 16.777a.75.75 0 0 0 1.061 0l3.333-3.333a.75.75 0 0 0-1.06-1.061l-2.053 2.053V3.75a.75.75 0 0 0-1.5 0v10.686l-2.053-2.053a.75.75 0 0 0-1.061 1.06l3.333 3.334ZM6.083 17a.75.75 0 0 0 .75-.75V5.564l2.053 2.053a.75.75 0 0 0 1.061-1.06L6.614 3.222a.75.75 0 0 0-1.061 0L2.22 6.556a.75.75 0 0 0 1.06 1.061l2.053-2.053V16.25c0 .414.336.75.75.75Z" })));
+const ActionsPanelButton = (icon, action = void 0, label = null) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon), label ?
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label)
+        .fontSize(14)
+        .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
+        .fontSmoothing('auto')
+        .foregroundColor('#212526') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
+    .foregroundColor('rgb(109, 122, 131)')
+    .cursor('pointer')
+    .cornerRadius(6)
+    .padding(10)
+    .background({ hover: 'rgba(109, 122, 131, 0.15)' })
+    .transition('all .15s ease-out')
+    .width(label ? '' : '28px')
+    .height('28px')
+    .onClick(() => {
+    action();
+}));
+const ActionPanel = () => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+    const { closeDialog } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)();
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })(
     /*   _StatusMarker(task?.stage_id),
          EditableHeader(task?.title).size(EditableHeadingSizes.MEDIUM), */
@@ -41373,12 +40713,12 @@ var ActionPanel = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_
       ActionsPanelButton(share),
       ActionsPanelButton(showAttributesPanelIcon),
       ActionsPanelButton(selectAttributesIcon), */
-    ActionsPanelButton(menuIcon), ActionsPanelButton(closeIcon, function () {
+    ActionsPanelButton(menuIcon), ActionsPanelButton(closeIcon, () => {
         closeDialog();
     }))
         .background('white')
         .height().padding(8));
-}); };
+});
 
 
 /***/ }),
@@ -41406,110 +40746,102 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //import { opas } from "./Opas";
-var ContextMenu = function (workspaceId, appletId, parent, path) {
-    if (parent === void 0) { parent = '-1'; }
-    if (path === void 0) { path = '/'; }
-    return [
-        {
-            title: 'Folder',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_2__.AddFolderDialog)(workspaceId, appletId, parent, path)); }
-        },
-        {
-            title: 'Document',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'document')); }
-        },
-        {
-            title: 'Wiki document',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'wiki')); }
-        },
-        {
-            title: 'Word document',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'word')); }
-        },
-        {
-            title: 'Spreadsheet',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.spreadsheet')); }
-        },
-        {
-            title: 'Google sheets',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.google-sheets-embedded')); }
-        },
-        {
-            title: 'Google sheets',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.google-sheets-embedded')); }
-        },
-        {
-            type: 'Divider'
-        },
-        {
-            title: 'More Applets',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('svg-sprite-activity-template-merged'),
-            /* onClick: () => SelectOpaDialog.Show(appletId, 'applet', opas).then((applet) => {
-    
-               
-            }) */
-        },
-    ];
-};
-var EditContextMenu = function (workspaceId, appletId, parent, path) {
-    if (parent === void 0) { parent = '-1'; }
-    if (path === void 0) { path = '/'; }
-    return [
-        {
-            title: 'Rename',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('svg-sprite-global__edit', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_2__.AddFolderDialog)(workspaceId, appletId, parent, path)); }
-        },
-        {
-            title: 'Document',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.editorjs')); }
-        },
-        {
-            title: 'Wiki document',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'wiki')); }
-        },
-        {
-            title: 'Word document',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'word')); }
-        },
-        {
-            title: 'Spreadsheet',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.spreadsheet')); }
-        },
-        {
-            title: 'Google sheets',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.google-sheets-embedded')); }
-        },
-        {
-            title: 'Google sheets',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.google-sheets-embedded')); }
-        },
-        {
-            type: 'Divider'
-        },
-        {
-            title: 'More Applets',
-            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('svg-sprite-activity-template-merged'),
-            /*  onClick: () => SelectOpaDialog.Show(appletId, 'applet', opas).then((applet) => {
-     
-               
-             }) */
-        },
-    ];
-};
+const ContextMenu = (workspaceId, appletId, parent = '-1', path = '/') => [
+    {
+        title: 'Folder',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_2__.AddFolderDialog)(workspaceId, appletId, parent, path))
+    },
+    {
+        title: 'Document',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'document'))
+    },
+    {
+        title: 'Wiki document',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'wiki'))
+    },
+    {
+        title: 'Word document',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'word'))
+    },
+    {
+        title: 'Spreadsheet',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.spreadsheet'))
+    },
+    {
+        title: 'Google sheets',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.google-sheets-embedded'))
+    },
+    {
+        title: 'Google sheets',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.google-sheets-embedded'))
+    },
+    {
+        type: 'Divider'
+    },
+    {
+        title: 'More Applets',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('svg-sprite-activity-template-merged'),
+        /* onClick: () => SelectOpaDialog.Show(appletId, 'applet', opas).then((applet) => {
+
+           
+        }) */
+    },
+];
+const EditContextMenu = (workspaceId, appletId, parent = '-1', path = '/') => [
+    {
+        title: 'Rename',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('svg-sprite-global__edit', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_2__.AddFolderDialog)(workspaceId, appletId, parent, path))
+    },
+    {
+        title: 'Document',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.editorjs'))
+    },
+    {
+        title: 'Wiki document',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'wiki'))
+    },
+    {
+        title: 'Word document',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'word'))
+    },
+    {
+        title: 'Spreadsheet',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.spreadsheet'))
+    },
+    {
+        title: 'Google sheets',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.google-sheets-embedded'))
+    },
+    {
+        title: 'Google sheets',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.google-sheets-embedded'))
+    },
+    {
+        type: 'Divider'
+    },
+    {
+        title: 'More Applets',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('svg-sprite-activity-template-merged'),
+        /*  onClick: () => SelectOpaDialog.Show(appletId, 'applet', opas).then((applet) => {
+ 
+           
+         }) */
+    },
+];
 
 
 /***/ }),
@@ -41531,45 +40863,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif';
-var DocumentHeader = function (header, onHeaderChange) {
-    if (onHeaderChange === void 0) { onHeaderChange = void 0; }
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-        var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
-        /*  const { access_type, team_id, applet_id, view_id } = useParams();
-     
-         const navigate = useNavigate(); */
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__comment', '#87909e')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Add comment').fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')).foregroundColor('#87909e')
-            .height(28).width().padding('0 15px').cornerRadius(4).background({ hover: 'rgb(240, 241, 243)' })
-            .onClick(function () {
-            openDialog({
-                title: 'Open',
-                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Hans')
-            });
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })(
-        //  _StatusMarker(task?.stage_id),
-        _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.string(header) ?
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.EditableHeader)(header).size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.EditableHeadingSizes.SMALL)
-                .onChange(function (e) { return onHeaderChange(e); })
-                .fontSmoothing('auto')
-                .foregroundColor('#212526')
-                .fontSize(32)
-                //.fontFamily(fontFamily)
-                .fontWeight('500')
-                .lineHeight('1.25')
-                .kerning('-0.003em')
-            :
-                _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is["function"](header) ? header() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
-            .background('white')
-            .height()
-            .padding(8).paddingBottom('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('ST').foregroundColor('white').fontSize(10).fontWeight('500').fontFamily(fontFamily).lineHeight('1.33').kerning('-0.003em')).width(20).height(20).cornerRadius('50%').background('rgb(255, 87, 34)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('You').foregroundColor('#87909e')).height().width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Last Updated: 6/29/23 at 11:27 pm').foregroundColor('#87909e')).height().width()).height().padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 15).paddingBottom('5px')).height()
-            .paddingBottom('10px')
-            .borderBottom('1px solid #F2F2F2'))
-            .padding()
-            .paddingBottom('0px')
-            .height());
-    });
-};
+const fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif';
+const DocumentHeader = (header, onHeaderChange = void 0) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+    const { openDialog } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)();
+    /*  const { access_type, team_id, applet_id, view_id } = useParams();
+ 
+     const navigate = useNavigate(); */
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__comment', '#87909e')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Add comment').fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')).foregroundColor('#87909e')
+        .height(28).width().padding('0 15px').cornerRadius(4).background({ hover: 'rgb(240, 241, 243)' })
+        .onClick(() => {
+        openDialog({
+            title: 'Open',
+            view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Hans')
+        });
+    }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })(
+    //  _StatusMarker(task?.stage_id),
+    _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.string(header) ?
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.EditableHeader)(header).size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.EditableHeadingSizes.SMALL)
+            .onChange((e) => onHeaderChange(e))
+            .fontSmoothing('auto')
+            .foregroundColor('#212526')
+            .fontSize(32)
+            //.fontFamily(fontFamily)
+            .fontWeight('500')
+            .lineHeight('1.25')
+            .kerning('-0.003em')
+        :
+            _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is["function"](header) ? header() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
+        .background('white')
+        .height()
+        .padding(8).paddingBottom('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('ST').foregroundColor('white').fontSize(10).fontWeight('500').fontFamily(fontFamily).lineHeight('1.33').kerning('-0.003em')).width(20).height(20).cornerRadius('50%').background('rgb(255, 87, 34)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('You').foregroundColor('#87909e')).height().width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Last Updated: 6/29/23 at 11:27 pm').foregroundColor('#87909e')).height().width()).height().padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 15).paddingBottom('5px')).height()
+        .paddingBottom('10px')
+        .borderBottom('1px solid #F2F2F2'))
+        .padding()
+        .paddingBottom('0px')
+        .height());
+});
 
 
 /***/ }),
@@ -41593,21 +40922,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
-var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __rest = (undefined && undefined.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -41623,21 +40937,120 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
 
 
 
-var ContainerClass = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  grid-auto-rows: max-content;\n  overflow: hidden;\n  box-sizing: border-box;\n  appearance: none;\n  outline: none;\n  min-width: 350px;\n  /* margin: 10px; */\n  margin-bottom: 20px;\n  border-radius: 5px;\n  min-height: 50px; \n  transition: background-color 350ms ease;\n  /* background-color: rgba(246, 246, 246, 1); */\n  /* border: 1px solid rgba(0, 0, 0, 0.05); */\n  font-size: 1em;\n\n  ul {\n    display: grid;\n    grid-gap: 10px;\n    grid-template-columns: repeat(var(--columns, 1), 1fr);\n    list-style: none;\n    /*  padding: 10px;  */\n    margin: 0;\n  }\n\n  &.scrollable {\n    ul {\n      overflow-y: auto;\n    }\n  }\n\n  &.placeholder {\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    color: rgba(0, 0, 0, 0.5);\n    background-color: transparent;\n    border-style: dashed;\n    border-color: rgba(0, 0, 0, 0.08);\n\n    &:hover {\n      border-color: rgba(0, 0, 0, 0.15);\n    }\n  }\n\n  &.hover {\n    /* background-color: rgb(235, 235, 235, 1); */\n  }\n\n  &.unstyled {\n    overflow: visible;\n    background-color: transparent !important;\n    border: none !important;\n  }\n\n  &.horizontal {\n    width: 100%;\n\n    ul {\n      grid-auto-flow: column;\n    }\n  }\n\n  &.shadow {\n    box-shadow: 0 1px 10px 0 rgba(34, 33, 81, 0.1);\n  }\n\n  &:focus-visible {\n    border-color: transparent;\n    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0), 0 0px 0px 2px #4c9ffe;\n  }\n\n"], ["\n  display: flex;\n  flex-direction: column;\n  grid-auto-rows: max-content;\n  overflow: hidden;\n  box-sizing: border-box;\n  appearance: none;\n  outline: none;\n  min-width: 350px;\n  /* margin: 10px; */\n  margin-bottom: 20px;\n  border-radius: 5px;\n  min-height: 50px; \n  transition: background-color 350ms ease;\n  /* background-color: rgba(246, 246, 246, 1); */\n  /* border: 1px solid rgba(0, 0, 0, 0.05); */\n  font-size: 1em;\n\n  ul {\n    display: grid;\n    grid-gap: 10px;\n    grid-template-columns: repeat(var(--columns, 1), 1fr);\n    list-style: none;\n    /*  padding: 10px;  */\n    margin: 0;\n  }\n\n  &.scrollable {\n    ul {\n      overflow-y: auto;\n    }\n  }\n\n  &.placeholder {\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    color: rgba(0, 0, 0, 0.5);\n    background-color: transparent;\n    border-style: dashed;\n    border-color: rgba(0, 0, 0, 0.08);\n\n    &:hover {\n      border-color: rgba(0, 0, 0, 0.15);\n    }\n  }\n\n  &.hover {\n    /* background-color: rgb(235, 235, 235, 1); */\n  }\n\n  &.unstyled {\n    overflow: visible;\n    background-color: transparent !important;\n    border: none !important;\n  }\n\n  &.horizontal {\n    width: 100%;\n\n    ul {\n      grid-auto-flow: column;\n    }\n  }\n\n  &.shadow {\n    box-shadow: 0 1px 10px 0 rgba(34, 33, 81, 0.1);\n  }\n\n  &:focus-visible {\n    border-color: transparent;\n    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0), 0 0px 0px 2px #4c9ffe;\n  }\n\n"])));
-var ActionClassName = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\ndisplay: flex;\n\n  > *:first-child:not(:last-child) {\n    opacity: 0;\n\n    &:focus-visible {\n      opacity: 1;\n    }\n  }\n  "], ["\ndisplay: flex;\n\n  > *:first-child:not(:last-child) {\n    opacity: 0;\n\n    &:focus-visible {\n      opacity: 1;\n    }\n  }\n  "])));
-var HeaderClass = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\ndisplay: flex;\npadding: 5px 20px;\npadding-right: 8px;\nalign-items: center;\njustify-content: space-between;\n/* background-color: #fff; */\nborder-top-left-radius: 5px;\nborder-top-right-radius: 5px;\n/* border-bottom: 1px solid rgba(0, 0, 0, 0.08); */\n\n&:hover {\n  .Actions > * {\n    opacity: 1 !important;\n  }\n}\n"], ["\ndisplay: flex;\npadding: 5px 20px;\npadding-right: 8px;\nalign-items: center;\njustify-content: space-between;\n/* background-color: #fff; */\nborder-top-left-radius: 5px;\nborder-top-right-radius: 5px;\n/* border-bottom: 1px solid rgba(0, 0, 0, 0.08); */\n\n&:hover {\n  .Actions > * {\n    opacity: 1 !important;\n  }\n}\n"])));
-var Container = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_a, ref) {
+const ContainerClass = _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css `
+  display: flex;
+  flex-direction: column;
+  grid-auto-rows: max-content;
+  overflow: hidden;
+  box-sizing: border-box;
+  appearance: none;
+  outline: none;
+  min-width: 350px;
+  /* margin: 10px; */
+  margin-bottom: 20px;
+  border-radius: 5px;
+  min-height: 50px; 
+  transition: background-color 350ms ease;
+  /* background-color: rgba(246, 246, 246, 1); */
+  /* border: 1px solid rgba(0, 0, 0, 0.05); */
+  font-size: 1em;
+
+  ul {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(var(--columns, 1), 1fr);
+    list-style: none;
+    /*  padding: 10px;  */
+    margin: 0;
+  }
+
+  &.scrollable {
+    ul {
+      overflow-y: auto;
+    }
+  }
+
+  &.placeholder {
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    border-style: dashed;
+    border-color: rgba(0, 0, 0, 0.08);
+
+    &:hover {
+      border-color: rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &.hover {
+    /* background-color: rgb(235, 235, 235, 1); */
+  }
+
+  &.unstyled {
+    overflow: visible;
+    background-color: transparent !important;
+    border: none !important;
+  }
+
+  &.horizontal {
+    width: 100%;
+
+    ul {
+      grid-auto-flow: column;
+    }
+  }
+
+  &.shadow {
+    box-shadow: 0 1px 10px 0 rgba(34, 33, 81, 0.1);
+  }
+
+  &:focus-visible {
+    border-color: transparent;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0), 0 0px 0px 2px #4c9ffe;
+  }
+
+`;
+const ActionClassName = _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css `
+display: flex;
+
+  > *:first-child:not(:last-child) {
+    opacity: 0;
+
+    &:focus-visible {
+      opacity: 1;
+    }
+  }
+  `;
+const HeaderClass = _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css `
+display: flex;
+padding: 5px 20px;
+padding-right: 8px;
+align-items: center;
+justify-content: space-between;
+/* background-color: #fff; */
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+/* border-bottom: 1px solid rgba(0, 0, 0, 0.08); */
+
+&:hover {
+  .Actions > * {
+    opacity: 1 !important;
+  }
+}
+`;
+const Container = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)((_a, ref) => {
     var _b;
-    var children = _a.children, template = _a.template, _c = _a.columns, columns = _c === void 0 ? 1 : _c, handleProps = _a.handleProps, horizontal = _a.horizontal, hover = _a.hover, onClick = _a.onClick, onRemove = _a.onRemove, label = _a.label, placeholder = _a.placeholder, style = _a.style, scrollable = _a.scrollable, shadow = _a.shadow, unstyled = _a.unstyled, props = __rest(_a, ["children", "template", "columns", "handleProps", "horizontal", "hover", "onClick", "onRemove", "label", "placeholder", "style", "scrollable", "shadow", "unstyled"]);
-    var Component = onClick ? 'button' : 'div';
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Component, __assign({}, props, { ref: ref, style: __assign(__assign({}, style), { '--columns': columns }), className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(ContainerClass, unstyled && "unstyled", horizontal && "horizontal", hover && "hover", placeholder && "placeholder", scrollable && "scrollable", shadow && "shadow"), onClick: onClick, tabIndex: onClick ? 0 : undefined }),
-        _tuval_core__WEBPACK_IMPORTED_MODULE_3__.is["function"](template) ? (_b = template({ label: label })) === null || _b === void 0 ? void 0 : _b.render() : void 0,
+    var { children, template, columns = 1, handleProps, horizontal, hover, onClick, onRemove, label, placeholder, style, scrollable, shadow, unstyled } = _a, props = __rest(_a, ["children", "template", "columns", "handleProps", "horizontal", "hover", "onClick", "onRemove", "label", "placeholder", "style", "scrollable", "shadow", "unstyled"]);
+    const Component = onClick ? 'button' : 'div';
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Component, Object.assign({}, props, { ref: ref, style: Object.assign(Object.assign({}, style), { '--columns': columns }), className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(ContainerClass, unstyled && "unstyled", horizontal && "horizontal", hover && "hover", placeholder && "placeholder", scrollable && "scrollable", shadow && "shadow"), onClick: onClick, tabIndex: onClick ? 0 : undefined }),
+        _tuval_core__WEBPACK_IMPORTED_MODULE_3__.is["function"](template) ? (_b = template({ label })) === null || _b === void 0 ? void 0 : _b.render() : void 0,
         (!_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is["function"](template) && label) ? (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: HeaderClass },
             label,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: ActionClassName }))) : null,
         placeholder ? children : react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, children)));
 });
-var templateObject_1, templateObject_2, templateObject_3;
 
 
 /***/ }),
@@ -41679,21 +41092,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
-var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __rest = (undefined && undefined.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -41729,18 +41127,127 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
     opacity: 1;
   }
 } */
-var ItemClass = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\nposition: relative;\n  display: flex;\n  flex-grow: 1;\n  align-items: center;\n /*  padding: 18px 20px; */\n   background-color: #fff; \n  /* box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15); */\n  outline: none;\n  border-radius: calc(4px / var(--scale-x, 1));\n  box-sizing: border-box;\n  list-style: none;\n  transform-origin: 50% 50%;\n\n  -webkit-tap-highlight-color: transparent;\n\n  color:  #333;\n  font-weight: 400;\n  font-size: 1rem;\n  white-space: nowrap;\n\n  transform: scale(var(--scale, 1));\n  transition: box-shadow 200ms cubic-bezier(0.18, 0.67, 0.6, 1.22);\n\n  &:focus-visible {\n    box-shadow: 0 0px 4px 1px #4c9ffe,  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n  }\n\n  &:not(.withHandle) {\n    touch-action: manipulation;\n    cursor: grab;\n  }\n\n  &.dragging:not(.dragOverlay) {\n    opacity: var(--dragging-opacity, 0.5);\n    z-index: 0;\n\n    &:focus {\n      box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    }\n  }\n\n  &.disabled {\n    color: #999;\n    background-color: #f1f1f1;\n    &:focus {\n      box-shadow: 0 0px 4px 1px rgba(0, 0, 0, 0.1),  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    }\n    cursor: not-allowed;\n  }\n\n  &.dragOverlay {\n    cursor: inherit;\n    /* box-shadow: 0 0px 6px 2px #4c9ffe; */\n    animation: pop 200ms cubic-bezier(0.18, 0.67, 0.6, 1.22);\n    transform: scale(var(--scale)); \n    box-shadow: var(--box-shadow-picked-up);\n    opacity: 1;\n  }\n\n  &.color:before {\n    content: '';\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    left: 0;\n    height: 100%;\n    width: 3px;\n    display: block;\n    border-top-left-radius: 3px;\n    border-bottom-left-radius: 3px;\n    background-color: var(--color);\n  }\n\n  &:hover {\n    .Remove {\n      visibility: visible;\n    }\n  }\n"], ["\nposition: relative;\n  display: flex;\n  flex-grow: 1;\n  align-items: center;\n /*  padding: 18px 20px; */\n   background-color: #fff; \n  /* box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15); */\n  outline: none;\n  border-radius: calc(4px / var(--scale-x, 1));\n  box-sizing: border-box;\n  list-style: none;\n  transform-origin: 50% 50%;\n\n  -webkit-tap-highlight-color: transparent;\n\n  color:  #333;\n  font-weight: 400;\n  font-size: 1rem;\n  white-space: nowrap;\n\n  transform: scale(var(--scale, 1));\n  transition: box-shadow 200ms cubic-bezier(0.18, 0.67, 0.6, 1.22);\n\n  &:focus-visible {\n    box-shadow: 0 0px 4px 1px #4c9ffe,  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n  }\n\n  &:not(.withHandle) {\n    touch-action: manipulation;\n    cursor: grab;\n  }\n\n  &.dragging:not(.dragOverlay) {\n    opacity: var(--dragging-opacity, 0.5);\n    z-index: 0;\n\n    &:focus {\n      box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    }\n  }\n\n  &.disabled {\n    color: #999;\n    background-color: #f1f1f1;\n    &:focus {\n      box-shadow: 0 0px 4px 1px rgba(0, 0, 0, 0.1),  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    }\n    cursor: not-allowed;\n  }\n\n  &.dragOverlay {\n    cursor: inherit;\n    /* box-shadow: 0 0px 6px 2px #4c9ffe; */\n    animation: pop 200ms cubic-bezier(0.18, 0.67, 0.6, 1.22);\n    transform: scale(var(--scale)); \n    box-shadow: var(--box-shadow-picked-up);\n    opacity: 1;\n  }\n\n  &.color:before {\n    content: '';\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    left: 0;\n    height: 100%;\n    width: 3px;\n    display: block;\n    border-top-left-radius: 3px;\n    border-bottom-left-radius: 3px;\n    background-color: var(--color);\n  }\n\n  &:hover {\n    .Remove {\n      visibility: visible;\n    }\n  }\n"])));
-var Wrapper = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  display: flex;\n  box-sizing: border-box;\n  transform: translate3d(var(--translate-x, 0), var(--translate-y, 0), 0)\n    scaleX(var(--scale-x, 1)) scaleY(var(--scale-y, 1));\n  transform-origin: 0 0;\n  touch-action: manipulation;\n\n  &.fadeIn {\n    animation: fadeIn 500ms ease;\n  }\n\n  &.dragOverlay {\n    --scale: 1.05;\n    --box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    --box-shadow-picked-up: 0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05),\n      -1px 0 15px 0 rgba(34, 33, 81, 0.01),\n      0px 15px 15px 0 rgba(34, 33, 81, 0.25);\n    z-index: 999;\n  }\n"], ["\n  display: flex;\n  box-sizing: border-box;\n  transform: translate3d(var(--translate-x, 0), var(--translate-y, 0), 0)\n    scaleX(var(--scale-x, 1)) scaleY(var(--scale-y, 1));\n  transform-origin: 0 0;\n  touch-action: manipulation;\n\n  &.fadeIn {\n    animation: fadeIn 500ms ease;\n  }\n\n  &.dragOverlay {\n    --scale: 1.05;\n    --box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    --box-shadow-picked-up: 0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05),\n      -1px 0 15px 0 rgba(34, 33, 81, 0.01),\n      0px 15px 15px 0 rgba(34, 33, 81, 0.25);\n    z-index: 999;\n  }\n"])));
-var _Rempve = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\nvisibility: hidden;\n"], ["\nvisibility: hidden;\n"])));
-var Actions = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  display: flex;\n  align-self: flex-start;\n  /* margin-top: -12px; */\n  margin-left: auto;\n  margin-bottom: -15px;\n  margin-left: 10px;\n  height:100%\n"], ["\n  display: flex;\n  align-self: flex-start;\n  /* margin-top: -12px; */\n  margin-left: auto;\n  margin-bottom: -15px;\n  margin-left: 10px;\n  height:100%\n"])));
-var Item = react__WEBPACK_IMPORTED_MODULE_0___default().memo(react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function (_a, ref) {
-    var color = _a.color, dragOverlay = _a.dragOverlay, dragging = _a.dragging, disabled = _a.disabled, fadeIn = _a.fadeIn, handle = _a.handle, handleProps = _a.handleProps, height = _a.height, index = _a.index, listeners = _a.listeners, onRemove = _a.onRemove, renderItem = _a.renderItem, template = _a.template, sorting = _a.sorting, style = _a.style, transition = _a.transition, transform = _a.transform, value = _a.value, wrapperStyle = _a.wrapperStyle, props = __rest(_a, ["color", "dragOverlay", "dragging", "disabled", "fadeIn", "handle", "handleProps", "height", "index", "listeners", "onRemove", "renderItem", "template", "sorting", "style", "transition", "transform", "value", "wrapperStyle"]);
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+const ItemClass = _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css `
+position: relative;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+ /*  padding: 18px 20px; */
+   background-color: #fff; 
+  /* box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15); */
+  outline: none;
+  border-radius: calc(4px / var(--scale-x, 1));
+  box-sizing: border-box;
+  list-style: none;
+  transform-origin: 50% 50%;
+
+  -webkit-tap-highlight-color: transparent;
+
+  color:  #333;
+  font-weight: 400;
+  font-size: 1rem;
+  white-space: nowrap;
+
+  transform: scale(var(--scale, 1));
+  transition: box-shadow 200ms cubic-bezier(0.18, 0.67, 0.6, 1.22);
+
+  &:focus-visible {
+    box-shadow: 0 0px 4px 1px #4c9ffe,  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);
+  }
+
+  &:not(.withHandle) {
+    touch-action: manipulation;
+    cursor: grab;
+  }
+
+  &.dragging:not(.dragOverlay) {
+    opacity: var(--dragging-opacity, 0.5);
+    z-index: 0;
+
+    &:focus {
+      box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);
+    }
+  }
+
+  &.disabled {
+    color: #999;
+    background-color: #f1f1f1;
+    &:focus {
+      box-shadow: 0 0px 4px 1px rgba(0, 0, 0, 0.1),  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);
+    }
+    cursor: not-allowed;
+  }
+
+  &.dragOverlay {
+    cursor: inherit;
+    /* box-shadow: 0 0px 6px 2px #4c9ffe; */
+    animation: pop 200ms cubic-bezier(0.18, 0.67, 0.6, 1.22);
+    transform: scale(var(--scale)); 
+    box-shadow: var(--box-shadow-picked-up);
+    opacity: 1;
+  }
+
+  &.color:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    height: 100%;
+    width: 3px;
+    display: block;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: var(--color);
+  }
+
+  &:hover {
+    .Remove {
+      visibility: visible;
+    }
+  }
+`;
+const Wrapper = _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css `
+  display: flex;
+  box-sizing: border-box;
+  transform: translate3d(var(--translate-x, 0), var(--translate-y, 0), 0)
+    scaleX(var(--scale-x, 1)) scaleY(var(--scale-y, 1));
+  transform-origin: 0 0;
+  touch-action: manipulation;
+
+  &.fadeIn {
+    animation: fadeIn 500ms ease;
+  }
+
+  &.dragOverlay {
+    --scale: 1.05;
+    --box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);
+    --box-shadow-picked-up: 0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05),
+      -1px 0 15px 0 rgba(34, 33, 81, 0.01),
+      0px 15px 15px 0 rgba(34, 33, 81, 0.25);
+    z-index: 999;
+  }
+`;
+const _Rempve = _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css `
+visibility: hidden;
+`;
+const Actions = _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css `
+  display: flex;
+  align-self: flex-start;
+  /* margin-top: -12px; */
+  margin-left: auto;
+  margin-bottom: -15px;
+  margin-left: 10px;
+  height:100%
+`;
+const Item = react__WEBPACK_IMPORTED_MODULE_0___default().memo(react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef((_a, ref) => {
+    var { color, dragOverlay, dragging, disabled, fadeIn, handle, handleProps, height, index, listeners, onRemove, renderItem, template, sorting, style, transition, transform, value, wrapperStyle } = _a, props = __rest(_a, ["color", "dragOverlay", "dragging", "disabled", "fadeIn", "handle", "handleProps", "height", "index", "listeners", "onRemove", "renderItem", "template", "sorting", "style", "transition", "transform", "value", "wrapperStyle"]);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         if (!dragOverlay) {
             return;
         }
         document.body.style.cursor = 'grabbing';
-        return function () {
+        return () => {
             document.body.style.cursor = '';
         };
     }, [dragOverlay]);
@@ -41748,41 +41255,40 @@ var Item = react__WEBPACK_IMPORTED_MODULE_0___default().memo(react__WEBPACK_IMPO
         dragOverlay: Boolean(dragOverlay),
         dragging: Boolean(dragging),
         sorting: Boolean(sorting),
-        index: index,
+        index,
         fadeIn: Boolean(fadeIn),
-        listeners: listeners,
-        ref: ref,
-        style: style,
-        transform: transform,
-        transition: transition,
-        value: value,
-    })) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", { className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(Wrapper, fadeIn && 'fadeIn', sorting && 'sorting', dragOverlay && 'dragOverlay'), style: __assign(__assign({}, wrapperStyle), { transition: [transition, wrapperStyle === null || wrapperStyle === void 0 ? void 0 : wrapperStyle.transition]
+        listeners,
+        ref,
+        style,
+        transform,
+        transition,
+        value,
+    })) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", { className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(Wrapper, fadeIn && 'fadeIn', sorting && 'sorting', dragOverlay && 'dragOverlay'), style: Object.assign(Object.assign({}, wrapperStyle), { transition: [transition, wrapperStyle === null || wrapperStyle === void 0 ? void 0 : wrapperStyle.transition]
                 .filter(Boolean)
                 .join(', '), '--translate-x': transform
-                ? "".concat(Math.round(transform.x), "px")
+                ? `${Math.round(transform.x)}px`
                 : undefined, '--translate-y': transform
-                ? "".concat(Math.round(transform.y), "px")
+                ? `${Math.round(transform.y)}px`
                 : undefined, '--scale-x': (transform === null || transform === void 0 ? void 0 : transform.scaleX)
-                ? "".concat(transform.scaleX)
+                ? `${transform.scaleX}`
                 : undefined, '--scale-y': (transform === null || transform === void 0 ? void 0 : transform.scaleY)
-                ? "".concat(transform.scaleY)
+                ? `${transform.scaleY}`
                 : undefined, '--index': index, '--color': color }), ref: ref },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", __assign({ className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(ItemClass, dragging && 'dragging', handle && 'withHandle', dragOverlay && 'dragOverlay', disabled && 'disabled', color && 'color'), style: style, "data-cypress": "draggable-item" }, (!handle ? listeners : undefined), props, { tabIndex: !handle ? 0 : undefined }), _tuval_core__WEBPACK_IMPORTED_MODULE_4__.is["function"](template) ? template({
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", Object.assign({ className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(ItemClass, dragging && 'dragging', handle && 'withHandle', dragOverlay && 'dragOverlay', disabled && 'disabled', color && 'color'), style: style, "data-cypress": "draggable-item" }, (!handle ? listeners : undefined), props, { tabIndex: !handle ? 0 : undefined }), _tuval_core__WEBPACK_IMPORTED_MODULE_4__.is["function"](template) ? template({
             dragOverlay: Boolean(dragOverlay),
             dragging: Boolean(dragging),
             sorting: Boolean(sorting),
-            index: index,
+            index,
             fadeIn: Boolean(fadeIn),
-            listeners: listeners,
-            handleView: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.Handle, __assign({}, handleProps, listeners))),
-            ref: ref,
-            style: style,
-            transform: transform,
-            transition: transition,
-            value: value
+            listeners,
+            handleView: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.Handle, Object.assign({}, handleProps, listeners))),
+            ref,
+            style,
+            transform,
+            transition,
+            value
         }).render() : "dfsdf")));
 }));
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4;
 
 
 /***/ }),
@@ -41804,21 +41310,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
-var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __rest = (undefined && undefined.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -41833,12 +41324,61 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
 
 
 
-var ActionClassName = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\n  display: flex;\n  width: 12px;\n  padding: 5px;\n  align-items: center;\n  justify-content: center;\n  flex: 0 0 auto;\n  touch-action: none;\n  cursor: var(--cursor, pointer);\n  border-radius: 5px;\n  border: none;\n  outline: none;\n  appearance: none;\n  background-color: transparent;\n  -webkit-tap-highlight-color: transparent;\n\n  @media (hover: hover) {\n    &:hover {\n     /*  background-color: var(--action-background, rgba(0, 0, 0, 0.05)); */\n\n      svg {\n        fill: #6f7b88;\n      }\n    }\n  }\n\n  svg {\n    flex: 0 0 auto;\n    margin: auto;\n    height: 100%;\n    overflow: visible;\n    fill: #919eab;\n  }\n\n  &:active {\n    background-color: var(--background, rgba(0, 0, 0, 0.05));\n\n    svg {\n      fill: var(--fill, #788491);\n    }\n  }\n\n  &:focus-visible {\n    outline: none;\n    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0),\n      0 0px 0px 2px #4c9ffe;\n  }\n\n\n"], ["\n\n  display: flex;\n  width: 12px;\n  padding: 5px;\n  align-items: center;\n  justify-content: center;\n  flex: 0 0 auto;\n  touch-action: none;\n  cursor: var(--cursor, pointer);\n  border-radius: 5px;\n  border: none;\n  outline: none;\n  appearance: none;\n  background-color: transparent;\n  -webkit-tap-highlight-color: transparent;\n\n  @media (hover: hover) {\n    &:hover {\n     /*  background-color: var(--action-background, rgba(0, 0, 0, 0.05)); */\n\n      svg {\n        fill: #6f7b88;\n      }\n    }\n  }\n\n  svg {\n    flex: 0 0 auto;\n    margin: auto;\n    height: 100%;\n    overflow: visible;\n    fill: #919eab;\n  }\n\n  &:active {\n    background-color: var(--background, rgba(0, 0, 0, 0.05));\n\n    svg {\n      fill: var(--fill, #788491);\n    }\n  }\n\n  &:focus-visible {\n    outline: none;\n    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0),\n      0 0px 0px 2px #4c9ffe;\n  }\n\n\n"])));
-var Action = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_a, ref) {
-    var active = _a.active, className = _a.className, cursor = _a.cursor, style = _a.style, props = __rest(_a, ["active", "className", "cursor", "style"]);
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", __assign({ ref: ref }, props, { className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(ActionClassName, className), tabIndex: 0, style: __assign(__assign({}, style), { cursor: cursor, '--fill': active === null || active === void 0 ? void 0 : active.fill, '--background': active === null || active === void 0 ? void 0 : active.background }) })));
+const ActionClassName = _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css `
+
+  display: flex;
+  width: 12px;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  touch-action: none;
+  cursor: var(--cursor, pointer);
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  appearance: none;
+  background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+
+  @media (hover: hover) {
+    &:hover {
+     /*  background-color: var(--action-background, rgba(0, 0, 0, 0.05)); */
+
+      svg {
+        fill: #6f7b88;
+      }
+    }
+  }
+
+  svg {
+    flex: 0 0 auto;
+    margin: auto;
+    height: 100%;
+    overflow: visible;
+    fill: #919eab;
+  }
+
+  &:active {
+    background-color: var(--background, rgba(0, 0, 0, 0.05));
+
+    svg {
+      fill: var(--fill, #788491);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0),
+      0 0px 0px 2px #4c9ffe;
+  }
+
+
+`;
+const Action = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)((_a, ref) => {
+    var { active, className, cursor, style } = _a, props = __rest(_a, ["active", "className", "cursor", "style"]);
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", Object.assign({ ref: ref }, props, { className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(ActionClassName, className), tabIndex: 0, style: Object.assign(Object.assign({}, style), { cursor, '--fill': active === null || active === void 0 ? void 0 : active.fill, '--background': active === null || active === void 0 ? void 0 : active.background }) })));
 });
-var templateObject_1;
 
 
 /***/ }),
@@ -41874,21 +41414,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Action */ "./src/views/components/Item/components/Action/index.ts");
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 
 
-var Handle = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (props, ref) {
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Action__WEBPACK_IMPORTED_MODULE_1__.Action, __assign({ ref: ref, cursor: "grab", "data-cypress": "draggable-handle" }, props),
+const Handle = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)((props, ref) => {
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Action__WEBPACK_IMPORTED_MODULE_1__.Action, Object.assign({ ref: ref, cursor: "grab", "data-cypress": "draggable-handle" }, props),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", width: "12" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z" }))));
 });
@@ -41927,21 +41456,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Action */ "./src/views/components/Item/components/Action/index.ts");
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 
 
 function Remove(props) {
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Action__WEBPACK_IMPORTED_MODULE_1__.Action, __assign({}, props, { active: {
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Action__WEBPACK_IMPORTED_MODULE_1__.Action, Object.assign({}, props, { active: {
             fill: 'rgba(255, 70, 70, 0.95)',
             background: 'rgba(255, 70, 70, 0.1)',
         } }),
@@ -42040,17 +41558,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_9__);
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __rest = (undefined && undefined.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -42062,15 +41569,6 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
         }
     return t;
 };
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 
 
 
@@ -42081,32 +41579,29 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
-var defaultInitializer = function (index) { return index; };
-function createRange(length, initializer) {
-    if (initializer === void 0) { initializer = defaultInitializer; }
-    return __spreadArray([], new Array(length), true).map(function (_, index) { return initializer(index); });
+const defaultInitializer = (index) => index;
+function createRange(length, initializer = defaultInitializer) {
+    return [...new Array(length)].map((_, index) => initializer(index));
 }
-var animateLayoutChanges = function (args) {
-    return (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.defaultAnimateLayoutChanges)(__assign(__assign({}, args), { wasDragging: true }));
-};
+const animateLayoutChanges = (args) => (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.defaultAnimateLayoutChanges)(Object.assign(Object.assign({}, args), { wasDragging: true }));
 function DroppableContainer(_a) {
     var _b;
-    var children = _a.children, template = _a.template, _c = _a.columns, columns = _c === void 0 ? 1 : _c, disabled = _a.disabled, id = _a.id, items = _a.items, style = _a.style, props = __rest(_a, ["children", "template", "columns", "disabled", "id", "items", "style"]);
-    var _d = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.useSortable)({
-        id: id,
+    var { children, template, columns = 1, disabled, id, items, style } = _a, props = __rest(_a, ["children", "template", "columns", "disabled", "id", "items", "style"]);
+    const { active, attributes, isDragging, listeners, over, setNodeRef, transition, transform, } = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.useSortable)({
+        id,
         data: {
             type: 'container',
             children: items,
         },
-        animateLayoutChanges: animateLayoutChanges,
-    }), active = _d.active, attributes = _d.attributes, isDragging = _d.isDragging, listeners = _d.listeners, over = _d.over, setNodeRef = _d.setNodeRef, transition = _d.transition, transform = _d.transform;
-    var isOverContainer = over
+        animateLayoutChanges,
+    });
+    const isOverContainer = over
         ? (id === over.id && ((_b = active === null || active === void 0 ? void 0 : active.data.current) === null || _b === void 0 ? void 0 : _b.type) !== 'container') ||
             items.includes(over.id)
         : false;
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Container__WEBPACK_IMPORTED_MODULE_7__.Container, __assign({ ref: disabled ? undefined : setNodeRef, style: __assign(__assign({}, style), { transition: transition, transform: _dnd_kit_utilities__WEBPACK_IMPORTED_MODULE_4__.CSS.Translate.toString(transform), opacity: isDragging ? 0.5 : undefined }), hover: isOverContainer, handleProps: __assign(__assign({}, attributes), listeners), columns: columns, template: template }, props), children));
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Container__WEBPACK_IMPORTED_MODULE_7__.Container, Object.assign({ ref: disabled ? undefined : setNodeRef, style: Object.assign(Object.assign({}, style), { transition, transform: _dnd_kit_utilities__WEBPACK_IMPORTED_MODULE_4__.CSS.Translate.toString(transform), opacity: isDragging ? 0.5 : undefined }), hover: isOverContainer, handleProps: Object.assign(Object.assign({}, attributes), listeners), columns: columns, template: template }, props), children));
 }
-var dropAnimation = {
+const dropAnimation = {
     sideEffects: (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.defaultDropAnimationSideEffects)({
         styles: {
             active: {
@@ -42115,24 +41610,21 @@ var dropAnimation = {
         },
     }),
 };
-var TRASH_ID = 'void';
-var PLACEHOLDER_ID = 'placeholder';
-var empty = [];
-function MultipleContainers(_a) {
-    var _b = _a.adjustScale, adjustScale = _b === void 0 ? false : _b, _c = _a.itemCount, itemCount = _c === void 0 ? 3 : _c, cancelDrop = _a.cancelDrop, columns = _a.columns, _d = _a.handle, handle = _d === void 0 ? false : _d, initialItems = _a.items, containerStyle = _a.containerStyle, _e = _a.coordinateGetter, coordinateGetter = _e === void 0 ? _multipleContainersKeyboardCoordinates__WEBPACK_IMPORTED_MODULE_5__.coordinateGetter : _e, _f = _a.getItemStyles, getItemStyles = _f === void 0 ? function () { return ({}); } : _f, _g = _a.wrapperStyle, wrapperStyle = _g === void 0 ? function () { return ({}); } : _g, _h = _a.minimal, minimal = _h === void 0 ? false : _h, modifiers = _a.modifiers, renderItem = _a.renderItem, template = _a.template, containerLabelTemplate = _a.containerLabelTemplate, placeholderTemplate = _a.placeholderTemplate, _j = _a.strategy, strategy = _j === void 0 ? _dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.verticalListSortingStrategy : _j, _k = _a.trashable, trashable = _k === void 0 ? false : _k, _l = _a.vertical, vertical = _l === void 0 ? false : _l, scrollable = _a.scrollable;
-    var _m = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-        return initialItems !== null && initialItems !== void 0 ? initialItems : {
-            A: createRange(itemCount, function (index) { return "A".concat(index + 1); }),
-            B: createRange(itemCount, function (index) { return "B".concat(index + 1); }),
-            C: createRange(itemCount, function (index) { return "C".concat(index + 1); }),
-            D: createRange(itemCount, function (index) { return "D".concat(index + 1); }),
-        };
-    }), items = _m[0], setItems = _m[1];
-    var _o = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Object.keys(items)), containers = _o[0], setContainers = _o[1];
-    var _p = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), activeId = _p[0], setActiveId = _p[1];
-    var lastOverId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    var recentlyMovedToNewContainer = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);
-    var isSortingContainer = activeId ? containers.includes(activeId) : false;
+const TRASH_ID = 'void';
+const PLACEHOLDER_ID = 'placeholder';
+const empty = [];
+function MultipleContainers({ adjustScale = false, itemCount = 3, cancelDrop, columns, handle = false, items: initialItems, containerStyle, coordinateGetter = _multipleContainersKeyboardCoordinates__WEBPACK_IMPORTED_MODULE_5__.coordinateGetter, getItemStyles = () => ({}), wrapperStyle = () => ({}), minimal = false, modifiers, renderItem, template, containerLabelTemplate, placeholderTemplate, strategy = _dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.verticalListSortingStrategy, trashable = false, vertical = false, scrollable, }) {
+    const [items, setItems] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(() => initialItems !== null && initialItems !== void 0 ? initialItems : {
+        A: createRange(itemCount, (index) => `A${index + 1}`),
+        B: createRange(itemCount, (index) => `B${index + 1}`),
+        C: createRange(itemCount, (index) => `C${index + 1}`),
+        D: createRange(itemCount, (index) => `D${index + 1}`),
+    });
+    const [containers, setContainers] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Object.keys(items));
+    const [activeId, setActiveId] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    const lastOverId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+    const recentlyMovedToNewContainer = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);
+    const isSortingContainer = activeId ? containers.includes(activeId) : false;
     /**
      * Custom collision detection strategy optimized for multiple containers
      *
@@ -42141,18 +41633,18 @@ function MultipleContainers(_a) {
      * - If there are no intersecting containers, return the last matched intersection
      *
      */
-    var collisionDetectionStrategy = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (args) {
+    const collisionDetectionStrategy = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((args) => {
         var _a;
         if (activeId && activeId in items) {
-            return (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.closestCenter)(__assign(__assign({}, args), { droppableContainers: args.droppableContainers.filter(function (container) { return container.id in items; }) }));
+            return (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.closestCenter)(Object.assign(Object.assign({}, args), { droppableContainers: args.droppableContainers.filter((container) => container.id in items) }));
         }
         // Start by finding any intersecting droppable
-        var pointerIntersections = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.pointerWithin)(args);
-        var intersections = pointerIntersections.length > 0
+        const pointerIntersections = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.pointerWithin)(args);
+        const intersections = pointerIntersections.length > 0
             ? // If there are droppables intersecting with the pointer, return those
                 pointerIntersections
             : (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.rectIntersection)(args);
-        var overId = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.getFirstCollision)(intersections, 'id');
+        let overId = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.getFirstCollision)(intersections, 'id');
         if (overId != null) {
             if (overId === TRASH_ID) {
                 // If the intersecting droppable is the trash, return early
@@ -42160,14 +41652,12 @@ function MultipleContainers(_a) {
                 return intersections;
             }
             if (overId in items) {
-                var containerItems_1 = items[overId];
+                const containerItems = items[overId];
                 // If a container is matched and it contains items (columns 'A', 'B', 'C')
-                if (containerItems_1.length > 0) {
+                if (containerItems.length > 0) {
                     // Return the closest droppable within that container
-                    overId = (_a = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.closestCenter)(__assign(__assign({}, args), { droppableContainers: args.droppableContainers.filter(function (container) {
-                            return container.id !== overId &&
-                                containerItems_1.findIndex(function (item) { return item.id === container.id; }) > -1;
-                        }) }))[0]) === null || _a === void 0 ? void 0 : _a.id;
+                    overId = (_a = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.closestCenter)(Object.assign(Object.assign({}, args), { droppableContainers: args.droppableContainers.filter((container) => container.id !== overId &&
+                            containerItems.findIndex((item) => item.id === container.id) > -1) }))[0]) === null || _a === void 0 ? void 0 : _a.id;
                 }
             }
             lastOverId.current = overId;
@@ -42183,33 +41673,33 @@ function MultipleContainers(_a) {
         // If no droppable is matched, return the last match
         return lastOverId.current ? [{ id: lastOverId.current }] : [];
     }, [activeId, items]);
-    var _q = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), clonedItems = _q[0], setClonedItems = _q[1];
-    var sensors = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensors)((0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensor)(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.MouseSensor), (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensor)(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.TouchSensor), (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensor)(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.KeyboardSensor, {
-        coordinateGetter: coordinateGetter,
+    const [clonedItems, setClonedItems] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    const sensors = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensors)((0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensor)(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.MouseSensor), (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensor)(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.TouchSensor), (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensor)(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.KeyboardSensor, {
+        coordinateGetter,
     }));
-    var findContainer = function (id) {
+    const findContainer = (id) => {
         if (id in items) {
             return id;
         }
-        return Object.keys(items).find(function (key) { return items[key].find(function (item) { return item.id === id; }); });
+        return Object.keys(items).find((key) => items[key].find((item) => item.id === id));
     };
-    var getIndex = function (id) {
-        var container = findContainer(id);
+    const getIndex = (id) => {
+        const container = findContainer(id);
         if (!container) {
             return -1;
         }
-        var index = items[container].findIndex(function (item) { return item.id === id; });
+        const index = items[container].findIndex((item) => item.id === id);
         return index;
     };
-    var getItem = function (id) {
-        var container = findContainer(id);
+    const getItem = (id) => {
+        const container = findContainer(id);
         if (!container) {
             return -1;
         }
-        var item = items[container].find(function (item) { return item.id === id; });
+        const item = items[container].find((item) => item.id === id);
         return item;
     };
-    var onDragCancel = function () {
+    const onDragCancel = () => {
         if (clonedItems) {
             // Reset items to their original state in case items have been
             // Dragged across containers
@@ -42218,8 +41708,8 @@ function MultipleContainers(_a) {
         setActiveId(null);
         setClonedItems(null);
     };
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        requestAnimationFrame(function () {
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        requestAnimationFrame(() => {
             recentlyMovedToNewContainer.current = false;
         });
     }, [items]);
@@ -42227,102 +41717,91 @@ function MultipleContainers(_a) {
             droppable: {
                 strategy: _dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.MeasuringStrategy.Always,
             }
-        }, onDragStart: function (_a) {
-            var active = _a.active;
+        }, onDragStart: ({ active }) => {
             setActiveId(active.id);
             setClonedItems(items);
-        }, onDragOver: function (_a) {
-            var active = _a.active, over = _a.over;
-            var overId = over === null || over === void 0 ? void 0 : over.id;
+        }, onDragOver: ({ active, over }) => {
+            const overId = over === null || over === void 0 ? void 0 : over.id;
             console.log("overId", overId);
             if (overId == null || overId === TRASH_ID || active.id in items) {
                 return;
             }
-            var overContainer = findContainer(overId);
+            const overContainer = findContainer(overId);
             if (overContainer === 'Opened Status') {
                 return;
             }
             if (overContainer === 'Closed Status') {
                 return;
             }
-            var activeContainer = findContainer(active.id);
+            const activeContainer = findContainer(active.id);
             if (!overContainer || !activeContainer) {
                 return;
             }
             if (activeContainer !== overContainer) {
-                setItems(function (items) {
-                    var _a;
-                    var activeItems = items[activeContainer];
-                    var overItems = items[overContainer];
-                    var overIndex = overItems.findIndex(function (item) { return item.id === overId; });
-                    var activeIndex = activeItems.findIndex(function (item) { return item.id === active.id; });
-                    var newIndex;
+                setItems((items) => {
+                    const activeItems = items[activeContainer];
+                    const overItems = items[overContainer];
+                    const overIndex = overItems.findIndex((item) => item.id === overId);
+                    const activeIndex = activeItems.findIndex((item) => item.id === active.id);
+                    let newIndex;
                     if (overId in items) {
                         newIndex = overItems.length + 1;
                     }
                     else {
-                        var isBelowOverItem = over &&
+                        const isBelowOverItem = over &&
                             active.rect.current.translated &&
                             active.rect.current.translated.top >
                                 over.rect.top + over.rect.height;
-                        var modifier = isBelowOverItem ? 1 : 0;
+                        const modifier = isBelowOverItem ? 1 : 0;
                         newIndex =
                             overIndex >= 0 ? overIndex + modifier : overItems.length + 1;
                     }
                     recentlyMovedToNewContainer.current = true;
-                    return __assign(__assign({}, items), (_a = {}, _a[activeContainer] = items[activeContainer].filter(function (item) { return item.id !== active.id; }), _a[overContainer] = __spreadArray(__spreadArray(__spreadArray([], items[overContainer].slice(0, newIndex), true), [
-                        items[activeContainer][activeIndex]
-                    ], false), items[overContainer].slice(newIndex, items[overContainer].length), true), _a));
+                    return Object.assign(Object.assign({}, items), { [activeContainer]: items[activeContainer].filter((item) => item.id !== active.id), [overContainer]: [
+                            ...items[overContainer].slice(0, newIndex),
+                            items[activeContainer][activeIndex],
+                            ...items[overContainer].slice(newIndex, items[overContainer].length),
+                        ] });
                 });
             }
-        }, onDragEnd: function (_a) {
-            var active = _a.active, over = _a.over;
+        }, onDragEnd: ({ active, over }) => {
             if (active.id in items && (over === null || over === void 0 ? void 0 : over.id)) {
-                setContainers(function (containers) {
-                    var activeIndex = containers.indexOf(active.id);
-                    var overIndex = containers.indexOf(over.id);
+                setContainers((containers) => {
+                    const activeIndex = containers.indexOf(active.id);
+                    const overIndex = containers.indexOf(over.id);
                     return (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.arrayMove)(containers, activeIndex, overIndex);
                 });
             }
-            var activeContainer = findContainer(active.id);
+            const activeContainer = findContainer(active.id);
             if (!activeContainer) {
                 setActiveId(null);
                 return;
             }
-            var overId = over === null || over === void 0 ? void 0 : over.id;
+            const overId = over === null || over === void 0 ? void 0 : over.id;
             if (overId == null) {
                 setActiveId(null);
                 return;
             }
             if (overId === TRASH_ID) {
-                setItems(function (items) {
-                    var _a;
-                    return (__assign(__assign({}, items), (_a = {}, _a[activeContainer] = items[activeContainer].filter(function (item) { return item.id !== activeId; }), _a)));
-                });
+                setItems((items) => (Object.assign(Object.assign({}, items), { [activeContainer]: items[activeContainer].filter((item) => item.id !== activeId) })));
                 setActiveId(null);
                 return;
             }
             if (overId === PLACEHOLDER_ID) {
-                var newContainerId_1 = getNextContainerId();
-                (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates)(function () {
-                    setContainers(function (containers) { return __spreadArray(__spreadArray([], containers, true), [newContainerId_1], false); });
-                    setItems(function (items) {
-                        var _a;
-                        return (__assign(__assign({}, items), (_a = {}, _a[activeContainer] = items[activeContainer].filter(function (item) { return item.id !== activeId; }), _a[newContainerId_1] = [active.id], _a)));
-                    });
+                const newContainerId = getNextContainerId();
+                (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates)(() => {
+                    setContainers((containers) => [...containers, newContainerId]);
+                    setItems((items) => (Object.assign(Object.assign({}, items), { [activeContainer]: items[activeContainer].filter((item) => item.id !== activeId), [newContainerId]: [active.id] })));
                     setActiveId(null);
                 });
                 return;
             }
-            var overContainer = findContainer(overId);
+            const overContainer = findContainer(overId);
             if (overContainer) {
-                var activeIndex_1 = items[activeContainer].findIndex(function (item) { return item.id === active.id; });
-                var overIndex_1 = items[overContainer].findIndex(function (item) { return item.id === overId; });
-                if (activeIndex_1 !== overIndex_1) {
-                    setItems(function (items) {
-                        var _a;
-                        return (__assign(__assign({}, items), (_a = {}, _a[overContainer] = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.arrayMove)(items[overContainer], activeIndex_1, overIndex_1), _a)));
-                    });
+                const activeIndex = items[activeContainer].findIndex((item) => item.id === active.id);
+                const overIndex = items[overContainer].findIndex((item) => item.id === overId);
+                if (activeIndex !== overIndex) {
+                    setItems((items) => (Object.assign(Object.assign({}, items), { [overContainer]: (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.arrayMove)(items[overContainer], activeIndex, overIndex) })));
                 }
             }
             setActiveId(null);
@@ -42333,14 +41812,14 @@ function MultipleContainers(_a) {
                 padding: 20,
                 gridAutoFlow: vertical ? 'row' : 'column',
             } },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.SortableContext, { items: __spreadArray(__spreadArray([], containers, true), [PLACEHOLDER_ID], false), strategy: vertical
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.SortableContext, { items: [...containers, PLACEHOLDER_ID], strategy: vertical
                     ? _dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.verticalListSortingStrategy
                     : _dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.horizontalListSortingStrategy },
-                containers.map(function (containerId) {
+                containers.map((containerId) => {
                     var _a;
-                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DroppableContainer, { key: containerId, id: containerId, label: minimal ? undefined : "".concat(containerId), template: containerLabelTemplate, columns: columns, items: items[containerId], scrollable: scrollable, style: containerStyle, unstyled: minimal, onRemove: function () { return handleRemove(containerId); } },
-                        (items[containerId].length === 0 && _tuval_core__WEBPACK_IMPORTED_MODULE_9__.is["function"](placeholderTemplate)) ? ((_a = placeholderTemplate({ containerId: containerId })) === null || _a === void 0 ? void 0 : _a.render()) : void 0,
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.SortableContext, { items: items[containerId], strategy: strategy }, items[containerId].map(function (value, index) {
+                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DroppableContainer, { key: containerId, id: containerId, label: minimal ? undefined : `${containerId}`, template: containerLabelTemplate, columns: columns, items: items[containerId], scrollable: scrollable, style: containerStyle, unstyled: minimal, onRemove: () => handleRemove(containerId) },
+                        (items[containerId].length === 0 && _tuval_core__WEBPACK_IMPORTED_MODULE_9__.is["function"](placeholderTemplate)) ? ((_a = placeholderTemplate({ containerId })) === null || _a === void 0 ? void 0 : _a.render()) : void 0,
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.SortableContext, { items: items[containerId], strategy: strategy }, items[containerId].map((value, index) => {
                             return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(SortableItem, { disabled: isSortingContainer, key: value.id, id: value.id, value: value, index: index, handle: handle, style: getItemStyles, wrapperStyle: wrapperStyle, renderItem: renderItem, template: template, containerId: containerId, getIndex: getIndex }));
                         })),
                         containerId === 'Active Statuses' && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.Text)("Add Status"))
@@ -42352,15 +41831,12 @@ function MultipleContainers(_a) {
                             .padding('0 10px')
                             .cornerRadius(4)
                             .height(28).fontSize(14)
-                            .onClick(function () {
+                            .onClick(() => {
                             items[containerId].push({ id: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.nanoid)(), title: "_In Progress", color: '#A875FF' });
-                            var _index = items[containerId].length - 1;
+                            const _index = items[containerId].length - 1;
                             console.log(items);
-                            (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates)(function () {
-                                setItems(function (items) {
-                                    var _a;
-                                    return (__assign(__assign({}, items), (_a = {}, _a[containerId] = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.arrayMove)(items[containerId], _index, _index), _a)));
-                                });
+                            (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates)(() => {
+                                setItems((items) => (Object.assign(Object.assign({}, items), { [containerId]: (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.arrayMove)(items[containerId], _index, _index) })));
                             });
                         })
                             .render())));
@@ -42384,36 +41860,31 @@ function MultipleContainers(_a) {
             }), color: getColor(id), wrapperStyle: wrapperStyle({ index: 0 }), renderItem: renderItem, template: template, dragOverlay: true }));
     }
     function renderContainerDragOverlay(containerId) {
-        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Container__WEBPACK_IMPORTED_MODULE_7__.Container, { label: "".concat(containerId), columns: columns, style: {
+        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Container__WEBPACK_IMPORTED_MODULE_7__.Container, { label: `${containerId}`, columns: columns, style: {
                 height: '100%',
-            }, shadow: true, unstyled: false }, items[containerId].map(function (item, index) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Item__WEBPACK_IMPORTED_MODULE_6__.Item, { key: item, value: item, handle: handle, style: getItemStyles({
-                containerId: containerId,
+            }, shadow: true, unstyled: false }, items[containerId].map((item, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Item__WEBPACK_IMPORTED_MODULE_6__.Item, { key: item, value: item, handle: handle, style: getItemStyles({
+                containerId,
                 overIndex: -1,
                 index: getIndex(item),
                 value: item,
                 isDragging: false,
                 isSorting: false,
                 isDragOverlay: false,
-            }), color: getColor(item), wrapperStyle: wrapperStyle({ index: index }), renderItem: renderItem, template: template })); })));
+            }), color: getColor(item), wrapperStyle: wrapperStyle({ index }), renderItem: renderItem, template: template })))));
     }
     function handleRemove(containerID) {
-        setContainers(function (containers) {
-            return containers.filter(function (id) { return id !== containerID; });
-        });
+        setContainers((containers) => containers.filter((id) => id !== containerID));
     }
     function handleAddColumn() {
-        var newContainerId = getNextContainerId();
-        (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates)(function () {
-            setContainers(function (containers) { return __spreadArray(__spreadArray([], containers, true), [newContainerId], false); });
-            setItems(function (items) {
-                var _a;
-                return (__assign(__assign({}, items), (_a = {}, _a[newContainerId] = [], _a)));
-            });
+        const newContainerId = getNextContainerId();
+        (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates)(() => {
+            setContainers((containers) => [...containers, newContainerId]);
+            setItems((items) => (Object.assign(Object.assign({}, items), { [newContainerId]: [] })));
         });
     }
     function getNextContainerId() {
-        var containerIds = Object.keys(items);
-        var lastContainerId = containerIds[containerIds.length - 1];
+        const containerIds = Object.keys(items);
+        const lastContainerId = containerIds[containerIds.length - 1];
         return String.fromCharCode(lastContainerId.charCodeAt(0) + 1);
     }
 }
@@ -42430,11 +41901,10 @@ function getColor(id) {
     }
     return undefined;
 }
-function Trash(_a) {
-    var id = _a.id;
-    var _b = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useDroppable)({
-        id: id,
-    }), setNodeRef = _b.setNodeRef, isOver = _b.isOver;
+function Trash({ id }) {
+    const { setNodeRef, isOver } = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useDroppable)({
+        id,
+    });
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { ref: setNodeRef, style: {
             display: 'flex',
             alignItems: 'center',
@@ -42450,27 +41920,26 @@ function Trash(_a) {
             borderColor: isOver ? 'red' : '#DDD',
         } }, "Drop here to delete"));
 }
-function SortableItem(_a) {
-    var disabled = _a.disabled, id = _a.id, value = _a.value, index = _a.index, handle = _a.handle, renderItem = _a.renderItem, template = _a.template, style = _a.style, containerId = _a.containerId, getIndex = _a.getIndex, wrapperStyle = _a.wrapperStyle;
-    var _b = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.useSortable)({
-        id: id,
-    }), setNodeRef = _b.setNodeRef, setActivatorNodeRef = _b.setActivatorNodeRef, listeners = _b.listeners, isDragging = _b.isDragging, isSorting = _b.isSorting, over = _b.over, overIndex = _b.overIndex, transform = _b.transform, transition = _b.transition;
-    var mounted = useMountStatus();
-    var mountedWhileDragging = isDragging && !mounted;
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Item__WEBPACK_IMPORTED_MODULE_6__.Item, { ref: disabled ? undefined : setNodeRef, value: value, dragging: isDragging, sorting: isSorting, handle: handle, handleProps: handle ? { ref: setActivatorNodeRef } : undefined, index: index, wrapperStyle: wrapperStyle({ index: index }), style: style({
-            index: index,
+function SortableItem({ disabled, id, value, index, handle, renderItem, template, style, containerId, getIndex, wrapperStyle, }) {
+    const { setNodeRef, setActivatorNodeRef, listeners, isDragging, isSorting, over, overIndex, transform, transition, } = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.useSortable)({
+        id,
+    });
+    const mounted = useMountStatus();
+    const mountedWhileDragging = isDragging && !mounted;
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Item__WEBPACK_IMPORTED_MODULE_6__.Item, { ref: disabled ? undefined : setNodeRef, value: value, dragging: isDragging, sorting: isSorting, handle: handle, handleProps: handle ? { ref: setActivatorNodeRef } : undefined, index: index, wrapperStyle: wrapperStyle({ index }), style: style({
+            index,
             value: id,
-            isDragging: isDragging,
-            isSorting: isSorting,
+            isDragging,
+            isSorting,
             overIndex: over ? getIndex(over.id) : overIndex,
-            containerId: containerId,
+            containerId,
         }), color: getColor(id), transition: transition, transform: transform, fadeIn: mountedWhileDragging, listeners: listeners, renderItem: renderItem, template: template }));
 }
 function useMountStatus() {
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isMounted = _a[0], setIsMounted = _a[1];
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        var timeout = setTimeout(function () { return setIsMounted(true); }, 500);
-        return function () { return clearTimeout(timeout); };
+    const [isMounted, setIsMounted] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        const timeout = setTimeout(() => setIsMounted(true), 500);
+        return () => clearTimeout(timeout);
     }, []);
     return isMounted;
 }
@@ -42491,33 +41960,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @dnd-kit/core */ "./node_modules/@dnd-kit/core/dist/core.esm.js");
 
-var directions = [
+const directions = [
     _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Down,
     _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Right,
     _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Up,
     _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Left,
 ];
-var coordinateGetter = function (event, _a) {
-    var _b;
-    var _c = _a.context, active = _c.active, droppableRects = _c.droppableRects, droppableContainers = _c.droppableContainers, collisionRect = _c.collisionRect;
+const coordinateGetter = (event, { context: { active, droppableRects, droppableContainers, collisionRect } }) => {
+    var _a;
     if (directions.includes(event.code)) {
         event.preventDefault();
         if (!active || !collisionRect) {
             return;
         }
-        var filteredContainers_1 = [];
-        droppableContainers.getEnabled().forEach(function (entry) {
+        const filteredContainers = [];
+        droppableContainers.getEnabled().forEach((entry) => {
             var _a;
             if (!entry || (entry === null || entry === void 0 ? void 0 : entry.disabled)) {
                 return;
             }
-            var rect = droppableRects.get(entry.id);
+            const rect = droppableRects.get(entry.id);
             if (!rect) {
                 return;
             }
-            var data = entry.data.current;
+            const data = entry.data.current;
             if (data) {
-                var type = data.type, children = data.children;
+                const { type, children } = data;
                 if (type === 'container' && (children === null || children === void 0 ? void 0 : children.length) > 0) {
                     if (((_a = active.data.current) === null || _a === void 0 ? void 0 : _a.type) !== 'container') {
                         return;
@@ -42527,38 +41995,38 @@ var coordinateGetter = function (event, _a) {
             switch (event.code) {
                 case _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Down:
                     if (collisionRect.top < rect.top) {
-                        filteredContainers_1.push(entry);
+                        filteredContainers.push(entry);
                     }
                     break;
                 case _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Up:
                     if (collisionRect.top > rect.top) {
-                        filteredContainers_1.push(entry);
+                        filteredContainers.push(entry);
                     }
                     break;
                 case _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Left:
                     if (collisionRect.left >= rect.left + rect.width) {
-                        filteredContainers_1.push(entry);
+                        filteredContainers.push(entry);
                     }
                     break;
                 case _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Right:
                     if (collisionRect.left + collisionRect.width <= rect.left) {
-                        filteredContainers_1.push(entry);
+                        filteredContainers.push(entry);
                     }
                     break;
             }
         });
-        var collisions = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.closestCorners)({
-            active: active,
+        const collisions = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.closestCorners)({
+            active,
             collisionRect: collisionRect,
-            droppableRects: droppableRects,
-            droppableContainers: filteredContainers_1,
+            droppableRects,
+            droppableContainers: filteredContainers,
             pointerCoordinates: null,
         });
-        var closestId = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.getFirstCollision)(collisions, 'id');
+        const closestId = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.getFirstCollision)(collisions, 'id');
         if (closestId != null) {
-            var newDroppable = droppableContainers.get(closestId);
-            var newNode = newDroppable === null || newDroppable === void 0 ? void 0 : newDroppable.node.current;
-            var newRect = newDroppable === null || newDroppable === void 0 ? void 0 : newDroppable.rect.current;
+            const newDroppable = droppableContainers.get(closestId);
+            const newNode = newDroppable === null || newDroppable === void 0 ? void 0 : newDroppable.node.current;
+            const newRect = newDroppable === null || newDroppable === void 0 ? void 0 : newDroppable.rect.current;
             if (newNode && newRect) {
                 if (newDroppable.id === 'placeholder') {
                     return {
@@ -42566,7 +42034,7 @@ var coordinateGetter = function (event, _a) {
                         y: newRect.top + (newRect.height - collisionRect.height) / 2,
                     };
                 }
-                if (((_b = newDroppable.data.current) === null || _b === void 0 ? void 0 : _b.type) === 'container') {
+                if (((_a = newDroppable.data.current) === null || _a === void 0 ? void 0 : _a.type) === 'container') {
                     return {
                         x: newRect.left + 20,
                         y: newRect.top + 74,
@@ -42602,25 +42070,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _views_components_MultipleContainers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../views/components/MultipleContainers */ "./src/views/components/MultipleContainers.tsx");
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
+
+
+
+const restrictToHorizontalAxis = ({ transform, over }) => {
+    return Object.assign(Object.assign({}, transform), { x: 0 });
 };
-
-
-
-var restrictToHorizontalAxis = function (_a) {
-    var transform = _a.transform, over = _a.over;
-    return __assign(__assign({}, transform), { x: 0 });
-};
-var statuses = [
+const statuses = [
     {
         id: '1',
         title: 'To Do',
@@ -42637,7 +42093,7 @@ var statuses = [
         stageId: '1'
     }
 ];
-var stages = [
+const stages = [
     {
         id: "1",
         status_name: "Active Statuses",
@@ -42651,7 +42107,7 @@ var stages = [
         status_color: ""
     }
 ];
-var ListStatusWidget = function (fieldInfo) {
+const ListStatusWidget = (fieldInfo) => {
     /* const dialog = useDialog();
     const navigate = useNavigate();
 
@@ -42685,21 +42141,15 @@ var ListStatusWidget = function (fieldInfo) {
                  return true;
              return false
          }} */
-        placeholderTemplate: function (_a) {
-            var containerId = _a.containerId;
-            return containerId === 'Done Statuses' ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Move statuses here to consider tasks Done.')
-                    .fontSize(11)
-                    .foregroundColor('#2229'))
-                    .border('1px dashed #cbc9cf')
-                    .height(30)
-                :
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)();
-        }, containerLabelTemplate: function (_a) {
-            var label = _a.label;
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label)).textTransform("uppercase").fontSize(9).fontWeight('500').foregroundColor('rgb(107, 119, 140)')
-                .height(30);
-        }, template: function (args) {
+        placeholderTemplate: ({ containerId }) => containerId === 'Done Statuses' ?
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Move statuses here to consider tasks Done.')
+                .fontSize(11)
+                .foregroundColor('#2229'))
+                .border('1px dashed #cbc9cf')
+                .height(30)
+            :
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), containerLabelTemplate: ({ label }) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label)).textTransform("uppercase").fontSize(9).fontWeight('500').foregroundColor('rgb(107, 119, 140)')
+            .height(30), template: (args) => {
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((args.value.id !== "1" && args.value.id !== "4") ? args.handleView : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(13).height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(10).height(10).background(args.value.color).cornerRadius(2), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(args.value.title).fontSize(12).textTransform('uppercase')).foregroundColor(args.value.color))
                 .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 5)
                 .border(args.dragOverlay ? '' : '1px solid #d8d8d8')
@@ -42795,17 +42245,6 @@ module.exports = tuval$forms;
 
 "use strict";
 module.exports = tuval$react;
-
-/***/ }),
-
-/***/ "react-dom/client":
-/*!**********************************!*\
-  !*** external "tuval$react$dom" ***!
-  \**********************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = tuval$react$dom;
 
 /***/ }),
 
@@ -42993,29 +42432,26 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-var manifest = __webpack_require__(/*! ./manifest */ "./src/manifest.js");
+const manifest = __webpack_require__(/*! ./manifest */ "./src/manifest.js");
 function App(manifest) {
-    return function (constructor) {
+    return (constructor) => {
         if (tuval$core['__APPS__'] == null) {
             tuval$core['__APPS__'] = {};
         }
         tuval$core['__APPS__'][manifest.application.name] = constructor;
     };
 }
-var ProcessMining = /** @class */ (function () {
-    function ProcessMining() {
-    }
-    ProcessMining.prototype.GetMainController = function () {
+let ProcessMining = class ProcessMining {
+    GetMainController() {
         return {
             applet: _routes_routes__WEBPACK_IMPORTED_MODULE_0__.RouteController,
             tree: _TreeController__WEBPACK_IMPORTED_MODULE_2__.TreeController
         };
-    };
-    ProcessMining = __decorate([
-        App(manifest)
-    ], ProcessMining);
-    return ProcessMining;
-}());
+    }
+};
+ProcessMining = __decorate([
+    App(manifest)
+], ProcessMining);
 
 _celmino_ui__WEBPACK_IMPORTED_MODULE_4__.FormBuilder.injectAction(_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_3__.SaveFolderAction);
 _celmino_ui__WEBPACK_IMPORTED_MODULE_4__.FormBuilder.injectAction(_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_5__.SaveDocumentAction);

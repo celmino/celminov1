@@ -4,6 +4,8 @@ import { SaveCollectionAction } from "./actions/SaveCollectionAction";
 
 export const AddCollectionDialog = (workspaceId: string, appletId: string) => ({
     "title": 'Create collection',
+    "workspaceId": workspaceId,
+    "databaseId": appletId,
     "actions": [
         {
             "label": "Save",
@@ -11,16 +13,7 @@ export const AddCollectionDialog = (workspaceId: string, appletId: string) => ({
         }
     ],
     "fieldMap": {
-        "workspaceId": {
-            "name": "workspaceId",
-            "type": "virtual",
-            "value": workspaceId
-        },
-        "databaseId": {
-            "name": "databaseId",
-            "type": "virtual",
-            "value": appletId
-        },
+
         "name": {
             "label": "Name",
             "type": "text",

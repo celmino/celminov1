@@ -43,10 +43,7 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
             .label('Save')
            // .type("submit")
              .onClick(() => {
-
-                alert(JSON.stringify(formData))
-                return;
-
+                
                 createDocument(
                     {
 

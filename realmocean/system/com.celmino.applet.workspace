@@ -6282,6 +6282,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var AddCollectionDialog = function (workspaceId, appletId) { return ({
     "title": 'Create collection',
+    "workspaceId": workspaceId,
+    "databaseId": appletId,
     "actions": [
         {
             "label": "Save",
@@ -6289,16 +6291,6 @@ var AddCollectionDialog = function (workspaceId, appletId) { return ({
         }
     ],
     "fieldMap": {
-        "workspaceId": {
-            "name": "workspaceId",
-            "type": "virtual",
-            "value": workspaceId
-        },
-        "databaseId": {
-            "name": "databaseId",
-            "type": "virtual",
-            "value": appletId
-        },
         "name": {
             "label": "Name",
             "type": "text",
@@ -6321,16 +6313,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   SaveCollectionAction: () => (/* binding */ SaveCollectionAction)
 /* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
 
 
-var SaveCollectionAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+
+var SaveCollectionAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
+    var _a;
     var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
+    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
+    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useDialog)();
     var invalidateResource = null;
     var formMutate = null;
     var createMutate = null;
@@ -6338,13 +6334,17 @@ var SaveCollectionAction = function (formMeta, action) { return (0,_tuval_forms_
     var isFormMutateExcuting = false;
     var isFormLoading = false;
     var views = [];
-    var _a = formMeta, protocol = _a.protocol, resource = _a.resource, method = _a.method;
-    var _b = formController.GetFormData(), databaseId = _b.databaseId, name = _b.name, workspaceId = _b.workspaceId;
-    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateCollection)(workspaceId), createCollection = _c.createCollection, isLoading = _c.isLoading;
-    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'collections').createDocument;
-    var createField = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields').createDocument;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Collection'))
-        .loading(isLoading)
+    var _b = formMeta, workspaceId = _b.workspaceId, databaseId = _b.databaseId, protocol = _b.protocol, resource = _b.resource, method = _b.method;
+    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateCollection)(workspaceId), createCollection = _c.createCollection, isLoading = _c.isLoading;
+    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, databaseId, 'collections').createDocument;
+    var createField = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, databaseId, 'fields').createDocument;
+    var formData = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.useFormState)({
+        values: true,
+        errors: true
+    });
+    var _d = ((_a = formData === null || formData === void 0 ? void 0 : formData.values) !== null && _a !== void 0 ? _a : {}).name, name = _d === void 0 ? null : _d;
+    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.LoadingButton)().label('Save').appearance("primary")
+        //.loading(isLoading)
         .onClick(function () {
         if (databaseId == null) {
             alert('Collection is null');
@@ -6354,17 +6354,17 @@ var SaveCollectionAction = function (formMeta, action) { return (0,_tuval_forms_
             databaseId: databaseId,
             name: name,
             permissions: [
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission.read(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission.update(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission.update(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission.delete(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission.delete(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Permission.read(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Role.any()),
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Permission.update(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Role.any()),
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Permission.update(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Role.any()),
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Permission.delete(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Role.any()),
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Permission.delete(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Role.any()),
             ],
             enabled: true
         }, function (collection) {
             Promise.all([
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspaceId, databaseId, collection.$id, 'name', 255, false),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspaceId, databaseId, collection.$id, 'description', 1255, false)
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspaceId, databaseId, collection.$id, 'name', 255, false),
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspaceId, databaseId, collection.$id, 'description', 1255, false)
             ]).then(function () {
                 createDocument({
                     documentId: collection.$id,
@@ -6403,7 +6403,7 @@ var SaveCollectionAction = function (formMeta, action) { return (0,_tuval_forms_
         });
     }));
 }); };
-SaveCollectionAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.nanoid)();
+SaveCollectionAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.nanoid)();
 
 
 /***/ }),
@@ -6491,12 +6491,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AddDocumentDialog: () => (/* binding */ AddDocumentDialog),
 /* harmony export */   SaveDocumentAction: () => (/* binding */ SaveDocumentAction)
 /* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -6511,12 +6513,13 @@ var __assign = (undefined && undefined.__assign) || function () {
 
 
 
-var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
+
+var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
     var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useFormController)();
+    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useDialog)();
+    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useFormBuilder)();
+    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
     var invalidateResource = null;
     var formMutate = null;
     var createMutate = null;
@@ -6525,14 +6528,19 @@ var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__W
     var isFormLoading = false;
     var views = [];
     var workspaceId = formMeta.workspaceId, appletId = formMeta.appletId;
-    var createWorkspaceTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, 'workspace', 'ws_tree').createDocument;
-    var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'dm_tree').createDocument;
-    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'dm_documents'), createDocument = _a.createDocument, isLoading = _a.isLoading;
-    var createDocumentContent = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'dm_document_contents').createDocument;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Save'))
-        .loading(isLoading)
+    var createWorkspaceTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, 'workspace', 'ws_tree').createDocument;
+    var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'dm_tree').createDocument;
+    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'dm_documents'), createDocument = _a.createDocument, isLoading = _a.isLoading;
+    var createDocumentContent = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'dm_document_contents').createDocument;
+    var formData = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.useFormState)({
+        values: true,
+        errors: true
+    });
+    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.LoadingButton)().label('Save').appearance("primary")
+        // .loading(isLoading)
         .onClick(function () {
-        var data = __assign({}, formController.GetFormData());
+        var _a;
+        var data = (_a = formData === null || formData === void 0 ? void 0 : formData.values) !== null && _a !== void 0 ? _a : {};
         createDocument({
             data: __assign({}, data)
         }, function (document) {
@@ -6556,7 +6564,7 @@ var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__W
                         //viewer:'com.tuvalsoft.viewer.document'
                     }
                 }, function (item) {
-                    _tuval_core__WEBPACK_IMPORTED_MODULE_1__.EventBus.Default.fire('applet.added', { treeItem: item });
+                    _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: item });
                 });
                 createTreeItem({
                     documentId: document.$id,
@@ -6566,7 +6574,7 @@ var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__W
         });
     }));
 }); };
-SaveDocumentAction.Id = 'com.celmino.action.save-document';
+SaveDocumentAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.nanoid)();
 var AddDocumentDialog = function (workspaceId, appletId, parent, path) {
     if (workspaceId == null) {
         alert("spaceId is null");
@@ -7517,7 +7525,6 @@ var CollectionController = /** @class */ (function (_super) {
         var deleteAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useDeleteAttribute)(workspaceId).deleteAttribute;
         var updateCollection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateCollection)(workspaceId).updateCollection;
         var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, collectionId).createDocument;
-        var createDatabase = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDatabase)('myproject').createDatabase;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId).updateDocument;
         //const { createDocument } = useCreateDocument(workspaceId);
         var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDocuments)(workspaceId, databaseId, collectionId, [
@@ -7598,10 +7605,17 @@ var CollectionController = /** @class */ (function (_super) {
                     setShowDialog(true);
                 }))
                     .width();
-            })).width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)('com.tuvalsoft.widget.editorjs')
-                .config({
-                scrollable: false
-            })), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.NewFieldMenuView)({
+            })).width(300), 
+            /*    HStack({ alignment: cTopLeading })(
+
+                   UIWidget('com.tuvalsoft.widget.editorjs')
+                       .config({
+                           scrollable: false
+                       })
+               )
+
+               , */
+            (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.NewFieldMenuView)({
                 view: function (menuIsOpen) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.Plus).foregroundColor(menuIsOpen ? 'white' : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('New Field')
                     .foregroundColor(menuIsOpen ? 'white' : '')
                     .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
@@ -7750,19 +7764,18 @@ var CollectionController = /** @class */ (function (_super) {
             })))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('Create Document'))
                 //.renderer(TestRenderer)
                 .onClick(function () {
-                createDatabase({
-                    name: 'dasf',
-                    category: 'sdf'
+                /*   createDatabase({
+                      name:'dasf',
+                      category:'sdf'
+                  }) */
+                createDocument({
+                    documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.nanoid)(),
+                    data: {
+                        name: ''
+                    }
+                }, function (document) {
+                    _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('editCell', { editingCell: fields[0].$id, editingRow: document.$id });
                 });
-                /*  createDocument({
-                     documentId: nanoid(),
-                     data: {
-                         name: ''
-                     }
-                 }, (document) => {
-                     EventBus.Default.fire('editCell', { editingCell: fields[0].$id, editingRow: document.$id });
-
-                 }) */
             })).render())));
     };
     return CollectionController;
@@ -8912,6 +8925,17 @@ module.exports = celmino$ui;
 
 "use strict";
 module.exports = realmocean$antd;
+
+/***/ }),
+
+/***/ "@realmocean/atlaskit":
+/*!**************************************!*\
+  !*** external "realmocean$atlaskit" ***!
+  \**************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = realmocean$atlaskit;
 
 /***/ }),
 

@@ -103,11 +103,12 @@
     "dependencies": {
         "@celmino/ui": "^1.0.38",
         "@realmocean/antd": "^21.0.30",
+        "@realmocean/atlaskit": "^17.8.25",
         "@realmocean/elasticui": "21.0.37",
         "@realmocean/sdk": "1.0.81",
         "@realmocean/vibe": "^2.82.61",
         "@tuval/core": "^0.0.103",
-        "@tuval/forms": "^1.0.179",
+        "@tuval/forms": "^1.0.180",
         "@uiw/react-color-circle": "^2.1.0",
         "editorjs-inline-image": "^2.0.0",
         "shelljs": "^0.8.5",

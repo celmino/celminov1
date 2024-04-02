@@ -167,8 +167,8 @@ export class CollectionController extends UIFormController {
     public override LoadView(): UIView {
         const { collectionId } = useParams();
 
-        const  {realm}  = useRealm();
-        const {applet} = useApplet();
+        const { realm } = useRealm();
+        const { applet } = useApplet();
         const workspaceId = realm.$id;
         const databaseId = applet.$id;
 
@@ -180,7 +180,7 @@ export class CollectionController extends UIFormController {
 
         const { createDocument } = useCreateDocument(workspaceId, databaseId, collectionId);
 
-        const { createDatabase } = useCreateDatabase('myproject');
+
 
 
         const { updateDocument } = useUpdateDocument(workspaceId);
@@ -245,7 +245,7 @@ export class CollectionController extends UIFormController {
                                                                             name: collectionName
                                                                         })
                                                                     }
-            
+
                                                                 }),
                                                             HStack({ alignment: cTopLeading, spacing: 2 })(
                                                                 ...ForEach(colors)((color) => (
@@ -294,23 +294,23 @@ export class CollectionController extends UIFormController {
                                                     })
                                             )
                                                 .width()
-            
+
                                         )
                                     ).width(300),
-            
-                                    HStack({ alignment: cTopLeading })(
-            
-                                        UIWidget('com.tuvalsoft.widget.editorjs')
-                                            .config({
-                                                scrollable: false
-                                            })
-                                    )
-            
-                                    ,
+
+                                    /*    HStack({ alignment: cTopLeading })(
+               
+                                           UIWidget('com.tuvalsoft.widget.editorjs')
+                                               .config({
+                                                   scrollable: false
+                                               })
+                                       )
+               
+                                       , */
                                     NewFieldMenuView({
                                         view: (menuIsOpen) => (
                                             HStack(
-            
+
                                                 Icon(Icons.Plus).foregroundColor(menuIsOpen ? 'white' : ''),
                                                 Text('New Field')
                                                     .foregroundColor(menuIsOpen ? 'white' : '')
@@ -337,11 +337,11 @@ export class CollectionController extends UIFormController {
                                             }
                                         }
                                     })
-            
-            
-            
+
+
+
                                 )
-            
+
                                     .height()
                                     .background('#F9FAFB')
                                     .minHeight(60)
@@ -359,12 +359,12 @@ export class CollectionController extends UIFormController {
                                                 table: tableStyle,
                                                 bodyRow,
                                                 paginator
-            
-            
+
+
                                             })
                                             .columnPT({
                                                 headerCell,
-            
+
                                                 bodyCell
                                             })
                                             .columns([{
@@ -439,15 +439,15 @@ export class CollectionController extends UIFormController {
                                                     body: (row) => {
                                                         if (column.type === 'richtext') {
                                                             return RichTextFieldView();
-            
+
                                                         } else if (column.type === 'select') {
                                                             return SelectFieldView(workspaceId, databaseId,
                                                                 collectionId, fields, column, index, row);
-            
+
                                                         } else if (column.type === 'multiselect') {
                                                             return MultiSelectFieldView(workspaceId, databaseId,
                                                                 collectionId, fields, column, index, row);
-            
+
                                                         } else if (column.type === 'boolean') {
                                                             const values = row[column.key];
                                                             return (
@@ -455,7 +455,7 @@ export class CollectionController extends UIFormController {
                                                             )
                                                         } else if (column.type === 'relationship') {
                                                             const values = row[column.key];
-            
+
                                                             return (
                                                                 HStack({ alignment: cLeading })(
                                                                     ...ForEach(values)((value: any) => (
@@ -482,7 +482,7 @@ export class CollectionController extends UIFormController {
                                                             return (
                                                                 HStack({ alignment: cLeading })(
                                                                     UIViewBuilder(() => {
-            
+
                                                                         if (row.type === 'addRow' && column.key === 'name') {
                                                                             return (
                                                                                 HStack({ alignment: cLeading })(
@@ -498,7 +498,7 @@ export class CollectionController extends UIFormController {
                                                                                         /* setEditingCell(column.$id);
                                                                                         setEditingRow(document.$id); */
                                                                                     })
-            
+
                                                                                 })
                                                                             )
                                                                         } else {
@@ -506,19 +506,19 @@ export class CollectionController extends UIFormController {
                                                                                 collectionId, fields, column, index, row);
                                                                         }
                                                                     })
-            
+
                                                                 )
-            
+
                                                             )
-            
-            
+
+
                                                         }
                                                     }
-            
+
                                                 }
                                             })])
                                             .model(documents.map((document, index) => {
-            
+
                                                 return {
                                                     indexNo: index + 1,
                                                     nextRowId: documents[index + 1]?.$id,
@@ -528,37 +528,37 @@ export class CollectionController extends UIFormController {
                                             }))
                                     )
                                 ),
-            
+
                                 Button(
                                     Text('Create Document')
                                 )
-            
+
                                     //.renderer(TestRenderer)
                                     .onClick(() => {
 
-                                        createDatabase({
-                                            name:'dasf',
-                                            category:'sdf'
-                                        })
-                                       /*  createDocument({
+                                        /*   createDatabase({
+                                              name:'dasf',
+                                              category:'sdf'
+                                          }) */
+                                        createDocument({
                                             documentId: nanoid(),
                                             data: {
                                                 name: ''
                                             }
                                         }, (document) => {
                                             EventBus.Default.fire('editCell', { editingCell: fields[0].$id, editingRow: document.$id });
-            
-                                        }) */
-                                      
+
+                                        })
+
                                     }),
-            
-            
-            
+
+
+
                             ).render()
                         }
                     </DialogStack>
                 )
-                
+
         )
 
     }

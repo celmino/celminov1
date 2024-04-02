@@ -47,6 +47,8 @@ export class DocumentController extends UIController {
                     <DialogStack>
                         {
                             VStack({ alignment: cTopLeading })(
+                                UIWidget('com.tuvalsoft.widget.markdown')
+                                .config({}),
                                 ActionPanel(),
                                 DocumentHeader(document?.name, (e) => {
                                     updateDocument({
@@ -62,13 +64,7 @@ export class DocumentController extends UIController {
                                 UIViewBuilder(() => {
                                     const { openDialog } = useDialogStack();
                                     return (
-                                        /*  VStack({ alignment: cTopLeading })(
-                                             UIWidget('com.celmino.widget.tldraw')
-                                                 .config({
- 
- 
-                                                 })
-                                         ) */
+                                       
                                         window.location.hash ?
                                             UIWidget(document?.viewer)
                                                 .config({

@@ -1,6 +1,7 @@
+import { LoadingButton, useFormState } from "@realmocean/atlaskit";
 import { useCreateDocument } from "@realmocean/sdk";
 import { EventBus } from "@tuval/core";
-import { UIViewBuilder, useFormController, useDialog, useFormBuilder, useNavigate, Button, Text } from "@tuval/forms";
+import { UIViewBuilder, useFormController, useDialog, useFormBuilder, useNavigate, Button, Text, nanoid } from "@tuval/forms";
 
 
 export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
@@ -25,14 +26,17 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
     const { createDocument, isLoading } = useCreateDocument(workspaceId, appletId, 'dm_documents');
     const { createDocument: createDocumentContent } = useCreateDocument(workspaceId, appletId, 'dm_document_contents');
 
+    const formData: any = useFormState({
+        values: true,
+        errors: true
+    });
+    
     return (
-        Button(
-            Text('Save')
-        )
-            .loading(isLoading)
+        LoadingButton( ).label('Save').appearance("primary")
+           // .loading(isLoading)
             .onClick(() => {
 
-                const data = { ...formController.GetFormData() }
+                const data = formData?.values ?? {};
 
                 createDocument(
                     {
@@ -85,7 +89,7 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
 }
 )
 
-SaveDocumentAction.Id = 'com.celmino.action.save-document';
+SaveDocumentAction.Id = nanoid();
 
 export const AddDocumentDialog = (workspaceId: string, appletId: string, parent: string, path: string) => {
     if (workspaceId == null) {

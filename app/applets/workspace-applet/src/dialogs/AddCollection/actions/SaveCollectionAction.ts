@@ -1,3 +1,4 @@
+import { LoadingButton, useFormState } from "@realmocean/atlaskit";
 import { Permission, Role, Service, Services, useCreateCollection, useCreateDocument } from "@realmocean/sdk";
 import {
     Button,
@@ -11,100 +12,103 @@ import {
 
 
 
-export const SaveCollectionAction = (formMeta, action) => UIViewBuilder(() => {
-    const { label, successAction, successActions } = action;
-    const formController = useFormController();
-    const dialog = useDialog();
+export const SaveCollectionAction = (formMeta, action) => UIViewBuilder(
+    () => {
+        const { label, successAction, successActions } = action;
+        const formController = useFormController();
+        const dialog = useDialog();
 
-    let invalidateResource = null;
-    let formMutate = null;
-    let createMutate = null;
-    let updateMutate = null;
-    let isFormMutateExcuting = false;
-    let isFormLoading = false;
+        let invalidateResource = null;
+        let formMutate = null;
+        let createMutate = null;
+        let updateMutate = null;
+        let isFormMutateExcuting = false;
+        let isFormLoading = false;
 
-    const views = []
-    const { protocol, resource, method } = formMeta as any;
-
-    const { databaseId, name, workspaceId } = formController.GetFormData();
-
-    const { createCollection, isLoading } = useCreateCollection(workspaceId);
-    const { createDocument } = useCreateDocument(workspaceId, databaseId, 'collections');
-    const { createDocument: createField } = useCreateDocument(workspaceId, databaseId, 'fields');
+        const views = []
+        const { workspaceId, databaseId, protocol, resource, method } = formMeta as any;
 
 
+        const { createCollection, isLoading } = useCreateCollection(workspaceId);
+        const { createDocument } = useCreateDocument(workspaceId, databaseId, 'collections');
+        const { createDocument: createField } = useCreateDocument(workspaceId, databaseId, 'fields');
 
-    return (
-        Button(
-            Text('Save Collection')
-        )
-            .loading(isLoading)
-            .onClick(() => {
 
-                if (databaseId == null) {
-                    alert('Collection is null');
-                    return;
-                }
-                createCollection({
-                    databaseId,
-                    name: name,
-                    permissions: [
-                        Permission.read(Role.any()),
-                        Permission.update(Role.any()),
-                        Permission.update(Role.any()),
-                        Permission.delete(Role.any()),
-                        Permission.delete(Role.any()),
-                    ],
-                    enabled: true
-                }, (collection) => {
+        const formData: any = useFormState({
+            values: true,
+            errors: true
+        });
+        const { name = null } = formData?.values ?? {};
 
-                    Promise.all([
-                        Services.Databases.createStringAttribute(workspaceId, databaseId, collection.$id, 'name', 255, false),
-                        Services.Databases.createStringAttribute(workspaceId, databaseId, collection.$id, 'description', 1255, false)
-                    ]).then(() => {
-                        createDocument({
-                            documentId: collection.$id,
-                            data: {
-                                name: collection.name,
-                                type: 'userCollection'
-                            }
-                        }, () => {
+        return (
+            LoadingButton().label('Save').appearance("primary")
+                //.loading(isLoading)
+                .onClick(() => {
 
-                            createField({
+                    if (databaseId == null) {
+                        alert('Collection is null');
+                        return;
+                    }
+                    createCollection({
+                        databaseId,
+                        name: name,
+                        permissions: [
+                            Permission.read(Role.any()),
+                            Permission.update(Role.any()),
+                            Permission.update(Role.any()),
+                            Permission.delete(Role.any()),
+                            Permission.delete(Role.any()),
+                        ],
+                        enabled: true
+                    }, (collection) => {
+
+                        Promise.all([
+                            Services.Databases.createStringAttribute(workspaceId, databaseId, collection.$id, 'name', 255, false),
+                            Services.Databases.createStringAttribute(workspaceId, databaseId, collection.$id, 'description', 1255, false)
+                        ]).then(() => {
+                            createDocument({
+                                documentId: collection.$id,
                                 data: {
-                                    key: 'name',
-                                    name: 'Name',
-                                    type: 'text',
-                                    fieldInfo: JSON.stringify({
-                                        size: 255
-                                    }),
-                                    collectionId: collection.$id
+                                    name: collection.name,
+                                    type: 'userCollection'
                                 }
                             }, () => {
+
                                 createField({
                                     data: {
-                                        key: 'description',
-                                        name: 'Description',
+                                        key: 'name',
+                                        name: 'Name',
                                         type: 'text',
                                         fieldInfo: JSON.stringify({
-                                            size: 1255
+                                            size: 255
                                         }),
                                         collectionId: collection.$id
                                     }
                                 }, () => {
-                                    dialog.Hide();
+                                    createField({
+                                        data: {
+                                            key: 'description',
+                                            name: 'Description',
+                                            type: 'text',
+                                            fieldInfo: JSON.stringify({
+                                                size: 1255
+                                            }),
+                                            collectionId: collection.$id
+                                        }
+                                    }, () => {
+                                        dialog.Hide();
+                                    })
                                 })
+
                             })
-
                         })
+
+
+
                     })
-
-
-
                 })
-            })
-    )
-}
+        )
+    }
 )
 
 
