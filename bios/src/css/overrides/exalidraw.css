@@ -22,3 +22,10 @@ div.dropdown-menu-group {
     display: none !important;
 } 
 
+
+.excalidraw  {
+  --lg-button-size: 3rem !important;
+  --lg-icon-size: 2rem !important;
+  --default-button-size: 3rem !important;
+  --default-icon-size: 2rem !important;
+}

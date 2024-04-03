@@ -20448,9 +20448,10 @@ const appletMenu = [
      }, */
 ];
 class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView {
-    BindRouterParams({ workspaceId, parent }) {
+    BindRouterParams({ workspaceId, parent, space }) {
         this.workspaceId = workspaceId;
         this.parent = parent;
+        this.space = space;
     }
     constructor() {
         super();
@@ -20544,6 +20545,7 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                             fullPath: '/' + applet.$id,
                             iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
                             iconCategory: opa.iconCategory,
+                            spaceId: this.space
                         }
                     }, (treeItem) => {
                         _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('applet.added', { treeItem });
@@ -20607,13 +20609,13 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                 .cornerRadius('var(--border-radius-medium)')
                 .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding())).wrap('wrap').height()))));
     }
-    static Show(workspaceId, parent = '-1') {
+    static Show(workspaceId, parent = '-1', space = '@realm') {
         const dialog = new SelectAppletDialog();
         dialog.ShowHeader = false;
         /*  if (width) {
              dialog.Width = width;
          } */
-        dialog.BindRouterParams({ workspaceId, parent });
+        dialog.BindRouterParams({ workspaceId, parent, space });
         return dialog.ShowDialogAsync();
     }
 }
@@ -20626,6 +20628,9 @@ __decorate([
 __decorate([
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
 ], SelectAppletDialog.prototype, "parent", void 0);
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], SelectAppletDialog.prototype, "space", void 0);
 
 
 /***/ }),

@@ -51,9 +51,13 @@ export class SelectAppletDialog extends DialogView {
     @ViewProperty()
     private parent: string;
 
-    public BindRouterParams({ workspaceId, parent }) {
+    @ViewProperty()
+    private space: string;
+
+    public BindRouterParams({ workspaceId, parent, space }) {
         this.workspaceId = workspaceId;
         this.parent = parent;
+        this.space = space;
     }
     public constructor() {
         super();
@@ -207,10 +211,11 @@ export class SelectAppletDialog extends DialogView {
                                                                     tree_widget: opa.tree_type,
                                                                     appletId: applet.$id,
                                                                     parent: this.parent,
-                                                                    path: (new Date()).getTime().toString() ,
-                                                                    fullPath:'/' + applet.$id,
+                                                                    path: (new Date()).getTime().toString(),
+                                                                    fullPath: '/' + applet.$id,
                                                                     iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
                                                                     iconCategory: opa.iconCategory,
+                                                                    spaceId: this.space
                                                                 }
                                                             }, (treeItem) => {
 
@@ -292,14 +297,14 @@ export class SelectAppletDialog extends DialogView {
             )
         )
     }
-    public static Show(workspaceId: string, parent: string = '-1') {
+    public static Show(workspaceId: string, parent: string = '-1', space: string = '@realm') {
 
         const dialog = new SelectAppletDialog();
         dialog.ShowHeader = false;
         /*  if (width) {
              dialog.Width = width;
          } */
-        dialog.BindRouterParams({ workspaceId, parent })
+        dialog.BindRouterParams({ workspaceId, parent, space })
         return dialog.ShowDialogAsync();
     }
 }
