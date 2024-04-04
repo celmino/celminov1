@@ -437,7 +437,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                 (
                                                                                     HStack({ alignment: cLeading, spacing: 5 })
                                                                                         (
-                                                                                            Text('My Realm')
+                                                                                            Text('My Space')
                                                                                                 .fontSize(14)
                                                                                                 .fontWeight('500')
                                                                                                 .foregroundColor('rgb(80, 90, 100)'),
@@ -813,6 +813,8 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                 })
                                                             )
                                                         )
+                                                        .cornerRadius(6)
+                                                        .background('#E5E4FC')
                                                         .height(),
 
                                             // Team Space
@@ -831,7 +833,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                                                     HStack({ alignment: cLeading })(
                                                                         Text('Team Space')
-                                                                            .fontSize(12)
+                                                                            .fontSize(14)
                                                                             .fontWeight('500')
                                                                             .foregroundColor('rgb(80, 90, 100)'),
                                                                         Spacer(),
@@ -1220,7 +1222,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                                                 HStack({ alignment: cLeading })(
                                                                     Text('Public Space')
-                                                                        .fontSize(12)
+                                                                        .fontSize(14)
                                                                         .fontWeight('500')
                                                                         .foregroundColor('rgb(80, 90, 100)'),
                                                                     Spacer(),

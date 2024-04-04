@@ -8762,6 +8762,7 @@ var TreeController = /** @class */ (function (_super) {
         var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useAppletNavigate)().navigate;
         var realm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetRealm)({ realmId: workspaceId, enabled: true }).realm;
         var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useApplet)().applet;
+        var _e = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useDeleteApplet)(), deleteApplet = _e.deleteApplet, isLoading = _e.isLoading;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 2 })(
         // Title
         (isEditing && _tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.string(item === null || item === void 0 ? void 0 : item.name)) ?
@@ -8828,6 +8829,17 @@ var TreeController = /** @class */ (function (_super) {
                         title: 'Applet settings',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
                         onClick: function () { return navigate("settings/general"); }
+                    },
+                    {
+                        title: 'Delete Applet',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__delete', '#bc4841', '18px', '18px'),
+                        color: '#bc4841',
+                        onClick: function () {
+                            deleteApplet(applet.$id, function () {
+                                // alert('deleted')
+                                _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: item });
+                            });
+                        }
                     },
                 ])
                     .icon(EditIcon))

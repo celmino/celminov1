@@ -132,9 +132,13 @@ export class TreeController extends UIController {
                                     },
                                     {
                                         title: 'Delete Applet',
-                                        icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                                        icon: SvgIcon('svg-sprite-global__delete', '#bc4841', '18px', '18px'),
+                                        color:'#bc4841',
                                         onClick: () =>{
-                                            deleteApplet(applet.$id), ()=> alert('deleted');
+                                            deleteApplet(applet.$id , ()=>{
+                                               // alert('deleted')
+                                                EventBus.Default.fire('applet.added', { treeItem: item })
+                                            })
                                         }
                                     },
 

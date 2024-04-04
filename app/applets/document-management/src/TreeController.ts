@@ -9,7 +9,7 @@ import {
 
 import { Services, useGetDocument, useGetRealm, useUpdateDocument } from '@realmocean/sdk';
 import { EventBus, is } from '@tuval/core';
-import { useApplet, useAppletNavigate, useRealm } from '@celmino/ui';
+import { useApplet, useAppletNavigate, useRealm, useDeleteApplet } from '@celmino/ui';
 import { ContextMenu } from './views/ContextMenu';
 
 
@@ -40,10 +40,13 @@ export class TreeController extends UIController {
         const appletId = applet.$id;
 
 
-        const {navigate} = useAppletNavigate();
+        const { navigate } = useAppletNavigate();
 
 
         const { updateDocument } = useUpdateDocument(workspaceId);
+
+
+        const { deleteApplet } = useDeleteApplet();
 
         return (
 
@@ -113,6 +116,17 @@ export class TreeController extends UIController {
                                     }
                                 });
 
+                            }
+                        },
+                        {
+                            title: 'Delete Applet',
+                            icon: SvgIcon('svg-sprite-global__delete', '#bc4841', '18px', '18px'),
+                            color: '#bc4841',
+                            onClick: () => {
+                                deleteApplet(applet.$id, () => {
+                                    // alert('deleted')
+                                    EventBus.Default.fire('applet.added', { treeItem: item })
+                                })
                             }
                         },
 

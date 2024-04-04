@@ -39307,6 +39307,7 @@ class TreeController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIControl
         const appletId = applet.$id;
         const { navigate } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useAppletNavigate)();
         const { updateDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId);
+        const { deleteApplet } = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useDeleteApplet)();
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.applet-tree')
             .config({
             node: item,
@@ -39367,6 +39368,17 @@ class TreeController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIControl
                             for (let collection of collections.collections) {
                                 _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.deleteAllDocument(workspaceId, appletId, collection.$id);
                             }
+                        });
+                    }
+                },
+                {
+                    title: 'Delete Applet',
+                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__delete', '#bc4841', '18px', '18px'),
+                    color: '#bc4841',
+                    onClick: () => {
+                        deleteApplet(applet.$id, () => {
+                            // alert('deleted')
+                            _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: item });
                         });
                     }
                 },

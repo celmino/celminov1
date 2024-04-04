@@ -18,6 +18,8 @@ export const useDeleteApplet = () => {
                 deleteDatabase({
                     databaseId: appletId
                 }, () => {
+
+                    
                     onSuccess();
                 });
 

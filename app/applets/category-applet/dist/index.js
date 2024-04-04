@@ -4458,9 +4458,13 @@ var TreeController = /** @class */ (function (_super) {
                     },
                     {
                         title: 'Delete Applet',
-                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__delete', '#bc4841', '18px', '18px'),
+                        color: '#bc4841',
                         onClick: function () {
-                            deleteApplet(applet.$id), function () { return alert('deleted'); };
+                            deleteApplet(applet.$id, function () {
+                                // alert('deleted')
+                                _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('applet.added', { treeItem: item });
+                            });
                         }
                     },
                 ])
