@@ -7,7 +7,7 @@ import {
     useState
 } from '@tuval/forms';
 
-import { useApplet, useAppletNavigate, useRealm } from '@celmino/ui';
+import { useApplet, useAppletNavigate, useDeleteApplet, useRealm } from '@celmino/ui';
 import { useUpdateDocument } from '@realmocean/sdk';
 import { EventBus, is } from '@tuval/core';
 import React from 'react';
@@ -32,6 +32,9 @@ export class TreeController extends UIController {
         const { updateDocument } = useUpdateDocument(workspaceId);
 
         const { navigate } = useAppletNavigate();
+        const { deleteApplet, isLoading } = useDeleteApplet();
+
+
 
 
         return (
@@ -126,6 +129,13 @@ export class TreeController extends UIController {
                                         title: 'Applet settings',
                                         icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
                                         onClick: () => navigate(`settings/general`)
+                                    },
+                                    {
+                                        title: 'Delete Applet',
+                                        icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                                        onClick: () =>{
+                                            deleteApplet(applet.$id), ()=> alert('deleted');
+                                        }
                                     },
 
                                 ])
