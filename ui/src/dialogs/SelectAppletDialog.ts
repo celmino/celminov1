@@ -297,7 +297,7 @@ export class SelectAppletDialog extends DialogView {
             )
         )
     }
-    public static Show(workspaceId: string, parent: string = '-1', space: string = '@realm') {
+    public static Show(workspaceId: string, parent: string = '-1', space: string = '@team') {
 
         const dialog = new SelectAppletDialog();
         dialog.ShowHeader = false;

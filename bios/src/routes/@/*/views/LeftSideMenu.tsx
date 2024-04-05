@@ -438,8 +438,8 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                     HStack({ alignment: cLeading, spacing: 5 })
                                                                                         (
                                                                                             Text('My Space')
-                                                                                                .fontSize(14)
-                                                                                                .fontWeight('500')
+                                                                                                .fontSize(12)
+                                                                                                .fontWeight('600')
                                                                                                 .foregroundColor('rgb(80, 90, 100)'),
                                                                                             Icon(SvgIcon('cu3-icon-link', '#87909E', '14px')),
                                                                                             Spacer(),
@@ -458,7 +458,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                         .zIndex(10)
                                                                                         .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
                                                                                         .height(30)
-                                                                                        .padding(cHorizontal, 15)
+                                                                                        //.padding(cHorizontal, 15)
                                                                                         .padding(cVertical, 5),
                                                                                     !appletsOpen ? Fragment() :
                                                                                         VStack({ alignment: cTopLeading, spacing: 5 })
@@ -751,70 +751,30 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                                                                     })
                                                                                                                             )
                                                                                                                                 .setCanDrag(() => void 0),
-                                                                                                                            // Text(documents[0]['opa']),
-                                                                                                                            /*  isSorting ?
-                                                                                                                                 SortableListView()
-                                                                                                                                     .items(realms)
-                                                                                                                                     .renderItem(realm =>
-                                                                                                                                         UIWidget(realm['opa'])
-                                                                                                                                             .config({
-                                                        ...(useParams() || {}),
-                                                        appletId: realm.$id
-                                                                                                                                             }),
-                                                    )
-                                                                                                                                     .onChange(realms => setRealms(realms)) :
-                                                    VStack({alignment: cTopLeading, spacing: 5 })(
-                                                                                                                                     ...ForEach(documents)(applet =>
-                                                    UIWidget(applet['opa'])
-                                                    .config({
-                                                        ...(useParams() || {}),
-                                                        appletId: applet.$id
-                                                                                                                                             }),
-                                                    )
-                                                    ) */
+
 
                                                                                                                         )
                                                                                                                             .cornerRadius(6),
-
-
-                                                                                                                        /*    HStack(
-                     
-                                                                                                                               HStack({spacing: 5 })(
-                                                    Text('Install Applet').fontSize(11).fontWeight('500')
-                                                    )
-                                                    .margin('5px 20px')
-                                                    .cornerRadius(5)
-                                                    .cursor('pointer')
-                                                    .foregroundColor('#7c828d')
-                                                    .background({ default: '#f3f4f7', hover: '#e4e4e4' })
-                                                    .height(24)
-                                                    .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
-                                                    .padding('8px 12px 8px 26px')
-                                                                                                                                   .onClick(async () => {
-                                                        SelectAppletDialog.Show(workspaceId);
-                                                                                                                                   })
-                     
-                     
-                                                    ).height(200), */
-                                                                                                                        //.outline(isEditable ? 'dotted 2px green' : 'none')
-
-                                                                                                                    ).padding(cHorizontal, 8)
+                                                                                                                    )
+                                                                                                                        .padding(cHorizontal, 8)
+                                                                                                                        .marginBottom(10)
+                                                                                                                        .marginLeft(10)
+                                                                                                                        .background('gray')
+                                                                                                                        .position('sticky')
+                                                                                                                        .top('30px')
+                                                                                                                        .zIndex(10)
                                                                                                                 )
                                                                                                             }
                                                                                                             )
                                                                                                     )
                                                                                                     .height()
-
                                                                                             )
-
-
                                                                                 )
                                                                     )
                                                                 })
                                                             )
                                                         )
                                                         .cornerRadius(6)
-                                                        .background('#E5E4FC')
                                                         .height(),
 
                                             // Team Space
@@ -965,7 +925,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                                                                     function buildTree(workspaceTree) {
                                                                                         const tree = [];
-                                                                                        let rootItems = workspaceTree?.filter(item => item.parent === '-1' && (item.spaceId === '@realm' || item.spaceId == null));
+                                                                                        let rootItems = workspaceTree?.filter(item => item.parent === '-1' && (item.spaceId === '@team' || item.spaceId == null));
                                                                                         rootItems = sortByStringField(rootItems, "path");
                                                                                         rootItems.forEach(item => {
                                                                                             if (item.parent === '-1') {
@@ -1143,54 +1103,20 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                                         })
                                                                                                 )
                                                                                                     .setCanDrag(() => void 0),
-                                                                                                // Text(documents[0]['opa']),
-                                                                                                /*  isSorting ?
-                                                                                                     SortableListView()
-                                                                                                         .items(realms)
-                                                                                                         .renderItem(realm =>
-                                                                                                             UIWidget(realm['opa'])
-                                                                                                                 .config({
-                                                        ...(useParams() || {}),
-                                                        appletId: realm.$id
-                                                                                                                 }),
-                                                    )
-                                                                                                         .onChange(realms => setRealms(realms)) :
-                                                    VStack({alignment: cTopLeading, spacing: 5 })(
-                                                                                                         ...ForEach(documents)(applet =>
-                                                    UIWidget(applet['opa'])
-                                                    .config({
-                                                        ...(useParams() || {}),
-                                                        appletId: applet.$id
-                                                                                                                 }),
-                                                    )
-                                                    ) */
+                                                                                                
 
                                                                                             )
                                                                                                 .cornerRadius(6),
 
 
-                                                                                            /*    HStack(
-                 
-                                                                                                   HStack({spacing: 5 })(
-                                                    Text('Install Applet').fontSize(11).fontWeight('500')
-                                                    )
-                                                    .margin('5px 20px')
-                                                    .cornerRadius(5)
-                                                    .cursor('pointer')
-                                                    .foregroundColor('#7c828d')
-                                                    .background({ default: '#f3f4f7', hover: '#e4e4e4' })
-                                                    .height(24)
-                                                    .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
-                                                    .padding('8px 12px 8px 26px')
-                                                                                                       .onClick(async () => {
-                                                        SelectAppletDialog.Show(workspaceId);
-                                                                                                       })
-                 
-                 
-                                                    ).height(200), */
-                                                                                            //.outline(isEditable ? 'dotted 2px green' : 'none')
-
-                                                                                        ).padding(cHorizontal, 8)
+                                                                                        )
+                                                                                        .padding(cHorizontal, 8)
+                                                                                        .marginBottom(10)
+                                                                                        .marginLeft(10)
+                                                                                        .background('gray')
+                                                                                        .position('sticky')
+                                                                                        .top('30px')
+                                                                                        .zIndex(10)
                                                                                     )
                                                                                 }
                                                                                 )
@@ -1222,8 +1148,8 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                                                 HStack({ alignment: cLeading })(
                                                                     Text('Public Space')
-                                                                        .fontSize(14)
-                                                                        .fontWeight('500')
+                                                                        .fontSize(12)
+                                                                        .fontWeight('600')
                                                                         .foregroundColor('rgb(80, 90, 100)'),
                                                                     Spacer(),
                                                                     isAnonymous ? Fragment() :
@@ -1533,54 +1459,19 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                                     })
                                                                                             )
                                                                                                 .setCanDrag(() => void 0),
-                                                                                            // Text(documents[0]['opa']),
-                                                                                            /*  isSorting ?
-                                                                                                 SortableListView()
-                                                                                                     .items(realms)
-                                                                                                     .renderItem(realm =>
-                                                                                                         UIWidget(realm['opa'])
-                                                                                                             .config({
-                                                    ...(useParams() || {}),
-                                                    appletId: realm.$id
-                                                                                                             }),
-                                                )
-                                                                                                     .onChange(realms => setRealms(realms)) :
-                                                VStack({alignment: cTopLeading, spacing: 5 })(
-                                                                                                     ...ForEach(documents)(applet =>
-                                                UIWidget(applet['opa'])
-                                                .config({
-                                                    ...(useParams() || {}),
-                                                    appletId: applet.$id
-                                                                                                             }),
-                                                )
-                                                ) */
 
                                                                                         )
                                                                                             .cornerRadius(6),
 
 
-                                                                                        /*    HStack(
-             
-                                                                                               HStack({spacing: 5 })(
-                                                Text('Install Applet').fontSize(11).fontWeight('500')
-                                                )
-                                                .margin('5px 20px')
-                                                .cornerRadius(5)
-                                                .cursor('pointer')
-                                                .foregroundColor('#7c828d')
-                                                .background({ default: '#f3f4f7', hover: '#e4e4e4' })
-                                                .height(24)
-                                                .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
-                                                .padding('8px 12px 8px 26px')
-                                                                                                   .onClick(async () => {
-                                                    SelectAppletDialog.Show(workspaceId);
-                                                                                                   })
-             
-             
-                                                ).height(200), */
-                                                                                        //.outline(isEditable ? 'dotted 2px green' : 'none')
-
-                                                                                    ).padding(cHorizontal, 8)
+                                                                                    )
+                                                                                        .padding(cHorizontal, 8)
+                                                                                        .marginBottom(10)
+                                                                                        .marginLeft(10)
+                                                                                        .background('gray')
+                                                                                        .position('sticky')
+                                                                                        .top('30px')
+                                                                                        .zIndex(10)
                                                                                 )
                                                                             }
                                                                             )

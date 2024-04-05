@@ -20206,7 +20206,7 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                 .cornerRadius('var(--border-radius-medium)')
                 .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding())).wrap('wrap').height()))));
     }
-    static Show(workspaceId, parent = '-1', space = '@realm') {
+    static Show(workspaceId, parent = '-1', space = '@team') {
         const dialog = new SelectAppletDialog();
         dialog.ShowHeader = false;
         /*  if (width) {
