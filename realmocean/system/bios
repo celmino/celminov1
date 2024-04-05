@@ -9761,7 +9761,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* Collection default theme */
 }
 
 .rst__placeholder::before {
-  border: 3px dashed #d9d9d9;
+ /*  border: 3px dashed #d9d9d9; */
   content: '';
   position: absolute;
   top: 5px;
@@ -10137,7 +10137,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/* Collection default theme */
   right: initial;
   border-right: 12px solid #36c2f6;
   border-left: none;
-}`, "",{"version":3,"sources":["webpack://./src/css/sortable-tree.css"],"names":[],"mappings":"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","sourcesContent":["/* Collection default theme */\n\n.ReactVirtualized__Collection {}\n\n.ReactVirtualized__Collection__innerScrollContainer {}\n\n/* Grid default theme */\n\n.ReactVirtualized__Grid {}\n\n.ReactVirtualized__Grid__innerScrollContainer {}\n\n/* Table default theme */\n\n.ReactVirtualized__Table {}\n\n.ReactVirtualized__Table__Grid {}\n\n.ReactVirtualized__Table__headerRow {\n  font-weight: 700;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n\n.ReactVirtualized__Table__row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n\n.ReactVirtualized__Table__headerTruncatedText {\n  display: inline-block;\n  max-width: 100%;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n}\n\n.ReactVirtualized__Table__headerColumn,\n.ReactVirtualized__Table__rowColumn {\n  margin-right: 10px;\n  min-width: 0px;\n}\n\n.ReactVirtualized__Table__rowColumn {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.ReactVirtualized__Table__headerColumn:first-of-type,\n.ReactVirtualized__Table__rowColumn:first-of-type {\n  margin-left: 10px;\n}\n\n.ReactVirtualized__Table__sortableHeaderColumn {\n  cursor: pointer;\n}\n\n.ReactVirtualized__Table__sortableHeaderIconContainer {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n\n.ReactVirtualized__Table__sortableHeaderIcon {\n  -webkit-box-flex: 0;\n  -ms-flex: 0 0 24px;\n  flex: 0 0 24px;\n  height: 1em;\n  width: 1em;\n  fill: currentColor;\n}\n\n/* List default theme */\n\n.ReactVirtualized__List {}\n\n.rst__rowWrapper {\n  padding: 10px 10px 10px 0;\n  height: 100%;\n  box-sizing: border-box;\n}\n\n.rst__rtl.rst__rowWrapper {\n  padding: 10px 0 10px 10px;\n}\n\n.rst__row {\n  height: 100%;\n  white-space: nowrap;\n  display: flex;\n}\n\n.rst__row>* {\n  box-sizing: border-box;\n}\n\n/**\n * The outline of where the element will go if dropped, displayed while dragging\n */\n.rst__rowLandingPad,\n.rst__rowCancelPad {\n  background: hsl(158, 50%, 70%) !important;\n  border: dashed 3px hsl(158, 50%, 50%) !important;\n  box-shadow: none !important;\n  outline: none !important;\n  border-radius: 6px;\n  height: 30px !important;\n}\n\n.rst__rowLandingPad>*,\n.rst__rowCancelPad>* {\n  opacity: 0 !important;\n}\n\n.rst__rowLandingPad::before,\n.rst__rowCancelPad::before {\n  background-color: lightblue;\n  border: 3px dashed white;\n  content: '';\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: -1;\n}\n\n/**\n * Alternate appearance of the landing pad when the dragged location is invalid\n */\n.rst__rowCancelPad::before {\n  background-color: #e6a8ad;\n}\n\n/**\n * Nodes matching the search conditions are highlighted\n */\n.rst__rowSearchMatch {\n  outline: solid 3px #0080ff;\n}\n\n/**\n * The node that matches the search conditions and is currently focused\n */\n.rst__rowSearchFocus {\n  outline: solid 3px #fc6421;\n}\n\n.rst__rowContents,\n.rst__rowLabel,\n.rst__rowToolbar,\n.rst__moveHandle,\n.rst__toolbarButton {\n  display: inline-block;\n  vertical-align: middle;\n}\n\n.rst__rowContents {\n  position: relative;\n  height: 100%;\n  border: solid #bbb 1px;\n  border-left: none;\n  box-shadow: 0 2px 2px -2px;\n  padding: 0 5px 0 10px;\n  border-radius: 2px;\n  min-width: 230px;\n  flex: 1 0 auto;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  background-color: white;\n}\n\n.rst__rtl.rst__rowContents {\n  border-right: none;\n  border-left: solid #bbb 1px;\n  padding: 0 10px 0 5px;\n}\n\n.rst__rowContentsDragDisabled {\n  border-left: solid #bbb 1px;\n}\n\n.rst__rtl.rst__rowContentsDragDisabled {\n  border-right: solid #bbb 1px;\n  border-left: solid #bbb 1px;\n}\n\n.rst__rowLabel {\n  flex: 0 1 auto;\n  padding-right: 20px;\n}\n\n.rst__rtl.rst__rowLabel {\n  padding-left: 20px;\n  padding-right: inherit;\n}\n\n.rst__rowToolbar {\n  flex: 0 1 auto;\n  display: flex;\n}\n\n.rst__moveHandle,\n.rst__loadingHandle {\n  height: 100%;\n  width: 44px;\n  background: #d9d9d9 url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MiIgaGVpZ2h0PSI0MiI+PGcgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjIuOSIgPjxwYXRoIGQ9Ik0xNCAxNS43aDE0LjQiLz48cGF0aCBkPSJNMTQgMjEuNGgxNC40Ii8+PHBhdGggZD0iTTE0IDI3LjFoMTQuNCIvPjwvZz4KPC9zdmc+') no-repeat center;\n  border: solid #aaa 1px;\n  box-shadow: 0 2px 2px -2px;\n  cursor: move;\n  border-radius: 1px;\n  z-index: 1;\n}\n\n.rst__loadingHandle {\n  cursor: default;\n  background: #d9d9d9;\n}\n\n@keyframes pointFade {\n\n  0%,\n  19.999%,\n  100% {\n    opacity: 0;\n  }\n\n  20% {\n    opacity: 1;\n  }\n}\n\n.rst__loadingCircle {\n  width: 80%;\n  height: 80%;\n  margin: 10%;\n  position: relative;\n}\n\n.rst__loadingCirclePoint {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n\n.rst__rtl.rst__loadingCirclePoint {\n  right: 0;\n  left: initial;\n}\n\n.rst__loadingCirclePoint::before {\n  content: '';\n  display: block;\n  margin: 0 auto;\n  width: 11%;\n  height: 30%;\n  background-color: #fff;\n  border-radius: 30%;\n  animation: pointFade 800ms infinite ease-in-out both;\n}\n\n.rst__loadingCirclePoint:nth-of-type(1) {\n  transform: rotate(0deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(7) {\n  transform: rotate(180deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(1)::before,\n.rst__loadingCirclePoint:nth-of-type(7)::before {\n  animation-delay: -800ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(2) {\n  transform: rotate(30deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(8) {\n  transform: rotate(210deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(2)::before,\n.rst__loadingCirclePoint:nth-of-type(8)::before {\n  animation-delay: -666ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(3) {\n  transform: rotate(60deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(9) {\n  transform: rotate(240deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(3)::before,\n.rst__loadingCirclePoint:nth-of-type(9)::before {\n  animation-delay: -533ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(4) {\n  transform: rotate(90deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(10) {\n  transform: rotate(270deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(4)::before,\n.rst__loadingCirclePoint:nth-of-type(10)::before {\n  animation-delay: -400ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(5) {\n  transform: rotate(120deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(11) {\n  transform: rotate(300deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(5)::before,\n.rst__loadingCirclePoint:nth-of-type(11)::before {\n  animation-delay: -266ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(6) {\n  transform: rotate(150deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(12) {\n  transform: rotate(330deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(6)::before,\n.rst__loadingCirclePoint:nth-of-type(12)::before {\n  animation-delay: -133ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(7) {\n  transform: rotate(180deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(13) {\n  transform: rotate(360deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(7)::before,\n.rst__loadingCirclePoint:nth-of-type(13)::before {\n  animation-delay: 0ms;\n}\n\n.rst__rowTitle {\n  font-weight: bold;\n}\n\n.rst__rowTitleWithSubtitle {\n  font-size: 85%;\n  display: block;\n  height: 0.8rem;\n}\n\n.rst__rowSubtitle {\n  font-size: 70%;\n  line-height: 1;\n}\n\n.rst__collapseButton,\n.rst__expandButton {\n  appearance: none;\n  border: none;\n  position: absolute;\n  border-radius: 100%;\n  box-shadow: 0 0 0 1px #000;\n  width: 16px;\n  height: 16px;\n  padding: 0;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  cursor: pointer;\n}\n\n.rst__rtl.rst__collapseButton,\n.rst__rtl.rst__expandButton {\n  transform: translate(50%, -50%);\n}\n\n.rst__collapseButton:focus,\n.rst__expandButton:focus {\n  outline: none;\n  box-shadow: 0 0 0 1px #000, 0 0 1px 3px #83bef9;\n}\n\n.rst__collapseButton:hover:not(:active),\n.rst__expandButton:hover:not(:active) {\n  background-size: 24px;\n  height: 20px;\n  width: 20px;\n}\n\n.rst__collapseButton {\n  background: #fff url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjgiIGZpbGw9IiNGRkYiLz48ZyBzdHJva2U9IiM5ODk4OTgiIHN0cm9rZS13aWR0aD0iMS45IiA+PHBhdGggZD0iTTQuNSA5aDkiLz48L2c+Cjwvc3ZnPg==') no-repeat center;\n}\n\n.rst__expandButton {\n  background: #fff url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjgiIGZpbGw9IiNGRkYiLz48ZyBzdHJva2U9IiM5ODk4OTgiIHN0cm9rZS13aWR0aD0iMS45IiA+PHBhdGggZD0iTTQuNSA5aDkiLz48cGF0aCBkPSJNOSA0LjV2OSIvPjwvZz4KPC9zdmc+') no-repeat center;\n}\n\n/**\n * Line for under a node with children\n */\n.rst__lineChildren {\n  height: 100%;\n  display: inline-block;\n  position: absolute;\n}\n\n.rst__lineChildren::after {\n  content: '';\n  position: absolute;\n  /* background-color: black; */\n  width: 1px;\n  left: 50%;\n  bottom: 0;\n  height: 10px;\n}\n\n.rst__rtl.rst__lineChildren::after {\n  right: 50%;\n  left: initial;\n}\n\n.rst__placeholder {\n  position: relative;\n  height: 68px;\n  max-width: 300px;\n  padding: 10px;\n}\n\n.rst__placeholder,\n.rst__placeholder>* {\n  box-sizing: border-box;\n}\n\n.rst__placeholder::before {\n  border: 3px dashed #d9d9d9;\n  content: '';\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  bottom: 5px;\n  left: 5px;\n  z-index: -1;\n}\n\n/**\n * The outline of where the element will go if dropped, displayed while dragging\n */\n.rst__placeholderLandingPad,\n.rst__placeholderCancelPad {\n  border: none !important;\n  box-shadow: none !important;\n  outline: none !important;\n}\n\n.rst__placeholderLandingPad *,\n.rst__placeholderCancelPad * {\n  opacity: 0 !important;\n}\n\n.rst__placeholderLandingPad::before,\n.rst__placeholderCancelPad::before {\n  background-color: lightblue;\n  border-color: white;\n}\n\n/**\n * Alternate appearance of the landing pad when the dragged location is invalid\n */\n.rst__placeholderCancelPad::before {\n  background-color: #e6a8ad;\n}\n\n/**\n * Extra class applied to VirtualScroll through className prop\n */\n.rst__virtualScrollOverride {\n  overflow: auto !important;\n}\n\n.rst__virtualScrollOverride * {\n  box-sizing: border-box;\n}\n\n.ReactVirtualized__Grid__innerScrollContainer {\n  overflow: visible !important;\n}\n\n.rst__rtl .ReactVirtualized__Grid__innerScrollContainer {\n  direction: rtl;\n}\n\n.ReactVirtualized__Grid {\n  outline: none;\n}\n\n.rst__node {\n  min-width: 100%;\n  white-space: nowrap;\n  position: relative;\n  text-align: left;\n  --sticky: 29px;\n}\n\n.rst__node_sticky_1 {\n\n  position: sticky;\n  background-color: #F7F8F9;\n  top: calc(var(--sticky));\n  z-index: 10;\n}\n\n.rst__node_sticky_2 {\n\n  position: sticky;\n  background-color: #F7F8F9;\n  top: calc(var(--sticky) * 2);\n  z-index: 10;\n}\n\n.rst__node_sticky_3 {\n\n  position: sticky;\n  background-color: #F7F8F9;\n  top: calc(var(--sticky) * 3);\n  z-index: 10;\n}\n\n.rst__node_sticky_4 {\n\n  position: sticky;\n  background-color: #F7F8F9;\n  top: calc(var(--sticky) * 4);\n  z-index: 10;\n}\n\n.rst__node_sticky_5 {\n\n  position: sticky;\n  background-color: #F7F8F9;\n  top: calc(var(--sticky) * 5);\n  z-index: 10;\n}\n\n.rst__node_sticky_6 {\n\n  position: sticky;\n  /* background-color: #F7F8F9; */\n  top: 168px;\n  z-index: 10;\n}\n\n.rst__node.rst__rtl {\n  text-align: right;\n}\n\n.rst__nodeContent {\n  position: absolute;\n  /* margin-left: -28px;; */\n  top: 0;\n  bottom: 0;\n  width: 100%;\n}\n\n/* ==========================================================================\n   Scaffold\n\n    Line-overlaid blocks used for showing the tree structure\n   ========================================================================== */\n.rst__lineBlock,\n.rst__absoluteLineBlock {\n  height: 100%;\n  position: relative;\n  display: inline-block;\n}\n\n.rst__absoluteLineBlock {\n  position: absolute;\n  top: 0;\n}\n\n.rst__lineHalfHorizontalRight::before,\n.rst__lineFullVertical::after,\n.rst__lineHalfVerticalTop::after,\n.rst__lineHalfVerticalBottom::after {\n  position: absolute;\n  content: '';\n  /* background-color: black; */\n}\n\n/**\n * +-----+\n * |     |\n * |  +--+\n * |     |\n * +-----+\n */\n.rst__lineHalfHorizontalRight::before {\n  height: 1px;\n  top: 50%;\n  right: 0;\n  width: 50%;\n}\n\n.rst__rtl.rst__lineHalfHorizontalRight::before {\n  left: 0;\n  right: initial;\n}\n\n/**\n * +--+--+\n * |  |  |\n * |  |  |\n * |  |  |\n * +--+--+\n */\n.rst__lineFullVertical::after,\n.rst__lineHalfVerticalTop::after,\n.rst__lineHalfVerticalBottom::after {\n  width: 1px;\n  left: 50%;\n  top: 0;\n  height: 100%;\n}\n\n/**\n * +--+--+\n * |  |  |\n * |  |  |\n * |  |  |\n * +--+--+\n */\n.rst__rtl.rst__lineFullVertical::after,\n.rst__rtl.rst__lineHalfVerticalTop::after,\n.rst__rtl.rst__lineHalfVerticalBottom::after {\n  right: 50%;\n  left: initial;\n}\n\n/**\n * +-----+\n * |  |  |\n * |  +  |\n * |     |\n * +-----+\n */\n.rst__lineHalfVerticalTop::after {\n  height: 50%;\n}\n\n/**\n * +-----+\n * |     |\n * |  +  |\n * |  |  |\n * +-----+\n */\n.rst__lineHalfVerticalBottom::after {\n  top: auto;\n  bottom: 0;\n  height: 50%;\n}\n\n/* Highlight line for pointing to dragged row destination\n   ========================================================================== */\n/**\n * +--+--+\n * |  |  |\n * |  |  |\n * |  |  |\n * +--+--+\n */\n.rst__highlightLineVertical {\n  z-index: 3;\n}\n\n.rst__highlightLineVertical::before {\n  position: absolute;\n  content: '';\n  background-color: #36c2f6;\n  width: 8px;\n  margin-left: -4px;\n  left: 50%;\n  top: 0;\n  height: 100%;\n}\n\n.rst__rtl.rst__highlightLineVertical::before {\n  margin-left: initial;\n  margin-right: -4px;\n  left: initial;\n  right: 50%;\n}\n\n@keyframes arrow-pulse {\n  0% {\n    transform: translate(0, 0);\n    opacity: 0;\n  }\n\n  30% {\n    transform: translate(0, 300%);\n    opacity: 1;\n  }\n\n  70% {\n    transform: translate(0, 700%);\n    opacity: 1;\n  }\n\n  100% {\n    transform: translate(0, 1000%);\n    opacity: 0;\n  }\n}\n\n.rst__highlightLineVertical::after {\n  content: '';\n  position: absolute;\n  height: 0;\n  margin-left: -4px;\n  left: 50%;\n  top: 0;\n  border-left: 4px solid transparent;\n  border-right: 4px solid transparent;\n  border-top: 4px solid white;\n  animation: arrow-pulse 1s infinite linear both;\n}\n\n.rst__rtl.rst__highlightLineVertical::after {\n  margin-left: initial;\n  margin-right: -4px;\n  right: 50%;\n  left: initial;\n}\n\n/**\n * +-----+\n * |     |\n * |  +--+\n * |  |  |\n * +--+--+\n */\n.rst__highlightTopLeftCorner::before {\n  z-index: 3;\n  content: '';\n  position: absolute;\n  border-top: solid 8px #36c2f6;\n  border-left: solid 8px #36c2f6;\n  box-sizing: border-box;\n  height: calc(50% + 4px);\n  top: 50%;\n  margin-top: -4px;\n  right: 0;\n  width: calc(50% + 4px);\n}\n\n.rst__rtl.rst__highlightTopLeftCorner::before {\n  border-right: solid 8px #36c2f6;\n  border-left: none;\n  left: 0;\n  right: initial;\n}\n\n/**\n * +--+--+\n * |  |  |\n * |  |  |\n * |  +->|\n * +-----+\n */\n.rst__highlightBottomLeftCorner {\n  z-index: 3;\n}\n\n.rst__highlightBottomLeftCorner::before {\n  content: '';\n  position: absolute;\n  border-bottom: solid 8px #36c2f6;\n  border-left: solid 8px #36c2f6;\n  box-sizing: border-box;\n  height: calc(100% + 4px);\n  top: 0;\n  right: 12px;\n  width: calc(50% - 8px);\n}\n\n.rst__rtl.rst__highlightBottomLeftCorner::before {\n  border-right: solid 8px #36c2f6;\n  border-left: none;\n  left: 12px;\n  right: initial;\n}\n\n.rst__highlightBottomLeftCorner::after {\n  content: '';\n  position: absolute;\n  height: 0;\n  right: 0;\n  top: 100%;\n  margin-top: -12px;\n  border-top: 12px solid transparent;\n  border-bottom: 12px solid transparent;\n  border-left: 12px solid #36c2f6;\n}\n\n.rst__rtl.rst__highlightBottomLeftCorner::after {\n  left: 0;\n  right: initial;\n  border-right: 12px solid #36c2f6;\n  border-left: none;\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/css/sortable-tree.css"],"names":[],"mappings":"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","sourcesContent":["/* Collection default theme */\n\n.ReactVirtualized__Collection {}\n\n.ReactVirtualized__Collection__innerScrollContainer {}\n\n/* Grid default theme */\n\n.ReactVirtualized__Grid {}\n\n.ReactVirtualized__Grid__innerScrollContainer {}\n\n/* Table default theme */\n\n.ReactVirtualized__Table {}\n\n.ReactVirtualized__Table__Grid {}\n\n.ReactVirtualized__Table__headerRow {\n  font-weight: 700;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n\n.ReactVirtualized__Table__row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n\n.ReactVirtualized__Table__headerTruncatedText {\n  display: inline-block;\n  max-width: 100%;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n}\n\n.ReactVirtualized__Table__headerColumn,\n.ReactVirtualized__Table__rowColumn {\n  margin-right: 10px;\n  min-width: 0px;\n}\n\n.ReactVirtualized__Table__rowColumn {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.ReactVirtualized__Table__headerColumn:first-of-type,\n.ReactVirtualized__Table__rowColumn:first-of-type {\n  margin-left: 10px;\n}\n\n.ReactVirtualized__Table__sortableHeaderColumn {\n  cursor: pointer;\n}\n\n.ReactVirtualized__Table__sortableHeaderIconContainer {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n\n.ReactVirtualized__Table__sortableHeaderIcon {\n  -webkit-box-flex: 0;\n  -ms-flex: 0 0 24px;\n  flex: 0 0 24px;\n  height: 1em;\n  width: 1em;\n  fill: currentColor;\n}\n\n/* List default theme */\n\n.ReactVirtualized__List {}\n\n.rst__rowWrapper {\n  padding: 10px 10px 10px 0;\n  height: 100%;\n  box-sizing: border-box;\n}\n\n.rst__rtl.rst__rowWrapper {\n  padding: 10px 0 10px 10px;\n}\n\n.rst__row {\n  height: 100%;\n  white-space: nowrap;\n  display: flex;\n}\n\n.rst__row>* {\n  box-sizing: border-box;\n}\n\n/**\n * The outline of where the element will go if dropped, displayed while dragging\n */\n.rst__rowLandingPad,\n.rst__rowCancelPad {\n  background: hsl(158, 50%, 70%) !important;\n  border: dashed 3px hsl(158, 50%, 50%) !important;\n  box-shadow: none !important;\n  outline: none !important;\n  border-radius: 6px;\n  height: 30px !important;\n}\n\n.rst__rowLandingPad>*,\n.rst__rowCancelPad>* {\n  opacity: 0 !important;\n}\n\n.rst__rowLandingPad::before,\n.rst__rowCancelPad::before {\n  background-color: lightblue;\n  border: 3px dashed white;\n  content: '';\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: -1;\n}\n\n/**\n * Alternate appearance of the landing pad when the dragged location is invalid\n */\n.rst__rowCancelPad::before {\n  background-color: #e6a8ad;\n}\n\n/**\n * Nodes matching the search conditions are highlighted\n */\n.rst__rowSearchMatch {\n  outline: solid 3px #0080ff;\n}\n\n/**\n * The node that matches the search conditions and is currently focused\n */\n.rst__rowSearchFocus {\n  outline: solid 3px #fc6421;\n}\n\n.rst__rowContents,\n.rst__rowLabel,\n.rst__rowToolbar,\n.rst__moveHandle,\n.rst__toolbarButton {\n  display: inline-block;\n  vertical-align: middle;\n}\n\n.rst__rowContents {\n  position: relative;\n  height: 100%;\n  border: solid #bbb 1px;\n  border-left: none;\n  box-shadow: 0 2px 2px -2px;\n  padding: 0 5px 0 10px;\n  border-radius: 2px;\n  min-width: 230px;\n  flex: 1 0 auto;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  background-color: white;\n}\n\n.rst__rtl.rst__rowContents {\n  border-right: none;\n  border-left: solid #bbb 1px;\n  padding: 0 10px 0 5px;\n}\n\n.rst__rowContentsDragDisabled {\n  border-left: solid #bbb 1px;\n}\n\n.rst__rtl.rst__rowContentsDragDisabled {\n  border-right: solid #bbb 1px;\n  border-left: solid #bbb 1px;\n}\n\n.rst__rowLabel {\n  flex: 0 1 auto;\n  padding-right: 20px;\n}\n\n.rst__rtl.rst__rowLabel {\n  padding-left: 20px;\n  padding-right: inherit;\n}\n\n.rst__rowToolbar {\n  flex: 0 1 auto;\n  display: flex;\n}\n\n.rst__moveHandle,\n.rst__loadingHandle {\n  height: 100%;\n  width: 44px;\n  background: #d9d9d9 url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MiIgaGVpZ2h0PSI0MiI+PGcgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjIuOSIgPjxwYXRoIGQ9Ik0xNCAxNS43aDE0LjQiLz48cGF0aCBkPSJNMTQgMjEuNGgxNC40Ii8+PHBhdGggZD0iTTE0IDI3LjFoMTQuNCIvPjwvZz4KPC9zdmc+') no-repeat center;\n  border: solid #aaa 1px;\n  box-shadow: 0 2px 2px -2px;\n  cursor: move;\n  border-radius: 1px;\n  z-index: 1;\n}\n\n.rst__loadingHandle {\n  cursor: default;\n  background: #d9d9d9;\n}\n\n@keyframes pointFade {\n\n  0%,\n  19.999%,\n  100% {\n    opacity: 0;\n  }\n\n  20% {\n    opacity: 1;\n  }\n}\n\n.rst__loadingCircle {\n  width: 80%;\n  height: 80%;\n  margin: 10%;\n  position: relative;\n}\n\n.rst__loadingCirclePoint {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n\n.rst__rtl.rst__loadingCirclePoint {\n  right: 0;\n  left: initial;\n}\n\n.rst__loadingCirclePoint::before {\n  content: '';\n  display: block;\n  margin: 0 auto;\n  width: 11%;\n  height: 30%;\n  background-color: #fff;\n  border-radius: 30%;\n  animation: pointFade 800ms infinite ease-in-out both;\n}\n\n.rst__loadingCirclePoint:nth-of-type(1) {\n  transform: rotate(0deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(7) {\n  transform: rotate(180deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(1)::before,\n.rst__loadingCirclePoint:nth-of-type(7)::before {\n  animation-delay: -800ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(2) {\n  transform: rotate(30deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(8) {\n  transform: rotate(210deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(2)::before,\n.rst__loadingCirclePoint:nth-of-type(8)::before {\n  animation-delay: -666ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(3) {\n  transform: rotate(60deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(9) {\n  transform: rotate(240deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(3)::before,\n.rst__loadingCirclePoint:nth-of-type(9)::before {\n  animation-delay: -533ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(4) {\n  transform: rotate(90deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(10) {\n  transform: rotate(270deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(4)::before,\n.rst__loadingCirclePoint:nth-of-type(10)::before {\n  animation-delay: -400ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(5) {\n  transform: rotate(120deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(11) {\n  transform: rotate(300deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(5)::before,\n.rst__loadingCirclePoint:nth-of-type(11)::before {\n  animation-delay: -266ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(6) {\n  transform: rotate(150deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(12) {\n  transform: rotate(330deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(6)::before,\n.rst__loadingCirclePoint:nth-of-type(12)::before {\n  animation-delay: -133ms;\n}\n\n.rst__loadingCirclePoint:nth-of-type(7) {\n  transform: rotate(180deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(13) {\n  transform: rotate(360deg);\n}\n\n.rst__loadingCirclePoint:nth-of-type(7)::before,\n.rst__loadingCirclePoint:nth-of-type(13)::before {\n  animation-delay: 0ms;\n}\n\n.rst__rowTitle {\n  font-weight: bold;\n}\n\n.rst__rowTitleWithSubtitle {\n  font-size: 85%;\n  display: block;\n  height: 0.8rem;\n}\n\n.rst__rowSubtitle {\n  font-size: 70%;\n  line-height: 1;\n}\n\n.rst__collapseButton,\n.rst__expandButton {\n  appearance: none;\n  border: none;\n  position: absolute;\n  border-radius: 100%;\n  box-shadow: 0 0 0 1px #000;\n  width: 16px;\n  height: 16px;\n  padding: 0;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  cursor: pointer;\n}\n\n.rst__rtl.rst__collapseButton,\n.rst__rtl.rst__expandButton {\n  transform: translate(50%, -50%);\n}\n\n.rst__collapseButton:focus,\n.rst__expandButton:focus {\n  outline: none;\n  box-shadow: 0 0 0 1px #000, 0 0 1px 3px #83bef9;\n}\n\n.rst__collapseButton:hover:not(:active),\n.rst__expandButton:hover:not(:active) {\n  background-size: 24px;\n  height: 20px;\n  width: 20px;\n}\n\n.rst__collapseButton {\n  background: #fff url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjgiIGZpbGw9IiNGRkYiLz48ZyBzdHJva2U9IiM5ODk4OTgiIHN0cm9rZS13aWR0aD0iMS45IiA+PHBhdGggZD0iTTQuNSA5aDkiLz48L2c+Cjwvc3ZnPg==') no-repeat center;\n}\n\n.rst__expandButton {\n  background: #fff url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjgiIGZpbGw9IiNGRkYiLz48ZyBzdHJva2U9IiM5ODk4OTgiIHN0cm9rZS13aWR0aD0iMS45IiA+PHBhdGggZD0iTTQuNSA5aDkiLz48cGF0aCBkPSJNOSA0LjV2OSIvPjwvZz4KPC9zdmc+') no-repeat center;\n}\n\n/**\n * Line for under a node with children\n */\n.rst__lineChildren {\n  height: 100%;\n  display: inline-block;\n  position: absolute;\n}\n\n.rst__lineChildren::after {\n  content: '';\n  position: absolute;\n  /* background-color: black; */\n  width: 1px;\n  left: 50%;\n  bottom: 0;\n  height: 10px;\n}\n\n.rst__rtl.rst__lineChildren::after {\n  right: 50%;\n  left: initial;\n}\n\n.rst__placeholder {\n  position: relative;\n  height: 68px;\n  max-width: 300px;\n  padding: 10px;\n}\n\n.rst__placeholder,\n.rst__placeholder>* {\n  box-sizing: border-box;\n}\n\n.rst__placeholder::before {\n /*  border: 3px dashed #d9d9d9; */\n  content: '';\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  bottom: 5px;\n  left: 5px;\n  z-index: -1;\n}\n\n/**\n * The outline of where the element will go if dropped, displayed while dragging\n */\n.rst__placeholderLandingPad,\n.rst__placeholderCancelPad {\n  border: none !important;\n  box-shadow: none !important;\n  outline: none !important;\n}\n\n.rst__placeholderLandingPad *,\n.rst__placeholderCancelPad * {\n  opacity: 0 !important;\n}\n\n.rst__placeholderLandingPad::before,\n.rst__placeholderCancelPad::before {\n  background-color: lightblue;\n  border-color: white;\n}\n\n/**\n * Alternate appearance of the landing pad when the dragged location is invalid\n */\n.rst__placeholderCancelPad::before {\n  background-color: #e6a8ad;\n}\n\n/**\n * Extra class applied to VirtualScroll through className prop\n */\n.rst__virtualScrollOverride {\n  overflow: auto !important;\n}\n\n.rst__virtualScrollOverride * {\n  box-sizing: border-box;\n}\n\n.ReactVirtualized__Grid__innerScrollContainer {\n  overflow: visible !important;\n}\n\n.rst__rtl .ReactVirtualized__Grid__innerScrollContainer {\n  direction: rtl;\n}\n\n.ReactVirtualized__Grid {\n  outline: none;\n}\n\n.rst__node {\n  min-width: 100%;\n  white-space: nowrap;\n  position: relative;\n  text-align: left;\n  --sticky: 29px;\n}\n\n.rst__node_sticky_1 {\n\n  position: sticky;\n  background-color: #F7F8F9;\n  top: calc(var(--sticky));\n  z-index: 10;\n}\n\n.rst__node_sticky_2 {\n\n  position: sticky;\n  background-color: #F7F8F9;\n  top: calc(var(--sticky) * 2);\n  z-index: 10;\n}\n\n.rst__node_sticky_3 {\n\n  position: sticky;\n  background-color: #F7F8F9;\n  top: calc(var(--sticky) * 3);\n  z-index: 10;\n}\n\n.rst__node_sticky_4 {\n\n  position: sticky;\n  background-color: #F7F8F9;\n  top: calc(var(--sticky) * 4);\n  z-index: 10;\n}\n\n.rst__node_sticky_5 {\n\n  position: sticky;\n  background-color: #F7F8F9;\n  top: calc(var(--sticky) * 5);\n  z-index: 10;\n}\n\n.rst__node_sticky_6 {\n\n  position: sticky;\n  /* background-color: #F7F8F9; */\n  top: 168px;\n  z-index: 10;\n}\n\n.rst__node.rst__rtl {\n  text-align: right;\n}\n\n.rst__nodeContent {\n  position: absolute;\n  /* margin-left: -28px;; */\n  top: 0;\n  bottom: 0;\n  width: 100%;\n}\n\n/* ==========================================================================\n   Scaffold\n\n    Line-overlaid blocks used for showing the tree structure\n   ========================================================================== */\n.rst__lineBlock,\n.rst__absoluteLineBlock {\n  height: 100%;\n  position: relative;\n  display: inline-block;\n}\n\n.rst__absoluteLineBlock {\n  position: absolute;\n  top: 0;\n}\n\n.rst__lineHalfHorizontalRight::before,\n.rst__lineFullVertical::after,\n.rst__lineHalfVerticalTop::after,\n.rst__lineHalfVerticalBottom::after {\n  position: absolute;\n  content: '';\n  /* background-color: black; */\n}\n\n/**\n * +-----+\n * |     |\n * |  +--+\n * |     |\n * +-----+\n */\n.rst__lineHalfHorizontalRight::before {\n  height: 1px;\n  top: 50%;\n  right: 0;\n  width: 50%;\n}\n\n.rst__rtl.rst__lineHalfHorizontalRight::before {\n  left: 0;\n  right: initial;\n}\n\n/**\n * +--+--+\n * |  |  |\n * |  |  |\n * |  |  |\n * +--+--+\n */\n.rst__lineFullVertical::after,\n.rst__lineHalfVerticalTop::after,\n.rst__lineHalfVerticalBottom::after {\n  width: 1px;\n  left: 50%;\n  top: 0;\n  height: 100%;\n}\n\n/**\n * +--+--+\n * |  |  |\n * |  |  |\n * |  |  |\n * +--+--+\n */\n.rst__rtl.rst__lineFullVertical::after,\n.rst__rtl.rst__lineHalfVerticalTop::after,\n.rst__rtl.rst__lineHalfVerticalBottom::after {\n  right: 50%;\n  left: initial;\n}\n\n/**\n * +-----+\n * |  |  |\n * |  +  |\n * |     |\n * +-----+\n */\n.rst__lineHalfVerticalTop::after {\n  height: 50%;\n}\n\n/**\n * +-----+\n * |     |\n * |  +  |\n * |  |  |\n * +-----+\n */\n.rst__lineHalfVerticalBottom::after {\n  top: auto;\n  bottom: 0;\n  height: 50%;\n}\n\n/* Highlight line for pointing to dragged row destination\n   ========================================================================== */\n/**\n * +--+--+\n * |  |  |\n * |  |  |\n * |  |  |\n * +--+--+\n */\n.rst__highlightLineVertical {\n  z-index: 3;\n}\n\n.rst__highlightLineVertical::before {\n  position: absolute;\n  content: '';\n  background-color: #36c2f6;\n  width: 8px;\n  margin-left: -4px;\n  left: 50%;\n  top: 0;\n  height: 100%;\n}\n\n.rst__rtl.rst__highlightLineVertical::before {\n  margin-left: initial;\n  margin-right: -4px;\n  left: initial;\n  right: 50%;\n}\n\n@keyframes arrow-pulse {\n  0% {\n    transform: translate(0, 0);\n    opacity: 0;\n  }\n\n  30% {\n    transform: translate(0, 300%);\n    opacity: 1;\n  }\n\n  70% {\n    transform: translate(0, 700%);\n    opacity: 1;\n  }\n\n  100% {\n    transform: translate(0, 1000%);\n    opacity: 0;\n  }\n}\n\n.rst__highlightLineVertical::after {\n  content: '';\n  position: absolute;\n  height: 0;\n  margin-left: -4px;\n  left: 50%;\n  top: 0;\n  border-left: 4px solid transparent;\n  border-right: 4px solid transparent;\n  border-top: 4px solid white;\n  animation: arrow-pulse 1s infinite linear both;\n}\n\n.rst__rtl.rst__highlightLineVertical::after {\n  margin-left: initial;\n  margin-right: -4px;\n  right: 50%;\n  left: initial;\n}\n\n/**\n * +-----+\n * |     |\n * |  +--+\n * |  |  |\n * +--+--+\n */\n.rst__highlightTopLeftCorner::before {\n  z-index: 3;\n  content: '';\n  position: absolute;\n  border-top: solid 8px #36c2f6;\n  border-left: solid 8px #36c2f6;\n  box-sizing: border-box;\n  height: calc(50% + 4px);\n  top: 50%;\n  margin-top: -4px;\n  right: 0;\n  width: calc(50% + 4px);\n}\n\n.rst__rtl.rst__highlightTopLeftCorner::before {\n  border-right: solid 8px #36c2f6;\n  border-left: none;\n  left: 0;\n  right: initial;\n}\n\n/**\n * +--+--+\n * |  |  |\n * |  |  |\n * |  +->|\n * +-----+\n */\n.rst__highlightBottomLeftCorner {\n  z-index: 3;\n}\n\n.rst__highlightBottomLeftCorner::before {\n  content: '';\n  position: absolute;\n  border-bottom: solid 8px #36c2f6;\n  border-left: solid 8px #36c2f6;\n  box-sizing: border-box;\n  height: calc(100% + 4px);\n  top: 0;\n  right: 12px;\n  width: calc(50% - 8px);\n}\n\n.rst__rtl.rst__highlightBottomLeftCorner::before {\n  border-right: solid 8px #36c2f6;\n  border-left: none;\n  left: 12px;\n  right: initial;\n}\n\n.rst__highlightBottomLeftCorner::after {\n  content: '';\n  position: absolute;\n  height: 0;\n  right: 0;\n  top: 100%;\n  margin-top: -12px;\n  border-top: 12px solid transparent;\n  border-bottom: 12px solid transparent;\n  border-left: 12px solid #36c2f6;\n}\n\n.rst__rtl.rst__highlightBottomLeftCorner::after {\n  left: 0;\n  right: initial;\n  border-right: 12px solid #36c2f6;\n  border-left: none;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11679,7 +11679,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _assets_Icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../assets/Icons */ "./src/assets/Icons.tsx");
 /* harmony import */ var _hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../hooks/useGetProtocol */ "./src/hooks/useGetProtocol.ts");
-/* harmony import */ var _views_EmptyView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../views/EmptyView */ "./src/views/EmptyView.ts");
+/* harmony import */ var _RealmTree_RealmTree__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./RealmTree/RealmTree */ "./src/routes/@/*/views/RealmTree/RealmTree.tsx");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -11926,780 +11926,14 @@ var LeftSideMenuView = function (selectedItem) {
                     .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })(account.$id === realm.$id ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
                 // My Space
                 isAnonymous ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.PersonelRealmContext)(function () {
-                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
-                            var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
-                            var workspaceId = realm.$id;
-                            var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, 'workspace', 'ws_tree', [
-                                // Query.equal('parent', '-1'),
-                                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(250),
-                                // Query.equal('opa', 'com.celmino.widget.enterprise-modelling-tree')
-                            ]), workspaceTreeITems = _a.documents, isWorkspaceTreeLoading = _a.isLoading;
-                            var _b = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(true), appletsOpen = _b[0], setAppletsOpen = _b[1];
-                            return ((isWorkspaceTreeLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() : (workspaceTreeITems == null) ? (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('null') :
-                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading, spacing: 5 })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('My Space')
-                                    .fontSize(12)
-                                    .fontWeight('600')
-                                    .foregroundColor('rgb(80, 90, 100)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.SvgIcon)('cu3-icon-link', '#87909E', '14px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Spacer)(), isAnonymous ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
-                                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icons.Add)).width(20)
-                                        .onClick(function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog.Show(workspaceId); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_assets_Icons__WEBPACK_IMPORTED_MODULE_6__.UpIcon)).width(20)
-                                    .onClick(function () { return setAppletsOpen(!appletsOpen); }))
-                                    .position('sticky')
-                                    .top('0px')
-                                    .zIndex(10)
-                                    .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
-                                    .height(30)
-                                    //.padding(cHorizontal, 15)
-                                    .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cVertical, 5), !appletsOpen ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
-                                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })(isWorkspaceTreeLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? (0,_views_EmptyView__WEBPACK_IMPORTED_MODULE_8__.EmptyView)(workspaceId) :
-                                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
-                                            var params = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.useParams)();
-                                            var deleteCache = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteCache)(workspaceId).deleteCache;
-                                            (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(function () {
-                                                setTreeItems(buildTree(workspaceTreeITems));
-                                                _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.on('applet.added', function (_a) {
-                                                    var treeItem = _a.treeItem;
-                                                    deleteCache();
-                                                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
-                                                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(250)
-                                                    ]).then(function (_a) {
-                                                        var documents = _a.documents;
-                                                        setTreeItems(buildTree(documents));
-                                                    });
-                                                });
-                                            }, []);
-                                            var selectedItem = workspaceTreeITems === null || workspaceTreeITems === void 0 ? void 0 : workspaceTreeITems.find(function (item) { return item.$id === getSelectedId(); });
-                                            //const [realms, setRealms] = useState(documents.map(document => ({id: document.$id, ...document })));
-                                            function findChildsInTree(workspaceTree, parentNode) {
-                                                var children = [];
-                                                workspaceTree.forEach(function (item) {
-                                                    if (item.parent === (parentNode === null || parentNode === void 0 ? void 0 : parentNode.$id)) {
-                                                        children.push(item);
-                                                    }
-                                                });
-                                                return children;
-                                            }
-                                            function findItemInTree(tree, id) {
-                                                var result;
-                                                tree.forEach(function (item) {
-                                                    if (item.$id === id) {
-                                                        result = item;
-                                                    }
-                                                });
-                                                return result;
-                                            }
-                                            function buildClidren(workspaceTree, parentNode) {
-                                                var item = findItemInTree(workspaceTree, parentNode.$id);
-                                                var children = findChildsInTree(workspaceTree, item);
-                                                children = sortByStringField(children, "path");
-                                                parentNode.children = children.map(function (child) {
-                                                    var _a;
-                                                    return {
-                                                        $id: child.$id,
-                                                        title: child.name,
-                                                        parent: child.parent,
-                                                        path: child.path,
-                                                        fullPath: child.fullPath,
-                                                        tree_widget: child.tree_widget,
-                                                        iconName: child.iconName,
-                                                        iconCategory: child.iconCategory,
-                                                        iconColor: parentNode.iconColor,
-                                                        expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : ((_a = selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.fullPath) === null || _a === void 0 ? void 0 : _a.indexOf(child.$id)) > -1,
-                                                        canDrag: true,
-                                                        view: function (node) {
-                                                            if (child.type === 'applet') {
-                                                                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(child.tree_widget != null ?
-                                                                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget, 'tree')
-                                                                            .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
-                                                                        (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(child.name));
-                                                                }).appletId(child.appletId))).width('calc(100% - 32px)');
-                                                            }
-                                                            else {
-                                                                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(child.tree_widget != null ?
-                                                                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget, 'tree')
-                                                                            .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
-                                                                        (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(child.name));
-                                                                }).appletId(child.appletId)).width('calc(100% - 32px)'));
-                                                            }
-                                                        },
-                                                        children: buildClidren(workspaceTree, child)
-                                                    };
-                                                });
-                                                return parentNode.children;
-                                            }
-                                            function buildTree(workspaceTree) {
-                                                var tree = [];
-                                                var rootItems = workspaceTree === null || workspaceTree === void 0 ? void 0 : workspaceTree.filter(function (item) { return item.parent === '-1'; });
-                                                rootItems = sortByStringField(rootItems, "path");
-                                                rootItems.forEach(function (item) {
-                                                    var _a;
-                                                    if (item.parent === '-1') {
-                                                        var node = {
-                                                            $id: item.$id,
-                                                            title: item.name,
-                                                            parent: item.parent,
-                                                            path: item.path,
-                                                            fullPath: item.fullPath,
-                                                            tree_widget: item.tree_widget,
-                                                            expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[item.$id]) ? true : ((_a = selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.fullPath) === null || _a === void 0 ? void 0 : _a.indexOf(item.$id)) > -1,
-                                                            iconName: item.iconName,
-                                                            iconCategory: item.iconCategory,
-                                                            iconColor: item.iconColor,
-                                                            canDrag: false,
-                                                            view: function (node) {
-                                                                if (item.type === 'applet') {
-                                                                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(item.tree_widget != null ?
-                                                                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget, 'tree')
-                                                                                .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
-                                                                            (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name));
-                                                                    }).appletId(item.appletId))).width('calc(100% - 32px)');
-                                                                }
-                                                                else {
-                                                                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(item.tree_widget != null ?
-                                                                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget, 'tree')
-                                                                                .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
-                                                                            (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name));
-                                                                    }).appletId(item.appletId)).width('calc(100% - 32px)'));
-                                                                }
-                                                            },
-                                                            children: []
-                                                        };
-                                                        tree.push(node);
-                                                        buildClidren(workspaceTree, node);
-                                                    }
-                                                });
-                                                console.log('build tree');
-                                                return tree;
-                                            }
-                                            var _a = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]), prevTreeItems = _a[0], setPrevTreeItems = _a[1];
-                                            var _b = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]), treeItems = _b[0], setTreeItems = _b[1];
-                                            var canDrop = function (_a) {
-                                                var node = _a.node, nextParent = _a.nextParent, prevPath = _a.prevPath, nextPath = _a.nextPath;
-                                                if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
-                                                    return false;
-                                                }
-                                                if (node.isTwin && nextParent && nextParent.isTwin) {
-                                                    return false;
-                                                }
-                                                var noGrandkidsDepth = nextPath.indexOf('no-grandkids');
-                                                if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
-                                                    return false;
-                                                }
-                                                return true;
-                                            };
-                                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.TreeContext)(function () {
-                                                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)('com.celmino.widget.sortable-tree')
-                                                    .config({
-                                                    // canDrag: isEditable,
-                                                    treeItems: treeItems,
-                                                    onChange: function (_treeItems) {
-                                                        //  setPrevTreeItems([...treeItems]);
-                                                        setTreeItems(_treeItems);
-                                                    },
-                                                    onVisibilityToggle: function (_a) {
-                                                        var node = _a.node, expanded = _a.expanded;
-                                                        if (expanded) {
-                                                            expandeds[node.$id] = true;
-                                                        }
-                                                        else {
-                                                            delete expandeds[node.$id];
-                                                        }
-                                                        console.log(expandeds);
-                                                    },
-                                                    onMoveNode: function (_a) {
-                                                        var treeData = _a.treeData;
-                                                        var newTreeData = __spreadArray([], treeData, true);
-                                                        function reCreateIndex(parentNode) {
-                                                            if (parentNode.children) {
-                                                                parentNode.children.forEach(function (child, index) {
-                                                                    child.prevParent = child.parent;
-                                                                    child.prevPath = child.path;
-                                                                    child.prevFullPath = child.fullPath;
-                                                                    child.path = addZeroDigitToNumberReturnString(index, 3);
-                                                                    child.parent = parentNode.$id;
-                                                                    child.fullPath = parentNode.fullPath + '/' + child.$id;
-                                                                    if (child.prevPath == null) {
-                                                                        child.prevPath = child.path;
-                                                                    }
-                                                                    if (child.prevParent == null) {
-                                                                        child.prevParent = child.parent;
-                                                                    }
-                                                                    reCreateIndex(child);
-                                                                });
-                                                            }
-                                                        }
-                                                        newTreeData.forEach(function (item, index) {
-                                                            item.prevParent = item.parent;
-                                                            item.prevPath = item.path;
-                                                            item.prevFullPath = item.fullPath;
-                                                            item.path = addZeroDigitToNumberReturnString(index, 3);
-                                                            item.fullPath = '/' + item.$id;
-                                                            item.parent = '-1';
-                                                            reCreateIndex(item);
-                                                        });
-                                                        var changes = [];
-                                                        function getChanges(parentNode) {
-                                                            if (parentNode.children) {
-                                                                parentNode.children.forEach(function (child) {
-                                                                    if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath) || child.fullPath !== child.prevFullPath) {
-                                                                        // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
-                                                                        changes.push(child);
-                                                                    }
-                                                                    getChanges(child);
-                                                                });
-                                                            }
-                                                        }
-                                                        newTreeData.forEach(function (item, index) {
-                                                            if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath) || item.fullPath !== item.prevFullPath) {
-                                                                //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
-                                                                changes.push(item);
-                                                            }
-                                                            getChanges(item);
-                                                        });
-                                                        changes.forEach(function (item) {
-                                                            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
-                                                                path: item.path,
-                                                                fullPath: item.fullPath,
-                                                                parent: item.parent
-                                                            });
-                                                        });
-                                                        console.log(newTreeData);
-                                                    }
-                                                });
-                                            })
-                                                .setCanDrag(function () { return void 0; }))
-                                                .cornerRadius(6))
-                                                .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cHorizontal, 8)
-                                                .marginBottom(10)
-                                                .marginLeft(10)
-                                                .background('gray')
-                                                .position('sticky')
-                                                .top('30px')
-                                                .zIndex(10));
-                                        }))
-                                        .height())));
-                        });
-                    }))
-                        .cornerRadius(6)
-                        .height(), 
+                    (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.PersonelRealmContext)(function () {
+                        return (0,_RealmTree_RealmTree__WEBPACK_IMPORTED_MODULE_8__.RealmTree)('My Space', '@private');
+                    }), 
             // Team Space
             isAnonymous ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
-                    var _a = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(true), appletsOpen = _a[0], setAppletsOpen = _a[1];
-                    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, 'workspace', 'ws_tree', [
-                        // Query.equal('parent', '-1'),
-                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(250),
-                        // Query.equal('opa', 'com.celmino.widget.enterprise-modelling-tree')
-                    ]), workspaceTreeITems = _b.documents, isWorkspaceTreeLoading = _b.isLoading;
-                    return ((isWorkspaceTreeLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() : (workspaceTreeITems == null) ? (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('null') :
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Team Space')
-                            .fontSize(14)
-                            .fontWeight('500')
-                            .foregroundColor('rgb(80, 90, 100)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Spacer)(), isAnonymous ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icons.Add)).width(20)
-                                .onClick(function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog.Show(workspaceId); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_assets_Icons__WEBPACK_IMPORTED_MODULE_6__.UpIcon)).width(20)
-                            .onClick(function () { return setAppletsOpen(!appletsOpen); }))
-                            .position('sticky')
-                            .top('0px')
-                            .zIndex(10)
-                            .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
-                            .height(30)
-                            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cHorizontal, 15)
-                            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cVertical, 5), !appletsOpen ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })(isWorkspaceTreeLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? (0,_views_EmptyView__WEBPACK_IMPORTED_MODULE_8__.EmptyView)(workspaceId) :
-                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
-                                    var params = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.useParams)();
-                                    var deleteCache = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteCache)(workspaceId).deleteCache;
-                                    (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(function () {
-                                        setTreeItems(buildTree(workspaceTreeITems));
-                                        _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.on('applet.added', function (_a) {
-                                            var treeItem = _a.treeItem;
-                                            deleteCache();
-                                            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
-                                                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(250)
-                                            ]).then(function (_a) {
-                                                var documents = _a.documents;
-                                                setTreeItems(buildTree(documents));
-                                            });
-                                        });
-                                    }, []);
-                                    var selectedItem = workspaceTreeITems === null || workspaceTreeITems === void 0 ? void 0 : workspaceTreeITems.find(function (item) { return item.$id === getSelectedId(); });
-                                    //const [realms, setRealms] = useState(documents.map(document => ({id: document.$id, ...document })));
-                                    function findChildsInTree(workspaceTree, parentNode) {
-                                        var children = [];
-                                        workspaceTree.forEach(function (item) {
-                                            if (item.parent === (parentNode === null || parentNode === void 0 ? void 0 : parentNode.$id)) {
-                                                children.push(item);
-                                            }
-                                        });
-                                        return children;
-                                    }
-                                    function findItemInTree(tree, id) {
-                                        var result;
-                                        tree.forEach(function (item) {
-                                            if (item.$id === id) {
-                                                result = item;
-                                            }
-                                        });
-                                        return result;
-                                    }
-                                    function buildClidren(workspaceTree, parentNode) {
-                                        var item = findItemInTree(workspaceTree, parentNode.$id);
-                                        var children = findChildsInTree(workspaceTree, item);
-                                        children = sortByStringField(children, "path");
-                                        parentNode.children = children.map(function (child) {
-                                            var _a;
-                                            return {
-                                                $id: child.$id,
-                                                title: child.name,
-                                                parent: child.parent,
-                                                path: child.path,
-                                                fullPath: child.fullPath,
-                                                tree_widget: child.tree_widget,
-                                                iconName: child.iconName,
-                                                iconCategory: child.iconCategory,
-                                                iconColor: parentNode.iconColor,
-                                                expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : ((_a = selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.fullPath) === null || _a === void 0 ? void 0 : _a.indexOf(child.$id)) > -1,
-                                                canDrag: true,
-                                                view: function (node) {
-                                                    if (child.type === 'applet') {
-                                                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(child.tree_widget != null ?
-                                                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget, 'tree')
-                                                                    .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
-                                                                (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(child.name));
-                                                        }).appletId(child.appletId))).width('calc(100% - 32px)');
-                                                    }
-                                                    else {
-                                                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(child.tree_widget != null ?
-                                                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget, 'tree')
-                                                                    .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
-                                                                (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(child.name));
-                                                        }).appletId(child.appletId)).width('calc(100% - 32px)'));
-                                                    }
-                                                },
-                                                children: buildClidren(workspaceTree, child)
-                                            };
-                                        });
-                                        return parentNode.children;
-                                    }
-                                    function buildTree(workspaceTree) {
-                                        var tree = [];
-                                        var rootItems = workspaceTree === null || workspaceTree === void 0 ? void 0 : workspaceTree.filter(function (item) { return item.parent === '-1' && (item.spaceId === '@realm' || item.spaceId == null); });
-                                        rootItems = sortByStringField(rootItems, "path");
-                                        rootItems.forEach(function (item) {
-                                            var _a;
-                                            if (item.parent === '-1') {
-                                                var node = {
-                                                    $id: item.$id,
-                                                    title: item.name,
-                                                    parent: item.parent,
-                                                    path: item.path,
-                                                    fullPath: item.fullPath,
-                                                    tree_widget: item.tree_widget,
-                                                    expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[item.$id]) ? true : ((_a = selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.fullPath) === null || _a === void 0 ? void 0 : _a.indexOf(item.$id)) > -1,
-                                                    iconName: item.iconName,
-                                                    iconCategory: item.iconCategory,
-                                                    iconColor: item.iconColor,
-                                                    canDrag: false,
-                                                    view: function (node) {
-                                                        if (item.type === 'applet') {
-                                                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(item.tree_widget != null ?
-                                                                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget, 'tree')
-                                                                        .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
-                                                                    (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name));
-                                                            }).appletId(item.appletId))).width('calc(100% - 32px)');
-                                                        }
-                                                        else {
-                                                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(item.tree_widget != null ?
-                                                                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget, 'tree')
-                                                                        .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
-                                                                    (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name));
-                                                            }).appletId(item.appletId)).width('calc(100% - 32px)'));
-                                                        }
-                                                    },
-                                                    children: []
-                                                };
-                                                tree.push(node);
-                                                buildClidren(workspaceTree, node);
-                                            }
-                                        });
-                                        console.log('build tree');
-                                        return tree;
-                                    }
-                                    var _a = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]), prevTreeItems = _a[0], setPrevTreeItems = _a[1];
-                                    var _b = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]), treeItems = _b[0], setTreeItems = _b[1];
-                                    var canDrop = function (_a) {
-                                        var node = _a.node, nextParent = _a.nextParent, prevPath = _a.prevPath, nextPath = _a.nextPath;
-                                        if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
-                                            return false;
-                                        }
-                                        if (node.isTwin && nextParent && nextParent.isTwin) {
-                                            return false;
-                                        }
-                                        var noGrandkidsDepth = nextPath.indexOf('no-grandkids');
-                                        if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
-                                            return false;
-                                        }
-                                        return true;
-                                    };
-                                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.TreeContext)(function () {
-                                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)('com.celmino.widget.sortable-tree')
-                                            .config({
-                                            // canDrag: isEditable,
-                                            treeItems: treeItems,
-                                            onChange: function (_treeItems) {
-                                                //  setPrevTreeItems([...treeItems]);
-                                                setTreeItems(_treeItems);
-                                            },
-                                            onVisibilityToggle: function (_a) {
-                                                var node = _a.node, expanded = _a.expanded;
-                                                if (expanded) {
-                                                    expandeds[node.$id] = true;
-                                                }
-                                                else {
-                                                    delete expandeds[node.$id];
-                                                }
-                                                console.log(expandeds);
-                                            },
-                                            onMoveNode: function (_a) {
-                                                var treeData = _a.treeData;
-                                                var newTreeData = __spreadArray([], treeData, true);
-                                                function reCreateIndex(parentNode) {
-                                                    if (parentNode.children) {
-                                                        parentNode.children.forEach(function (child, index) {
-                                                            child.prevParent = child.parent;
-                                                            child.prevPath = child.path;
-                                                            child.prevFullPath = child.fullPath;
-                                                            child.path = addZeroDigitToNumberReturnString(index, 3);
-                                                            child.parent = parentNode.$id;
-                                                            child.fullPath = parentNode.fullPath + '/' + child.$id;
-                                                            if (child.prevPath == null) {
-                                                                child.prevPath = child.path;
-                                                            }
-                                                            if (child.prevParent == null) {
-                                                                child.prevParent = child.parent;
-                                                            }
-                                                            reCreateIndex(child);
-                                                        });
-                                                    }
-                                                }
-                                                newTreeData.forEach(function (item, index) {
-                                                    item.prevParent = item.parent;
-                                                    item.prevPath = item.path;
-                                                    item.prevFullPath = item.fullPath;
-                                                    item.path = addZeroDigitToNumberReturnString(index, 3);
-                                                    item.fullPath = '/' + item.$id;
-                                                    item.parent = '-1';
-                                                    reCreateIndex(item);
-                                                });
-                                                var changes = [];
-                                                function getChanges(parentNode) {
-                                                    if (parentNode.children) {
-                                                        parentNode.children.forEach(function (child) {
-                                                            if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath) || child.fullPath !== child.prevFullPath) {
-                                                                // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
-                                                                changes.push(child);
-                                                            }
-                                                            getChanges(child);
-                                                        });
-                                                    }
-                                                }
-                                                newTreeData.forEach(function (item, index) {
-                                                    if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath) || item.fullPath !== item.prevFullPath) {
-                                                        //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
-                                                        changes.push(item);
-                                                    }
-                                                    getChanges(item);
-                                                });
-                                                changes.forEach(function (item) {
-                                                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
-                                                        path: item.path,
-                                                        fullPath: item.fullPath,
-                                                        parent: item.parent
-                                                    });
-                                                });
-                                                console.log(newTreeData);
-                                            }
-                                        });
-                                    })
-                                        .setCanDrag(function () { return void 0; }))
-                                        .cornerRadius(6))
-                                        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cHorizontal, 8)
-                                        .marginBottom(10)
-                                        .marginLeft(10)
-                                        .background('gray')
-                                        .position('sticky')
-                                        .top('30px')
-                                        .zIndex(10));
-                                }))
-                                .height()))
-                            .height());
-                }), 
+                (0,_RealmTree_RealmTree__WEBPACK_IMPORTED_MODULE_8__.RealmTree)('Team Space', "@team", true), 
             // Public Space
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
-                var _a = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(true), appletsOpen = _a[0], setAppletsOpen = _a[1];
-                var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, 'workspace', 'ws_tree', [
-                    // Query.equal('spaceId', '@public'),
-                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(250),
-                    // Query.equal('opa', 'com.celmino.widget.enterprise-modelling-tree')
-                ]), workspaceTreeITems = _b.documents, isWorkspaceTreeLoading = _b.isLoading;
-                return ((isWorkspaceTreeLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() : (workspaceTreeITems == null) ? (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('null') :
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Public Space')
-                        .fontSize(12)
-                        .fontWeight('600')
-                        .foregroundColor('rgb(80, 90, 100)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Spacer)(), isAnonymous ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icons.Add)).width(20)
-                            .onClick(function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog.Show(workspaceId, '-1', '@public'); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_assets_Icons__WEBPACK_IMPORTED_MODULE_6__.UpIcon)).width(20)
-                        .onClick(function () { return setAppletsOpen(!appletsOpen); }))
-                        .position('sticky')
-                        .top('0px')
-                        .zIndex(10)
-                        .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
-                        .height(30)
-                        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cHorizontal, 15)
-                        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cVertical, 5), !appletsOpen ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })(isWorkspaceTreeLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? (0,_views_EmptyView__WEBPACK_IMPORTED_MODULE_8__.EmptyView)(workspaceId) :
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
-                                var params = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.useParams)();
-                                var deleteCache = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteCache)(workspaceId).deleteCache;
-                                (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(function () {
-                                    setTreeItems(buildTree(workspaceTreeITems));
-                                    _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.on('applet.added', function (_a) {
-                                        var treeItem = _a.treeItem;
-                                        deleteCache();
-                                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
-                                            //Query.equal('spaceId', '@public'),
-                                            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(250)
-                                        ]).then(function (_a) {
-                                            var documents = _a.documents;
-                                            setTreeItems(buildTree(documents));
-                                        });
-                                    });
-                                }, []);
-                                var selectedItem = workspaceTreeITems === null || workspaceTreeITems === void 0 ? void 0 : workspaceTreeITems.find(function (item) { return item.$id === getSelectedId(); });
-                                //const [realms, setRealms] = useState(documents.map(document => ({id: document.$id, ...document })));
-                                function findChildsInTree(workspaceTree, parentNode) {
-                                    var children = [];
-                                    workspaceTree.forEach(function (item) {
-                                        if (item.parent === (parentNode === null || parentNode === void 0 ? void 0 : parentNode.$id)) {
-                                            children.push(item);
-                                        }
-                                    });
-                                    return children;
-                                }
-                                function findItemInTree(tree, id) {
-                                    var result;
-                                    tree.forEach(function (item) {
-                                        if (item.$id === id) {
-                                            result = item;
-                                        }
-                                    });
-                                    return result;
-                                }
-                                function buildClidren(workspaceTree, parentNode) {
-                                    var item = findItemInTree(workspaceTree, parentNode.$id);
-                                    var children = findChildsInTree(workspaceTree, item);
-                                    children = sortByStringField(children, "path");
-                                    parentNode.children = children.map(function (child) {
-                                        var _a;
-                                        return {
-                                            $id: child.$id,
-                                            title: child.name,
-                                            parent: child.parent,
-                                            path: child.path,
-                                            fullPath: child.fullPath,
-                                            tree_widget: child.tree_widget,
-                                            iconName: child.iconName,
-                                            iconCategory: child.iconCategory,
-                                            iconColor: parentNode.iconColor,
-                                            expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : ((_a = selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.fullPath) === null || _a === void 0 ? void 0 : _a.indexOf(child.$id)) > -1,
-                                            canDrag: true,
-                                            view: function (node) {
-                                                if (child.type === 'applet') {
-                                                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(child.tree_widget != null ?
-                                                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget, 'tree')
-                                                                .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
-                                                            (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(child.name));
-                                                    }).appletId(child.appletId))).width('calc(100% - 32px)');
-                                                }
-                                                else {
-                                                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(child.tree_widget != null ?
-                                                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget, 'tree')
-                                                                .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
-                                                            (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(child.name));
-                                                    }).appletId(child.appletId)).width('calc(100% - 32px)'));
-                                                }
-                                            },
-                                            children: buildClidren(workspaceTree, child)
-                                        };
-                                    });
-                                    return parentNode.children;
-                                }
-                                function buildTree(workspaceTree) {
-                                    var tree = [];
-                                    var rootItems = workspaceTree === null || workspaceTree === void 0 ? void 0 : workspaceTree.filter(function (item) { return item.parent === '-1' && item.spaceId === '@public'; });
-                                    rootItems = sortByStringField(rootItems, "path");
-                                    rootItems.forEach(function (item) {
-                                        var _a;
-                                        if (item.parent === '-1') {
-                                            var node = {
-                                                $id: item.$id,
-                                                title: item.name,
-                                                parent: item.parent,
-                                                path: item.path,
-                                                fullPath: item.fullPath,
-                                                tree_widget: item.tree_widget,
-                                                expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[item.$id]) ? true : ((_a = selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.fullPath) === null || _a === void 0 ? void 0 : _a.indexOf(item.$id)) > -1,
-                                                iconName: item.iconName,
-                                                iconCategory: item.iconCategory,
-                                                iconColor: item.iconColor,
-                                                canDrag: false,
-                                                view: function (node) {
-                                                    if (item.type === 'applet') {
-                                                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(item.tree_widget != null ?
-                                                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget, 'tree')
-                                                                    .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
-                                                                (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name));
-                                                        }).appletId(item.appletId))).width('calc(100% - 32px)');
-                                                    }
-                                                    else {
-                                                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(item.tree_widget != null ?
-                                                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget, 'tree')
-                                                                    .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
-                                                                (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name));
-                                                        }).appletId(item.appletId)).width('calc(100% - 32px)'));
-                                                    }
-                                                },
-                                                children: []
-                                            };
-                                            tree.push(node);
-                                            buildClidren(workspaceTree, node);
-                                        }
-                                    });
-                                    console.log('build tree');
-                                    return tree;
-                                }
-                                var _a = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]), prevTreeItems = _a[0], setPrevTreeItems = _a[1];
-                                var _b = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]), treeItems = _b[0], setTreeItems = _b[1];
-                                var canDrop = function (_a) {
-                                    var node = _a.node, nextParent = _a.nextParent, prevPath = _a.prevPath, nextPath = _a.nextPath;
-                                    if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
-                                        return false;
-                                    }
-                                    if (node.isTwin && nextParent && nextParent.isTwin) {
-                                        return false;
-                                    }
-                                    var noGrandkidsDepth = nextPath.indexOf('no-grandkids');
-                                    if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
-                                        return false;
-                                    }
-                                    return true;
-                                };
-                                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.TreeContext)(function () {
-                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)('com.celmino.widget.sortable-tree')
-                                        .config({
-                                        // canDrag: isEditable,
-                                        treeItems: treeItems,
-                                        onChange: function (_treeItems) {
-                                            //  setPrevTreeItems([...treeItems]);
-                                            setTreeItems(_treeItems);
-                                        },
-                                        onVisibilityToggle: function (_a) {
-                                            var node = _a.node, expanded = _a.expanded;
-                                            if (expanded) {
-                                                expandeds[node.$id] = true;
-                                            }
-                                            else {
-                                                delete expandeds[node.$id];
-                                            }
-                                            console.log(expandeds);
-                                        },
-                                        onMoveNode: function (_a) {
-                                            var treeData = _a.treeData;
-                                            var newTreeData = __spreadArray([], treeData, true);
-                                            function reCreateIndex(parentNode) {
-                                                if (parentNode.children) {
-                                                    parentNode.children.forEach(function (child, index) {
-                                                        child.prevParent = child.parent;
-                                                        child.prevPath = child.path;
-                                                        child.prevFullPath = child.fullPath;
-                                                        child.path = addZeroDigitToNumberReturnString(index, 3);
-                                                        child.parent = parentNode.$id;
-                                                        child.fullPath = parentNode.fullPath + '/' + child.$id;
-                                                        if (child.prevPath == null) {
-                                                            child.prevPath = child.path;
-                                                        }
-                                                        if (child.prevParent == null) {
-                                                            child.prevParent = child.parent;
-                                                        }
-                                                        reCreateIndex(child);
-                                                    });
-                                                }
-                                            }
-                                            newTreeData.forEach(function (item, index) {
-                                                item.prevParent = item.parent;
-                                                item.prevPath = item.path;
-                                                item.prevFullPath = item.fullPath;
-                                                item.path = addZeroDigitToNumberReturnString(index, 3);
-                                                item.fullPath = '/' + item.$id;
-                                                item.parent = '-1';
-                                                reCreateIndex(item);
-                                            });
-                                            var changes = [];
-                                            function getChanges(parentNode) {
-                                                if (parentNode.children) {
-                                                    parentNode.children.forEach(function (child) {
-                                                        if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath) || child.fullPath !== child.prevFullPath) {
-                                                            // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
-                                                            changes.push(child);
-                                                        }
-                                                        getChanges(child);
-                                                    });
-                                                }
-                                            }
-                                            newTreeData.forEach(function (item, index) {
-                                                if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath) || item.fullPath !== item.prevFullPath) {
-                                                    //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
-                                                    changes.push(item);
-                                                }
-                                                getChanges(item);
-                                            });
-                                            changes.forEach(function (item) {
-                                                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
-                                                    path: item.path,
-                                                    fullPath: item.fullPath,
-                                                    parent: item.parent
-                                                });
-                                            });
-                                            console.log(newTreeData);
-                                        }
-                                    });
-                                })
-                                    .setCanDrag(function () { return void 0; }))
-                                    .cornerRadius(6))
-                                    .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cHorizontal, 8)
-                                    .marginBottom(10)
-                                    .marginLeft(10)
-                                    .background('gray')
-                                    .position('sticky')
-                                    .top('30px')
-                                    .zIndex(10));
-                            }))
-                            .height()))
-                        .height());
-            }))
+            (0,_RealmTree_RealmTree__WEBPACK_IMPORTED_MODULE_8__.RealmTree)('Public Space', "@public"), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)().height(50))
                 .height())))
                 /*  .style(`
              @media screen and (max-width: 1000px) {
@@ -12715,6 +11949,390 @@ var LeftSideMenuView = function (selectedItem) {
                 .transition('width .2s ease-in-out'));
     }));
 };
+
+
+/***/ }),
+
+/***/ "./src/routes/@/*/views/RealmTree/RealmTree.tsx":
+/*!*******************************************************!*\
+  !*** ./src/routes/@/*_/views/RealmTree/RealmTree.tsx ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RealmTree: () => (/* binding */ RealmTree)
+/* harmony export */ });
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _views_EmptyView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../views/EmptyView */ "./src/views/EmptyView.ts");
+/* harmony import */ var _TreeTitle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TreeTitle */ "./src/routes/@/*/views/RealmTree/TreeTitle.ts");
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+
+
+
+
+
+
+function addZeroDigitToNumberReturnString(number, countOfZero) {
+    var str = number + '';
+    while (str.length < countOfZero) {
+        str = '0' + str;
+    }
+    return str;
+}
+function getSelectedId() {
+    var regex = /\[(.*?)\]/;
+    var match = window.location.href.match(regex);
+    if (match && match[1]) {
+        return match[1];
+    }
+    else {
+        return null;
+    }
+}
+function sortByStringField(arr, field) {
+    return arr.slice().sort(function (a, b) {
+        var nameA = a[field].toUpperCase(); // Büyük/küçük harf duyarlı sıralama için
+        var nameB = b[field].toUpperCase(); // Büyük/küçük harf duyarlı sıralama için
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+}
+var expandeds = {};
+var spaceExpandeds = {
+    '@team': true
+};
+var RealmTree = function (title, spaceId, isOpen, sideBorderColor) {
+    if (isOpen === void 0) { isOpen = false; }
+    if (sideBorderColor === void 0) { sideBorderColor = '#56BF6F'; }
+    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
+        var isAnonymous = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAccount)().isAnonymous;
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
+        var workspaceId = realm.$id;
+        var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, 'workspace', 'ws_tree', [
+            // Query.equal('parent', '-1'),
+            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(250),
+            // Query.equal('opa', 'com.celmino.widget.enterprise-modelling-tree')
+        ]), workspaceTreeITems = _a.documents, isWorkspaceTreeLoading = _a.isLoading;
+        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(isOpen), spaceIsOpen = _b[0], setAppletsOpen = _b[1];
+        var _rootItems = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useMemo)(function () {
+            return workspaceTreeITems === null || workspaceTreeITems === void 0 ? void 0 : workspaceTreeITems.filter(function (item) { return item.parent === '-1' && (item.spaceId === spaceId); });
+        }, [workspaceTreeITems]);
+        return (isWorkspaceTreeLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_TreeTitle__WEBPACK_IMPORTED_MODULE_5__.TreeTitle)(title, spaceId, !!spaceExpandeds[spaceId], function (value) {
+                spaceExpandeds[spaceId] = value;
+                setAppletsOpen(value);
+            }), !spaceExpandeds[spaceId] ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Fragment)() :
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((_rootItems == null || _rootItems.length === 0) ? (0,_views_EmptyView__WEBPACK_IMPORTED_MODULE_4__.EmptyView)(workspaceId, spaceId) :
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
+                        var params = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useParams)();
+                        var deleteCache = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteCache)(workspaceId).deleteCache;
+                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+                            setTreeItems(buildTree(workspaceTreeITems));
+                            _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.on('applet.added', function (_a) {
+                                var treeItem = _a.treeItem;
+                                deleteCache();
+                                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
+                                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(250)
+                                ]).then(function (_a) {
+                                    var documents = _a.documents;
+                                    setTreeItems(buildTree(documents));
+                                });
+                            });
+                        }, []);
+                        var selectedItem = workspaceTreeITems === null || workspaceTreeITems === void 0 ? void 0 : workspaceTreeITems.find(function (item) { return item.$id === getSelectedId(); });
+                        //const [realms, setRealms] = useState(documents.map(document => ({id: document.$id, ...document })));
+                        function findChildsInTree(workspaceTree, parentNode) {
+                            var children = [];
+                            workspaceTree.forEach(function (item) {
+                                if (item.parent === (parentNode === null || parentNode === void 0 ? void 0 : parentNode.$id)) {
+                                    children.push(item);
+                                }
+                            });
+                            return children;
+                        }
+                        function findItemInTree(tree, id) {
+                            var result;
+                            tree.forEach(function (item) {
+                                if (item.$id === id) {
+                                    result = item;
+                                }
+                            });
+                            return result;
+                        }
+                        function buildClidren(workspaceTree, parentNode) {
+                            var item = findItemInTree(workspaceTree, parentNode.$id);
+                            var children = findChildsInTree(workspaceTree, item);
+                            children = sortByStringField(children, "path");
+                            parentNode.children = children.map(function (child) {
+                                var _a;
+                                return {
+                                    $id: child.$id,
+                                    title: child.name,
+                                    parent: child.parent,
+                                    path: child.path,
+                                    fullPath: child.fullPath,
+                                    tree_widget: child.tree_widget,
+                                    iconName: child.iconName,
+                                    iconCategory: child.iconCategory,
+                                    iconColor: parentNode.iconColor,
+                                    expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : ((_a = selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.fullPath) === null || _a === void 0 ? void 0 : _a.indexOf(child.$id)) > -1,
+                                    canDrag: true,
+                                    view: function (node) {
+                                        if (child.type === 'applet') {
+                                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
+                                                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(child.tree_widget != null ?
+                                                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)(child.tree_widget, 'tree')
+                                                        .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
+                                                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(child.name));
+                                            }).appletId(child.appletId))).width('calc(100% - 32px)');
+                                        }
+                                        else {
+                                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
+                                                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(child.tree_widget != null ?
+                                                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)(child.tree_widget, 'tree')
+                                                        .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
+                                                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(child.name));
+                                            }).appletId(child.appletId)).width('calc(100% - 32px)'));
+                                        }
+                                    },
+                                    children: buildClidren(workspaceTree, child)
+                                };
+                            });
+                            return parentNode.children;
+                        }
+                        function buildTree(workspaceTree) {
+                            var tree = [];
+                            var rootItems = workspaceTree === null || workspaceTree === void 0 ? void 0 : workspaceTree.filter(function (item) { return item.parent === '-1' && (item.spaceId === spaceId); });
+                            rootItems = sortByStringField(rootItems, "path");
+                            rootItems.forEach(function (item) {
+                                var _a;
+                                if (item.parent === '-1') {
+                                    var node = {
+                                        $id: item.$id,
+                                        title: item.name,
+                                        parent: item.parent,
+                                        path: item.path,
+                                        fullPath: item.fullPath,
+                                        tree_widget: item.tree_widget,
+                                        expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[item.$id]) ? true : ((_a = selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.fullPath) === null || _a === void 0 ? void 0 : _a.indexOf(item.$id)) > -1,
+                                        iconName: item.iconName,
+                                        iconCategory: item.iconCategory,
+                                        iconColor: item.iconColor,
+                                        canDrag: false,
+                                        view: function (node) {
+                                            if (item.type === 'applet') {
+                                                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
+                                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(item.tree_widget != null ?
+                                                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)(item.tree_widget, 'tree')
+                                                            .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
+                                                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(item.name));
+                                                }).appletId(item.appletId))).width('calc(100% - 32px)');
+                                            }
+                                            else {
+                                                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
+                                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(item.tree_widget != null ?
+                                                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)(item.tree_widget, 'tree')
+                                                            .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
+                                                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(item.name));
+                                                }).appletId(item.appletId)).width('calc(100% - 32px)'));
+                                            }
+                                        },
+                                        children: []
+                                    };
+                                    tree.push(node);
+                                    buildClidren(workspaceTree, node);
+                                }
+                            });
+                            console.log('build tree');
+                            return tree;
+                        }
+                        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)([]), prevTreeItems = _a[0], setPrevTreeItems = _a[1];
+                        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)([]), treeItems = _b[0], setTreeItems = _b[1];
+                        var canDrop = function (_a) {
+                            var node = _a.node, nextParent = _a.nextParent, prevPath = _a.prevPath, nextPath = _a.nextPath;
+                            if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
+                                return false;
+                            }
+                            if (node.isTwin && nextParent && nextParent.isTwin) {
+                                return false;
+                            }
+                            var noGrandkidsDepth = nextPath.indexOf('no-grandkids');
+                            if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
+                                return false;
+                            }
+                            return true;
+                        };
+                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.TreeContext)(function () {
+                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)('com.celmino.widget.sortable-tree')
+                                .config({
+                                // canDrag: isEditable,
+                                treeItems: treeItems,
+                                onChange: function (_treeItems) {
+                                    //  setPrevTreeItems([...treeItems]);
+                                    setTreeItems(_treeItems);
+                                },
+                                onVisibilityToggle: function (_a) {
+                                    var node = _a.node, expanded = _a.expanded;
+                                    if (expanded) {
+                                        expandeds[node.$id] = true;
+                                    }
+                                    else {
+                                        delete expandeds[node.$id];
+                                    }
+                                    console.log(expandeds);
+                                },
+                                onMoveNode: function (_a) {
+                                    var treeData = _a.treeData;
+                                    var newTreeData = __spreadArray([], treeData, true);
+                                    function reCreateIndex(parentNode) {
+                                        if (parentNode.children) {
+                                            parentNode.children.forEach(function (child, index) {
+                                                child.prevParent = child.parent;
+                                                child.prevPath = child.path;
+                                                child.prevFullPath = child.fullPath;
+                                                child.path = addZeroDigitToNumberReturnString(index, 3);
+                                                child.parent = parentNode.$id;
+                                                child.fullPath = parentNode.fullPath + '/' + child.$id;
+                                                if (child.prevPath == null) {
+                                                    child.prevPath = child.path;
+                                                }
+                                                if (child.prevParent == null) {
+                                                    child.prevParent = child.parent;
+                                                }
+                                                reCreateIndex(child);
+                                            });
+                                        }
+                                    }
+                                    newTreeData.forEach(function (item, index) {
+                                        item.prevParent = item.parent;
+                                        item.prevPath = item.path;
+                                        item.prevFullPath = item.fullPath;
+                                        item.path = addZeroDigitToNumberReturnString(index, 3);
+                                        item.fullPath = '/' + item.$id;
+                                        item.parent = '-1';
+                                        reCreateIndex(item);
+                                    });
+                                    var changes = [];
+                                    function getChanges(parentNode) {
+                                        if (parentNode.children) {
+                                            parentNode.children.forEach(function (child) {
+                                                if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath) || child.fullPath !== child.prevFullPath) {
+                                                    // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
+                                                    changes.push(child);
+                                                }
+                                                getChanges(child);
+                                            });
+                                        }
+                                    }
+                                    newTreeData.forEach(function (item, index) {
+                                        if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath) || item.fullPath !== item.prevFullPath) {
+                                            //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
+                                            changes.push(item);
+                                        }
+                                        getChanges(item);
+                                    });
+                                    changes.forEach(function (item) {
+                                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
+                                            path: item.path,
+                                            fullPath: item.fullPath,
+                                            parent: item.parent
+                                        });
+                                    });
+                                    console.log(newTreeData);
+                                }
+                            });
+                        })
+                            .setCanDrag(function () { return void 0; }))
+                            .cornerRadius(6))
+                            // .padding(cHorizontal, 8)
+                            .marginBottom(10)
+                            .marginLeft(5)
+                            .borderLeft('solid 2px ' + sideBorderColor)
+                            .position('sticky')
+                            .top('30px')
+                            .zIndex(10));
+                    }))
+                    .height()))
+                .marginLeft(5)
+                .height());
+    });
+};
+
+
+/***/ }),
+
+/***/ "./src/routes/@/*/views/RealmTree/TreeTitle.ts":
+/*!******************************************************!*\
+  !*** ./src/routes/@/*_/views/RealmTree/TreeTitle.ts ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TreeTitle: () => (/* binding */ TreeTitle)
+/* harmony export */ });
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _assets_Icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../assets/Icons */ "./src/assets/Icons.tsx");
+
+
+
+var TreeTitle = function (title, spaceId, appletsOpen, setAppletsOpen) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+    var isAnonymous = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAccount)().isAnonymous;
+    var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
+    var workspaceId = realm.$id;
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(title)
+        .fontSize(12)
+        .fontWeight('600')
+        .foregroundColor('rgb(80, 90, 100)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), isAnonymous ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)() :
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icons.Add)).width(20)
+            .onClick(function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog.Show(workspaceId, '-1', spaceId); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(_assets_Icons__WEBPACK_IMPORTED_MODULE_2__.UpIcon)).width(20)
+        .onClick(function () { return setAppletsOpen(!appletsOpen); }))
+        .position('sticky')
+        .top('0px')
+        .zIndex(10)
+        .background({ default: '#F7F8F9', hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
+        .height(30)
+        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 5)
+        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cVertical, 5)
+        .zIndex(11));
+}); };
 
 
 /***/ }),
@@ -15328,7 +14946,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 };
 
 
-var EmptyView = function (workspaceId) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+var EmptyView = function (workspaceId, spaceId) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTop, spacing: 30 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 5 })(
     //FontIcon(FontIcons.Add, 'sm', '#656f7d'),
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Add Applet').fontSize(11).fontWeight('500'))
@@ -15342,7 +14960,7 @@ var EmptyView = function (workspaceId) { return (0,_tuval_forms__WEBPACK_IMPORTE
         .padding('8px 12px 8px 26px')
         .onClick(function () { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog.Show(workspaceId);
+            _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog.Show(workspaceId, '-1', spaceId);
             return [2 /*return*/];
         });
     }); })).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\d24d').fontSize(120)

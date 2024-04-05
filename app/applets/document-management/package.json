@@ -117,7 +117,6 @@
         "@realmocean/sdk": "^1.0.100",
         "@realmocean/services": "^21.0.0-beta.5",
         "@realmocean/spreadsheet": "^19.37.9",
-        "@realmocean/vibe": "^2.82.44",
         "@tuval/cg": "^0.0.16",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.180",
@@ -142,6 +141,7 @@
         "ts-loader": "^9.4.2",
         "typescript": "^4.3.5",
         "webpack": "^5.47.0",
+        "webpack-bundle-analyzer": "^4.10.1",
         "webpack-cli": "^4.7.2"
     },
     "dependencies": {

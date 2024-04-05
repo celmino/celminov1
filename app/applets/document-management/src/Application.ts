@@ -1,11 +1,9 @@
 
-import { MyTestController } from './AppController';
-import { RouteController } from './routes/+routes';
-import { ListStatusWidget } from './widget/ListStatusWidget';
-import { TreeController } from './TreeController';
-import { SaveFolderAction } from './dialogs/AddFolderDialog';
 import { FormBuilder } from '@celmino/ui';
+import { TreeController } from './TreeController';
 import { SaveDocumentAction } from './dialogs/AddDocumentDialog';
+import { SaveFolderAction } from './dialogs/AddFolderDialog';
+import { RouteController } from './routes/+routes';
 
 const manifest = require('./manifest');
 
@@ -35,6 +33,5 @@ export class ProcessMining {
 FormBuilder.injectAction(SaveFolderAction);
 FormBuilder.injectAction(SaveDocumentAction);
 
-FormBuilder.injectView('liststatus', ListStatusWidget)
 
 

@@ -30,9 +30,13 @@ const fs = require('fs');
 
 const manifest = require('./src/manifest');
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+
+
 const umdConfig = {
     target: 'web',
-    mode: 'development',
+   // mode: 'development',
     devtool: 'source-map',
     //devtool: 'none',
     entry: manifest.application.path,
@@ -81,6 +85,7 @@ const umdConfig = {
 
         'react': 'tuval$react',
         'react-dom/client': 'tuval$react$dom',
+        'react-dom': 'tuval$react$_dom'
     },
     module: {
         rules: [
@@ -167,7 +172,9 @@ const umdConfig = {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    plugins: [{
+    plugins: [
+       // new BundleAnalyzerPlugin(),
+        {
         apply: (compiler) => {
             compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
                 const file = './dist/index.js';

@@ -8,7 +8,6 @@ import { Query, useGetDocument, useListDocuments, useUpdateDocument } from "@rea
 import React from "react";
 import { TestController } from "../TestController";
 import { moment } from "@tuval/core";
-import { Table, Text as VibeText } from "@realmocean/vibe";
 
 
 export const FolderView = (workspaceId: string, folderId: string) => UIViewBuilder(() => {
@@ -49,7 +48,7 @@ export const FolderView = (workspaceId: string, folderId: string) => UIViewBuild
                     const { openDialog } = useDialogStack();
                     return (
                         HStack({ alignment: cTopLeading })(
-                            (Table as any)()
+                           /*  (Table as any)()
                                 .height()
                                 .columns([
                                     {
@@ -101,7 +100,7 @@ export const FolderView = (workspaceId: string, folderId: string) => UIViewBuild
 
                                 ])
                                 .isLoading(isDocumentsLoading)
-                                .rows([].concat(documents?.map(document => ({ ...document })))) 
+                                .rows([].concat(documents?.map(document => ({ ...document }))))  */
                         )
                             .padding()
                     )

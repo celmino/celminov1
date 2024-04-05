@@ -2,7 +2,7 @@ import { SelectAppletDialog } from "@celmino/ui";
 import { HStack, Icon, Text, UIViewBuilder, VStack, cLeading, cTop, cTopLeading } from "@tuval/forms";
 
 
-export const EmptyView = (workspaceId: string) => UIViewBuilder(() => {
+export const EmptyView = (workspaceId: string, spaceId: string) => UIViewBuilder(() => {
     return (
         VStack(
             VStack({ alignment: cTop, spacing: 30 })(
@@ -21,7 +21,7 @@ export const EmptyView = (workspaceId: string) => UIViewBuilder(() => {
                         .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
                         .padding('8px 12px 8px 26px')
                         .onClick(async () => {
-                            SelectAppletDialog.Show(workspaceId);
+                            SelectAppletDialog.Show(workspaceId,'-1', spaceId);
                         })
 
 
@@ -41,6 +41,7 @@ export const EmptyView = (workspaceId: string) => UIViewBuilder(() => {
                 ).width().height()
 
             )
+            
                 .padding('20px 10px')
                 .border('3px dashed #E1E7EC')
                 .cornerRadius(10),
