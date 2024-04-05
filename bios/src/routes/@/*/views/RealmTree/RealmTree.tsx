@@ -41,14 +41,21 @@ function sortByStringField(arr, field) {
 }
 
 const expandeds = {};
-const spaceExpandeds = {
+
+const realmExpandeds = {
     '@team': true
+};
+
+const publicSpaceExpandeds = {
+    '@public': true
 };
 
 export const RealmTree = (title: string, spaceId: string, isOpen: boolean = false, sideBorderColor: string = '#56BF6F') => UIViewBuilder(() => {
     const { isAnonymous } = useAccount();
     const { realm } = useRealm();
     const workspaceId = realm.$id;
+
+    const spaceExpandeds = isAnonymous ? publicSpaceExpandeds : realmExpandeds;
 
     const { documents: workspaceTreeITems, isLoading: isWorkspaceTreeLoading } = useListDocuments(workspaceId, 'workspace', 'ws_tree', [
         // Query.equal('parent', '-1'),
@@ -153,7 +160,7 @@ export const RealmTree = (title: string, spaceId: string, isOpen: boolean = fals
                                                                             Text(child.name)
                                                                     )
                                                                 ).appletId(child.appletId))
-                                                        ).width('calc(100% - 32px)')
+                                                        ).width('calc(100% - 40px)')
                                                     } else {
                                                         return (
                                                             HStack(
@@ -170,7 +177,7 @@ export const RealmTree = (title: string, spaceId: string, isOpen: boolean = fals
                                                                     )
 
                                                                 ).appletId(child.appletId)
-                                                            ).width('calc(100% - 32px)')
+                                                            ).width('calc(100% - 40px)')
                                                         )
                                                     }
                                                 },
@@ -215,7 +222,7 @@ export const RealmTree = (title: string, spaceId: string, isOpen: boolean = fals
                                                                                 Text(item.name)
                                                                         )
                                                                     ).appletId(item.appletId))
-                                                            ).width('calc(100% - 32px)')
+                                                            ).width('calc(100% - 40px)')
                                                         } else {
                                                             return (
                                                                 HStack(
@@ -231,7 +238,7 @@ export const RealmTree = (title: string, spaceId: string, isOpen: boolean = fals
                                                                                 Text(item.name)
                                                                         )
                                                                     ).appletId(item.appletId)
-                                                                ).width('calc(100% - 32px)')
+                                                                ).width('calc(100% - 40px)')
                                                             )
                                                         }
                                                     },

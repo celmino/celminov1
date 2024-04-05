@@ -72,7 +72,7 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                                         titleChanged(newTitle)
                                     }
                                     editingChanged(false);
-                                   
+
                                 })
 
 
@@ -109,7 +109,7 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                                      }); */
                                 }
                                 editingChanged(false);
-                               
+
                                 //setIsEditing(false);
                             })
 
@@ -140,11 +140,11 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                 (menu == null && editMenu == null) ? Fragment() :
                     HStack({ alignment: cTrailing })(
 
-                        menu == null ? Fragment() :
+                        (menu == null || menu.length === 0) ? Fragment() :
                             MenuButton()
                                 .model(menu)
                                 .icon(AddIcon),
-                        editMenu == null ? Fragment() :
+                       ( editMenu == null || editMenu.length === 0) ? Fragment() :
                             MenuButton()
                                 .model(editMenu)
                                 .icon(EditIcon)

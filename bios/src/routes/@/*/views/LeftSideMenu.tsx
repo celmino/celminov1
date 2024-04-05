@@ -414,7 +414,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                 (
                                     VStack({ alignment: cTopLeading })
                                         (
-                                            account.$id === realm.$id ? Fragment() :
+                                          
                                                 // My Space
                                                 isAnonymous ? Fragment() :
 
@@ -424,23 +424,17 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
 
                                             // Team Space
-                                            isAnonymous ? Fragment() :
+                                            account.$id === realm.$id ? Fragment() :  isAnonymous ? Fragment() :
                                                 RealmTree('Team Space', "@team", true),
                                             // Public Space
 
-                                            RealmTree('Public Space', "@public", isAnonymous),
+                                            RealmTree('Public Space', "@public"),
                                             HStack().height(50)
                                         )
                                         .height()
                                 )
                         )
                     )
-                        /*  .style(`
-                     @media screen and (max-width: 1000px) {
-                         display:none !important;
-                       }
-                     
-                     `) */
                         .fontFamily(fontFamily)
                         .allWidth(282)
                         .transition('width .3s cubic-bezier(.2,0,0,1) 0s')

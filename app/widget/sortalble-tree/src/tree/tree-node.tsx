@@ -1,8 +1,8 @@
-import React, { Component, Children, cloneElement } from 'react';
+import React, { Component, Children, cloneElement,Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from './utils/classnames';
 
-class TreeNode extends React.Component<any,any> {
+class TreeNode extends React.Component<any, any> {
   render() {
     const {
       children,
@@ -45,7 +45,7 @@ class TreeNode extends React.Component<any,any> {
           // +--+--+
           lineClass =
             'rst__lineHalfHorizontalRight rst__lineHalfVerticalBottom';
-            
+
         } else if (i === scaffoldBlockCount - 1) {
           // Last scaffold block in the row, right before the row content
           // +--+--+
@@ -146,23 +146,26 @@ class TreeNode extends React.Component<any,any> {
     style['left'] = '0px';
 
     return connectDropTarget(
-      <div
-        {...otherProps}
-        className={classnames('rst__node',  'rst__node_sticky_' + scaffoldBlockCount,rowDirectionClass)}
-      >
-        {scaffold}
+        <div
+          {...otherProps}
+          className={classnames('rst__node', 'rst__node_sticky_' + scaffoldBlockCount, rowDirectionClass)}
+        >
+          {scaffold}
 
-        <div className="rst__nodeContent" style={style}>
-          {Children.map(children, child =>
-            cloneElement(child, {
-              isOver,
-              canDrop,
-              draggedNode,
-              scaffoldBlockCount
-            })
-          )}
+          <div className="rst__nodeContent" style={style}>
+            {Children.map(children, child =>
+              cloneElement(child, {
+                isOver,
+                canDrop,
+                draggedNode,
+                scaffoldBlockCount
+              })
+            )}
+          </div>
+        
         </div>
-      </div>
+        
+       
     );
   }
 }

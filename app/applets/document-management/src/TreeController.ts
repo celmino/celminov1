@@ -9,7 +9,7 @@ import {
 
 import { Services, useGetDocument, useGetRealm, useUpdateDocument } from '@realmocean/sdk';
 import { EventBus, is } from '@tuval/core';
-import { useApplet, useAppletNavigate, useRealm, useDeleteApplet } from '@celmino/ui';
+import { useApplet, useAppletNavigate, useRealm, useDeleteApplet, useAccount } from '@celmino/ui';
 import { ContextMenu } from './views/ContextMenu';
 
 
@@ -32,7 +32,7 @@ export class TreeController extends UIController {
 
 
 
-
+        const { isAnonymous } = useAccount();
         const { realm } = useRealm();
         const { applet } = useApplet();
 
@@ -91,47 +91,49 @@ export class TreeController extends UIController {
                         return [];
                         // return subNodes(TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected)
                     },
-                    requestMenu: (node) => ContextMenu(workspaceId, node.appletId, node.$id),
-                    requestEditMenu: (node) => [
-                        {
-                            title: 'Rename ' + item.name,
-                            icon: SvgIcon('svg-sprite-global__edit', '#151719', '18px', '18px'),
-                            onClick: () => setIsEditing(true)
-                        },
+                    requestMenu: (node) => isAnonymous ? [] : ContextMenu(workspaceId, node.appletId, node.$id),
+                    requestEditMenu: (node) => isAnonymous ?
+                        [] :
+                        [
+                            {
+                                title: 'Rename ' + item.name,
+                                icon: SvgIcon('svg-sprite-global__edit', '#151719', '18px', '18px'),
+                                onClick: () => setIsEditing(true)
+                            },
 
-                        {
-                            title: 'Applet settings',
-                            icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                            onClick: () => navigate(`settings/general`)
-                        },
+                            {
+                                title: 'Applet settings',
+                                icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                                onClick: () => navigate(`settings/general`)
+                            },
 
-                        {
-                            title: 'Applet settings',
-                            icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                            onClick: () => {
-                                Services.Databases.listCollections(workspaceId, appletId).then((collections) => {
-                                    alert(collections.collections)
-                                    for (let collection of collections.collections) {
-                                        Services.Databases.deleteAllDocument(workspaceId, appletId, collection.$id)
-                                    }
-                                });
+                            {
+                                title: 'Applet settings',
+                                icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                                onClick: () => {
+                                    Services.Databases.listCollections(workspaceId, appletId).then((collections) => {
+                                        alert(collections.collections)
+                                        for (let collection of collections.collections) {
+                                            Services.Databases.deleteAllDocument(workspaceId, appletId, collection.$id)
+                                        }
+                                    });
 
-                            }
-                        },
-                        {
-                            title: 'Delete Applet',
-                            icon: SvgIcon('svg-sprite-global__delete', '#bc4841', '18px', '18px'),
-                            color: '#bc4841',
-                            onClick: () => {
-                                deleteApplet(applet.$id, () => {
-                                    // alert('deleted')
-                                    EventBus.Default.fire('applet.added', { treeItem: item })
-                                })
-                            }
-                        },
+                                }
+                            },
+                            {
+                                title: 'Delete Applet',
+                                icon: SvgIcon('svg-sprite-global__delete', '#bc4841', '18px', '18px'),
+                                color: '#bc4841',
+                                onClick: () => {
+                                    deleteApplet(applet.$id, () => {
+                                        // alert('deleted')
+                                        EventBus.Default.fire('applet.added', { treeItem: item })
+                                    })
+                                }
+                            },
 
 
-                    ],
+                        ],
                     requestNavigation: () => {
                         //  alert(JSON.stringify(item));
                         if (onItemSelected == null) {

@@ -5376,10 +5376,10 @@ var TreeNode2 = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPOR
             })
                 .overflow('hidden')
                 .height(), (menu == null && editMenu == null) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })(menu == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((menu == null || menu.length === 0) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)()
                 .model(menu)
-                .icon(_Icons__WEBPACK_IMPORTED_MODULE_3__.AddIcon), editMenu == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+                .icon(_Icons__WEBPACK_IMPORTED_MODULE_3__.AddIcon), (editMenu == null || editMenu.length === 0) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)()
                 .model(editMenu)
                 .icon(_Icons__WEBPACK_IMPORTED_MODULE_3__.EditIcon))
