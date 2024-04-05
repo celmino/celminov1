@@ -428,7 +428,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                 RealmTree('Team Space', "@team", true),
                                             // Public Space
 
-                                            RealmTree('Public Space', "@public"),
+                                            RealmTree('Public Space', "@public", isAnonymous),
                                             HStack().height(50)
                                         )
                                         .height()

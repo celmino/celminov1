@@ -11933,7 +11933,7 @@ var LeftSideMenuView = function (selectedItem) {
             isAnonymous ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
                 (0,_RealmTree_RealmTree__WEBPACK_IMPORTED_MODULE_8__.RealmTree)('Team Space', "@team", true), 
             // Public Space
-            (0,_RealmTree_RealmTree__WEBPACK_IMPORTED_MODULE_8__.RealmTree)('Public Space', "@public"), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)().height(50))
+            (0,_RealmTree_RealmTree__WEBPACK_IMPORTED_MODULE_8__.RealmTree)('Public Space', "@public", isAnonymous), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)().height(50))
                 .height())))
                 /*  .style(`
              @media screen and (max-width: 1000px) {
