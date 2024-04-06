@@ -16,3 +16,5 @@ export declare const SettingsIcon: () => React.JSX.Element;
 export declare const MembersIcon: () => React.JSX.Element;
 export declare const TabsIcon: () => React.JSX.Element;
 export declare const StatusesIcon: () => React.JSX.Element;
+export declare const TaskTypesIcon: () => React.JSX.Element;
+export declare const SprintIcon: () => React.JSX.Element;

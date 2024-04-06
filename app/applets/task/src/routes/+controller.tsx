@@ -13,12 +13,13 @@ import {
 import { ActionPanel } from "../views/ActionPanel";
 import { ViewHeader } from "../views/ViewHeader";
 import React, { Fragment } from "react";
+import { EventBus } from "@tuval/core";
 
 
 export class AppletController extends UIController {
     public override LoadView(): UIView {
         const [selected, setSelected] = useState('overview');
-        const { applet } = useApplet();
+        const { applet, updateAppletName } = useApplet();
         return (
             ReactView(
              
@@ -27,7 +28,11 @@ export class AppletController extends UIController {
                         VStack({ alignment: cTop })(
 
                             ActionPanel(),
-                            ViewHeader(applet.name, () => void 0),
+                            ViewHeader(applet.name, (name) => {
+                                updateAppletName(name, ()=> {
+                                    EventBus.Default.fire('applet.added', { treeItem: applet })
+                                })
+                            }),
                             
                             VStack(
                                 VStack(

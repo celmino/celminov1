@@ -23,6 +23,14 @@ export const Collections = {
         {
             "$id": "viewContents",
             "name": "View Contents"
+        },
+        {
+            "$id": "list",
+            "name": "List"
+        },
+        {
+            "$id": "taskType",
+            "name": "Task Type"
         }
     ]
 }

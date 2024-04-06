@@ -13,6 +13,7 @@ import { TeamController } from "./team/+controller";
 import { MembersController } from "./settings/members/+controller";
 import { TabsController } from "./settings/tabs/+controller";
 import { StatusesController } from "./settings/statuses/+controller";
+import { TaskTypesController } from "./settings/taskTypes/+controller";
 
 
 export class RouteController extends UIController {
@@ -41,7 +42,8 @@ export class RouteController extends UIController {
                             UIRoute('general', GeneralSettingsController),
                             UIRoute('members', MembersController),
                             UIRoute('tabs', TabsController),
-                            UIRoute('statuses', StatusesController)
+                            UIRoute('statuses', StatusesController),
+                            UIRoute('taskTypes', TaskTypesController)
                         )
                     )
                 )

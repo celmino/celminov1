@@ -7,7 +7,7 @@ import {
     useState
 } from '@tuval/forms';
 
-import { AboutDialog, ListApplet, SelectAppletDialog, useApplet, useAppletNavigate, useRealm, useRealmTree } from '@celmino/ui';
+import { AboutDialog, DynoDialog, ListApplet, SelectAppletDialog, useApplet, useAppletNavigate, useRealm, useRealmTree } from '@celmino/ui';
 import { useCreateDocument, useGetDocument, useGetOrganization, useGetRealm, useUpdateDatabase, useUpdateDocument } from '@realmocean/sdk';
 
 import { EventBus } from '@tuval/core';
@@ -17,8 +17,9 @@ import { AddFolderDialog } from './dialogs/AddFolderDialog';
 import { AddListDialog } from './dialogs/AddListDialog';
 import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
 import { AddWhiteboardDialog } from './dialogs/AddWhiteboardDialog'; */
-import { AppletIcon, BoardIcon, CalendarIcon, FeedIcon, ListIcon, ReportIcon, TableIcon, TimelineIcon } from './resources/Icons';
+import { AppletIcon, BoardIcon, CalendarIcon, FeedIcon, ListIcon, ReportIcon, SprintIcon, TableIcon, TimelineIcon } from './resources/Icons';
 import { getAppletId, getListId, isAppletOnly, isAppletSettings } from './utils';
+import { AddListDialog } from './dialogs/AddListDialog';
 
 
 
@@ -32,7 +33,7 @@ export class WorkspaceTreeWidgetController extends UIController {
         const isLoading = false;
 
         const {realm} = useRealm();
-        const {applet} = useApplet();
+        const {applet, updateAppletName} = useApplet();
         const workspaceId = realm.$id;
         const appletId = applet.$id; 
 
@@ -69,7 +70,10 @@ export class WorkspaceTreeWidgetController extends UIController {
                         isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
                         editingChanged: (status) => setIsEditing(status),
                         titleChanged: (title) => {
-                            updateDatabase({
+                            updateAppletName(title, ()=> {
+                                EventBus.Default.fire('applet.added', { treeItem: item })
+                            })
+                         /*    updateDatabase({
                                 databaseId: appletId,
                                 name: title
                             }, () => {
@@ -92,7 +96,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                                         EventBus.Default.fire('applet.added', { treeItem: item })
                                     })
                                 })
-                            })
+                            }) */
 
                         },
                         subNodes: (TreeNode, level, nodeType, parentId, workspaceId, appletId) => {
@@ -101,26 +105,31 @@ export class WorkspaceTreeWidgetController extends UIController {
                         requestMenu: (node) => {
                             return [
                                 {
-                                    title: 'Add view',
+                                    title: 'Add to Task List',
                                     type: 'Title'
                                 },
-                                {
+                               /*  {
                                     title: 'Table',
                                     icon: Icon(TableIcon).foregroundColor('#7C828D'),
                                     //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                                 },
-
-                                {
+ */
+                               /*  {
                                     title: 'Board',
                                     icon: Icon(BoardIcon).foregroundColor('#7C828D'),
                                     //onClick: () => DynoDialog.Show(AddBoardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                                },
+                                }, */
                                 {
                                     title: 'List',
                                     icon: Icon(ListIcon).foregroundColor('#7C828D'),
                                     //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                                 },
                                 {
+                                    title: 'Sprint',
+                                    icon: Icon(SprintIcon).foregroundColor('#7C828D'),
+                                    onClick: () => DynoDialog.Show(AddListDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                              /*   {
                                     title: 'Timeline',
                                     icon: Icon(TimelineIcon).foregroundColor('#7C828D'),
                                     //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
@@ -139,7 +148,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                                     title: 'Feed',
                                     icon: Icon(FeedIcon).foregroundColor('#7C828D'),
                                     //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                                },
+                                }, */
                                 {
                                     type: 'Divider'
                                 },

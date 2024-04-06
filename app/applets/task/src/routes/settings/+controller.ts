@@ -1,7 +1,7 @@
 
 import { useAppletNavigate } from "@celmino/ui";
 import { ForEach, HStack, Heading, Icon, Text, UIFormController, UIRouteOutlet, VStack, cLeading, cTopLeading } from "@tuval/forms";
-import { MembersIcon, SettingsIcon, StatusesIcon, TabsIcon } from "../../resources/Icons";
+import { MembersIcon, SettingsIcon, StatusesIcon, TabsIcon, TaskTypesIcon } from "../../resources/Icons";
 
 export function getSettingsName() {
     var url = window.location.href;
@@ -53,6 +53,12 @@ export class SettingsController extends UIFormController {
                 title: 'Statuses',
                 url: `settings/statuses`,
                 icon: StatusesIcon
+            },
+            {
+                id: 'taskTypes',
+                title: 'Task Types',
+                url: `settings/taskTypes`,
+                icon: TaskTypesIcon
             }
         ]
 

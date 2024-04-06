@@ -110,3 +110,12 @@ export const StatusesIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width={16} height={16} style={{transform:'rotate(90deg)'}} ><path fill="currentColor" d="M48 112l0 288H96V112H48zM0 112C0 85.5 21.5 64 48 64H96c26.5 0 48 21.5 48 48V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112zm224 0V400h48V112H224zm-48 0c0-26.5 21.5-48 48-48h48c26.5 0 48 21.5 48 48V400c0 26.5-21.5 48-48 48H224c-26.5 0-48-21.5-48-48V112z"></path></svg>
 )
 
+export const TaskTypesIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20"><g><g id="b298f203-72b6-4abc-a65a-625e63fce0e7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><circle cx="12.03" cy="14.95" r="2.76"></circle><path d="M15.82 3.33L18.73 8.37 12.9 8.37 15.82 3.33zM5.53 2.4L7 5.38 10.28 5.86 7.91 8.17 8.47 11.44 5.53 9.9 2.59 11.44 3.16 8.17.79 5.86 4.07 5.38 5.53 2.4z"></path></g></g></svg>
+)
+
+
+export const SprintIcon = () => (
+<svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.554 13.923H16.623M15.264 15.282L16.623 13.923V13.905L15.282 12.564M4.22101 11.817C3.48186 10.8484 3.09198 9.65838 3.11472 8.44021 3.13746 7.22204 3.57149 6.04737 4.34627 5.10707 5.12105 4.16677 6.19105 3.51612 7.38239 3.26085 8.57373 3.00558 9.81639 3.16069 10.9084 3.70099 12.0004 4.24128 12.8777 5.13499 13.3975 6.2369 13.9174 7.3388 14.0494 8.58413 13.7719 9.7705 13.4945 10.9569 12.8241 12.0146 11.8695 12.7717 10.915 13.5289 9.73239 13.9409 8.51401 13.941H1.37701" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+)
+

@@ -131,7 +131,6 @@ export const ListApplet: {
                 name: string;
                 type: string;
                 fieldInfo: string;
-                collectionId: string;
             }[];
             name: string;
             id: string;
@@ -246,7 +245,11 @@ export const PersonelRealmContextProvider: React.Context<any>;
 export function AppletContext(childFunc: () => UIView): AppletContextClass;
 
 export const AppletContextProvider: React.Context<any>;
-export const useApplet: () => any;
+export const useApplet: () => {
+    applet: any;
+    updateAppletName: Function;
+    isLoading: boolean;
+};
 
 export function TreeContext(childFunc: () => UIView): TreeContextClass;
 
