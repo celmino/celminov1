@@ -5,6 +5,8 @@ import { UIViewBuilder, useState, Fragment, VStack, Text, cTopLeading, HStack, c
 import { UpIcon } from "../../../../../assets/Icons";
 import { EmptyView } from "../../../../../views/EmptyView";
 import { TreeTitle } from "./TreeTitle";
+import { useTransition } from 'transition-hook'
+import { useRef } from 'react'
 
 function addZeroDigitToNumberReturnString(number, countOfZero) {
     let str = number + '';
@@ -69,6 +71,16 @@ export const RealmTree = (title: string, spaceId: string, isOpen: boolean = fals
         return workspaceTreeITems?.filter(item => item.parent === '-1' && (item.spaceId === spaceId))
     }, [workspaceTreeITems])
 
+    const expanded = spaceExpandeds[spaceId];
+    const { stage, shouldMount } = useTransition(expanded, 300) // (state, timeout)
+    const ref: any = useRef();
+
+    const [height1, setHeight1] = useState<any>('auto');
+    const [height, setHeight] = useState<any>('auto');
+
+   
+
+   
     return (
         isWorkspaceTreeLoading ? Fragment() :
             VStack({ alignment: cTopLeading })(
@@ -76,10 +88,13 @@ export const RealmTree = (title: string, spaceId: string, isOpen: boolean = fals
 
                     TreeTitle(title, spaceId, !!spaceExpandeds[spaceId], (value) => {
                         spaceExpandeds[spaceId] = value;
-                        setAppletsOpen(value)
+                        setAppletsOpen(value);
+                        expanded ? 
+                        setHeight(ref?.current?.getBoundingClientRect().height - 30) :
+                        setHeight1(ref?.current?.getBoundingClientRect().height - 30) 
                     }),
 
-                    !spaceExpandeds[spaceId] ? Fragment() :
+                    !expanded ? Fragment() :
 
                         VStack({ alignment: cTopLeading })(
                             (_rootItems == null || _rootItems.length === 0) ? EmptyView(workspaceId, spaceId) :
@@ -385,11 +400,14 @@ export const RealmTree = (title: string, spaceId: string, isOpen: boolean = fals
                                     )
                                 })
                         )
-                            .height()
+                          //  .overflow('hidden')
+                          //  .transition('.3s')
+                            .height(/* stage === 'enter' ? expanded ? height + 'px' : height1 + 'px': '0px' */)
 
                 )
 
             )
+                .ref(ref)
                 .marginLeft(5)
                 .height()
     )

@@ -102,7 +102,6 @@
         ]
     },
     "dependencies": {
-        "@celmino/iu": "^0.0.0",
         "@celmino/ui": "^1.0.49",
         "@realmocean/antd": "^21.0.30",
         "@realmocean/sdk": "^1.0.100",
@@ -114,6 +113,7 @@
         "is-valid-domain": "^0.1.6",
         "react-promise-suspense": "^0.3.4",
         "shelljs": "^0.8.5",
+        "transition-hook": "^1.5.2",
         "ts-loader": "^9.5.1",
         "typescript": "^5.4.2",
         "webpack": "^5.90.3",
