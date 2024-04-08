@@ -349,7 +349,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                         .onClick(() => {
                                                             const protocol = useGetProtocol();
                                                             const domainName = useGetHDomainName();
-                                                            deleteSession({ sessionId: 'current' }, () => window.location.href = `${protocol}//${domainName}/app`);
+                                                            deleteSession({ sessionId: 'current' }, () => window.location.href = `/@realm`);
 
 
                                                         }),

@@ -7,7 +7,6 @@ export const useRealmNavigate = () => {
     const { account,isAnonymous } = useAccount();
     const organization = useOrganization();
     const { realm } = useRealm();
-    const { applet } = useApplet();
 
     const navigate = useNavigate();
 

@@ -1,4 +1,4 @@
-import { Services, useCreateEmailSession } from "@realmocean/sdk";
+import { Services, useCreateEmailSession, useUpdateName } from "@realmocean/sdk";
 import { HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
@@ -71,6 +71,7 @@ var subDomain = /:\/\/([^\/]+)/.exec(window.location.href)[1];
 */
 
 
+
 export class LoginController extends CelminoController {
     public override LoadView(): UIView {
 
@@ -78,6 +79,8 @@ export class LoginController extends CelminoController {
         const { createEmailSession, isSuccess, isError, error } = useCreateEmailSession('console');
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
+
+        const {updateName} =  useUpdateName('console');
 
         return (
             VStack(
@@ -201,7 +204,9 @@ export class LoginController extends CelminoController {
                                         .fontFamily('"Graphik Regular", sans-serif')
                                         .cursor('pointer')
                                         .onClick(() => {
-                                            navigate('/signup');
+                                           // navigate('/signup');
+                                           updateName({name: 'Hans'})
+                                         
                                         })
                                 )
 

@@ -1,4 +1,4 @@
-import { useGetOrganization, useGetRealm } from "@realmocean/sdk";
+import { useGetDocument, useGetOrganization, useGetRealm } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 import { useParams } from "@tuval/forms";
 import React, { Fragment } from "react";
@@ -35,17 +35,21 @@ export function SubDomainRealmContextRenderer({ control }: { control: RealmConte
 
 
     const subdomain = useGetSubdomain();
+    const { document: realm, isLoading } = useGetDocument({
+        projectId: subdomain,
+        databaseId: 'workspace',
+        collectionId: 'realmInfo',
+        documentId: subdomain
+    })
 
-  
+    if (isLoading) {
+        return <Fragment></Fragment>
+    }
+
     return (
         is.function(control.vp_ChildFunc) ?
             (
-                <RealmContextProvider.Provider value={{
-                    realm: {
-                        $id: subdomain,
-                        name: 'Realm'
-                    }
-                }}>
+                <RealmContextProvider.Provider value={{ realm }}>
                     <Proxy control={control}></Proxy>
                 </RealmContextProvider.Provider >
             ) : <Fragment />

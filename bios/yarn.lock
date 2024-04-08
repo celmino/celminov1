@@ -1177,7 +1177,7 @@
     antd "^5.15.1"
     dayjs "^1.11.9"
 
-"@realmocean/atlaskit@^17.8.24":
+"@realmocean/atlaskit@^17.8.24", "@realmocean/atlaskit@^17.8.25":
   version "17.8.25"
   resolved "https://registry.npmjs.org/@realmocean/atlaskit/-/atlaskit-17.8.25.tgz"
   integrity sha512-zW4RUU8ol0QGe1WhYvuiYHbr3lFvPRaXieXkHkZIhPf52UbAt+QDqGQEwCClimzdtYeDb9ugYrwlgl0144pH3A==
@@ -1219,10 +1219,10 @@
   resolved "https://registry.npmjs.org/@realmocean/navigations/-/navigations-0.0.3.tgz"
   integrity sha512-zsNno1NP0GIP53xaFy0m+DpqPiyGD0bOb8TFl5PjjiUd/ndlPbupoZdligDHvCAIJ2U7v+NnJ9LWO6OA8sChUQ==
 
-"@realmocean/sdk@^1.0.100":
-  version "1.0.100"
-  resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.100.tgz"
-  integrity sha512-c/I34KQL+ovbU+1bS/5xztHTZXuGFxzSQ1e+0YiaULAMBYSpzsh/zSP8GK/4+YXpFmEbOoyUS7urknEPHuKjvA==
+"@realmocean/sdk@^1.0.100", "@realmocean/sdk@^1.0.108":
+  version "1.0.108"
+  resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.108.tgz"
+  integrity sha512-i/dgfF8S5CcFUjvhgSAQpz5Z/Gtl2NB+y1LxTUi8TUulVORgPlAguoahzfJDHHmAhEjAaXD3eUyTkT9eMWkwCA==
   dependencies:
     "@editorjs/image" "^2.8.1"
     "@editorjs/inline-code" "^1.4.0"
@@ -1242,6 +1242,7 @@
     sass-loader "^13.3.2"
     style-loader "^3.3.3"
     to-string-loader "^1.2.0"
+    web-vitals "^3.5.2"
 
 "@realmocean/vibe@^2.82.61":
   version "2.82.61"
@@ -6461,6 +6462,11 @@ web-namespaces@^1.0.0:
   version "1.1.4"
   resolved "https://registry.npmjs.org/web-namespaces/-/web-namespaces-1.1.4.tgz"
   integrity sha512-wYxSGajtmoP4WxfejAPIr4l0fVh+jeMXZb08wNc0tMg6xsfZXj3cECqIK0G7ZAqUq0PP8WlMDtaOGVBTAWztNw==
+
+web-vitals@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.npmjs.org/web-vitals/-/web-vitals-3.5.2.tgz"
+  integrity sha512-c0rhqNcHXRkY/ogGDJQxZ9Im9D19hDihbzSQJrsioex+KnFgmMzBiy57Z1EjkhX/+OjyBpclDCzz2ITtjokFmg==
 
 webpack-cli@^5.1.4, webpack-cli@5.x.x:
   version "5.1.4"

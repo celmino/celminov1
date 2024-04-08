@@ -79,6 +79,7 @@ const webConfig = {
 
         '@realmocean/imageeditor': 'realmocean$imageeditor',
         '@realmocean/antd':'realmocean$antd',
+        '@realmocean/atlaskit':'realmocean$atlaskit',
         '@realmocean/sdk': 'realmocean$sdk',
         '@realmocean/ui': 'realmocean$ui',
         '@celmino/ui': 'celmino$ui',

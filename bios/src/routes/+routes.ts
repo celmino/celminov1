@@ -22,6 +22,8 @@ import { LeftSideMenuView } from "./@/*/views/LeftSideMenu"
 import { SettingsController } from "./@/settings/+controller"
 import { GeneralSettingController } from "./@/settings/general/+controller"
 import { SecuritySettingController } from "./@/settings/security/+controller"
+import { UsersController } from "./@/settings/users/+controller"
+import { InviteController } from "./invite/+controller"
 
 
 export class HomeController extends UIController {
@@ -73,7 +75,8 @@ export const Routes = () => {
                 ),
                 UIRoute('settings', SettingsController).children(
                     UIRoute('general', GeneralSettingController),
-                    UIRoute('security', SecuritySettingController)
+                    UIRoute('security', SecuritySettingController),
+                    UIRoute('users', UsersController)
                 )
             ),
 
@@ -104,7 +107,8 @@ export const Routes = () => {
             UIRoute('/signup', SignupController),
             UIRoute('/logout', LogoutController),
             UIRoute('/reset-password', ResetPasswordController),
-            UIRoute('/update-password', UpdatePasswordController)
+            UIRoute('/update-password', UpdatePasswordController),
+            UIRoute('/invite', InviteController),
         )
     )
 }

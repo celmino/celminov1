@@ -19955,13 +19955,17 @@ function RealmContextRenderer({ control }) {
 }
 function SubDomainRealmContextRenderer({ control }) {
     const subdomain = (0,_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_5__.useGetSubdomain)();
+    const { document: realm, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({
+        projectId: subdomain,
+        databaseId: 'workspace',
+        collectionId: 'realmInfo',
+        documentId: subdomain
+    });
+    if (isLoading) {
+        return react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null);
+    }
     return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) ?
-        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: {
-                realm: {
-                    $id: subdomain,
-                    name: 'Realm'
-                }
-            } },
+        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: { realm } },
             react__WEBPACK_IMPORTED_MODULE_3___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
 }
 
@@ -20860,7 +20864,6 @@ const useRealmNavigate = () => {
     const { account, isAnonymous } = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useAccount)();
     const organization = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useOrganization)();
     const { realm } = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useRealm)();
-    const { applet } = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useApplet)();
     const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
     return {
         navigate: (url) => {

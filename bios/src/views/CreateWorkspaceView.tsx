@@ -21,11 +21,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
     const { createRealm, isLoading } = useCreateRealm();
     const { deleteSession } = useDeleteSession('console');
 
-
     const { account } = useAccount();
-
-
-
 
     return (
         isOrganizationLoading ? Text('Loading...') : organization == null ? UINavigate('/app/organization/select') :
@@ -136,8 +132,16 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         organizationId: organization?.$id,
                                     }, async (workspace) => {
 
+                                    
+                                       
 
                                         const database = await Services.Databases.create(workspace.$id, 'workspace', 'Workspace', 'workspace');
+
+                                        await Services.Databases.createCollection(workspace.$id, database.$id, 'realmInfo', 'RealmInfo');
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'name', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'teamId', 255, false);
+
+
                                         const appletCol = await Services.Databases.createCollection(workspace.$id, database.$id, 'applets', 'Applets');
                                         const nameAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'name', 255, false);
                                         const parent = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'parent', 255, false);
@@ -161,6 +165,10 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false);
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1');
 
+                                        await Services.Databases.createDocument(workspace.$id, database.$id, 'realmInfo',workspace.$id,  {
+                                            name : workspaceName,
+                                            teamId: organization?.$id
+                                        })
 
 
                                         navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${workspace.name}-${workspace.$id}`)

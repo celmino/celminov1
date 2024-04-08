@@ -13013,6 +13013,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_controller__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./@/settings/+controller */ "./src/routes/@/settings/+controller.ts");
 /* harmony import */ var _settings_general_controller__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./@/settings/general/+controller */ "./src/routes/@/settings/general/+controller.ts");
 /* harmony import */ var _settings_security_controller__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./@/settings/security/+controller */ "./src/routes/@/settings/security/+controller.ts");
+/* harmony import */ var _settings_users_controller__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./@/settings/users/+controller */ "./src/routes/@/settings/users/+controller.ts");
+/* harmony import */ var _invite_controller__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./invite/+controller */ "./src/routes/invite/+controller.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -13028,6 +13030,8 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
+
 
 
 
@@ -13065,7 +13069,7 @@ var Routes = function () {
     // Console Routes
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/app', _controller__WEBPACK_IMPORTED_MODULE_9__.LayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _default__WEBPACK_IMPORTED_MODULE_11__.DefaultWorkspaceController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('login-success', _login_success_controller__WEBPACK_IMPORTED_MODULE_16__.LoginSuccess), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('*', HomeController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':organizationId', _organization_organizationId_controller__WEBPACK_IMPORTED_MODULE_3__.OrganizationController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':workspaceId', _workspace_controller__WEBPACK_IMPORTED_MODULE_2__.WorkspaceLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('workspace/select', _workspace_select_controller__WEBPACK_IMPORTED_MODULE_7__.WorkspaceSelectController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('organization/select', _organization_select_controller__WEBPACK_IMPORTED_MODULE_8__.OrganizationSelectController)), 
     // Team Routes
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@realm', _controller__WEBPACK_IMPORTED_MODULE_9__.RealmLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('settings', _settings_controller__WEBPACK_IMPORTED_MODULE_18__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_19__.GeneralSettingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('security', _settings_security_controller__WEBPACK_IMPORTED_MODULE_20__.SecuritySettingController))), 
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@realm', _controller__WEBPACK_IMPORTED_MODULE_9__.RealmLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('settings', _settings_controller__WEBPACK_IMPORTED_MODULE_18__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_19__.GeneralSettingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('security', _settings_security_controller__WEBPACK_IMPORTED_MODULE_20__.SecuritySettingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('users', _settings_users_controller__WEBPACK_IMPORTED_MODULE_21__.UsersController))), 
     // Personel Routes
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@private', _controller__WEBPACK_IMPORTED_MODULE_9__.RealmLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.PersonelWorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('settings', _settings_controller__WEBPACK_IMPORTED_MODULE_18__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_19__.GeneralSettingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('security', _settings_security_controller__WEBPACK_IMPORTED_MODULE_20__.SecuritySettingController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@public', _workspace_controller__WEBPACK_IMPORTED_MODULE_15__.PublicWorkspaceLayoutController).children(
     //  UIRoute(':workspaceId', PublicWorkspaceLayoutController).children(
@@ -13073,7 +13077,7 @@ var Routes = function () {
     //          UIRoute('applet/:appletId/*', AppletController),
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController))
     //  )
-    ), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/', _LandingController__WEBPACK_IMPORTED_MODULE_14__.LandingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/login', _login_controller__WEBPACK_IMPORTED_MODULE_5__.LoginController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/signup', _signup_controller__WEBPACK_IMPORTED_MODULE_6__.SignupController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/logout', _logout_controller__WEBPACK_IMPORTED_MODULE_1__.LogoutController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/reset-password', _reset_password_controller__WEBPACK_IMPORTED_MODULE_12__.ResetPasswordController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/update-password', _update_password_controller__WEBPACK_IMPORTED_MODULE_13__.UpdatePasswordController)));
+    ), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/', _LandingController__WEBPACK_IMPORTED_MODULE_14__.LandingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/login', _login_controller__WEBPACK_IMPORTED_MODULE_5__.LoginController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/signup', _signup_controller__WEBPACK_IMPORTED_MODULE_6__.SignupController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/logout', _logout_controller__WEBPACK_IMPORTED_MODULE_1__.LogoutController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/reset-password', _reset_password_controller__WEBPACK_IMPORTED_MODULE_12__.ResetPasswordController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/update-password', _update_password_controller__WEBPACK_IMPORTED_MODULE_13__.UpdatePasswordController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/invite', _invite_controller__WEBPACK_IMPORTED_MODULE_22__.InviteController)));
 };
 
 
@@ -13327,7 +13331,7 @@ var LeftSideMenuView = function (selectedItem) {
                         .onClick(function () {
                         var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_7__.useGetProtocol)();
                         var domainName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_7__.useGetHDomainName)();
-                        deleteSession({ sessionId: 'current' }, function () { return window.location.href = "".concat(protocol, "//").concat(domainName, "/app"); });
+                        deleteSession({ sessionId: 'current' }, function () { return window.location.href = "/@realm"; });
                     })], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.ForEach)(/* realms */ [])(function (realm) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(realm.name)).background({ hover: '#E8EAED' })
                     .cursor('pointer')
                     .padding(5)
@@ -14162,8 +14166,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   SettingsController: () => (/* binding */ SettingsController)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -14180,16 +14186,19 @@ var __extends = (undefined && undefined.__extends) || (function () {
     };
 })();
 
+
 var SettingsController = /** @class */ (function (_super) {
     __extends(SettingsController, _super);
     function SettingsController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     SettingsController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRouteOutlet)().width('100%').height('100%'));
+        return ((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.RealmContext)(function () {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIRouteOutlet)().width('100%').height('100%');
+        }));
     };
     return SettingsController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
 
 
 
@@ -14281,6 +14290,95 @@ var SecuritySettingController = /** @class */ (function (_super) {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__.SettingsMenu)('security'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('security')));
     };
     return SecuritySettingController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/routes/@/settings/users/+controller.ts":
+/*!****************************************************!*\
+  !*** ./src/routes/@/settings/users/+controller.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   UsersController: () => (/* binding */ UsersController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/SettingsMenu */ "./src/routes/@/settings/views/SettingsMenu.ts");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+
+
+
+
+
+var UsersController = /** @class */ (function (_super) {
+    __extends(UsersController, _super);
+    function UsersController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    UsersController.prototype.LoadView = function () {
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useRealm)().realm;
+        var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListUsers)(realm.$id), users = _a.users, isLoading = _a.isLoading;
+        var createOrganizationMembership = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useInviteMemberToOrganization)(realm.teamId).createOrganizationMembership;
+        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(), email = _b[0], setEmail = _b[1];
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__.SettingsMenu)('users'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray(__spreadArray([], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(users)(function (user) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(user.name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(user.email));
+        }), false), [(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)().onChange(function (e) { return setEmail(e); }),
+            (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.LoadingButton)().label('Invite').appearance('primary')
+                .onClick(function () {
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Services.Accounts.list([
+                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Query.equal('email', email)
+                ]).then(function (result) {
+                    if (result.total === 0) {
+                        createOrganizationMembership({
+                            organizationId: realm.teamId,
+                            email: email,
+                            name: email,
+                            url: "".concat(window.location.origin, "/invite?teamId=").concat(realm.teamId, "&realmId=").concat(realm.$id),
+                            roles: [_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Role.any()]
+                        });
+                    }
+                    else {
+                        alert('User already exist.');
+                    }
+                });
+            })], false))));
+    };
+    return UsersController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
 
@@ -15196,6 +15294,159 @@ var LandingController = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/routes/invite/+controller.ts":
+/*!******************************************!*\
+  !*** ./src/routes/invite/+controller.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   InviteController: () => (/* binding */ InviteController)
+/* harmony export */ });
+/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
+/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hooks/useGetProtocol */ "./src/hooks/useGetProtocol.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+var InviteController = /** @class */ (function (_super) {
+    __extends(InviteController, _super);
+    function InviteController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /* LoadViewInternal(): UIView {
+        const result = (this as any).GetDepends();
+        return UIViewBuilder(()=> {
+            return (
+                VStack(
+                    result ,
+                    this.LoadView()
+                )
+            )
+        })
+    } */
+    InviteController.prototype.LoadView = function () {
+        var _this = this;
+        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+        var params = new URLSearchParams(window.location.search);
+        var teamId = params.get('teamId');
+        var realmId = params.get('realmId');
+        var membershipId = params.get('membershipId');
+        var userId = params.get('userId');
+        var secret = params.get('secret');
+        var createMagicURL = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateMagicURL)(realmId).createMagicURL;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('Password').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)().fontSize('1.8rem')
+            .allHeight(40)
+            .placeholder('New password')
+            .transition('all 0.3s ease-in-out')
+            .border('none')
+            .borderBottom({ hover: '2px solid #162330' })
+            .background('white')
+            .outline({ focus: 'none' })
+            .padding('0 1.5rem').width(332)).height().marginBottom('1.5rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)().fontSize('1.8rem')
+            .allHeight(40)
+            .placeholder('Confirm password')
+            .transition('all 0.3s ease-in-out')
+            .border('none')
+            .borderBottom({ hover: '2px solid #162330' })
+            .background('white')
+            .outline({ focus: 'none' })
+            .padding('0 1.5rem').width(332)).height().marginBottom('1.5rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)().renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__.ButtonRenderer).label('Submit')
+            .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Teams.updateMembershipStatus(teamId, membershipId, userId, secret).then(function (membership) {
+                    createMagicURL({
+                        userId: membership.userId,
+                        email: membership.userEmail,
+                        url: ''
+                    }, function (data) {
+                        var _a;
+                        var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
+                        var userName = params[0];
+                        var token = params[1];
+                        var realmId = params[3];
+                        var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetProtocol)();
+                        var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetHostName)();
+                        window.open("".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@realm/?userId=").concat(userName, "&secret=").concat(token));
+                        //window.location.href = `${protocol}//${realmId}.${hostName}/@realm/?userId=${userName}&secret=${token}`
+                        // alert(data?.message?.split('&'))
+                    });
+                });
+                return [2 /*return*/];
+            });
+        }); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Log in with another email')
+            .fontSize(16))
+            .height()
+            .onClick(function () {
+            navigate('/logout');
+        })).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)().height('9rem')
+            .background('linear-gradient(0deg,#fff 42.67%,hsla(0,0%,100%,.8) 60.67%,hsla(0,0%,100%,0))')).background('#7FE8D4'));
+    };
+    return InviteController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController));
+
+
+
+/***/ }),
+
 /***/ "./src/routes/login/+controller.tsx":
 /*!******************************************!*\
   !*** ./src/routes/login/+controller.tsx ***!
@@ -15319,6 +15570,7 @@ var LoginController = /** @class */ (function (_super) {
         var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateEmailSession)('console'), createEmailSession = _a.createEmailSession, isSuccess = _a.isSuccess, isError = _a.isError, error = _a.error;
         var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(''), email = _b[0], setEmail = _b[1];
         var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(''), password = _c[0], setPassword = _c[1];
+        var updateName = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateName)('console').updateName;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(LeftLogo, null))).width('20%').height()
             .position('absolute')
             .left('0px').top('0px')
@@ -15385,7 +15637,8 @@ var LoginController = /** @class */ (function (_super) {
             .fontFamily('"Graphik Regular", sans-serif')
             .cursor('pointer')
             .onClick(function () {
-            navigate('/signup');
+            // navigate('/signup');
+            updateName({ name: 'Hans' });
         }))).height()).width().height()).height().marginTop('10rem'))
             .paddingTop('14rem')
             .paddingRight('calc(50% - 660px)')
@@ -16182,65 +16435,80 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                                 case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.create(workspace.$id, 'workspace', 'Workspace', 'workspace')];
                                 case 1:
                                     database = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'applets', 'Applets')];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'realmInfo', 'RealmInfo')];
                                 case 2:
+                                    _a.sent();
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'name', 255, false)];
+                                case 3:
+                                    _a.sent();
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'teamId', 255, false)];
+                                case 4:
+                                    _a.sent();
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'applets', 'Applets')];
+                                case 5:
                                     appletCol = _a.sent();
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'name', 255, false)];
-                                case 3:
+                                case 6:
                                     nameAttr = _a.sent();
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'parent', 255, false)];
-                                case 4:
+                                case 7:
                                     parent = _a.sent();
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'opa', 255, false)];
-                                case 5:
+                                case 8:
                                     opaAttr = _a.sent();
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false)];
-                                case 6:
+                                case 9:
                                     typeAttr = _a.sent();
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconName', 255, false)];
-                                case 7:
+                                case 10:
                                     iconName = _a.sent();
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false)];
-                                case 8:
+                                case 11:
                                     iconCategory = _a.sent();
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false, '-1')];
-                                case 9:
+                                case 12:
                                     themeColor = _a.sent();
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree')];
-                                case 10:
+                                case 13:
                                     treeCol = _a.sent();
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'name', 255, false)];
-                                case 11:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false)];
-                                case 12:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false)];
-                                case 13:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false)];
                                 case 14:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false)];
                                 case 15:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'spaceId', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false)];
                                 case 16:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false)];
                                 case 17:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false)];
                                 case 18:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'spaceId', 255, false)];
                                 case 19:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false)];
                                 case 20:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false)];
                                 case 21:
+                                    _a.sent();
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false)];
+                                case 22:
+                                    _a.sent();
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false)];
+                                case 23:
+                                    _a.sent();
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
+                                case 24:
+                                    _a.sent();
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(workspace.$id, database.$id, 'realmInfo', workspace.$id, {
+                                            name: workspaceName,
+                                            teamId: organization === null || organization === void 0 ? void 0 : organization.$id
+                                        })];
+                                case 25:
                                     _a.sent();
                                     navigate("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat(workspace.name, "-").concat(workspace.$id));
                                     return [2 /*return*/];
@@ -16544,6 +16812,17 @@ module.exports = celmino$ui;
 
 "use strict";
 module.exports = realmocean$antd;
+
+/***/ }),
+
+/***/ "@realmocean/atlaskit":
+/*!**************************************!*\
+  !*** external "realmocean$atlaskit" ***!
+  \**************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = realmocean$atlaskit;
 
 /***/ }),
 
