@@ -1,6 +1,6 @@
 docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
-    realmocean/celmino:1.0.96
+    realmocean/celmino:1.0.97
     # docker stop $(docker ps -a -q)
 
     # docker rm $(docker ps -a -q)

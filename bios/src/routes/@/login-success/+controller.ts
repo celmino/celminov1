@@ -30,10 +30,7 @@ export class LoginSuccess extends CelminoController {
                                         navigate(`/app/organization-${team.$id}`);
                                     })
                                 });
-
-
                         }, [])
-
 
                         return Text('Organization Creating')
                     })

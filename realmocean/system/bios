@@ -13331,7 +13331,9 @@ var LeftSideMenuView = function (selectedItem) {
                         .onClick(function () {
                         var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_7__.useGetProtocol)();
                         var domainName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_7__.useGetHDomainName)();
-                        deleteSession({ sessionId: 'current' }, function () { return window.location.href = "/@realm"; });
+                        deleteSession({ sessionId: 'current' }, function () {
+                            window.location.href = window.location.href.indexOf('localhost') > -1 ? "".concat(protocol, "//").concat(domainName, "/logout") : 'https://celmino.io/logout';
+                        });
                     })], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.ForEach)(/* realms */ [])(function (realm) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(realm.name)).background({ hover: '#E8EAED' })
                     .cursor('pointer')
                     .padding(5)
@@ -14351,29 +14353,34 @@ var UsersController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     UsersController.prototype.LoadView = function () {
+        var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useAccount)().account;
         var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useRealm)().realm;
         var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListUsers)(realm.$id), users = _a.users, isLoading = _a.isLoading;
+        var createUser = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useCreateUser)(realm.$id).createUser;
         var createOrganizationMembership = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useInviteMemberToOrganization)(realm.teamId).createOrganizationMembership;
         var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(), email = _b[0], setEmail = _b[1];
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__.SettingsMenu)('users'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray(__spreadArray([], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(users)(function (user) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__.SettingsMenu)('users'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray(__spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(JSON.stringify(account))], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(users)(function (user) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(user.name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(user.email));
         }), false), [(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)().onChange(function (e) { return setEmail(e); }),
             (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.LoadingButton)().label('Invite').appearance('primary')
                 .onClick(function () {
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Services.Accounts.list([
-                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Query.equal('email', email)
-                ]).then(function (result) {
-                    if (result.total === 0) {
+                (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.setUpProject)('console', undefined);
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Services.Teams.listMemberships(realm.teamId).then(function (result) {
+                    //   alert(JSON.stringify(result.memberships))
+                    if (result.memberships.findIndex(function (membership) { return membership.userEmail === email; }) > -1) {
+                        createUser({
+                            name: email,
+                            email: email
+                        });
+                    }
+                    else {
                         createOrganizationMembership({
                             organizationId: realm.teamId,
                             email: email,
                             name: email,
-                            url: "".concat(window.location.origin, "/invite?teamId=").concat(realm.teamId, "&realmId=").concat(realm.$id),
+                            url: window.location.href.indexOf('localhost') > -1 ? "http://localhost/invite?teamId=".concat(realm.teamId, "&realmId=").concat(realm.$id) : "https://celmino.io/invite?teamId=".concat(realm.teamId, "&realmId=").concat(realm.$id),
                             roles: [_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Role.any()]
                         });
-                    }
-                    else {
-                        alert('User already exist.');
                     }
                 });
             })], false))));
@@ -15367,6 +15374,105 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+function CreateUserRealm(userId) {
+    var _this = this;
+    return new Promise(function (resolve, reject) {
+        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Projects.create(userId, userId, userId).then(function (workspace) { return __awaiter(_this, void 0, void 0, function () {
+            var database, appletCol, nameAttr, parent, opaAttr, typeAttr, iconName, iconCategory, themeColor, treeCol;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.create(userId, 'workspace', 'Workspace', 'workspace')];
+                    case 1:
+                        database = _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(userId, database.$id, 'applets', 'Applets')];
+                    case 2:
+                        appletCol = _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, appletCol.$id, 'name', 255, false)];
+                    case 3:
+                        nameAttr = _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, appletCol.$id, 'parent', 255, false)];
+                    case 4:
+                        parent = _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, appletCol.$id, 'opa', 255, false)];
+                    case 5:
+                        opaAttr = _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, appletCol.$id, 'type', 255, false)];
+                    case 6:
+                        typeAttr = _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, appletCol.$id, 'iconName', 255, false)];
+                    case 7:
+                        iconName = _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, appletCol.$id, 'iconCategory', 255, false)];
+                    case 8:
+                        iconCategory = _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, appletCol.$id, 'themeColor', 255, false, '-1')];
+                    case 9:
+                        themeColor = _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(userId, database.$id, 'ws_tree', 'Workspace Tree')];
+                    case 10:
+                        treeCol = _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, treeCol.$id, 'name', 255, false)];
+                    case 11:
+                        _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, treeCol.$id, 'type', 255, false)];
+                    case 12:
+                        _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, treeCol.$id, 'parent', 255, false)];
+                    case 13:
+                        _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, treeCol.$id, 'path', 1255, false)];
+                    case 14:
+                        _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, treeCol.$id, 'fullPath', 1255, false)];
+                    case 15:
+                        _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'spaceId', 255, false)];
+                    case 16:
+                        _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, treeCol.$id, 'tree_widget', 255, false)];
+                    case 17:
+                        _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, treeCol.$id, 'appletId', 255, false)];
+                    case 18:
+                        _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, treeCol.$id, 'iconName', 255, false)];
+                    case 19:
+                        _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, treeCol.$id, 'iconCategory', 255, false)];
+                    case 20:
+                        _a.sent();
+                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(userId, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
+                    case 21:
+                        _a.sent();
+                        alert('created personel realm');
+                        resolve('');
+                        return [2 /*return*/];
+                }
+            });
+        }); })
+            .catch(function (error) {
+            console.log(error);
+            alert('hata');
+            reject(error);
+            /*   createMagicURL({
+                  userId: membership.userId,
+                  email: membership.userEmail,
+                  url: ''
+              }, (data: any) => {
+                  const params = data?.message?.split('&');
+                  const userName = params[0];
+                  const token = params[1];
+                  const realmId = params[3];
+
+
+                  const protocol = useGetProtocol();
+                  const hostName = useGetHostName();
+                  window.location.href = `${protocol}//${realmId}.${hostName}/@realm/?userId=${userName}&secret=${token}`;
+
+              }) */
+        });
+    });
+}
 var InviteController = /** @class */ (function (_super) {
     __extends(InviteController, _super);
     function InviteController() {
@@ -15392,6 +15498,9 @@ var InviteController = /** @class */ (function (_super) {
         var membershipId = params.get('membershipId');
         var userId = params.get('userId');
         var secret = params.get('secret');
+        var userOrganization = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetOrganization)({ organizationId: userId }).organization;
+        var userRealm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetRealm)({ realmId: userId, enabled: true }).realm;
+        var createRealm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRealm)().createRealm;
         var createMagicURL = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateMagicURL)(realmId).createMagicURL;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('Password').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)().fontSize('1.8rem')
             .allHeight(40)
@@ -15411,24 +15520,55 @@ var InviteController = /** @class */ (function (_super) {
             .outline({ focus: 'none' })
             .padding('0 1.5rem').width(332)).height().marginBottom('1.5rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)().renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__.ButtonRenderer).label('Submit')
             .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
+            var _this = this;
             return __generator(this, function (_a) {
                 _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Teams.updateMembershipStatus(teamId, membershipId, userId, secret).then(function (membership) {
-                    createMagicURL({
-                        userId: membership.userId,
-                        email: membership.userEmail,
-                        url: ''
-                    }, function (data) {
-                        var _a;
-                        var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
-                        var userName = params[0];
-                        var token = params[1];
-                        var realmId = params[3];
-                        var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetProtocol)();
-                        var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetHostName)();
-                        window.open("".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@realm/?userId=").concat(userName, "&secret=").concat(token));
-                        //window.location.href = `${protocol}//${realmId}.${hostName}/@realm/?userId=${userName}&secret=${token}`
-                        // alert(data?.message?.split('&'))
-                    });
+                    alert('_creating personel realm');
+                    if (userOrganization == null) {
+                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Teams.create(userId, userId).then(function () { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        if (!(userRealm == null)) return [3 /*break*/, 2];
+                                        return [4 /*yield*/, CreateUserRealm(userId)];
+                                    case 1:
+                                        _a.sent();
+                                        createMagicURL({
+                                            userId: membership.userId,
+                                            email: membership.userEmail,
+                                            url: ''
+                                        }, function (data) {
+                                            var _a;
+                                            var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
+                                            var userName = params[0];
+                                            var token = params[1];
+                                            var realmId = params[3];
+                                            var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetProtocol)();
+                                            var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetHostName)();
+                                            window.location.href = "".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@realm/?userId=").concat(userName, "&secret=").concat(token);
+                                        });
+                                        _a.label = 2;
+                                    case 2: return [2 /*return*/];
+                                }
+                            });
+                        }); });
+                    }
+                    else {
+                        createMagicURL({
+                            userId: membership.userId,
+                            email: membership.userEmail,
+                            url: ''
+                        }, function (data) {
+                            var _a;
+                            var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
+                            var userName = params[0];
+                            var token = params[1];
+                            var realmId = params[3];
+                            var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetProtocol)();
+                            var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetHostName)();
+                            window.location.href = "".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@realm/?userId=").concat(userName, "&secret=").concat(token);
+                        });
+                    }
                 });
                 return [2 /*return*/];
             });
@@ -15566,87 +15706,90 @@ var LoginController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     LoginController.prototype.LoadView = function () {
+        var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetMe)('console'), me = _a.me, isLoading = _a.isLoading, isAccountError = _a.isError;
         var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-        var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateEmailSession)('console'), createEmailSession = _a.createEmailSession, isSuccess = _a.isSuccess, isError = _a.isError, error = _a.error;
-        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(''), email = _b[0], setEmail = _b[1];
-        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(''), password = _c[0], setPassword = _c[1];
+        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateEmailSession)('console'), createEmailSession = _b.createEmailSession, isSuccess = _b.isSuccess, isError = _b.isError, error = _b.error;
+        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(''), email = _c[0], setEmail = _c[1];
+        var _d = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(''), password = _d[0], setPassword = _d[1];
         var updateName = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateName)('console').updateName;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(LeftLogo, null))).width('20%').height()
-            .position('absolute')
-            .left('0px').top('0px')
-            .cursor('pointer')
-            .onClick(function () {
-            navigate('/');
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Heading)('Sign in').fontSize('6rem').foregroundColor('#090e13').lineHeight('1.4')
-            .fontFamily('"Hagrid", sans-serif')).height().marginBottom('.7rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(GoogleLogo), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Sign in with Google').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height(48).width('100%')
-            .minWidth('32rem')
-            .maxWidth('40rem')
-            .marginBottom('2rem')
-            .cursor('pointer')
-            .background('white')
-            .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
-            .onClick(function () {
-            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.createOAuth2Session("google", "".concat(window.location.protocol, "//").concat(window.location.host, "/app/login-success"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(MicrosoftLogo), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Sign in with Microsoft').fontFamily('"Graphik Regular", sans-serif').fontSize(20)).height(48).width('100%')
-            .minWidth('32rem')
-            .maxWidth('40rem')
-            .cursor('pointer')
-            .background('white')
-            .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
-            .onClick(function () {
-            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.createOAuth2Session("microsoft", "".concat(window.location.protocol, "//").concat(window.location.host, "/app/login-success"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
-        })).height().width().paddingTop('3rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HDivider)().height(1).background('rgba(125, 141, 154, 0.1)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('OR').padding('0 20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HDivider)().height(1).background('rgba(125, 141, 154, 0.1)')).padding('2.4rem 0').maxWidth('40rem').height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)().fontSize('1.8rem')
-            .allHeight(40)
-            //  .placeholder('Enter your email')
-            .transition('all 0.3s ease-in-out')
-            .border('none')
-            .borderBottom({ hover: '2px solid #162330' })
-            .background('white')
-            .outline({ focus: 'none' })
-            .padding('0 1.5rem').width(332)
-            .onChange(function (e) { return setEmail(e); })).height().marginBottom('1.5rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SecureField)().fontSize(16).padding(10)
-            .onChange(function (e) { return setPassword(e); })).height()
-            .marginBottom('1.5rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Sign in with email')
-            .fontFamily('"Graphik Regular", sans-serif')
-            .fontSize('2rem'))
-            .height()
-            .cursor('pointer')
-            .lineHeight('4.8rem')
-            .padding('0 5rem')
-            .background('#242938')
-            .cornerRadius(3)
-            .foregroundColor('white')
-            .onClick(function () {
-            createEmailSession({
-                email: email,
-                password: password
-            }, function () {
-                navigate('/');
-            });
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Reset password')
-            .fontSize('1.6rem')
-            .fontFamily('"Graphik Regular", sans-serif')
-            .cursor('pointer')
-            .onClick(function () {
-            alert('');
-            navigate('/reset-password');
-            // Services.Accounts.createAnonymousSession().then(account => alert(JSON.stringify(account)));
-            // navigate('/')
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Sign up')
-            .fontSize('1.6rem')
-            .fontFamily('"Graphik Regular", sans-serif')
-            .cursor('pointer')
-            .onClick(function () {
-            // navigate('/signup');
-            updateName({ name: 'Hans' });
-        }))).height()).width().height()).height().marginTop('10rem'))
-            .paddingTop('14rem')
-            .paddingRight('calc(50% - 660px)')
-            .paddingLeft('calc(50% - 660px)')
-            .minHeight('100vh'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)().height('9rem')
-            .position('absolute')
-            .bottom('0px')
-            .background('linear-gradient(0deg,#fff 42.67%,hsla(0,0%,100%,.8) 60.67%,hsla(0,0%,100%,0))')).background('#7FE8D4'));
+        return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)() : !isAccountError ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UINavigate)('/app/login-success')
+            :
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(LeftLogo, null))).width('20%').height()
+                    .position('absolute')
+                    .left('0px').top('0px')
+                    .cursor('pointer')
+                    .onClick(function () {
+                    navigate('/');
+                }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Heading)('Sign in').fontSize('6rem').foregroundColor('#090e13').lineHeight('1.4')
+                    .fontFamily('"Hagrid", sans-serif')).height().marginBottom('.7rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(GoogleLogo), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Sign in with Google').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height(48).width('100%')
+                    .minWidth('32rem')
+                    .maxWidth('40rem')
+                    .marginBottom('2rem')
+                    .cursor('pointer')
+                    .background('white')
+                    .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
+                    .onClick(function () {
+                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.createOAuth2Session("google", "".concat(window.location.protocol, "//").concat(window.location.host, "/app/login-success"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
+                }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(MicrosoftLogo), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Sign in with Microsoft').fontFamily('"Graphik Regular", sans-serif').fontSize(20)).height(48).width('100%')
+                    .minWidth('32rem')
+                    .maxWidth('40rem')
+                    .cursor('pointer')
+                    .background('white')
+                    .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
+                    .onClick(function () {
+                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.createOAuth2Session("microsoft", "".concat(window.location.protocol, "//").concat(window.location.host, "/app/login-success"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
+                })).height().width().paddingTop('3rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HDivider)().height(1).background('rgba(125, 141, 154, 0.1)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('OR').padding('0 20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HDivider)().height(1).background('rgba(125, 141, 154, 0.1)')).padding('2.4rem 0').maxWidth('40rem').height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)().fontSize('1.8rem')
+                    .allHeight(40)
+                    //  .placeholder('Enter your email')
+                    .transition('all 0.3s ease-in-out')
+                    .border('none')
+                    .borderBottom({ hover: '2px solid #162330' })
+                    .background('white')
+                    .outline({ focus: 'none' })
+                    .padding('0 1.5rem').width(332)
+                    .onChange(function (e) { return setEmail(e); })).height().marginBottom('1.5rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SecureField)().fontSize(16).padding(10)
+                    .onChange(function (e) { return setPassword(e); })).height()
+                    .marginBottom('1.5rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Sign in with email')
+                    .fontFamily('"Graphik Regular", sans-serif')
+                    .fontSize('2rem'))
+                    .height()
+                    .cursor('pointer')
+                    .lineHeight('4.8rem')
+                    .padding('0 5rem')
+                    .background('#242938')
+                    .cornerRadius(3)
+                    .foregroundColor('white')
+                    .onClick(function () {
+                    createEmailSession({
+                        email: email,
+                        password: password
+                    }, function () {
+                        navigate('/');
+                    });
+                }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Reset password')
+                    .fontSize('1.6rem')
+                    .fontFamily('"Graphik Regular", sans-serif')
+                    .cursor('pointer')
+                    .onClick(function () {
+                    alert('');
+                    navigate('/reset-password');
+                    // Services.Accounts.createAnonymousSession().then(account => alert(JSON.stringify(account)));
+                    // navigate('/')
+                }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Sign up')
+                    .fontSize('1.6rem')
+                    .fontFamily('"Graphik Regular", sans-serif')
+                    .cursor('pointer')
+                    .onClick(function () {
+                    // navigate('/signup');
+                    updateName({ name: 'Hans' });
+                }))).height()).width().height()).height().marginTop('10rem'))
+                    .paddingTop('14rem')
+                    .paddingRight('calc(50% - 660px)')
+                    .paddingLeft('calc(50% - 660px)')
+                    .minHeight('100vh'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)().height('9rem')
+                    .position('absolute')
+                    .bottom('0px')
+                    .background('linear-gradient(0deg,#fff 42.67%,hsla(0,0%,100%,.8) 60.67%,hsla(0,0%,100%,0))')).background('#7FE8D4'));
     };
     return LoginController;
 }(_CelminoController__WEBPACK_IMPORTED_MODULE_3__.CelminoController));
@@ -16299,10 +16442,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/urlFriendly */ "./src/utils/urlFriendly.ts");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useGetProtocol */ "./src/hooks/useGetProtocol.ts");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useGetProtocol */ "./src/hooks/useGetProtocol.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -16344,7 +16486,6 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-
 var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
     var organizationId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)().organizationId;
     var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(''), workspaceName = _a[0], setWorkspaceName = _a[1];
@@ -16355,19 +16496,20 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
     var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetOrganization)({ organizationId: organizationId, hookEnabled: true }), organization = _c.organization, isOrganizationLoading = _c.isLoading; // useGetCurrentOrganization();
     var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRealm)(), createRealm = _d.createRealm, isLoading = _d.isLoading;
     var deleteSession = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteSession)('console').deleteSession;
-    var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useAccount)().account;
+    var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useAccount)().account;
     return (isOrganizationLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Loading...') : organization == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)('/app/organization/select') :
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
             var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListRealms)(organization != null, [
                 _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('teamId', organization.$id)
             ]), realms = _a.realms, isRealmsLoading = _a.isLoading;
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)(organization === null || organization === void 0 ? void 0 : organization.name).fontSize('2.8rem').foregroundColor('#090e13')
+                .fontFamily('Graphik Medium,sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)(account.email).fontSize('2.8rem').foregroundColor('#090e13')
                 .fontFamily('Graphik Medium,sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Select another organization')
                 .fontSize(16))
                 .height()
                 .onClick(function () {
                 navigate('/app/organization/select');
-            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('Realms').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90), _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(realms)(function (realm) {
+            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('Realms').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90), _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)([{ $id: 'the', name: 'the, Celmino' }])(function (realm) {
                 return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
                     var createMagicURL = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateMagicURL)(realm.$id).createMagicURL;
                     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(realm.name).fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icons.MoveArrowRight))
@@ -16388,8 +16530,8 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                             var userName = params[0];
                             var token = params[1];
                             var realmId = params[3];
-                            var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_5__.useGetProtocol)();
-                            var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_5__.useGetHostName)();
+                            var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetProtocol)();
+                            var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetHostName)();
                             window.open("".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@realm/?userId=").concat(userName, "&secret=").concat(token));
                             //window.location.href = `${protocol}//${realmId}.${hostName}/@realm/?userId=${userName}&secret=${token}`
                             // alert(data?.message?.split('&'))
@@ -16510,7 +16652,16 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                                         })];
                                 case 25:
                                     _a.sent();
-                                    navigate("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat(workspace.name, "-").concat(workspace.$id));
+                                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Accounts.createMagicURL(account.$id, account.email).then(function (data) {
+                                        var _a;
+                                        var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
+                                        var userName = params[0];
+                                        var token = params[1];
+                                        var realmId = params[3];
+                                        var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetProtocol)();
+                                        var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetHostName)();
+                                        window.open("".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@realm/?userId=").concat(userName, "&secret=").concat(token));
+                                    });
                                     return [2 /*return*/];
                             }
                         });
@@ -16575,20 +16726,23 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false)];
                                 case 15:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'spaceId', 255, false)];
                                 case 16:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false)];
                                 case 17:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false)];
                                 case 18:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false)];
                                 case 19:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false)];
                                 case 20:
+                                    _a.sent();
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
+                                case 21:
                                     _a.sent();
                                     return [2 /*return*/];
                             }

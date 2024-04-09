@@ -1,4 +1,4 @@
-import { Services, useGetDocument, useGetMe, useGetOrganization, useGetRealm, useUpdateMagicURLSession } from "@realmocean/sdk";
+import { Services, useCreateRealm, useGetDocument, useGetMe, useGetOrganization, useGetRealm, useUpdateMagicURLSession } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 import { ReactView, Text, UIController, UINavigate, UIView, useEffect, useNavigate, useParams, useState, Fragment as TuvalFragment } from "@tuval/forms";
 import React, { Fragment } from "react";
@@ -7,6 +7,32 @@ import { UserContextProvider } from "./context";
 import { RealmContextProvider, useRealm } from "../realm";
 import { useRealmNavigate } from "../../hooks/useWorkspaceNavigation";
 
+export const useGetProtocol = () => {
+    return window.location.protocol;
+};
+
+export const useGetHost = () => {
+    return window.location.host;
+}
+
+
+export const useGetHostName = () => {
+    return window.location.hostname;
+}
+
+export const useGetHDomainName = () => {
+    const name = window.location.hostname.split('.');
+    if (name.length > 1) {
+        return name[1];
+    } else {
+        return window.location.hostname;
+    }
+}
+
+
+export const useGetOrigin = () => {
+    return window.location.origin;
+}
 
 class Controller extends UIController {
     public override LoadView(): UIView {
@@ -41,7 +67,7 @@ export function NewUserContextRenderer({ control }: { control: UserContextClass 
     const userId = urlParams.get('userId');
 
     const subdomain = useGetSubdomain();
-    const {navigate} = useRealmNavigate();
+    const { navigate } = useRealmNavigate();
     // alert(secret)
     // const { me: account, isLoading, isError } = useGetMe(subdomain);
 
@@ -63,18 +89,28 @@ export function UserContextRenderer({ control }: { control: UserContextClass }) 
 
     const subdomain = useGetSubdomain();
     // alert(secret)
-    const { me: account, isLoading, isError } = useGetMe(subdomain);
+    const { me: account, isLoading, isError, error } = useGetMe(subdomain);
+
+    const protocol = useGetProtocol();
+    const domainName = useGetHDomainName();
 
     
+
+    useEffect(() => {
+        if (isError) {
+            window.location.href = window.location.href.indexOf('localhost') > -1 ? `${protocol}//${domainName}/login` : 'https://celmino.io/login';
+        }
+    }, [error])
+
     return (
         isLoading ? TuvalFragment().render() :
-         account?.prefs?.isAnonymous === true ? UINavigate('/@/login').render() :
-        is.function(control.vp_ChildFunc) && account != null ?
-            (
-                <UserContextProvider.Provider value={{ user: account }}>
-                    <Proxy control={control}></Proxy>
-                </UserContextProvider.Provider>
-            ) : <Fragment />
+            account?.prefs?.isAnonymous === true ? UINavigate('/@/login').render() :
+                is.function(control.vp_ChildFunc) && account != null ?
+                    (
+                        <UserContextProvider.Provider value={{ user: account }}>
+                            <Proxy control={control}></Proxy>
+                        </UserContextProvider.Provider>
+                    ) : <Fragment />
     )
 
 }

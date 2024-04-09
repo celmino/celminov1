@@ -1,16 +1,20 @@
 
 import { ForEach, HStack, Text, TextField, UIController, UIRouteOutlet, UIView, VStack, cLeading, cTopLeading, useState } from "@tuval/forms";
 import { SettingsMenu } from "../views/SettingsMenu";
-import { Query, Services, useListUsers, useInviteMemberToOrganization, Role } from "@realmocean/sdk";
-import { useRealm } from "@celmino/ui";
+import { Query, Services, useListUsers, useInviteMemberToOrganization, Role, useGetMe, setUpProject, useCreateUser } from "@realmocean/sdk";
+import { useAccount, useRealm } from "@celmino/ui";
 import { LoadingButton } from '@realmocean/atlaskit'
 
 
 
 export class UsersController extends UIController {
     public override LoadView(): UIView {
+        const { account } = useAccount();
+
         const { realm } = useRealm();
         const { users, isLoading } = useListUsers(realm.$id);
+
+        const { createUser } = useCreateUser(realm.$id);
 
         const { createOrganizationMembership } = useInviteMemberToOrganization(realm.teamId);
 
@@ -19,6 +23,7 @@ export class UsersController extends UIController {
             HStack({ alignment: cTopLeading })(
                 SettingsMenu('users'),
                 VStack(
+                    Text(JSON.stringify(account)),
                     ...ForEach(users)(user =>
                         HStack({ alignment: cLeading, spacing: 10 })(
                             Text(user.name),
@@ -28,20 +33,26 @@ export class UsersController extends UIController {
                     TextField().onChange((e) => setEmail(e)),
                     LoadingButton().label('Invite').appearance('primary')
                         .onClick(() => {
-                            Services.Accounts.list([
-                                Query.equal('email', email)
-                            ]).then(result => {
-                                if (result.total === 0) {
+                            setUpProject('console', undefined);
+                            Services.Teams.listMemberships(realm.teamId).then(result => {
+                             //   alert(JSON.stringify(result.memberships))
+                                if (result.memberships.findIndex(membership => membership.userEmail === email) > -1) {
+                                    createUser({
+                                        name: email,
+                                        email: email
+                                    } as any);
+                                } else {
+
                                     createOrganizationMembership({
                                         organizationId: realm.teamId,
                                         email: email,
                                         name: email,
-                                        url: `${window.location.origin}/invite?teamId=${realm.teamId}&realmId=${realm.$id}`,
+                                        url: window.location.href.indexOf('localhost') > -1 ?  `http://localhost/invite?teamId=${realm.teamId}&realmId=${realm.$id}` : `https://celmino.io/invite?teamId=${realm.teamId}&realmId=${realm.$id}`,
                                         roles: [Role.any()]
                                     })
-                                } else {
-                                    alert('User already exist.')
+
                                 }
+
                             })
                         })
                 )

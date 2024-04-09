@@ -349,7 +349,11 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                         .onClick(() => {
                                                             const protocol = useGetProtocol();
                                                             const domainName = useGetHDomainName();
-                                                            deleteSession({ sessionId: 'current' }, () => window.location.href = `/@realm`);
+
+                                                          
+                                                            deleteSession({ sessionId: 'current' }, () => {
+                                                                window.location.href = window.location.href.indexOf('localhost') > -1 ? `${protocol}//${domainName}/logout` : 'https://celmino.io/logout'
+                                                            });
 
 
                                                         }),

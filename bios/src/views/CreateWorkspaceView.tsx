@@ -34,6 +34,8 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                         VStack({ spacing: 10 })(
                             Heading(organization?.name).fontSize('2.8rem').foregroundColor('#090e13')
                                 .fontFamily('Graphik Medium,sans-serif'),
+                                Heading(account.email).fontSize('2.8rem').foregroundColor('#090e13')
+                                .fontFamily('Graphik Medium,sans-serif'),
                             HStack(
                                 Text('Select another organization')
                                     .fontSize(16)
@@ -46,7 +48,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                             Heading('Realms').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90),
 
                             VStack(
-                                ...ForEach(realms)(realm =>
+                                ...ForEach([{$id:'the', name:'the, Celmino'}])(realm =>
                                     UIViewBuilder(() => {
                                         const { createMagicURL } = useCreateMagicURL(realm.$id);
                                         return (
@@ -132,9 +134,6 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         organizationId: organization?.$id,
                                     }, async (workspace) => {
 
-                                    
-                                       
-
                                         const database = await Services.Databases.create(workspace.$id, 'workspace', 'Workspace', 'workspace');
 
                                         await Services.Databases.createCollection(workspace.$id, database.$id, 'realmInfo', 'RealmInfo');
@@ -168,10 +167,22 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         await Services.Databases.createDocument(workspace.$id, database.$id, 'realmInfo',workspace.$id,  {
                                             name : workspaceName,
                                             teamId: organization?.$id
-                                        })
+                                        });
+
+                                        Services.Accounts.createMagicURL( account.$id, account.email).then((data: any)=> {
+                                            const params = data?.message?.split('&');
+                                            const userName = params[0];
+                                            const token = params[1];
+                                            const realmId = params[3];
 
 
-                                        navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${workspace.name}-${workspace.$id}`)
+                                            const protocol = useGetProtocol();
+                                            const hostName = useGetHostName();
+                                            window.open(`${protocol}//${realmId}.${hostName}/@realm/?userId=${userName}&secret=${token}`);
+                                        });
+
+                                      
+                                       // navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${workspace.name}-${workspace.$id}`)
                                     })
                                 }),
                                 Button().renderer(ButtonRenderer).label('Create Personel Workspace')
@@ -202,6 +213,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false);
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false);
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'spaceId', 255, false);
                                         
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false);
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false);

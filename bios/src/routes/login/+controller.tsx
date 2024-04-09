@@ -1,5 +1,5 @@
-import { Services, useCreateEmailSession, useUpdateName } from "@realmocean/sdk";
-import { HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
+import { Services, useCreateEmailSession, useGetMe, useUpdateName } from "@realmocean/sdk";
+import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
 
@@ -74,162 +74,165 @@ var subDomain = /:\/\/([^\/]+)/.exec(window.location.href)[1];
 
 export class LoginController extends CelminoController {
     public override LoadView(): UIView {
+        const { me, isLoading, isError: isAccountError } = useGetMe('console');
 
         const navigate = useNavigate();
         const { createEmailSession, isSuccess, isError, error } = useCreateEmailSession('console');
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
 
-        const {updateName} =  useUpdateName('console');
+        const { updateName } = useUpdateName('console');
 
         return (
-            VStack(
-                VStack({ alignment: cTop })(
-                    HStack(
-                        ReactView(
-                            <LeftLogo></LeftLogo>
-                        )
-                    ).width('20%').height()
-                        .position('absolute')
-                        .left('0px').top('0px')
-                        .cursor('pointer')
-                        .onClick(() => {
-                            navigate('/')
-                        }),
-                    VStack(
+            isLoading ? Fragment() : !isAccountError ? UINavigate('/app/login-success')
+                :
+                VStack(
+                    VStack({ alignment: cTop })(
                         HStack(
-                            Heading('Sign in').fontSize('6rem').foregroundColor('#090e13').lineHeight('1.4')
-                                .fontFamily('"Hagrid", sans-serif')
-                        ).height().marginBottom('.7rem'),
-                        VStack({ spacing: 20 })(
-
-                            HStack({ spacing: 10 })(
-                                Icon(GoogleLogo),
-                                Text('Sign in with Google').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')
-                            ).height(48).width('100%')
-                                .minWidth('32rem')
-                                .maxWidth('40rem')
-                                .marginBottom('2rem')
-                                .cursor('pointer')
-                                .background('white')
-                                .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
-                                .onClick(() => {
-                                    Services.Accounts.createOAuth2Session(
-                                        "google",
-                                        `${window.location.protocol}//${window.location.host}/app/login-success`,
-                                        `${window.location.protocol}//${window.location.host}/login-failure`
-                                    )
-
-                                }),
-                            HStack({ spacing: 10 })(
-                                Icon(MicrosoftLogo),
-                                Text('Sign in with Microsoft').fontFamily('"Graphik Regular", sans-serif').fontSize(20)
-                            ).height(48).width('100%')
-                                .minWidth('32rem')
-                                .maxWidth('40rem')
-                                .cursor('pointer')
-                                .background('white')
-                                .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
-                                .onClick(() => {
-                                    Services.Accounts.createOAuth2Session(
-                                        "microsoft",
-                                        `${window.location.protocol}//${window.location.host}/app/login-success`,
-                                        `${window.location.protocol}//${window.location.host}/login-failure`
-                                    )
-
-                                }),
-                        ).height().width().paddingTop('3rem'),
-                        VStack({ alignment: cLeading })(
+                            ReactView(
+                                <LeftLogo></LeftLogo>
+                            )
+                        ).width('20%').height()
+                            .position('absolute')
+                            .left('0px').top('0px')
+                            .cursor('pointer')
+                            .onClick(() => {
+                                navigate('/')
+                            }),
+                        VStack(
                             HStack(
-                                HDivider().height(1).background('rgba(125, 141, 154, 0.1)'),
-                                Text('OR').padding('0 20px'),
-                                HDivider().height(1).background('rgba(125, 141, 154, 0.1)')
+                                Heading('Sign in').fontSize('6rem').foregroundColor('#090e13').lineHeight('1.4')
+                                    .fontFamily('"Hagrid", sans-serif')
+                            ).height().marginBottom('.7rem'),
+                            VStack({ spacing: 20 })(
 
-                            ).padding('2.4rem 0').maxWidth('40rem').height(),
-                            VStack({ alignment: cLeading, spacing: 10 })(
-
-                                TextField().fontSize('1.8rem')
-                                    .allHeight(40)
-                                    //  .placeholder('Enter your email')
-                                    .transition('all 0.3s ease-in-out')
-                                    .border('none')
-                                    .borderBottom({ hover: '2px solid #162330' })
-                                    .background('white')
-                                    .outline({ focus: 'none' })
-                                    .padding('0 1.5rem').width(332)
-                                    .onChange(e => setEmail(e))
-                            ).height().marginBottom('1.5rem'),
-                            VStack({ alignment: cLeading, spacing: 10 })(
-
-                                SecureField().fontSize(16).padding(10)
-                                    .onChange(e => setPassword(e))
-                            ).height()
-                                .marginBottom('1.5rem'),
-                            VStack({ alignment: cLeading, spacing: 10 })(
-                                HStack(
-                                    Text('Sign in with email')
-                                        .fontFamily('"Graphik Regular", sans-serif')
-
-                                        .fontSize('2rem')
-                                )
-                                    .height()
+                                HStack({ spacing: 10 })(
+                                    Icon(GoogleLogo),
+                                    Text('Sign in with Google').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')
+                                ).height(48).width('100%')
+                                    .minWidth('32rem')
+                                    .maxWidth('40rem')
+                                    .marginBottom('2rem')
                                     .cursor('pointer')
-                                    .lineHeight('4.8rem')
-                                    .padding('0 5rem')
-                                    .background('#242938')
-                                    .cornerRadius(3)
-                                    .foregroundColor('white')
+                                    .background('white')
+                                    .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
                                     .onClick(() => {
-                                        createEmailSession({
-                                            email: email,
-                                            password: password
-                                        }, () => {
-                                            navigate('/')
-                                        })
+                                        Services.Accounts.createOAuth2Session(
+                                            "google",
+                                            `${window.location.protocol}//${window.location.host}/app/login-success`,
+                                            `${window.location.protocol}//${window.location.host}/login-failure`
+                                        )
+
                                     }),
-                                HStack({ alignment: cLeading })(
-                                    Text('Reset password')
-                                        .fontSize('1.6rem')
-                                        .fontFamily('"Graphik Regular", sans-serif')
+                                HStack({ spacing: 10 })(
+                                    Icon(MicrosoftLogo),
+                                    Text('Sign in with Microsoft').fontFamily('"Graphik Regular", sans-serif').fontSize(20)
+                                ).height(48).width('100%')
+                                    .minWidth('32rem')
+                                    .maxWidth('40rem')
+                                    .cursor('pointer')
+                                    .background('white')
+                                    .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
+                                    .onClick(() => {
+                                        Services.Accounts.createOAuth2Session(
+                                            "microsoft",
+                                            `${window.location.protocol}//${window.location.host}/app/login-success`,
+                                            `${window.location.protocol}//${window.location.host}/login-failure`
+                                        )
+
+                                    }),
+                            ).height().width().paddingTop('3rem'),
+                            VStack({ alignment: cLeading })(
+                                HStack(
+                                    HDivider().height(1).background('rgba(125, 141, 154, 0.1)'),
+                                    Text('OR').padding('0 20px'),
+                                    HDivider().height(1).background('rgba(125, 141, 154, 0.1)')
+
+                                ).padding('2.4rem 0').maxWidth('40rem').height(),
+                                VStack({ alignment: cLeading, spacing: 10 })(
+
+                                    TextField().fontSize('1.8rem')
+                                        .allHeight(40)
+                                        //  .placeholder('Enter your email')
+                                        .transition('all 0.3s ease-in-out')
+                                        .border('none')
+                                        .borderBottom({ hover: '2px solid #162330' })
+                                        .background('white')
+                                        .outline({ focus: 'none' })
+                                        .padding('0 1.5rem').width(332)
+                                        .onChange(e => setEmail(e))
+                                ).height().marginBottom('1.5rem'),
+                                VStack({ alignment: cLeading, spacing: 10 })(
+
+                                    SecureField().fontSize(16).padding(10)
+                                        .onChange(e => setPassword(e))
+                                ).height()
+                                    .marginBottom('1.5rem'),
+                                VStack({ alignment: cLeading, spacing: 10 })(
+                                    HStack(
+                                        Text('Sign in with email')
+                                            .fontFamily('"Graphik Regular", sans-serif')
+
+                                            .fontSize('2rem')
+                                    )
+                                        .height()
                                         .cursor('pointer')
+                                        .lineHeight('4.8rem')
+                                        .padding('0 5rem')
+                                        .background('#242938')
+                                        .cornerRadius(3)
+                                        .foregroundColor('white')
                                         .onClick(() => {
-                                            alert('')
-                                            navigate('/reset-password');
-                                           // Services.Accounts.createAnonymousSession().then(account => alert(JSON.stringify(account)));
-                                           // navigate('/')
+                                            createEmailSession({
+                                                email: email,
+                                                password: password
+                                            }, () => {
+                                                navigate('/')
+                                            })
                                         }),
-                                    Spacer(),
-                                    Text('Sign up')
-                                        .fontSize('1.6rem')
-                                        .fontFamily('"Graphik Regular", sans-serif')
-                                        .cursor('pointer')
-                                        .onClick(() => {
-                                           // navigate('/signup');
-                                           updateName({name: 'Hans'})
-                                         
-                                        })
-                                )
+                                    HStack({ alignment: cLeading })(
+                                        Text('Reset password')
+                                            .fontSize('1.6rem')
+                                            .fontFamily('"Graphik Regular", sans-serif')
+                                            .cursor('pointer')
+                                            .onClick(() => {
+                                                alert('')
+                                                navigate('/reset-password');
+                                                // Services.Accounts.createAnonymousSession().then(account => alert(JSON.stringify(account)));
+                                                // navigate('/')
+                                            }),
+                                        Spacer(),
+                                        Text('Sign up')
+                                            .fontSize('1.6rem')
+                                            .fontFamily('"Graphik Regular", sans-serif')
+                                            .cursor('pointer')
+                                            .onClick(() => {
+                                                // navigate('/signup');
+                                                updateName({ name: 'Hans' })
+
+                                            })
+                                    )
 
 
 
-                            ).height(),
-                            /*  isError && Text(error?.message),
-                             isSuccess && UINavigate('/') */
-                        ).width().height()
-                    ).height().marginTop('10rem'),
+                                ).height(),
+                                /*  isError && Text(error?.message),
+                                 isSuccess && UINavigate('/') */
+                            ).width().height()
+                        ).height().marginTop('10rem'),
 
 
 
-                )
-                    .paddingTop('14rem')
-                    .paddingRight('calc(50% - 660px)')
-                    .paddingLeft('calc(50% - 660px)')
-                    .minHeight('100vh'),
-                HStack().height('9rem')
-                    .position('absolute')
-                    .bottom('0px')
-                    .background('linear-gradient(0deg,#fff 42.67%,hsla(0,0%,100%,.8) 60.67%,hsla(0,0%,100%,0))')
-            ).background('#7FE8D4')
+                    )
+                        .paddingTop('14rem')
+                        .paddingRight('calc(50% - 660px)')
+                        .paddingLeft('calc(50% - 660px)')
+                        .minHeight('100vh'),
+                    HStack().height('9rem')
+                        .position('absolute')
+                        .bottom('0px')
+                        .background('linear-gradient(0deg,#fff 42.67%,hsla(0,0%,100%,.8) 60.67%,hsla(0,0%,100%,0))')
+                ).background('#7FE8D4')
 
         )
     }

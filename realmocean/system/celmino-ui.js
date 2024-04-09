@@ -20292,6 +20292,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   NewUserContextRenderer: () => (/* binding */ NewUserContextRenderer),
 /* harmony export */   UserContextRenderer: () => (/* binding */ UserContextRenderer),
+/* harmony export */   useGetHDomainName: () => (/* binding */ useGetHDomainName),
+/* harmony export */   useGetHost: () => (/* binding */ useGetHost),
+/* harmony export */   useGetHostName: () => (/* binding */ useGetHostName),
+/* harmony export */   useGetOrigin: () => (/* binding */ useGetOrigin),
+/* harmony export */   useGetProtocol: () => (/* binding */ useGetProtocol),
 /* harmony export */   useGetSubdomain: () => (/* binding */ useGetSubdomain)
 /* harmony export */ });
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
@@ -20310,6 +20315,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const useGetProtocol = () => {
+    return window.location.protocol;
+};
+const useGetHost = () => {
+    return window.location.host;
+};
+const useGetHostName = () => {
+    return window.location.hostname;
+};
+const useGetHDomainName = () => {
+    const name = window.location.hostname.split('.');
+    if (name.length > 1) {
+        return name[1];
+    }
+    else {
+        return window.location.hostname;
+    }
+};
+const useGetOrigin = () => {
+    return window.location.origin;
+};
 class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController {
     LoadView() {
         const { control } = this.props;
@@ -20347,7 +20373,14 @@ function UserContextRenderer({ control }) {
     var _a;
     const subdomain = useGetSubdomain();
     // alert(secret)
-    const { me: account, isLoading, isError } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetMe)(subdomain);
+    const { me: account, isLoading, isError, error } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetMe)(subdomain);
+    const protocol = useGetProtocol();
+    const domainName = useGetHDomainName();
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
+        if (isError) {
+            window.location.href = window.location.href.indexOf('localhost') > -1 ? `${protocol}//${domainName}/login` : 'https://celmino.io/login';
+        }
+    }, [error]);
     return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)().render() :
         ((_a = account === null || account === void 0 ? void 0 : account.prefs) === null || _a === void 0 ? void 0 : _a.isAnonymous) === true ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)('/@/login').render() :
             _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && account != null ?
