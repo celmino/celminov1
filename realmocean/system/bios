@@ -14358,10 +14358,12 @@ var UsersController = /** @class */ (function (_super) {
         var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListUsers)(realm.$id), users = _a.users, isLoading = _a.isLoading;
         var createUser = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useCreateUser)(realm.$id).createUser;
         var createOrganizationMembership = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useInviteMemberToOrganization)(realm.teamId).createOrganizationMembership;
-        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(), email = _b[0], setEmail = _b[1];
+        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(), name = _b[0], setName = _b[1];
+        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(), email = _c[0], setEmail = _c[1];
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__.SettingsMenu)('users'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray(__spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(JSON.stringify(account))], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(users)(function (user) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(user.name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(user.email));
-        }), false), [(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)().onChange(function (e) { return setEmail(e); }),
+        }), false), [(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)().onChange(function (e) { return setName(e); }),
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)().onChange(function (e) { return setEmail(e); }),
             (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.LoadingButton)().label('Invite').appearance('primary')
                 .onClick(function () {
                 (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.setUpProject)('console', undefined);
@@ -14370,15 +14372,15 @@ var UsersController = /** @class */ (function (_super) {
                     if (result.memberships.findIndex(function (membership) { return membership.userEmail === email; }) > -1) {
                         createUser({
                             name: email,
-                            email: email
+                            email: name
                         });
                     }
                     else {
                         createOrganizationMembership({
                             organizationId: realm.teamId,
                             email: email,
-                            name: email,
-                            url: window.location.href.indexOf('localhost') > -1 ? "http://localhost/invite?teamId=".concat(realm.teamId, "&realmId=").concat(realm.$id) : "https://celmino.io/invite?teamId=".concat(realm.teamId, "&realmId=").concat(realm.$id),
+                            name: name,
+                            url: window.location.href.indexOf('localhost') > -1 ? "http://localhost/invite?teamId=".concat(realm.teamId, "&realmId=").concat(realm.$id, "&realmName=").concat(encodeURIComponent(realm.name), "&userName=").concat(encodeURIComponent(name)) : "https://celmino.io/invite?teamId=".concat(realm.teamId, "&realmId=").concat(realm.$id, "&realmName=").concat(encodeURIComponent(realm.name), "&userName=").concat(encodeURIComponent(name)),
                             roles: [_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Role.any()]
                         });
                     }
@@ -15258,7 +15260,7 @@ var LandingController = /** @class */ (function (_super) {
     LandingController.prototype.LoadView = function () {
         var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
         var subDomain = (0,_hooks_useGetSubdomain__WEBPACK_IMPORTED_MODULE_3__.useGetSubdomain)();
-        return (!_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(subDomain) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('/app') :
+        return (!_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(subDomain) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('/@realm') :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
             // Header
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(LeftLogo, null))).width().height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Log in')
@@ -15318,7 +15320,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hooks/useGetProtocol */ "./src/hooks/useGetProtocol.ts");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_3__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -15495,6 +15498,8 @@ var InviteController = /** @class */ (function (_super) {
         var params = new URLSearchParams(window.location.search);
         var teamId = params.get('teamId');
         var realmId = params.get('realmId');
+        var realmName = params.get('realmName');
+        var userName = params.get('userName');
         var membershipId = params.get('membershipId');
         var userId = params.get('userId');
         var secret = params.get('secret');
@@ -15502,6 +15507,8 @@ var InviteController = /** @class */ (function (_super) {
         var userRealm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetRealm)({ realmId: userId, enabled: true }).realm;
         var createRealm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRealm)().createRealm;
         var createMagicURL = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateMagicURL)(realmId).createMagicURL;
+        var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetRealm)({ realmId: userId, enabled: true }), personelRealm = _a.realm, isPersonelRealmLoading = _a.isLoading, isError = _a.isError, error = _a.error;
+        var createPersonelRealm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useCreatePersonelRealm)().createPersonelRealm;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('Password').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)().fontSize('1.8rem')
             .allHeight(40)
             .placeholder('New password')
@@ -15522,54 +15529,39 @@ var InviteController = /** @class */ (function (_super) {
             .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Teams.updateMembershipStatus(teamId, membershipId, userId, secret).then(function (membership) {
-                    alert('_creating personel realm');
-                    if (userOrganization == null) {
-                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Teams.create(userId, userId).then(function () { return __awaiter(_this, void 0, void 0, function () {
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        if (!(userRealm == null)) return [3 /*break*/, 2];
-                                        return [4 /*yield*/, CreateUserRealm(userId)];
-                                    case 1:
-                                        _a.sent();
-                                        createMagicURL({
-                                            userId: membership.userId,
-                                            email: membership.userEmail,
-                                            url: ''
-                                        }, function (data) {
-                                            var _a;
-                                            var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
-                                            var userName = params[0];
-                                            var token = params[1];
-                                            var realmId = params[3];
-                                            var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetProtocol)();
-                                            var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetHostName)();
-                                            window.location.href = "".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@realm/?userId=").concat(userName, "&secret=").concat(token);
-                                        });
-                                        _a.label = 2;
-                                    case 2: return [2 /*return*/];
-                                }
-                            });
-                        }); });
-                    }
-                    else {
-                        createMagicURL({
-                            userId: membership.userId,
-                            email: membership.userEmail,
-                            url: ''
-                        }, function (data) {
-                            var _a;
-                            var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
-                            var userName = params[0];
-                            var token = params[1];
-                            var realmId = params[3];
-                            var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetProtocol)();
-                            var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_3__.useGetHostName)();
-                            window.location.href = "".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@realm/?userId=").concat(userName, "&secret=").concat(token);
-                        });
-                    }
-                });
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Teams.updateMembershipStatus(teamId, membershipId, userId, secret).then(function (membership) { return __awaiter(_this, void 0, void 0, function () {
+                    var _this = this;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                if (!(!isPersonelRealmLoading && isError)) return [3 /*break*/, 1];
+                                createPersonelRealm({
+                                    realmId: userId,
+                                    name: userName,
+                                    organizationId: userId
+                                }, function () { return __awaiter(_this, void 0, void 0, function () {
+                                    return __generator(this, function (_a) {
+                                        switch (_a.label) {
+                                            case 0:
+                                                alert('var');
+                                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(userId, 'workspace', 'membership', realmId, { name: realmName })];
+                                            case 1:
+                                                _a.sent();
+                                                return [2 /*return*/];
+                                        }
+                                    });
+                                }); });
+                                return [3 /*break*/, 3];
+                            case 1:
+                                alert('yok');
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(userId, 'workspace', 'membership', realmId, { name: realmName })];
+                            case 2:
+                                _a.sent();
+                                _a.label = 3;
+                            case 3: return [2 /*return*/];
+                        }
+                    });
+                }); });
                 return [2 /*return*/];
             });
         }); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Log in with another email')
@@ -16487,277 +16479,227 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
-    var organizationId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)().organizationId;
+    //const { organizationId } = useParams();
     var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(''), workspaceName = _a[0], setWorkspaceName = _a[1];
     var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(''), workspaceId = _b[0], setWorkspaceId = _b[1];
     var me = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetMe)('console').me;
     var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
     // const { organizationId } = useParams();
-    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetOrganization)({ organizationId: organizationId, hookEnabled: true }), organization = _c.organization, isOrganizationLoading = _c.isLoading; // useGetCurrentOrganization();
-    var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRealm)(), createRealm = _d.createRealm, isLoading = _d.isLoading;
+    // const { organization, isLoading: isOrganizationLoading } = useGetOrganization({ organizationId, hookEnabled: true }); // useGetCurrentOrganization();
+    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRealm)(), createRealm = _c.createRealm, isLoading = _c.isLoading;
     var deleteSession = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteSession)('console').deleteSession;
     var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useAccount)().account;
-    return (isOrganizationLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Loading...') : organization == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)('/app/organization/select') :
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
-            var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListRealms)(organization != null, [
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('teamId', organization.$id)
-            ]), realms = _a.realms, isRealmsLoading = _a.isLoading;
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)(organization === null || organization === void 0 ? void 0 : organization.name).fontSize('2.8rem').foregroundColor('#090e13')
-                .fontFamily('Graphik Medium,sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)(account.email).fontSize('2.8rem').foregroundColor('#090e13')
-                .fontFamily('Graphik Medium,sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Select another organization')
-                .fontSize(16))
-                .height()
-                .onClick(function () {
-                navigate('/app/organization/select');
-            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('Realms').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90), _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)([{ $id: 'the', name: 'the, Celmino' }])(function (realm) {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
-                    var createMagicURL = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateMagicURL)(realm.$id).createMagicURL;
-                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(realm.name).fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icons.MoveArrowRight))
-                        .cursor('pointer')
-                        .height()
-                        .padding('1.6rem 2rem 1.6rem 0')
-                        .foregroundColor('#242938')
-                        .cornerRadius(6)
-                        .background({ hover: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.darken)('#7FE8D4', 0.05) })
-                        .onClick(function () {
-                        createMagicURL({
-                            userId: account.$id,
-                            email: account.email,
-                            url: ''
-                        }, function (data) {
-                            var _a;
-                            var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
-                            var userName = params[0];
-                            var token = params[1];
-                            var realmId = params[3];
-                            var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetProtocol)();
-                            var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetHostName)();
-                            window.open("".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@realm/?userId=").concat(userName, "&secret=").concat(token));
-                            //window.location.href = `${protocol}//${realmId}.${hostName}/@realm/?userId=${userName}&secret=${token}`
-                            // alert(data?.message?.split('&'))
-                        });
-                        //navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${realm.name}-${realm.$id}`)
-                    }));
+    var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetRealm)({ realmId: account.$id, enabled: true }), personelRealm = _d.realm, isPersonelRealmLoading = _d.isLoading, isError = _d.isError, error = _d.error;
+    var createPersonelRealm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useCreatePersonelRealm)().createPersonelRealm;
+    var _e = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(true), personelRealmCreating = _e[0], setPersonelReamCreating = _e[1];
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+        if (!isPersonelRealmLoading && isError) {
+            createPersonelRealm({
+                realmId: account.$id,
+                name: account.name,
+                organizationId: account.$id
+            }, function () { return setPersonelReamCreating(false); });
+        }
+        else {
+            setPersonelReamCreating(false);
+        }
+    }, [isError]);
+    return (
+    // isOrganizationLoading ? Text('Loading...') : organization == null ? UINavigate('/app/organization/select') :
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
+        /*  const { realms, isLoading: isRealmsLoading } = useListRealms(organization != null, [
+             Query.equal('teamId', organization.$id)
+         ]) */
+        var documents = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(account.$id, 'workspace', 'membership').documents;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(JSON.stringify({ isPersonelRealmLoading: isPersonelRealmLoading, isError: isError, error: error })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)(account === null || account === void 0 ? void 0 : account.name).fontSize('2.8rem').foregroundColor('#090e13')
+            .fontFamily('Graphik Medium,sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)(account.email).fontSize('2.8rem').foregroundColor('#090e13')
+            .fontFamily('Graphik Medium,sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Select another organization')
+            .fontSize(16))
+            .height()
+            .onClick(function () {
+            navigate('/app/organization/select');
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('Realms').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90), _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(documents)(function (realm) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
+                var createMagicURL = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateMagicURL)(realm.$id).createMagicURL;
+                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(realm.name).fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icons.MoveArrowRight))
+                    .cursor('pointer')
+                    .height()
+                    .padding('1.6rem 2rem 1.6rem 0')
+                    .foregroundColor('#242938')
+                    .cornerRadius(6)
+                    .background({ hover: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.darken)('#7FE8D4', 0.05) })
+                    .onClick(function () {
+                    createMagicURL({
+                        userId: account.$id,
+                        email: account.email,
+                        url: ''
+                    }, function (data) {
+                        var _a;
+                        var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
+                        var userName = params[0];
+                        var token = params[1];
+                        var realmId = params[3];
+                        var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetProtocol)();
+                        var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetHostName)();
+                        window.open("".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@realm/?userId=").concat(userName, "&secret=").concat(token));
+                        //window.location.href = `${protocol}//${realmId}.${hostName}/@realm/?userId=${userName}&secret=${token}`
+                        // alert(data?.message?.split('&'))
+                    });
+                    //navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${realm.name}-${realm.$id}`)
+                }));
+            });
+        })).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cHorizontal, 20).height().maxWidth('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HDivider)().height(1).background('rgba(125, 141, 154, 0.1)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Create a new realm').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height().padding('1.6rem 2rem 1.6rem 0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Log in with another email').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height().padding('1.6rem 2rem 1.6rem 0')
+            .onClick(function () {
+            navigate('/logout');
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)()
+            .padding()
+            .border('none')
+            .borderBottom('1px solid #000')
+            .background('transparent')
+            .outline({ focus: 'none' })
+            .maxWidth(300)
+            .onChange(function (value) {
+            setWorkspaceName(value);
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)().allWidth(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)()
+            .padding()
+            .border('none')
+            .borderBottom('1px solid #000')
+            .background('transparent')
+            .outline({ focus: 'none' })
+            .maxWidth(300)
+            .onChange(function (value) {
+            setWorkspaceId(value);
+        })).width('50%')
+            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)().renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__.ButtonRenderer).label('Submit')
+            .loading(isLoading)
+            .disabled(isLoading)
+            .onClick(function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                createRealm({
+                    realmId: workspaceId,
+                    name: workspaceName,
+                    organizationId: account === null || account === void 0 ? void 0 : account.$id,
+                }, function (workspace) { return __awaiter(void 0, void 0, void 0, function () {
+                    var database, appletCol, nameAttr, parent, opaAttr, typeAttr, iconName, iconCategory, themeColor, treeCol;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.create(workspace.$id, 'workspace', 'Workspace', 'workspace')];
+                            case 1:
+                                database = _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'realmInfo', 'RealmInfo')];
+                            case 2:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'name', 255, false)];
+                            case 3:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'teamId', 255, false)];
+                            case 4:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'applets', 'Applets')];
+                            case 5:
+                                appletCol = _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'name', 255, false)];
+                            case 6:
+                                nameAttr = _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'parent', 255, false)];
+                            case 7:
+                                parent = _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'opa', 255, false)];
+                            case 8:
+                                opaAttr = _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false)];
+                            case 9:
+                                typeAttr = _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconName', 255, false)];
+                            case 10:
+                                iconName = _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false)];
+                            case 11:
+                                iconCategory = _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false, '-1')];
+                            case 12:
+                                themeColor = _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree')];
+                            case 13:
+                                treeCol = _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'name', 255, false)];
+                            case 14:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false)];
+                            case 15:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false)];
+                            case 16:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false)];
+                            case 17:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false)];
+                            case 18:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'spaceId', 255, false)];
+                            case 19:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false)];
+                            case 20:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false)];
+                            case 21:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false)];
+                            case 22:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false)];
+                            case 23:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
+                            case 24:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(workspace.$id, database.$id, 'realmInfo', workspace.$id, {
+                                        name: workspaceName,
+                                        teamId: account.$id
+                                    })];
+                            case 25:
+                                _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(account.$id, 'workspace', 'membership', workspace.$id, { name: workspace.name })];
+                            case 26:
+                                _a.sent();
+                                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Accounts.createMagicURL(account.$id, account.email).then(function (data) {
+                                    var _a;
+                                    var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
+                                    var userName = params[0];
+                                    var token = params[1];
+                                    var realmId = params[3];
+                                    var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetProtocol)();
+                                    var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetHostName)();
+                                    //  window.open(`${protocol}//${workspace.$id}.${hostName}/@realm/?userId=${userName}&secret=${token}`);
+                                });
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                return [2 /*return*/];
+            });
+        }); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)().renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__.ButtonRenderer).label('Create Personel Workspace')
+            .loading(isLoading)
+            .disabled(isLoading)
+            .onClick(function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                createPersonelRealm({
+                    realmId: account.$id,
+                    name: account.name,
+                    organizationId: account.$id
                 });
-            })).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cHorizontal, 20).height().maxWidth('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HDivider)().height(1).background('rgba(125, 141, 154, 0.1)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Create a new realm').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height().padding('1.6rem 2rem 1.6rem 0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Log in with another email').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height().padding('1.6rem 2rem 1.6rem 0')
-                .onClick(function () {
-                navigate('/logout');
-            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)()
-                .padding()
-                .border('none')
-                .borderBottom('1px solid #000')
-                .background('transparent')
-                .outline({ focus: 'none' })
-                .maxWidth(300)
-                .onChange(function (value) {
-                setWorkspaceName(value);
-            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)().allWidth(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)()
-                .padding()
-                .border('none')
-                .borderBottom('1px solid #000')
-                .background('transparent')
-                .outline({ focus: 'none' })
-                .maxWidth(300)
-                .onChange(function (value) {
-                setWorkspaceId(value);
-            })).width('50%')
-                .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)().renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__.ButtonRenderer).label('Submit')
-                .loading(isLoading)
-                .disabled(isLoading)
-                .onClick(function () { return __awaiter(void 0, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    createRealm({
-                        realmId: workspaceId,
-                        name: workspaceName,
-                        organizationId: organization === null || organization === void 0 ? void 0 : organization.$id,
-                    }, function (workspace) { return __awaiter(void 0, void 0, void 0, function () {
-                        var database, appletCol, nameAttr, parent, opaAttr, typeAttr, iconName, iconCategory, themeColor, treeCol;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.create(workspace.$id, 'workspace', 'Workspace', 'workspace')];
-                                case 1:
-                                    database = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'realmInfo', 'RealmInfo')];
-                                case 2:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'name', 255, false)];
-                                case 3:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'teamId', 255, false)];
-                                case 4:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'applets', 'Applets')];
-                                case 5:
-                                    appletCol = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'name', 255, false)];
-                                case 6:
-                                    nameAttr = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'parent', 255, false)];
-                                case 7:
-                                    parent = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'opa', 255, false)];
-                                case 8:
-                                    opaAttr = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false)];
-                                case 9:
-                                    typeAttr = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconName', 255, false)];
-                                case 10:
-                                    iconName = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false)];
-                                case 11:
-                                    iconCategory = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false, '-1')];
-                                case 12:
-                                    themeColor = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree')];
-                                case 13:
-                                    treeCol = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'name', 255, false)];
-                                case 14:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false)];
-                                case 15:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false)];
-                                case 16:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false)];
-                                case 17:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false)];
-                                case 18:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'spaceId', 255, false)];
-                                case 19:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false)];
-                                case 20:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false)];
-                                case 21:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false)];
-                                case 22:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false)];
-                                case 23:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
-                                case 24:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(workspace.$id, database.$id, 'realmInfo', workspace.$id, {
-                                            name: workspaceName,
-                                            teamId: organization === null || organization === void 0 ? void 0 : organization.$id
-                                        })];
-                                case 25:
-                                    _a.sent();
-                                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Accounts.createMagicURL(account.$id, account.email).then(function (data) {
-                                        var _a;
-                                        var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
-                                        var userName = params[0];
-                                        var token = params[1];
-                                        var realmId = params[3];
-                                        var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetProtocol)();
-                                        var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetHostName)();
-                                        window.open("".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@realm/?userId=").concat(userName, "&secret=").concat(token));
-                                    });
-                                    return [2 /*return*/];
-                            }
-                        });
-                    }); });
-                    return [2 /*return*/];
-                });
-            }); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)().renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__.ButtonRenderer).label('Create Personel Workspace')
-                .loading(isLoading)
-                .disabled(isLoading)
-                .onClick(function () { return __awaiter(void 0, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    createRealm({
-                        realmId: account.$id,
-                        name: account.name,
-                        organizationId: account.$id,
-                    }, function (workspace) { return __awaiter(void 0, void 0, void 0, function () {
-                        var database, appletCol, nameAttr, parent, opaAttr, typeAttr, iconName, iconCategory, themeColor, treeCol;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.create(workspace.$id, 'workspace', 'Workspace', 'workspace')];
-                                case 1:
-                                    database = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'applets', 'Applets')];
-                                case 2:
-                                    appletCol = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'name', 255, false)];
-                                case 3:
-                                    nameAttr = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'parent', 255, false)];
-                                case 4:
-                                    parent = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'opa', 255, false)];
-                                case 5:
-                                    opaAttr = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false)];
-                                case 6:
-                                    typeAttr = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconName', 255, false)];
-                                case 7:
-                                    iconName = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false)];
-                                case 8:
-                                    iconCategory = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false, '-1')];
-                                case 9:
-                                    themeColor = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree')];
-                                case 10:
-                                    treeCol = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'name', 255, false)];
-                                case 11:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false)];
-                                case 12:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false)];
-                                case 13:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false)];
-                                case 14:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false)];
-                                case 15:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'spaceId', 255, false)];
-                                case 16:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false)];
-                                case 17:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false)];
-                                case 18:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false)];
-                                case 19:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false)];
-                                case 20:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
-                                case 21:
-                                    _a.sent();
-                                    return [2 /*return*/];
-                            }
-                        });
-                    }); });
-                    return [2 /*return*/];
-                });
-            }); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Log in with another email')
-                .fontSize(16))
-                .height()
-                .onClick(function () {
-                navigate('/logout');
-            })).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)().height('9rem')
-                .background('linear-gradient(0deg,#fff 42.67%,hsla(0,0%,100%,.8) 60.67%,hsla(0,0%,100%,0))')).background('#7FE8D4'));
-        }));
+                return [2 /*return*/];
+            });
+        }); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Log in with another email')
+            .fontSize(16))
+            .height()
+            .onClick(function () {
+            navigate('/logout');
+        })).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)().height('9rem')
+            .background('linear-gradient(0deg,#fff 42.67%,hsla(0,0%,100%,.8) 60.67%,hsla(0,0%,100%,0))')).background('#7FE8D4'));
+    }));
 }); };
 
 

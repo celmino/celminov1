@@ -20774,12 +20774,15 @@ if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.workerContext()) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   useAppletNavigate: () => (/* reexport safe */ _useAppletNavigate__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate),
+/* harmony export */   useCreatePersonelRealm: () => (/* reexport safe */ _useCreatePersonelRealm__WEBPACK_IMPORTED_MODULE_3__.useCreatePersonelRealm),
 /* harmony export */   useDeleteApplet: () => (/* reexport safe */ _useDeleteApplet__WEBPACK_IMPORTED_MODULE_2__.useDeleteApplet),
 /* harmony export */   useRealmNavigate: () => (/* reexport safe */ _useWorkspaceNavigation__WEBPACK_IMPORTED_MODULE_1__.useRealmNavigate)
 /* harmony export */ });
 /* harmony import */ var _useAppletNavigate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./useAppletNavigate */ "./src/hooks/useAppletNavigate.ts");
 /* harmony import */ var _useWorkspaceNavigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useWorkspaceNavigation */ "./src/hooks/useWorkspaceNavigation.ts");
 /* harmony import */ var _useDeleteApplet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useDeleteApplet */ "./src/hooks/useDeleteApplet.ts");
+/* harmony import */ var _useCreatePersonelRealm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useCreatePersonelRealm */ "./src/hooks/useCreatePersonelRealm.ts");
+
 
 
 
@@ -20828,6 +20831,52 @@ const useAppletNavigate = () => {
                 navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${appletId}${url}`);
             }
         }
+    };
+};
+
+
+/***/ }),
+
+/***/ "./src/hooks/useCreatePersonelRealm.ts":
+/*!*********************************************!*\
+  !*** ./src/hooks/useCreatePersonelRealm.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useCreatePersonelRealm: () => (/* binding */ useCreatePersonelRealm)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services */ "./src/services/index.ts");
+
+
+const useCreatePersonelRealm = () => {
+    const queryClient = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useQueryClient)();
+    const mutation = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useMutation)({
+        mutationFn: ({ realmId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid)(), name, organizationId }) => {
+            return _services__WEBPACK_IMPORTED_MODULE_1__.CelminoServices.Realm.createPersonelRealm(realmId, name, organizationId);
+        },
+        onSuccess: (data) => {
+            // Invalidate and refetch
+            queryClient.invalidateQueries({ queryKey: ['realms'] });
+        }
+    });
+    const createPersonelRealm = ({ realmId, name, organizationId }, onSuccess = void 0) => {
+        mutation.mutate({ realmId, name, organizationId }, {
+            onSuccess: (data) => {
+                onSuccess(data);
+            }
+        });
+    };
+    return {
+        createPersonelRealm,
+        isLoading: mutation.isLoading,
+        isSuccess: mutation.isSuccess,
+        isError: mutation.isError,
+        error: mutation.error
     };
 };
 
@@ -20933,6 +20982,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AnonymousContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.AnonymousContextProvider),
 /* harmony export */   AppletContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.AppletContext),
 /* harmony export */   AppletContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.AppletContextProvider),
+/* harmony export */   CelminoServices: () => (/* reexport safe */ _services__WEBPACK_IMPORTED_MODULE_7__.CelminoServices),
 /* harmony export */   ColorSelect: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorSelect),
 /* harmony export */   ColorView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorView),
 /* harmony export */   DynoDialog: () => (/* reexport safe */ _FormBuilder_DynoDialog__WEBPACK_IMPORTED_MODULE_3__.DynoDialog),
@@ -20960,6 +21010,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   useAnonymousAccount: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useAnonymousAccount),
 /* harmony export */   useApplet: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useApplet),
 /* harmony export */   useAppletNavigate: () => (/* reexport safe */ _hooks__WEBPACK_IMPORTED_MODULE_5__.useAppletNavigate),
+/* harmony export */   useCreatePersonelRealm: () => (/* reexport safe */ _hooks__WEBPACK_IMPORTED_MODULE_5__.useCreatePersonelRealm),
 /* harmony export */   useDeleteApplet: () => (/* reexport safe */ _hooks__WEBPACK_IMPORTED_MODULE_5__.useDeleteApplet),
 /* harmony export */   useFormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder),
 /* harmony export */   useOrganization: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useOrganization),
@@ -20974,7 +21025,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/index.ts");
 /* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hooks */ "./src/hooks/index.ts");
 /* harmony import */ var _applets__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets */ "./src/applets/index.ts");
-/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services */ "./src/services/index.ts");
+/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
+
 
 
 
@@ -22347,6 +22400,111 @@ const Fields = {
         }
     ]
 };
+
+
+/***/ }),
+
+/***/ "./src/services/Realm.ts":
+/*!*******************************!*\
+  !*** ./src/services/Realm.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RealmServices: () => (/* binding */ RealmServices)
+/* harmony export */ });
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+const RealmServices = {
+    createPersonelRealm: (realmId, realmName, organizationId) => __awaiter(void 0, void 0, void 0, function* () {
+        (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.setUpProject)('console', undefined);
+        try {
+            yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Teams.create(organizationId, realmName);
+        }
+        catch (_a) {
+            // organization exist
+        }
+        const workspace = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Projects.create(realmId, realmName, organizationId);
+        // Workspace Database
+        const database = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.create(workspace.$id, 'workspace', 'Workspace', 'workspace');
+        // Membership Collection
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createCollection(workspace.$id, database.$id, 'membership', 'Realm Memberships');
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, 'membership', 'name', 255, false);
+        //applets Collection
+        const appletCol = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createCollection(workspace.$id, database.$id, 'applets', 'Applets');
+        const nameAttr = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'name', 255, false);
+        const parent = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'parent', 255, false);
+        const opaAttr = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'opa', 255, false);
+        const typeAttr = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false);
+        const iconName = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconName', 255, false);
+        const iconCategory = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false);
+        const themeColor = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false, '-1');
+        //Tree Collection Creating
+        const treeCol = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree');
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'name', 255, false);
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false);
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false);
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false);
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false);
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'spaceId', 255, false);
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false);
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false);
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false);
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false);
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1');
+        // Create personel realm membership
+        yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.createDocument(workspace.$id, database.$id, 'membership', workspace.$id, { name: workspace.name });
+    })
+};
+
+
+/***/ }),
+
+/***/ "./src/services/Services.ts":
+/*!**********************************!*\
+  !*** ./src/services/Services.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CelminoServices: () => (/* binding */ CelminoServices)
+/* harmony export */ });
+/* harmony import */ var _Realm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Realm */ "./src/services/Realm.ts");
+
+const CelminoServices = {
+    Realm: Object.assign({}, _Realm__WEBPACK_IMPORTED_MODULE_0__.RealmServices)
+};
+
+
+/***/ }),
+
+/***/ "./src/services/index.ts":
+/*!*******************************!*\
+  !*** ./src/services/index.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CelminoServices: () => (/* reexport safe */ _Services__WEBPACK_IMPORTED_MODULE_0__.CelminoServices)
+/* harmony export */ });
+/* harmony import */ var _Services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Services */ "./src/services/Services.ts");
+
 
 
 /***/ }),

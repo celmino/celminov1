@@ -6,5 +6,6 @@ export * from './FormBuilder/DynoDialog';
 export * from './context';
 export * from './hooks'
 export * from './applets'
+export * from './services'
 
 import './exports';

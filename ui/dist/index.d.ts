@@ -28,7 +28,7 @@ export class FormBuilder {
     static getViewFactory(type: string): any;
     static getView(fieldInfo: any): any;
     static canRender(fieldInfo: any, formController?: UIFormController): boolean;
-    static render(_formMeta: string | object | object[]): import("@tuval/forms").FragmentClass | import("@tuval/forms").TextClass | import("@tuval/forms").ConfigContextClass;
+    static render(_formMeta: string | object | object[]): import("@tuval/forms").TextClass | import("@tuval/forms").FragmentClass | import("@tuval/forms").ConfigContextClass;
     static compileFormula(formula: any): string;
 }
 
@@ -37,7 +37,7 @@ export class DynoDialog extends DialogView {
     BindRouterParams(formData: any): void;
     OnOK(): void;
     OnCancel(): void;
-    LoadView(): import("@tuval/forms").UISpinnerClass | import("@tuval/forms").VStackClass;
+    LoadView(): import("@tuval/forms").VStackClass | import("@tuval/forms").UISpinnerClass;
     static Show(formData: any): Promise<any>;
 }
 
@@ -96,6 +96,23 @@ export const useRealmNavigate: () => {
 export const useDeleteApplet: () => {
     deleteApplet: (appletId: string, onSuccess?: Function) => void;
     isLoading: boolean;
+};
+
+export const useCreatePersonelRealm: () => {
+    createPersonelRealm: ({ realmId, name, organizationId }: {
+        /**
+          * The name of the account.
+          */
+        realmId?: string;
+        name: string;
+        organizationId: string;
+    }, onSuccess?: (data: any) => void) => void;
+    isLoading: boolean;
+    isSuccess: boolean;
+    isError: boolean;
+    error: {
+        message: string;
+    };
 };
 
 export const ListApplet: {
@@ -211,6 +228,12 @@ export const FeedApplet: {
             })[];
         }[];
     }[];
+};
+
+export const CelminoServices: {
+    Realm: {
+        createPersonelRealm: (realmId: string, realmName: string, organizationId: string) => Promise<void>;
+    };
 };
 
 export const ColorSelect: ({ onSelect }: {

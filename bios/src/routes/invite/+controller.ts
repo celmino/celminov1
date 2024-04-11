@@ -1,8 +1,9 @@
 import { ButtonRenderer, InputRenderer } from "@realmocean/antd";
-import { Query, Services, useCreateMagicURL, useCreateRealm, useDeleteSession, useGetMe, useGetOrganization, useGetRealm, useListRealms } from "@realmocean/sdk";
+import { Query, Services, useCreateMagicURL, useCreateRealm, useDeleteSession, useGetMe, useGetOrganization, useGetRealm, useListAccounts, useListRealms } from "@realmocean/sdk";
 
 import { Button, ForEach, HStack, Heading, Input, TextField, Text, UINavigate, UIViewBuilder, VStack, useNavigate, useState, Spacer, cLeading, cHorizontal, darken, Icon, Icons, HDivider, UIController, UIView } from "@tuval/forms";
 import { useGetHostName, useGetProtocol } from "../../hooks/useGetProtocol";
+import { useCreatePersonelRealm } from "@celmino/ui";
 
 
 
@@ -95,6 +96,8 @@ export class InviteController extends UIController {
         const params = new URLSearchParams(window.location.search);
         const teamId = params.get('teamId');
         const realmId = params.get('realmId');
+        const realmName = params.get('realmName');
+        const userName = params.get('userName');
         const membershipId = params.get('membershipId');
         const userId = params.get('userId');
         const secret = params.get('secret');
@@ -105,6 +108,10 @@ export class InviteController extends UIController {
         const { createRealm } = useCreateRealm();
 
         const { createMagicURL } = useCreateMagicURL(realmId);
+
+        const { realm: personelRealm, isLoading: isPersonelRealmLoading, isError, error } = useGetRealm({ realmId: userId, enabled: true });
+        
+        const { createPersonelRealm } = useCreatePersonelRealm();
 
         return (
 
@@ -143,64 +150,40 @@ export class InviteController extends UIController {
 
                             Services.Teams.updateMembershipStatus(teamId, membershipId, userId, secret).then(async (membership) => {
 
-                                const doc = await Services.Databases.getDocument(userId, 'workspace', 'membership', realmId);
-                                if (doc == null) {
-                                    await Services.Databases.createDocument(userId, 'workspace', 'membership', realmId, { data: {name: ''} });
-                                }
+                                if (!isPersonelRealmLoading && isError) {
+                                  
+                                    createPersonelRealm({
+                                        realmId: userId,
+                                        name: userName,
+                                        organizationId: userId
+                                    }, async () => {
+                                        alert('var')
+                                        await Services.Databases.createDocument(userId, 'workspace', 'membership', realmId, { name: realmName });
 
-
-
-                                alert('_creating personel realm')
-                                if (userOrganization == null) {
-                                    Services.Teams.create(userId, userId).then(async () => {
-                                        if (userRealm == null) {
-                                            await CreateUserRealm(userId);
-
-                                            createMagicURL({
-                                                userId: membership.userId,
-                                                email: membership.userEmail,
-                                                url: ''
-                                            }, (data: any) => {
-                                                const params = data?.message?.split('&');
-                                                const userName = params[0];
-                                                const token = params[1];
-                                                const realmId = params[3];
-
-
-                                                const protocol = useGetProtocol();
-                                                const hostName = useGetHostName();
-                                                window.location.href = `${protocol}//${realmId}.${hostName}/@realm/?userId=${userName}&secret=${token}`;
-
-                                            })
-                                        }
                                     })
                                 } else {
-                                    createMagicURL({
-                                        userId: membership.userId,
-                                        email: membership.userEmail,
-                                        url: ''
-                                    }, (data: any) => {
-                                        const params = data?.message?.split('&');
-                                        const userName = params[0];
-                                        const token = params[1];
-                                        const realmId = params[3];
-
-
-                                        const protocol = useGetProtocol();
-                                        const hostName = useGetHostName();
-                                        window.location.href = `${protocol}//${realmId}.${hostName}/@realm/?userId=${userName}&secret=${token}`;
-
-                                    })
+                                    alert('yok')
+                                    await Services.Databases.createDocument(userId, 'workspace', 'membership', realmId, { name: realmName });
                                 }
 
+                              /*   createMagicURL({
+                                    userId: membership.userId,
+                                    email: membership.userEmail,
+                                    url: ''
+                                }, (data: any) => {
+                                    const params = data?.message?.split('&');
+                                    const userName = params[0];
+                                    const token = params[1];
+                                    const realmId = params[3];
 
+
+                                    const protocol = useGetProtocol();
+                                    const hostName = useGetHostName();
+                                    window.location.href = `${protocol}//${realmId}.${hostName}/@realm/?userId=${userName}&secret=${token}`;
+                                }) */
 
 
                             });
-
-
-
-
 
                         }),
 

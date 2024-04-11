@@ -449,14 +449,14 @@
   resolved "https://registry.npmjs.org/@base2/pretty-print-object/-/pretty-print-object-1.0.1.tgz"
   integrity sha512-4iri8i1AqYHJE2DstZYkyEprg6Pq6sKx3xn5FpySk9sNhH7qN2LLlHJCfDTZRILNwQNPD7mATWM0TBui7uC1pA==
 
-"@celmino/ui@^1.0.49":
-  version "1.0.49"
-  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.49.tgz"
-  integrity sha512-KuwAEijaZ/AQCTA2fVoYYhNiEgC8CG+nBLctn/gowc5N/s1cWu2WFWAe4GtgvDQo+u1HvARZwWhucuYRXdIVdQ==
+"@celmino/ui@^1.0.53":
+  version "1.0.53"
+  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.53.tgz"
+  integrity sha512-osuyIwt0HPBnuluC9Ex+0w5gPef+k+ujZ6Ic1ceHM/lxdVQSaB4GHtGr7psXsBHLNg5CAOem9mSUOlKffe13Sw==
   dependencies:
     "@realmocean/antd" "^21.0.34"
     "@realmocean/atlaskit" "^17.8.24"
-    "@realmocean/sdk" "^1.0.100"
+    "@realmocean/sdk" "^1.0.104"
     "@realmocean/vibe" "2.82.50"
     "@tuval/core" "^0.0.103"
     "@tuval/forms" "^1.0.180"
@@ -1219,7 +1219,7 @@
   resolved "https://registry.npmjs.org/@realmocean/navigations/-/navigations-0.0.3.tgz"
   integrity sha512-zsNno1NP0GIP53xaFy0m+DpqPiyGD0bOb8TFl5PjjiUd/ndlPbupoZdligDHvCAIJ2U7v+NnJ9LWO6OA8sChUQ==
 
-"@realmocean/sdk@^1.0.100", "@realmocean/sdk@^1.0.110":
+"@realmocean/sdk@^1.0.104", "@realmocean/sdk@^1.0.110":
   version "1.0.110"
   resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.110.tgz"
   integrity sha512-5YZsIMDwQ1W6xD9DkgokFpdZhHmPcLD9dYF2vyTZKTgAhqqWyv8jTqHUFxSCNU9QD2ij18WNAF0EOgikR4q5Xg==
@@ -3710,6 +3710,11 @@ jest-worker@^27.4.5:
     "@types/node" "*"
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
+
+js-htmlencode@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/js-htmlencode/-/js-htmlencode-0.3.0.tgz"
+  integrity sha512-HedYg9SJsimM4aca37Lj0Ct0eZ1WT8CCxlgMPfUV7mCc6g3UfEUHy2b9qfzuC0uwk4gjVEJKrkWbPSdnUJBFTQ==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
