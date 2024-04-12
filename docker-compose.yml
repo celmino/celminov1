@@ -167,7 +167,7 @@ services:
       - realmocean
   
     volumes:
-      - ./realmocean/services:/usr/src/app/src/services
+      - ./realmocean/services:/usr/app/src/services
 
     environment:
       - _APP_NAME

@@ -1,28 +1,26 @@
 const BaseService = require("../BaseService");
 
-class FileLogService extends BaseService{
+class FileLogService extends BaseService {
 
-  serviceName() {
-    return 'FileLogService';
-  }
+   
+    async init() {
+        const app = this.services.get('web-server');
+        const email = this.services.get('email-service');
 
-  cron() {
-    return '* * * * * *';
-  }
+        email.send('FileLogService initialized gönderildi.')
 
-  scheduled() {
-   // console.log(this.services.get('FileLogService'))
-  }
+      
 
-  get(req, res) {
-    return res.json({
-      status: "FileLogService",
-    });
-  }
+        app.get("/hans", async (req, res) => {
+            return res.json({
+                hans: 'sdfg'
+            });
+        });
+    }
 
 }
 
 
-FileLogService.Name = 'FileLogService';
+FileLogService.Name = 'log-service';
 
-module.exports =  FileLogService;
+module.exports = FileLogService;
