@@ -50,7 +50,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                 const { documents } = useListDocuments(account.$id, 'workspace', 'membership');
                 return (
                     VStack(
-                        Text(JSON.stringify({isPersonelRealmLoading, isError:isError, error})),
+                     
                         VStack({ spacing: 10 })(
                             Heading(account?.name).fontSize('2.8rem').foregroundColor('#090e13')
                                 .fontFamily('Graphik Medium,sans-serif'),

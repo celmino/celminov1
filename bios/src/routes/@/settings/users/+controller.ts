@@ -37,20 +37,25 @@ export class UsersController extends UIController {
                     LoadingButton().label('Invite').appearance('primary')
                         .onClick(() => {
                             setUpProject('console', undefined);
-                            Services.Teams.listMemberships(realm.teamId).then(result => {
-                             //   alert(JSON.stringify(result.memberships))
+                            Services.Teams.listMemberships(realm.teamId).then((result: any) => {
+                                //   alert(JSON.stringify(result.memberships))
                                 if (result.memberships.findIndex(membership => membership.userEmail === email) > -1) {
-                                    createUser({
-                                        name: email,
-                                        email: name
-                                    } as any);
-                                } else {
+                                    const account = result.memberships.find(membership => membership.userEmail === email);
 
+                                    createUser({
+                                        id: account.userId,
+                                        name: name,
+                                        email: email
+                                    } as any, async () => {
+                                        await Services.Databases.createDocument(account.userId, 'workspace', 'membership', realm.$id, { name: realm.name });
+                                    });
+
+                                } else {
                                     createOrganizationMembership({
                                         organizationId: realm.teamId,
                                         email: email,
                                         name: name,
-                                        url: window.location.href.indexOf('localhost') > -1 ?  `http://localhost/invite?teamId=${realm.teamId}&realmId=${realm.$id}&realmName=${encodeURIComponent(realm.name)}&userName=${encodeURIComponent(name)}` : `https://celmino.io/invite?teamId=${realm.teamId}&realmId=${realm.$id}&realmName=${encodeURIComponent(realm.name)}&userName=${encodeURIComponent(name)}`,
+                                        url: window.location.href.indexOf('localhost') > -1 ? `http://localhost/invite?teamId=${realm.teamId}&realmId=${realm.$id}&realmName=${encodeURIComponent(realm.name)}&userName=${encodeURIComponent(name)}` : `https://celmino.io/invite?teamId=${realm.teamId}&realmId=${realm.$id}&realmName=${encodeURIComponent(realm.name)}&userName=${encodeURIComponent(name)}`,
                                         roles: [Role.any()]
                                     })
 
