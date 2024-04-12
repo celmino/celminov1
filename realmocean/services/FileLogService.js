@@ -11,7 +11,7 @@ class FileLogService extends BaseService{
   }
 
   scheduled() {
-    console.log(this.services.get('FileLogService'))
+   // console.log(this.services.get('FileLogService'))
   }
 
   get(req, res) {
