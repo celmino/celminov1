@@ -182,13 +182,19 @@ export class LoginController extends CelminoController {
                                         .background('#242938')
                                         .cornerRadius(3)
                                         .foregroundColor('white')
-                                        .onClick(() => {
-                                            createEmailSession({
+                                        .onClick(async () => {
+                                            const url = 'http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL';
+                                           // const users = await Services.QDMS.listUsers('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL', 'jG5KCJiNA09FfbßßßibhtYfdSOT6D7m2V9stg5ecilq3bsßßßGh86uVj65M$$$4KO5FNj7ohV8D7Xyj9hGTnb78FgHnw==');
+                                           const token = Services.QDMS.getToken(url, 'qdms', 'qdms24')
+                                           console.log(token);
+                                            /*  createEmailSession({
                                                 email: email,
                                                 password: password
                                             }, () => {
                                                 navigate('/')
-                                            })
+                                            }) */
+
+
                                         }),
                                     HStack({ alignment: cLeading })(
                                         Text('Reset password')
