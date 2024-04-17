@@ -15,17 +15,17 @@ class FileLogService extends BaseService {
 
         email.send('FileLogService initialized gönderildi.')
  */
-        const team = this.services.get('team-service');
+     //   const team = this.services.get('team-service');
        // console.log(await team.list('the'))
 
         app.get("/hans", async (req, res) => {
             return res.json(config);
         });
 
-        app.get("/teams", async (req, res) => {
+       /*  app.get("/teams", async (req, res) => {
            const teams = await team.list('the')
             return res.json(teams);
-        });
+        }); */
     }
 }
 

@@ -157,10 +157,10 @@ services:
       - _APP_LOCALHOST_DOMAIN
       - _APP_FRONTEND_LIBS
 
-  realmocean-node:
-    container_name: realmocean-node
+  realmocean-services:
+    container_name: realmocean-services
     <<: *x-logging
-    image: realmocean/realmocean:node
+    image: realmocean/services
     ports:
       - 4000:4000
     networks:
