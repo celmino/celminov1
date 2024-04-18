@@ -23,12 +23,12 @@ class AppletService extends RealmoceanService {
             console.log(schema);
             console.log(typeof schema);
             try {
-                await this.createApplet(realmId, appletId, schema);
-            } catch {
-
+                const applet = await this.createApplet(realmId, appletId, schema);
+                return res.json(applet);
+            } catch (e) {
+                res.statusCode(500)
+                return res.json(e);
             }
-
-            return res.json(schema);
         });
     }
 
@@ -46,7 +46,7 @@ class AppletService extends RealmoceanService {
                 parent: schema.parent
             });
 
-            appletId= applet.$id;
+            appletId = applet.$id;
 
             // Create Applet Tree Item Document
             await databaseService.createDocument(realmId, 'workspace', 'ws_tree', appletId, {
@@ -117,7 +117,7 @@ class AppletService extends RealmoceanService {
                     reject(error);
                 }
 
-                resolve(true);
+                resolve(applet);
             }
         })
 
