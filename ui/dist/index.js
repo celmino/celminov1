@@ -20683,6 +20683,11 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                 .loading(installingOpa === opa.type)
                 .width('100%')
                 .onClick(() => __awaiter(this, void 0, void 0, function* () {
+                _brokers__WEBPACK_IMPORTED_MODULE_5__.AppletServiceBroker.Default
+                    .setRealmId(this.workspaceId)
+                    //.setAppletId(applet.$id)
+                    .createApplet(opa);
+                return;
                 createDocument({
                     data: {
                         name: opa.name,
@@ -20710,11 +20715,6 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                     }, (treeItem) => {
                         _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('applet.added', { treeItem });
                     });
-                    _brokers__WEBPACK_IMPORTED_MODULE_5__.AppletServiceBroker.Default
-                        .setRealmId(this.workspaceId)
-                        .setAppletId(applet.$id)
-                        .createApplet(opa);
-                    return;
                     if (opa.databases) {
                         setInstallingOpa(opa.type);
                         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Client.setProject(this.workspaceId);

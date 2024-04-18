@@ -180,6 +180,13 @@ export class SelectAppletDialog extends DialogView {
                                                     .width('100%')
                                                     .onClick(async () => {
 
+                                                        AppletServiceBroker.Default
+                                                        .setRealmId(this.workspaceId)
+                                                        //.setAppletId(applet.$id)
+                                                        .createApplet(opa);
+
+                                                    return;
+
                                                         createDocument({
                                                             data: {
                                                                 name: opa.name,
@@ -210,12 +217,7 @@ export class SelectAppletDialog extends DialogView {
                                                                 EventBus.Default.fire('applet.added', { treeItem })
                                                             });
 
-                                                            AppletServiceBroker.Default
-                                                                .setRealmId(this.workspaceId)
-                                                                .setAppletId(applet.$id)
-                                                                .createApplet(opa);
-
-                                                            return;
+                                                           
 
                                                             if (opa.databases) {
                                                                 setInstallingOpa(opa.type);
