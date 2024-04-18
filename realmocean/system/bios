@@ -15847,7 +15847,7 @@ var LoginController = /** @class */ (function (_super) {
                             .setRepo('tenant-manager')
                             .setToken(_mysecret__WEBPACK_IMPORTED_MODULE_4__.Secrets.GithubToken)
                             .getService()
-                            .createIssue('bpmgenesis', 'tenant-manager', _mysecret__WEBPACK_IMPORTED_MODULE_4__.Secrets.GithubToken, {
+                            .createIssue({
                             title: 'hehe',
                             body: 'sdhkfk'
                         });

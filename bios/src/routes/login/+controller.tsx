@@ -194,7 +194,7 @@ export class LoginController extends CelminoController {
                                             .setRepo('tenant-manager')
                                             .setToken(Secrets.GithubToken)
                                             .getService()
-                                            .createIssue('bpmgenesis','tenant-manager', Secrets.GithubToken,
+                                            .createIssue(
                                             {
                                                 title: 'hehe',
                                                 body:'sdhkfk'

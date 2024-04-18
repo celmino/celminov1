@@ -20,7 +20,7 @@ class QDMSTestService extends RealmoceanService {
 
         schedule.addJob('*/2 * * * * *', async () => {
            // const users = await qdms.getUsers(authPack);
-            console.log(token);
+          //  console.log(token);
         })
 
     }

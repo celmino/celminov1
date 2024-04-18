@@ -8,7 +8,7 @@ class FileLogService extends RealmoceanService {
 
         const scheduleService = this.services.get('schedule-service');
         scheduleService.addJob('* * * * * *', () => {
-            console.log('job ------')
+            //console.log('job ------')
         })
 
        /*  const email = this.services.get('email-service');
