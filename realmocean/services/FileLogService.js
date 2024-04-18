@@ -1,6 +1,6 @@
-const BaseService = require("../BaseService");
 
-class FileLogService extends BaseService {
+
+class FileLogService extends RealmoceanService {
    
     async init() {
         const app = this.services.get('web-server').getExpressApp();

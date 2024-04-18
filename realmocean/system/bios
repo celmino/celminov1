@@ -15837,11 +15837,17 @@ var LoginController = /** @class */ (function (_super) {
                     .cornerRadius(3)
                     .foregroundColor('white')
                     .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
-                    var url, token;
                     return __generator(this, function (_a) {
-                        url = 'http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL';
-                        token = _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.QDMS.getToken(url, 'qdms', 'qdms24');
-                        console.log(token);
+                        /* const url = 'http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL';
+                         const token: any = await Services.QDMS.getToken(url, 'qdms', 'qdms24');
+                       const users = await Services.QDMS.listUsers( url , token.token);
+                       console.log(users); */
+                        createEmailSession({
+                            email: email,
+                            password: password
+                        }, function () {
+                            navigate('/');
+                        });
                         return [2 /*return*/];
                     });
                 }); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Reset password')

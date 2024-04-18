@@ -1,11 +1,11 @@
-const BaseService = require("../BaseService");
+
 
 
 
 const url = 'http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL';
 
 
-class QDMSTestService extends BaseService {
+class QDMSTestService extends RealmoceanService {
     async init() {
         const schedule = this.services.get('schedule-service');
         const qdms = this.services.get('qdms-service');
