@@ -36,6 +36,7 @@ class AppletService extends RealmoceanService {
         const databaseService = this.services.get('database-service');
         return new Promise(async (resolve, reject) => {
 
+            // Create Applet Document
             const applet = await databaseService.createDocument(realmId, 'workspace', 'applets', 'unique()', {
                 name: schema.name,
                 opa: schema.tree_type,
@@ -47,6 +48,7 @@ class AppletService extends RealmoceanService {
 
             appletId= applet.$id;
 
+            // Create Applet Tree Item Document
             await databaseService.createDocument(realmId, 'workspace', 'ws_tree', appletId, {
                 name: schema.name,
                 type: 'applet',
