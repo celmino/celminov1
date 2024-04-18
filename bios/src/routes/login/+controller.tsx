@@ -172,7 +172,6 @@ export class LoginController extends CelminoController {
                                     HStack(
                                         Text('Sign in with email')
                                             .fontFamily('"Graphik Regular", sans-serif')
-
                                             .fontSize('2rem')
                                     )
                                         .height()
