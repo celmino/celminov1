@@ -2,6 +2,7 @@ import { GithubBroker, Services, useCreateEmailSession, useGetMe, useUpdateName 
 import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
+import { Secrets } from "./mysecret";
 
 const LeftLogo = () => (
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="207" viewBox="0 0 1000 207">
@@ -172,6 +173,7 @@ export class LoginController extends CelminoController {
                                     HStack(
                                         Text('Sign in with email')
                                             .fontFamily('"Graphik Regular", sans-serif')
+
                                             .fontSize('2rem')
                                     )
                                         .height()
@@ -190,15 +192,15 @@ export class LoginController extends CelminoController {
                                             broker
                                             .setUserName('bpmgenesis')
                                             .setRepo('tenant-manager')
-                                            .setToken('')
+                                            .setToken(Secrets.GithubToken)
                                             .getService()
-                                            .createIssue('bpmgenesis','tenant-manager', '',
+                                            .createIssue('bpmgenesis','tenant-manager', Secrets.GithubToken,
                                             {
                                                 title: 'hehe',
                                                 body:'sdhkfk'
                                             }
                                        )
-                                           /*  Services.Github.createIssue('bpmgenesis','tenant-manager', '',
+                                           /*  Services.Github.createIssue('bpmgenesis','tenant-manager', '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',
                                                 {
                                                     title: 'hehe',
                                                     body:'sdhkfk'
