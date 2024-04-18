@@ -1,4 +1,4 @@
-import { Services, useCreateEmailSession, useGetMe, useUpdateName } from "@realmocean/sdk";
+import { GithubBroker, Services, useCreateEmailSession, useGetMe, useUpdateName } from "@realmocean/sdk";
 import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
@@ -187,12 +187,31 @@ export class LoginController extends CelminoController {
                                              const token: any = await Services.QDMS.getToken(url, 'qdms', 'qdms24');
                                            const users = await Services.QDMS.listUsers( url , token.token);
                                            console.log(users); */
-                                            createEmailSession({
+                                            const broker = new GithubBroker();
+                                            broker
+                                            .setUserName('bpmgenesis')
+                                            .setRepo('tenant-manager')
+                                            .setToken('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')
+                                            .getService()
+                                            .createIssue('bpmgenesis','tenant-manager', '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',
+                                            {
+                                                title: 'hehe',
+                                                body:'sdhkfk'
+                                            }
+                                       )
+                                           /*  Services.Github.createIssue('bpmgenesis','tenant-manager', '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',
+                                                {
+                                                    title: 'hehe',
+                                                    body:'sdhkfk'
+                                                }
+                                            ); */
+
+                                           /*  createEmailSession({
                                                 email: email,
                                                 password: password
                                             }, () => {
                                                 navigate('/')
-                                            })
+                                            }) */
 
 
                                         }),

@@ -15837,16 +15837,17 @@ var LoginController = /** @class */ (function (_super) {
                     .cornerRadius(3)
                     .foregroundColor('white')
                     .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
+                    var broker;
                     return __generator(this, function (_a) {
-                        /* const url = 'http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL';
-                         const token: any = await Services.QDMS.getToken(url, 'qdms', 'qdms24');
-                       const users = await Services.QDMS.listUsers( url , token.token);
-                       console.log(users); */
-                        createEmailSession({
-                            email: email,
-                            password: password
-                        }, function () {
-                            navigate('/');
+                        broker = new _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.GithubBroker();
+                        broker
+                            .setUserName('bpmgenesis')
+                            .setRepo('tenant-manager')
+                            .setToken('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')
+                            .getService()
+                            .createIssue('bpmgenesis', 'tenant-manager', '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', {
+                            title: 'hehe',
+                            body: 'sdhkfk'
                         });
                         return [2 /*return*/];
                     });
