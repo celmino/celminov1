@@ -18975,6 +18975,102 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/brokers/AppletServiceBroker.ts":
+/*!********************************************!*\
+  !*** ./src/brokers/AppletServiceBroker.ts ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletServiceBroker: () => (/* binding */ AppletServiceBroker)
+/* harmony export */ });
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+const url = window.location.port != null ?
+    `${window.location.protocol}//${window.location.hostname}:${window.location.port}/v1/service/applet`
+    : `${window.location.protocol}//${window.location.hostname}/v1/service/applet`;
+class AppletServiceBroker extends _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Client {
+    static get Default() {
+        return new AppletServiceBroker();
+    }
+    constructor() {
+        super();
+        this.headers = {
+            'x-realm-id': null,
+            'x-applet-id': null,
+            'x-github-token': 'web'
+        };
+        this.setEndpoint(url);
+    }
+    setRealmId(value) {
+        this.headers['x-realm-id'] = value;
+        return this;
+    }
+    setAppletId(value) {
+        this.headers['x-applet-id'] = value;
+        return this;
+    }
+    /*
+        setRepo(value: string): this {
+            this.headers['x-github-repo'] = value;
+            return this;
+        }
+    
+        setToken(value: string): this {
+            this.headers['x-github-token'] = value;
+            return this;
+        } */
+    createApplet(schema) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (typeof schema === 'undefined') {
+                throw new _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.RealmoceanException('Missing required parameter: "issue"');
+            }
+            let path = '/create';
+            let payload = {};
+            payload['schema'] = schema;
+            // Content-Length hesapla
+            // const contentLength = new TextEncoder().encode(formData).length;
+            //  alert(contentLength)
+            const uri = new URL(this.config.endpoint + path);
+            return yield this.call('post', uri, {
+                'content-type': 'application/x-www-form-urlencoded'
+            }, payload);
+        });
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/brokers/index.ts":
+/*!******************************!*\
+  !*** ./src/brokers/index.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletServiceBroker: () => (/* reexport safe */ _AppletServiceBroker__WEBPACK_IMPORTED_MODULE_0__.AppletServiceBroker)
+/* harmony export */ });
+/* harmony import */ var _AppletServiceBroker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppletServiceBroker */ "./src/brokers/AppletServiceBroker.ts");
+
+
+
+/***/ }),
+
 /***/ "./src/context/account/AccountContext.ts":
 /*!***********************************************!*\
   !*** ./src/context/account/AccountContext.ts ***!
@@ -20471,6 +20567,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _AppletList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AppletList */ "./src/AppletList.ts");
+/* harmony import */ var _brokers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../brokers */ "./src/brokers/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20486,6 +20583,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+
 
 
 
@@ -20585,18 +20683,6 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                 .loading(installingOpa === opa.type)
                 .width('100%')
                 .onClick(() => __awaiter(this, void 0, void 0, function* () {
-                /*  this.SetValue('name', opa.name);
-                 this.SetValue('folder_id', this.folder_id);
-                 this.SetValue('space_id', this.space_id);
-                this.SetValue('item_type', 'opa');
-                 this.SetValue('item_sub_type', opa.type);
-                 this.SetValue('app_id', 'com.tuvalsoft.app.workbench');
-                 this.SetValue('content', '')
-
-                 this.last_added_opa_type = opa.type; */
-                /* fetch('./data.json')
-                .then((response) => response.json())
-                .then((json) => console.log(json)); */
                 createDocument({
                     data: {
                         name: opa.name,
@@ -20624,6 +20710,11 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                     }, (treeItem) => {
                         _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('applet.added', { treeItem });
                     });
+                    _brokers__WEBPACK_IMPORTED_MODULE_5__.AppletServiceBroker.Default
+                        .setRealmId(this.workspaceId)
+                        .setAppletId(applet.$id)
+                        .createApplet(opa);
+                    return;
                     if (opa.databases) {
                         setInstallingOpa(opa.type);
                         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Client.setProject(this.workspaceId);
@@ -20982,6 +21073,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AnonymousContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.AnonymousContextProvider),
 /* harmony export */   AppletContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.AppletContext),
 /* harmony export */   AppletContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.AppletContextProvider),
+/* harmony export */   AppletServiceBroker: () => (/* reexport safe */ _brokers__WEBPACK_IMPORTED_MODULE_8__.AppletServiceBroker),
 /* harmony export */   CelminoServices: () => (/* reexport safe */ _services__WEBPACK_IMPORTED_MODULE_7__.CelminoServices),
 /* harmony export */   ColorSelect: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorSelect),
 /* harmony export */   ColorView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorView),
@@ -21026,7 +21118,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hooks */ "./src/hooks/index.ts");
 /* harmony import */ var _applets__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets */ "./src/applets/index.ts");
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services */ "./src/services/index.ts");
-/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
+/* harmony import */ var _brokers__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./brokers */ "./src/brokers/index.ts");
+/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
+
 
 
 

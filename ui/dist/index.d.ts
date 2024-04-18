@@ -2,12 +2,14 @@
 // Dependencies for this module:
 //   ../../react
 //   ../../@tuval/forms
+//   ../../@realmocean/sdk
 
 import React from "react";
 import { UIFormController } from "@tuval/forms";
 import { DialogView } from "@tuval/forms";
 import { DialogView, UIView } from "@tuval/forms";
 import { UIView } from "@tuval/forms";
+import { Client } from "@realmocean/sdk";
 
 import './exports';
 
@@ -28,7 +30,7 @@ export class FormBuilder {
     static getViewFactory(type: string): any;
     static getView(fieldInfo: any): any;
     static canRender(fieldInfo: any, formController?: UIFormController): boolean;
-    static render(_formMeta: string | object | object[]): import("@tuval/forms").FragmentClass | import("@tuval/forms").TextClass | import("@tuval/forms").ConfigContextClass;
+    static render(_formMeta: string | object | object[]): import("@tuval/forms").TextClass | import("@tuval/forms").FragmentClass | import("@tuval/forms").ConfigContextClass;
     static compileFormula(formula: any): string;
 }
 
@@ -37,7 +39,7 @@ export class DynoDialog extends DialogView {
     BindRouterParams(formData: any): void;
     OnOK(): void;
     OnCancel(): void;
-    LoadView(): import("@tuval/forms").UISpinnerClass | import("@tuval/forms").VStackClass;
+    LoadView(): import("@tuval/forms").VStackClass | import("@tuval/forms").UISpinnerClass;
     static Show(formData: any): Promise<any>;
 }
 
@@ -235,6 +237,15 @@ export const CelminoServices: {
         createPersonelRealm: (realmId: string, realmName: string, organizationId: string) => Promise<void>;
     };
 };
+
+export class AppletServiceBroker extends Client {
+    static get Default(): AppletServiceBroker;
+    headers: any;
+    constructor();
+    setRealmId(value: string): this;
+    setAppletId(value: string): this;
+    createApplet(schema: any): Promise<any>;
+}
 
 export const ColorSelect: ({ onSelect }: {
     onSelect: any;

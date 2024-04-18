@@ -7,5 +7,6 @@ export * from './context';
 export * from './hooks'
 export * from './applets'
 export * from './services'
+export * from './brokers'
 
 import './exports';

@@ -2,7 +2,7 @@ import { GithubBroker, Services, useCreateEmailSession, useGetMe, useUpdateName 
 import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
-import { Secrets } from "./mysecret";
+//import { Secrets } from "./mysecret";
 
 const LeftLogo = () => (
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="207" viewBox="0 0 1000 207">
@@ -188,7 +188,8 @@ export class LoginController extends CelminoController {
                                              const token: any = await Services.QDMS.getToken(url, 'qdms', 'qdms24');
                                            const users = await Services.QDMS.listUsers( url , token.token);
                                            console.log(users); */
-                                            const broker = new GithubBroker();
+                                           
+                                          /*  const broker = new GithubBroker();
                                             broker
                                             .setUserName('bpmgenesis')
                                             .setRepo('tenant-manager')
@@ -199,7 +200,7 @@ export class LoginController extends CelminoController {
                                                 title: 'hehe',
                                                 body:'sdhkfk'
                                             }
-                                       )
+                                       ) */
                                            /*  Services.Github.createIssue('bpmgenesis','tenant-manager', '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',
                                                 {
                                                     title: 'hehe',

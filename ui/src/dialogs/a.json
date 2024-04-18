@@ -1,0 +1,524 @@
+{
+    "name": "Task List",
+    "type": "Applet",
+    "tree_type": "com.celmino.applet.task-list",
+    "applet_type": "com.celmino.applet.task-list",
+    "description": "Task List applet is designed to help users organize, prioritize, and track tasks within their projects. It allows setting deadlines, managing dependencies, and assigning tasks to team members. This applet streamlines project management processes and enhances team communication, enabling easy monitoring of progress to ensure timely completion of all tasks.",
+    "iconCategory": "Icons",
+    "iconName": "bell",
+    "icon": "\\d1e4",
+    "iconBackColor": "#66B47C",
+    "enabled": true,
+    "version": [
+        1,
+        0,
+        1
+    ],
+    "databases": [
+        {
+            "name": "List Applet",
+            "id": "world",
+            "category": "applet",
+            "collections": [
+                {
+                    "name": "Collections",
+                    "id": "collections",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ],
+                    "documents": [
+                        {
+                            "$id": "listItems",
+                            "name": "List Items"
+                        },
+                        {
+                            "$id": "listStatuses",
+                            "name": "List Statuses"
+                        },
+                        {
+                            "$id": "views",
+                            "name": "Views"
+                        },
+                        {
+                            "$id": "viewContents",
+                            "name": "View Contents"
+                        },
+                        {
+                            "$id": "list",
+                            "name": "List"
+                        },
+                        {
+                            "$id": "taskType",
+                            "name": "Task Type"
+                        }
+                    ]
+                },
+                {
+                    "name": "Fields",
+                    "id": "fields",
+                    "attributes": [
+                        {
+                            "key": "key",
+                            "type": "string"
+                        },
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "custom",
+                            "type": "boolean",
+                            "defaultValue": false
+                        },
+                        {
+                            "key": "system",
+                            "type": "boolean",
+                            "defaultValue": true
+                        },
+                        {
+                            "key": "fieldInfo",
+                            "type": "string",
+                            "size": 18900
+                        },
+                        {
+                            "key": "collectionId",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ],
+                    "documents": [
+                        {
+                            "key": "name",
+                            "name": "Name",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":255}"
+                        },
+                        {
+                            "key": "name",
+                            "name": "Name",
+                            "type": "string",
+                            "custom": false,
+                            "fieldInfo": "{\"size\":255}",
+                            "collectionId": "listItems"
+                        },
+                        {
+                            "key": "description",
+                            "name": "Description",
+                            "type": "string",
+                            "custom": false,
+                            "fieldInfo": "{\"size\":16777216}",
+                            "collectionId": "listItems"
+                        },
+                        {
+                            "key": "mark",
+                            "name": "Mark",
+                            "type": "string",
+                            "custom": false,
+                            "system": true,
+                            "fieldInfo": "{\"size\":10}",
+                            "collectionId": "listItems"
+                        },
+                        {
+                            "key": "status",
+                            "name": "Status",
+                            "type": "string",
+                            "system": true,
+                            "fieldInfo": "{\"size\":255}",
+                            "collectionId": "listItems"
+                        },
+                        {
+                            "key": "PRIORITY",
+                            "name": "Priority",
+                            "type": "select",
+                            "custom": false,
+                            "system": true,
+                            "fieldInfo": "{\"options\":[{\"key\":\"High\",\"value\":2},{\"key\":\"Medium\",\"value\":1},{\"key\":\"Low\",\"value\":0}]}",
+                            "collectionId": "listItems"
+                        },
+                        {
+                            "key": "MULTITASK",
+                            "name": "Multitask",
+                            "type": "select",
+                            "custom": false,
+                            "system": true,
+                            "fieldInfo": "{\"options\":[{\"key\":\"Yes\",\"value\":\"Y\"},{\"key\":\"No\",\"value\":\"N\"}]}",
+                            "collectionId": "listItems"
+                        },
+                        {
+                            "key": "NOT_VIEWED",
+                            "name": "Not Viewed",
+                            "type": "select",
+                            "custom": false,
+                            "system": true,
+                            "fieldInfo": "{\"options\":[{\"key\":\"Yes\",\"value\":\"Y\"},{\"key\":\"No\",\"value\":\"N\"}]}",
+                            "collectionId": "listItems"
+                        },
+                        {
+                            "key": "REPLICATE",
+                            "name": "Replicate",
+                            "type": "select",
+                            "custom": false,
+                            "system": true,
+                            "fieldInfo": "{\"options\":[{\"key\":\"Yes\",\"value\":\"Y\"},{\"key\":\"No\",\"value\":\"N\"}]}",
+                            "collectionId": "listItems"
+                        },
+                        {
+                            "key": "name",
+                            "name": "Name",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":255}",
+                            "collectionId": "listStatuses"
+                        },
+                        {
+                            "key": "description",
+                            "name": "Description",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":16777216}",
+                            "collectionId": "listStatuses"
+                        },
+                        {
+                            "key": "type",
+                            "name": "Type",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":255}",
+                            "collectionId": "listStatuses"
+                        },
+                        {
+                            "key": "color",
+                            "name": "Color",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":50}",
+                            "collectionId": "listStatuses"
+                        },
+                        {
+                            "key": "name",
+                            "name": "Name",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":255}",
+                            "collectionId": "views"
+                        },
+                        {
+                            "key": "description",
+                            "name": "Description",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":16777216}",
+                            "collectionId": "views"
+                        },
+                        {
+                            "key": "type",
+                            "name": "Type",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":255}",
+                            "collectionId": "views"
+                        },
+                        {
+                            "key": "icon",
+                            "name": "Icon",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":255}",
+                            "collectionId": "views"
+                        },
+                        {
+                            "key": "viewId",
+                            "name": "View ID",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":255}",
+                            "collectionId": "viewContents"
+                        },
+                        {
+                            "key": "content",
+                            "name": "Content",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":16777216}",
+                            "collectionId": "viewContents"
+                        },
+                        {
+                            "key": "name",
+                            "name": "Name",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":255}"
+                        },
+                        {
+                            "key": "icon",
+                            "name": "Icon",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":255}"
+                        },
+                        {
+                            "key": "orderBy",
+                            "name": "Order By",
+                            "type": "string",
+                            "fieldInfo": "{\"size\":255}"
+                        }
+                    ]
+                },
+                {
+                    "name": "List Items",
+                    "id": "listItems",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string",
+                            "size": 255
+                        },
+                        {
+                            "key": "description",
+                            "type": "string",
+                            "size": 16777216
+                        },
+                        {
+                            "key": "mark",
+                            "type": "string",
+                            "size": 10
+                        },
+                        {
+                            "key": "status",
+                            "type": "string",
+                            "size": 255
+                        },
+                        {
+                            "key": "PRIORITY",
+                            "type": "string",
+                            "size": 1255,
+                            "defaultValue": "1"
+                        },
+                        {
+                            "key": "MULTITASK",
+                            "type": "string",
+                            "size": 1255,
+                            "defaultValue": "N"
+                        },
+                        {
+                            "key": "NOT_VIEWED",
+                            "type": "string",
+                            "size": 1255,
+                            "defaultValue": "N"
+                        },
+                        {
+                            "key": "REPLICATE",
+                            "type": "string",
+                            "size": 1255,
+                            "defaultValue": "N"
+                        }
+                    ]
+                },
+                {
+                    "name": "List",
+                    "id": "list",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string",
+                            "size": 255
+                        }
+                    ]
+                },
+                {
+                    "name": "List Statuses",
+                    "id": "listStatuses",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string",
+                            "size": 255
+                        },
+                        {
+                            "key": "description",
+                            "type": "string",
+                            "size": 16777216
+                        },
+                        {
+                            "key": "type",
+                            "type": "string",
+                            "size": 255
+                        },
+                        {
+                            "key": "bgColor",
+                            "type": "string",
+                            "size": 50
+                        },
+                        {
+                            "key": "fgColor",
+                            "type": "string",
+                            "size": 50
+                        },
+                        {
+                            "key": "orderBy",
+                            "type": "number",
+                            "size": 10
+                        }
+                    ],
+                    "documents": [
+                        {
+                            "name": "To Do",
+                            "description": "To Do",
+                            "type": "opened",
+                            "bgColor": "#D40915",
+                            "fgColor": "white",
+                            "orderBy": 1
+                        },
+                        {
+                            "name": "In Progress",
+                            "description": "In Progress",
+                            "bgColor": "#FBA32F",
+                            "fgColor": "white",
+                            "type": "active",
+                            "orderBy": 2
+                        },
+                        {
+                            "name": "Done",
+                            "description": "Done",
+                            "type": "closed",
+                            "bgColor": "#4FAF54",
+                            "fgColor": "white",
+                            "orderBy": 3
+                        }
+                    ]
+                },
+                {
+                    "name": "Views",
+                    "id": "views",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string",
+                            "size": 255
+                        },
+                        {
+                            "key": "description",
+                            "type": "string",
+                            "size": 16777216
+                        },
+                        {
+                            "key": "type",
+                            "type": "string",
+                            "size": 255
+                        },
+                        {
+                            "key": "icon",
+                            "type": "string",
+                            "size": 255
+                        }
+                    ],
+                    "documents": [
+                        {
+                            "name": "List",
+                            "type": "list",
+                            "icon": "svg-sprite-cu2-view-1"
+                        }
+                    ]
+                },
+                {
+                    "name": "View Contents",
+                    "id": "viewContents",
+                    "attributes": [
+                        {
+                            "key": "viewId",
+                            "type": "string",
+                            "size": 255
+                        },
+                        {
+                            "key": "content",
+                            "type": "string",
+                            "size": 16777216
+                        }
+                    ]
+                },
+                {
+                    "name": "View Settings",
+                    "id": "viewSettings",
+                    "attributes": [
+                        {
+                            "key": "viewId",
+                            "type": "string",
+                            "size": 255
+                        },
+                        {
+                            "key": "key",
+                            "type": "string",
+                            "size": 255
+                        },
+                        {
+                            "key": "hidden",
+                            "type": "boolean",
+                            "defaultValue": true
+                        }
+                    ],
+                    "documents": [
+                        {
+                            "viewId": "applet",
+                            "key": "name",
+                            "hidden": false
+                        },
+                        {
+                            "viewId": "applet",
+                            "key": "description",
+                            "hidden": false
+                        },
+                        {
+                            "viewId": "applet",
+                            "key": "mark",
+                            "hidden": true
+                        },
+                        {
+                            "viewId": "applet",
+                            "key": "status",
+                            "hidden": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Task Types",
+                    "id": "taskType",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string",
+                            "size": 255
+                        },
+                        {
+                            "key": "icon",
+                            "type": "string",
+                            "size": 255
+                        },
+                        {
+                            "key": "orderBy",
+                            "type": "number",
+                            "size": 12
+                        }
+                    ],
+                    "documents": [
+                        {
+                            "name": "Task",
+                            "icon": "icon1",
+                            "orderBy": 0
+                        },
+                        {
+                            "name": "Milestone",
+                            "icon": "icon2",
+                            "orderBy": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

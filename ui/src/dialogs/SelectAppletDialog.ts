@@ -4,6 +4,7 @@ import { useCreateDocument, Services, ID } from "@realmocean/sdk";
 import { Text } from "@realmocean/vibe";
 import { EventBus } from "@tuval/core";
 import { Applets } from "../AppletList";
+import { AppletServiceBroker } from "../brokers";
 
 
 const appletMenu = [
@@ -178,19 +179,6 @@ export class SelectAppletDialog extends DialogView {
                                                     .loading(installingOpa === opa.type)
                                                     .width('100%')
                                                     .onClick(async () => {
-                                                        /*  this.SetValue('name', opa.name);
-                                                         this.SetValue('folder_id', this.folder_id);
-                                                         this.SetValue('space_id', this.space_id);
-                                                        this.SetValue('item_type', 'opa');
-                                                         this.SetValue('item_sub_type', opa.type);
-                                                         this.SetValue('app_id', 'com.tuvalsoft.app.workbench');
-                                                         this.SetValue('content', '')
-             
-                                                         this.last_added_opa_type = opa.type; */
-
-                                                        /* fetch('./data.json')
-                                                        .then((response) => response.json())
-                                                        .then((json) => console.log(json)); */
 
                                                         createDocument({
                                                             data: {
@@ -221,6 +209,13 @@ export class SelectAppletDialog extends DialogView {
 
                                                                 EventBus.Default.fire('applet.added', { treeItem })
                                                             });
+
+                                                            AppletServiceBroker.Default
+                                                                .setRealmId(this.workspaceId)
+                                                                .setAppletId(applet.$id)
+                                                                .createApplet(opa);
+
+                                                            return;
 
                                                             if (opa.databases) {
                                                                 setInstallingOpa(opa.type);
