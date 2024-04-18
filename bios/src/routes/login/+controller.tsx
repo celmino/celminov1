@@ -191,15 +191,15 @@ export class LoginController extends CelminoController {
                                             broker
                                             .setUserName('bpmgenesis')
                                             .setRepo('tenant-manager')
-                                            .setToken('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')
+                                            .setToken('')
                                             .getService()
-                                            .createIssue('bpmgenesis','tenant-manager', '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',
+                                            .createIssue('bpmgenesis','tenant-manager', '',
                                             {
                                                 title: 'hehe',
                                                 body:'sdhkfk'
                                             }
                                        )
-                                           /*  Services.Github.createIssue('bpmgenesis','tenant-manager', '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',
+                                           /*  Services.Github.createIssue('bpmgenesis','tenant-manager', '',
                                                 {
                                                     title: 'hehe',
                                                     body:'sdhkfk'
