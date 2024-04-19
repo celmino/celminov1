@@ -5,6 +5,7 @@ import { Text } from "@realmocean/vibe";
 import { EventBus } from "@tuval/core";
 import { Applets } from "../AppletList";
 import { AppletServiceBroker } from "../brokers";
+import { useCreateApplet } from "../hooks";
 
 
 const appletMenu = [
@@ -82,8 +83,7 @@ export class SelectAppletDialog extends DialogView {
 
     public override LoadView(): UIView {
 
-        const { createDocument } = useCreateDocument(this.workspaceId, 'workspace', 'applets');
-        const { createDocument: createWorkspaceTreeItem } = useCreateDocument(this.workspaceId, 'workspace', 'ws_tree');
+        const { createApplet, isLoading } = useCreateApplet();
         const [installingOpa, setInstallingOpa] = useState('');
         const [searchText, setSearchText] = useState(null);
 
@@ -179,102 +179,20 @@ export class SelectAppletDialog extends DialogView {
                                                     .loading(installingOpa === opa.type)
                                                     .width('100%')
                                                     .onClick(async () => {
-
-                                                        AppletServiceBroker.Default
-                                                        .setRealmId(this.workspaceId)
-                                                        //.setAppletId(applet.$id)
-                                                        .createApplet(opa);
-
-                                                    return;
-
-                                                        createDocument({
-                                                            data: {
-                                                                name: opa.name,
-                                                                opa: opa.tree_type,
-                                                                type: opa.applet_type,
-                                                                iconName: opa.iconName,
-                                                                iconCategory: opa.iconCategory,
-                                                                parent: this.parent
-                                                            }
-                                                        }, async (applet) => {
-
-                                                            createWorkspaceTreeItem({
-                                                                documentId: applet.$id,
-                                                                data: {
-                                                                    name: opa.name,
-                                                                    type: 'applet',
-                                                                    tree_widget: opa.tree_type,
-                                                                    appletId: applet.$id,
-                                                                    parent: this.parent,
-                                                                    path: (new Date()).getTime().toString(),
-                                                                    fullPath: '/' + applet.$id,
-                                                                    iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
-                                                                    iconCategory: opa.iconCategory,
-                                                                    spaceId: this.space
-                                                                }
-                                                            }, (treeItem) => {
-
-                                                                EventBus.Default.fire('applet.added', { treeItem })
-                                                            });
-
-                                                           
-
-                                                            if (opa.databases) {
-                                                                setInstallingOpa(opa.type);
-                                                                Services.Client.setProject(this.workspaceId);
-
-                                                                for (let i = 0; i < opa.databases.length; i++) {
-                                                                    const template = opa.databases[i];
-                                                                    const { name, id, category, collections } = template;
-                                                                    try {
-                                                                        const db = await Services.Databases.create(this.workspaceId, applet.$id, opa.name, category);
-                                                                        for (let j = 0; j < collections.length; j++) {
-                                                                            const collection = collections[j];
-                                                                            const { name, id, attributes, documents } = collection;
-                                                                            const col = await Services.Databases.createCollection(this.workspaceId, db.$id, id, name, [], false);
-
-                                                                            for (let i = 0; i < attributes.length; i++) {
-                                                                                const { key, type, defaultValue = null, size = 255 } = attributes[i];
-                                                                                switch (type) {
-                                                                                    case 'string':
-                                                                                        await Services.Databases.createStringAttribute(this.workspaceId, db.$id, col.$id, key, size, false, '', false);
-                                                                                        break;
-                                                                                    case 'number':
-                                                                                        await Services.Databases.createIntegerAttribute(this.workspaceId, db.$id, col.$id, key, false);
-                                                                                        break;
-                                                                                    case 'datetime':
-                                                                                        await Services.Databases.createDatetimeAttribute(this.workspaceId, db.$id, col.$id, key, false);
-                                                                                        break;
-                                                                                    case 'boolean':
-                                                                                        await Services.Databases.createBooleanAttribute(this.workspaceId, db.$id, col.$id, key, false, defaultValue ?? false);
-                                                                                        break;
-                                                                                }
-                                                                            }
-
-                                                                            setTimeout(() => {
-                                                                                documents?.forEach(async document => {
-                                                                                    let $id = nanoid();
-                                                                                    if (document.$id != null) {
-                                                                                        $id = document.$id;
-                                                                                        delete document.$id;
-                                                                                    }
-                                                                                    const doc = await Services.Databases.createDocument(this.workspaceId, db.$id, col.$id, $id, document);
-                                                                                    console.log(doc);
-                                                                                });
-                                                                            }, 3000);
-                                                                        }
-
-                                                                    } catch (error) {
-                                                                        console.log(error);
-                                                                    }
-                                                                }
-                                                                setInstallingOpa('');
-                                                                this.OnOK(applet)
-                                                            } else {
-
-                                                                this.OnOK(applet)
-                                                            }
+                                                        setInstallingOpa(opa.type);
+                                                        createApplet({
+                                                            realmId: this.workspaceId,
+                                                            schema: opa
+                                                        }, (applet)=> {
+                                                            EventBus.Default.fire('applet.added', { treeItem: applet });
+                                                            setInstallingOpa('');
                                                         });
+                                                        /* AppletServiceBroker.Default
+                                                            .setRealmId(this.workspaceId)
+                                                            .createApplet(opa); */
+
+
+
 
 
 

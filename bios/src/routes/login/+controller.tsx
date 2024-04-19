@@ -1,4 +1,4 @@
-import { GithubBroker, Services, useCreateEmailSession, useGetMe, useUpdateName } from "@realmocean/sdk";
+import { GithubBroker, QdmsBroker, Services, useCreateEmailSession, useGetMe, useUpdateName } from "@realmocean/sdk";
 import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
@@ -184,6 +184,15 @@ export class LoginController extends CelminoController {
                                         .cornerRadius(3)
                                         .foregroundColor('white')
                                         .onClick(async () => {
+
+                                           /*  const token: any = await QdmsBroker.GetToken('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL','qdms', 'qdms24');
+                                           const users = await QdmsBroker.Default
+                                           .setUrl('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL')
+                                           .setToken(token.token)
+                                           .listUsers();
+                
+                                            console.log(users) */
+                                            
                                             /* const url = 'http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL';
                                              const token: any = await Services.QDMS.getToken(url, 'qdms', 'qdms24');
                                            const users = await Services.QDMS.listUsers( url , token.token);

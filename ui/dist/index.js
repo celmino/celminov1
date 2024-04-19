@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("tuval$forms"), require("realmocean$sdk"), require("tuval$react"), require("tuval$core"), require("realmocean$atlaskit"), require("realmocean$antd"));
+		module.exports = factory(require("tuval$forms"), require("tuval$react"), require("tuval$core"), require("realmocean$sdk"), require("realmocean$atlaskit"), require("realmocean$antd"));
 	else if(typeof define === 'function' && define.amd)
-		define(["tuval$forms", "realmocean$sdk", "tuval$react", "tuval$core", "realmocean$atlaskit", "realmocean$antd"], factory);
+		define(["tuval$forms", "tuval$react", "tuval$core", "realmocean$sdk", "realmocean$atlaskit", "realmocean$antd"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("tuval$forms"), require("realmocean$sdk"), require("tuval$react"), require("tuval$core"), require("realmocean$atlaskit"), require("realmocean$antd")) : factory(root["tuval$forms"], root["realmocean$sdk"], root["tuval$react"], root["tuval$core"], root["realmocean$atlaskit"], root["realmocean$antd"]);
+		var a = typeof exports === 'object' ? factory(require("tuval$forms"), require("tuval$react"), require("tuval$core"), require("realmocean$sdk"), require("realmocean$atlaskit"), require("realmocean$antd")) : factory(root["tuval$forms"], root["tuval$react"], root["tuval$core"], root["realmocean$sdk"], root["realmocean$atlaskit"], root["realmocean$antd"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(self, (__WEBPACK_EXTERNAL_MODULE__tuval_forms__, __WEBPACK_EXTERNAL_MODULE__realmocean_sdk__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE__tuval_core__, __WEBPACK_EXTERNAL_MODULE__realmocean_atlaskit__, __WEBPACK_EXTERNAL_MODULE__realmocean_antd__) => {
+})(self, (__WEBPACK_EXTERNAL_MODULE__tuval_forms__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE__tuval_core__, __WEBPACK_EXTERNAL_MODULE__realmocean_sdk__, __WEBPACK_EXTERNAL_MODULE__realmocean_atlaskit__, __WEBPACK_EXTERNAL_MODULE__realmocean_antd__) => {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -10064,8 +10064,7 @@ function appendContextPath(contextPath, id) {
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-/**
- * @license React
+/** @license React v16.14.0
  * react-jsx-runtime.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -10085,21 +10084,54 @@ var React = __webpack_require__(/*! react */ "react");
 // ATTENTION
 // When adding new symbols to this file,
 // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
-// The Symbol used to tag the ReactElement-like types.
-var REACT_ELEMENT_TYPE = Symbol.for('react.element');
-var REACT_PORTAL_TYPE = Symbol.for('react.portal');
-var REACT_FRAGMENT_TYPE = Symbol.for('react.fragment');
-var REACT_STRICT_MODE_TYPE = Symbol.for('react.strict_mode');
-var REACT_PROFILER_TYPE = Symbol.for('react.profiler');
-var REACT_PROVIDER_TYPE = Symbol.for('react.provider');
-var REACT_CONTEXT_TYPE = Symbol.for('react.context');
-var REACT_FORWARD_REF_TYPE = Symbol.for('react.forward_ref');
-var REACT_SUSPENSE_TYPE = Symbol.for('react.suspense');
-var REACT_SUSPENSE_LIST_TYPE = Symbol.for('react.suspense_list');
-var REACT_MEMO_TYPE = Symbol.for('react.memo');
-var REACT_LAZY_TYPE = Symbol.for('react.lazy');
-var REACT_OFFSCREEN_TYPE = Symbol.for('react.offscreen');
-var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var REACT_ELEMENT_TYPE = 0xeac7;
+var REACT_PORTAL_TYPE = 0xeaca;
+exports.Fragment = 0xeacb;
+var REACT_STRICT_MODE_TYPE = 0xeacc;
+var REACT_PROFILER_TYPE = 0xead2;
+var REACT_PROVIDER_TYPE = 0xeacd;
+var REACT_CONTEXT_TYPE = 0xeace;
+var REACT_FORWARD_REF_TYPE = 0xead0;
+var REACT_SUSPENSE_TYPE = 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = 0xead8;
+var REACT_MEMO_TYPE = 0xead3;
+var REACT_LAZY_TYPE = 0xead4;
+var REACT_BLOCK_TYPE = 0xead9;
+var REACT_SERVER_BLOCK_TYPE = 0xeada;
+var REACT_FUNDAMENTAL_TYPE = 0xead5;
+var REACT_SCOPE_TYPE = 0xead7;
+var REACT_OPAQUE_ID_TYPE = 0xeae0;
+var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
+var REACT_OFFSCREEN_TYPE = 0xeae2;
+var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
+
+if (typeof Symbol === 'function' && Symbol.for) {
+  var symbolFor = Symbol.for;
+  REACT_ELEMENT_TYPE = symbolFor('react.element');
+  REACT_PORTAL_TYPE = symbolFor('react.portal');
+  exports.Fragment = symbolFor('react.fragment');
+  REACT_STRICT_MODE_TYPE = symbolFor('react.strict_mode');
+  REACT_PROFILER_TYPE = symbolFor('react.profiler');
+  REACT_PROVIDER_TYPE = symbolFor('react.provider');
+  REACT_CONTEXT_TYPE = symbolFor('react.context');
+  REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
+  REACT_SUSPENSE_TYPE = symbolFor('react.suspense');
+  REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
+  REACT_MEMO_TYPE = symbolFor('react.memo');
+  REACT_LAZY_TYPE = symbolFor('react.lazy');
+  REACT_BLOCK_TYPE = symbolFor('react.block');
+  REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
+  REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
+  REACT_SCOPE_TYPE = symbolFor('react.scope');
+  REACT_OPAQUE_ID_TYPE = symbolFor('react.opaque.id');
+  REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
+  REACT_OFFSCREEN_TYPE = symbolFor('react.offscreen');
+  REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
+}
+
+var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
 var FAUX_ITERATOR_SYMBOL = '@@iterator';
 function getIteratorFn(maybeIterable) {
   if (maybeIterable === null || typeof maybeIterable !== 'object') {
@@ -10119,13 +10151,11 @@ var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FI
 
 function error(format) {
   {
-    {
-      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-        args[_key2 - 1] = arguments[_key2];
-      }
-
-      printWarning('error', format, args);
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
     }
+
+    printWarning('error', format, args);
   }
 }
 
@@ -10134,16 +10164,23 @@ function printWarning(level, format, args) {
   // update consoleWithStackDev.www.js as well.
   {
     var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-    var stack = ReactDebugCurrentFrame.getStackAddendum();
+    var stack = '';
+
+    if (currentlyValidatingElement) {
+      var name = getComponentName(currentlyValidatingElement.type);
+      var owner = currentlyValidatingElement._owner;
+      stack += describeComponentFrame(name, currentlyValidatingElement._source, owner && getComponentName(owner.type));
+    }
+
+    stack += ReactDebugCurrentFrame.getStackAddendum();
 
     if (stack !== '') {
       format += '%s';
       args = args.concat([stack]);
-    } // eslint-disable-next-line react-internal/safe-string-coercion
-
+    }
 
     var argsWithFormat = args.map(function (item) {
-      return String(item);
+      return '' + item;
     }); // Careful: RN currently depends on this prefix
 
     argsWithFormat.unshift('Warning: ' + format); // We intentionally don't use spread (or .apply) directly because it
@@ -10154,23 +10191,9 @@ function printWarning(level, format, args) {
   }
 }
 
-// -----------------------------------------------------------------------------
+// Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
 
 var enableScopeAPI = false; // Experimental Create Event Handle API.
-var enableCacheElement = false;
-var enableTransitionTracing = false; // No known bugs, but needs performance testing
-
-var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
-// stuff. Intended to enable React core members to more easily debug scheduling
-// issues in DEV builds.
-
-var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
-
-var REACT_MODULE_REFERENCE;
-
-{
-  REACT_MODULE_REFERENCE = Symbol.for('react.module.reference');
-}
 
 function isValidElementType(type) {
   if (typeof type === 'string' || typeof type === 'function') {
@@ -10178,16 +10201,12 @@ function isValidElementType(type) {
   } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
 
 
-  if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || enableDebugTracing  || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || enableLegacyHidden  || type === REACT_OFFSCREEN_TYPE || enableScopeAPI  || enableCacheElement  || enableTransitionTracing ) {
+  if (type === exports.Fragment || type === REACT_PROFILER_TYPE || type === REACT_DEBUG_TRACING_MODE_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || type === REACT_LEGACY_HIDDEN_TYPE || enableScopeAPI ) {
     return true;
   }
 
   if (typeof type === 'object' && type !== null) {
-    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
-    // types supported by any Flight configuration anywhere since
-    // we don't know which Flight build this will end up being used
-    // with.
-    type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== undefined) {
+    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_BLOCK_TYPE || type[0] === REACT_SERVER_BLOCK_TYPE) {
       return true;
     }
   }
@@ -10195,24 +10214,51 @@ function isValidElementType(type) {
   return false;
 }
 
-function getWrappedName(outerType, innerType, wrapperName) {
-  var displayName = outerType.displayName;
 
-  if (displayName) {
-    return displayName;
+var BEFORE_SLASH_RE = /^(.*)[\\\/]/;
+function describeComponentFrame (name, source, ownerName) {
+  var sourceInfo = '';
+
+  if (source) {
+    var path = source.fileName;
+    var fileName = path.replace(BEFORE_SLASH_RE, '');
+
+    {
+      // In DEV, include code for a common special case:
+      // prefer "folder/index.js" instead of just "index.js".
+      if (/^index\./.test(fileName)) {
+        var match = path.match(BEFORE_SLASH_RE);
+
+        if (match) {
+          var pathBeforeSlash = match[1];
+
+          if (pathBeforeSlash) {
+            var folderName = pathBeforeSlash.replace(BEFORE_SLASH_RE, '');
+            fileName = folderName + '/' + fileName;
+          }
+        }
+      }
+    }
+
+    sourceInfo = ' (at ' + fileName + ':' + source.lineNumber + ')';
+  } else if (ownerName) {
+    sourceInfo = ' (created by ' + ownerName + ')';
   }
 
+  return '\n    in ' + (name || 'Unknown') + sourceInfo;
+}
+
+var Resolved = 1;
+function refineResolvedLazyComponent(lazyComponent) {
+  return lazyComponent._status === Resolved ? lazyComponent._result : null;
+}
+
+function getWrappedName(outerType, innerType, wrapperName) {
   var functionName = innerType.displayName || innerType.name || '';
-  return functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName;
-} // Keep in sync with react-reconciler/getComponentNameFromFiber
+  return outerType.displayName || (functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName);
+}
 
-
-function getContextName(type) {
-  return type.displayName || 'Context';
-} // Note that the reconciler package should generally prefer to use getComponentNameFromFiber() instead.
-
-
-function getComponentNameFromType(type) {
+function getComponentName(type) {
   if (type == null) {
     // Host root, text node or just invalid type.
     return null;
@@ -10220,7 +10266,7 @@ function getComponentNameFromType(type) {
 
   {
     if (typeof type.tag === 'number') {
-      error('Received an unexpected object in getComponentNameFromType(). ' + 'This is likely a bug in React. Please file an issue.');
+      error('Received an unexpected object in getComponentName(). ' + 'This is likely a bug in React. Please file an issue.');
     }
   }
 
@@ -10233,14 +10279,14 @@ function getComponentNameFromType(type) {
   }
 
   switch (type) {
-    case REACT_FRAGMENT_TYPE:
+    case exports.Fragment:
       return 'Fragment';
 
     case REACT_PORTAL_TYPE:
       return 'Portal';
 
     case REACT_PROFILER_TYPE:
-      return 'Profiler';
+      return "Profiler";
 
     case REACT_STRICT_MODE_TYPE:
       return 'StrictMode';
@@ -10250,414 +10296,56 @@ function getComponentNameFromType(type) {
 
     case REACT_SUSPENSE_LIST_TYPE:
       return 'SuspenseList';
-
   }
 
   if (typeof type === 'object') {
     switch (type.$$typeof) {
       case REACT_CONTEXT_TYPE:
-        var context = type;
-        return getContextName(context) + '.Consumer';
+        return 'Context.Consumer';
 
       case REACT_PROVIDER_TYPE:
-        var provider = type;
-        return getContextName(provider._context) + '.Provider';
+        return 'Context.Provider';
 
       case REACT_FORWARD_REF_TYPE:
         return getWrappedName(type, type.render, 'ForwardRef');
 
       case REACT_MEMO_TYPE:
-        var outerName = type.displayName || null;
+        return getComponentName(type.type);
 
-        if (outerName !== null) {
-          return outerName;
-        }
-
-        return getComponentNameFromType(type.type) || 'Memo';
+      case REACT_BLOCK_TYPE:
+        return getComponentName(type.render);
 
       case REACT_LAZY_TYPE:
         {
-          var lazyComponent = type;
-          var payload = lazyComponent._payload;
-          var init = lazyComponent._init;
+          var thenable = type;
+          var resolvedThenable = refineResolvedLazyComponent(thenable);
 
-          try {
-            return getComponentNameFromType(init(payload));
-          } catch (x) {
-            return null;
+          if (resolvedThenable) {
+            return getComponentName(resolvedThenable);
           }
-        }
 
-      // eslint-disable-next-line no-fallthrough
+          break;
+        }
     }
   }
 
   return null;
 }
 
-var assign = Object.assign;
-
-// Helpers to patch console.logs to avoid logging during side-effect free
-// replaying on render function. This currently only patches the object
-// lazily which won't cover if the log function was extracted eagerly.
-// We could also eagerly patch the method.
-var disabledDepth = 0;
-var prevLog;
-var prevInfo;
-var prevWarn;
-var prevError;
-var prevGroup;
-var prevGroupCollapsed;
-var prevGroupEnd;
-
-function disabledLog() {}
-
-disabledLog.__reactDisabledLog = true;
-function disableLogs() {
-  {
-    if (disabledDepth === 0) {
-      /* eslint-disable react-internal/no-production-logging */
-      prevLog = console.log;
-      prevInfo = console.info;
-      prevWarn = console.warn;
-      prevError = console.error;
-      prevGroup = console.group;
-      prevGroupCollapsed = console.groupCollapsed;
-      prevGroupEnd = console.groupEnd; // https://github.com/facebook/react/issues/19099
-
-      var props = {
-        configurable: true,
-        enumerable: true,
-        value: disabledLog,
-        writable: true
-      }; // $FlowFixMe Flow thinks console is immutable.
-
-      Object.defineProperties(console, {
-        info: props,
-        log: props,
-        warn: props,
-        error: props,
-        group: props,
-        groupCollapsed: props,
-        groupEnd: props
-      });
-      /* eslint-enable react-internal/no-production-logging */
-    }
-
-    disabledDepth++;
-  }
-}
-function reenableLogs() {
-  {
-    disabledDepth--;
-
-    if (disabledDepth === 0) {
-      /* eslint-disable react-internal/no-production-logging */
-      var props = {
-        configurable: true,
-        enumerable: true,
-        writable: true
-      }; // $FlowFixMe Flow thinks console is immutable.
-
-      Object.defineProperties(console, {
-        log: assign({}, props, {
-          value: prevLog
-        }),
-        info: assign({}, props, {
-          value: prevInfo
-        }),
-        warn: assign({}, props, {
-          value: prevWarn
-        }),
-        error: assign({}, props, {
-          value: prevError
-        }),
-        group: assign({}, props, {
-          value: prevGroup
-        }),
-        groupCollapsed: assign({}, props, {
-          value: prevGroupCollapsed
-        }),
-        groupEnd: assign({}, props, {
-          value: prevGroupEnd
-        })
-      });
-      /* eslint-enable react-internal/no-production-logging */
-    }
-
-    if (disabledDepth < 0) {
-      error('disabledDepth fell below zero. ' + 'This is a bug in React. Please file an issue.');
-    }
-  }
-}
-
-var ReactCurrentDispatcher = ReactSharedInternals.ReactCurrentDispatcher;
-var prefix;
-function describeBuiltInComponentFrame(name, source, ownerFn) {
-  {
-    if (prefix === undefined) {
-      // Extract the VM specific prefix used by each line.
-      try {
-        throw Error();
-      } catch (x) {
-        var match = x.stack.trim().match(/\n( *(at )?)/);
-        prefix = match && match[1] || '';
-      }
-    } // We use the prefix to ensure our stacks line up with native stack frames.
-
-
-    return '\n' + prefix + name;
-  }
-}
-var reentry = false;
-var componentFrameCache;
-
-{
-  var PossiblyWeakMap = typeof WeakMap === 'function' ? WeakMap : Map;
-  componentFrameCache = new PossiblyWeakMap();
-}
-
-function describeNativeComponentFrame(fn, construct) {
-  // If something asked for a stack inside a fake render, it should get ignored.
-  if ( !fn || reentry) {
-    return '';
-  }
-
-  {
-    var frame = componentFrameCache.get(fn);
-
-    if (frame !== undefined) {
-      return frame;
-    }
-  }
-
-  var control;
-  reentry = true;
-  var previousPrepareStackTrace = Error.prepareStackTrace; // $FlowFixMe It does accept undefined.
-
-  Error.prepareStackTrace = undefined;
-  var previousDispatcher;
-
-  {
-    previousDispatcher = ReactCurrentDispatcher.current; // Set the dispatcher in DEV because this might be call in the render function
-    // for warnings.
-
-    ReactCurrentDispatcher.current = null;
-    disableLogs();
-  }
-
-  try {
-    // This should throw.
-    if (construct) {
-      // Something should be setting the props in the constructor.
-      var Fake = function () {
-        throw Error();
-      }; // $FlowFixMe
-
-
-      Object.defineProperty(Fake.prototype, 'props', {
-        set: function () {
-          // We use a throwing setter instead of frozen or non-writable props
-          // because that won't throw in a non-strict mode function.
-          throw Error();
-        }
-      });
-
-      if (typeof Reflect === 'object' && Reflect.construct) {
-        // We construct a different control for this case to include any extra
-        // frames added by the construct call.
-        try {
-          Reflect.construct(Fake, []);
-        } catch (x) {
-          control = x;
-        }
-
-        Reflect.construct(fn, [], Fake);
-      } else {
-        try {
-          Fake.call();
-        } catch (x) {
-          control = x;
-        }
-
-        fn.call(Fake.prototype);
-      }
-    } else {
-      try {
-        throw Error();
-      } catch (x) {
-        control = x;
-      }
-
-      fn();
-    }
-  } catch (sample) {
-    // This is inlined manually because closure doesn't do it for us.
-    if (sample && control && typeof sample.stack === 'string') {
-      // This extracts the first frame from the sample that isn't also in the control.
-      // Skipping one frame that we assume is the frame that calls the two.
-      var sampleLines = sample.stack.split('\n');
-      var controlLines = control.stack.split('\n');
-      var s = sampleLines.length - 1;
-      var c = controlLines.length - 1;
-
-      while (s >= 1 && c >= 0 && sampleLines[s] !== controlLines[c]) {
-        // We expect at least one stack frame to be shared.
-        // Typically this will be the root most one. However, stack frames may be
-        // cut off due to maximum stack limits. In this case, one maybe cut off
-        // earlier than the other. We assume that the sample is longer or the same
-        // and there for cut off earlier. So we should find the root most frame in
-        // the sample somewhere in the control.
-        c--;
-      }
-
-      for (; s >= 1 && c >= 0; s--, c--) {
-        // Next we find the first one that isn't the same which should be the
-        // frame that called our sample function and the control.
-        if (sampleLines[s] !== controlLines[c]) {
-          // In V8, the first line is describing the message but other VMs don't.
-          // If we're about to return the first line, and the control is also on the same
-          // line, that's a pretty good indicator that our sample threw at same line as
-          // the control. I.e. before we entered the sample frame. So we ignore this result.
-          // This can happen if you passed a class to function component, or non-function.
-          if (s !== 1 || c !== 1) {
-            do {
-              s--;
-              c--; // We may still have similar intermediate frames from the construct call.
-              // The next one that isn't the same should be our match though.
-
-              if (c < 0 || sampleLines[s] !== controlLines[c]) {
-                // V8 adds a "new" prefix for native classes. Let's remove it to make it prettier.
-                var _frame = '\n' + sampleLines[s].replace(' at new ', ' at '); // If our component frame is labeled "<anonymous>"
-                // but we have a user-provided "displayName"
-                // splice it in to make the stack more readable.
-
-
-                if (fn.displayName && _frame.includes('<anonymous>')) {
-                  _frame = _frame.replace('<anonymous>', fn.displayName);
-                }
-
-                {
-                  if (typeof fn === 'function') {
-                    componentFrameCache.set(fn, _frame);
-                  }
-                } // Return the line we found.
-
-
-                return _frame;
-              }
-            } while (s >= 1 && c >= 0);
-          }
-
-          break;
-        }
-      }
-    }
-  } finally {
-    reentry = false;
-
-    {
-      ReactCurrentDispatcher.current = previousDispatcher;
-      reenableLogs();
-    }
-
-    Error.prepareStackTrace = previousPrepareStackTrace;
-  } // Fallback to just using the name if we couldn't make it throw.
-
-
-  var name = fn ? fn.displayName || fn.name : '';
-  var syntheticFrame = name ? describeBuiltInComponentFrame(name) : '';
-
-  {
-    if (typeof fn === 'function') {
-      componentFrameCache.set(fn, syntheticFrame);
-    }
-  }
-
-  return syntheticFrame;
-}
-function describeFunctionComponentFrame(fn, source, ownerFn) {
-  {
-    return describeNativeComponentFrame(fn, false);
-  }
-}
-
-function shouldConstruct(Component) {
-  var prototype = Component.prototype;
-  return !!(prototype && prototype.isReactComponent);
-}
-
-function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
-
-  if (type == null) {
-    return '';
-  }
-
-  if (typeof type === 'function') {
-    {
-      return describeNativeComponentFrame(type, shouldConstruct(type));
-    }
-  }
-
-  if (typeof type === 'string') {
-    return describeBuiltInComponentFrame(type);
-  }
-
-  switch (type) {
-    case REACT_SUSPENSE_TYPE:
-      return describeBuiltInComponentFrame('Suspense');
-
-    case REACT_SUSPENSE_LIST_TYPE:
-      return describeBuiltInComponentFrame('SuspenseList');
-  }
-
-  if (typeof type === 'object') {
-    switch (type.$$typeof) {
-      case REACT_FORWARD_REF_TYPE:
-        return describeFunctionComponentFrame(type.render);
-
-      case REACT_MEMO_TYPE:
-        // Memo may contain any component type so we recursively resolve it.
-        return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn);
-
-      case REACT_LAZY_TYPE:
-        {
-          var lazyComponent = type;
-          var payload = lazyComponent._payload;
-          var init = lazyComponent._init;
-
-          try {
-            // Lazy may contain any component type so we recursively resolve it.
-            return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
-          } catch (x) {}
-        }
-    }
-  }
-
-  return '';
-}
-
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-
 var loggedTypeFailures = {};
 var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+var currentlyValidatingElement = null;
 
 function setCurrentlyValidatingElement(element) {
   {
-    if (element) {
-      var owner = element._owner;
-      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
-      ReactDebugCurrentFrame.setExtraStackFrame(stack);
-    } else {
-      ReactDebugCurrentFrame.setExtraStackFrame(null);
-    }
+    currentlyValidatingElement = element;
   }
 }
 
 function checkPropTypes(typeSpecs, values, location, componentName, element) {
   {
     // $FlowFixMe This is okay but Flow doesn't know it.
-    var has = Function.call.bind(hasOwnProperty);
+    var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
     for (var typeSpecName in typeSpecs) {
       if (has(typeSpecs, typeSpecName)) {
@@ -10669,7 +10357,6 @@ function checkPropTypes(typeSpecs, values, location, componentName, element) {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
           if (typeof typeSpecs[typeSpecName] !== 'function') {
-            // eslint-disable-next-line react-internal/prod-error-codes
             var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' + 'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.');
             err.name = 'Invariant Violation';
             throw err;
@@ -10703,80 +10390,8 @@ function checkPropTypes(typeSpecs, values, location, componentName, element) {
   }
 }
 
-var isArrayImpl = Array.isArray; // eslint-disable-next-line no-redeclare
-
-function isArray(a) {
-  return isArrayImpl(a);
-}
-
-/*
- * The `'' + value` pattern (used in in perf-sensitive code) throws for Symbol
- * and Temporal.* types. See https://github.com/facebook/react/pull/22064.
- *
- * The functions in this module will throw an easier-to-understand,
- * easier-to-debug exception with a clear errors message message explaining the
- * problem. (Instead of a confusing exception thrown inside the implementation
- * of the `value` object).
- */
-// $FlowFixMe only called in DEV, so void return is not possible.
-function typeName(value) {
-  {
-    // toStringTag is needed for namespaced types like Temporal.Instant
-    var hasToStringTag = typeof Symbol === 'function' && Symbol.toStringTag;
-    var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || 'Object';
-    return type;
-  }
-} // $FlowFixMe only called in DEV, so void return is not possible.
-
-
-function willCoercionThrow(value) {
-  {
-    try {
-      testStringCoercion(value);
-      return false;
-    } catch (e) {
-      return true;
-    }
-  }
-}
-
-function testStringCoercion(value) {
-  // If you ended up here by following an exception call stack, here's what's
-  // happened: you supplied an object or symbol value to React (as a prop, key,
-  // DOM attribute, CSS property, string ref, etc.) and when React tried to
-  // coerce it to a string using `'' + value`, an exception was thrown.
-  //
-  // The most common types that will cause this exception are `Symbol` instances
-  // and Temporal objects like `Temporal.Instant`. But any object that has a
-  // `valueOf` or `[Symbol.toPrimitive]` method that throws will also cause this
-  // exception. (Library authors do this to prevent users from using built-in
-  // numeric operators like `+` or comparison operators like `>=` because custom
-  // methods are needed to perform accurate arithmetic or comparison.)
-  //
-  // To fix the problem, coerce this object or symbol value to a string before
-  // passing it to React. The most reliable way is usually `String(value)`.
-  //
-  // To find which value is throwing, check the browser or debugger console.
-  // Before this exception was thrown, there should be `console.error` output
-  // that shows the type (Symbol, Temporal.PlainDate, etc.) that caused the
-  // problem and how that type was used: key, atrribute, input value prop, etc.
-  // In most cases, this console output also shows the component and its
-  // ancestor components where the exception happened.
-  //
-  // eslint-disable-next-line react-internal/safe-string-coercion
-  return '' + value;
-}
-function checkKeyStringCoercion(value) {
-  {
-    if (willCoercionThrow(value)) {
-      error('The provided key is an unsupported type %s.' + ' This value must be coerced to a string before before using it here.', typeName(value));
-
-      return testStringCoercion(value); // throw (to help callers find troubleshooting comments)
-    }
-  }
-}
-
 var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
 var RESERVED_PROPS = {
   key: true,
   ref: true,
@@ -10822,10 +10437,10 @@ function hasValidKey(config) {
 function warnIfStringRefCannotBeAutoConverted(config, self) {
   {
     if (typeof config.ref === 'string' && ReactCurrentOwner.current && self && ReactCurrentOwner.current.stateNode !== self) {
-      var componentName = getComponentNameFromType(ReactCurrentOwner.current.type);
+      var componentName = getComponentName(ReactCurrentOwner.current.type);
 
       if (!didWarnAboutStringRefs[componentName]) {
-        error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', getComponentNameFromType(ReactCurrentOwner.current.type), config.ref);
+        error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', getComponentName(ReactCurrentOwner.current.type), config.ref);
 
         didWarnAboutStringRefs[componentName] = true;
       }
@@ -10964,18 +10579,10 @@ function jsxDEV(type, config, maybeKey, source, self) {
     // key is explicitly declared to be undefined or not.
 
     if (maybeKey !== undefined) {
-      {
-        checkKeyStringCoercion(maybeKey);
-      }
-
       key = '' + maybeKey;
     }
 
     if (hasValidKey(config)) {
-      {
-        checkKeyStringCoercion(config.key);
-      }
-
       key = '' + config.key;
     }
 
@@ -11022,15 +10629,7 @@ var ReactCurrentOwner$1 = ReactSharedInternals.ReactCurrentOwner;
 var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
 
 function setCurrentlyValidatingElement$1(element) {
-  {
-    if (element) {
-      var owner = element._owner;
-      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
-      ReactDebugCurrentFrame$1.setExtraStackFrame(stack);
-    } else {
-      ReactDebugCurrentFrame$1.setExtraStackFrame(null);
-    }
-  }
+  currentlyValidatingElement = element;
 }
 
 var propTypesMisspellWarningShown;
@@ -11046,7 +10645,6 @@ var propTypesMisspellWarningShown;
  * @final
  */
 
-
 function isValidElement(object) {
   {
     return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
@@ -11056,7 +10654,7 @@ function isValidElement(object) {
 function getDeclarationErrorAddendum() {
   {
     if (ReactCurrentOwner$1.current) {
-      var name = getComponentNameFromType(ReactCurrentOwner$1.current.type);
+      var name = getComponentName(ReactCurrentOwner$1.current.type);
 
       if (name) {
         return '\n\nCheck the render method of `' + name + '`.';
@@ -11136,7 +10734,7 @@ function validateExplicitKey(element, parentType) {
 
     if (element && element._owner && element._owner !== ReactCurrentOwner$1.current) {
       // Give the component that originally created this child.
-      childOwner = " It was passed a child from " + getComponentNameFromType(element._owner.type) + ".";
+      childOwner = " It was passed a child from " + getComponentName(element._owner.type) + ".";
     }
 
     setCurrentlyValidatingElement$1(element);
@@ -11163,7 +10761,7 @@ function validateChildKeys(node, parentType) {
       return;
     }
 
-    if (isArray(node)) {
+    if (Array.isArray(node)) {
       for (var i = 0; i < node.length; i++) {
         var child = node[i];
 
@@ -11226,12 +10824,12 @@ function validatePropTypes(element) {
 
     if (propTypes) {
       // Intentionally inside to avoid triggering lazy initializers:
-      var name = getComponentNameFromType(type);
+      var name = getComponentName(type);
       checkPropTypes(propTypes, element.props, 'prop', name, element);
     } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
       propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
 
-      var _name = getComponentNameFromType(type);
+      var _name = getComponentName(type);
 
       error('Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', _name || 'Unknown');
     }
@@ -11298,10 +10896,10 @@ function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
 
       if (type === null) {
         typeString = 'null';
-      } else if (isArray(type)) {
+      } else if (Array.isArray(type)) {
         typeString = 'array';
       } else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
-        typeString = "<" + (getComponentNameFromType(type.type) || 'Unknown') + " />";
+        typeString = "<" + (getComponentName(type.type) || 'Unknown') + " />";
         info = ' Did you accidentally export a JSX literal instead of a component?';
       } else {
         typeString = typeof type;
@@ -11327,7 +10925,7 @@ function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
 
       if (children !== undefined) {
         if (isStaticChildren) {
-          if (isArray(children)) {
+          if (Array.isArray(children)) {
             for (var i = 0; i < children.length; i++) {
               validateChildKeys(children[i], type);
             }
@@ -11344,7 +10942,7 @@ function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
       }
     }
 
-    if (type === REACT_FRAGMENT_TYPE) {
+    if (type === exports.Fragment) {
       validateFragmentProps(element);
     } else {
       validatePropTypes(element);
@@ -11373,7 +10971,6 @@ var jsx =  jsxWithValidationDynamic ; // we may want to special case jsxs intern
 
 var jsxs =  jsxWithValidationStatic ;
 
-exports.Fragment = REACT_FRAGMENT_TYPE;
 exports.jsx = jsx;
 exports.jsxs = jsxs;
   })();
@@ -20560,14 +20157,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _AppletList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AppletList */ "./src/AppletList.ts");
-/* harmony import */ var _brokers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../brokers */ "./src/brokers/index.ts");
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _AppletList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AppletList */ "./src/AppletList.ts");
+/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks */ "./src/hooks/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20583,7 +20178,6 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-
 
 
 
@@ -20631,7 +20225,7 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
         this.Header = 'Form';
         this.Width = '90vw';
         this.Height = '90vh';
-        this.filtered_opas = _AppletList__WEBPACK_IMPORTED_MODULE_4__.Applets;
+        this.filtered_opas = _AppletList__WEBPACK_IMPORTED_MODULE_3__.Applets;
     }
     OnOK(applet) {
         this.ShowDialogAsyncResolve(applet);
@@ -20641,24 +20235,23 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
         this.Hide();
     }
     LoadView() {
-        const { createDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(this.workspaceId, 'workspace', 'applets');
-        const { createDocument: createWorkspaceTreeItem } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(this.workspaceId, 'workspace', 'ws_tree');
+        const { createApplet, isLoading } = (0,_hooks__WEBPACK_IMPORTED_MODULE_4__.useCreateApplet)();
         const [installingOpa, setInstallingOpa] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
         const [searchText, setSearchText] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('applet').fontSize(20).fontWeight('700'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('library').fontSize(20).fontWeight('400')).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)()
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('applet').fontSize(20).fontWeight('700'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('library').fontSize(20).fontWeight('400')).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)()
             .value(searchText)
             .placeholder('Search applets').minWidth(300).maxWidth(700).height(40).padding()
             .cornerRadius(6)
             .border({ default: 'solid 1px #E4EAE2', focus: 'solid 1px #E4EAE2' })
             .onChange((e) => {
             setSearchText(e);
-            this.filtered_opas = _AppletList__WEBPACK_IMPORTED_MODULE_4__.Applets.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1);
+            this.filtered_opas = _AppletList__WEBPACK_IMPORTED_MODULE_3__.Applets.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1);
         })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Close).onClick(() => this.OnCancel())).height(50).padding().background('#F9FAFB'), 
         /*     Search().width(300).allHeight(70).padding()
                 .onChange((e) => this.filtered_opas = opas.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1)), */
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(appletMenu)(menu => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(menu.category).fontWeight('500').fontSize('var(--font-size-h4)')
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(appletMenu)(menu => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(menu.category).fontWeight('500').fontSize('var(--font-size-h4)')
             .paddingLeft('12px')
-            .marginBottom('12px'), ...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(menu.items)(item => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name).fontSize('var(--font-size-h5)')
+            .marginBottom('12px'), ...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(menu.items)(item => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(item.name).fontSize('var(--font-size-h5)')
             .padding('var(--spacing-xs) 0 var(--spacing-xs)')
             .paddingLeft('12px')
             .cornerRadius('var(--border-radius-small)')
@@ -20673,9 +20266,9 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
             //.background(opa.iconBackColor || '#9A0707'),
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height()
             //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
-            , (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(opa.name).fontSize('1.8rem').lineHeight('2rem').maxLines(2))
+            , (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(opa.name).fontSize('1.8rem').lineHeight('2rem').maxLines(2))
                 .minHeight('4rem')
-                .height(), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(opa.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Add'))
+                .height(), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(opa.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Add'))
                 // .loading(isLoading && (opa.type === this.last_added_opa_type))
                 .disabled(!opa.enabled)
                 .kind(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonType.SECONDARY)
@@ -20683,91 +20276,17 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                 .loading(installingOpa === opa.type)
                 .width('100%')
                 .onClick(() => __awaiter(this, void 0, void 0, function* () {
-                _brokers__WEBPACK_IMPORTED_MODULE_5__.AppletServiceBroker.Default
+                setInstallingOpa(opa.type);
+                createApplet({
+                    realmId: this.workspaceId,
+                    schema: opa
+                }, (applet) => {
+                    _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: applet });
+                    setInstallingOpa('');
+                });
+                /* AppletServiceBroker.Default
                     .setRealmId(this.workspaceId)
-                    //.setAppletId(applet.$id)
-                    .createApplet(opa);
-                return;
-                createDocument({
-                    data: {
-                        name: opa.name,
-                        opa: opa.tree_type,
-                        type: opa.applet_type,
-                        iconName: opa.iconName,
-                        iconCategory: opa.iconCategory,
-                        parent: this.parent
-                    }
-                }, (applet) => __awaiter(this, void 0, void 0, function* () {
-                    createWorkspaceTreeItem({
-                        documentId: applet.$id,
-                        data: {
-                            name: opa.name,
-                            type: 'applet',
-                            tree_widget: opa.tree_type,
-                            appletId: applet.$id,
-                            parent: this.parent,
-                            path: (new Date()).getTime().toString(),
-                            fullPath: '/' + applet.$id,
-                            iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
-                            iconCategory: opa.iconCategory,
-                            spaceId: this.space
-                        }
-                    }, (treeItem) => {
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('applet.added', { treeItem });
-                    });
-                    if (opa.databases) {
-                        setInstallingOpa(opa.type);
-                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Client.setProject(this.workspaceId);
-                        for (let i = 0; i < opa.databases.length; i++) {
-                            const template = opa.databases[i];
-                            const { name, id, category, collections } = template;
-                            try {
-                                const db = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.create(this.workspaceId, applet.$id, opa.name, category);
-                                for (let j = 0; j < collections.length; j++) {
-                                    const collection = collections[j];
-                                    const { name, id, attributes, documents } = collection;
-                                    const col = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(this.workspaceId, db.$id, id, name, [], false);
-                                    for (let i = 0; i < attributes.length; i++) {
-                                        const { key, type, defaultValue = null, size = 255 } = attributes[i];
-                                        switch (type) {
-                                            case 'string':
-                                                yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(this.workspaceId, db.$id, col.$id, key, size, false, '', false);
-                                                break;
-                                            case 'number':
-                                                yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createIntegerAttribute(this.workspaceId, db.$id, col.$id, key, false);
-                                                break;
-                                            case 'datetime':
-                                                yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDatetimeAttribute(this.workspaceId, db.$id, col.$id, key, false);
-                                                break;
-                                            case 'boolean':
-                                                yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createBooleanAttribute(this.workspaceId, db.$id, col.$id, key, false, defaultValue !== null && defaultValue !== void 0 ? defaultValue : false);
-                                                break;
-                                        }
-                                    }
-                                    setTimeout(() => {
-                                        documents === null || documents === void 0 ? void 0 : documents.forEach((document) => __awaiter(this, void 0, void 0, function* () {
-                                            let $id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid)();
-                                            if (document.$id != null) {
-                                                $id = document.$id;
-                                                delete document.$id;
-                                            }
-                                            const doc = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(this.workspaceId, db.$id, col.$id, $id, document);
-                                            console.log(doc);
-                                        }));
-                                    }, 3000);
-                                }
-                            }
-                            catch (error) {
-                                console.log(error);
-                            }
-                        }
-                        setInstallingOpa('');
-                        this.OnOK(applet);
-                    }
-                    else {
-                        this.OnOK(applet);
-                    }
-                }));
+                    .createApplet(opa); */
             }))).height()).height(250).width(290)
                 .padding()
                 .shadow({ hover: 'var(--box-shadow-medium)' })
@@ -20865,6 +20384,7 @@ if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.workerContext()) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   useAppletNavigate: () => (/* reexport safe */ _useAppletNavigate__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate),
+/* harmony export */   useCreateApplet: () => (/* reexport safe */ _useCreateApplet__WEBPACK_IMPORTED_MODULE_4__.useCreateApplet),
 /* harmony export */   useCreatePersonelRealm: () => (/* reexport safe */ _useCreatePersonelRealm__WEBPACK_IMPORTED_MODULE_3__.useCreatePersonelRealm),
 /* harmony export */   useDeleteApplet: () => (/* reexport safe */ _useDeleteApplet__WEBPACK_IMPORTED_MODULE_2__.useDeleteApplet),
 /* harmony export */   useRealmNavigate: () => (/* reexport safe */ _useWorkspaceNavigation__WEBPACK_IMPORTED_MODULE_1__.useRealmNavigate)
@@ -20873,6 +20393,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _useWorkspaceNavigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useWorkspaceNavigation */ "./src/hooks/useWorkspaceNavigation.ts");
 /* harmony import */ var _useDeleteApplet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useDeleteApplet */ "./src/hooks/useDeleteApplet.ts");
 /* harmony import */ var _useCreatePersonelRealm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useCreatePersonelRealm */ "./src/hooks/useCreatePersonelRealm.ts");
+/* harmony import */ var _useCreateApplet__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./useCreateApplet */ "./src/hooks/useCreateApplet.ts");
+
 
 
 
@@ -20922,6 +20444,55 @@ const useAppletNavigate = () => {
                 navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${appletId}${url}`);
             }
         }
+    };
+};
+
+
+/***/ }),
+
+/***/ "./src/hooks/useCreateApplet.ts":
+/*!**************************************!*\
+  !*** ./src/hooks/useCreateApplet.ts ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useCreateApplet: () => (/* binding */ useCreateApplet)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _brokers_AppletServiceBroker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../brokers/AppletServiceBroker */ "./src/brokers/AppletServiceBroker.ts");
+
+
+const useCreateApplet = () => {
+    const queryClient = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useQueryClient)();
+    const mutation = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useMutation)({
+        mutationFn: ({ realmId, schema }) => {
+            return _brokers_AppletServiceBroker__WEBPACK_IMPORTED_MODULE_1__.AppletServiceBroker.Default
+                .setRealmId(realmId)
+                //.setAppletId(applet.$id)
+                .createApplet(schema);
+        },
+        onSuccess: (data) => {
+            // Invalidate and refetch
+            queryClient.invalidateQueries();
+        }
+    });
+    const createApplet = ({ realmId, schema }, onSuccess = void 0) => {
+        mutation.mutate({ realmId, schema }, {
+            onSuccess: (data) => {
+                onSuccess(data);
+            }
+        });
+    };
+    return {
+        createApplet,
+        isLoading: mutation.isLoading,
+        isSuccess: mutation.isSuccess,
+        isError: mutation.isError,
+        error: mutation.error
     };
 };
 
@@ -21102,6 +20673,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   useAnonymousAccount: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useAnonymousAccount),
 /* harmony export */   useApplet: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useApplet),
 /* harmony export */   useAppletNavigate: () => (/* reexport safe */ _hooks__WEBPACK_IMPORTED_MODULE_5__.useAppletNavigate),
+/* harmony export */   useCreateApplet: () => (/* reexport safe */ _hooks__WEBPACK_IMPORTED_MODULE_5__.useCreateApplet),
 /* harmony export */   useCreatePersonelRealm: () => (/* reexport safe */ _hooks__WEBPACK_IMPORTED_MODULE_5__.useCreatePersonelRealm),
 /* harmony export */   useDeleteApplet: () => (/* reexport safe */ _hooks__WEBPACK_IMPORTED_MODULE_5__.useDeleteApplet),
 /* harmony export */   useFormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder),

@@ -62,6 +62,7 @@ class AppletService extends RealmoceanService {
                 spaceId: '@team'
             })
 
+            // Create Applet Database
             for (let i = 0; i < schema.databases.length; i++) {
                 const template = schema.databases[i];
                 const { name, id, category, collections } = template;
@@ -92,7 +93,9 @@ class AppletService extends RealmoceanService {
 
                     }
 
+                    // Tablo alan olusturma asenkron oldugu icin zaman veriyoruz.
                     await delay(1000)
+
                     // create documents loop
                     for (let j = 0; j < collections.length; j++) {
                         const collection = collections[j];

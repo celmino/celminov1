@@ -15645,7 +15645,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _CelminoController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../CelminoController */ "./src/CelminoController.ts");
-/* harmony import */ var _mysecret__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mysecret */ "./src/routes/login/mysecret.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -15701,7 +15700,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-
+//import { Secrets } from "./mysecret";
 var LeftLogo = function () { return (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", version: "1.1", width: "200", height: "207", viewBox: "0 0 1000 207" },
     react__WEBPACK_IMPORTED_MODULE_2___default().createElement("g", { transform: "matrix(1,0,0,1,-0.6060605238602648,-0.3879324329129332)" },
         react__WEBPACK_IMPORTED_MODULE_2___default().createElement("svg", { viewBox: "0 0 396 82", "data-background-color": "#ffffff", preserveAspectRatio: "xMidYMid meet", height: "207", width: "1000" },
@@ -15839,19 +15838,21 @@ var LoginController = /** @class */ (function (_super) {
                     .cornerRadius(3)
                     .foregroundColor('white')
                     .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
-                    var broker;
+                    var token, users;
                     return __generator(this, function (_a) {
-                        broker = new _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.GithubBroker();
-                        broker
-                            .setUserName('bpmgenesis')
-                            .setRepo('tenant-manager')
-                            .setToken(_mysecret__WEBPACK_IMPORTED_MODULE_4__.Secrets.GithubToken)
-                            .getService()
-                            .createIssue({
-                            title: 'hehe',
-                            body: 'sdhkfk'
-                        });
-                        return [2 /*return*/];
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.QdmsBroker.GetToken('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL', 'qdms', 'qdms24')];
+                            case 1:
+                                token = _a.sent();
+                                return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.QdmsBroker.Default
+                                        .setUrl('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL')
+                                        .setToken(token.token)
+                                        .listUsers()];
+                            case 2:
+                                users = _a.sent();
+                                console.log(users);
+                                return [2 /*return*/];
+                        }
                     });
                 }); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Reset password')
                     .fontSize('1.6rem')
@@ -15881,24 +15882,6 @@ var LoginController = /** @class */ (function (_super) {
     return LoginController;
 }(_CelminoController__WEBPACK_IMPORTED_MODULE_3__.CelminoController));
 
-
-
-/***/ }),
-
-/***/ "./src/routes/login/mysecret.ts":
-/*!**************************************!*\
-  !*** ./src/routes/login/mysecret.ts ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Secrets: () => (/* binding */ Secrets)
-/* harmony export */ });
-var Secrets = {
-    GithubToken: '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'
-};
 
 
 /***/ }),
