@@ -9,7 +9,6 @@ class AppletService extends RealmoceanService {
         return 'applet-service';
     }
     async init() {
-
         const myTest = new MyTestClass();
         myTest.print();
         const app = this.services.get('web-server').getExpressApp();
