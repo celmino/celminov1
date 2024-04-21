@@ -95,8 +95,9 @@ export const AddTextFieldDialog = (onNewFieldAdded: Function) => ({
             "type": "text",
             "multiline": true,
             "name": "description"
-        },
+        }       
 
     }
 })
+
 

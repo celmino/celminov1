@@ -16770,23 +16770,41 @@ const SelectView = (textData) => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   CheckBoxFormView: () => (/* binding */ CheckBoxFormView)
+/* harmony export */   CheckBoxFormView: () => (/* binding */ CheckBoxFormView),
+/* harmony export */   _CheckBoxFormView: () => (/* binding */ _CheckBoxFormView)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
 
-const CheckBoxFormView = (textData) => {
-    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+
+const _CheckBoxFormView = (textData) => {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
     let { name, value } = textData;
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
         formController.SetValue(name, !!value);
     }, []);
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 4 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(textData.label).kerning('0.00938em').lineHeight('24px')
-        .foregroundColor('#333D47').fontSize(14), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CheckBox)()
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 4 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(textData.label).kerning('0.00938em').lineHeight('24px')
+        .foregroundColor('#333D47').fontSize(14), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.CheckBox)()
         .checked(formController.GetValue(name))
         .onChange((e) => formController.SetValue(name, e))
     // .formField(textData.name, [])
     ).height().marginBottom('16px'));
+};
+const CheckBoxFormView = (fieldInfo) => {
+    let { label, name, value } = fieldInfo;
+    /*  const formController = useFormController();
+     let currentValue = formController.GetValue(name);
+ 
+     if (currentValue !== value){
+         formController.SetValue(name, value);
+     }
+  */
+    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.CheckboxField)()
+        .name(name)
+        .value(value)
+        .label(label));
 };
 
 
@@ -22479,6 +22497,129 @@ const LabeledTextInput = () => {
 
 /***/ }),
 
+/***/ "./src/views/NewFieldMenu/Attributes.tsx":
+/*!***********************************************!*\
+  !*** ./src/views/NewFieldMenu/Attributes.tsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AttributesMenuItems: () => (/* binding */ AttributesMenuItems),
+/* harmony export */   NumberAttribute: () => (/* binding */ NumberAttribute),
+/* harmony export */   TextAttribute: () => (/* binding */ TextAttribute)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Icons */ "./src/views/NewFieldMenu/Icons.tsx");
+/* harmony import */ var _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dialogs/AddTextAttributeDialog */ "./src/views/NewFieldMenu/dialogs/AddTextAttributeDialog.ts");
+
+
+
+const TextAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { width: "44", height: "44", viewBox: "0 0 44 44", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13.3804 15.0001C13.2 14.9975 13.021 15.0318 12.8536 15.101C12.6863 15.1701 12.5339 15.2728 12.4055 15.4031C12.2771 15.5334 12.1751 15.6886 12.1055 15.8597C12.0358 16.0309 12 16.2146 12 16.4001C12 16.5856 12.0358 16.7693 12.1055 16.9405C12.1751 17.1116 12.2771 17.2669 12.4055 17.3971C12.5339 17.5274 12.6863 17.6301 12.8536 17.6993C13.021 17.7684 13.2 17.8027 13.3804 17.8001H30.6196C30.8 17.8027 30.979 17.7684 31.1464 17.6993C31.3137 17.6301 31.4661 17.5274 31.5945 17.3971C31.7229 17.2669 31.8249 17.1116 31.8945 16.9405C31.9642 16.7693 32 16.5856 32 16.4001C32 16.2146 31.9642 16.0309 31.8945 15.8597C31.8249 15.6886 31.7229 15.5334 31.5945 15.4031C31.4661 15.2728 31.3137 15.1701 31.1464 15.101C30.979 15.0318 30.8 14.9975 30.6196 15.0001H13.3804ZM13.3804 20.6C13.2 20.5974 13.021 20.6317 12.8536 20.7009C12.6863 20.77 12.5339 20.8727 12.4055 21.003C12.2771 21.1333 12.1751 21.2885 12.1055 21.4596C12.0358 21.6308 12 21.8145 12 22C12 22.1855 12.0358 22.3692 12.1055 22.5404C12.1751 22.7115 12.2771 22.8667 12.4055 22.997C12.5339 23.1273 12.6863 23.23 12.8536 23.2991C13.021 23.3683 13.2 23.4026 13.3804 23.4H30.6196C30.8 23.4026 30.979 23.3683 31.1464 23.2991C31.3137 23.23 31.4661 23.1273 31.5945 22.997C31.7229 22.8667 31.8249 22.7115 31.8945 22.5404C31.9642 22.3692 32 22.1855 32 22C32 21.8145 31.9642 21.6308 31.8945 21.4596C31.8249 21.2885 31.7229 21.1333 31.5945 21.003C31.4661 20.8727 31.3137 20.77 31.1464 20.7009C30.979 20.6317 30.8 20.5974 30.6196 20.6H13.3804ZM13.3804 26.1999C13.2 26.1973 13.021 26.2316 12.8536 26.3007C12.6863 26.3699 12.5339 26.4726 12.4055 26.6029C12.2771 26.7331 12.1751 26.8884 12.1055 27.0595C12.0358 27.2307 12 27.4144 12 27.5999C12 27.7854 12.0358 27.9691 12.1055 28.1403C12.1751 28.3114 12.2771 28.4666 12.4055 28.5969C12.5339 28.7271 12.6863 28.8299 12.8536 28.899C13.021 28.9682 13.2 29.0025 13.3804 28.9999H25.1757C25.356 29.0025 25.5351 28.9682 25.7024 28.899C25.8698 28.8299 26.0221 28.7271 26.1505 28.5969C26.279 28.4666 26.381 28.3114 26.4506 28.1403C26.5202 27.9691 26.556 27.7854 26.556 27.5999C26.556 27.4144 26.5202 27.2307 26.4506 27.0595C26.381 26.8884 26.279 26.7331 26.1505 26.6029C26.0221 26.4726 25.8698 26.3699 25.7024 26.3007C25.5351 26.2316 25.356 26.1973 25.1757 26.1999H13.3804Z", fill: "#246EFF" }),
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("rect", { x: "37.2", y: "32.2", width: "30.4", height: "20.4", rx: "1.2", transform: "rotate(-180 37.2 32.2)", stroke: "#A1CBFF", "stroke-width": "1.6" })));
+const NumberAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { width: "44", height: "44", viewBox: "0 0 44 44", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("rect", { x: "37.2", y: "32.2", width: "30.4", height: "20.4", rx: "1.2", transform: "rotate(-180 37.2 32.2)", stroke: "#A1CBFF", "stroke-width": "1.6" }),
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13.7512 16.0045C13.6505 16.013 13.5494 16.0337 13.4515 16.0665L10.8799 16.9237C10.2062 17.1482 9.84172 17.8755 10.0663 18.5493C10.2909 19.223 11.0216 19.5901 11.6936 19.3629L12.5725 19.0699V26.7142C12.5725 27.4248 13.1477 28 13.8583 28C14.5689 28 15.1441 27.4248 15.1441 26.7142V17.2853C15.1441 16.8721 14.9452 16.484 14.61 16.2423C14.358 16.061 14.0532 15.9791 13.7512 16.0045ZM18.1442 25.3967C17.8032 25.3967 17.4761 25.5321 17.235 25.7733C16.9939 26.0144 16.8584 26.3414 16.8584 26.6824C16.8584 27.0234 16.9939 27.3505 17.235 27.5916C17.4761 27.8327 17.8032 27.9682 18.1442 27.9682C18.4852 27.9682 18.8122 27.8327 19.0534 27.5916C19.2945 27.3505 19.43 27.0234 19.43 26.6824C19.43 26.3414 19.2945 26.0144 19.0534 25.7733C18.8122 25.5321 18.4852 25.3967 18.1442 25.3967ZM22.4301 25.3967C22.0891 25.3967 21.762 25.5321 21.5209 25.7733C21.2798 26.0144 21.1443 26.3414 21.1443 26.6824C21.1443 27.0234 21.2798 27.3505 21.5209 27.5916C21.762 27.8327 22.0891 27.9682 22.4301 27.9682C22.7711 27.9682 23.0981 27.8327 23.3393 27.5916C23.5804 27.3505 23.7158 27.0234 23.7158 26.6824C23.7158 26.3414 23.5804 26.0144 23.3393 25.7733C23.0981 25.5321 22.7711 25.3967 22.4301 25.3967Z", fill: "#246EFF" })));
+const AttributesMenuItems = [
+    {
+        id: 'text',
+        title: 'Text',
+        description: 'A single line of text.',
+        icon: TextAttribute,
+        dialog: _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_2__.AddTextFieldDialog
+    },
+    {
+        id: 'richtext',
+        title: 'Rich Text',
+        description: 'A text with rich formatting options.',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.RichTextAttribute,
+    },
+    {
+        id: 'number',
+        title: 'Number',
+        icon: NumberAttribute,
+    },
+    {
+        id: 'select',
+        title: 'Single Select',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.SingleSelectAttribute
+    },
+    {
+        id: 'multiselect',
+        title: 'Multi Select',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.MultiSelectAttribute,
+    },
+    {
+        id: 'workflow',
+        title: 'Workflow',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.WorkflowAttribute,
+    },
+    {
+        id: 'assignee',
+        title: 'Assignments',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.AssignmentAttribute
+    },
+    {
+        id: 'date',
+        title: 'Date',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.DateAttribute
+    },
+    {
+        id: 'checkbox',
+        title: 'Checkbox',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.CheckboxAttribute
+    },
+    {
+        id: 'url',
+        title: 'URL',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.URLAttribute
+    },
+    {
+        id: 'email',
+        title: 'Email',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.EmailAttribute
+    },
+    {
+        title: 'Phone',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.PhoneAttribute
+    },
+    {
+        title: 'Location',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.LocationAttribute
+    },
+    {
+        title: 'Avatar',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.AvatarAttribute
+    },
+    {
+        title: 'Icon',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.IconAttribute
+    },
+    {
+        title: 'Files',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.FilesAttribute
+    },
+    {
+        title: 'Comments',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.CommentsAttribute
+    },
+    {
+        title: 'Relation to...',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.RelationAttribute,
+    },
+    {
+        id: 'bpmn',
+        title: 'BPMN Model',
+        icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.RelationAttribute,
+    }
+];
+
+
+/***/ }),
+
 /***/ "./src/views/NewFieldMenu/Icons.tsx":
 /*!******************************************!*\
   !*** ./src/views/NewFieldMenu/Icons.tsx ***!
@@ -22499,72 +22640,72 @@ var Icons;
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M7.434 14.566a.8.8 0 0 1 0-1.132L10.87 10 7.434 6.566a.8.8 0 1 1 1.132-1.132l4 4a.8.8 0 0 1 0 1.132l-4 4a.8.8 0 0 1-1.132 0Z" })));
     Icons.Plus = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10 4a.75.75 0 0 0-.75.75v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5A.75.75 0 0 0 10 4Z" })));
-    Icons.TextAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.TextAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13.2 4.786a.779.779 0 0 0-.234-.556A.807.807 0 0 0 12.4 4H2.8a.807.807 0 0 0-.566.23.779.779 0 0 0 0 1.111c.15.148.354.23.566.23h4v8.643c0 .209.084.409.234.556a.808.808 0 0 0 1.132 0 .779.779 0 0 0 .234-.556V5.571h4a.807.807 0 0 0 .566-.23.779.779 0 0 0 .234-.555Zm4 3.928h-4.8a.807.807 0 0 0-.566.23.779.779 0 0 0 0 1.112c.15.147.354.23.566.23H14v3.928c0 .209.084.409.234.556a.808.808 0 0 0 1.132 0 .779.779 0 0 0 .234-.556v-3.928h1.6a.808.808 0 0 0 .566-.23.779.779 0 0 0 0-1.112.807.807 0 0 0-.566-.23Z" })));
-    Icons.RichTextAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor" },
+    Icons.RichTextAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10.7 6.571h5.6a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.555.837.837 0 0 0-.205-.556A.664.664 0 0 0 16.3 5h-5.6a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .208.074.408.205.555.131.148.31.23.495.23Zm0 7.857h-7a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .209.074.409.205.556.131.147.31.23.495.23h7a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.556.837.837 0 0 0-.205-.555.664.664 0 0 0-.495-.23Zm5.6-3.142H3.7a.663.663 0 0 0-.495.23.837.837 0 0 0-.205.555c0 .209.074.409.205.556.131.147.31.23.495.23h12.6a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.556.837.837 0 0 0-.205-.555.663.663 0 0 0-.495-.23Zm0-3.143h-5.6a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .208.074.408.205.555.131.147.31.23.495.23h5.6a.664.664 0 0 0 .495-.23A.837.837 0 0 0 17 8.93a.837.837 0 0 0-.205-.556.664.664 0 0 0-.495-.23ZM8.6 3.314H3.8a.8.8 0 1 0 0 1.6h1.6v4a.8.8 0 1 0 1.6 0v-4h1.6a.8.8 0 0 0 0-1.6Z" }))));
-    Icons.NumberAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.NumberAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M8.75 3.255a.75.75 0 0 1 .662.828L9.06 7.25h2.49l.371-3.333a.75.75 0 1 1 1.491.166L13.06 7.25h2.273a.75.75 0 0 1 0 1.5h-2.44l-.277 2.5h2.717a.75.75 0 0 1 0 1.5H12.45l-.37 3.333a.75.75 0 1 1-1.491-.166l.352-3.167H8.45l-.371 3.333a.75.75 0 1 1-1.491-.166l.352-3.167H4.667a.75.75 0 0 1 0-1.5h2.44l.277-2.5H4.667a.75.75 0 0 1 0-1.5H7.55l.37-3.333a.75.75 0 0 1 .828-.662Zm2.357 7.995.277-2.5h-2.49l-.278 2.5h2.49Z" })));
-    Icons.SingleSelectAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.SingleSelectAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m12.157 8.392-2.294 2.08-2.137-2.033a.8.8 0 1 0-1.128 1.128l2.697 2.6a.799.799 0 0 0 1.128 0l2.862-2.639a.8.8 0 1 0-1.128-1.136ZM10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm0 14.4a6.4 6.4 0 1 1 0-12.8 6.4 6.4 0 0 1 0 12.8Z" })));
-    Icons.MultiSelectAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.MultiSelectAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.444 4.59c-.364-.242-.888-.29-1.212.037a.783.783 0 0 0 .039 1.149L6.156 8.78a.894.894 0 0 0 1.13.037.853.853 0 0 0 .165-.127l7.308-7.312a.783.783 0 0 0-.02-1.15.891.891 0 0 0-1.213.02L6.728 6.252 4.444 4.59ZM3 15.2a.8.8 0 0 1 .8-.8h12.4a.8.8 0 0 1 0 1.6H3.8a.8.8 0 0 1-.8-.8ZM11.45 7a.8.8 0 0 1 .8-.8h4a.8.8 0 0 1 0 1.6h-4a.8.8 0 0 1-.8-.8ZM3 11.2a.8.8 0 0 1 .8-.8h12.4a.8.8 0 0 1 0 1.6H3.8a.8.8 0 0 1-.8-.8Z" })));
-    Icons.WorkflowAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.WorkflowAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M3.688 11.438a.689.689 0 0 0 .697-.704V8.012c0-1.19.807-1.941 2.065-1.941h5.284v1.572c0 .328.198.52.526.52a.66.66 0 0 0 .404-.144l2.68-2.235c.252-.212.259-.547 0-.766l-2.68-2.235a.62.62 0 0 0-.404-.144c-.328 0-.526.185-.526.52v1.53H6.552c-2.174 0-3.568 1.21-3.568 3.186v2.859c0 .396.308.704.704.704Zm12.624-2.906a.689.689 0 0 0-.697.704v2.745c0 1.19-.807 1.941-2.065 1.941H8.266V12.35c0-.328-.198-.52-.526-.52a.66.66 0 0 0-.404.144l-2.68 2.242c-.259.212-.259.547 0 .76l2.68 2.241a.66.66 0 0 0 .404.144c.328 0 .526-.192.526-.52v-1.545h5.182c2.174 0 3.568-1.21 3.568-3.178V9.236a.695.695 0 0 0-.704-.704Z" })));
-    Icons.AssignmentAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.AssignmentAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10.37 11.149C9.323 10.672 8.104 10.5 7 10.5s-2.323.172-3.37.649c-1.06.483-1.983 1.302-2.351 2.587-.161.562-.152 1.244-.12 1.725.06.924.847 1.539 1.684 1.539h8.314c.837 0 1.625-.615 1.685-1.539.031-.48.04-1.163-.121-1.725-.368-1.285-1.29-2.104-2.351-2.587Zm.909 3c-.216-.755-.756-1.282-1.531-1.635C8.959 12.154 7.97 12 7 12c-.97 0-1.96.155-2.748.514-.775.353-1.315.88-1.531 1.635-.085.298-.096.761-.066 1.215a.12.12 0 0 0 .044.086c.03.027.08.05.144.05h8.314a.218.218 0 0 0 .144-.05.12.12 0 0 0 .044-.086c.03-.454.02-.917-.066-1.215ZM10.25 6.25a3.25 3.25 0 1 0-6.5 0 3.25 3.25 0 0 0 6.5 0Zm-1.5 0a1.75 1.75 0 1 0-3.5 0 1.75 1.75 0 0 0 3.5 0ZM13.818 5a2.75 2.75 0 1 1 0 5.5 2.75 2.75 0 0 1 0-5.5Zm0 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M14.008 12.015a.75.75 0 0 0 .655.834c1.371.165 2.36.711 2.634 1.67.065.227.075.595.051.971a.07.07 0 0 1-.038.01h-2.06a.75.75 0 0 0 0 1.5h2.06c.759 0 1.48-.558 1.535-1.405.026-.406.035-.997-.106-1.49-.534-1.863-2.356-2.56-3.897-2.745a.75.75 0 0 0-.834.655Z" })));
-    Icons.DateAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.DateAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M15.6 3.6H14v-.8a.8.8 0 0 0-1.6 0v.8H7.6v-.8a.8.8 0 0 0-1.6 0v.8H4.4A2.4 2.4 0 0 0 2 6v9.6A2.4 2.4 0 0 0 4.4 18h11.2a2.4 2.4 0 0 0 2.4-2.4V6a2.4 2.4 0 0 0-2.4-2.4Zm.8 12a.8.8 0 0 1-.8.8H4.4a.8.8 0 0 1-.8-.8V10h12.8v5.6Zm0-7.2H3.6V6a.8.8 0 0 1 .8-.8H6V6a.8.8 0 0 0 1.6 0v-.8h4.8V6A.8.8 0 0 0 14 6v-.8h1.6a.8.8 0 0 1 .8.8v2.4Z" })));
-    Icons.CheckboxAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.CheckboxAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M8.508 12.292a.833.833 0 0 0 1.184 0l3.4-3.4a.837.837 0 0 0-1.184-1.184L9.1 10.525 8.092 9.508a.837.837 0 1 0-1.184 1.184l1.6 1.6Z" }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M2 4.5A2.5 2.5 0 0 1 4.5 2h11A2.5 2.5 0 0 1 18 4.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 15.5v-11Zm1.714.214a1 1 0 0 1 1-1h10.572a1 1 0 0 1 1 1v10.572a1 1 0 0 1-1 1H4.714a1 1 0 0 1-1-1V4.714Z" }))));
-    Icons.URLAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.URLAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M3.982 8.862a5.06 5.06 0 0 0 7.156 7.156l1.22-1.22a.746.746 0 1 0-1.056-1.056l-1.22 1.22a3.567 3.567 0 0 1-5.044-5.044l1.22-1.22a.747.747 0 0 0-1.056-1.056l-1.22 1.22Z" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.032 11.912a.747.747 0 0 0 1.056 1.056l4.88-4.88a.746.746 0 1 0-1.056-1.056l-4.88 4.88Z" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.642 5.202a.747.747 0 1 0 1.056 1.056l1.22-1.22a3.567 3.567 0 0 1 5.044 5.044l-1.22 1.22a.746.746 0 1 0 1.056 1.056l1.22-1.22a5.06 5.06 0 0 0-7.156-7.156l-1.22 1.22Z" })));
-    Icons.EmailAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.EmailAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13.55 7.2a.75.75 0 0 0-1.5 0h1.5Zm-.75 3.5h-.75.75Zm4.2 0h.75H17Zm0-.7h.75H17Zm-2.288 6.153a.75.75 0 1 0-.912-1.19l.912 1.19ZM12.05 9.999A2.05 2.05 0 0 1 10 12.05v1.5A3.55 3.55 0 0 0 13.55 10h-1.5ZM10 12.05A2.05 2.05 0 0 1 7.95 10h-1.5A3.55 3.55 0 0 0 10 13.55v-1.5ZM7.95 10A2.05 2.05 0 0 1 10 7.95v-1.5A3.55 3.55 0 0 0 6.45 10h1.5ZM10 7.95A2.05 2.05 0 0 1 12.05 10h1.5A3.55 3.55 0 0 0 10 6.45v1.5Zm2.05-.75v3.5h1.5V7.2h-1.5Zm0 3.5c0 .756.3 1.481.835 2.016l1.06-1.06a1.35 1.35 0 0 1-.395-.955h-1.5Zm.835 2.016a2.85 2.85 0 0 0 2.015.835v-1.5a1.35 1.35 0 0 1-.955-.396l-1.06 1.06Zm2.015.835c.756 0 1.48-.3 2.015-.835l-1.06-1.06a1.35 1.35 0 0 1-.955.395v1.5Zm2.015-.835a2.85 2.85 0 0 0 .835-2.015h-1.5c0 .358-.142.701-.395.954l1.06 1.06Zm.835-2.015V10h-1.5v.7h1.5Zm0-.7a7.75 7.75 0 0 0-1.68-4.817l-1.174.932A6.25 6.25 0 0 1 16.25 10h1.5Zm-1.68-4.817a7.75 7.75 0 0 0-4.309-2.73l-.34 1.46a6.25 6.25 0 0 1 3.475 2.202l1.175-.932Zm-4.309-2.73a7.75 7.75 0 0 0-5.072.54l.64 1.356a6.25 6.25 0 0 1 4.091-.435l.341-1.461Zm-5.072.54A7.75 7.75 0 0 0 3.05 6.569l1.345.664A6.25 6.25 0 0 1 7.33 4.35l-.641-1.356ZM3.05 6.569a7.75 7.75 0 0 0-.627 5.063l1.466-.316a6.25 6.25 0 0 1 .506-4.083L3.05 6.57Zm-.627 5.063a7.75 7.75 0 0 0 2.655 4.355l.953-1.159a6.25 6.25 0 0 1-2.142-3.512l-1.466.316Zm2.655 4.355a7.75 7.75 0 0 0 4.788 1.762l.026-1.5a6.25 6.25 0 0 1-3.861-1.42l-.953 1.158Zm4.788 1.762a7.75 7.75 0 0 0 4.845-1.596l-.912-1.19a6.25 6.25 0 0 1-3.907 1.286l-.026 1.5Z" })));
-    Icons.PhoneAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.PhoneAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.299 12.695c1.875 1.875 4.15 3.318 6.006 3.318.833 0 1.564-.286 2.148-.935.337-.381.547-.82.547-1.258 0-.337-.127-.661-.451-.89l-1.951-1.386c-.306-.216-.566-.317-.795-.317-.299 0-.56.165-.852.457l-.464.458a.335.335 0 0 1-.241.095.659.659 0 0 1-.267-.07c-.394-.216-1.08-.807-1.716-1.436-.63-.636-1.22-1.316-1.43-1.716a.57.57 0 0 1-.077-.26c0-.083.026-.172.102-.242l.451-.464c.293-.299.464-.56.464-.858 0-.23-.108-.483-.324-.795L7.076 4.464A1.1 1.1 0 0 0 6.148 4c-.426 0-.858.19-1.24.553C4.28 5.15 4 5.888 4 6.714c0 1.856 1.424 4.106 3.299 5.98Z" })));
-    Icons.LocationAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.LocationAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10 2.467a5.867 5.867 0 0 0-5.867 5.866c0 1.588.716 3.083 1.917 4.643 1.015 1.317 2.313 2.604 3.704 3.984l.246.244.246-.244c1.391-1.38 2.69-2.667 3.704-3.984 1.2-1.56 1.917-3.055 1.917-4.643A5.867 5.867 0 0 0 10 2.467ZM2.533 8.333a7.467 7.467 0 1 1 14.934 0c0 2.095-.951 3.933-2.25 5.62-1.085 1.409-2.475 2.786-3.864 4.164-.263.26-.526.521-.787.782a.8.8 0 0 1-1.132 0c-.26-.26-.524-.522-.787-.782-1.39-1.378-2.779-2.755-3.864-4.165-1.299-1.686-2.25-3.524-2.25-5.619ZM10 6.633a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4Zm-3.3 1.7a3.3 3.3 0 1 1 6.6 0 3.3 3.3 0 0 1-6.6 0Z" })));
-    Icons.AvatarAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.AvatarAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { "fill-rule": "evenodd", "clip-rule": "evenodd" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M6.904 8.585a3.071 3.071 0 1 1 6.143 0 3.071 3.071 0 0 1-6.143 0Zm3.072-1.57a1.571 1.571 0 1 0 0 3.141 1.571 1.571 0 0 0 0-3.142Z" }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M5.555 3.348a8 8 0 1 1 8.89 13.304 8 8 0 0 1-8.89-13.304Zm.89 11.973a6.4 6.4 0 0 0 7.338-.159 1.571 1.571 0 0 0-1.486-1.06H7.654a1.571 1.571 0 0 0-1.475 1.032c.086.064.175.127.265.187Zm-1.4-1.27A6.402 6.402 0 0 1 8.752 3.724a6.4 6.4 0 0 1 6.175 10.363 3.07 3.07 0 0 0-2.63-1.484H7.655a3.07 3.07 0 0 0-2.608 1.45Z" }))));
-    Icons.IconAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.IconAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12.25 6.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM7.75 6.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10 1.75a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5Zm0 1.5a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5Z" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M8.238 11.643a3.707 3.707 0 0 1-.491-.428l-.149-.168a.75.75 0 0 0-1.198.903l.078.097a5.21 5.21 0 0 0 .878.81c.598.435 1.5.893 2.644.893 1.144 0 2.046-.458 2.644-.893a5.21 5.21 0 0 0 .879-.81l.077-.097a.75.75 0 0 0-1.198-.903l-.149.168c-.11.116-.276.272-.491.428-.433.315-1.031.607-1.762.607-.73 0-1.33-.292-1.762-.607Z" })));
-    Icons.FilesAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.FilesAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M16.824 9.897a.75.75 0 1 0-1.061-1.06l1.06 1.06Zm-6.657 5.596-.53-.53.53.53Zm-2.83 1.173v.75-.75Zm-4.003-4.003h-.75.75Zm1.173-2.83.53.53-.53-.53Zm6.126-6.126-.53-.53.53.53Zm1.887-.782v.75-.75Zm1.887 4.555.53.53-.53-.53Zm-6.134 6.127-.53-.53.53.53ZM6.387 11.72l-.53-.53.53.53Zm6.19-5.123a.75.75 0 0 0-1.06-1.06l1.06 1.06Zm3.186 2.24-6.127 6.126 1.061 1.06 6.127-6.126-1.061-1.06Zm-6.127 6.126c-.61.61-1.437.953-2.3.953v1.5c1.261 0 2.47-.501 3.361-1.392l-1.06-1.06Zm-2.3.953c-.862 0-1.69-.343-2.299-.953l-1.06 1.06a4.752 4.752 0 0 0 3.36 1.393v-1.5Zm-2.299-.953a3.252 3.252 0 0 1-.953-2.3h-1.5c0 1.26.501 2.47 1.392 3.36l1.061-1.06Zm-.953-2.3c0-.862.343-1.69.953-2.3l-1.06-1.06a4.752 4.752 0 0 0-1.393 3.36h1.5Zm.953-2.3 6.127-6.126-1.061-1.06-6.127 6.126 1.061 1.06Zm6.127-6.126c.36-.36.847-.562 1.356-.562v-1.5c-.906 0-1.776.36-2.417 1.001l1.06 1.061Zm1.356-.562c.509 0 .997.202 1.356.562l1.061-1.06a3.418 3.418 0 0 0-2.417-1.002v1.5Zm1.356.562c.36.36.562.848.562 1.356h1.5c0-.906-.36-1.776-1.001-2.417l-1.06 1.061Zm.562 1.356c0 .51-.202.997-.562 1.357l1.061 1.06a3.418 3.418 0 0 0 1.001-2.417h-1.5Zm-.561 1.356-6.134 6.127 1.06 1.061 6.134-6.126-1.06-1.062Zm-6.134 6.127a.584.584 0 0 1-.413.171v1.5c.553 0 1.083-.22 1.474-.61l-1.061-1.06Zm-.413.171a.584.584 0 0 1-.413-.17l-1.06 1.06c.39.39.92.61 1.473.61v-1.5Zm-.413-.17a.584.584 0 0 1-.171-.414h-1.5c0 .553.22 1.083.61 1.474l1.061-1.06Zm-.171-.414c0-.155.061-.303.171-.413l-1.06-1.06c-.392.39-.611.92-.611 1.473h1.5Zm.17-.412 5.66-5.654-1.06-1.06-5.66 5.653 1.06 1.06Z" })));
-    Icons.CommentsAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.CommentsAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M6 7.75A.75.75 0 0 1 6.75 7h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 6 7.75ZM6.75 10a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5h-4.5Z" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M2 5.75A2.75 2.75 0 0 1 4.75 3h10.5A2.75 2.75 0 0 1 18 5.75v7.5A2.75 2.75 0 0 1 15.25 16h-.75v1.75a.75.75 0 0 1-1.13.646L9.296 16H4.75A2.75 2.75 0 0 1 2 13.25v-7.5ZM4.75 4.5c-.69 0-1.25.56-1.25 1.25v7.5c0 .69.56 1.25 1.25 1.25H9.5c.134 0 .265.036.38.104L13 16.439V15.25a.75.75 0 0 1 .75-.75h1.5c.69 0 1.25-.56 1.25-1.25v-7.5c0-.69-.56-1.25-1.25-1.25H4.75Z" })));
-    Icons.RelationToAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.RelationToAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.303 7.774a.75.75 0 0 1 0-.577A.75.75 0 0 1 8 6.732h4.652a.75.75 0 0 1 .287.064.703.703 0 0 1 .402.402.75.75 0 0 1 .064.287v4.55a.753.753 0 0 1-1.505.001l.004-2.743-4.025 4.025a.75.75 0 0 1-1.06-1.06l4.025-4.025-2.845.005a.75.75 0 0 1-.696-.464Z" }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M5.555 3.348a8 8 0 1 1 8.89 13.304 8 8 0 0 1-8.89-13.304Zm.89 11.973a6.4 6.4 0 1 0 7.11-10.643 6.4 6.4 0 0 0-7.11 10.643Z" }))));
-    Icons.LookupFromAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.LookupFromAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.083 2a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5h-12.5ZM4.083 6.751a.75.75 0 0 0 0 1.5h3.5a.75.75 0 1 0 0-1.5h-3.5ZM3.333 12.502a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1-.75-.75ZM4.083 16.501a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5h-12.5Z" }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M15.747 11.44a3.5 3.5 0 1 0-1.08 1.042l2.136 2.135a.75.75 0 0 0 1.06-1.06l-2.116-2.116Zm-2.914.062a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" }))));
-    Icons.FormulaAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.FormulaAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.098 17c1.857 0 3.092-1.07 3.395-3.172l.412-2.886h2.968c.552 0 .964-.403.964-.946 0-.535-.42-.939-.971-.939h-2.697l.226-1.567c.17-1.186.606-1.605 1.414-1.605.66 0 .994.085 1.297.085.529 0 .894-.357.894-.9C15 4.264 14.044 4 12.902 4c-1.857 0-3.085 1.07-3.388 3.172l-.272 1.885H6.71c-.551 0-.963.404-.963.939 0 .543.42.946.971.946h2.261l-.365 2.567c-.17 1.18-.606 1.606-1.414 1.606-.66 0-.987-.085-1.298-.085-.528 0-.901.349-.901.892C5 16.728 5.963 17 7.098 17Z" })));
-    Icons.DocumentAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.DocumentAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.098 17c1.857 0 3.092-1.07 3.395-3.172l.412-2.886h2.968c.552 0 .964-.403.964-.946 0-.535-.42-.939-.971-.939h-2.697l.226-1.567c.17-1.186.606-1.605 1.414-1.605.66 0 .994.085 1.297.085.529 0 .894-.357.894-.9C15 4.264 14.044 4 12.902 4c-1.857 0-3.085 1.07-3.388 3.172l-.272 1.885H6.71c-.551 0-.963.404-.963.939 0 .543.42.946.971.946h2.261l-.365 2.567c-.17 1.18-.606 1.606-1.414 1.606-.66 0-.987-.085-1.298-.085-.528 0-.901.349-.901.892C5 16.728 5.963 17 7.098 17Z" })));
-    Icons.RelationAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.RelationAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.303 7.774a.75.75 0 0 1 0-.577A.75.75 0 0 1 8 6.732h4.652a.75.75 0 0 1 .287.064.703.703 0 0 1 .402.402.75.75 0 0 1 .064.287v4.55a.753.753 0 0 1-1.505.001l.004-2.743-4.025 4.025a.75.75 0 0 1-1.06-1.06l4.025-4.025-2.845.005a.75.75 0 0 1-.696-.464Z" }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M5.555 3.348a8 8 0 1 1 8.89 13.304 8 8 0 0 1-8.89-13.304Zm.89 11.973a6.4 6.4 0 1 0 7.11-10.643 6.4 6.4 0 0 0-7.11 10.643Z" }))));
-    Icons.Collection = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", fill: "currentColor", "aria-hidden": "true" },
+    Icons.Collection = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M16 6.4C16 3.973 13.314 3 10 3S4 4.002 4 6.4c0 2.4 2.686 3.401 6 3.401s6-.971 6-3.4Z" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.104 9.27a2.82 2.82 0 0 0-.104.774c0 2.399 2.686 3.4 6 3.4s6-.97 6-3.4a2.88 2.88 0 0 0-.1-.766 4.787 4.787 0 0 1-1.197.84c-1.289.648-2.972.898-4.703.898-1.735 0-3.418-.259-4.705-.911a4.831 4.831 0 0 1-1.19-.836Z" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.104 12.824c-.068.24-.104.499-.104.775C4 15.998 6.686 17 10 17s6-.972 6-3.4a2.88 2.88 0 0 0-.1-.767 4.786 4.786 0 0 1-1.197.84c-1.289.648-2.972.898-4.703.898-1.735 0-3.418-.259-4.705-.911a4.83 4.83 0 0 1-1.19-.836Z" })));
-    Icons.Relation = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    Icons.Relation = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M14.998 11.998V6.912c0-.89-1.077-1.337-1.707-.707L6.205 13.29c-.63.63-.184 1.707.707 1.707h5.086c2 0 3-1 3-3Z" })));
 })(Icons || (Icons = {}));
 
@@ -22598,6 +22739,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dialogs/AddSelectFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddSelectFieldDialog.ts");
 /* harmony import */ var _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dialogs/AddMultiSelectDialog */ "./src/views/NewFieldMenu/dialogs/AddMultiSelectDialog.ts");
 /* harmony import */ var _dialogs_AddRelationFieldDialog__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dialogs/AddRelationFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddRelationFieldDialog.tsx");
+/* harmony import */ var _dialogs_AddAssigneeDialog__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./dialogs/AddAssigneeDialog */ "./src/views/NewFieldMenu/dialogs/AddAssigneeDialog.ts");
+/* harmony import */ var _dialogs_AddDateFieldDialog__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dialogs/AddDateFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddDateFieldDialog.ts");
+/* harmony import */ var _dialogs_AddCheckboxFieldDialog__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./dialogs/AddCheckboxFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddCheckboxFieldDialog.ts");
+/* harmony import */ var _dialogs_AddUrlFieldDialog__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./dialogs/AddUrlFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddUrlFieldDialog.ts");
+/* harmony import */ var _SelectAttributeDialog__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./SelectAttributeDialog */ "./src/views/NewFieldMenu/SelectAttributeDialog.ts");
 
 
 
@@ -22611,14 +22757,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const FieldTypes = {
-    'text': _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.AddTextFieldDialog,
-    'richtext': _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.AddRichTextFieldDialog,
-    'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.AddNumberFieldDialog,
-    'select': _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.AddSelectFieldDialog,
-    'multiselect': _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.AddMultiSelectFieldDialog,
-    'relation': _dialogs_AddRelationFieldDialog__WEBPACK_IMPORTED_MODULE_11__.RelationFieldAttributesView
-};
+
+
+
+
+
 class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController {
     LoadView() {
         const { onNewFieldAdded, view } = this.props;
@@ -22630,31 +22773,31 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
                 {
                     title: 'Text',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.TextAttribute,
-                    onClick: () => (setSelectedType('text')
+                    onClick: () => (setSelectedType(_dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.AddTextFieldDialog)
                     //DynoDialog.Show(AddTextFieldDialog(workspaceId, databaseId, collectionId))
                     )
                 },
                 {
                     title: 'Rich Text',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.RichTextAttribute,
-                    onClick: () => (setSelectedType('richtext')
+                    onClick: () => (setSelectedType(_dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.AddRichTextFieldDialog)
                     //  DynoDialog.Show(AddNumberFieldDialog(workspaceId, databaseId, collectionId))
                     )
                 },
                 {
                     title: 'Number',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.NumberAttribute,
-                    onClick: () => (setSelectedType('number'))
+                    onClick: () => (setSelectedType(_dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.AddNumberFieldDialog))
                 },
                 {
                     title: 'Single Select',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.SingleSelectAttribute,
-                    onClick: () => (setSelectedType('select'))
+                    onClick: () => (setSelectedType(_dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.AddSelectFieldDialog))
                 },
                 {
                     title: 'Multi Select',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.MultiSelectAttribute,
-                    onClick: () => (setSelectedType('multiselect'))
+                    onClick: () => (setSelectedType(_dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.AddMultiSelectFieldDialog))
                 },
                 {
                     title: 'Workflow',
@@ -22662,23 +22805,22 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
                 },
                 {
                     title: 'Assignments',
-                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.AssignmentAttribute
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.AssignmentAttribute,
+                    onClick: () => (setSelectedType(_dialogs_AddAssigneeDialog__WEBPACK_IMPORTED_MODULE_12__.AddAssigneeFieldDialog))
                 },
                 {
                     title: 'Date',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.DateAttribute,
-                    onClick: () => (alert() //DynoDialog.Show(AddDatetimeFieldDialog(workspaceId, databaseId, collectionId))
-                    )
+                    onClick: () => (setSelectedType(_dialogs_AddDateFieldDialog__WEBPACK_IMPORTED_MODULE_13__.AddDateFieldDialog))
                 },
                 {
                     title: 'Checkbox',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.CheckboxAttribute,
-                    onClick: () => (alert() // DynoDialog.Show(AddBooleanFieldDialog(workspaceId, databaseId, collectionId))
-                    )
+                    onClick: () => (setSelectedType(_dialogs_AddCheckboxFieldDialog__WEBPACK_IMPORTED_MODULE_14__.AddCheckboxFieldDialog))
                 },
                 {
                     title: 'URL',
-                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.URLAttribute
+                    onClick: () => (setSelectedType(_dialogs_AddUrlFieldDialog__WEBPACK_IMPORTED_MODULE_15__.AddUrlFieldDialog))
                 },
                 {
                     title: 'Email',
@@ -22712,7 +22854,18 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
                     title: 'Relation to...',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.RelationAttribute,
                     onClick: () => {
-                        setSelectedType('relation');
+                        setSelectedType(_dialogs_AddRelationFieldDialog__WEBPACK_IMPORTED_MODULE_11__.RelationFieldAttributesView);
+                    }
+                },
+                {
+                    title: 'Other',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.RelationAttribute,
+                    onClick: () => {
+                        setMenuIsOpen(false);
+                        _SelectAttributeDialog__WEBPACK_IMPORTED_MODULE_16__.SelectAttributeDialog.Show().then((dialog) => {
+                            setSelectedType(dialog);
+                            setMenuIsOpen(true);
+                        });
                     }
                 }
             ];
@@ -22735,7 +22888,7 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
                         setSelectedType(null);
                     }
                 } }, selectedType == null ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(AttributesMenuItems)((item) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)(item.title))
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(AttributesMenuItems)((item) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon)).width(18).height(18), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)(item.title))
                     .background({ hover: 'rgba(81,97,108,.1)' })
                     .padding()
                     .cursor('pointer')
@@ -22750,8 +22903,11 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
                     .cornerRadius(6)
                     .render()
                 :
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.render(FieldTypes[selectedType](onNewFieldAdded)))
-                        .padding())
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
+                        console.log(selectedType);
+                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)(typeof selectedType))
+                            .padding());
+                    })
                         .render())))
                 .open(menuIsOpen)
                 .hideHandle(hideHandle => _hideHandle = hideHandle)
@@ -22769,6 +22925,491 @@ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction(_
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction(_dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.SaveNumberFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction(_dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SaveSelectFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveMultiSelectField', _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.SaveMultiSelectFieldAction);
+
+
+/***/ }),
+
+/***/ "./src/views/NewFieldMenu/SelectAttributeDialog.ts":
+/*!*********************************************************!*\
+  !*** ./src/views/NewFieldMenu/SelectAttributeDialog.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SelectAttributeDialog: () => (/* binding */ SelectAttributeDialog)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Attributes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Attributes */ "./src/views/NewFieldMenu/Attributes.tsx");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+const appletMenu = [
+    {
+        category: 'Attributes',
+        items: [
+            { name: 'All', icon: 'Apps' },
+            { name: 'Featured', icon: 'Star' },
+            { name: 'Recent', icon: 'Clock' },
+            { name: 'Popular', icon: 'Fire' },
+            { name: 'My applets', icon: 'User' }
+        ]
+    },
+    /*  {
+         category: 'Data',
+         items: [
+             { name: 'All', icon: 'Data' },
+             { name: 'Design', icon: 'Design' },
+             { name: 'Development', icon: 'Development' },
+             { name: 'Finance', icon: 'Finance' },
+             { name: 'Health', icon: 'Health' }
+         ]
+     },
+     {
+         category: 'Solutions',
+         items: [
+             { name: 'All', icon: 'Data' },
+             { name: 'Design', icon: 'Design' },
+             { name: 'Development', icon: 'Development' }
+         ]
+     }, */
+];
+class SelectAttributeDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView {
+    BindRouterParams() {
+    }
+    constructor() {
+        super();
+        this.ShowHeader = true;
+        this.Header = 'Form';
+        this.Width = '90vw';
+        this.Height = '90vh';
+        this.filtered_opas = _Attributes__WEBPACK_IMPORTED_MODULE_2__.AttributesMenuItems;
+    }
+    OnOK(applet) {
+        this.ShowDialogAsyncResolve(applet);
+        //  this.Hide();
+    }
+    OnCancel() {
+        this.Hide();
+    }
+    LoadView() {
+        const [installingOpa, setInstallingOpa] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+        const [searchText, setSearchText] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('applet').fontSize(20).fontWeight('700'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('library').fontSize(20).fontWeight('400')).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)()
+            .value(searchText)
+            .placeholder('Search applets').minWidth(300).maxWidth(700).height(40).padding()
+            .cornerRadius(6)
+            .border({ default: 'solid 1px #E4EAE2', focus: 'solid 1px #E4EAE2' })
+            .onChange((e) => {
+            setSearchText(e);
+            this.filtered_opas = _Attributes__WEBPACK_IMPORTED_MODULE_2__.AttributesMenuItems.filter(opa => opa.title.toLowerCase().indexOf(e.toLowerCase()) > -1);
+        })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Close).onClick(() => this.OnCancel())).height(50).padding().background('#F9FAFB'), 
+        /*     Search().width(300).allHeight(70).padding()
+                .onChange((e) => this.filtered_opas = opas.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1)), */
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(appletMenu)(menu => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(menu.category).fontWeight('500').fontSize('var(--font-size-h4)')
+            .paddingLeft('12px')
+            .marginBottom('12px'), ...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(menu.items)(item => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(item.name).fontSize('var(--font-size-h5)')
+            .padding('var(--spacing-xs) 0 var(--spacing-xs)')
+            .paddingLeft('12px')
+            .cornerRadius('var(--border-radius-small)')
+            .lineHeight('var(--font-line-height-h2)')
+            .foregroundColor('#323338')).height())).height().marginBottom('var(--spacing-large)')))
+            .padding('var(--spacing-medium)')
+            .width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.filtered_opas)(attribute => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(attribute.image &&
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(attribute.image).width(50).height(50).cornerRadius('20%')
+                .filter(attribute.type === 'Applet' ? 'grayscale(1)' : 'none'), attribute.icon &&
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(attribute.icon).fontSize(40).foregroundColor('rgb(109, 122, 131)')).width(50).height(50).padding(10).cornerRadius('20%').border('solid 1px #6D7A8344'), 
+        //.background(opa.iconBackColor || '#9A0707'),
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height()
+        //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
+        , (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(attribute.title).fontSize('1.8rem').lineHeight('2rem').maxLines(2))
+            .minHeight('4rem')
+            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(attribute.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Add'))
+            // .loading(isLoading && (opa.type === this.last_added_opa_type))
+            // .disabled(!opa.enabled)
+            .kind(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonType.SECONDARY)
+            .size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonSize.SMALL)
+            // .loading(installingOpa === opa.type)
+            .width('100%')
+            .onClick(() => __awaiter(this, void 0, void 0, function* () {
+            this.OnOK(attribute.dialog);
+        }))).height()).height(250).width(290)
+            .padding()
+            .shadow({ hover: 'var(--box-shadow-medium)' })
+            .cornerRadius('var(--border-radius-medium)')
+            .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding())).wrap('wrap').height()))));
+    }
+    static Show() {
+        const dialog = new SelectAttributeDialog();
+        dialog.ShowHeader = false;
+        /*  if (width) {
+             dialog.Width = width;
+         } */
+        dialog.BindRouterParams();
+        return dialog.ShowDialogAsync();
+    }
+}
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], SelectAttributeDialog.prototype, "filtered_opas", void 0);
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], SelectAttributeDialog.prototype, "workspaceId", void 0);
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], SelectAttributeDialog.prototype, "parent", void 0);
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], SelectAttributeDialog.prototype, "space", void 0);
+
+
+/***/ }),
+
+/***/ "./src/views/NewFieldMenu/dialogs/AddAssigneeDialog.ts":
+/*!*************************************************************!*\
+  !*** ./src/views/NewFieldMenu/dialogs/AddAssigneeDialog.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AddAssigneeFieldDialog: () => (/* binding */ AddAssigneeFieldDialog),
+/* harmony export */   SaveAssigneeFieldAction: () => (/* binding */ SaveAssigneeFieldAction)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+const SaveAssigneeFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+    var _a;
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    const { onNewFieldAdded } = formMeta;
+    const formState = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.useFormState)({ values: true, errors: true });
+    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.LoadingButton)().label('Save')
+        .appearance('primary')
+        .isDisabled(_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.nullOrEmpty((_a = formState === null || formState === void 0 ? void 0 : formState.values) === null || _a === void 0 ? void 0 : _a.name))
+        .onClick(() => {
+        const _onNewFieldAdded = onNewFieldAdded === null || onNewFieldAdded === void 0 ? void 0 : onNewFieldAdded.value;
+        if (_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.function(_onNewFieldAdded)) {
+            alert('dfs');
+            _onNewFieldAdded({
+                key: (0,_utils__WEBPACK_IMPORTED_MODULE_2__.replaceNonMatchingCharacters)(formState.values.name),
+                name: formState.values.name,
+                type: 'assignee',
+                fieldInfo: JSON.stringify({
+                    size: 255
+                })
+            });
+        }
+        /*  createStringAttribute({
+             databaseId,
+             collectionId,
+             key: replaceNonMatchingCharacters(name),
+             required: false,
+             size: 255
+         }, (attribute) => {
+             createDocument({
+                 data: {
+                     key: attribute.key,
+                     name: name,
+                     type: 'text',
+                     fieldInfo: JSON.stringify({
+                         size: 255
+                     }),
+                     collectionId: collectionId
+                 }
+             }, () => dialog.Hide())
+         }) */
+    }));
+});
+SaveAssigneeFieldAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid)();
+const AddAssigneeFieldDialog = (onNewFieldAdded) => ({
+    "title": 'Add assignee field',
+    "width": "420px",
+    "height": "320px",
+    "onNewFieldAdded": {
+        "name": "onNewFieldAdded",
+        "type": "virtual",
+        "value": onNewFieldAdded
+    },
+    "actions": [
+        {
+            "label": "custom",
+            "type": SaveAssigneeFieldAction.Id
+        }
+    ],
+    "fieldMap": {
+        "name": {
+            "label": "NAME",
+            "type": "text",
+            "name": "name",
+            "autofocus": true
+        },
+        "description": {
+            "label": "DESCRIPTION (OPTIONAL)",
+            "type": "text",
+            "multiline": true,
+            "name": "description"
+        },
+    }
+});
+_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.injectAction(SaveAssigneeFieldAction);
+
+
+/***/ }),
+
+/***/ "./src/views/NewFieldMenu/dialogs/AddCheckboxFieldDialog.ts":
+/*!******************************************************************!*\
+  !*** ./src/views/NewFieldMenu/dialogs/AddCheckboxFieldDialog.ts ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AddCheckboxFieldDialog: () => (/* binding */ AddCheckboxFieldDialog),
+/* harmony export */   SaveCheckboxFieldAction: () => (/* binding */ SaveCheckboxFieldAction)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+const SaveCheckboxFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+    var _a;
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    const { onNewFieldAdded } = formMeta;
+    const formState = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.useFormState)({ values: true, errors: true });
+    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.LoadingButton)().label('Save')
+        .appearance('primary')
+        .isDisabled(_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.nullOrEmpty((_a = formState === null || formState === void 0 ? void 0 : formState.values) === null || _a === void 0 ? void 0 : _a.name))
+        .onClick(() => {
+        const _onNewFieldAdded = onNewFieldAdded === null || onNewFieldAdded === void 0 ? void 0 : onNewFieldAdded.value;
+        if (_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.function(_onNewFieldAdded)) {
+            alert('dfs');
+            _onNewFieldAdded({
+                key: (0,_utils__WEBPACK_IMPORTED_MODULE_2__.replaceNonMatchingCharacters)(formState.values.name),
+                name: formState.values.name,
+                type: 'checkbox',
+                fieldInfo: JSON.stringify({
+                    size: 255
+                })
+            });
+        }
+        /*  createStringAttribute({
+             databaseId,
+             collectionId,
+             key: replaceNonMatchingCharacters(name),
+             required: false,
+             size: 255
+         }, (attribute) => {
+             createDocument({
+                 data: {
+                     key: attribute.key,
+                     name: name,
+                     type: 'text',
+                     fieldInfo: JSON.stringify({
+                         size: 255
+                     }),
+                     collectionId: collectionId
+                 }
+             }, () => dialog.Hide())
+         }) */
+    }));
+});
+SaveCheckboxFieldAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid)();
+const AddCheckboxFieldDialog = (onNewFieldAdded) => ({
+    "title": 'Add checkbox field',
+    "width": "420px",
+    "height": "320px",
+    "onNewFieldAdded": {
+        "name": "onNewFieldAdded",
+        "type": "virtual",
+        "value": onNewFieldAdded
+    },
+    "actions": [
+        {
+            "label": "custom",
+            "type": SaveCheckboxFieldAction.Id
+        }
+    ],
+    "fieldMap": {
+        "name": {
+            "label": "NAME",
+            "type": "text",
+            "name": "name",
+            "autofocus": true
+        },
+        "description": {
+            "label": "DESCRIPTION (OPTIONAL)",
+            "type": "text",
+            "multiline": true,
+            "name": "description"
+        }
+    }
+});
+_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.injectAction(SaveCheckboxFieldAction);
+
+
+/***/ }),
+
+/***/ "./src/views/NewFieldMenu/dialogs/AddDateFieldDialog.ts":
+/*!**************************************************************!*\
+  !*** ./src/views/NewFieldMenu/dialogs/AddDateFieldDialog.ts ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AddDateFieldDialog: () => (/* binding */ AddDateFieldDialog),
+/* harmony export */   SaveDateFieldAction: () => (/* binding */ SaveDateFieldAction)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+const SaveDateFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+    var _a;
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    const { onNewFieldAdded } = formMeta;
+    const formState = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.useFormState)({ values: true, errors: true });
+    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.LoadingButton)().label('Save')
+        .appearance('primary')
+        .isDisabled(_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.nullOrEmpty((_a = formState === null || formState === void 0 ? void 0 : formState.values) === null || _a === void 0 ? void 0 : _a.name))
+        .onClick(() => {
+        const _onNewFieldAdded = onNewFieldAdded === null || onNewFieldAdded === void 0 ? void 0 : onNewFieldAdded.value;
+        if (_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.function(_onNewFieldAdded)) {
+            _onNewFieldAdded({
+                key: (0,_utils__WEBPACK_IMPORTED_MODULE_2__.replaceNonMatchingCharacters)(formState.values.name),
+                name: formState.values.name,
+                type: 'date',
+                fieldInfo: JSON.stringify({
+                    size: 255
+                })
+            });
+        }
+        /*  createStringAttribute({
+             databaseId,
+             collectionId,
+             key: replaceNonMatchingCharacters(name),
+             required: false,
+             size: 255
+         }, (attribute) => {
+             createDocument({
+                 data: {
+                     key: attribute.key,
+                     name: name,
+                     type: 'text',
+                     fieldInfo: JSON.stringify({
+                         size: 255
+                     }),
+                     collectionId: collectionId
+                 }
+             }, () => dialog.Hide())
+         }) */
+    }));
+});
+SaveDateFieldAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid)();
+const AddDateFieldDialog = (onNewFieldAdded) => ({
+    "title": 'Add date field',
+    "width": "420px",
+    "height": "370px",
+    "onNewFieldAdded": {
+        "name": "onNewFieldAdded",
+        "type": "virtual",
+        "value": onNewFieldAdded
+    },
+    "actions": [
+        {
+            "label": "custom",
+            "type": SaveDateFieldAction.Id
+        }
+    ],
+    "fieldMap": {
+        "name": {
+            "label": "NAME",
+            "type": "text",
+            "name": "name",
+            "autofocus": true
+        },
+        "description": {
+            "label": "DESCRIPTION (OPTIONAL)",
+            "type": "text",
+            "multiline": true,
+            "name": "description"
+        },
+        "includeStartEnd": {
+            "label": "INCLUDE START & END DATES",
+            "type": "checkbox",
+            "name": "includeStartEnd"
+        },
+        "includeTime": {
+            "label": "INCLUDE TIME",
+            "type": "checkbox",
+            "name": "includeTime"
+        }
+    }
+});
+_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.injectAction(SaveDateFieldAction);
 
 
 /***/ }),
@@ -23321,9 +23962,115 @@ const AddTextFieldDialog = (onNewFieldAdded) => ({
             "type": "text",
             "multiline": true,
             "name": "description"
-        },
+        }
     }
 });
+
+
+/***/ }),
+
+/***/ "./src/views/NewFieldMenu/dialogs/AddUrlFieldDialog.ts":
+/*!*************************************************************!*\
+  !*** ./src/views/NewFieldMenu/dialogs/AddUrlFieldDialog.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AddUrlFieldDialog: () => (/* binding */ AddUrlFieldDialog),
+/* harmony export */   SaveUrlFieldAction: () => (/* binding */ SaveUrlFieldAction)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+const SaveUrlFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+    var _a;
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    const { onNewFieldAdded } = formMeta;
+    const formState = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.useFormState)({ values: true, errors: true });
+    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.LoadingButton)().label('Save')
+        .appearance('primary')
+        .isDisabled(_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.nullOrEmpty((_a = formState === null || formState === void 0 ? void 0 : formState.values) === null || _a === void 0 ? void 0 : _a.name))
+        .onClick(() => {
+        const _onNewFieldAdded = onNewFieldAdded === null || onNewFieldAdded === void 0 ? void 0 : onNewFieldAdded.value;
+        if (_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.function(_onNewFieldAdded)) {
+            _onNewFieldAdded({
+                key: (0,_utils__WEBPACK_IMPORTED_MODULE_2__.replaceNonMatchingCharacters)(formState.values.name),
+                name: formState.values.name,
+                type: 'url',
+                fieldInfo: JSON.stringify({
+                    size: 255
+                })
+            });
+        }
+        /*  createStringAttribute({
+             databaseId,
+             collectionId,
+             key: replaceNonMatchingCharacters(name),
+             required: false,
+             size: 255
+         }, (attribute) => {
+             createDocument({
+                 data: {
+                     key: attribute.key,
+                     name: name,
+                     type: 'text',
+                     fieldInfo: JSON.stringify({
+                         size: 255
+                     }),
+                     collectionId: collectionId
+                 }
+             }, () => dialog.Hide())
+         }) */
+    }));
+});
+SaveUrlFieldAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid)();
+const AddUrlFieldDialog = (onNewFieldAdded) => ({
+    "title": 'Add checkbox field',
+    "width": "420px",
+    "height": "320px",
+    "onNewFieldAdded": {
+        "name": "onNewFieldAdded",
+        "type": "virtual",
+        "value": onNewFieldAdded
+    },
+    "actions": [
+        {
+            "label": "custom",
+            "type": SaveUrlFieldAction.Id
+        }
+    ],
+    "fieldMap": {
+        "name": {
+            "label": "NAME",
+            "type": "text",
+            "name": "name",
+            "autofocus": true
+        },
+        "description": {
+            "label": "DESCRIPTION (OPTIONAL)",
+            "type": "text",
+            "multiline": true,
+            "name": "description"
+        }
+    }
+});
+_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.injectAction(SaveUrlFieldAction);
 
 
 /***/ }),

@@ -114,6 +114,9 @@ input:-webkit-autofill::first-line {
   box-sizing: border-box;
 }
 
+*:focus {
+    outline: none;
+}
 
 div {
   /*-webkit-font-smoothing: subpixel-antialiased;

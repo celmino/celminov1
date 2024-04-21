@@ -11,16 +11,14 @@ import { AddSelectFieldDialog, SaveSelectFieldAction } from "./dialogs/AddSelect
 import React from "react";
 import { AddMultiSelectFieldDialog, SaveMultiSelectFieldAction } from "./dialogs/AddMultiSelectDialog";
 import { RelationFieldAttributesView } from "./dialogs/AddRelationFieldDialog";
+import { AddAssigneeFieldDialog } from "./dialogs/AddAssigneeDialog";
+import { AddDateFieldDialog } from "./dialogs/AddDateFieldDialog";
+import { AddCheckboxFieldDialog } from "./dialogs/AddCheckboxFieldDialog";
+import { AddUrlFieldDialog } from "./dialogs/AddUrlFieldDialog";
+import { SelectAttributeDialog } from "./SelectAttributeDialog";
 
 
-const FieldTypes = {
-    'text': AddTextFieldDialog,
-    'richtext': AddRichTextFieldDialog,
-    'number': AddNumberFieldDialog,
-    'select': AddSelectFieldDialog,
-    'multiselect': AddMultiSelectFieldDialog,
-    'relation': RelationFieldAttributesView
-}
+
 
 class Controller extends UIFormController {
     public override LoadView() {
@@ -37,7 +35,7 @@ class Controller extends UIFormController {
                                 title: 'Text',
                                 icon: Icons.TextAttribute,
                                 onClick: () => (
-                                    setSelectedType('text')
+                                    setSelectedType(AddTextFieldDialog)
                                     //DynoDialog.Show(AddTextFieldDialog(workspaceId, databaseId, collectionId))
                                 )
                             },
@@ -45,7 +43,7 @@ class Controller extends UIFormController {
                                 title: 'Rich Text',
                                 icon: Icons.RichTextAttribute,
                                 onClick: () => (
-                                    setSelectedType('richtext')
+                                    setSelectedType(AddRichTextFieldDialog)
                                     //  DynoDialog.Show(AddNumberFieldDialog(workspaceId, databaseId, collectionId))
                                 )
                             },
@@ -53,21 +51,21 @@ class Controller extends UIFormController {
                                 title: 'Number',
                                 icon: Icons.NumberAttribute,
                                 onClick: () => (
-                                    setSelectedType('number')
+                                    setSelectedType(AddNumberFieldDialog)
                                 )
                             },
                             {
                                 title: 'Single Select',
                                 icon: Icons.SingleSelectAttribute,
                                 onClick: () => (
-                                    setSelectedType('select')
+                                    setSelectedType(AddSelectFieldDialog)
                                 )
                             },
                             {
                                 title: 'Multi Select',
                                 icon: Icons.MultiSelectAttribute,
                                 onClick: () => (
-                                    setSelectedType('multiselect')
+                                    setSelectedType(AddMultiSelectFieldDialog)
                                 )
                             },
                             {
@@ -76,25 +74,30 @@ class Controller extends UIFormController {
                             },
                             {
                                 title: 'Assignments',
-                                icon: Icons.AssignmentAttribute
+                                icon: Icons.AssignmentAttribute,
+                                onClick: () => (
+                                    setSelectedType(AddAssigneeFieldDialog)
+                                )
                             },
                             {
                                 title: 'Date',
                                 icon: Icons.DateAttribute,
                                 onClick: () => (
-                                    alert() //DynoDialog.Show(AddDatetimeFieldDialog(workspaceId, databaseId, collectionId))
+                                    setSelectedType(AddDateFieldDialog)
                                 )
                             },
                             {
                                 title: 'Checkbox',
                                 icon: Icons.CheckboxAttribute,
                                 onClick: () => (
-                                    alert() // DynoDialog.Show(AddBooleanFieldDialog(workspaceId, databaseId, collectionId))
+                                    setSelectedType(AddCheckboxFieldDialog)
                                 )
                             },
                             {
                                 title: 'URL',
-                                icon: Icons.URLAttribute
+                                onClick: () => (
+                                    setSelectedType(AddUrlFieldDialog)
+                                )
                             },
                             {
                                 title: 'Email',
@@ -128,7 +131,18 @@ class Controller extends UIFormController {
                                 title: 'Relation to...',
                                 icon: Icons.RelationAttribute,
                                 onClick: () => {
-                                    setSelectedType('relation')
+                                    setSelectedType(RelationFieldAttributesView)
+                                }
+                            },
+                            {
+                                title: 'Other',
+                                icon: Icons.RelationAttribute,
+                                onClick: () => {
+                                    setMenuIsOpen(false);
+                                    SelectAttributeDialog.Show().then((dialog) => {
+                                        setSelectedType(dialog);
+                                        setMenuIsOpen(true);
+                                    });
                                 }
                             }
                         ]
@@ -164,7 +178,10 @@ class Controller extends UIFormController {
                                                 VStack(
                                                     ...ForEach(AttributesMenuItems)((item) =>
                                                         HStack({ alignment: cLeading, spacing: 10 })(
-                                                            Icon(item.icon),
+                                                            HStack(
+                                                                Icon(item.icon)
+                                                            ).width(18).height(18)
+                                                            ,
                                                             Text(item.title) as any
                                                         )
                                                             .background({ hover: 'rgba(81,97,108,.1)' })
@@ -183,12 +200,17 @@ class Controller extends UIFormController {
                                                     .cornerRadius(6)
                                                     .render()
                                                 :
-                                                UIViewBuilder(() =>
-                                                    VStack
-                                                        (
-                                                            FormBuilder.render(FieldTypes[selectedType](onNewFieldAdded))
-                                                        )
-                                                        .padding()
+                                                UIViewBuilder(() => {
+                                                    console.log(selectedType);
+                                                    return (
+                                                        VStack
+                                                            (
+                                                                Text(typeof selectedType),
+                                                                //FormBuilder.render(selectedType(onNewFieldAdded))
+                                                            )
+                                                            .padding()
+                                                    )
+                                                }
                                                 )
 
                                                     .render()

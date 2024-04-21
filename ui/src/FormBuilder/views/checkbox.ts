@@ -1,8 +1,9 @@
+import { CheckboxField } from "@realmocean/atlaskit";
 import { is } from "@tuval/core";
 import { UIRadioGroup, VStack, cTopLeading, useFormController, Text, CheckBox, useEffect } from "@tuval/forms";
 
 
-export const CheckBoxFormView = (textData: any) => {
+export const _CheckBoxFormView = (textData: any) => {
     const formController = useFormController();
 
     let { name, value } = textData;
@@ -25,4 +26,25 @@ export const CheckBoxFormView = (textData: any) => {
             // .formField(textData.name, [])
         ).height().marginBottom('16px')
     )
+}
+
+export const CheckBoxFormView = (fieldInfo: any) => {
+    let { label, name, value } = fieldInfo;
+
+    /*  const formController = useFormController();
+     let currentValue = formController.GetValue(name);
+ 
+     if (currentValue !== value){
+         formController.SetValue(name, value);
+     }
+  */
+    return (
+        CheckboxField()
+            .name(name)
+            .value(value)
+            .label(label)
+    )
+
+
+
 }
