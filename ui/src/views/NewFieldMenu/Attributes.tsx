@@ -1,6 +1,8 @@
 import React from "react"
 import { Icons } from "./Icons"
 import { AddTextFieldDialog } from "./dialogs/AddTextAttributeDialog"
+import { AddRichTextFieldDialog } from "./dialogs/AddRichtextFieldDialog"
+import { AddNumberFieldDialog } from "./dialogs/AddNumberFieldDialog"
 
 
 
@@ -35,12 +37,14 @@ export const AttributesMenuItems = [
         title: 'Rich Text',
         description: 'A text with rich formatting options.',
         icon: Icons.RichTextAttribute,
+        dialog: AddRichTextFieldDialog
 
     },
     {
         id: 'number',
         title: 'Number',
         icon: NumberAttribute,
+        dialog: AddNumberFieldDialog
 
     },
     {

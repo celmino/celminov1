@@ -22514,6 +22514,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Icons */ "./src/views/NewFieldMenu/Icons.tsx");
 /* harmony import */ var _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dialogs/AddTextAttributeDialog */ "./src/views/NewFieldMenu/dialogs/AddTextAttributeDialog.ts");
+/* harmony import */ var _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialogs/AddRichtextFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddRichtextFieldDialog.ts");
+/* harmony import */ var _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dialogs/AddNumberFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddNumberFieldDialog.ts");
+
+
 
 
 
@@ -22536,11 +22540,13 @@ const AttributesMenuItems = [
         title: 'Rich Text',
         description: 'A text with rich formatting options.',
         icon: _Icons__WEBPACK_IMPORTED_MODULE_1__.Icons.RichTextAttribute,
+        dialog: _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_3__.AddRichTextFieldDialog
     },
     {
         id: 'number',
         title: 'Number',
         icon: NumberAttribute,
+        dialog: _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_4__.AddNumberFieldDialog
     },
     {
         id: 'select',
@@ -22773,31 +22779,31 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
                 {
                     title: 'Text',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.TextAttribute,
-                    onClick: () => (setSelectedType(_dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.AddTextFieldDialog)
+                    onClick: () => (setSelectedType((0,_dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.AddTextFieldDialog)(onNewFieldAdded))
                     //DynoDialog.Show(AddTextFieldDialog(workspaceId, databaseId, collectionId))
                     )
                 },
                 {
                     title: 'Rich Text',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.RichTextAttribute,
-                    onClick: () => (setSelectedType(_dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.AddRichTextFieldDialog)
+                    onClick: () => (setSelectedType((0,_dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.AddRichTextFieldDialog)(onNewFieldAdded))
                     //  DynoDialog.Show(AddNumberFieldDialog(workspaceId, databaseId, collectionId))
                     )
                 },
                 {
                     title: 'Number',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.NumberAttribute,
-                    onClick: () => (setSelectedType(_dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.AddNumberFieldDialog))
+                    onClick: () => (setSelectedType((0,_dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.AddNumberFieldDialog)(onNewFieldAdded)))
                 },
                 {
                     title: 'Single Select',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.SingleSelectAttribute,
-                    onClick: () => (setSelectedType(_dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.AddSelectFieldDialog))
+                    onClick: () => (setSelectedType((0,_dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.AddSelectFieldDialog)(onNewFieldAdded)))
                 },
                 {
                     title: 'Multi Select',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.MultiSelectAttribute,
-                    onClick: () => (setSelectedType(_dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.AddMultiSelectFieldDialog))
+                    onClick: () => (setSelectedType((0,_dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.AddMultiSelectFieldDialog)(onNewFieldAdded)))
                 },
                 {
                     title: 'Workflow',
@@ -22806,21 +22812,21 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
                 {
                     title: 'Assignments',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.AssignmentAttribute,
-                    onClick: () => (setSelectedType(_dialogs_AddAssigneeDialog__WEBPACK_IMPORTED_MODULE_12__.AddAssigneeFieldDialog))
+                    onClick: () => (setSelectedType((0,_dialogs_AddAssigneeDialog__WEBPACK_IMPORTED_MODULE_12__.AddAssigneeFieldDialog)(onNewFieldAdded)))
                 },
                 {
                     title: 'Date',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.DateAttribute,
-                    onClick: () => (setSelectedType(_dialogs_AddDateFieldDialog__WEBPACK_IMPORTED_MODULE_13__.AddDateFieldDialog))
+                    onClick: () => (setSelectedType((0,_dialogs_AddDateFieldDialog__WEBPACK_IMPORTED_MODULE_13__.AddDateFieldDialog)(onNewFieldAdded)))
                 },
                 {
                     title: 'Checkbox',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.CheckboxAttribute,
-                    onClick: () => (setSelectedType(_dialogs_AddCheckboxFieldDialog__WEBPACK_IMPORTED_MODULE_14__.AddCheckboxFieldDialog))
+                    onClick: () => (setSelectedType((0,_dialogs_AddCheckboxFieldDialog__WEBPACK_IMPORTED_MODULE_14__.AddCheckboxFieldDialog)(onNewFieldAdded)))
                 },
                 {
                     title: 'URL',
-                    onClick: () => (setSelectedType(_dialogs_AddUrlFieldDialog__WEBPACK_IMPORTED_MODULE_15__.AddUrlFieldDialog))
+                    onClick: () => (setSelectedType((0,_dialogs_AddUrlFieldDialog__WEBPACK_IMPORTED_MODULE_15__.AddUrlFieldDialog)(onNewFieldAdded)))
                 },
                 {
                     title: 'Email',
@@ -22863,7 +22869,7 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
                     onClick: () => {
                         setMenuIsOpen(false);
                         _SelectAttributeDialog__WEBPACK_IMPORTED_MODULE_16__.SelectAttributeDialog.Show().then((dialog) => {
-                            setSelectedType(dialog);
+                            setSelectedType(dialog(onNewFieldAdded));
                             setMenuIsOpen(true);
                         });
                     }
@@ -22905,7 +22911,7 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
                 :
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
                         console.log(selectedType);
-                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)(typeof selectedType))
+                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.render(selectedType))
                             .padding());
                     })
                         .render())))
@@ -23006,7 +23012,7 @@ class SelectAttributeDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Di
     }
     OnOK(applet) {
         this.ShowDialogAsyncResolve(applet);
-        //  this.Hide();
+        this.Hide();
     }
     OnCancel() {
         this.Hide();

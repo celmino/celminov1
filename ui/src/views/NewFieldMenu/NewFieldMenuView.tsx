@@ -35,7 +35,7 @@ class Controller extends UIFormController {
                                 title: 'Text',
                                 icon: Icons.TextAttribute,
                                 onClick: () => (
-                                    setSelectedType(AddTextFieldDialog)
+                                    setSelectedType(AddTextFieldDialog(onNewFieldAdded))
                                     //DynoDialog.Show(AddTextFieldDialog(workspaceId, databaseId, collectionId))
                                 )
                             },
@@ -43,7 +43,7 @@ class Controller extends UIFormController {
                                 title: 'Rich Text',
                                 icon: Icons.RichTextAttribute,
                                 onClick: () => (
-                                    setSelectedType(AddRichTextFieldDialog)
+                                    setSelectedType(AddRichTextFieldDialog(onNewFieldAdded))
                                     //  DynoDialog.Show(AddNumberFieldDialog(workspaceId, databaseId, collectionId))
                                 )
                             },
@@ -51,21 +51,21 @@ class Controller extends UIFormController {
                                 title: 'Number',
                                 icon: Icons.NumberAttribute,
                                 onClick: () => (
-                                    setSelectedType(AddNumberFieldDialog)
+                                    setSelectedType(AddNumberFieldDialog(onNewFieldAdded))
                                 )
                             },
                             {
                                 title: 'Single Select',
                                 icon: Icons.SingleSelectAttribute,
                                 onClick: () => (
-                                    setSelectedType(AddSelectFieldDialog)
+                                    setSelectedType(AddSelectFieldDialog(onNewFieldAdded))
                                 )
                             },
                             {
                                 title: 'Multi Select',
                                 icon: Icons.MultiSelectAttribute,
                                 onClick: () => (
-                                    setSelectedType(AddMultiSelectFieldDialog)
+                                    setSelectedType(AddMultiSelectFieldDialog(onNewFieldAdded))
                                 )
                             },
                             {
@@ -76,27 +76,27 @@ class Controller extends UIFormController {
                                 title: 'Assignments',
                                 icon: Icons.AssignmentAttribute,
                                 onClick: () => (
-                                    setSelectedType(AddAssigneeFieldDialog)
+                                    setSelectedType(AddAssigneeFieldDialog(onNewFieldAdded))
                                 )
                             },
                             {
                                 title: 'Date',
                                 icon: Icons.DateAttribute,
                                 onClick: () => (
-                                    setSelectedType(AddDateFieldDialog)
+                                    setSelectedType(AddDateFieldDialog(onNewFieldAdded))
                                 )
                             },
                             {
                                 title: 'Checkbox',
                                 icon: Icons.CheckboxAttribute,
                                 onClick: () => (
-                                    setSelectedType(AddCheckboxFieldDialog)
+                                    setSelectedType(AddCheckboxFieldDialog(onNewFieldAdded))
                                 )
                             },
                             {
                                 title: 'URL',
                                 onClick: () => (
-                                    setSelectedType(AddUrlFieldDialog)
+                                    setSelectedType(AddUrlFieldDialog(onNewFieldAdded))
                                 )
                             },
                             {
@@ -140,7 +140,7 @@ class Controller extends UIFormController {
                                 onClick: () => {
                                     setMenuIsOpen(false);
                                     SelectAttributeDialog.Show().then((dialog) => {
-                                        setSelectedType(dialog);
+                                        setSelectedType(dialog(onNewFieldAdded));
                                         setMenuIsOpen(true);
                                     });
                                 }
@@ -205,8 +205,7 @@ class Controller extends UIFormController {
                                                     return (
                                                         VStack
                                                             (
-                                                                Text(typeof selectedType),
-                                                                //FormBuilder.render(selectedType(onNewFieldAdded))
+                                                                FormBuilder.render(selectedType)
                                                             )
                                                             .padding()
                                                     )

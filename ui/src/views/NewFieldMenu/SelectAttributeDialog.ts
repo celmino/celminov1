@@ -68,7 +68,7 @@ export class SelectAttributeDialog extends DialogView {
 
     public OnOK(applet) {
         this.ShowDialogAsyncResolve(applet);
-        //  this.Hide();
+         this.Hide();
     }
 
     public OnCancel() {
