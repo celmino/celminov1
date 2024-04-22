@@ -54,7 +54,7 @@ export class SelectAttributeDialog extends DialogView {
     private space: string;
 
     public BindRouterParams() {
-     
+
     }
     public constructor() {
         super();
@@ -68,7 +68,7 @@ export class SelectAttributeDialog extends DialogView {
 
     public OnOK(applet) {
         this.ShowDialogAsyncResolve(applet);
-         this.Hide();
+        this.Hide();
     }
 
     public OnCancel() {
@@ -78,7 +78,7 @@ export class SelectAttributeDialog extends DialogView {
 
     public override LoadView(): UIView {
 
-      
+
         const [installingOpa, setInstallingOpa] = useState('');
         const [searchText, setSearchText] = useState(null);
 
@@ -132,57 +132,56 @@ export class SelectAttributeDialog extends DialogView {
                     ScrollView({ axes: cVertical, alignment: cTopLeading })(
                         HStack({ alignment: cTopLeading })(
                             ...ForEach(this.filtered_opas)(attribute =>
-                              
-                                    VStack(
-                                        VStack({ alignment: cTopLeading, spacing: 5 })(
+
+                                VStack(
+                                    VStack({ alignment: cTopLeading, spacing: 5 })(
+                                        HStack({ alignment: cLeading, spacing: 10 })(
+                                            attribute.image &&
+                                            UIImage(attribute.image).width(50).height(50).cornerRadius('20%')
+                                                .filter(attribute.type === 'Applet' ? 'grayscale(1)' : 'none'),
+                                            attribute.icon &&
                                             HStack(
-                                                attribute.image &&
-                                                UIImage(attribute.image).width(50).height(50).cornerRadius('20%')
-                                                    .filter(attribute.type === 'Applet' ? 'grayscale(1)' : 'none'),
-                                                attribute.icon &&
-                                                HStack(
-                                                    Icon(attribute.icon).fontSize(40).foregroundColor('rgb(109, 122, 131)')
-                                                ).width(50).height(50).padding(10).cornerRadius('20%').border('solid 1px #6D7A8344'),
+                                                Icon(attribute.icon).fontSize(40)
+                                                    .foregroundColor('#486EFF')
+                                            ).width(50).height(50).padding(10).cornerRadius('20%')
+                                                .border('solid 1px #6D7A8344'),
 
-                                                //.background(opa.iconBackColor || '#9A0707'),
-                                                Spacer(),
-                                                //Text(opa.type).fontSize('1.4rem').fontWeight('500').foregroundColor('hsl(205, 9%, 47%)')
-                                            ).height()
-                                            //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
-                                            ,
-                                            HStack({ alignment: cLeading })(
-                                                Text(attribute.title).fontSize('1.8rem').lineHeight('2rem').maxLines(2) as any
+                                            //.background(opa.iconBackColor || '#9A0707'),
+                                            Text(attribute.title).fontSize('1.8rem').lineHeight('2rem').maxLines(2) as any
+                                            //Text(opa.type).fontSize('1.4rem').fontWeight('500').foregroundColor('hsl(205, 9%, 47%)')
+                                        ).height(60)
+                                        //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
+                                        ,
+
+
+                                        HStack({ alignment: cLeading })(
+                                            Text(attribute.description || '').maxLines(3).fontSize('1.4rem').foregroundColor('#676879') as any
+
+                                        ).height()
+
+                                        ,
+                                        Spacer(),
+                                        HStack({ alignment: cCenter })(
+                                            Button(
+                                                Text('Add') as any
                                             )
-                                                .minHeight('4rem')
-                                                .height(),
-                                          
-                                            HStack({ alignment: cLeading })(
-                                                Text(attribute.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879') as any
-
-                                            ).height()
-
-                                            ,
-                                            Spacer(),
-                                            HStack({ alignment: cCenter })(
-                                                Button(
-                                                    Text('Add') as any
-                                                )
-                                                    // .loading(isLoading && (opa.type === this.last_added_opa_type))
-                                                   // .disabled(!opa.enabled)
-                                                    .kind(ButtonType.SECONDARY)
-                                                    .size(ButtonSize.SMALL)
-                                                   // .loading(installingOpa === opa.type)
-                                                    .width('100%')
-                                                    .onClick(async () => {
-                                                      this.OnOK(attribute.dialog);
-                                                    })
-                                            ).height()
-                                        ).height(250).width(290)
-                                            .padding()
-                                            .shadow({ hover: 'var(--box-shadow-medium)' })
-                                            .cornerRadius('var(--border-radius-medium)')
-                                            .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })
-                                    ).width().height().padding()
+                                                // .loading(isLoading && (opa.type === this.last_added_opa_type))
+                                                // .disabled(!opa.enabled)
+                                                .kind(ButtonType.SECONDARY)
+                                                .size(ButtonSize.SMALL)
+                                                // .loading(installingOpa === opa.type)
+                                                .width('100%')
+                                                .onClick(async () => {
+                                                    this.OnOK(attribute.dialog);
+                                                })
+                                        ).height()
+                                    )
+                                    .height(190).width(210)
+                                        .padding()
+                                        .shadow({ hover: 'var(--box-shadow-medium)' })
+                                        .cornerRadius('var(--border-radius-medium)')
+                                        .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })
+                                ).width().height().padding()
                             )
                         ).wrap('wrap').height()
                     )

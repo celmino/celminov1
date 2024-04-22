@@ -10,12 +10,18 @@ import { AddRichTextFieldDialog, SaveRichTextFieldAction } from "./dialogs/AddRi
 import { AddSelectFieldDialog, SaveSelectFieldAction } from "./dialogs/AddSelectFieldDialog";
 import React from "react";
 import { AddMultiSelectFieldDialog, SaveMultiSelectFieldAction } from "./dialogs/AddMultiSelectDialog";
-import { RelationFieldAttributesView } from "./dialogs/AddRelationFieldDialog";
-import { AddAssigneeFieldDialog } from "./dialogs/AddAssigneeDialog";
 import { AddDateFieldDialog } from "./dialogs/AddDateFieldDialog";
 import { AddCheckboxFieldDialog } from "./dialogs/AddCheckboxFieldDialog";
 import { AddUrlFieldDialog } from "./dialogs/AddUrlFieldDialog";
 import { SelectAttributeDialog } from "./SelectAttributeDialog";
+import { AddEmailFieldDialog } from "./dialogs/AddEmailFieldDialog";
+import { AddPhoneFieldDialog } from "./dialogs/AddPhoneFieldDialog";
+import { AddLocationFieldDialog } from "./dialogs/AddLocationFieldDialog";
+import { AddAssigneeFieldDialog } from "./dialogs/AddAssigneeDialog";
+import { AddAvatarFieldDialog } from "./dialogs/AddAvatarDialog";
+import { AddIconFieldDialog } from "./dialogs/AddIconFieldDialog";
+import { AddFilesFieldDialog } from "./dialogs/AddFilesFieldDialog";
+import { AddRelationFieldDialog } from "./dialogs/AddRelationFieldDialog";
 
 
 
@@ -95,33 +101,52 @@ class Controller extends UIFormController {
                             },
                             {
                                 title: 'URL',
+                                icon: Icons.URLAttribute,
                                 onClick: () => (
                                     setSelectedType(AddUrlFieldDialog(onNewFieldAdded))
                                 )
                             },
                             {
                                 title: 'Email',
-                                icon: Icons.EmailAttribute
+                                icon: Icons.EmailAttribute,
+                                onClick: () => (
+                                    setSelectedType(AddEmailFieldDialog(onNewFieldAdded))
+                                )
                             },
                             {
                                 title: 'Phone',
-                                icon: Icons.PhoneAttribute
+                                icon: Icons.PhoneAttribute,
+                                onClick: () => (
+                                    setSelectedType(AddPhoneFieldDialog(onNewFieldAdded))
+                                )
                             },
                             {
                                 title: 'Location',
-                                icon: Icons.LocationAttribute
+                                icon: Icons.LocationAttribute,
+                                onClick: () => (
+                                    setSelectedType(AddLocationFieldDialog(onNewFieldAdded))
+                                )
                             },
                             {
                                 title: 'Avatar',
-                                icon: Icons.AvatarAttribute
+                                icon: Icons.AvatarAttribute,
+                                onClick: () => (
+                                    setSelectedType(AddAvatarFieldDialog(onNewFieldAdded))
+                                )
                             },
                             {
                                 title: 'Icon',
-                                icon: Icons.IconAttribute
+                                icon: Icons.IconAttribute,
+                                onClick: () => (
+                                    setSelectedType(AddIconFieldDialog(onNewFieldAdded))
+                                )
                             },
                             {
                                 title: 'Files',
-                                icon: Icons.FilesAttribute
+                                icon: Icons.FilesAttribute,
+                                onClick: () => (
+                                    setSelectedType(AddFilesFieldDialog(onNewFieldAdded))
+                                )
                             },
                             {
                                 title: 'Comments',
@@ -131,7 +156,7 @@ class Controller extends UIFormController {
                                 title: 'Relation to...',
                                 icon: Icons.RelationAttribute,
                                 onClick: () => {
-                                    setSelectedType(RelationFieldAttributesView)
+                                    setSelectedType(AddRelationFieldDialog)
                                 }
                             },
                             {

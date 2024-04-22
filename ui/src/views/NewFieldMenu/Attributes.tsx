@@ -3,6 +3,9 @@ import { Icons } from "./Icons"
 import { AddTextFieldDialog } from "./dialogs/AddTextAttributeDialog"
 import { AddRichTextFieldDialog } from "./dialogs/AddRichtextFieldDialog"
 import { AddNumberFieldDialog } from "./dialogs/AddNumberFieldDialog"
+import { AddEmailFieldDialog } from "./dialogs/AddEmailFieldDialog"
+import { AddPhoneFieldDialog } from "./dialogs/AddPhoneFieldDialog"
+import { AddLocationFieldDialog } from "./dialogs/AddLocationFieldDialog"
 
 
 
@@ -44,23 +47,27 @@ export const AttributesMenuItems = [
         id: 'number',
         title: 'Number',
         icon: NumberAttribute,
+        description: 'A number with formatting options.',
         dialog: AddNumberFieldDialog
 
     },
     {
         id: 'select',
         title: 'Single Select',
+        description: 'Select from a list of options.',
         icon: Icons.SingleSelectAttribute
     },
     {
         id: 'multiselect',
         title: 'Multi Select',
+        description: 'Pick multiple option from a list.',
         icon: Icons.MultiSelectAttribute,
 
     },
     {
         id: 'workflow',
         title: 'Workflow',
+        description: 'A list of configurable states."Open, In Progress, Done" by default. ',
         icon: Icons.WorkflowAttribute,
     },
     {
@@ -86,15 +93,18 @@ export const AttributesMenuItems = [
     {
         id: 'email',
         title: 'Email',
-        icon: Icons.EmailAttribute
+        icon: Icons.EmailAttribute,
+        dialog: AddEmailFieldDialog
     },
     {
         title: 'Phone',
-        icon: Icons.PhoneAttribute
+        icon: Icons.PhoneAttribute,
+        dialog: AddPhoneFieldDialog
     },
     {
         title: 'Location',
-        icon: Icons.LocationAttribute
+        icon: Icons.LocationAttribute,
+        dialog: AddLocationFieldDialog
     },
     {
         title: 'Avatar',
