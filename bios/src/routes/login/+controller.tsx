@@ -75,6 +75,16 @@ var subDomain = /:\/\/([^\/]+)/.exec(window.location.href)[1];
 
 export class LoginController extends CelminoController {
     public override LoadView(): UIView {
+
+        const popup = window.open("http://localhost/v1/service/google", "popup", "popup = true");
+
+        const checkPopup = setInterval(() => {
+            if (popup.window.location.href
+                .includes("CLOSE")) { popup.close() }
+            if (!popup || !popup.closed) return;
+            clearInterval(checkPopup);
+        }, 3000);
+
         const { me, isLoading, isError: isAccountError } = useGetMe('console');
 
         const navigate = useNavigate();
@@ -185,44 +195,44 @@ export class LoginController extends CelminoController {
                                         .foregroundColor('white')
                                         .onClick(async () => {
 
-                                           /*  const token: any = await QdmsBroker.GetToken('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL','qdms', 'qdms24');
-                                           const users = await QdmsBroker.Default
-                                           .setUrl('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL')
-                                           .setToken(token.token)
-                                           .listUsers();
-                
-                                            console.log(users) */
-                                            
+                                            /*  const token: any = await QdmsBroker.GetToken('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL','qdms', 'qdms24');
+                                            const users = await QdmsBroker.Default
+                                            .setUrl('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL')
+                                            .setToken(token.token)
+                                            .listUsers();
+                 
+                                             console.log(users) */
+
                                             /* const url = 'http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL';
                                              const token: any = await Services.QDMS.getToken(url, 'qdms', 'qdms24');
                                            const users = await Services.QDMS.listUsers( url , token.token);
                                            console.log(users); */
-                                           
-                                          /*  const broker = new GithubBroker();
-                                            broker
-                                            .setUserName('bpmgenesis')
-                                            .setRepo('tenant-manager')
-                                            .setToken(Secrets.GithubToken)
-                                            .getService()
-                                            .createIssue(
-                                            {
-                                                title: 'hehe',
-                                                body:'sdhkfk'
-                                            }
-                                       ) */
-                                           /*  Services.Github.createIssue('bpmgenesis','tenant-manager', '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',
-                                                {
-                                                    title: 'hehe',
-                                                    body:'sdhkfk'
-                                                }
-                                            ); */
 
-                                           /*  createEmailSession({
-                                                email: email,
-                                                password: password
-                                            }, () => {
-                                                navigate('/')
-                                            }) */
+                                            /*  const broker = new GithubBroker();
+                                              broker
+                                              .setUserName('bpmgenesis')
+                                              .setRepo('tenant-manager')
+                                              .setToken(Secrets.GithubToken)
+                                              .getService()
+                                              .createIssue(
+                                              {
+                                                  title: 'hehe',
+                                                  body:'sdhkfk'
+                                              }
+                                         ) */
+                                            /*  Services.Github.createIssue('bpmgenesis','tenant-manager', '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',
+                                                 {
+                                                     title: 'hehe',
+                                                     body:'sdhkfk'
+                                                 }
+                                             ); */
+
+                                            /*  createEmailSession({
+                                                 email: email,
+                                                 password: password
+                                             }, () => {
+                                                 navigate('/')
+                                             }) */
 
 
                                         }),
