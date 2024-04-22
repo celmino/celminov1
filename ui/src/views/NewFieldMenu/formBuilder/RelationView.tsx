@@ -52,9 +52,7 @@ export const RelationView = (fieldInfo: any) => {
         
                 return (
                     VStack({ alignment: cTopLeading, spacing: 10 })(
-                        FormTitle('Add relation field'),
-                        LabeledTextInput().label('Field Name').autoFocus(true).onChange((e) => setName(e)),
-                        LabeledTextInput().label('Relation Name (OPTIONAL)'),
+                      
                         VStack({ alignment: cTopLeading, spacing: 5 })(
                             Text('COLLECTION')
                                 .fontFamily('ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"')

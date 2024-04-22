@@ -22425,78 +22425,6 @@ const DialogOkButton = (label) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.
 
 /***/ }),
 
-/***/ "./src/views/LabeledText/LabeledText.tsx":
-/*!***********************************************!*\
-  !*** ./src/views/LabeledText/LabeledText.tsx ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   LabeledTextInput: () => (/* binding */ LabeledTextInput)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-const LabeledTextInput = () => {
-    class _ extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView {
-        label(value) {
-            this._Label = value;
-            return this;
-        }
-        autoFocus(value) {
-            this._AutoFocus = value;
-            return this;
-        }
-        value(value) {
-            this._Value = value;
-            return this;
-        }
-        onChange(value) {
-            this._OnChange = value;
-            return this;
-        }
-        constructor() {
-            super();
-            this.onChange(() => void 0);
-        }
-        render() {
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this._Label).fontSize('1.2rem').textTransform('uppercase'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.TextField)()
-                .autoFocus(this._AutoFocus)
-                .value(this._Value)
-                .onChange((e) => this._OnChange(e)))
-                .height()
-                .render());
-        }
-    }
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], _.prototype, "_Label", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], _.prototype, "_AutoFocus", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], _.prototype, "_Value", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], _.prototype, "_OnChange", void 0);
-    return new _();
-};
-
-
-/***/ }),
-
 /***/ "./src/views/NewFieldMenu/Attributes.tsx":
 /*!***********************************************!*\
   !*** ./src/views/NewFieldMenu/Attributes.tsx ***!
@@ -24243,6 +24171,16 @@ const AddRelationFieldDialog = (onNewFieldAdded) => ({
             "multiline": true,
             "name": "description"
         },
+        "fieldName": {
+            "label": "FIELD NAME",
+            "type": "text",
+            "name": "fieldName"
+        },
+        "relationName": {
+            "label": "RELATION NAME",
+            "type": "text",
+            "name": "relationName"
+        },
         "relation": {
             "label": "DESCRIPTION (OPTIONAL)",
             "type": "relation",
@@ -24649,18 +24587,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
 /* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../context */ "./src/context/index.ts");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
-/* harmony import */ var _DialogOkButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../DialogOkButton */ "./src/views/DialogOkButton.ts");
-/* harmony import */ var _LabeledText_LabeledText__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../LabeledText/LabeledText */ "./src/views/LabeledText/LabeledText.tsx");
-/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
-/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../context */ "./src/context/index.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+/* harmony import */ var _DialogOkButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../DialogOkButton */ "./src/views/DialogOkButton.ts");
+/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
+/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_7__);
 //import { Validator } from "jsonschema";
-
-
 
 
 
@@ -24689,24 +24623,24 @@ const RelationView = (fieldInfo) => {
   */
     return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.FormField)((fieldProps) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
         var _a, _b, _c, _d;
-        const { realm } = (0,_context__WEBPACK_IMPORTED_MODULE_5__.useRealm)();
+        const { realm } = (0,_context__WEBPACK_IMPORTED_MODULE_4__.useRealm)();
         const workspaceId = realm.$id;
-        const { documents: applets, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useListDocuments)(workspaceId, 'workspace', 'applets');
+        const { documents: applets, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useListDocuments)(workspaceId, 'workspace', 'applets');
         const [selectedCollection, setSelectedCollection] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
         const [open, setOpen] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
         const { onNewFieldAdded } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useOptions)();
         const [name, setName] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)();
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_3__.FormTitle)('Add relation field'), (0,_LabeledText_LabeledText__WEBPACK_IMPORTED_MODULE_8__.LabeledTextInput)().label('Field Name').autoFocus(true).onChange((e) => setName(e)), (0,_LabeledText_LabeledText__WEBPACK_IMPORTED_MODULE_8__.LabeledTextInput)().label('Relation Name (OPTIONAL)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('COLLECTION')
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('COLLECTION')
             .fontFamily('ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"')
             .fontSize(12)
-            .foregroundColor('rgb(33, 37, 38)'), (0,_realmocean_antd__WEBPACK_IMPORTED_MODULE_9__.Select)()
+            .foregroundColor('rgb(33, 37, 38)'), (0,_realmocean_antd__WEBPACK_IMPORTED_MODULE_7__.Select)()
             .open(open)
             .placeHolder('Select Collection')
             .dropdownRenderer(() => {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() :
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(applets)(applet => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(applet.name).fontSize('1.2rem').fontWeight('500').foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
-                    const { documents: collections, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useListDocuments)(workspaceId, applet.$id, 'Collections', [
-                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.Query.orderAsc('name')
+                    const { documents: collections, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useListDocuments)(workspaceId, applet.$id, 'Collections', [
+                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.Query.orderAsc('name')
                     ]);
                     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(collections)((collection, index) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(Marker)).width(20).height(20).foregroundColor(colors[index % 3]), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(collection.name))
                         .cursor('pointer')
@@ -24726,11 +24660,11 @@ const RelationView = (fieldInfo) => {
             }])
             .onClick(() => {
             setOpen(!open);
-        })).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_DialogOkButton__WEBPACK_IMPORTED_MODULE_7__.DialogOkButton)('Add field')
+        })).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_DialogOkButton__WEBPACK_IMPORTED_MODULE_6__.DialogOkButton)('Add field')
             .onClick(() => {
             var _a, _b;
             onNewFieldAdded({
-                key: (0,_utils__WEBPACK_IMPORTED_MODULE_6__.replaceNonMatchingCharacters)(name),
+                key: (0,_utils__WEBPACK_IMPORTED_MODULE_5__.replaceNonMatchingCharacters)(name),
                 name: name,
                 type: 'relation',
                 fieldInfo: {
