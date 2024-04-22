@@ -16,7 +16,6 @@ export class AppletServiceBroker extends Client {
     headers: any = {
         'x-realm-id':null,
         'x-applet-id': null,
-        'x-github-token': 'web'
     };
 
     constructor() {
@@ -53,6 +52,27 @@ export class AppletServiceBroker extends Client {
         let payload: Payload = {};
 
         payload['schema'] = schema;
+
+
+        // Content-Length hesapla
+        // const contentLength = new TextEncoder().encode(formData).length;
+
+        //  alert(contentLength)
+
+
+        const uri = new URL(this.config.endpoint + path);
+        return await this.call('post', uri, {
+            'content-type': 'application/x-www-form-urlencoded'
+        }, payload);
+    }
+
+    async getRealmCollections(): Promise<any> {
+       
+
+
+        let path = '/collections/get';
+        let payload: Payload = {};
+
 
 
         // Content-Length hesapla

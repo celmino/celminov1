@@ -17371,15 +17371,19 @@ const SegmentedView = (fieldInfo) => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   SelectFormView: () => (/* binding */ SelectFormView)
+/* harmony export */   SelectFormView: () => (/* binding */ SelectFormView),
+/* harmony export */   _SelectFormView: () => (/* binding */ _SelectFormView)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__);
 
 
-const SelectFormView = (textData) => {
+
+const _SelectFormView = (textData) => {
     var _a;
     const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
     let { name, query, options, defaultValue, fieldId, protocol, resource, filter, sort, text, key } = textData;
@@ -17444,6 +17448,25 @@ const SelectFormView = (textData) => {
         // .formField(textData.name, [])
         ).height().marginBottom('16px'));
     }
+};
+const SelectFormView = (fieldInfo) => {
+    let { label, name, options } = fieldInfo;
+    const [fieldValue, setFieldValue] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+    const [fieldHasError, setFieldHasError] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+    const [selectHasError, setSelectHasError] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+    const [errorMessageText, setErrorMessageText] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+    const [messageId, setMessageId] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.FormField)((props, error, valid, meta) => {
+        return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.Select)('sdfds')
+            .props(props));
+    })
+        //  .isRequired(true)
+        .label(label)
+        .name(name)
+    /* .validate((value) => {
+        return value && value.length < 8 ? 'TOO_SHORT' : undefined
+    }) */
+    );
 };
 
 
@@ -18625,7 +18648,6 @@ class AppletServiceBroker extends _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.C
         this.headers = {
             'x-realm-id': null,
             'x-applet-id': null,
-            'x-github-token': 'web'
         };
         this.setEndpoint(url);
     }
@@ -18655,6 +18677,19 @@ class AppletServiceBroker extends _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.C
             let path = '/create';
             let payload = {};
             payload['schema'] = schema;
+            // Content-Length hesapla
+            // const contentLength = new TextEncoder().encode(formData).length;
+            //  alert(contentLength)
+            const uri = new URL(this.config.endpoint + path);
+            return yield this.call('post', uri, {
+                'content-type': 'application/x-www-form-urlencoded'
+            }, payload);
+        });
+    }
+    getRealmCollections() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let path = '/collections/get';
+            let payload = {};
             // Content-Length hesapla
             // const contentLength = new TextEncoder().encode(formData).length;
             //  alert(contentLength)
@@ -20600,6 +20635,43 @@ const useDeleteApplet = () => {
         isLoading: isLoading || isDatabaseDeleting
     };
 };
+
+
+/***/ }),
+
+/***/ "./src/hooks/useListRealmCollections.ts":
+/*!**********************************************!*\
+  !*** ./src/hooks/useListRealmCollections.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useListRealmCollections: () => (/* binding */ useListRealmCollections)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _brokers_AppletServiceBroker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../brokers/AppletServiceBroker */ "./src/brokers/AppletServiceBroker.ts");
+/**
+ * Get the list of latest security activity logs for the currently logged in user. Each log returns user IP address,
+ * location and date and time of log.
+ */
+
+
+function useListRealmCollections(projectId, queries = []) {
+    // const search = args[2];
+    const query = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useQuery)({
+        queryKey: ['databases', 'list', [...queries]],
+        queryFn: () => {
+            //setUpProject(args[0], 'admin');
+            return _brokers_AppletServiceBroker__WEBPACK_IMPORTED_MODULE_1__.AppletServiceBroker.Default
+                .setRealmId(projectId)
+                .getRealmCollections();
+        }
+    });
+    return { collections: query.data, isLoading: query.isLoading };
+}
 
 
 /***/ }),
@@ -24146,7 +24218,7 @@ SaveRelationFieldAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid
 const AddRelationFieldDialog = (onNewFieldAdded) => ({
     "title": 'Add Relation Field',
     "width": "420px",
-    "height": "320px",
+    "height": "520px",
     "onNewFieldAdded": {
         "name": "onNewFieldAdded",
         "type": "virtual",
@@ -24182,7 +24254,7 @@ const AddRelationFieldDialog = (onNewFieldAdded) => ({
             "name": "relationName"
         },
         "relation": {
-            "label": "DESCRIPTION (OPTIONAL)",
+            "label": "COLLECTION",
             "type": "relation",
             "multiline": true,
             "name": "relation"
@@ -24579,7 +24651,8 @@ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.injectAction(S
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   RelationView: () => (/* binding */ RelationView)
+/* harmony export */   RelationView: () => (/* binding */ RelationView),
+/* harmony export */   __RelationView: () => (/* binding */ __RelationView)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -24594,7 +24667,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DialogOkButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../DialogOkButton */ "./src/views/DialogOkButton.ts");
 /* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
 /* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _hooks_useListRealmCollections__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../hooks/useListRealmCollections */ "./src/hooks/useListRealmCollections.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_9__);
 //import { Validator } from "jsonschema";
+
+
+
 
 
 
@@ -24613,6 +24692,47 @@ const colors = [
     'rgb(251, 163, 47)'
 ];
 const RelationView = (fieldInfo) => {
+    let { label, name, options } = fieldInfo;
+    const [fieldValue, setFieldValue] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+    const [fieldHasError, setFieldHasError] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+    const [selectHasError, setSelectHasError] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+    const [errorMessageText, setErrorMessageText] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+    const [messageId, setMessageId] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+    const { realm } = (0,_context__WEBPACK_IMPORTED_MODULE_4__.useRealm)();
+    const workspaceId = realm.$id;
+    const { documents: applets, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useListDocuments)(workspaceId, 'workspace', 'applets');
+    const [selectedCollection, setSelectedCollection] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    const [open, setOpen] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+    const { onNewFieldAdded } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useOptions)();
+    const { collections, isLoading: isRealmCollectionsLoading } = (0,_hooks_useListRealmCollections__WEBPACK_IMPORTED_MODULE_8__.useListRealmCollections)(workspaceId);
+    let colls = collections;
+    if (_tuval_core__WEBPACK_IMPORTED_MODULE_9__.is.array(collections)) {
+        colls = [];
+        for (let i = 0; i < collections.length; i++) {
+            for (let j = 0; j < collections[i].options.length; j++) {
+                colls.push({
+                    label: collections[i].label + ' -> ' + collections[i].options[j].label,
+                    value: collections[i].options[j].value
+                });
+            }
+        }
+        /*  colls = collections.map(database => (
+             database.options.map(collection => ({
+                 label : collection.name,
+                 value: collection.$id
+             }))
+         )) */
+    }
+    return (isRealmCollectionsLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+        (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.FormField)((props, error, valid, meta) => {
+            return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.Select)('sdfds')
+                .props(props)
+                .options(colls));
+        })
+            .label(label)
+            .name(name));
+};
+const __RelationView = (fieldInfo) => {
     let { name } = fieldInfo;
     /*  const formController = useFormController();
      let currentValue = formController.GetValue(name);
@@ -24630,7 +24750,7 @@ const RelationView = (fieldInfo) => {
         const [open, setOpen] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
         const { onNewFieldAdded } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useOptions)();
         const [name, setName] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)();
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('COLLECTION')
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.Select)('sdf'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('COLLECTION')
             .fontFamily('ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"')
             .fontSize(12)
             .foregroundColor('rgb(33, 37, 38)'), (0,_realmocean_antd__WEBPACK_IMPORTED_MODULE_7__.Select)()
@@ -24672,10 +24792,7 @@ const RelationView = (fieldInfo) => {
                     relatedCollectionId: (_b = selectedCollection === null || selectedCollection === void 0 ? void 0 : selectedCollection.collection) === null || _b === void 0 ? void 0 : _b.$id,
                 }
             });
-        })).height())
-            .padding(20)
-            .width(380)
-            .height(515));
+        })).height()));
     }))
         .name(name));
 };

@@ -1,11 +1,12 @@
 
-import { useFormController, UIViewBuilder, useProtocol, DirectoryProtocol, VStack, cTopLeading, Dropdown, HStack, cLeading,Text } from "@tuval/forms";
+import { useFormController, UIViewBuilder, useProtocol, DirectoryProtocol, VStack, cTopLeading, Dropdown, HStack, cLeading, Text, useState } from "@tuval/forms";
 import { label } from "../components/label";
 import { is } from "@tuval/core";
+import { FormField, Select } from "@realmocean/atlaskit";
 
-export const SelectFormView = (textData: any) => {
+export const _SelectFormView = (textData: any) => {
     const formController = useFormController();
-    let { name, query, options, defaultValue, fieldId ,protocol, resource, filter, sort, text, key} = textData;
+    let { name, query, options, defaultValue, fieldId, protocol, resource, filter, sort, text, key } = textData;
 
     if (defaultValue == null) {
         defaultValue = formController.GetValue(fieldId);
@@ -53,12 +54,12 @@ export const SelectFormView = (textData: any) => {
                 )
             })
         )
-    } else if (protocol != null && resource != null) { 
+    } else if (protocol != null && resource != null) {
         return (
             UIViewBuilder(() => {
                 const { getList } = useProtocol(protocol);
 
-                const { data } = getList(resource, {filter, sort});
+                const { data } = getList(resource, { filter, sort });
 
                 return (
                     VStack({ alignment: cTopLeading })(
@@ -87,10 +88,10 @@ export const SelectFormView = (textData: any) => {
                 )
             })
         )
-    }else {
+    } else {
         return (
             VStack({ alignment: cTopLeading })(
-              
+
                 Dropdown((option) =>
                     HStack({ alignment: cLeading })(
                         Text(option.text)
@@ -117,4 +118,36 @@ export const SelectFormView = (textData: any) => {
     }
 
 
+}
+
+
+
+
+
+
+
+export const SelectFormView = (fieldInfo: any) => {
+    let { label, name, options } = fieldInfo;
+
+    const [fieldValue, setFieldValue] = useState('');
+    const [fieldHasError, setFieldHasError] = useState(false);
+    const [selectHasError, setSelectHasError] = useState(false);
+    const [errorMessageText, setErrorMessageText] = useState('');
+    const [messageId, setMessageId] = useState('');
+
+
+    return (
+        FormField((props, error, valid, meta) => {
+            return (
+                Select('sdfds')
+                    .props(props)
+            )
+        })
+            //  .isRequired(true)
+            .label(label)
+            .name(name)
+        /* .validate((value) => {
+            return value && value.length < 8 ? 'TOO_SHORT' : undefined
+        }) */
+    )
 }

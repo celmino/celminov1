@@ -48,7 +48,7 @@ SaveRelationFieldAction.Id = nanoid();
 export const AddRelationFieldDialog = (onNewFieldAdded: Function) => ({
     "title": 'Add Relation Field',
     "width": "420px",
-    "height": "320px",
+    "height": "520px",
     "onNewFieldAdded": {
         "name": "onNewFieldAdded",
         "type": "virtual",
@@ -84,9 +84,8 @@ export const AddRelationFieldDialog = (onNewFieldAdded: Function) => ({
             "name": "relationName"
         },
 
-
         "relation": {
-            "label": "DESCRIPTION (OPTIONAL)",
+            "label": "COLLECTION",
             "type": "relation",
             "multiline": true,
             "name": "relation"

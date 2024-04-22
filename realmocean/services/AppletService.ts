@@ -1,5 +1,6 @@
 import { MyTestClass } from "./_Test";
 
+
 function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
 }
@@ -29,6 +30,17 @@ class AppletService extends RealmoceanService {
             console.log(typeof schema);
             try {
                 const applet = await this.createApplet(realmId, appletId, schema);
+                return res.json(applet);
+            } catch (e) {
+                res.statusCode(500)
+                return res.json(e);
+            }
+        });
+
+        app.post("/applet/collections/get", async (req, res) => {
+            const realmId = req.headers['x-realm-id'];
+            try {
+                const applet = await this.getCollections(realmId);
                 return res.json(applet);
             } catch (e) {
                 res.statusCode(500)
@@ -68,6 +80,32 @@ class AppletService extends RealmoceanService {
 
         return applet;
     }
+
+    async getCollections(realmId: string) {
+        console.log('getCollections')
+        console.log(realmId)
+
+        const {documents: applets} = await this.databaseService.listDocuments(realmId, 'workspace', 'applets');
+       
+        const results: any[] = [];
+        for (let i = 0; i < applets.length; i++) {
+            console.log(i)
+            const { documents: collections } = await this.databaseService.listDocuments(realmId, applets[i].$id, 'Collections');
+            console.log(collections)
+            results.push({
+                label: applets[i].name,
+                options: collections.map(document => ({
+                    label: document.name, value: document.$id
+                }))
+
+            });
+        }
+       
+        return results;
+
+    }
+
+
 }
 
 

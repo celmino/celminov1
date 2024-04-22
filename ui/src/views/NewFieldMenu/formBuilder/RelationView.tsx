@@ -1,7 +1,7 @@
 //import { Validator } from "jsonschema";
 
 
-import { ForEach, Fragment, HStack, Icon, ReactView, ScrollView,  Spacer, Spinner, Text, UIViewBuilder, VStack, cHorizontal, cLeading, cTopLeading, cVertical, useFormController, useOptions, useState } from "@tuval/forms";
+import { ForEach, Fragment, HStack, Icon, ReactView, ScrollView, Spacer, Spinner, Text, UIViewBuilder, VStack, cHorizontal, cLeading, cTopLeading, cVertical, useFormController, useOptions, useState } from "@tuval/forms";
 import React from "react";
 import { FormField } from "@realmocean/atlaskit";
 import { FormBuilder, FormTitle } from "../../../FormBuilder/FormBuilder";
@@ -11,6 +11,9 @@ import { replaceNonMatchingCharacters } from "../../../utils";
 import { DialogOkButton } from "../../DialogOkButton";
 import { LabeledTextInput } from "../../LabeledText/LabeledText";
 import { Select } from "@realmocean/antd";
+import { Select as AtlasSelect } from "@realmocean/atlaskit";
+import { useListRealmCollections } from "../../../hooks/useListRealmCollections";
+import { is } from "@tuval/core";
 
 
 const Marker = () => (
@@ -28,7 +31,61 @@ const colors = [
 ]
 
 
+
 export const RelationView = (fieldInfo: any) => {
+    let { label, name, options } = fieldInfo;
+
+    const [fieldValue, setFieldValue] = useState('');
+    const [fieldHasError, setFieldHasError] = useState(false);
+    const [selectHasError, setSelectHasError] = useState(false);
+    const [errorMessageText, setErrorMessageText] = useState('');
+    const [messageId, setMessageId] = useState('');
+
+    const { realm } = useRealm();
+
+    const workspaceId = realm.$id;
+    const { documents: applets, isLoading } = useListDocuments(workspaceId, 'workspace', 'applets');
+    const [selectedCollection, setSelectedCollection] = useState(null);
+    const [open, setOpen] = useState(false);
+    const { onNewFieldAdded } = useOptions();
+
+    const { collections, isLoading : isRealmCollectionsLoading} = useListRealmCollections(workspaceId);
+
+    let colls =collections;
+    if (is.array(collections)) {
+        colls = [];
+        for(let i=0;i< collections.length;i++) {
+            for(let j=0;j< collections[i].options.length;j++) {
+                colls.push({
+                    label: collections[i].label + ' -> ' + collections[i].options[j].label,
+                    value: collections[i].options[j].value
+                })
+            }
+        }
+       /*  colls = collections.map(database => (
+            database.options.map(collection => ({
+                label : collection.name,
+                value: collection.$id
+            }))
+        )) */
+    }
+   
+    return (
+        isRealmCollectionsLoading ? Fragment() :
+        FormField((props, error, valid, meta) => {
+            return (
+                AtlasSelect('sdfds')
+                    .props(props)
+                    .options(colls)
+            )
+        })
+            .label(label)
+            .name(name)
+
+    )
+}
+
+export const __RelationView = (fieldInfo: any) => {
     let { name } = fieldInfo;
 
     /*  const formController = useFormController();
@@ -41,24 +98,24 @@ export const RelationView = (fieldInfo: any) => {
     return (
         FormField((fieldProps) =>
             UIViewBuilder(() => {
-                const {realm} = useRealm();
-        
-                const workspaceId  = realm.$id;
+                const { realm } = useRealm();
+
+                const workspaceId = realm.$id;
                 const { documents: applets, isLoading } = useListDocuments(workspaceId, 'workspace', 'applets');
                 const [selectedCollection, setSelectedCollection] = useState(null);
                 const [open, setOpen] = useState(false);
                 const { onNewFieldAdded } = useOptions();
                 const [name, setName] = useState();
-        
+
                 return (
                     VStack({ alignment: cTopLeading, spacing: 10 })(
-                      
+                        AtlasSelect('sdf'),
                         VStack({ alignment: cTopLeading, spacing: 5 })(
                             Text('COLLECTION')
                                 .fontFamily('ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"')
                                 .fontSize(12)
                                 .foregroundColor('rgb(33, 37, 38)'),
-                             Select()
+                            Select()
                                 .open(open)
                                 .placeHolder('Select Collection')
                                 .dropdownRenderer(() => {
@@ -91,22 +148,21 @@ export const RelationView = (fieldInfo: any) => {
                                                                                     })
                                                                             )
                                                                         )
-        
+
                                                                     )
                                                                 })
                                                             )
                                                                 .padding()
-        
+
                                                         )
                                                     ).height()
                                                 )
-        
+
                                         ).height(300) as any
                                     )
                                 })
                                 .value(selectedCollection?.collection?.$id)
                                 .options([{
-        
                                     value: selectedCollection?.collection?.$id,
                                     label: <div>
                                         {
@@ -123,11 +179,11 @@ export const RelationView = (fieldInfo: any) => {
                                     </div>
                                 }])
                                 .onClick(() => {
-        
-                                  
-        
+
+
+
                                     setOpen(!open)
-                                })  as any
+                                }) as any
                         ).height(),
                         Spacer(),
                         HStack({ alignment: cLeading })(
@@ -143,12 +199,9 @@ export const RelationView = (fieldInfo: any) => {
                                         }
                                     })
                                 })
-                                ).height()
-                        )
-                            .padding(20)
-                            .width(380)
-                            .height(515)
+                        ).height()
                     )
+                )
             }
             )
         )
