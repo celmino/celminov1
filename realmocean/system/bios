@@ -15844,17 +15844,19 @@ var LoginController = /** @class */ (function (_super) {
                     .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
                     var popup, checkPopup;
                     return __generator(this, function (_a) {
-                        alert();
-                        popup = window.open("https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&include_granted_scopes=true&response_type=code&client_id=73132713570-hffmn5dnu9cpn36l7e5uus9llpk7q8jh.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Fv1%2Fservice%2Fgoogle%2Fcallback", "popup", "popup = true");
+                        popup = window.open("/v1/service/google", "popup", "popup = true");
                         checkPopup = setInterval(function () {
-                            if (popup.window.location.href
-                                .includes("CLOSE")) {
-                                popup.close();
+                            if (popup.window.location.href.includes("CLOSE")) {
+                                debugger;
+                                var searchParams = new URLSearchParams(decodeURI(popup.window.location.search));
+                                if (searchParams.get('CLOSE') === 'true') {
+                                    popup.close();
+                                }
                             }
                             if (!popup || !popup.closed)
                                 return;
                             clearInterval(checkPopup);
-                        }, 3000);
+                        }, 10);
                         return [2 /*return*/];
                     });
                 }); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Reset password')
