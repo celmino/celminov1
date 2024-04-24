@@ -15842,22 +15842,16 @@ var LoginController = /** @class */ (function (_super) {
                     .cornerRadius(3)
                     .foregroundColor('white')
                     .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
-                    var popup, checkPopup;
+                    var files;
                     return __generator(this, function (_a) {
-                        popup = window.open("/v1/service/google", "popup", "popup = true");
-                        checkPopup = setInterval(function () {
-                            if (popup.window.location.href.includes("CLOSE")) {
-                                debugger;
-                                var searchParams = new URLSearchParams(decodeURI(popup.window.location.search));
-                                if (searchParams.get('CLOSE') === 'true') {
-                                    popup.close();
-                                }
-                            }
-                            if (!popup || !popup.closed)
-                                return;
-                            clearInterval(checkPopup);
-                        }, 10);
-                        return [2 /*return*/];
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.GooleDriveBroker.Default
+                                    .listFiles()];
+                            case 1:
+                                files = _a.sent();
+                                console.log(files);
+                                return [2 /*return*/];
+                        }
                     });
                 }); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Reset password')
                     .fontSize('1.6rem')

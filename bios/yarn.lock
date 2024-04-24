@@ -1219,10 +1219,10 @@
   resolved "https://registry.npmjs.org/@realmocean/navigations/-/navigations-0.0.3.tgz"
   integrity sha512-zsNno1NP0GIP53xaFy0m+DpqPiyGD0bOb8TFl5PjjiUd/ndlPbupoZdligDHvCAIJ2U7v+NnJ9LWO6OA8sChUQ==
 
-"@realmocean/sdk@^1.0.104", "@realmocean/sdk@^1.0.122":
-  version "1.0.122"
-  resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.122.tgz"
-  integrity sha512-BgJqq7RCME74SQaHK5kzRW0ZG+rUJm3BNG7tNY4s8toz0mypfC+d7cSQ8dreeOB6H9P3I8iVT7TUPmfnlNGoGg==
+"@realmocean/sdk@^1.0.104", "@realmocean/sdk@^1.0.124":
+  version "1.0.124"
+  resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.124.tgz"
+  integrity sha512-mXC3cDwAo2Mb1QS/NbeN5MCcMUS+RpWwAX2MCKxvi1z8t8fLcBzko+lfjMk8kf/YLmPPGCuJlpBrDzuGNIBRCg==
   dependencies:
     "@editorjs/image" "^2.8.1"
     "@editorjs/inline-code" "^1.4.0"

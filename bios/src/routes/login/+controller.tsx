@@ -1,4 +1,4 @@
-import { GithubBroker, QdmsBroker, Services, useCreateEmailSession, useGetMe, useUpdateName } from "@realmocean/sdk";
+import { GithubBroker, QdmsBroker, Services, useCreateEmailSession, useGetMe, useUpdateName, GooleDriveBroker } from "@realmocean/sdk";
 import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
@@ -187,20 +187,28 @@ export class LoginController extends CelminoController {
                                         .foregroundColor('white')
                                         .onClick(async () => {
 
+                                            const files = await GooleDriveBroker.Default
+                                            .listFiles();
+                                            console.log(files)
 
-                                            const popup = window.open("/v1/service/google", "popup", "popup = true");
+                                           /*  GooleDriveBroker.Default.getUserToken().then(async (token)=> {
+                                                console.log(token)
+                                              
+                                            }) */
+
+                                           /*  const popup = window.open("/v1/service/google", "popup", "popup = true");
 
                                             const checkPopup = setInterval(() => {
                                                 if (popup.window.location.href.includes("CLOSE")) {
-                                                    debugger
                                                     const searchParams = new URLSearchParams(decodeURI(popup.window.location.search));
                                                     if (searchParams.get('CLOSE') === 'true') {
+                                                        alert(searchParams.get('access_token'))
                                                         popup.close()
                                                     }
                                                 }
                                                 if (!popup || !popup.closed) return;
                                                 clearInterval(checkPopup);
-                                            }, 10);
+                                            }, 10); */
 
 
                                             /*  const token: any = await QdmsBroker.GetToken('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL','qdms', 'qdms24');
