@@ -10,12 +10,41 @@ x-logging: &x-logging
 version: '3'
 
 services:
+  traefik:
+    image: traefik:2.9
+    container_name: realmocean-traefik
+    command:
+      - --log.level=DEBUG
+      - --api.insecure=true
+      - --providers.file.directory=/storage/config
+      - --providers.file.watch=true
+      - --providers.docker=true
+      - --providers.docker.exposedByDefault=false
+      - --providers.docker.constraints=Label(`traefik.constraint-label-stack`,`realmocean`)
+      - --entrypoints.realmocean_web.address=:80
+      - --entrypoints.realmocean_websecure.address=:443
+      - --accesslog=true
+    ports:
+      - 80:80
+      - 8080:80
+      - 443:443
+      - 9500:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - realmocean-config:/storage/config:ro
+      - realmocean-certificates:/storage/certificates:ro
+    depends_on:
+      - realmocean
+    networks:
+      - gateway
+      - realmocean
+
   realmocean:
     container_name: realmocean-dev
     <<: *x-logging
     image: realmocean/realmocean:dev
     ports:
-      - 80:80
+      - 9501:80
     networks:
       - realmocean
     labels:
@@ -23,22 +52,15 @@ services:
       - "traefik.constraint-label-stack=realmocean"
       - "traefik.docker.network=realmocean"
       - "traefik.http.services.realmocean_api.loadbalancer.server.port=80"
-
       #http
       - traefik.http.routers.realmocean_api_http.entrypoints=realmocean_web
       - traefik.http.routers.realmocean_api_http.rule=PathPrefix(`/`)
-      - traefik.http.routers.realmocean_api_http.rule=HostRegexp(`^(?P<name>\\w+)\\.celmino\\.com$`)
       - traefik.http.routers.realmocean_api_http.service=realmocean_api
-      - traefik.http.routers.realmocean_api_http.middlewares= testheader
-      - traefik.http.middlewares.testheader.headers.customrequestheaders.X-Realmocean-Organization={http.regexp.name}
       # https
       - traefik.http.routers.realmocean_api_https.entrypoints=realmocean_websecure
       - traefik.http.routers.realmocean_api_https.rule=PathPrefix(`/`)
-      - traefik.http.routers.realmocean_api_https.rule=HostRegexp(`^(?P<name>\\w+)\\.celmino\\.com$`)
       - traefik.http.routers.realmocean_api_https.service=realmocean_api
       - traefik.http.routers.realmocean_api_https.tls=true
-      - traefik.http.routers.realmocean_api_https.middlewares= testheaders
-      - traefik.http.middlewares.testheaders.headers.customrequestheaders.X-Realmocean-Organization={http.regexp.name}
     volumes:
       - realmocean-uploads:/storage/uploads:rw
       - realmocean-cache:/storage/cache:rw
@@ -157,12 +179,26 @@ services:
       - _APP_LOCALHOST_DOMAIN
       - _APP_FRONTEND_LIBS
 
-  realmocean-services:
+  realmocean_services:
     container_name: realmocean-services
     <<: *x-logging
     image: realmocean/services
+    labels:
+      - "traefik.enable=true"
+      - "traefik.constraint-label-stack=realmocean"
+      - "traefik.docker.network=realmocean"
+      - "traefik.http.services.realmocean_services.loadbalancer.server.port=80"
+      #ws
+      - traefik.http.routers.realmocean_services_ws.entrypoints=realmocean_web
+      - traefik.http.routers.realmocean_services_ws.rule=PathPrefix(`/v1/service`)
+      - traefik.http.routers.realmocean_services_ws.service=realmocean_services
+      # wss
+      - traefik.http.routers.realmocean_services_wss.entrypoints=realmocean_websecure
+      - traefik.http.routers.realmocean_services_wss.rule=PathPrefix(`/v1/service`)
+      - traefik.http.routers.realmocean_services_wss.service=realmocean_services
+      - traefik.http.routers.realmocean_services_wss.tls=true
     ports:
-      - 4000:4000
+      - 9506:80
     networks:
       - realmocean
     depends_on:

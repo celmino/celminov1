@@ -76,15 +76,7 @@ var subDomain = /:\/\/([^\/]+)/.exec(window.location.href)[1];
 export class LoginController extends CelminoController {
     public override LoadView(): UIView {
 
-        const popup = window.open("http://localhost/v1/service/google", "popup", "popup = true");
-
-        const checkPopup = setInterval(() => {
-            if (popup.window.location.href
-                .includes("CLOSE")) { popup.close() }
-            if (!popup || !popup.closed) return;
-            clearInterval(checkPopup);
-        }, 3000);
-
+       
         const { me, isLoading, isError: isAccountError } = useGetMe('console');
 
         const navigate = useNavigate();
@@ -195,6 +187,17 @@ export class LoginController extends CelminoController {
                                         .foregroundColor('white')
                                         .onClick(async () => {
 
+                                            alert()
+                                            const popup = window.open("https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&include_granted_scopes=true&response_type=code&client_id=73132713570-hffmn5dnu9cpn36l7e5uus9llpk7q8jh.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Fv1%2Fservice%2Fgoogle%2Fcallback", "popup", "popup = true");
+                                    
+                                            const checkPopup = setInterval(() => {
+                                                if (popup.window.location.href
+                                                    .includes("CLOSE")) { popup.close() }
+                                                if (!popup || !popup.closed) return;
+                                                clearInterval(checkPopup);
+                                            }, 3000);
+
+                                            
                                             /*  const token: any = await QdmsBroker.GetToken('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL','qdms', 'qdms24');
                                             const users = await QdmsBroker.Default
                                             .setUrl('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL')
