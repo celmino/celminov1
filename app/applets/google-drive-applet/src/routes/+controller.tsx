@@ -37,8 +37,8 @@ export class AppletController extends UIController {
         const navigate = useNavigate();
 
         const [token, setToken] = useLocalStorage('token', null);
-        const { folders, isLoading } = useListGDriveFolders('root', token);
-        const { files, isLoading: isFilesLoading } = useListGDriveFiles('root', token);
+        const { folders, isLoading } = useListGDriveFolders('1OkMlbHnOY4dQiTJhpUwpOjfUKziskEfO', token);
+        const { files, isLoading: isFilesLoading } = useListGDriveFiles('1OkMlbHnOY4dQiTJhpUwpOjfUKziskEfO', token);
 
         return (
 
