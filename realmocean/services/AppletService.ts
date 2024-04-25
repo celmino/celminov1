@@ -12,7 +12,7 @@ class AppletService extends RealmoceanService {
     async init() {
         const myTest = new MyTestClass();
         myTest.print();
-        const app = this.services.get('web-server').getExpressApp();
+        const router = this.services.get('web-server').getRouter();
 
 
         /*   setTimeout(async () => {
@@ -21,10 +21,13 @@ class AppletService extends RealmoceanService {
               console.log(databases);
           }, 5000); */
 
-        app.post("/applet/create", async (req, res) => {
-            const schema = JSON.parse(req.body.schema);
+          router.post("/applet/create", async (req, res) => {
+            
             const realmId = req.headers['x-realm-id'];
             const appletId = req.headers['x-applet-id'];
+
+            const schema = req.body.schema;
+
             console.log(req.headers);
             console.log(schema);
             console.log(typeof schema);
@@ -37,7 +40,7 @@ class AppletService extends RealmoceanService {
             }
         });
 
-        app.post("/applet/collections/get", async (req, res) => {
+        router.get("/applet/collections/get", async (req, res) => {
             const realmId = req.headers['x-realm-id'];
             try {
                 const applet = await this.getCollections(realmId);

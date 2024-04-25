@@ -62,7 +62,7 @@ export class AppletServiceBroker extends Client {
 
         const uri = new URL(this.config.endpoint + path);
         return await this.call('post', uri, {
-            'content-type': 'application/x-www-form-urlencoded'
+            'content-type': 'application/json'
         }, payload);
     }
 
@@ -82,8 +82,8 @@ export class AppletServiceBroker extends Client {
 
 
         const uri = new URL(this.config.endpoint + path);
-        return await this.call('post', uri, {
-            'content-type': 'application/x-www-form-urlencoded'
+        return await this.call('get', uri, {
+            'content-type': 'application/json'
         }, payload);
     }
 }

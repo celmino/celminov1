@@ -15,6 +15,7 @@ import { ListApplet } from "./applets/TaskListApplet";
 import { MeetingsApplet } from "./applets/Meetings";
 import { DocumentsApplet } from "./applets/Documents";
 import { ModellingApplet } from "./applets/Modelling";
+import { GoogleDrive } from "./applets/GoogleDrive";
 
 export const Applets = [
     /*  InvestorsInTurkey,
@@ -34,6 +35,7 @@ export const Applets = [
      MeetingsApplet,
      DocumentsApplet,
      ModellingApplet,
+     GoogleDrive,
     {
         name: 'CRM - Gıda',
         type: 'Template',

@@ -11020,6 +11020,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_Meetings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./applets/Meetings */ "./src/applets/Meetings.ts");
 /* harmony import */ var _applets_Documents__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./applets/Documents */ "./src/applets/Documents.ts");
 /* harmony import */ var _applets_Modelling__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./applets/Modelling */ "./src/applets/Modelling.ts");
+/* harmony import */ var _applets_GoogleDrive__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./applets/GoogleDrive */ "./src/applets/GoogleDrive.ts");
+
 
 
 
@@ -11052,6 +11054,7 @@ const Applets = [
     _applets_Meetings__WEBPACK_IMPORTED_MODULE_11__.MeetingsApplet,
     _applets_Documents__WEBPACK_IMPORTED_MODULE_12__.DocumentsApplet,
     _applets_Modelling__WEBPACK_IMPORTED_MODULE_13__.ModellingApplet,
+    _applets_GoogleDrive__WEBPACK_IMPORTED_MODULE_14__.GoogleDrive,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -18230,6 +18233,43 @@ const FeedApplet = {
 
 /***/ }),
 
+/***/ "./src/applets/GoogleDrive.ts":
+/*!************************************!*\
+  !*** ./src/applets/GoogleDrive.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GoogleDrive: () => (/* binding */ GoogleDrive)
+/* harmony export */ });
+const GoogleDrive = {
+    name: 'Google Drive',
+    type: 'Applet',
+    tree_type: 'com.celmino.applet.google-drive',
+    applet_type: 'com.celmino.applet.google-drive',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d224',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    version: [1, 0, 1],
+    databases: [
+        {
+            "name": "Google Drive",
+            "id": "google-drive",
+            "category": "app",
+            "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
 /***/ "./src/applets/Meetings.ts":
 /*!*********************************!*\
   !*** ./src/applets/Meetings.ts ***!
@@ -18682,7 +18722,7 @@ class AppletServiceBroker extends _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.C
             //  alert(contentLength)
             const uri = new URL(this.config.endpoint + path);
             return yield this.call('post', uri, {
-                'content-type': 'application/x-www-form-urlencoded'
+                'content-type': 'application/json'
             }, payload);
         });
     }
@@ -18694,8 +18734,8 @@ class AppletServiceBroker extends _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.C
             // const contentLength = new TextEncoder().encode(formData).length;
             //  alert(contentLength)
             const uri = new URL(this.config.endpoint + path);
-            return yield this.call('post', uri, {
-                'content-type': 'application/x-www-form-urlencoded'
+            return yield this.call('get', uri, {
+                'content-type': 'application/json'
             }, payload);
         });
     }
