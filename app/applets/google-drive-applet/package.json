@@ -109,6 +109,7 @@
         "react-promise-suspense": "^0.3.4",
         "shelljs": "^0.8.5",
         "ts-loader": "^9.5.1",
+        "usehooks-ts": "^3.1.0",
         "webpack": "^5.90.3",
         "webpack-cli": "^5.1.4"
     },

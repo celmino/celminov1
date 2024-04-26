@@ -1,6 +1,7 @@
 import { GooleDriveBroker, useListGDriveFiles, useListGDriveFolders } from "@realmocean/sdk";
 import { ForEach, Fragment, HStack, Heading, ReactView, ScrollView, Text, UIController, UIImage, UIView, UIViewBuilder, VStack, cLeading, cTopLeading, cVertical, useDialogStack, useEffect, useState } from "@tuval/forms";
 import React from "react";
+import { ActionPanel } from "./ActionPanel";
 
 
 
@@ -17,6 +18,7 @@ export const FolderView = (folderItem) => UIViewBuilder(() => {
     return (
         (isLoading || isFilesLoading) ? Fragment() :
             VStack(
+                ActionPanel(),
                 HStack({ alignment: cLeading })(
                     UIImage(folderItem.iconLink.replace('16', '32')),
                     Heading(folderItem.name)
