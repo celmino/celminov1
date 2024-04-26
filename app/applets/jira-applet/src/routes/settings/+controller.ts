@@ -37,9 +37,9 @@ export class SettingsController extends UIFormController {
                 icon: SettingsIcon
             },
             {
-                id: 'members',
-                title: 'Members',
-                url: `settings/members`,
+                id: 'connect',
+                title: 'Connect To Jira',
+                url: `settings/connect`,
                 icon: MembersIcon
             },
             {

@@ -27,105 +27,38 @@ import {
 import React from "react";
 import { ActionPanel } from "../views/ActionPanel";
 import { ViewHeader } from "../views/ViewHeader";
-import { Button } from "@realmocean/atlaskit";
+import { Button, EmptyState } from "@realmocean/atlaskit";
 import { FolderView } from "../views/FolderView";
 import { GooleDriveBroker, useListGDriveFiles, useListGDriveFolders } from "@realmocean/sdk";
-
+import { Heading, TextField, LoadingButton } from "@realmocean/atlaskit";
 
 
 export class AppletController extends UIController {
     public override LoadView(): UIView {
-        const {applet} = useApplet();
+        const { applet } = useApplet();
 
         const [token, setToken] = useLocalStorage(`${applet.$id}-token`, null);
-       useDocumentTitle('Celmino | ' + applet.name);
+        useDocumentTitle('Celmino | ' + applet.name);
 
         return (
 
             ReactView(
                 <DialogStack>
                     {
-                        VStack({ alignment: cTopLeading })(
+                        VStack({ alignment: cTopLeading, spacing: 10 })(
                             ActionPanel(),
                             ViewHeader(applet.name, (name) => {
                                 /* updateAppletName(name, ()=> {
                                     EventBus.Default.fire('applet.added', { treeItem: applet })
                                 }) */
                             }),
-                            token != null ? Fragment() :
-                                HStack(
-                                    HStack(
-                                        UIImage('/images/google_login.svg')
-                                    ).width().height()
-                                        .cursor('pointer')
-                                        .onClick(async () => {
-
-                                            const token = await GooleDriveBroker.Default.getUserToken();
-
-                                            // GooleDriveBroker.Default.setToken(token);
-                                            setToken(token);
-                                        })
-                                ),
-                            token == null ? Fragment() :
-                                UIViewBuilder(() => {
-                                    const { folders, isLoading } = useListGDriveFolders('root', token);
-                                    const { files, isLoading: isFilesLoading } = useListGDriveFiles('root', token);
-                                    return (
-                                        HStack({ alignment: cTopLeading })(
-                                            ScrollView({ axes: cVertical, alignment: cTopLeading })(
-                                                VStack({ alignment: cTopLeading })(
-                                                    ...ForEach(folders)((folder: any) =>
-                                                        UIViewBuilder(() => {
-                                                            const { openDialog } = useDialogStack();
-                                                            return (
-                                                                HStack({ alignment: cLeading, spacing: 5 })(
-                                                                    UIImage(folder.iconLink.replace('16', '32')),
-                                                                    Text(folder.name)
-                                                                        .foregroundColor('rgb(31, 31, 31)')
-                                                                )
-                                                                    .allHeight(50)
-                                                                    .borderBottom('solid 1px #CCCCCC55')
-                                                                    .background({ hover: '#F0F1F1' })
-                                                                    .onClick(() => {
-                                                                        openDialog({
-                                                                            title: 'Open',
-                                                                            view: UIViewBuilder(() =>
-                                                                                FolderView(folder)
-                                                                            )
-                                                                        })
-                                                                    })
-                                                            )
-                                                        })
-
-                                                    ),
-                                                    ...ForEach(files)((file: any) =>
-                                                        HStack({ alignment: cLeading, spacing: 5 })(
-                                                            HStack(
-                                                                UIImage(file.iconLink.replace('16', '32'))
-                                                                    .imageHeight(24)
-                                                                    .imageWidth(24)
-                                                                    .allWidth(24)
-                                                                    .allHeight(24)
-                                                            )
-                                                                .allWidth(32)
-                                                                .allHeight(32)
-                                                                .padding(),
-                                                            Text(file.name)
-                                                                .foregroundColor('rgb(31, 31, 31)')
-                                                        )
-                                                            .background({ hover: '#F0F1F1' })
-                                                            .allHeight(50)
-                                                            .borderBottom('solid 1px #CCCCCC55')
-                                                    )
-
-                                                )
-                                            )
-                                        ).padding()
-                                    )
-                                })
+                           EmptyState()
+                           .imageUrl('/images/LockClosed.png')
+                           .header('Connect to Jira')
+                           .description('We need to have your token to use Jira API for retrieving data. Login to Jira and create token for Celmino. ')
+                           .buttonTitle('Connect')
 
                         )
-                            .background('white')
                             .render()
                     }
                 </DialogStack>

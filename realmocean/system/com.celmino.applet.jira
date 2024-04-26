@@ -366,9 +366,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/ActionPanel */ "./src/views/ActionPanel.tsx");
 /* harmony import */ var _views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/ViewHeader */ "./src/views/ViewHeader.ts");
-/* harmony import */ var _views_FolderView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/FolderView */ "./src/views/FolderView.tsx");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -384,52 +383,6 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-
 
 
 
@@ -442,66 +395,18 @@ var AppletController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     AppletController.prototype.LoadView = function () {
-        var _this = this;
         var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useLocalStorage)("".concat(applet.$id, "-token"), null), token = _a[0], setToken = _a[1];
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDocumentTitle)('Celmino | ' + applet.name);
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet.name, function (name) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet.name, function (name) {
             /* updateAppletName(name, ()=> {
                 EventBus.Default.fire('applet.added', { treeItem: applet })
             }) */
-        }), token != null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIImage)('/images/google_login.svg')).width().height()
-                .cursor('pointer')
-                .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
-                var token;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.GooleDriveBroker.Default.getUserToken()];
-                        case 1:
-                            token = _a.sent();
-                            // GooleDriveBroker.Default.setToken(token);
-                            setToken(token);
-                            return [2 /*return*/];
-                    }
-                });
-            }); })), token == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-                var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useListGDriveFolders)('root', token), folders = _a.folders, isLoading = _a.isLoading;
-                var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useListGDriveFiles)('root', token), files = _b.files, isFilesLoading = _b.isLoading;
-                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading }).apply(void 0, __spreadArray(__spreadArray([], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(folders)(function (folder) {
-                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-                        var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialogStack)().openDialog;
-                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIImage)(folder.iconLink.replace('16', '32')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(folder.name)
-                            .foregroundColor('rgb(31, 31, 31)'))
-                            .allHeight(50)
-                            .borderBottom('solid 1px #CCCCCC55')
-                            .background({ hover: '#F0F1F1' })
-                            .onClick(function () {
-                            openDialog({
-                                title: 'Open',
-                                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-                                    return (0,_views_FolderView__WEBPACK_IMPORTED_MODULE_5__.FolderView)(folder);
-                                })
-                            });
-                        }));
-                    });
-                }), false), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(files)(function (file) {
-                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIImage)(file.iconLink.replace('16', '32'))
-                        .imageHeight(24)
-                        .imageWidth(24)
-                        .allWidth(24)
-                        .allHeight(24))
-                        .allWidth(32)
-                        .allHeight(32)
-                        .padding(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(file.name)
-                        .foregroundColor('rgb(31, 31, 31)'))
-                        .background({ hover: '#F0F1F1' })
-                        .allHeight(50)
-                        .borderBottom('solid 1px #CCCCCC55');
-                }), false)))).padding());
-            }))
-            .background('white')
+        }), (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__.EmptyState)()
+            .imageUrl('/images/LockClosed.png')
+            .header('Connect to Jira')
+            .description('We need to have your token to use Jira API for retrieving data. Login to Jira and create token for Celmino. ')
+            .buttonTitle('Connect'))
             .render())));
     };
     return AppletController;
@@ -528,8 +433,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./settings/+controller */ "./src/routes/settings/+controller.ts");
 /* harmony import */ var _settings_features_controller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./settings/features/+controller */ "./src/routes/settings/features/+controller.ts");
 /* harmony import */ var _settings_general_controller__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./settings/general/+controller */ "./src/routes/settings/general/+controller.ts");
-/* harmony import */ var _settings_members_controller__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./settings/members/+controller */ "./src/routes/settings/members/+controller.ts");
-/* harmony import */ var _settings_tabs_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./settings/tabs/+controller */ "./src/routes/settings/tabs/+controller.ts");
+/* harmony import */ var _settings_tabs_controller__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./settings/tabs/+controller */ "./src/routes/settings/tabs/+controller.ts");
+/* harmony import */ var _settings_connect_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./settings/connect/+controller */ "./src/routes/settings/connect/+controller.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -562,7 +467,7 @@ var RouteController = /** @class */ (function (_super) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoutes)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/', _controller__WEBPACK_IMPORTED_MODULE_1__.AppletController).children(
             //  UIRoute('', ListController ),
             //  UIRoute(':viewId',  ViewController ),
-            ), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/settings', _settings_controller__WEBPACK_IMPORTED_MODULE_2__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('features', _settings_features_controller__WEBPACK_IMPORTED_MODULE_3__.FeatureSettingsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_4__.GeneralSettingsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('members', _settings_members_controller__WEBPACK_IMPORTED_MODULE_5__.MembersController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('tabs', _settings_tabs_controller__WEBPACK_IMPORTED_MODULE_6__.TabsController))))
+            ), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/settings', _settings_controller__WEBPACK_IMPORTED_MODULE_2__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('features', _settings_features_controller__WEBPACK_IMPORTED_MODULE_3__.FeatureSettingsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_4__.GeneralSettingsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('connect', _settings_connect_controller__WEBPACK_IMPORTED_MODULE_6__.ConnectController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('tabs', _settings_tabs_controller__WEBPACK_IMPORTED_MODULE_5__.TabsController))))
                 .background('var(--primary-background-color)');
         }));
     };
@@ -649,9 +554,9 @@ var SettingsController = /** @class */ (function (_super) {
                 icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_2__.SettingsIcon
             },
             {
-                id: 'members',
-                title: 'Members',
-                url: "settings/members",
+                id: 'connect',
+                title: 'Connect To Jira',
+                url: "settings/connect",
                 icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_2__.MembersIcon
             },
             {
@@ -690,6 +595,83 @@ var SettingsController = /** @class */ (function (_super) {
     };
     return SettingsController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController));
+
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/connect/+controller.ts":
+/*!****************************************************!*\
+  !*** ./src/routes/settings/connect/+controller.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ConnectController: () => (/* binding */ ConnectController)
+/* harmony export */ });
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var ConnectController = /** @class */ (function (_super) {
+    __extends(ConnectController, _super);
+    function ConnectController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ConnectController.prototype.LoadView = function () {
+        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(), host = _a[0], setHost = _a[1];
+        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(), email = _b[0], setEmail = _b[1];
+        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(), token = _c[0], setToken = _c[1];
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Connect To Jira').fontSize(18).fontWeight('500')
+            .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial')
+            .foregroundColor('rgb(42, 46, 52)')
+            .lineHeight(32))
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 16)
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cVertical, 20)
+            .borderBottom('solid 1px #E2E8F0')
+            .height()
+            .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.TextField)().label('Jira Host')
+            .helpMessage('Your Jira cloud host address. For example "https://my-jira.atlassian.net"')
+            .onChange(function (e) { return setHost(e.target.value); }), (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.TextField)().label('Email')
+            .helpMessage('Email you are using for logging to Jira')
+            .onChange(function (e) { return setEmail(e.target.value); }), (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.TextField)().label('Token')
+            .helpMessage('Your Jira token created for Celmino')
+            .onChange(function (e) { return setToken(e.target.value); }), (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.LoadingButton)().label('Connect').appearance('primary')
+            .isDisabled(host == null || email == null || token == null))
+            .maxWidth('600px')
+            .paddingLeft('40px')
+            .paddingRight('40px')
+            .paddingBottom('40px')
+            .height())
+            .height()
+            .background('white')
+            .cornerRadius(8)
+            .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
+            .border('solid 1px #E2E8F0'))
+            .padding('20px')
+            .background('#F8FAFC'));
+    };
+    return ConnectController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
 
 
 
@@ -935,65 +917,6 @@ var GeneralSettingsController = /** @class */ (function (_super) {
     };
     return GeneralSettingsController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIFormController));
-
-
-
-/***/ }),
-
-/***/ "./src/routes/settings/members/+controller.ts":
-/*!****************************************************!*\
-  !*** ./src/routes/settings/members/+controller.ts ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   MembersController: () => (/* binding */ MembersController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-var MembersController = /** @class */ (function (_super) {
-    __extends(MembersController, _super);
-    function MembersController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    MembersController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Members').fontSize(18).fontWeight('500')
-            .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial')
-            .foregroundColor('rgb(42, 46, 52)')
-            .lineHeight(32))
-            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 16)
-            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, 20)
-            .borderBottom('solid 1px #E2E8F0')
-            .height()
-            .margin('0 0 30px'))
-            .height()
-            .background('white')
-            .cornerRadius(8)
-            .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
-            .border('solid 1px #E2E8F0'))
-            .padding('20px')
-            .background('#F8FAFC'));
-    };
-    return MembersController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
 
 
@@ -1269,76 +1192,6 @@ var ActionPanel = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_
 
 /***/ }),
 
-/***/ "./src/views/FolderView.tsx":
-/*!**********************************!*\
-  !*** ./src/views/FolderView.tsx ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   FolderView: () => (/* binding */ FolderView)
-/* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _ActionPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ActionPanel */ "./src/views/ActionPanel.tsx");
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-
-
-
-
-var FolderView = function (folderItem) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListGDriveFolders)(folderItem.id), folders = _a.folders, isLoading = _a.isLoading;
-    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListGDriveFiles)(folderItem.id), files = _b.files, isFilesLoading = _b.isLoading;
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-        /*    GooleDriveBroker.Default.listChild(folderItem.id).then((folders) => {
-               setFiles(folders)
-           }) */
-    }, []);
-    return ((isLoading || isFilesLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)() :
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIImage)(folderItem.iconLink.replace('16', '32')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Heading)(folderItem.name)
-            .h2())
-            .padding()
-            .height(60), folderItem.mimeType === 'application/vnd.google-apps.folder' ?
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(__spreadArray(__spreadArray([], folders, true), files, true))(function (folder) {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-                    var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialogStack)().openDialog;
-                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIImage)(folder.iconLink.replace('16', '32')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(folder.name)
-                        .foregroundColor('rgb(31, 31, 31)'))
-                        .allHeight(50)
-                        .borderBottom('solid 1px #CCCCCC55')
-                        .background({ hover: '#F0F1F1' })
-                        .onClick(function () {
-                        openDialog({
-                            title: folder.name,
-                            view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-                                return FolderView(folder);
-                            })
-                        });
-                    }));
-                });
-            })).height()))
-                .padding()
-            :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement("iframe", { src: "".concat(folderItem.webViewLink.replace('/view?', '/preview?')), style: { width: '100%', height: '100%', border: 'none' } }))));
-}); };
-
-
-/***/ }),
-
 /***/ "./src/views/ViewHeader.ts":
 /*!*********************************!*\
   !*** ./src/views/ViewHeader.ts ***!
@@ -1467,6 +1320,17 @@ module.exports = {
 
 "use strict";
 module.exports = celmino$ui;
+
+/***/ }),
+
+/***/ "@realmocean/atlaskit":
+/*!**************************************!*\
+  !*** external "realmocean$atlaskit" ***!
+  \**************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = realmocean$atlaskit;
 
 /***/ }),
 
