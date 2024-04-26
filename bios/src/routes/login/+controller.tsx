@@ -1,4 +1,4 @@
-import { GithubBroker, QdmsBroker, Services, useCreateEmailSession, useGetMe, useUpdateName, GooleDriveBroker } from "@realmocean/sdk";
+import { GithubBroker, QdmsBroker, Services, useCreateEmailSession, useGetMe, useUpdateName, GooleDriveBroker, JiraBroker } from "@realmocean/sdk";
 import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
@@ -187,10 +187,16 @@ export class LoginController extends CelminoController {
                                         .foregroundColor('white')
                                         .onClick(async () => {
 
+                                            const issues = await JiraBroker.Default.getIssues('CEL');
+                                            issues.forEach(issue => {
+                                                console.log(issue.fields.summary)
+                                            })
+                                            alert(JSON.stringify(issues))
+/* 
                                             const files = await GooleDriveBroker.Default
                                             .listFiles();
                                             console.log(files)
-
+ */
                                            /*  GooleDriveBroker.Default.getUserToken().then(async (token)=> {
                                                 console.log(token)
                                               

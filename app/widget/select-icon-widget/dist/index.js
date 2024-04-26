@@ -8809,6 +8809,26 @@ var SystemIcons = {
         icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4 10a1.5 1.5 0 0 1 1.5-1.5H8a1.5 1.5 0 1 1 0 3H5.5A1.5 1.5 0 0 1 4 10ZM10.5 10A1.5 1.5 0 0 1 12 8.5h2.5a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5ZM4 14.5A1.5 1.5 0 0 1 5.5 13H8a1.5 1.5 0 0 1 0 3H5.5A1.5 1.5 0 0 1 4 14.5ZM10.5 14.5A1.5 1.5 0 0 1 12 13h2.5a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5ZM4 5.5A1.5 1.5 0 0 1 5.5 4H8a1.5 1.5 0 1 1 0 3H5.5A1.5 1.5 0 0 1 4 5.5ZM10.5 5.5A1.5 1.5 0 0 1 12 4h2.5a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5Z" })))); }
+    },
+    "jira": {
+        category: 'brand logo',
+        name: 'jira',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "xmlns:xlink": "http://www.w3.org/1999/xlink", viewBox: "0 0 73.275 75.76", id: "svg2" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("defs", { id: "defs4" },
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("style", { id: "style6" }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("linearGradient", { id: "linear-gradient", x1: "34.64", y1: "15.35", x2: "19", y2: "30.99", gradientUnits: "userSpaceOnUse" },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("stop", { offset: ".18", "stop-color": "#0052cc", id: "stop9" }),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("stop", { offset: "1", "stop-color": "#2684ff", id: "stop11" })),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("linearGradient", { id: "linear-gradient-2", x1: "38.78", y1: "60.28", x2: "54.39", y2: "44.67", "xlink:href": "#linear-gradient" }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("linearGradient", { "xlink:href": "#linear-gradient", id: "linearGradient3027", gradientUnits: "userSpaceOnUse", x1: "34.64", y1: "15.35", x2: "19", y2: "30.99" }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("linearGradient", { "xlink:href": "#linear-gradient", id: "linearGradient3045", gradientUnits: "userSpaceOnUse", x1: "34.64", y1: "15.35", x2: "19", y2: "30.99" }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("linearGradient", { "xlink:href": "#linear-gradient", id: "linearGradient3047", x1: "38.78", y1: "60.28", x2: "54.39", y2: "44.67" }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("linearGradient", { "xlink:href": "#linear-gradient", id: "linearGradient3050", x1: "38.78", y1: "60.28", x2: "54.39", y2: "44.67", gradientTransform: "translate(-.003)" }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("linearGradient", { "xlink:href": "#linear-gradient", id: "linearGradient3053", gradientUnits: "userSpaceOnUse", x1: "34.64", y1: "15.35", x2: "19", y2: "30.99", gradientTransform: "translate(-.003)" })),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M72.397 35.76l-32.6-32.6L36.637 0l-24.54 24.54L.877 35.76a3 3 0 0 0 0 4.24l22.42 22.42 13.34 13.34 24.54-24.54.38-.38L72.397 40a3 3 0 0 0 0-4.24zm-35.76 13.32l-11.2-11.2 11.2-11.2 11.2 11.2z", id: "path42", fill: "#2684ff" }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M36.637 26.68a18.86 18.86 0 0 1-.08-26.59l-24.51 24.5 13.34 13.34 11.25-11.25z", id: "path44", fill: "url(#linearGradient3053)" }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M47.867 37.85l-11.23 11.23a18.86 18.86 0 0 1 0 26.68l24.57-24.57z", id: "path46", fill: "url(#linearGradient3050)" }))); }
     }
 };
 

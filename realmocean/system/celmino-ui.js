@@ -11021,6 +11021,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_Documents__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./applets/Documents */ "./src/applets/Documents.ts");
 /* harmony import */ var _applets_Modelling__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./applets/Modelling */ "./src/applets/Modelling.ts");
 /* harmony import */ var _applets_GoogleDrive__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./applets/GoogleDrive */ "./src/applets/GoogleDrive.ts");
+/* harmony import */ var _applets_Jira__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./applets/Jira */ "./src/applets/Jira.ts");
+
 
 
 
@@ -11055,6 +11057,7 @@ const Applets = [
     _applets_Documents__WEBPACK_IMPORTED_MODULE_12__.DocumentsApplet,
     _applets_Modelling__WEBPACK_IMPORTED_MODULE_13__.ModellingApplet,
     _applets_GoogleDrive__WEBPACK_IMPORTED_MODULE_14__.GoogleDrive,
+    _applets_Jira__WEBPACK_IMPORTED_MODULE_15__.Jira,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -18261,6 +18264,42 @@ const GoogleDrive = {
         {
             "name": "Google Drive",
             "id": "google-drive",
+            "category": "app",
+            "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Jira.ts":
+/*!*****************************!*\
+  !*** ./src/applets/Jira.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Jira: () => (/* binding */ Jira)
+/* harmony export */ });
+const Jira = {
+    name: 'Jira',
+    type: 'Applet',
+    tree_type: 'com.celmino.applet.jira',
+    applet_type: 'com.celmino.applet.jira',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    image: '/images/jira-logo.svg',
+    iconCategory: 'SystemIcons',
+    iconName: 'jira',
+    // icon: '\\d224',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    version: [1, 0, 1],
+    databases: [
+        {
+            "name": "Jira",
             "category": "app",
             "collections": []
         }

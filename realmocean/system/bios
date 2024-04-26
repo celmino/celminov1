@@ -15842,14 +15842,16 @@ var LoginController = /** @class */ (function (_super) {
                     .cornerRadius(3)
                     .foregroundColor('white')
                     .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
-                    var files;
+                    var issues;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
-                            case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.GooleDriveBroker.Default
-                                    .listFiles()];
+                            case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.JiraBroker.Default.getIssues('CEL')];
                             case 1:
-                                files = _a.sent();
-                                console.log(files);
+                                issues = _a.sent();
+                                issues.forEach(function (issue) {
+                                    console.log(issue.fields.summary);
+                                });
+                                alert(JSON.stringify(issues));
                                 return [2 /*return*/];
                         }
                     });

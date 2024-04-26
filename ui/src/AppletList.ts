@@ -16,6 +16,7 @@ import { MeetingsApplet } from "./applets/Meetings";
 import { DocumentsApplet } from "./applets/Documents";
 import { ModellingApplet } from "./applets/Modelling";
 import { GoogleDrive } from "./applets/GoogleDrive";
+import { Jira } from "./applets/Jira";
 
 export const Applets = [
     /*  InvestorsInTurkey,
@@ -36,6 +37,7 @@ export const Applets = [
      DocumentsApplet,
      ModellingApplet,
      GoogleDrive,
+     Jira,
     {
         name: 'CRM - Gıda',
         type: 'Template',
