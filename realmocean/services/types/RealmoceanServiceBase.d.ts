@@ -1,4 +1,6 @@
 import { DatabaseService } from "./DatabaseService";
+import { EmailService } from "./EmailService";
+import { ScheduleService } from "./ScheduleService";
 import { SchemaService } from "./SchemaService";
 
 
@@ -9,6 +11,8 @@ import { SchemaService } from "./SchemaService";
         services: any;
         databaseService: DatabaseService;
         schemaService: SchemaService;
+        emailService: EmailService;
+        scheduleService: ScheduleService
     }
    
 }
