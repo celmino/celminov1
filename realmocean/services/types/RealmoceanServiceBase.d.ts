@@ -14,5 +14,4 @@ import { SchemaService } from "./SchemaService";
         emailService: EmailService;
         scheduleService: ScheduleService
     }
-   
 }
