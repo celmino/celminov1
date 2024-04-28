@@ -182,7 +182,7 @@ services:
   realmocean_services:
     container_name: realmocean-services
     <<: *x-logging
-    image: realmocean/services
+    image: realmocean/services:1.0
     labels:
       - "traefik.enable=true"
       - "traefik.constraint-label-stack=realmocean"
@@ -203,7 +203,7 @@ services:
       - realmocean
     depends_on:
       - realmocean
-  
+
     volumes:
       - ./realmocean/services:/usr/app/src/services
 
@@ -983,6 +983,15 @@ services:
       - SERVER_URL=http://localhost/v1/graphql
   # Dev Tools End  
 
+  mongodb:
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    networks:
+      - realmocean
+    volumes:
+      - realmocean-mongodb:/data/db
+
 networks:
   gateway:
     name: gateway
@@ -993,6 +1002,7 @@ networks:
 
 volumes:
   realmocean-mariadb:
+  realmocean-mongodb:
   realmocean-redis:
   realmocean-cache:
   realmocean-uploads:
