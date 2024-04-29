@@ -1,5 +1,5 @@
 
-let config = {};
+const config: any = {};
 
 config.title = 'Celmino' ;
 config.company = 'Tuvalsoft' ;

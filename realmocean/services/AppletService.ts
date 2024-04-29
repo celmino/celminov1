@@ -13,6 +13,7 @@ class AppletService extends RealmoceanService {
         const myTest = new MyTestClass();
         myTest.print();
         const router = this.services.get('web-server').getRouter();
+     
 
 
         /*   setTimeout(async () => {

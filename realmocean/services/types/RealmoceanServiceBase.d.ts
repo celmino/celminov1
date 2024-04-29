@@ -4,8 +4,8 @@ import { ScheduleService } from "./ScheduleService";
 import { SchemaService } from "./SchemaService";
 
 
- declare global {
- 
+declare global {
+    const module: {exports: any};
     export class RealmoceanService {
         Name: string;
         services: any;

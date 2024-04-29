@@ -1,4 +1,6 @@
-import { GithubBroker, QdmsBroker, Services, useCreateEmailSession, useGetMe, useUpdateName, GooleDriveBroker, JiraBroker, MiningBroker } from "@realmocean/sdk";
+import { GithubBroker, QdmsBroker, Services, useCreateEmailSession, useGetMe, useUpdateName, 
+    GooleDriveBroker, JiraBroker, MiningBroker, EmailBroker, QDMS } 
+from "@realmocean/sdk";
 import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
@@ -186,8 +188,9 @@ export class LoginController extends CelminoController {
                                         .cornerRadius(3)
                                         .foregroundColor('white')
                                         .onClick(async () => {
-
-                                            const a : any= await MiningBroker.Default.loadCsv(`Activity,Costs,Resource,case:concept:name,case:creator,concept:name,org:resource,time:timestamp
+                                          
+                                            
+                                          /*   const a : any= await MiningBroker.Default.loadCsv(`Activity,Costs,Resource,case:concept:name,case:creator,concept:name,org:resource,time:timestamp
                                             register request,50,Pete,3,Fluxicon Nitro,register request,Pete,2010-12-30 14:32:00+01:00
                                             examine casually,400,Mike,3,Fluxicon Nitro,examine casually,Mike,2010-12-30 15:06:00+01:00
                                             check ticket,100,Ellen,3,Fluxicon Nitro,check ticket,Ellen,2010-12-30 16:34:00+01:00
@@ -233,7 +236,7 @@ export class LoginController extends CelminoController {
                                             
                                             const variantInfo = await MiningBroker.Default.getVariantInfo(a.logId);
                                           alert(variantInfo)
-
+ */
                                           /*   const issues = await JiraBroker.Default.getIssues('CEL');
                                             issues.forEach(issue => {
                                                 console.log(issue.fields.summary)
