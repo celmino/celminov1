@@ -1,9 +1,7 @@
-import { Button, HStack, Icon, Icons, RequiredRule, Text, UIViewBuilder, UIWidget, cHorizontal, nanoid, useEffect, useFormController, useOptions, useParams, useProtocol, useState } from "@tuval/forms"
-import { StatusMarker } from "./StatusMarker"
-import { EventBus, is } from "@tuval/core"
+import { EventBus, is } from "@tuval/core";
+import { Button, HStack, Icon, Icons, Text, TextField, UIViewBuilder, UIWidget, cHorizontal, useEffect, useFormController, useOptions, useState } from "@tuval/forms";
 import { useCallback } from 'react';
-import { TextField } from "@realmocean/vibe";
-import { useCreateDocument } from "@realmocean/sdk";
+import { StatusMarker } from "./StatusMarker";
 
 
 
@@ -152,7 +150,7 @@ export function EditTaskItem(status: any) {
                         .value(value)
                         //.placeholder('Task Name')
                         //.formField('title', [new RequiredRule('Name must be exist.')])
-                        .autoFocus(true)
+                      //  .autoFocus(true)
                         .padding(cHorizontal, 0)
                         .border('none')
                         .shadow({ focus: 'none' })

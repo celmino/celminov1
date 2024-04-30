@@ -140,7 +140,7 @@
         "@emoji-mart/react": "^1.1.1",
         "@realmocean/antd": "^21.0.26",
         "@realmocean/sdk": "^1.0.82",
-        "@realmocean/vibe": "^2.82.62",
-        "emoji-mart": "^5.5.2"
+        "emoji-mart": "^5.5.2",
+        "webpack-bundle-analyzer": "^4.10.2"
     }
 }

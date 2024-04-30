@@ -1,5 +1,5 @@
 /// <reference types="react" />
-declare type BoardSectionProps = {
+type BoardSectionProps = {
     id: string;
     title: string;
     items: any[];

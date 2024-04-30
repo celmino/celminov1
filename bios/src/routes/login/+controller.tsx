@@ -1,5 +1,6 @@
 import { GithubBroker, QdmsBroker, Services, useCreateEmailSession, useGetMe, useUpdateName, 
-    GooleDriveBroker, JiraBroker, MiningBroker, EmailBroker, QDMS } 
+    GooleDriveBroker, JiraBroker, MiningBroker, EmailBroker, QDMS, 
+    CspBroker} 
 from "@realmocean/sdk";
 import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
@@ -189,7 +190,11 @@ export class LoginController extends CelminoController {
                                         .foregroundColor('white')
                                         .onClick(async () => {
                                           
-                                            
+                                           const projects = await  CspBroker.Default
+                                            .setDomain('https://dev.bimser.net')
+                                            .setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBdXRoZW50aWNhdGlvblR5cGUiOiIxIiwiSW5zdGFuY2UiOiJkZXYiLCJJbnRlcm5hbFVzZXJJZCI6IjQiLCJJbnRlcm5hbFVzZXJuYW1lIjoicmd1ciIsIlBvc2l0aW9ucyI6IltdIiwiRGVsZWdhdGlvbklkIjoiIiwiVG9rZW5JZCI6IjJhMjAxZGJlLTAxOGEtNDYwMS04YjU0LTkyYTZiYTlkYjdmMiIsIlVzZXJuYW1lIjoicmd1ciIsIlVzZXJJZCI6IjQiLCJUaW1lVG9MaXZlIjoiODY0MDAwMDAiLCJTY29wZSI6IjMiLCJuYmYiOjE3MTQ0MTE1NTksImV4cCI6MTcxNDQ5Nzk1OSwiaXNzIjoiQmltc2VyIMOHw7Z6w7xtIiwiYXVkIjoiU3luZXJneSBVc2VycyJ9.q-hZcBvKbIu8nMuPeie8_AqYvw5kgIXn-YaSDC3Ui9w')
+                                            .setEData('k1locoKLE4dVg9kmquJp3LWYzFVXmzJ46BwSuzNKEptxs8+gLZO9ONk/tdlDEWJSaMx7NBf8sNAzyyyW4RCsZOkPGU3BsuRO2mFrjPCDvewng68pktys1/6CXjQNWr9cwaRVRqn43smAUn0cEE+pBN+O4cRg5hj9+QVdH7y+9Dk=')
+                                            .getProjects();
                                           /*   const a : any= await MiningBroker.Default.loadCsv(`Activity,Costs,Resource,case:concept:name,case:creator,concept:name,org:resource,time:timestamp
                                             register request,50,Pete,3,Fluxicon Nitro,register request,Pete,2010-12-30 14:32:00+01:00
                                             examine casually,400,Mike,3,Fluxicon Nitro,examine casually,Mike,2010-12-30 15:06:00+01:00

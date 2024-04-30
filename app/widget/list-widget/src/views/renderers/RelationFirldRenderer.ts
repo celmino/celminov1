@@ -1,6 +1,6 @@
 import { EventBus, TMath, is } from "@tuval/core"
-import { DialogPosition, ForEach, Fragment, HStack, PopupButton, ScrollView, Text, UIViewBuilder, VStack, cLeading, cTopLeading, cVertical, useOptions, useState } from "@tuval/forms"
-import { TextField } from '@realmocean/vibe';
+import { DialogPosition, ForEach, Fragment, HStack, PopupButton, ScrollView, Text, TextField, UIViewBuilder, VStack, cLeading, cTopLeading, cVertical, useOptions, useState } from "@tuval/forms"
+
 import { useGetDocument, useListDocuments } from "@realmocean/sdk";
 
 
@@ -85,7 +85,7 @@ export const RelationFieldRenderer = (item, fields, field) => {
                                                                     .fontSize(10)
                                                                     .background('transparent')
                                                                     .border('none')
-                                                                    .placeHolder('Type to search or add..')
+                                                                   // .placeHolder('Type to search or add..')
                                                                     .onChange((e) => {
                                                                         const newResults = result.filter(document => document.name?.indexOf(e) > -1)
                                                                         setResult(newResults);

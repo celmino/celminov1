@@ -1,6 +1,6 @@
-import { HStack, cLeading, Icon, Icons, Text, useOptions, PopupButton, DialogPosition, VStack, cTopLeading, UIViewBuilder, useState, Button, Spacer, cTrailing } from "@tuval/forms"
-import { TextField } from '@realmocean/vibe'
-import { ColorView } from '@celmino/ui'
+import { Button, DialogPosition, HStack, PopupButton, Spacer, Text, TextField, UIViewBuilder, VStack, cLeading, cTopLeading, cTrailing, useOptions, useState } from "@tuval/forms";
+
+import { ColorView } from '@celmino/ui';
 
 
 export const BoardSectionTitle = (status) => {

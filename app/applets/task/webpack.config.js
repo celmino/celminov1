@@ -15,7 +15,8 @@ const copyright = `
 *                                                                                                                               *
 * Licensed under the GNU General Public License v3.0.                                                                           *
 * More info at: https://choosealicense.com/licenses/gpl-3.0/                                                                    *
-* Tuval Framework Created By Tuvalsoft in 2019                                                                                  *
+* Tuval Framework Created By Tuvalsoft in 2019 
+* Task Applet                                                                                          *
 ******************************************************************************************************************************@*/
 `;
 const path = require('path');
@@ -27,6 +28,8 @@ const path = require('path');
 //const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
 //const DtsBundleWebpack = require('dts-bundle-webpack');
 const fs = require('fs');
+
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const manifest = require('./src/manifest');
 
@@ -74,12 +77,14 @@ const umdConfig = {
         '@realmocean/gantt': 'realmocean$gantt',
         '@realmocean/sdk': 'realmocean$sdk',
         '@realmocean/ui': 'realmocean$ui',
+        '@realmocean/atlaskit': 'realmocean$atlaskit',
 
         '@celmino/ui': 'celmino$ui',
 
 
         'react': 'tuval$react',
         'react-dom/client': 'tuval$react$dom',
+        'react-dom': 'tuval$react$_dom'
     },
     module: {
         rules: [
@@ -166,7 +171,10 @@ const umdConfig = {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    plugins: [{
+    plugins: [
+       // new BundleAnalyzerPlugin(),
+        {
+          
         apply: (compiler) => {
             compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
                 const file = './dist/index.js';

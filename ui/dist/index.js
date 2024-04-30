@@ -11022,6 +11022,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_Modelling__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./applets/Modelling */ "./src/applets/Modelling.ts");
 /* harmony import */ var _applets_GoogleDrive__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./applets/GoogleDrive */ "./src/applets/GoogleDrive.ts");
 /* harmony import */ var _applets_Jira__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./applets/Jira */ "./src/applets/Jira.ts");
+/* harmony import */ var _applets_Csp__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./applets/Csp */ "./src/applets/Csp.ts");
+
 
 
 
@@ -11058,6 +11060,7 @@ const Applets = [
     _applets_Modelling__WEBPACK_IMPORTED_MODULE_13__.ModellingApplet,
     _applets_GoogleDrive__WEBPACK_IMPORTED_MODULE_14__.GoogleDrive,
     _applets_Jira__WEBPACK_IMPORTED_MODULE_15__.Jira,
+    _applets_Csp__WEBPACK_IMPORTED_MODULE_16__.Csp,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -17858,6 +17861,42 @@ const CommunityApplet = {
         {
             "name": "World",
             "id": "world",
+            "category": "app",
+            "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Csp.ts":
+/*!****************************!*\
+  !*** ./src/applets/Csp.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Csp: () => (/* binding */ Csp)
+/* harmony export */ });
+const Csp = {
+    name: 'Csp',
+    type: 'Applet',
+    tree_type: 'com.celmino.applet.csp',
+    applet_type: 'com.celmino.applet.csp',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    image: '/images/CSP.png',
+    iconCategory: 'SystemIcons',
+    iconName: 'jira',
+    // icon: '\\d224',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    version: [1, 0, 1],
+    databases: [
+        {
+            "name": "Csp",
             "category": "app",
             "collections": []
         }

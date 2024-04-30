@@ -1,6 +1,6 @@
 import { EventBus, TMath, is } from "@tuval/core"
-import { DialogPosition, ForEach, Fragment, HStack, PopupButton, Text, UIViewBuilder, VStack, cLeading, cTopLeading, useOptions, useState } from "@tuval/forms"
-import { TextField } from '@realmocean/vibe'
+import { DialogPosition, ForEach, Fragment,TextField, HStack, PopupButton, Text, UIViewBuilder, VStack, cLeading, cTopLeading, useOptions, useState } from "@tuval/forms"
+
 
 export const MultiSelectRenderer = (item, fields, field) => {
 
@@ -109,7 +109,7 @@ export const MultiSelectRenderer = (item, fields, field) => {
                                             .fontSize(10)
                                             .background('transparent')
                                             .border('none')
-                                            .placeHolder('Type to search or add..')
+                                           // .placeHolder('Type to search or add..')
                                     )
                                         .background('#f9f9f9')
                                         .height(30)

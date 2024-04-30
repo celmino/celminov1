@@ -20,7 +20,8 @@ const copyright = `
 *                                                                                                                               *
 * Licensed under the GNU General Public License v3.0.                                                                           *
 * More info at: https://choosealicense.com/licenses/gpl-3.0/                                                                    *
-* Tuval Framework Created By Tuvalsoft in 2019                                                                                  *
+* Tuval Framework Created By Tuvalsoft in 2019  
+* BIOS                                                                                *
 ******************************************************************************************************************************@*/
 `;
 

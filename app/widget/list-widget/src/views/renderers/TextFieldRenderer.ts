@@ -1,6 +1,6 @@
 import { EventBus, is } from "@tuval/core"
-import { Fragment, HStack, Text, UIViewBuilder, cLeading, useOptions, useState } from "@tuval/forms"
-import { TextField } from '@realmocean/vibe'
+import { Fragment, HStack, Text, TextField, UIViewBuilder, cLeading, useOptions, useState } from "@tuval/forms"
+
 
 export const TextFieldRenderer = (item, fields, field) => {
     return (
@@ -15,7 +15,7 @@ export const TextFieldRenderer = (item, fields, field) => {
                             HStack(
                                 TextField()
                                     .value(value)
-                                    .autoFocus(true)
+                                   // .autoFocus(true)
                                     .background('transparent')
                                     .border('none')
                                     .outline('none')

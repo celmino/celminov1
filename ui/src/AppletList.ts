@@ -17,6 +17,7 @@ import { DocumentsApplet } from "./applets/Documents";
 import { ModellingApplet } from "./applets/Modelling";
 import { GoogleDrive } from "./applets/GoogleDrive";
 import { Jira } from "./applets/Jira";
+import { Csp } from "./applets/Csp";
 
 export const Applets = [
     /*  InvestorsInTurkey,
@@ -38,6 +39,7 @@ export const Applets = [
      ModellingApplet,
      GoogleDrive,
      Jira,
+     Csp,
     {
         name: 'CRM - Gıda',
         type: 'Template',
