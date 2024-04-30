@@ -1,5 +1,4 @@
-import { HStack, Heading, ReactView, Spacer, UIController, UINavigate, UIView, UIWidget, VStack, cLeading, cTopLeading, useNavigate } from "@tuval/forms";
-import { Text } from "@realmocean/vibe";
+import { HStack, Heading, ReactView,Text, Spacer, UIController, UINavigate, UIView, UIWidget, VStack, cLeading, cTopLeading, useNavigate } from "@tuval/forms";
 import React from "react";
 import { useGetSubdomain } from "../hooks/useGetSubdomain";
 import { is } from "@tuval/core";
@@ -89,11 +88,11 @@ export class LandingController extends UIController {
                         VStack({ alignment: cLeading, spacing: 20 })(
                             HStack(
                                 Text('Build your company brain').fontFamily('"Hagrid", sans-serif').fontSize('8rem').foregroundColor('#090e13').lineHeight('1.1')
-                                    .maxLines(2)
+                                  //  .maxLines(2)
                             ).height().maxWidth('80%'),
                             HStack({ alignment: cLeading })(
                                 Text('Open source alternative to Monday.com, Click Up and Notion with self-hosting and data ownership.').lineHeight('1.6')
-                                    .maxLines(2)
+                                   // .maxLines(2)
                                     .fontFamily('Graphik Regular,sans-serif')
                                     .fontSize('3.2rem').foregroundColor('#090e13')
                             )

@@ -1,9 +1,8 @@
 import { is } from "@tuval/core";
-import { HStack, cTrailing, UIViewBuilder, PopupButton, Icon, cHorizontal, VStack, ForEach, cLeading, DialogPosition, UIController, ReactView, UIFormController, UIView, OptionsContext, DialogContext } from "@tuval/forms";
+import { HStack, cTrailing, UIViewBuilder, PopupButton, Icon,Text, cHorizontal, VStack, ForEach, cLeading, DialogPosition, UIController, ReactView, UIFormController, UIView, OptionsContext, DialogContext } from "@tuval/forms";
 import { useState } from "react";
 import { Icons } from "./Icons";
 import { AddTextFieldDialog, SaveTextFieldAction } from "./dialogs/AddTextAttributeDialog";
-import { Text } from "@realmocean/vibe";
 import { FormBuilder } from "../../FormBuilder/FormBuilder";
 import { AddNumberFieldDialog, SaveNumberFieldAction } from "./dialogs/AddNumberFieldDialog";
 import { AddRichTextFieldDialog, SaveRichTextFieldAction } from "./dialogs/AddRichtextFieldDialog";

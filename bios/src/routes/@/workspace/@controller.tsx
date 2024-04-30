@@ -1,8 +1,6 @@
 import { AnonymousContext, RealmContext, useRealm } from '@celmino/ui';
-import { ProjectContext, useCreateAnonymousSession } from "@realmocean/sdk";
-import { Text as VibeText } from "@realmocean/vibe";
-import { Button, DialogPosition, Fragment, HStack, Icon, Icons, PopupButton, ReactView, Spacer, SvgIcon, Text, UIController, UIRouteOutlet, UIScene, UIView, UIViewBuilder, VStack, cHorizontal, cLeading, cTop, cTopLeading, cVertical, useEffect, useNavigate, useParams, useState } from "@tuval/forms";
-import React from "react";
+import { ProjectContext } from "@realmocean/sdk";
+import { Text, UIController, UIRouteOutlet, UIView, UIViewBuilder, useNavigate } from "@tuval/forms";
 
 let _hideHandle = null;
 export class PublicWorkspaceLayoutController extends UIController {

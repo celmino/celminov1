@@ -1,8 +1,7 @@
 
-import { AppletContext, PersonelRealmContext, SelectAppletDialog, TreeContext, useAccount, useRealm, useRealmNavigate } from "@celmino/ui";
-import { Query, Services, useCreateTeam, useCreateTeamMembership, useDeleteCache, useDeleteSession, useListDocuments, useUpdatePrefs } from "@realmocean/sdk";
-import { Text } from '@realmocean/vibe';
-import { EventBus, is } from "@tuval/core";
+import { PersonelRealmContext, useAccount, useRealm, useRealmNavigate } from "@celmino/ui";
+import { useCreateTeam, useCreateTeamMembership, useDeleteSession, useUpdatePrefs } from "@realmocean/sdk";
+import { is } from "@tuval/core";
 import {
     DialogPosition,
     ForEach,
@@ -10,24 +9,21 @@ import {
     HDivider,
     HStack,
     Icon,
-    Icons,
     PopupButton,
     ScrollView,
-    Spacer,
     SvgIcon,
+    Text,
     UIViewBuilder,
     UIWidget,
     VStack,
     cHorizontal,
     cLeading, cTopLeading,
     cVertical,
-    useMediaQuery,
-    useParams
+    useMediaQuery
 } from "@tuval/forms";
-import React, { useEffect, useState } from "react";
-import { CalendarIcon, InboxIcon, MyDayIcon, TimelineIcon, TimerIcon, UpIcon, UpcommingIcon, UpdatesIcon } from "../../../../assets/Icons";
+import React, { useState } from "react";
+import { CalendarIcon, InboxIcon, MyDayIcon, TimelineIcon, TimerIcon, UpcommingIcon, UpdatesIcon } from "../../../../assets/Icons";
 import { useGetHDomainName, useGetProtocol } from "../../../../hooks/useGetProtocol";
-import { EmptyView } from "../../../../views/EmptyView";
 import { RealmTree } from "./RealmTree/RealmTree";
 
 const expandeds = {};

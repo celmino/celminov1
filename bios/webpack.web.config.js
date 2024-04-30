@@ -25,6 +25,8 @@ const copyright = `
 ******************************************************************************************************************************@*/
 `;
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const opts = {
     WEB: true,
     NODE: false,
@@ -35,10 +37,10 @@ const opts = {
 
 
 const webConfig = {
-    target: 'web',
+  //  target: 'web',
     //target: 'es5',
-    mode: 'development',
-    devtool: 'source-map',  
+   // mode: 'development',
+   // devtool: 'source-map',  
     entry: './src/index.tsx',
     externals: {
         '@tuval/core': 'tuval$core',
@@ -159,7 +161,9 @@ const webConfig = {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist_web'),
     },
-    plugins: [{
+    plugins: [
+      //    new BundleAnalyzerPlugin(),
+         {
         apply: (compiler) => {
             compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
                 const file = './dist_web/index.js';

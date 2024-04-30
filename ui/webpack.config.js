@@ -10,6 +10,9 @@ const fs = require('fs');
 
 var libraryName = '@tuval/forms/core';
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+
 function DtsBundlePlugin() {}
 DtsBundlePlugin.prototype.apply = function(compiler) {
     compiler.plugin('done', function() {
@@ -38,8 +41,8 @@ const opts = {
 };
 
 const umdConfig = {
-     mode: 'development',
-    devtool: 'source-map',
+   // mode: 'development',
+   // devtool: 'source-map',
     //devtool: 'none',
     entry: './src/index.ts',
     externals: {
@@ -151,7 +154,9 @@ const umdConfig = {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    plugins: [{
+    plugins: [
+        //    new BundleAnalyzerPlugin(),
+        {
             apply: (compiler) => {
                 compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
                     var dts = require('dts-bundle');

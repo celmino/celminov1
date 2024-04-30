@@ -1,9 +1,6 @@
 
-import { Button, ButtonSize, ButtonType, DialogView, ForEach, TextField, HStack, Heading, Icon, Icons, ScrollView, Spacer, UIImage, UIView, VStack, ViewProperty, cCenter, cLeading, cTopLeading, cVertical, useParams, useState, Fragment, nanoid } from "@tuval/forms";
+import { Button, ButtonSize, ButtonType, DialogView,Text, ForEach, HStack, Icon, Icons, ScrollView, Spacer, TextField, UIImage, UIView, VStack, ViewProperty, cCenter, cLeading, cTopLeading, cVertical, useState } from "@tuval/forms";
 
-import { useCreateDocument, Services, ID } from "@realmocean/sdk";
-import { Text } from "@realmocean/vibe";
-import { EventBus } from "@tuval/core";
 import { AttributesMenuItems } from "./Attributes";
 
 
@@ -147,7 +144,8 @@ export class SelectAttributeDialog extends DialogView {
                                                 .border('solid 1px #6D7A8344'),
 
                                             //.background(opa.iconBackColor || '#9A0707'),
-                                            Text(attribute.title).fontSize('1.8rem').lineHeight('2rem').maxLines(2) as any
+                                            Text(attribute.title).fontSize('1.8rem').lineHeight('2rem')
+                                            //.maxLines(2) as any
                                             //Text(opa.type).fontSize('1.4rem').fontWeight('500').foregroundColor('hsl(205, 9%, 47%)')
                                         ).height(60)
                                         //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
@@ -155,7 +153,9 @@ export class SelectAttributeDialog extends DialogView {
 
 
                                         HStack({ alignment: cLeading })(
-                                            Text(attribute.description || '').maxLines(3).fontSize('1.4rem').foregroundColor('#676879') as any
+                                            Text(attribute.description || '')
+                                            //.maxLines(3)
+                                            .fontSize('1.4rem').foregroundColor('#676879') as any
 
                                         ).height()
 

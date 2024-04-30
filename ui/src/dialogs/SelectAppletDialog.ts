@@ -1,7 +1,7 @@
-import { Button, ButtonSize, ButtonType, DialogView, ForEach, TextField, HStack, Heading, Icon, Icons, ScrollView, Spacer, UIImage, UIView, VStack, ViewProperty, cCenter, cLeading, cTopLeading, cVertical, useParams, useState, Fragment, nanoid } from "@tuval/forms";
+import { Button, ButtonSize, ButtonType, DialogView, ForEach, TextField, HStack, Heading,Text, Icon, Icons, ScrollView, Spacer, UIImage, UIView, VStack, ViewProperty, cCenter, cLeading, cTopLeading, cVertical, useParams, useState, Fragment, nanoid } from "@tuval/forms";
 
 import { useCreateDocument, Services, ID } from "@realmocean/sdk";
-import { Text } from "@realmocean/vibe";
+
 import { EventBus } from "@tuval/core";
 import { Applets } from "../AppletList";
 import { AppletServiceBroker } from "../brokers";
@@ -156,13 +156,16 @@ export class SelectAppletDialog extends DialogView {
                                             //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
                                             ,
                                             HStack({ alignment: cLeading })(
-                                                Text(opa.name).fontSize('1.8rem').lineHeight('2rem').maxLines(2) as any
+                                                Text(opa.name).fontSize('1.8rem').lineHeight('2rem')
+                                                //.maxLines(2) as any
                                             )
                                                 .minHeight('4rem')
                                                 .height(),
                                             Text('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879') as any,
                                             HStack({ alignment: cLeading })(
-                                                Text(opa.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879') as any
+                                                Text(opa.description || '')
+                                                //.maxLines(2)
+                                                .fontSize('1.4rem').foregroundColor('#676879') as any
 
                                             ).height()
 

@@ -1,5 +1,5 @@
-import { HStack, UIView, Text, UIViewBuilder, VStack, ViewProperty, cLeading, HStackClass, VStackClass } from "@tuval/forms"
-import { TextField } from "@realmocean/vibe"
+import { HStack, UIView, Text, TextField, VStack, ViewProperty, cLeading, HStackClass, VStackClass } from "@tuval/forms"
+
 import { useOrganization } from "../../context";
 
 
@@ -80,7 +80,7 @@ export const LabeledTextInput = (): ILabeledText => {
                 VStack({ alignment: cLeading, spacing: 5 })(
                     Text(this._Label).fontSize('1.2rem').textTransform('uppercase'),
                     TextField()
-                    .autoFocus(this._AutoFocus)
+                    //.autoFocus(this._AutoFocus)
                         .value(this._Value)
                         .onChange((e) => this._OnChange(e)) as any
                 )

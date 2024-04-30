@@ -1,7 +1,9 @@
-import { GithubBroker, QdmsBroker, Services, useCreateEmailSession, useGetMe, useUpdateName, 
-    GooleDriveBroker, JiraBroker, MiningBroker, EmailBroker, QDMS, 
-    CspBroker} 
-from "@realmocean/sdk";
+import {
+    GithubBroker, QdmsBroker, Services, useCreateEmailSession, useGetMe, useUpdateName,
+    GooleDriveBroker, JiraBroker, MiningBroker, EmailBroker, QDMS,
+    CspBroker
+}
+    from "@realmocean/sdk";
 import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
@@ -189,87 +191,107 @@ export class LoginController extends CelminoController {
                                         .cornerRadius(3)
                                         .foregroundColor('white')
                                         .onClick(async () => {
-                                          
-                                           const projects = await  CspBroker.Default
-                                            .setDomain('https://dev.bimser.net')
-                                            .setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBdXRoZW50aWNhdGlvblR5cGUiOiIxIiwiSW5zdGFuY2UiOiJkZXYiLCJJbnRlcm5hbFVzZXJJZCI6IjQiLCJJbnRlcm5hbFVzZXJuYW1lIjoicmd1ciIsIlBvc2l0aW9ucyI6IltdIiwiRGVsZWdhdGlvbklkIjoiIiwiVG9rZW5JZCI6IjJhMjAxZGJlLTAxOGEtNDYwMS04YjU0LTkyYTZiYTlkYjdmMiIsIlVzZXJuYW1lIjoicmd1ciIsIlVzZXJJZCI6IjQiLCJUaW1lVG9MaXZlIjoiODY0MDAwMDAiLCJTY29wZSI6IjMiLCJuYmYiOjE3MTQ0MTE1NTksImV4cCI6MTcxNDQ5Nzk1OSwiaXNzIjoiQmltc2VyIMOHw7Z6w7xtIiwiYXVkIjoiU3luZXJneSBVc2VycyJ9.q-hZcBvKbIu8nMuPeie8_AqYvw5kgIXn-YaSDC3Ui9w')
-                                            .setEData('k1locoKLE4dVg9kmquJp3LWYzFVXmzJ46BwSuzNKEptxs8+gLZO9ONk/tdlDEWJSaMx7NBf8sNAzyyyW4RCsZOkPGU3BsuRO2mFrjPCDvewng68pktys1/6CXjQNWr9cwaRVRqn43smAUn0cEE+pBN+O4cRg5hj9+QVdH7y+9Dk=')
-                                            .getProjects();
-                                          /*   const a : any= await MiningBroker.Default.loadCsv(`Activity,Costs,Resource,case:concept:name,case:creator,concept:name,org:resource,time:timestamp
-                                            register request,50,Pete,3,Fluxicon Nitro,register request,Pete,2010-12-30 14:32:00+01:00
-                                            examine casually,400,Mike,3,Fluxicon Nitro,examine casually,Mike,2010-12-30 15:06:00+01:00
-                                            check ticket,100,Ellen,3,Fluxicon Nitro,check ticket,Ellen,2010-12-30 16:34:00+01:00
-                                            decide,200,Sara,3,Fluxicon Nitro,decide,Sara,2011-01-06 09:18:00+01:00
-                                            reinitiate request,200,Sara,3,Fluxicon Nitro,reinitiate request,Sara,2011-01-06 12:18:00+01:00
-                                            examine thoroughly,400,Sean,3,Fluxicon Nitro,examine thoroughly,Sean,2011-01-06 13:06:00+01:00
-                                            check ticket,100,Pete,3,Fluxicon Nitro,check ticket,Pete,2011-01-08 11:43:00+01:00
-                                            decide,200,Sara,3,Fluxicon Nitro,decide,Sara,2011-01-09 09:55:00+01:00
-                                            pay compensation,200,Ellen,3,Fluxicon Nitro,pay compensation,Ellen,2011-01-15 10:45:00+01:00
-                                            register request,50,Mike,2,Fluxicon Nitro,register request,Mike,2010-12-30 11:32:00+01:00
-                                            check ticket,100,Mike,2,Fluxicon Nitro,check ticket,Mike,2010-12-30 12:12:00+01:00
-                                            examine casually,400,Sean,2,Fluxicon Nitro,examine casually,Sean,2010-12-30 14:16:00+01:00
-                                            decide,200,Sara,2,Fluxicon Nitro,decide,Sara,2011-01-05 11:22:00+01:00
-                                            pay compensation,200,Ellen,2,Fluxicon Nitro,pay compensation,Ellen,2011-01-08 12:05:00+01:00
-                                            register request,50,Pete,1,Fluxicon Nitro,register request,Pete,2010-12-30 11:02:00+01:00
-                                            examine thoroughly,400,Sue,1,Fluxicon Nitro,examine thoroughly,Sue,2010-12-31 10:06:00+01:00
-                                            check ticket,100,Mike,1,Fluxicon Nitro,check ticket,Mike,2011-01-05 15:12:00+01:00
-                                            decide,200,Sara,1,Fluxicon Nitro,decide,Sara,2011-01-06 11:18:00+01:00
-                                            reject request,200,Pete,1,Fluxicon Nitro,reject request,Pete,2011-01-07 14:24:00+01:00
-                                            register request,50,Mike,6,Fluxicon Nitro,register request,Mike,2011-01-06 15:02:00+01:00
-                                            examine casually,400,Ellen,6,Fluxicon Nitro,examine casually,Ellen,2011-01-06 16:06:00+01:00
-                                            check ticket,100,Mike,6,Fluxicon Nitro,check ticket,Mike,2011-01-07 16:22:00+01:00
-                                            decide,200,Sara,6,Fluxicon Nitro,decide,Sara,2011-01-07 16:52:00+01:00
-                                            pay compensation,200,Mike,6,Fluxicon Nitro,pay compensation,Mike,2011-01-16 11:47:00+01:00
-                                            register request,50,Ellen,5,Fluxicon Nitro,register request,Ellen,2011-01-06 09:02:00+01:00
-                                            examine casually,400,Mike,5,Fluxicon Nitro,examine casually,Mike,2011-01-07 10:16:00+01:00
-                                            check ticket,100,Pete,5,Fluxicon Nitro,check ticket,Pete,2011-01-08 11:22:00+01:00
-                                            decide,200,Sara,5,Fluxicon Nitro,decide,Sara,2011-01-10 13:28:00+01:00
-                                            reinitiate request,200,Sara,5,Fluxicon Nitro,reinitiate request,Sara,2011-01-11 16:18:00+01:00
-                                            check ticket,100,Ellen,5,Fluxicon Nitro,check ticket,Ellen,2011-01-14 14:33:00+01:00
-                                            examine casually,400,Mike,5,Fluxicon Nitro,examine casually,Mike,2011-01-16 15:50:00+01:00
-                                            decide,200,Sara,5,Fluxicon Nitro,decide,Sara,2011-01-19 11:18:00+01:00
-                                            reinitiate request,200,Sara,5,Fluxicon Nitro,reinitiate request,Sara,2011-01-20 12:48:00+01:00
-                                            examine casually,400,Sue,5,Fluxicon Nitro,examine casually,Sue,2011-01-21 09:06:00+01:00
-                                            check ticket,100,Pete,5,Fluxicon Nitro,check ticket,Pete,2011-01-21 11:34:00+01:00
-                                            decide,200,Sara,5,Fluxicon Nitro,decide,Sara,2011-01-23 13:12:00+01:00
-                                            reject request,200,Mike,5,Fluxicon Nitro,reject request,Mike,2011-01-24 14:56:00+01:00
-                                            register request,50,Pete,4,Fluxicon Nitro,register request,Pete,2011-01-06 15:02:00+01:00
-                                            check ticket,100,Mike,4,Fluxicon Nitro,check ticket,Mike,2011-01-07 12:06:00+01:00
-                                            examine thoroughly,400,Sean,4,Fluxicon Nitro,examine thoroughly,Sean,2011-01-08 14:43:00+01:00
-                                            decide,200,Sara,4,Fluxicon Nitro,decide,Sara,2011-01-09 12:02:00+01:00
-                                            reject request,200,Ellen,4,Fluxicon Nitro,reject request,Ellen,2011-01-12 15:44:00+01:00`);
-                                            
-                                            const variantInfo = await MiningBroker.Default.getVariantInfo(a.logId);
-                                          alert(variantInfo)
- */
-                                          /*   const issues = await JiraBroker.Default.getIssues('CEL');
-                                            issues.forEach(issue => {
-                                                console.log(issue.fields.summary)
-                                            })
-                                            alert(JSON.stringify(issues)) */
+
+                                          /*   const key = await CspBroker.Default
+                                                .createKey({
+                                                    domain: 'https://dev.bimser.net',
+                                                    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBdXRoZW50aWNhdGlvblR5cGUiOiIxIiwiSW5zdGFuY2UiOiJkZXYiLCJJbnRlcm5hbFVzZXJJZCI6IjQiLCJJbnRlcm5hbFVzZXJuYW1lIjoicmd1ciIsIlBvc2l0aW9ucyI6IltdIiwiRGVsZWdhdGlvbklkIjoiIiwiVG9rZW5JZCI6IjJhMjAxZGJlLTAxOGEtNDYwMS04YjU0LTkyYTZiYTlkYjdmMiIsIlVzZXJuYW1lIjoicmd1ciIsIlVzZXJJZCI6IjQiLCJUaW1lVG9MaXZlIjoiODY0MDAwMDAiLCJTY29wZSI6IjMiLCJuYmYiOjE3MTQ0MTE1NTksImV4cCI6MTcxNDQ5Nzk1OSwiaXNzIjoiQmltc2VyIMOHw7Z6w7xtIiwiYXVkIjoiU3luZXJneSBVc2VycyJ9.q-hZcBvKbIu8nMuPeie8_AqYvw5kgIXn-YaSDC3Ui9w',
+                                                    eData: 'k1locoKLE4dVg9kmquJp3LWYzFVXmzJ46BwSuzNKEptxs8+gLZO9ONk/tdlDEWJSaMx7NBf8sNAzyyyW4RCsZOkPGU3BsuRO2mFrjPCDvewng68pktys1/6CXjQNWr9cwaRVRqn43smAUn0cEE+pBN+O4cRg5hj9+QVdH7y+9Dk='
+                                                }) */
 /* 
-                                            const files = await GooleDriveBroker.Default
-                                            .listFiles();
-                                            console.log(files)
- */
-                                           /*  GooleDriveBroker.Default.getUserToken().then(async (token)=> {
-                                                console.log(token)
+                                                {
+                                                    "accessKey": "92e18be5df553a88d24ebebe4293d8fdc3ee64fe9ee2ea83df9fe3262f055eb6523a503043ab841a8b3e4cd04944996d05fed4579cbdd010fcc8fc07b3600a291bd0238e100569a204f73cce102a60c2f56968acac6f3b987a63022c9e67bae8b0b53b93235877c9e5ab1d5e5c00f8ddce745873815f82f113cfb10055cc603cddbff611a20a13f2eb5c04c6f83788f3d1daa2f7b4b0f1b0710017f44bb53de644f6b5386af86bb1406ed5aebd1848e2985905c95f68762aa8788b3b883be7ba89b9ab434e8f6d9dd6e08460fea21761cdcc031a96f0e2acfbbc395a52deb78c029f2c824d55ae7b0cd5f24b254040df0626f7c44226cf34109f28fbef236a094f5f782ebfdcb2c4bfbb79ec6fd54d11379e909b26fa2a5f42ec430f0a3a28301722777aa7f2fa99c73a0553538388dace7b0aa12dc88761f87125fe0cf856cde878e416db3dc40c5f9363ef6cdab8a2743fdf9c364092b53866ec19ac17750b0ea6a4bbf1d8e13eb7950b5a97211936a511ec3d40889f2df9dce02fea05d8567754bfef8367cf6280a8706feb411f1203553f67441d0d3cf3a1980fcaf5246a3a014b523ea5c69c222ea0d34194685c6cb4d5841dfb7c033ac86ca73332a49b9d7033f739cf3a87c19a9d9f76acf991f68c194f3cc55e549e0c3afcb40ca69c59fe9c1d48db3d0767f0e93ae0e916b65b56a87368f81032c77b6ea4cd15763c615413e529b82d073683bbf36059de1747142f605f902baee4ffb1d365909253ff3b140143b1380856426ff0a424847d705baffc0721749fda22d3e5b0528bd1922ed740a772fa1ff5a3889af30679148a73293031aef8b496271cbd9605a0028ec50757748754659d6a8cee5eaf263bfeeda72a9dd55eec59dbf0e55738603d6a368845a6ca94d2d178e025afe9f3dffff4a0dd8848a875736ad5eb19b3e6ea0df4a228f6f0f32352195a7e504588fbf12a1045ef021f791a4361c9de70ae97c2d2ba2a4cfc4adbad9e478c046a6850f8b3f54cfde625a4362a19d31fe1cec01dbb"
+                                                } */
+                                            /* CspBroker.Default.setKey(key);
+                                            CspBroker.Default.getProjects(); */
+
+                                              /*   const key = await JiraBroker.Default.createKey({
+                                                    host:'https://tuvalsoft.atlassian.net',
+                                                    username:'stanoncloud@gmail.com',
+                                                    token:'ATATT3xFfGF0q3K6vpX1eh8OVaXT5Dlgs6iycpw1HIuHYtPt0SRKplbJ5OgZ4WHPmITJZJRThJ_1HBAIOBTzOHWoZBDHwacJX91Kfhs9Wl9L_gtmTISeQHO9buHv5W46LR92IJ1PMXUniHSfda7252rDK9iV65Fs8MFe3FcIIN906OJQxj_LJAQ=831834E0'
+                                                }); */
+
+                                                JiraBroker.Default.setKey('92e187e5c14071dcd21ce8a2469492a1d6b53eec9af8b78ed086be22294751a055711d7c19aa8a0bc73054875f58a16b06d4d21ce9f6e92dc8dcda589e652c2f36fe16d6122f4cba2ef321b46a4b5e94b0697fc4d429229e546d012ad6408be19ee10dcc1e0c6deb88f93f630d00c7f5ee690440846ba6f200d2953657a41a20c1b8c62f99247bf8d05b37e0d01fd3eedae3fb959482daaf5f1015f453bb16e52d8e972b42fd67b95e76f4b486147f95b47334fe46787659ec6aba62974bdab9d99699400b81509df6ccb96ac7f84778b5db6174d7a5d7b7f4c71c6407c793a33ea3029c6d699d7e538380152166608a0439ab9e6d1c9e0e3fac5c84fe3074723c350d28c3c4a0e488ba59ec46b232686aeaf7ee1b854f67');
+                                                await JiraBroker.Default.getProjects();
+                                               // console.log(key)
+
+
+
+                                            /*   const a : any= await MiningBroker.Default.loadCsv(`Activity,Costs,Resource,case:concept:name,case:creator,concept:name,org:resource,time:timestamp
+                                              register request,50,Pete,3,Fluxicon Nitro,register request,Pete,2010-12-30 14:32:00+01:00
+                                              examine casually,400,Mike,3,Fluxicon Nitro,examine casually,Mike,2010-12-30 15:06:00+01:00
+                                              check ticket,100,Ellen,3,Fluxicon Nitro,check ticket,Ellen,2010-12-30 16:34:00+01:00
+                                              decide,200,Sara,3,Fluxicon Nitro,decide,Sara,2011-01-06 09:18:00+01:00
+                                              reinitiate request,200,Sara,3,Fluxicon Nitro,reinitiate request,Sara,2011-01-06 12:18:00+01:00
+                                              examine thoroughly,400,Sean,3,Fluxicon Nitro,examine thoroughly,Sean,2011-01-06 13:06:00+01:00
+                                              check ticket,100,Pete,3,Fluxicon Nitro,check ticket,Pete,2011-01-08 11:43:00+01:00
+                                              decide,200,Sara,3,Fluxicon Nitro,decide,Sara,2011-01-09 09:55:00+01:00
+                                              pay compensation,200,Ellen,3,Fluxicon Nitro,pay compensation,Ellen,2011-01-15 10:45:00+01:00
+                                              register request,50,Mike,2,Fluxicon Nitro,register request,Mike,2010-12-30 11:32:00+01:00
+                                              check ticket,100,Mike,2,Fluxicon Nitro,check ticket,Mike,2010-12-30 12:12:00+01:00
+                                              examine casually,400,Sean,2,Fluxicon Nitro,examine casually,Sean,2010-12-30 14:16:00+01:00
+                                              decide,200,Sara,2,Fluxicon Nitro,decide,Sara,2011-01-05 11:22:00+01:00
+                                              pay compensation,200,Ellen,2,Fluxicon Nitro,pay compensation,Ellen,2011-01-08 12:05:00+01:00
+                                              register request,50,Pete,1,Fluxicon Nitro,register request,Pete,2010-12-30 11:02:00+01:00
+                                              examine thoroughly,400,Sue,1,Fluxicon Nitro,examine thoroughly,Sue,2010-12-31 10:06:00+01:00
+                                              check ticket,100,Mike,1,Fluxicon Nitro,check ticket,Mike,2011-01-05 15:12:00+01:00
+                                              decide,200,Sara,1,Fluxicon Nitro,decide,Sara,2011-01-06 11:18:00+01:00
+                                              reject request,200,Pete,1,Fluxicon Nitro,reject request,Pete,2011-01-07 14:24:00+01:00
+                                              register request,50,Mike,6,Fluxicon Nitro,register request,Mike,2011-01-06 15:02:00+01:00
+                                              examine casually,400,Ellen,6,Fluxicon Nitro,examine casually,Ellen,2011-01-06 16:06:00+01:00
+                                              check ticket,100,Mike,6,Fluxicon Nitro,check ticket,Mike,2011-01-07 16:22:00+01:00
+                                              decide,200,Sara,6,Fluxicon Nitro,decide,Sara,2011-01-07 16:52:00+01:00
+                                              pay compensation,200,Mike,6,Fluxicon Nitro,pay compensation,Mike,2011-01-16 11:47:00+01:00
+                                              register request,50,Ellen,5,Fluxicon Nitro,register request,Ellen,2011-01-06 09:02:00+01:00
+                                              examine casually,400,Mike,5,Fluxicon Nitro,examine casually,Mike,2011-01-07 10:16:00+01:00
+                                              check ticket,100,Pete,5,Fluxicon Nitro,check ticket,Pete,2011-01-08 11:22:00+01:00
+                                              decide,200,Sara,5,Fluxicon Nitro,decide,Sara,2011-01-10 13:28:00+01:00
+                                              reinitiate request,200,Sara,5,Fluxicon Nitro,reinitiate request,Sara,2011-01-11 16:18:00+01:00
+                                              check ticket,100,Ellen,5,Fluxicon Nitro,check ticket,Ellen,2011-01-14 14:33:00+01:00
+                                              examine casually,400,Mike,5,Fluxicon Nitro,examine casually,Mike,2011-01-16 15:50:00+01:00
+                                              decide,200,Sara,5,Fluxicon Nitro,decide,Sara,2011-01-19 11:18:00+01:00
+                                              reinitiate request,200,Sara,5,Fluxicon Nitro,reinitiate request,Sara,2011-01-20 12:48:00+01:00
+                                              examine casually,400,Sue,5,Fluxicon Nitro,examine casually,Sue,2011-01-21 09:06:00+01:00
+                                              check ticket,100,Pete,5,Fluxicon Nitro,check ticket,Pete,2011-01-21 11:34:00+01:00
+                                              decide,200,Sara,5,Fluxicon Nitro,decide,Sara,2011-01-23 13:12:00+01:00
+                                              reject request,200,Mike,5,Fluxicon Nitro,reject request,Mike,2011-01-24 14:56:00+01:00
+                                              register request,50,Pete,4,Fluxicon Nitro,register request,Pete,2011-01-06 15:02:00+01:00
+                                              check ticket,100,Mike,4,Fluxicon Nitro,check ticket,Mike,2011-01-07 12:06:00+01:00
+                                              examine thoroughly,400,Sean,4,Fluxicon Nitro,examine thoroughly,Sean,2011-01-08 14:43:00+01:00
+                                              decide,200,Sara,4,Fluxicon Nitro,decide,Sara,2011-01-09 12:02:00+01:00
+                                              reject request,200,Ellen,4,Fluxicon Nitro,reject request,Ellen,2011-01-12 15:44:00+01:00`);
                                               
-                                            }) */
+                                              const variantInfo = await MiningBroker.Default.getVariantInfo(a.logId);
+                                            alert(variantInfo)
+   */
+                                            /*   const issues = await JiraBroker.Default.getIssues('CEL');
+                                              issues.forEach(issue => {
+                                                  console.log(issue.fields.summary)
+                                              })
+                                              alert(JSON.stringify(issues)) */
+                                            /* 
+                                                                                        const files = await GooleDriveBroker.Default
+                                                                                        .listFiles();
+                                                                                        console.log(files)
+                                             */
+                                            /*  GooleDriveBroker.Default.getUserToken().then(async (token)=> {
+                                                 console.log(token)
+                                               
+                                             }) */
 
-                                           /*  const popup = window.open("/v1/service/google", "popup", "popup = true");
-
-                                            const checkPopup = setInterval(() => {
-                                                if (popup.window.location.href.includes("CLOSE")) {
-                                                    const searchParams = new URLSearchParams(decodeURI(popup.window.location.search));
-                                                    if (searchParams.get('CLOSE') === 'true') {
-                                                        alert(searchParams.get('access_token'))
-                                                        popup.close()
-                                                    }
-                                                }
-                                                if (!popup || !popup.closed) return;
-                                                clearInterval(checkPopup);
-                                            }, 10); */
+                                            /*  const popup = window.open("/v1/service/google", "popup", "popup = true");
+ 
+                                             const checkPopup = setInterval(() => {
+                                                 if (popup.window.location.href.includes("CLOSE")) {
+                                                     const searchParams = new URLSearchParams(decodeURI(popup.window.location.search));
+                                                     if (searchParams.get('CLOSE') === 'true') {
+                                                         alert(searchParams.get('access_token'))
+                                                         popup.close()
+                                                     }
+                                                 }
+                                                 if (!popup || !popup.closed) return;
+                                                 clearInterval(checkPopup);
+                                             }, 10); */
 
 
                                             /*  const token: any = await QdmsBroker.GetToken('http://93.180.135.42/QDMS/QDMSNET/BSAT/BSATWebapi.asmx?WSDL','qdms', 'qdms24');

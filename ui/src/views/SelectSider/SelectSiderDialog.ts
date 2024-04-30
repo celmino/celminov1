@@ -18,7 +18,6 @@ import {
     useNavigate
 } from "@tuval/forms";
 
-import { Text as VibeText } from '@realmocean/vibe'
 import { siders } from "./Siders";
 
 const findOpa = (opas, type) => {
@@ -91,7 +90,8 @@ export class SelectSiderDialog extends DialogView {
                                     ,
                                     // .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
                                     Heading(opa.name).h4().ellipsis(true).ellipsisMaxLines(1).width(250),
-                                    VibeText(opa.description || '').maxLines(2) as any
+                                    Text(opa.description || '')
+                                    //.maxLines(2) as any
                                     ,
                                     HStack({ alignment: cCenter })(
                                         Button(

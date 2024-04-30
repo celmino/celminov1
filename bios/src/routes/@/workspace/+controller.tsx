@@ -1,5 +1,5 @@
 import { ProjectContext, Query, useDeleteCache, useDeleteSessions, useGetMe, useListAccountMemberships, useListAccounts, useListRealms, useListTeams, useUpdatePrefs } from "@realmocean/sdk";
-import { Text as VibeText } from "@realmocean/vibe";
+
 import { is } from "@tuval/core";
 import { Button, DialogPosition, ForEach, HStack, Icon, Icons, PopupButton, ReactView, Spacer, SvgIcon, Text, UIController, UINavigate, UIRouteOutlet, UIScene, UIView, UIViewBuilder, VStack, cHorizontal, cLeading, cTop, cTopLeading, cVertical, useNavigate, useParams } from "@tuval/forms";
 import React from "react";
@@ -98,15 +98,15 @@ export class WorkspaceLayoutController extends UIController {
                                                                                                         HStack({ alignment: cLeading, spacing: 5 })(
                                                                                                             HStack().allWidth(30).allHeight(30).cornerRadius('50%').background('gray'),
                                                                                                             VStack({ alignment: cLeading })(
-                                                                                                                VibeText(me.name).fontSize(14).foregroundColor('#212526'),
-                                                                                                                VibeText(me.email).fontSize(12).foregroundColor('#6d7a83'),
+                                                                                                                Text(me.name).fontSize(14).foregroundColor('#212526'),
+                                                                                                                Text(me.email).fontSize(12).foregroundColor('#6d7a83'),
                                                                                                             )
                                                                                                         ).padding(5)
                                                                                                             .cornerRadius(6)
                                                                                                             .background({ hover: '#ECEEEF' })
                                                                                                     ).padding(5),
                                                                                                     HStack({ alignment: cLeading })(
-                                                                                                        VibeText('ORGANIZATION(S)').fontSize(12)
+                                                                                                        Text('ORGANIZATION(S)').fontSize(12)
                                                                                                     ).padding(cVertical, 5),
                                                                                                     ...ForEach(teams)(team =>
                                                                                                         HStack({ alignment: cLeading })(
@@ -138,7 +138,7 @@ export class WorkspaceLayoutController extends UIController {
                                                                                                     ),
                                                                                                     HStack({ alignment: cLeading })(
                                                                                                         Icon(SvgIcon('cu3-icon-logout')),
-                                                                                                        VibeText('Logout').fontSize(14)
+                                                                                                        Text('Logout').fontSize(14)
                                                                                                     ).allHeight(32)
                                                                                                         .cursor('pointer')
                                                                                                         .background({ hover: '#F0F1F3' })
@@ -212,15 +212,15 @@ export class WorkspaceLayoutController extends UIController {
                                                                                                         HStack({ alignment: cLeading, spacing: 5 })(
                                                                                                             HStack().allWidth(30).allHeight(30).cornerRadius('50%').background('gray'),
                                                                                                             VStack({ alignment: cLeading })(
-                                                                                                                VibeText(me.name).fontSize(14).foregroundColor('#212526'),
-                                                                                                                VibeText(me.email).fontSize(12).foregroundColor('#6d7a83'),
+                                                                                                                Text(me.name).fontSize(14).foregroundColor('#212526'),
+                                                                                                                Text(me.email).fontSize(12).foregroundColor('#6d7a83'),
                                                                                                             )
                                                                                                         ).padding(5)
                                                                                                             .cornerRadius(6)
                                                                                                             .background({ hover: '#ECEEEF' })
                                                                                                     ).padding(5),
                                                                                                     HStack({ alignment: cLeading })(
-                                                                                                        VibeText('ORGANIZATION(S)').fontSize(12)
+                                                                                                        Text('ORGANIZATION(S)').fontSize(12)
                                                                                                     ).padding(cVertical, 5),
                                                                                                     ...ForEach(teams)(team =>
                                                                                                         HStack({ alignment: cLeading })(
@@ -252,7 +252,7 @@ export class WorkspaceLayoutController extends UIController {
                                                                                                     ),
                                                                                                     HStack({ alignment: cLeading })(
                                                                                                         Icon(SvgIcon('cu3-icon-logout')),
-                                                                                                        VibeText('Logout').fontSize(14)
+                                                                                                        Text('Logout').fontSize(14)
                                                                                                     ).allHeight(32)
                                                                                                         .cursor('pointer')
                                                                                                         .background({ hover: '#F0F1F3' })
