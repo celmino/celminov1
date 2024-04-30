@@ -24,6 +24,7 @@ import { GeneralSettingController } from "./@/settings/general/+controller"
 import { SecuritySettingController } from "./@/settings/security/+controller"
 import { UsersController } from "./@/settings/users/+controller"
 import { InviteController } from "./invite/+controller"
+import { ConnectionsController } from "./@/settings/connections/+controller"
 
 
 export class HomeController extends UIController {
@@ -76,7 +77,8 @@ export const Routes = () => {
                 UIRoute('settings', SettingsController).children(
                     UIRoute('general', GeneralSettingController),
                     UIRoute('security', SecuritySettingController),
-                    UIRoute('users', UsersController)
+                    UIRoute('users', UsersController),
+                    UIRoute('connections', ConnectionsController)
                 )
             ),
 
@@ -85,10 +87,6 @@ export const Routes = () => {
                 UIRoute('', PersonelWorkspaceController).children(
                     UIRoute('applet/:appletId/*', AppletController),
                     UIRoute(':appletId/*', AppletController)
-                ),
-                UIRoute('settings', SettingsController).children(
-                    UIRoute('general', GeneralSettingController),
-                    UIRoute('security', SecuritySettingController)
                 )
             ),
 

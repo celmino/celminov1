@@ -404,8 +404,8 @@ var AppletController = /** @class */ (function (_super) {
                 EventBus.Default.fire('applet.added', { treeItem: applet })
             }) */
         }), (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__.EmptyState)()
-            .imageUrl('/images/LockClosed.png')
-            .header('Connect to Csp')
+            .imageUrl('/images/CSP.png')
+            .header('Connect to Csp Project')
             .description('We need to have your token to use Jira API for retrieving data. Login to Jira and create token for Celmino. ')
             .buttonTitle('Connect')
             .onButtonClick(function () {

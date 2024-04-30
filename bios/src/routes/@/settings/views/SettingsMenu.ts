@@ -41,6 +41,11 @@ export const SettingsMenu = (selectedId: string) => {
                     title: 'Users',
                     icon: UsersSettingIcon,
                 },
+                {
+                    id: 'connections',
+                    title: 'Connections',
+                    icon: UsersSettingIcon,
+                },
 
             ]
         }

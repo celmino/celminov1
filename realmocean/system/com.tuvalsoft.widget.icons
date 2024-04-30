@@ -3102,16 +3102,16 @@ var MyTestController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MyTestController.prototype.LoadView = function () {
-        var _a, _b, _c, _d, _e, _f;
+        var _a, _b, _c, _d, _e, _f, _g;
         var _hideHandle;
         var light = 0.812;
         var dark = 0.188;
         //#E72065
-        var _g = this.props.config || {}, selectedIcon = _g.selectedIcon, selectedCategory = _g.selectedCategory, _h = _g.onChange, onChange = _h === void 0 ? void 0 : _h, _j = _g.width, width = _j === void 0 ? 36 : _j, _k = _g.height, height = _k === void 0 ? 36 : _k, _l = _g.padding, padding = _l === void 0 ? 5 : _l, _m = _g.tooltip, tooltip = _m === void 0 ? '' : _m, color = _g.color, 
+        var _h = this.props.config || {}, selectedIcon = _h.selectedIcon, selectedCategory = _h.selectedCategory, _j = _h.onChange, onChange = _j === void 0 ? void 0 : _j, _k = _h.width, width = _k === void 0 ? 36 : _k, _l = _h.height, height = _l === void 0 ? 36 : _l, _m = _h.padding, padding = _m === void 0 ? 5 : _m, _o = _h.tooltip, tooltip = _o === void 0 ? '' : _o, color = _h.color, 
         //  backgroundColor = 'transparent',
-        _o = _g.readonly, 
+        _p = _h.readonly, 
         //  backgroundColor = 'transparent',
-        readonly = _o === void 0 ? false : _o;
+        readonly = _p === void 0 ? false : _p;
         var backgroundColor;
         var foregroundColor;
         if (color == null || color === '-1') {
@@ -3120,7 +3120,7 @@ var MyTestController = /** @class */ (function (_super) {
         }
         else {
             try {
-                var _p = hexToRgb(color), r = _p[0], g = _p[1], b = _p[2];
+                var _q = hexToRgb(color), r = _q[0], g = _q[1], b = _q[2];
                 backgroundColor = "rgba(".concat(r, ",").concat(g, ",").concat(b, ",").concat(.15, ")");
                 foregroundColor = "rgba(".concat(r, ",").concat(g, ",").concat(b, ",").concat(.95, ")");
             }
@@ -3137,8 +3137,8 @@ var MyTestController = /** @class */ (function (_super) {
         /*    useEffect(() => {
                setSelectedAccountId(this.props.config.selectedAccountId);
            }, [this.props.config.selectedAccountId]) */
-        var _q = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isOpen = _q[0], setIsOpen = _q[1];
-        var _r = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((_a = this.props.config.selectedCategory) !== null && _a !== void 0 ? _a : 'Icons'), mode = _r[0], setMode = _r[1];
+        var _r = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isOpen = _r[0], setIsOpen = _r[1];
+        var _s = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((_a = this.props.config.selectedCategory) !== null && _a !== void 0 ? _a : 'Icons'), mode = _s[0], setMode = _s[1];
         var ref = (0,_uidotdev_usehooks__WEBPACK_IMPORTED_MODULE_2__.useClickAway)(function () {
             setIsOpen(false);
         });
@@ -3156,10 +3156,10 @@ var MyTestController = /** @class */ (function (_super) {
                 .background(selectedCategory === 'Emoji' ? '' : backgroundColor)
             :
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'SystemIcons' && selectedIcon) ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(_SystemIcons__WEBPACK_IMPORTED_MODULE_7__.SystemIcons[selectedIcon])) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'SvgIcon' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_e = _SystemIcons__WEBPACK_IMPORTED_MODULE_7__.SystemIcons[selectedIcon]) === null || _e === void 0 ? void 0 : _e.icon).width("100%").height("100%") : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'SvgIcon' && selectedIcon) ?
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(selectedIcon)) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Icons' && selectedIcon) ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_e = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _e === void 0 ? void 0 : _e.icon).width('100%').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_f = _CuIcons__WEBPACK_IMPORTED_MODULE_8__.CuIcons[selectedIcon]) === null || _f === void 0 ? void 0 : _f.icon).width("".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(width * ratio * 0.7), "px")).height("".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(height * ratio * 0.7), "px")) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_f = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _f === void 0 ? void 0 : _f.icon).width('100%').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_g = _CuIcons__WEBPACK_IMPORTED_MODULE_8__.CuIcons[selectedIcon]) === null || _g === void 0 ? void 0 : _g.icon).width("".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(width * ratio * 0.7), "px")).height("".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(height * ratio * 0.7), "px")) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
                     .allWidth(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(width * ratio)).allHeight(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(height * ratio))).allWidth(width).allHeight(height).padding(padding)
                     // .background('#40BC86')
@@ -8829,6 +8829,12 @@ var SystemIcons = {
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M72.397 35.76l-32.6-32.6L36.637 0l-24.54 24.54L.877 35.76a3 3 0 0 0 0 4.24l22.42 22.42 13.34 13.34 24.54-24.54.38-.38L72.397 40a3 3 0 0 0 0-4.24zm-35.76 13.32l-11.2-11.2 11.2-11.2 11.2 11.2z", id: "path42", fill: "#2684ff" }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M36.637 26.68a18.86 18.86 0 0 1-.08-26.59l-24.51 24.5 13.34 13.34 11.25-11.25z", id: "path44", fill: "url(#linearGradient3053)" }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M47.867 37.85l-11.23 11.23a18.86 18.86 0 0 1 0 26.68l24.57-24.57z", id: "path46", fill: "url(#linearGradient3050)" }))); }
+    },
+    "csp": {
+        category: 'brand logo',
+        name: 'csp',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: '/images/CSP.png', width: '100%', height: '100%' })); }
     }
 };
 

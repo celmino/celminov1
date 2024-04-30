@@ -17889,7 +17889,7 @@ const Csp = {
     description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
     image: '/images/CSP.png',
     iconCategory: 'SystemIcons',
-    iconName: 'jira',
+    iconName: 'csp',
     // icon: '\\d224',
     iconBackColor: '#66B47C',
     enabled: true,

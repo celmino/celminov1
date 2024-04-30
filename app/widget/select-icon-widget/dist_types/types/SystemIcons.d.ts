@@ -24,4 +24,10 @@ export declare const SystemIcons: {
         tags: string[];
         icon: () => React.JSX.Element;
     };
+    csp: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
 };

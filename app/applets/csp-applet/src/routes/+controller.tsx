@@ -54,8 +54,8 @@ export class AppletController extends UIController {
                                 }) */
                             }),
                            EmptyState()
-                           .imageUrl('/images/LockClosed.png')
-                           .header('Connect to Csp')
+                           .imageUrl('/images/CSP.png')
+                           .header('Connect to Csp Project')
                            .description('We need to have your token to use Jira API for retrieving data. Login to Jira and create token for Celmino. ')
                            .buttonTitle('Connect')
                            .onButtonClick(()=> {

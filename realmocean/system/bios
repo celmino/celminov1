@@ -13020,6 +13020,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_security_controller__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./@/settings/security/+controller */ "./src/routes/@/settings/security/+controller.ts");
 /* harmony import */ var _settings_users_controller__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./@/settings/users/+controller */ "./src/routes/@/settings/users/+controller.ts");
 /* harmony import */ var _invite_controller__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./invite/+controller */ "./src/routes/invite/+controller.ts");
+/* harmony import */ var _settings_connections_controller__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./@/settings/connections/+controller */ "./src/routes/@/settings/connections/+controller.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -13035,6 +13036,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
 
 
 
@@ -13074,9 +13076,9 @@ var Routes = function () {
     // Console Routes
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/app', _controller__WEBPACK_IMPORTED_MODULE_9__.LayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _default__WEBPACK_IMPORTED_MODULE_11__.DefaultWorkspaceController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('login-success', _login_success_controller__WEBPACK_IMPORTED_MODULE_16__.LoginSuccess), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('*', HomeController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':organizationId', _organization_organizationId_controller__WEBPACK_IMPORTED_MODULE_3__.OrganizationController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':workspaceId', _workspace_controller__WEBPACK_IMPORTED_MODULE_2__.WorkspaceLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('workspace/select', _workspace_select_controller__WEBPACK_IMPORTED_MODULE_7__.WorkspaceSelectController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('organization/select', _organization_select_controller__WEBPACK_IMPORTED_MODULE_8__.OrganizationSelectController)), 
     // Team Routes
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@realm', _controller__WEBPACK_IMPORTED_MODULE_9__.RealmLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('settings', _settings_controller__WEBPACK_IMPORTED_MODULE_18__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_19__.GeneralSettingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('security', _settings_security_controller__WEBPACK_IMPORTED_MODULE_20__.SecuritySettingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('users', _settings_users_controller__WEBPACK_IMPORTED_MODULE_21__.UsersController))), 
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@realm', _controller__WEBPACK_IMPORTED_MODULE_9__.RealmLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('settings', _settings_controller__WEBPACK_IMPORTED_MODULE_18__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_19__.GeneralSettingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('security', _settings_security_controller__WEBPACK_IMPORTED_MODULE_20__.SecuritySettingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('users', _settings_users_controller__WEBPACK_IMPORTED_MODULE_21__.UsersController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('connections', _settings_connections_controller__WEBPACK_IMPORTED_MODULE_23__.ConnectionsController))), 
     // Personel Routes
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@private', _controller__WEBPACK_IMPORTED_MODULE_9__.RealmLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.PersonelWorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('settings', _settings_controller__WEBPACK_IMPORTED_MODULE_18__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_19__.GeneralSettingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('security', _settings_security_controller__WEBPACK_IMPORTED_MODULE_20__.SecuritySettingController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@public', _workspace_controller__WEBPACK_IMPORTED_MODULE_15__.PublicWorkspaceLayoutController).children(
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@private', _controller__WEBPACK_IMPORTED_MODULE_9__.RealmLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.PersonelWorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@public', _workspace_controller__WEBPACK_IMPORTED_MODULE_15__.PublicWorkspaceLayoutController).children(
     //  UIRoute(':workspaceId', PublicWorkspaceLayoutController).children(
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children(
     //          UIRoute('applet/:appletId/*', AppletController),
@@ -14211,6 +14213,55 @@ var SettingsController = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/routes/@/settings/connections/+controller.ts":
+/*!**********************************************************!*\
+  !*** ./src/routes/@/settings/connections/+controller.ts ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ConnectionsController: () => (/* binding */ ConnectionsController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/SettingsMenu */ "./src/routes/@/settings/views/SettingsMenu.ts");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var ConnectionsController = /** @class */ (function (_super) {
+    __extends(ConnectionsController, _super);
+    function ConnectionsController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ConnectionsController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__.SettingsMenu)('connections'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.Heading)('Connections'))));
+    };
+    return ConnectionsController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
 /***/ "./src/routes/@/settings/general/+controller.ts":
 /*!******************************************************!*\
   !*** ./src/routes/@/settings/general/+controller.ts ***!
@@ -14555,6 +14606,11 @@ var SettingsMenu = function (selectedId) {
                 {
                     id: 'users',
                     title: 'Users',
+                    icon: _SettingsIcons__WEBPACK_IMPORTED_MODULE_2__.UsersSettingIcon,
+                },
+                {
+                    id: 'connections',
+                    title: 'Connections',
                     icon: _SettingsIcons__WEBPACK_IMPORTED_MODULE_2__.UsersSettingIcon,
                 },
             ]
