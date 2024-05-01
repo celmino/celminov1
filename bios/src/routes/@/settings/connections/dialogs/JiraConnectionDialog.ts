@@ -54,17 +54,17 @@ export const JiraConnectionDialog = (workspaceId: string) => {
                 "host": {
                     "label": "Base URI *",
                     "type": "text",
-                    "name": "host"
+                    "name": "key.host"
                 },
                 "username": {
                     "label": "Username *",
                     "type": "text",
-                    "name": "username"
+                    "name": "key.username"
                 },
                 "token": {
                     "label": "API token *",
                     "type": "text",
-                    "name": "token"
+                    "name": "key.token"
                 }
             }
         }

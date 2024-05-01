@@ -12,5 +12,11 @@ export const Connectors = [
         name: 'CSP',
         image:'/images/CSP.png',
         dialog: JiraConnectionDialog
+    },
+    {
+        id:'sonarcube',
+        name: 'Sonar Cube',
+        image:'/images/CSP.png',
+        dialog: JiraConnectionDialog
     }
 ]

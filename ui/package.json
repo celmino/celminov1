@@ -110,6 +110,7 @@
         "@tuval/forms": "^1.0.180",
         "@uiw/react-color-circle": "^2.1.0",
         "dts-bundle": "^0.7.3",
+        "object-path": "^0.11.8",
         "shelljs": "^0.8.5",
         "ts-loader": "^9.5.1",
         "typescript": "^5.4.5",

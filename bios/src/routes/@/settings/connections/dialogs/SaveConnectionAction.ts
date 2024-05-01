@@ -29,7 +29,7 @@ export const SaveJiraConnectionAction = (formMeta, action) => UIViewBuilder(() =
         errors: true
     });
 
-    alert(JSON.stringify(formData))
+  
 
     return (
         LoadingButton().appearance("primary").label('Save')
@@ -37,6 +37,8 @@ export const SaveJiraConnectionAction = (formMeta, action) => UIViewBuilder(() =
             .onClick(() => {
 
                 const data = formData?.values ?? {};
+
+                alert(JSON.stringify(data))
 
                 createDocument(
                     {

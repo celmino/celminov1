@@ -171,6 +171,7 @@ export const TextFormView = (fieldInfo: any) => {
         })
             .isRequired(true)
             .label(label)
+            .defaultValue(defaultValue)
             .name(name)
             .validate((value) => {
                 return value && value.length < 8 ? 'TOO_SHORT' : undefined
