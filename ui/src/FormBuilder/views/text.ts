@@ -93,7 +93,7 @@ export const _TextFormView = (fieldInfo: any) => {
 
 
 export const TextFormView = (fieldInfo: any) => {
-    let { label, name, multiline, autofocus } = fieldInfo;
+    let { label, name, multiline, autofocus, isDisabled = false, defaultValue } = fieldInfo;
 
     const [fieldValue, setFieldValue] = useState('');
     const [fieldHasError, setFieldHasError] = useState(false);
@@ -146,7 +146,11 @@ export const TextFormView = (fieldInfo: any) => {
                     (
                         multiline ?
                             TextArea().props(props).onBlur(handleBlurEvent).autoFocus(autofocus) :
-                            A().props(props).autoFocus(autofocus)
+                            A()
+                                .isDisabled(isDisabled)
+                                .value(defaultValue)
+                                .props(props)
+                                .autoFocus(autofocus)
                                 .onBlur(handleBlurEvent)
                         ,
                         error ?

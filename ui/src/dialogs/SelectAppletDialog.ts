@@ -164,7 +164,7 @@ export class SelectAppletDialog extends DialogView {
                                             Text('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879') as any,
                                             HStack({ alignment: cLeading })(
                                                 Text(opa.description || '')
-                                                //.maxLines(2)
+                                                .ellipsisMaxLines(2)
                                                 .fontSize('1.4rem').foregroundColor('#676879') as any
 
                                             ).height()
