@@ -1,9 +1,15 @@
 import { FormBuilder } from "@celmino/ui";
 import { useFormState, LoadingButton } from "@realmocean/atlaskit";
-import { useCreateDocument } from "@realmocean/sdk";
+import { CspBroker, JiraBroker, useCreateDocument, EncryptionBroker } from "@realmocean/sdk";
+import { is } from "@tuval/core";
 import { UIViewBuilder, nanoid, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
+import objectPath from 'object-path'
 
-export const SaveJiraConnectionAction = (formMeta, action) => UIViewBuilder(() => {
+const brokers = {
+    'com.celmino.connection.jira': JiraBroker,
+    'com.celmino.connection.csp': CspBroker
+}
+export const SaveConnectionAction = (formMeta, action) => UIViewBuilder(() => {
     const { label, successAction, successActions } = action;
     const formController = useFormController();
     const dialog = useDialog();
@@ -20,59 +26,47 @@ export const SaveJiraConnectionAction = (formMeta, action) => UIViewBuilder(() =
     const views = []
     const { workspaceId, appletId } = formMeta;
 
-    const { createDocument: createWorkspaceTreeItem } = useCreateDocument(workspaceId, 'workspace', 'ws_tree');
-    const { createDocument, isLoading } = useCreateDocument(workspaceId, appletId, 'documents');
-    const { createDocument: createDocumentContent } = useCreateDocument(workspaceId, appletId, 'documentContent');
+    const { createDocument: createConnection } = useCreateDocument(workspaceId, 'workspace', 'connections');
 
     const formData: any = useFormState({
         values: true,
         errors: true
     });
 
-  
+
 
     return (
         LoadingButton().appearance("primary").label('Save')
             // .loading(isLoading)
-            .onClick(() => {
+            .onClick(async () => {
 
                 const data = formData?.values ?? {};
+                const key = await EncryptionBroker.Default.createKey(data.key);
 
-                alert(JSON.stringify(data))
+                if (is.array(data.secret)) {
+                    data.secret.forEach(secret => {
+                        objectPath.del(data, secret);
+                    })
+                } else {
+                    objectPath.del(data, data.secret);
+                }
 
-                createDocument(
+
+               // alert(JSON.stringify(data))
+
+                createConnection(
                     {
                         data: {
-                            ...data
+                            name: data.name,
+                            type: data.type,
+                            secret: data.secret,
+                            key: key,
+                            data: JSON.stringify(data.key)
                         }
                     },
                     (document) => {
-                        createDocumentContent({
-                            documentId: document.$id,
-                            data: {
-                                content: ''
-                            }
-                        }, (document) => {
 
-                            createWorkspaceTreeItem({
-                                documentId: document.$id,
-                                data: {
-                                    name: data.name,
-                                    type: 'document',
-                                    parent: data.parent,
-                                    tree_widget: 'com.celmino.applet.document-management',
-                                    appletId,
-                                    path: (new Date()).getTime().toString(),
-                                    iconName: 'document',
-                                    iconCategory: 'SystemIcons',
-                                    //viewer:'com.tuvalsoft.viewer.document'
-                                }
-                            }, (item) => {
-
-                               
-                                dialog.Hide();
-                            })
-                        })
+                        dialog.Hide();
                     }
                 )
             })
@@ -80,5 +74,5 @@ export const SaveJiraConnectionAction = (formMeta, action) => UIViewBuilder(() =
 }
 )
 
-SaveJiraConnectionAction.Id = nanoid();
-FormBuilder.injectAction(SaveJiraConnectionAction);
+SaveConnectionAction.Id = nanoid();
+FormBuilder.injectAction(SaveConnectionAction);

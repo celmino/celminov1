@@ -1,3 +1,4 @@
+import { CspConnectionDialog } from "./CspConnectionDialog";
 import { JiraConnectionDialog } from "./JiraConnectionDialog";
 
 export const Connectors = [
@@ -11,7 +12,7 @@ export const Connectors = [
         id:'csp',
         name: 'CSP',
         image:'/images/CSP.png',
-        dialog: JiraConnectionDialog
+        dialog: CspConnectionDialog
     },
     {
         id:'sonarcube',

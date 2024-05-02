@@ -10,7 +10,7 @@ const fs = require('fs');
 
 var libraryName = '@tuval/forms/core';
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 function DtsBundlePlugin() {}
@@ -41,7 +41,7 @@ const opts = {
 };
 
 const umdConfig = {
-   // mode: 'development',
+    mode: 'development',
    // devtool: 'source-map',
     //devtool: 'none',
     entry: './src/index.ts',

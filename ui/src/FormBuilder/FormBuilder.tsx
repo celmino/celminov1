@@ -36,6 +36,10 @@ import { CheckBoxFormView } from "./views/checkbox";
 import { CustomAction } from "./actions/CustomAction";
 import { KeyValueView } from "./views/keyvalue";
 import { Button, ButtonGroup, Form, FormField, FormFooter, FormHeader, FormSection, LoadingButton, TextField } from "@realmocean/atlaskit";
+import { renderContainers } from "./renderContainers";
+import { CollapseFormView } from "./containers/collapse";
+import { ColumnFormView } from "./containers/column";
+import { CategoryFormLayout } from "./containers/category";
 
 
 export const UIFormBuilderContext = createContext(null!);
@@ -158,165 +162,8 @@ const _CheckBoxFormView = (textData: any) => {
 
 
 
-const CategoryFormLayout = (columnInfo: any, fieldMap: any) => {
-
-    const cats = {};
-    const views = [];
-    const { containers } = columnInfo;
-
-    for (let key in fieldMap) {
-        const field = fieldMap[key];
-
-        if (fieldMap[key].type == 'virtual') {
-            continue;
-        }
-
-        if (field.category != null) {
-            const list = cats[field.category] || [];
-            list.push(field);
-            cats[field.category] = list;
-        } else {
-            const list = cats['Other'] || [];
-            list.push(field);
-            cats['Other'] = list;
-        }
-    }
 
 
-    for (let cat in cats) {
-        const list = cats[cat];
-
-        views.push(
-            HStack({ alignment: cTopLeading, spacing: 20 })(
-                HStack({ alignment: cLeading })(
-                    Text(cat).fontFamily('-apple-system,BlinkMacSystemFont,Segoe UI,roboto,Helvetica Neue,helvetica,arial,sans-serif')
-                        .fontWeight('500').fontSize(14).foregroundColor('rgb(42, 46, 52)')
-                ).height().width(100),
-                VStack(
-                    ...ForEach(list)((field: any) =>
-                        VStack({ alignment: cLeading })(
-                            label(field),
-                            field.category === cat ? FormBuilder.getView(field) : Fragment()
-                        ).height()
-                    )
-                )
-            )
-                .borderBottom('1px solid #E8EAED')
-                .padding(24)
-        );
-
-
-    }
-
-    return (
-        VStack({ alignment: cTopLeading, spacing: 20 })(
-            ...views
-        )
-    )
-}
-
-const ColumnFormView = (columnInfo: any, fieldMap) => {
-
-    const views = [];
-    const { containers } = columnInfo;
-    for (let i = 0; i < containers.length; i++) {
-        const { label, fields } = containers[i];
-        views.push(
-            VStack({ alignment: cTopLeading, spacing: 10 })(
-                Text(label).fontSize(17).lineHeight(22).foregroundColor('#333D47'),
-                ...ForEach(fields)((field) =>
-                    FormBuilder.getView(fieldMap[field as any])
-                )
-            )
-        )
-    }
-    return (
-        HStack({ alignment: cTopLeading, spacing: 20 })(
-            ...views
-        )
-    )
-}
-
-const renderContainers = (layout: any, fieldMap) => {
-    const views = []
-    if (layout != null && layout.type == null && is.array(layout.containers)) {
-        for (let i = 0; i < layout.containers.length; i++) {
-            const container = layout.containers[i];
-            if (container != null && container.type != null) {
-                const subContainers = renderContainers(container, fieldMap);
-                if (is.array(subContainers)) {
-                    views.push(...subContainers);
-                }
-                const factoryFunc = FormBuilder.containerFactories[container.type];
-                if (factoryFunc == null) {
-                    views.push(Text(layout.type + ' not found'))
-                } else {
-                    views.push(factoryFunc(container, fieldMap))
-                }
-            } else if (container.fields != null) {
-                for (let i = 0; i < container.fields.length; i++) {
-                    const viewName = container.fields[i];
-                    const view = fieldMap[viewName];
-                    const factoryFunc = FormBuilder.viewFactories[view.type];
-                    if (factoryFunc == null) {
-                        views.push(Text(view.type + ' not found'))
-                    } else {
-                        views.push(factoryFunc(fieldMap[viewName]));
-                    }
-                }
-            }
-        }
-    } else if (layout.fields != null) {
-        for (let i = 0; i < layout.fields.length; i++) {
-            const viewName = layout.fields[i];
-            const view = fieldMap[viewName];
-            const factoryFunc = FormBuilder.viewFactories[view.type];
-            if (factoryFunc == null) {
-                views.push(Text(view.type + ' not found'))
-            } else {
-                views.push(factoryFunc(fieldMap[viewName]));
-            }
-        }
-    }
-
-    return views;
-}
-const CollapseFormView = (columnInfo: any, fieldMap) => {
-
-    const views = [];
-    const { containers } = columnInfo;
-    for (let i = 0; i < containers.length; i++) {
-        const { label, fields } = containers[i];
-        const subContainers = renderContainers(containers[i], fieldMap);
-        const subViews = [];
-        if (is.array(subContainers)) {
-            subViews.push(...subContainers);
-        }
-        views.push(
-            VStack({ alignment: cTopLeading, spacing: 10 })(
-                HStack({ alignment: cLeading })(
-                    Text(label).fontFamily('source sans pro').fontSize(17).lineHeight(40).foregroundColor('#333D47')
-                )
-                    .height()
-                    .padding()
-                    .allHeight(40)
-                    .borderBottom('solid 1px #D6E4ED'),
-                VStack({ alignment: cTopLeading })(
-                    ...subViews
-                    /* ...ForEach(fields)((field) =>
-                        FormBuilder.getView(fieldMap[field as any])
-                    ) */
-                ).padding()
-            ).height().background('white')
-                .border('solid 1px #D6E4ED').cornerRadius(5)
-        )
-    }
-    return (
-        VStack({ alignment: cTopLeading, spacing: 20 })(
-            ...views
-        )
-    )
-}
 
 
 
@@ -435,6 +282,7 @@ export class FormBuilder {
     }
 
     public static render(_formMeta: string | object | object[]) {
+        
         if (_formMeta == null) {
             return Fragment();
         }
@@ -479,6 +327,7 @@ export class FormBuilder {
                         <UIFormBuilderContext.Provider value={contextValue}>
                             {
                                 UIViewBuilder(() => {
+                             
                                     let invalidateResource = null;
 
                                     let isFormLoading = false;
@@ -503,7 +352,6 @@ export class FormBuilder {
                                              }
                                          }
                                      } */
-
 
 
                                     if (layout != null && layout.type != null) {
@@ -579,7 +427,7 @@ export class FormBuilder {
                                                             ...ForEach(views)(view => view),
 
                                                         )
-                                                            .display('block')
+                                                           // .display('block')
                                                         ,
 
                                                         FormFooter(

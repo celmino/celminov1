@@ -93,7 +93,8 @@ export const _TextFormView = (fieldInfo: any) => {
 
 
 export const TextFormView = (fieldInfo: any) => {
-    let { label, name, multiline, autofocus, isDisabled = false, defaultValue } = fieldInfo;
+    let { label, name, multiline, autofocus, isDisabled = false, defaultValue,
+        helpMessage } = fieldInfo;
 
     const [fieldValue, setFieldValue] = useState('');
     const [fieldHasError, setFieldHasError] = useState(false);
@@ -140,41 +141,45 @@ export const TextFormView = (fieldInfo: any) => {
     }, [errorMessageText]);
 
     return (
-        FormField((props, error, valid, meta) => {
-            return (
-                Fragment
-                    (
-                        multiline ?
-                            TextArea().props(props).onBlur(handleBlurEvent).autoFocus(autofocus) :
-                            A()
-                                .isDisabled(isDisabled)
-                                .value(defaultValue)
-                                .props(props)
-                                .autoFocus(autofocus)
-                                .onBlur(handleBlurEvent)
-                        ,
-                        error ?
-                            ErrorMessage(' This username is already in use, try another one')
-                            : Fragment()
+        HStack({ alignment: cLeading })
+            (
+                FormField((props, error, valid, meta) => {
+                    return (
+                        Fragment
+                            (
+                                multiline ?
+                                    TextArea().props(props).onBlur(handleBlurEvent).autoFocus(autofocus) :
+                                    A()
+                                        .isDisabled(isDisabled)
+                                        .value(defaultValue)
+                                        .helpMessage(helpMessage)
+                                        .props(props)
+                                        .autoFocus(autofocus)
+                                        .onBlur(handleBlurEvent)
+                                ,
+                                error ?
+                                    ErrorMessage(' This username is already in use, try another one')
+                                    : Fragment()
 
 
-                        /* !fieldHasError && errorMessageText === 'IS_VALID' &&
-                        ValidMessage(validUsername)
-                        ,
-                        fieldHasError && errorMessageText === 'TOO_SHORT' &&
-                        ErrorMessage(shortUsername)
-                        ,
-                        fieldHasError && errorMessageText === 'IN_USE' &&
-                        ErrorMessage(usernameInUse) */
+                                /* !fieldHasError && errorMessageText === 'IS_VALID' &&
+                                ValidMessage(validUsername)
+                                ,
+                                fieldHasError && errorMessageText === 'TOO_SHORT' &&
+                                ErrorMessage(shortUsername)
+                                ,
+                                fieldHasError && errorMessageText === 'IN_USE' &&
+                                ErrorMessage(usernameInUse) */
+                            )
                     )
-            )
-        })
-            .isRequired(true)
-            .label(label)
-            .defaultValue(defaultValue)
-            .name(name)
-            .validate((value) => {
-                return value && value.length < 8 ? 'TOO_SHORT' : undefined
-            })
+                })
+                    .isRequired(true)
+                    .label(label)
+                    .defaultValue(defaultValue)
+                    .name(name)
+                    .validate((value) => {
+                        return value && value.length < 8 ? 'TOO_SHORT' : undefined
+                    })
+            ).height().display('block')
     )
 }

@@ -8,7 +8,7 @@ import { DynoDialog, FormBuilder, useRealm } from "@celmino/ui";
 export class SelectConnectionTypeDialog extends DialogView {
 
     @ViewProperty()
-    private form: any;
+    private workspaceId: string;
 
     public constructor() {
         super();
@@ -18,7 +18,8 @@ export class SelectConnectionTypeDialog extends DialogView {
         this.Height = '100%'
     }
 
-    public BindRouterParams() {
+    public BindRouterParams({ workspaceId }) {
+        this.workspaceId = workspaceId;
     }
 
     public OnOK() {
@@ -53,29 +54,33 @@ export class SelectConnectionTypeDialog extends DialogView {
                                 .background({ hover: '#d6e4edcc' })
                                 .height()
                                 .onClick(() => {
-                                    setForm(connector.dialog('1'));
+                                    setForm(connector.dialog(this.workspaceId));
                                     //  DynoDialog.Show(connector.dialog('1'))
                                 })
 
                         )
                     )
+                        .background('white')
                 )
+                    .background('#f8faff')
                     .padding()
                 :
                 UIViewBuilder(() =>
-                    VStack({alignment:cTopLeading})(
+                    VStack({ alignment: cTopLeading })(
+
                         FormBuilder.render(form)
                     )
-                    .padding()
+                        .background('#f8faff')
+                        .padding()
                 )
 
         )
     }
 
-    public static Show() {
+    public static Show(workspaceId: string) {
         const dialog = new SelectConnectionTypeDialog();
         dialog.ShowHeader = false;
-        dialog.BindRouterParams();
+        dialog.BindRouterParams({ workspaceId });
         return dialog.ShowDialogAsync();
     }
 }

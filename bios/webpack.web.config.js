@@ -25,7 +25,7 @@ const copyright = `
 ******************************************************************************************************************************@*/
 `;
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const opts = {
     WEB: true,
