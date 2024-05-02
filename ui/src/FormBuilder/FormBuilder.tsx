@@ -15,7 +15,7 @@ import React, { createContext, useState, useCallback } from "react";
 
 
 
-import { CheckBox, CodeEditor, ConfigContext, ForEach, Fragment, HStack, Icon, Icons, ReactView, ScrollView, Spacer, Spinner, Text, TextAlignment, UIFormController, UIView, UIViewBuilder, VStack, cLeading, cTopLeading, cVertical, useDialog, useFormController } from "@tuval/forms";
+import { CheckBox, CodeEditor, ConfigContext, ForEach, Fragment, HStack, Icon, Icons, ReactView, ScrollView, Spacer, Spinner, Text, TextAlignment, UIFormController, UIImage, UIView, UIViewBuilder, VStack, cLeading, cTopLeading, cVertical, useDialog, useFormController } from "@tuval/forms";
 import beautify from "json-beautify";
 import { NextFormAction } from "./actions/NextFormAction";
 import { PostToCallerAction } from "./actions/PostToCallerAction";
@@ -41,6 +41,13 @@ import { CollapseFormView } from "./containers/collapse";
 import { ColumnFormView } from "./containers/column";
 import { CategoryFormLayout } from "./containers/category";
 
+const CloseIcon = () => (
+    <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" width={24} height={24}>
+        <path d="M13.01,12.16l5.48-5.48c0.23-0.23,0.23-0.61,0-0.85s-0.61-0.23-0.85,0l-5.48,5.48L6.69,5.84
+  c-0.23-0.23-0.61-0.23-0.85,0s-0.23,0.61,0,0.85l5.48,5.48l-5.48,5.48c-0.23,0.23-0.23,0.61,0,0.85c0.12,0.12,0.27,0.18,0.42,0.18
+  s0.31-0.06,0.42-0.18l5.48-5.48l5.48,5.48c0.12,0.12,0.27,0.18,0.42,0.18s0.31-0.06,0.42-0.18c0.23-0.23,0.23-0.61,0-0.85
+  L13.01,12.16z"></path></svg>
+)
 
 export const UIFormBuilderContext = createContext(null!);
 
@@ -282,7 +289,7 @@ export class FormBuilder {
     }
 
     public static render(_formMeta: string | object | object[]) {
-        
+
         if (_formMeta == null) {
             return Fragment();
         }
@@ -327,13 +334,13 @@ export class FormBuilder {
                         <UIFormBuilderContext.Provider value={contextValue}>
                             {
                                 UIViewBuilder(() => {
-                             
+
                                     let invalidateResource = null;
 
                                     let isFormLoading = false;
 
                                     const views = []
-                                    const { fieldMap, layout, mode, resource, resourceId, title, protocol, mutation, query, actions, width = '100%', height = '100%' } = formMeta as any;
+                                    const { fieldMap, layout, mode, resource, resourceId, title, image, protocol, mutation, query, actions, width = '100%', height = '100%' } = formMeta as any;
 
                                     /*  if (protocol) {
                                       
@@ -420,14 +427,32 @@ export class FormBuilder {
                                                 Form({ alignment: cTopLeading })
                                                     (
 
-                                                        title && FormHeader(title),
+
+                                                        HStack({ alignment: cLeading, spacing: 10 })
+                                                            (
+                                                                title && FormHeader(title),
+                                                                Spacer(),
+                                                                image && UIImage(image).imageHeight(28).marginTop('-20px'),
+                                                                HStack(
+                                                                    Icon(CloseIcon)
+                                                                ).width(32).height(32)
+                                                                .cursor('pointer')
+                                                                .cornerRadius('50%')
+                                                                .padding(2)
+                                                                .background({hover:'rgb(240, 245, 249)'})
+                                                                .transition('background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms')
+                                                                .marginBottom('14px')
+                                                                .onClick(()=>{
+                                                                    dialog.Hide();
+                                                                })
+                                                            ).height(),
 
 
-                                                        VStack({ alignment: cTopLeading })(
+                                                        VStack({ alignment: cTopLeading, spacing: 10 })(
                                                             ...ForEach(views)(view => view),
 
                                                         )
-                                                           // .display('block')
+                                                       
                                                         ,
 
                                                         FormFooter(
@@ -438,10 +463,7 @@ export class FormBuilder {
                                                                     }
 
                                                                 }),
-                                                                /*  LoadingButton()
-                                                                     .appearance("primary")
-                                                                     .label('Save')
-                                                                     .type("submit"), */
+                                                               
                                                                 Button().label('Cancel')
                                                                     .onClick(() => {
                                                                         dialog.Hide();
@@ -452,70 +474,10 @@ export class FormBuilder {
                                                     )
                                                     .onSubmit((data) => alert(JSON.stringify(data)))
                                             )
-                                             .width(width)
-                                            .height(height) 
+                                                .width(width)
+                                                .height(height)
                                                 .padding()
-                                        /* VStack({ alignment: cTopLeading })
-                                            (
-                                                Form({})
-                                                    (
-                                                        title && FormHeader(title),
-
-                                                        VStack(
-                                                            ...ForEach(views)(view => view),
-                                                         
-                                                        )
-                                                        ,
-                                                        FormFooter(
-                                                            ButtonGroup(
-                                                                LoadingButton()
-                                                                .appearance("primary")
-                                                                .label('Save')
-                                                                    .type("submit"),
-                                                                   Button().label('Cancel')
-                                                            )
-                                                        )
-
-                                                    )
-                                                    .onSubmit((data) => alert(JSON.stringify(data)))
-                                            ) */
-                                        /*  VStack({ alignment: cTopLeading, spacing: 24 })(
-                                             title && FormTitle(title),
-                                            
-                                             formMode === 'code' ?
-                                                 CodeEditor()
-                                                     .value(beautify(formMeta, null, 2, 50))
-                                                     .width('100%')
-                                                     .height('100%') :
-
-                                                 ScrollView({ axes: cVertical, alignment: cTopLeading })(
-                                                     VStack({ alignment: cTopLeading })(
-                                                       
-                                                         VStack({ alignment: cTopLeading })(
-                                                             ...ForEach(views)(view => view)
-                                                         )
-                                                             .height()
-                                                             .background('white')
-                                                       
-
-                                                     )
-                                                         .background('white')
-                                                 ),
-
-                                             HStack({ alignment: cLeading })(
-
-                                                 ...ForEach(actions || [])((action: any) => {
-                                                     if (FormBuilder.actionFactories[action?.type]) {
-                                                         return FormBuilder.actionFactories[action?.type](formMeta, action)
-                                                     }
-                                                   
-                                                 })
-
-                                             )
-                                                 .height()
-                                           
-
-                                         ) */
+                                       
 
                                     )
 

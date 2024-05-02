@@ -1,11 +1,11 @@
-import { ForEach, HStack, ReactView, Spacer, Spinner, Text, UIController, UIImage, UIRouteOutlet, UIView, UIViewBuilder, VStack, cLeading, cTopLeading, cVertical } from "@tuval/forms";
+import { ForEach, HStack, ReactView, Spacer, Spinner, Text, UIController, UIImage, UIRouteOutlet, UIView, UIViewBuilder, VStack, cLeading, cTop, cTopLeading, cVertical } from "@tuval/forms";
 import { SettingsMenu } from "../views/SettingsMenu";
 import { Heading, Button, Table } from "@realmocean/atlaskit";
 import { useListDocuments } from "@realmocean/sdk";
 import { useRealm } from "@celmino/ui";
 import { SelectConnectionTypeDialog } from "./dialogs/SelectConnectionDialog";
 import React from "react";
-
+import { Connectors } from "./dialogs/Connectors";
 
 
 export const createHead = (withWidth: boolean) => {
@@ -73,9 +73,10 @@ export class ConnectionsController extends UIController {
                   HStack({ alignment: cLeading, spacing: 5 })
                     (
                       HStack(
-                        UIImage('/images/jira-logo.svg')
+                        UIImage(Connectors[document.type].image)
+                        .imageWidth(32).imageHeight(32)
                       )
-                        .width(32).height(32),
+                        .width().height(),
                       ReactView(
                         <a href="https://atlassian.design" style={{ fontSize: '14px', color: '#0C66E4' }}>{document.name}</a>
                       )
@@ -124,37 +125,45 @@ export class ConnectionsController extends UIController {
 
           console.log(rows)
           return (
+
             HStack({ alignment: cTopLeading })(
               SettingsMenu('connections'),
-              VStack({ alignment: cTopLeading })(
-                HStack({alignment:cLeading})(
-                  Heading('Connections'),
-                  Spacer(),
-                  Button().label('Create Connection')
-                    .appearance('primary')
-                    .onClick(() => {
-                      SelectConnectionTypeDialog.Show(realm.$id);
-                    })
-                ).height(),
-                VStack({ alignment: cTopLeading })(
-                  Table().rows(rows)
-                    .head(createHead(true) as any)
-                  ,
-                  /*   ...ForEach(documents)(con => 
-                        HStack({alignment:cLeading})(
-                            HStack({alignment:cLeading})(
-                            Text(con.name)
-                            ).height(32).maxWidth(200),
-                            HStack({alignment:cLeading})(
-                                Text(con.type)
-                                ).height(32).maxWidth(200)
-                        ).height()
-                    ) */
+              HStack({ alignment: cTop })(
+                VStack({ alignment: cTopLeading, spacing: 20 })(
+                  HStack({ alignment: cLeading })(
+                    Heading('Connections').size("large"),
+                    Spacer(),
+                    Button().label('Create Connection')
+                      .appearance('primary')
+                      .onClick(() => {
+                        SelectConnectionTypeDialog.Show(realm.$id);
+                      })
+                  ).height(),
+                  VStack({ alignment: cTopLeading })(
+                    Table().rows(rows)
+                      .head(createHead(true) as any)
+                    ,
+                    /*   ...ForEach(documents)(con => 
+                          HStack({alignment:cLeading})(
+                              HStack({alignment:cLeading})(
+                              Text(con.name)
+                              ).height(32).maxWidth(200),
+                              HStack({alignment:cLeading})(
+                                  Text(con.type)
+                                  ).height(32).maxWidth(200)
+                          ).height()
+                      ) */
+
+                  ).padding()
 
                 )
-
-              ).padding()
+                .padding(20)
+                .maxWidth('1200px')
+              )
+                
             )
+
+
           )
         })
 

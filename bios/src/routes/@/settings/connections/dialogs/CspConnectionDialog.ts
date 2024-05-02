@@ -3,6 +3,7 @@ import { useCreateDocument } from "@realmocean/sdk";
 import { EventBus } from "@tuval/core";
 import { UIViewBuilder, useFormController, useDialog, useFormBuilder, useNavigate, Button, Text, nanoid } from "@tuval/forms";
 import { SaveConnectionAction } from "./SaveConnectionAction";
+import { Connectors } from "./Connectors";
 
 
 
@@ -12,6 +13,7 @@ export const CspConnectionDialog = (workspaceId: string) => {
     } else {
         return {
             "title": 'Create CSP connection',
+            "image": Connectors['com.celmino.connection.csp'].image2,
             "workspaceId": workspaceId,
             "type":"jira",
             /*   "mutation":"_create_workspace", */

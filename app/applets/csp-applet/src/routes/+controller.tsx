@@ -36,7 +36,7 @@ import { Heading, TextField, LoadingButton } from "@realmocean/atlaskit";
 export class AppletController extends UIController {
     public override LoadView(): UIView {
         const { applet } = useApplet();
-        const {navigate} = useAppletNavigate();
+        const { navigate } = useAppletNavigate();
 
         const [token, setToken] = useLocalStorage(`${applet.$id}-token`, null);
         useDocumentTitle('Celmino | ' + applet.name);
@@ -46,21 +46,23 @@ export class AppletController extends UIController {
             ReactView(
                 <DialogStack>
                     {
-                        VStack({ alignment: cTopLeading, spacing: 10 })(
+                        VStack({ alignment: cTopLeading })(
                             ActionPanel(),
                             ViewHeader(applet.name, (name) => {
                                 /* updateAppletName(name, ()=> {
                                     EventBus.Default.fire('applet.added', { treeItem: applet })
                                 }) */
                             }),
-                           EmptyState()
-                           .imageUrl('/images/CSP.png')
-                           .header('Connect to Csp Project')
-                           .description('We need to have your token to use Jira API for retrieving data. Login to Jira and create token for Celmino. ')
-                           .buttonTitle('Connect')
-                           .onButtonClick(()=> {
-                            navigate('settings/connect');
-                           })
+                            HStack({ alignment: cTop })(
+                                EmptyState()
+                                    .imageUrl('/images/CSP.png')
+                                    .header('Connect to Csp Project')
+                                    .description('We need to have your token to use Jira API for retrieving data. Login to Jira and create token for Celmino. ')
+                                    .buttonTitle('Connect')
+                                    .onButtonClick(() => {
+                                        navigate('settings/connect');
+                                    })
+                            ).padding()
 
                         )
                             .render()

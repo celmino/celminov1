@@ -16,20 +16,9 @@ export const ViewHeader = (header, onHeaderChange: any = void 0) => UIViewBuilde
   
 
     return (
-        VStack({ alignment: cTopLeading })(
-            VStack({ alignment: cTopLeading })(
-                /*   HStack({ alignment: cLeading, spacing: 5 })(
-                      Icon(SvgIcon('svg-sprite-global__comment', '#87909e')),
-                      Text('Add comment').fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')
-                  )
-                      .foregroundColor('#87909e')
-                      .height(28).width().padding('0 15px').cornerRadius(4).background({ hover: 'rgb(240, 241, 243)' })
-                      .onClick(() => {
-                          openDialog({
-                              title: 'Open',
-                              view: Text('Hans')
-                          })
-                      }), */
+     
+         
+               
                 HStack({ alignment: cLeading })(
                     HStack(
                         UIWidget("com.tuvalsoft.widget.icons")
@@ -66,25 +55,10 @@ export const ViewHeader = (header, onHeaderChange: any = void 0) => UIViewBuilde
                         is.function(header) ? header() : Fragment(),
                 )
                     .background('white')
-                    .height()
-                    //.paddingBottom('10px'),
-                /*    HStack({ alignment: cLeading, spacing: 10 })(
-                       HStack({ spacing: 5 })(
-                           HStack(
-                               Text('ST').foregroundColor('white').fontSize(10).fontWeight('500').fontFamily(fontFamily).lineHeight('1.33').kerning('-0.003em')
-                           ).width(20).height(20).cornerRadius('50%').background('rgb(255, 87, 34)'),
-                           Text('You').foregroundColor('#87909e')
-                       ).height().width(),
-                       HStack(
-                           Text('Last Updated: 6/29/23 at 11:27 pm').foregroundColor('#87909e')
-                       ).height().width()
-                   ).height() */
-            ).height()
+                    .allHeight(60)
+                 
 
-            // .borderBottom('1px solid #F2F2F2')
-        )
-            //.paddingBottom('0px')
-            .height()
+          
 
 
     )

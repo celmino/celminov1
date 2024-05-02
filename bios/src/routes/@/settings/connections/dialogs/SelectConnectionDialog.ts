@@ -13,7 +13,7 @@ export class SelectConnectionTypeDialog extends DialogView {
     public constructor() {
         super();
         this.Header = 'Form'
-        this.Width = '624px';
+        this.Width = '724px';
         this.Position = 'right';
         this.Height = '100%'
     }
@@ -40,10 +40,10 @@ export class SelectConnectionTypeDialog extends DialogView {
                     TextField().label('Application')
                         .placeholder('Start typing to browse applications'),
                     VStack({ alignment: cTopLeading })(
-                        ...ForEach(Connectors)((connector, index) =>
+                        ...ForEach(Object.getOwnPropertyNames(Connectors))((connectorName, index) =>
                             HStack({ alignment: cLeading, spacing: 10 })(
-                                UIImage(connector.image).width(32).height(32),
-                                Text(connector.name)
+                                UIImage(Connectors[connectorName].image).width(32).height(32),
+                                Text(Connectors[connectorName].name)
                             )
                                 .cursor('pointer')
                                 .padding(5)
@@ -54,13 +54,14 @@ export class SelectConnectionTypeDialog extends DialogView {
                                 .background({ hover: '#d6e4edcc' })
                                 .height()
                                 .onClick(() => {
-                                    setForm(connector.dialog(this.workspaceId));
+                                    setForm(Connectors[connectorName].dialog(this.workspaceId));
                                     //  DynoDialog.Show(connector.dialog('1'))
                                 })
 
                         )
                     )
                         .background('white')
+                        .height()
                 )
                     .background('#f8faff')
                     .padding()
