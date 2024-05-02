@@ -1,4 +1,4 @@
-import { ForEach, HStack, ReactView, Spinner, Text, UIController, UIRouteOutlet, UIView, UIViewBuilder, VStack, cLeading, cTopLeading } from "@tuval/forms";
+import { ForEach, HStack, ReactView, Spacer, Spinner, Text, UIController, UIImage, UIRouteOutlet, UIView, UIViewBuilder, VStack, cLeading, cTopLeading, cVertical } from "@tuval/forms";
 import { SettingsMenu } from "../views/SettingsMenu";
 import { Heading, Button, Table } from "@realmocean/atlaskit";
 import { useListDocuments } from "@realmocean/sdk";
@@ -7,6 +7,51 @@ import { SelectConnectionTypeDialog } from "./dialogs/SelectConnectionDialog";
 import React from "react";
 
 
+
+export const createHead = (withWidth: boolean) => {
+  return {
+    cells: [
+
+      {
+        key: 'name',
+        content: 'Name',
+        isSortable: true,
+        width: withWidth ? 25 : undefined,
+      },
+      {
+        key: 'status',
+        content: 'Status',
+        shouldTruncate: true,
+        isSortable: true,
+        width: withWidth ? 15 : undefined,
+      },
+      {
+        key: 'type',
+        content: 'Type',
+        shouldTruncate: true,
+        isSortable: true,
+        width: withWidth ? 15 : undefined,
+      },
+      {
+        key: 'term',
+        content: 'Term',
+        shouldTruncate: true,
+        isSortable: true,
+        width: withWidth ? 10 : undefined,
+      },
+      {
+        key: 'content',
+        content: 'Comment',
+        shouldTruncate: true,
+      },
+      {
+        key: 'more',
+        content: 'Actions',
+        shouldTruncate: true,
+      },
+    ],
+  };
+};
 
 export class ConnectionsController extends UIController {
   public override LoadView(): UIView {
@@ -21,15 +66,36 @@ export class ConnectionsController extends UIController {
             key: document.$id,
             isHighlighted: false,
             cells: [
+
               {
                 key: 'name',
                 content: () =>
-                  HStack({ alignment: cLeading })
+                  HStack({ alignment: cLeading, spacing: 5 })
                     (
+                      HStack(
+                        UIImage('/images/jira-logo.svg')
+                      )
+                        .width(32).height(32),
                       ReactView(
                         <a href="https://atlassian.design" style={{ fontSize: '14px', color: '#0C66E4' }}>{document.name}</a>
                       )
-                    ).padding()
+                    ).padding(cVertical, 10)
+              },
+              {
+                key: 'status',
+                content: () =>
+                  HStack({ alignment: cLeading, spacing: 10 })
+                    (
+                      HStack().width(12).height(12).cornerRadius('50%').background('rgb(76, 187, 2)'),
+                      Text('Online')
+                    )
+              },
+
+
+              {
+                key: 'type',
+                content: () =>
+                  Text(document.type)
               },
               /* {
                 key: createKey(president.party),
@@ -61,14 +127,19 @@ export class ConnectionsController extends UIController {
             HStack({ alignment: cTopLeading })(
               SettingsMenu('connections'),
               VStack({ alignment: cTopLeading })(
-                Heading('Connections'),
-                Button().label('Create Connection')
-                  .appearance('primary')
-                  .onClick(() => {
-                    SelectConnectionTypeDialog.Show(realm.$id);
-                  }),
+                HStack({alignment:cLeading})(
+                  Heading('Connections'),
+                  Spacer(),
+                  Button().label('Create Connection')
+                    .appearance('primary')
+                    .onClick(() => {
+                      SelectConnectionTypeDialog.Show(realm.$id);
+                    })
+                ).height(),
                 VStack({ alignment: cTopLeading })(
-                  Table().rows(rows),
+                  Table().rows(rows)
+                    .head(createHead(true) as any)
+                  ,
                   /*   ...ForEach(documents)(con => 
                         HStack({alignment:cLeading})(
                             HStack({alignment:cLeading})(
@@ -82,7 +153,7 @@ export class ConnectionsController extends UIController {
 
                 )
 
-              )
+              ).padding()
             )
           )
         })

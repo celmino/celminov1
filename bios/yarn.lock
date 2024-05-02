@@ -1334,10 +1334,10 @@
     antd "^5.15.1"
     dayjs "^1.11.9"
 
-"@realmocean/atlaskit@^17.8.24", "@realmocean/atlaskit@^17.8.38":
-  version "17.8.38"
-  resolved "https://registry.npmjs.org/@realmocean/atlaskit/-/atlaskit-17.8.38.tgz"
-  integrity sha512-/mWfihaY8s53NcSEoeM+hPiBWagk9SEiH/E+Gtnh9mGnQ+2QEGvu3tT1EZiwHM//nQAgkIHa5tL3kzJ+90Upcw==
+"@realmocean/atlaskit@^17.8.24", "@realmocean/atlaskit@^17.8.39":
+  version "17.8.39"
+  resolved "https://registry.npmjs.org/@realmocean/atlaskit/-/atlaskit-17.8.39.tgz"
+  integrity sha512-HlTYeaGI6pIbM8Qat/S5kShVhEi1OjEc+FvYxoVJdEwOAT/6qmaWSqgeoXnOyAhYgVaw2bZd9SiEUxhJbIcNLA==
   dependencies:
     "@atlaskit/button" "^17.8.0"
     "@atlaskit/checkbox" "^13.1.5"
