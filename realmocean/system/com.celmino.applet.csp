@@ -261,7 +261,8 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   useListFlows: () => (/* binding */ useListFlows)
+/* harmony export */   useListFlows: () => (/* binding */ useListFlows),
+/* harmony export */   useListProcesses: () => (/* binding */ useListProcesses)
 /* harmony export */ });
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
@@ -278,6 +279,16 @@ var useListFlows = function (accessKey, projectSecretKey, projectId) {
         }
     });
     return { flows: query.data, isLoading: query.isLoading };
+};
+var useListProcesses = function (accessKey, projectId, flowId) {
+    var query = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useQuery)({
+        queryKey: ['csp', 'list', projectId, 'processes'], queryFn: function () {
+            var broker = new _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.CspBroker();
+            broker.setKey(accessKey);
+            return broker.getProcesses(projectId, flowId);
+        }
+    });
+    return { processes: query.data, isLoading: query.isLoading };
 };
 
 
@@ -400,6 +411,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
 /* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _hooks_useListFlows__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useListFlows */ "./src/hooks/useListFlows.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_7__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -422,32 +435,43 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var AppletController = /** @class */ (function (_super) {
     __extends(AppletController, _super);
     function AppletController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     AppletController.prototype.LoadView = function () {
-        var _a = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)(), applet = _a.applet, settings = _a.settings, isLoading = _a.isLoading;
+        var _a = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)(), applet = _a.applet, settings = _a.settings, isAppletLoading = _a.isLoading;
         var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate)().navigate;
         var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useLocalStorage)("".concat(applet.$id, "-token"), null), token = _b[0], setToken = _b[1];
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDocumentTitle)('Celmino | ' + applet.name);
-        return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spinner)() :
+        return (isAppletLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spinner)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-                var flows = (0,_hooks_useListFlows__WEBPACK_IMPORTED_MODULE_6__.useListFlows)(settings.key, settings.project.secretKey, settings.project.id).flows;
-                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(JSON.stringify(flows)), (0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet.name, function (name) {
-                    /* updateAppletName(name, ()=> {
-                        EventBus.Default.fire('applet.added', { treeItem: applet })
-                    }) */
-                }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTop })((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__.EmptyState)()
-                    .imageUrl('/images/CSP.png')
-                    .header('Connect to Csp Project')
-                    .description('We need to have your token to use Jira API for retrieving data. Login to Jira and create token for Celmino. ')
-                    .buttonTitle('Connect')
-                    .onButtonClick(function () {
-                    navigate('settings/connect');
-                })).padding())
-                    .render())));
+                var _a = (0,_hooks_useListFlows__WEBPACK_IMPORTED_MODULE_6__.useListFlows)(settings.key, settings.project.secretKey, settings.project.id), flows = _a.flows, isLoading = _a.isLoading;
+                return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)() :
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+                        var _a;
+                        var _b = (0,_hooks_useListFlows__WEBPACK_IMPORTED_MODULE_6__.useListProcesses)(settings.key, settings.project.id, (_a = flows[0]) === null || _a === void 0 ? void 0 : _a.id), processes = _b.processes, isLoading = _b.isLoading;
+                        return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)() :
+                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)("".concat(applet.name, " - (").concat(settings.project.name, ")"), function (name) {
+                                /* updateAppletName(name, ()=> {
+                                    EventBus.Default.fire('applet.added', { treeItem: applet })
+                                }) */
+                            }), processes == null ?
+                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTop })((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__.EmptyState)()
+                                    .imageUrl('/images/CSP.png')
+                                    .header('Connect to Csp Project')
+                                    .description('We need to have your token to use Jira API for retrieving data. Login to Jira and create token for Celmino. ')
+                                    .buttonTitle('Connect')
+                                    .onButtonClick(function () {
+                                    navigate('settings/connect');
+                                })).padding()
+                                : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(processes)(function (process) {
+                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(process.processId.toString()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)("".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_7__.moment.utc(process.createDate).local().format('dddd, MMMM DD, YYYY • HH:mm')))).height();
+                                })))
+                                .render())));
+                    }));
             }));
     };
     return AppletController;
@@ -734,18 +758,17 @@ var ConnectController = /** @class */ (function (_super) {
     ConnectController.prototype.LoadView = function () {
         var _this = this;
         var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(), host = _a[0], setHost = _a[1];
-        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(), email = _b[0], setEmail = _b[1];
-        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(), token = _c[0], setToken = _c[1];
-        var settings = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(realm.$id, applet.$id, 'settings').documents;
+        var _a = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)(), applet = _a.applet, settings = _a.settings;
+        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(), host = _b[0], setHost = _b[1];
+        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(), email = _c[0], setEmail = _c[1];
+        var _d = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(), token = _d[0], setToken = _d[1];
         var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useCreateDocument)(realm.$id, applet.$id, 'settings').createDocument;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDocument)(realm.$id).updateDocument;
-        var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(realm.$id, 'workspace', 'connections', [
+        var _e = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(realm.$id, 'workspace', 'connections', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Query.equal('type', 'com.celmino.connection.csp')
-        ]), documents = _d.documents, isLoading = _d.isLoading;
-        var _e = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(), selectedConnection = _e[0], setSelectedConnection = _e[1];
-        var _f = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(), projects = _f[0], setProjects = _f[1];
+        ]), documents = _e.documents, isLoading = _e.isLoading;
+        var _f = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(), selectedConnection = _f[0], setSelectedConnection = _f[1];
+        var _g = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(), projects = _g[0], setProjects = _g[1];
         return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Spinner)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('Connect To Csp').fontSize(18).fontWeight('500')
                 .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial')
@@ -770,7 +793,7 @@ var ConnectController = /** @class */ (function (_super) {
                 .helpMessage('Your Jira token created for Celmino')
                 .onChange(function (e) { return setToken(e.target.value); }), (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_1__.LoadingButton)().label('Connect').appearance('primary')
                 .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
-                var cspBroker, projects, keyItem, item;
+                var cspBroker, projects;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
@@ -780,9 +803,11 @@ var ConnectController = /** @class */ (function (_super) {
                         case 1:
                             projects = _a.sent();
                             setProjects(projects);
-                            keyItem = settings.find(function (i) { return i.key === 'key'; });
-                            if (keyItem == null) {
-                                createDocument({
+                            if ('key' in settings) {
+                                updateDocument({
+                                    databaseId: applet.$id,
+                                    collectionId: 'settings',
+                                    documentId: 'key',
                                     data: {
                                         key: 'key',
                                         value: selectedConnection.value
@@ -790,42 +815,49 @@ var ConnectController = /** @class */ (function (_super) {
                                 });
                             }
                             else {
-                                updateDocument({
-                                    databaseId: applet.$id,
-                                    collectionId: 'settings',
-                                    documentId: keyItem.$id,
-                                    data: {
-                                        value: selectedConnection.value
-                                    }
-                                });
-                            }
-                            item = settings.find(function (i) { return i.key === 'project'; });
-                            if (item == null) {
                                 createDocument({
+                                    documentId: 'key',
                                     data: {
-                                        key: 'project',
-                                        value: JSON.stringify(projects[0])
-                                    }
-                                });
-                            }
-                            else {
-                                updateDocument({
-                                    databaseId: applet.$id,
-                                    collectionId: 'settings',
-                                    documentId: item.$id,
-                                    data: {
-                                        value: JSON.stringify(projects[0])
+                                        key: 'key',
+                                        value: selectedConnection.value
                                     }
                                 });
                             }
                             return [2 /*return*/];
                     }
                 });
-            }); }), (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_1__.Select)('Select Project')
-                .options(projects === null || projects === void 0 ? void 0 : projects.map(function (project) { return ({
-                label: project.name,
-                value: project.id
-            }); }))
+            }); }), (projects == null || settings == null) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Fragment)() :
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
+                    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(settings.project), selectedProject = _a[0], setSelectedProject = _a[1];
+                    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_1__.Select)('Select Project')
+                        .options(projects === null || projects === void 0 ? void 0 : projects.map(function (project) { return ({
+                        label: project.name,
+                        value: project
+                    }); }))
+                        .onChange(function (item) {
+                        setSelectedProject(item.value);
+                        if ('project' in settings) {
+                            updateDocument({
+                                databaseId: applet.$id,
+                                collectionId: 'settings',
+                                documentId: 'project',
+                                data: {
+                                    key: 'project',
+                                    value: JSON.stringify(item.value)
+                                }
+                            });
+                        }
+                        else {
+                            createDocument({
+                                documentId: 'project',
+                                data: {
+                                    key: 'project',
+                                    value: JSON.stringify(item.value)
+                                }
+                            });
+                        }
+                    }));
+                })
             //  .isDisabled(host == null || email == null || token == null)
             ))
                 .maxWidth('600px')

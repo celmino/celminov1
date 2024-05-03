@@ -1,18 +1,17 @@
 import { useApplet, useRealm } from "@celmino/ui";
 import { LoadingButton, Radio, Select, TextField } from "@realmocean/atlaskit";
 import { CspBroker, Query, useCreateDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
-import { HStack, Spinner, Text, UIController, VStack, cHorizontal, cLeading, cTopLeading, cVertical, useState } from "@tuval/forms";
+import { Fragment, HStack, Spinner, Text, UIController, UIViewBuilder, VStack, cHorizontal, cLeading, cTopLeading, cVertical, useState } from "@tuval/forms";
 
 export class ConnectController extends UIController {
     public LoadView() {
         const { realm } = useRealm();
-        const { applet } = useApplet();
+        const { applet , settings} = useApplet();
 
         const [host, setHost] = useState();
         const [email, setEmail] = useState();
         const [token, setToken] = useState();
 
-        const { documents: settings } = useListDocuments(realm.$id, applet.$id, 'settings');
         const { createDocument } = useCreateDocument(realm.$id, applet.$id, 'settings');
         const { updateDocument } = useUpdateDocument(realm.$id);
 
@@ -21,6 +20,7 @@ export class ConnectController extends UIController {
         ])
         const [selectedConnection, setSelectedConnection] = useState<any>();
         const [projects, setProjects] = useState<any[]>();
+
 
         return (
             isLoading ? Spinner() :
@@ -73,52 +73,66 @@ export class ConnectController extends UIController {
                                         const projects = await cspBroker.getProjects();
                                         setProjects(projects);
 
-                                        const keyItem = settings.find(i => i.key === 'key');
-                                        if (keyItem == null) {
-                                            createDocument({
+                                      
+                                        if ('key' in settings ) {
+                                            updateDocument({
+                                                databaseId: applet.$id,
+                                                collectionId: 'settings',
+                                                documentId: 'key',
                                                 data: {
-                                                    key:'key',
+                                                    key: 'key',
                                                     value: selectedConnection.value
                                                 }
                                             })
                                         } else {
-                                            updateDocument({
-                                                databaseId: applet.$id,
-                                                collectionId: 'settings',
-                                                documentId: keyItem.$id,
+                                            createDocument({
+                                                documentId:'key',
                                                 data: {
+                                                    key: 'key',
                                                     value: selectedConnection.value
                                                 }
                                             })
                                         }
-
-
-                                        const item = settings.find(i => i.key === 'project');
-                                        if (item == null) {
-                                            createDocument({
-                                                data: {
-                                                    key:'project',
-                                                    value: JSON.stringify(projects[0])
-                                                }
-                                            })
-                                        } else {
-                                            updateDocument({
-                                                databaseId: applet.$id,
-                                                collectionId: 'settings',
-                                                documentId: item.$id,
-                                                data: {
-                                                    value: JSON.stringify(projects[0])
-                                                }
-                                            })
-                                        }
-
                                     }),
+                                (projects == null || settings == null) ? Fragment() :
+                                    UIViewBuilder(() => {
 
-                                Select('Select Project')
-                                    .options(projects?.map(project => ({
-                                        label: project.name,
-                                        value: project.id
-                                    })))
+                                        const [selectedProject, setSelectedProject] = useState<any[]>(settings.project);
+                                        return (
+                                            Select('Select Project')
+                                                .options(projects?.map(project => ({
+                                                    label: project.name,
+                                                    value: project
+                                                })))
+                                                .onChange((item: any) => {
+
+                                                    setSelectedProject(item.value);
+
+                                                    if ('project' in settings ) {
+                                                        updateDocument({
+                                                            databaseId: applet.$id,
+                                                            collectionId: 'settings',
+                                                            documentId: 'project',
+                                                            data: {
+                                                                key: 'project',
+                                                                value: JSON.stringify(item.value)
+                                                            }
+                                                        })
+                                                    } else {
+                                                        createDocument({
+                                                            documentId:'project',
+                                                            data: {
+                                                                key: 'project',
+                                                                value: JSON.stringify(item.value)
+                                                            }
+                                                        })
+                                                    }
+
+                                                  
+                                                })
+                                        )
+                                    })
+
                                 //  .isDisabled(host == null || email == null || token == null)
                             )
                         )
