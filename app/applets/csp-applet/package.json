@@ -101,6 +101,8 @@
         ]
     },
     "dependencies": {
+        "@blocknote/core": "^0.12.4",
+        "@blocknote/react": "^0.12.4",
         "@celmino/ui": "^1.0.56",
         "@realmocean/atlaskit": "^17.8.40",
         "@realmocean/sdk": "^1.0.149",
@@ -114,6 +116,7 @@
         "webpack-cli": "^5.1.4"
     },
     "devDependencies": {
+        "arraybuffer-loader": "^1.0.8",
         "webpack-bundle-analyzer": "^4.10.1"
     }
 }

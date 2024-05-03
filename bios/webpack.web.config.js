@@ -107,11 +107,11 @@ const webConfig = {
                 exclude: /node_modules/,
 
             },
-            {
+           /*  {
                 test: /\.(wasm|eot|woff|woff2|svg|ttf)([\?]?.*)$/,
                 type: 'javascript/auto',
                 loader: 'arraybuffer-loader',
-            },
+            }, */
             {
                 test: /\.css$/,
                 use: ['to-string-loader', 'css-loader']
