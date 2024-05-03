@@ -299,6 +299,7 @@ export const AppletContextProvider: React.Context<any>;
 export const useApplet: () => {
     applet: any;
     updateAppletName: Function;
+    settings: any;
     isLoading: boolean;
 };
 

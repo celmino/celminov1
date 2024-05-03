@@ -252,6 +252,37 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/hooks/useListFlows.ts":
+/*!***********************************!*\
+  !*** ./src/hooks/useListFlows.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useListFlows: () => (/* binding */ useListFlows)
+/* harmony export */ });
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var useListFlows = function (accessKey, projectSecretKey, projectId) {
+    var query = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useQuery)({
+        queryKey: ['csp', 'list', projectId, 'flows'], queryFn: function () {
+            var broker = new _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.CspBroker();
+            broker.setKey(accessKey);
+            return broker.getFlows(projectSecretKey, projectId);
+        }
+    });
+    return { flows: query.data, isLoading: query.isLoading };
+};
+
+
+/***/ }),
+
 /***/ "./src/resources/Icons.tsx":
 /*!*********************************!*\
   !*** ./src/resources/Icons.tsx ***!
@@ -368,6 +399,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/ViewHeader */ "./src/views/ViewHeader.ts");
 /* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
 /* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _hooks_useListFlows__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useListFlows */ "./src/hooks/useListFlows.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -389,29 +421,34 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var AppletController = /** @class */ (function (_super) {
     __extends(AppletController, _super);
     function AppletController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     AppletController.prototype.LoadView = function () {
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
+        var _a = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)(), applet = _a.applet, settings = _a.settings, isLoading = _a.isLoading;
         var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate)().navigate;
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useLocalStorage)("".concat(applet.$id, "-token"), null), token = _a[0], setToken = _a[1];
+        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useLocalStorage)("".concat(applet.$id, "-token"), null), token = _b[0], setToken = _b[1];
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDocumentTitle)('Celmino | ' + applet.name);
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet.name, function (name) {
-            /* updateAppletName(name, ()=> {
-                EventBus.Default.fire('applet.added', { treeItem: applet })
-            }) */
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTop })((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__.EmptyState)()
-            .imageUrl('/images/CSP.png')
-            .header('Connect to Csp Project')
-            .description('We need to have your token to use Jira API for retrieving data. Login to Jira and create token for Celmino. ')
-            .buttonTitle('Connect')
-            .onButtonClick(function () {
-            navigate('settings/connect');
-        })).padding())
-            .render())));
+        return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spinner)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+                var flows = (0,_hooks_useListFlows__WEBPACK_IMPORTED_MODULE_6__.useListFlows)(settings.key, settings.project.secretKey, settings.project.id).flows;
+                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(JSON.stringify(flows)), (0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet.name, function (name) {
+                    /* updateAppletName(name, ()=> {
+                        EventBus.Default.fire('applet.added', { treeItem: applet })
+                    }) */
+                }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTop })((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_5__.EmptyState)()
+                    .imageUrl('/images/CSP.png')
+                    .header('Connect to Csp Project')
+                    .description('We need to have your token to use Jira API for retrieving data. Login to Jira and create token for Celmino. ')
+                    .buttonTitle('Connect')
+                    .onButtonClick(function () {
+                    navigate('settings/connect');
+                })).padding())
+                    .render())));
+            }));
     };
     return AppletController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));

@@ -101,9 +101,9 @@
         ]
     },
     "dependencies": {
-        "@celmino/ui": "^1.0.46",
+        "@celmino/ui": "^1.0.56",
         "@realmocean/atlaskit": "^17.8.40",
-        "@realmocean/sdk": "^1.0.147",
+        "@realmocean/sdk": "^1.0.148",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.180",
         "react-promise-suspense": "^0.3.4",

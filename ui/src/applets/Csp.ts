@@ -7,15 +7,33 @@ export const Csp = {
     image: '/images/CSP.png',
     iconCategory: 'SystemIcons',
     iconName: 'csp',
-   // icon: '\\d224',
+    // icon: '\\d224',
     iconBackColor: '#66B47C',
     enabled: true,
     version: [1, 0, 1],
     databases: [
         {
-            "name": "Csp",
+            "name": "Workspace",
+            "id": "workspace_applet",
             "category": "app",
-            "collections": []
+            "collections": [
+                {
+                    "name": "Applet Settings",
+                    "id": "settings",
+                    "attributes": [
+                        {
+                            "key": "key",
+                            "type": "string",
+                            size: 255
+                        },
+                        {
+                            "key": "value",
+                            "type": "string",
+                            size: 65789
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
