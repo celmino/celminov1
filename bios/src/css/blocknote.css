@@ -1,16 +1,23 @@
 .bn-default-styles h1 {
     font-size: 28px !important;
     font-weight: 500 !important;
+    margin-bottom: 6px !important;
+    margin-top: 24px !important;
 }
 
 .bn-default-styles h2 {
     font-size: 22px !important;
     font-weight: 500 !important;
+    margin-bottom: 6px !important;
+    margin-top: 24px !important;
+    
 }
 
 .bn-default-styles h3 {
     font-size: 18px !important;
     font-weight: 500 !important;
+    margin-bottom: 6px !important;
+    margin-top: 24px !important;
 }
 
 .m_d57069b5 {
