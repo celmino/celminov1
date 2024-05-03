@@ -99,45 +99,83 @@ export class WorkspaceTreeWidgetController extends UIController {
                     requestMenu: (node) => {
                         return [
                             {
-                                title: 'Add view',
+                                title: 'Project Management',
                                 type: 'Title'
                             },
                             {
-                                title: 'Table',
-                                icon: Icon(TableIcon).foregroundColor('#7C828D'),
+                                title: 'Documents',
+                                icon: Icon('\\d2dc').foregroundColor('#7C828D'),
+                                //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                            },
+                            {
+                                title: 'Tasks',
+                                icon: Icon('\\d2dc').foregroundColor('#7C828D'),
+                                //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                            },
+                            {
+                                title: 'Meetings',
+                                icon: Icon('\\d2dc').foregroundColor('#7C828D'),
+                                //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                            },
+                            {
+                                type: 'Divider'
+                            },
+                            {
+                                title: 'Analyse',
+                                type: 'Title'
+                            },
+                            {
+                                title: 'Process Overview',
+                                icon: Icon('\\d2dc').foregroundColor('#7C828D'),
                                 //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                             },
 
                             {
-                                title: 'Board',
-                                icon: Icon(BoardIcon).foregroundColor('#7C828D'),
+                                title: 'Discover',
+                                icon: Icon('\\d320').foregroundColor('#7C828D'),
                                 //onClick: () => DynoDialog.Show(AddBoardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                             },
                             {
-                                title: 'List',
-                                icon: Icon(ListIcon).foregroundColor('#7C828D'),
+                                title: 'Monitoring',
+                                icon: Icon('\\d2ba').foregroundColor('#7C828D'),
                                 //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                             },
                             {
-                                title: 'Timeline',
-                                icon: Icon(TimelineIcon).foregroundColor('#7C828D'),
+                                title: 'Statistics',
+                                icon: Icon('\\d31a').foregroundColor('#7C828D'),
                                 //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                             },
                             {
-                                title: 'Calendar',
-                                icon: Icon(CalendarIcon).foregroundColor('#7C828D'),
+                                title: 'Variant Explorer',
+                                icon: Icon('\\d203').foregroundColor('#7C828D'),
                                 //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                             },
                             {
-                                title: 'Report',
-                                icon: Icon(ReportIcon).foregroundColor('#7C828D'),
+                                title: 'Others...',
+                                icon: Icon('\\d203').foregroundColor('#7C828D'),
+                                items: [
+                                    {
+                                        title: 'Loops',
+                                        icon: Icon('\\d2be').foregroundColor('#7C828D'),
+                                        //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                    },
+                                    {
+                                        title: 'Case Explorer',
+                                        icon: Icon('\\d25b').foregroundColor('#7C828D'),
+                                        //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                    },
+                                    {
+                                        title: 'Difference Analyse',
+                                        icon: Icon('\\d2a7').foregroundColor('#7C828D'),
+                                        //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                    },
+                                ]
                                 //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                             },
-                            {
-                                title: 'Feed',
-                                icon: Icon(FeedIcon).foregroundColor('#7C828D'),
-                                //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                            },
+
+
+
+
                             {
                                 type: 'Divider'
                             },

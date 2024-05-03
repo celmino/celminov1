@@ -134,42 +134,76 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
             requestMenu: function (node) {
                 return [
                     {
-                        title: 'Add view',
+                        title: 'Project Management',
                         type: 'Title'
                     },
                     {
-                        title: 'Table',
-                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.TableIcon).foregroundColor('#7C828D'),
+                        title: 'Documents',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d2dc').foregroundColor('#7C828D'),
                         //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                     },
                     {
-                        title: 'Board',
-                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.BoardIcon).foregroundColor('#7C828D'),
+                        title: 'Tasks',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d2dc').foregroundColor('#7C828D'),
+                        //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                    },
+                    {
+                        title: 'Meetings',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d2dc').foregroundColor('#7C828D'),
+                        //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                    },
+                    {
+                        type: 'Divider'
+                    },
+                    {
+                        title: 'Analyse',
+                        type: 'Title'
+                    },
+                    {
+                        title: 'Process Overview',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d2dc').foregroundColor('#7C828D'),
+                        //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                    },
+                    {
+                        title: 'Discover',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d320').foregroundColor('#7C828D'),
                         //onClick: () => DynoDialog.Show(AddBoardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                     },
                     {
-                        title: 'List',
-                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.ListIcon).foregroundColor('#7C828D'),
+                        title: 'Monitoring',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d2ba').foregroundColor('#7C828D'),
                         //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                     },
                     {
-                        title: 'Timeline',
-                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.TimelineIcon).foregroundColor('#7C828D'),
+                        title: 'Statistics',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d31a').foregroundColor('#7C828D'),
                         //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                     },
                     {
-                        title: 'Calendar',
-                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.CalendarIcon).foregroundColor('#7C828D'),
+                        title: 'Variant Explorer',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d203').foregroundColor('#7C828D'),
                         //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                     },
                     {
-                        title: 'Report',
-                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.ReportIcon).foregroundColor('#7C828D'),
-                        //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                    },
-                    {
-                        title: 'Feed',
-                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.FeedIcon).foregroundColor('#7C828D'),
+                        title: 'Others...',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d203').foregroundColor('#7C828D'),
+                        items: [
+                            {
+                                title: 'Loops',
+                                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d2be').foregroundColor('#7C828D'),
+                                //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                            },
+                            {
+                                title: 'Case Explorer',
+                                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d25b').foregroundColor('#7C828D'),
+                                //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                            },
+                            {
+                                title: 'Difference Analyse',
+                                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d2a7').foregroundColor('#7C828D'),
+                                //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                            },
+                        ]
                         //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                     },
                     {
