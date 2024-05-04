@@ -4,6 +4,7 @@ import {
   ReactView,
   ScrollView,
   UIController, UIView,
+  cTop,
   cTopLeading,
   cVertical,
   useMemo,
@@ -11,16 +12,44 @@ import {
 } from '@tuval/forms';
 
 import React from 'react';
-import { BlockNoteView, useCreateBlockNote } from "@blocknote/react";
-import { BlockNoteEditor, PartialBlock } from '@blocknote/core';
+
+import { BlockNoteEditor, BlockNoteSchema, defaultBlockSpecs, filterSuggestionItems } from '@blocknote/core';
+import { Alert, getCustomSlashMenuItems } from "./extensions/Alert";
+import { RiAlertFill } from "react-icons/ri";
+
+import {
+  BlockNoteView,
+  FormattingToolbar,
+  FormattingToolbarController,
+  useCreateBlockNote,
+  blockTypeSelectItems,
+  BlockTypeSelectItem,
+  SuggestionMenuController,
+} from "@blocknote/react";
 
 let filterTimeout;
 
 export class EditorJsController extends UIController {
   public override LoadView(): UIView {
 
+
+
+
+    // Our schema with block specs, which contain the configs and implementations
+    // for blocks that we want our editor to use.
+    const schema = BlockNoteSchema.create({
+      blockSpecs: {
+        // Adds all default blocks.
+        ...defaultBlockSpecs,
+        // Adds the Alert block.
+        alert: Alert,
+      },
+    });
+
+
     const { onChange = void 0, defaultValue = null, tools, scrollable = true, clamp = false } = this.props.config || {};
     const editor = useCreateBlockNote({
+      schema,
       initialContent: defaultValue
     });
 
@@ -30,10 +59,10 @@ export class EditorJsController extends UIController {
 
     return (
       OptionsContext(() =>
-        ScrollView({ axes: cVertical, alignment: cTopLeading })(
-          HStack({ alignment: cTopLeading })(
+        ScrollView({ axes: cVertical, alignment: cTop })(
+          HStack({ alignment: cTop })(
             ReactView(
-              <BlockNoteView editor={editor}
+              <BlockNoteView editor={editor} formattingToolbar={false} slashMenu={false} editable={false}
                 onChange={() => {
                   clearTimeout(filterTimeout)
                   filterTimeout = setTimeout(() => {
@@ -41,9 +70,33 @@ export class EditorJsController extends UIController {
                   }, 5000)
 
                 }}
-              />
+              >
+                <SuggestionMenuController
+                  triggerCharacter={"/"}
+                  // Replaces the default Slash Menu items with our custom ones.
+                  getItems={async (query) =>
+                    filterSuggestionItems(getCustomSlashMenuItems(editor as any), query)
+                  }
+                />
+                <FormattingToolbarController
+                  formattingToolbar={() => (
+                    <FormattingToolbar
+                      blockTypeSelectItems={[
+                        ...blockTypeSelectItems,
+                        {
+                          name: "Alert",
+                          type: "alert",
+                          icon: RiAlertFill,
+                          isSelected: (block) => block.type === "alert",
+                        } satisfies BlockTypeSelectItem,
+                      ]}
+                    />
+                  )}
+                />
+              </BlockNoteView>
             )
           )
+            .maxWidth('1000px')
         )
 
         //.width('calc(100% - 40px)')
