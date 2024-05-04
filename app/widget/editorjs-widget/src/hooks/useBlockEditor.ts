@@ -56,7 +56,6 @@ export const useBlockEditor = ({
         provider?.on('synced', () => {
           if (editor.isEmpty) {
 
-
           }
         })
       },

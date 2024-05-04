@@ -19,7 +19,6 @@ export const EditIcon = () => (
 export class TreeController extends UIController {
 
     public override LoadView(): UIView {
-
         const { realm } = useRealm();
         const { applet } = useApplet();
         const workspaceId = realm.$id;
@@ -33,9 +32,6 @@ export class TreeController extends UIController {
 
         const { navigate } = useAppletNavigate();
         const { deleteApplet, isLoading } = useDeleteApplet();
-
-
-
 
         return (
             HStack({ alignment: cLeading, spacing: 2 })(
@@ -100,7 +96,7 @@ export class TreeController extends UIController {
                                 // HDivider().background('#E4EAE2').height(1),
                                 Text(item?.name)
                                     .foregroundColor('white')
-                                    .fontSize('1rem')
+                                    .fontSize(12)
                                     .fontWeight('500')
                                     .textTransform('uppercase'),
                                 // HDivider().background('#E4EAE2').height(1),

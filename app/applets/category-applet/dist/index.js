@@ -4432,7 +4432,7 @@ var TreeController = /** @class */ (function (_super) {
                 // HDivider().background('#E4EAE2').height(1),
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item === null || item === void 0 ? void 0 : item.name)
                     .foregroundColor('white')
-                    .fontSize('1rem')
+                    .fontSize(12)
                     .fontWeight('500')
                     .textTransform('uppercase'))
                     .width()

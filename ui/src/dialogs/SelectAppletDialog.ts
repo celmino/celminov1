@@ -156,16 +156,16 @@ export class SelectAppletDialog extends DialogView {
                                             //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
                                             ,
                                             HStack({ alignment: cLeading })(
-                                                Text(opa.name).fontSize('1.8rem').lineHeight('2rem')
+                                                Text(opa.name).fontSize(18).lineHeight('20px')
                                                 //.maxLines(2) as any
                                             )
-                                                .minHeight('4rem')
+                                                .minHeight(40)
                                                 .height(),
-                                            Text('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879') as any,
+                                            Text('By Tuvalsoft').fontSize(12).foregroundColor('#676879') as any,
                                             HStack({ alignment: cLeading })(
                                                 Text(opa.description || '')
                                                 .ellipsisMaxLines(2)
-                                                .fontSize('1.4rem').foregroundColor('#676879') as any
+                                                .fontSize(14).foregroundColor('#676879') as any
 
                                             ).height()
 
