@@ -1,4 +1,4 @@
-.bn-default-styles h1 {
+ .bn-default-styles h1 {
     font-size: 28px !important;
     font-weight: 500 !important;
     margin-bottom: 6px !important;
@@ -18,7 +18,7 @@
     font-weight: 500 !important;
     margin-bottom: 6px !important;
     margin-top: 24px !important;
-}
+} 
 
 .m_d57069b5 {
     --scrollarea-scrollbar-size: calc(.75rem * var(--mantine-scale));

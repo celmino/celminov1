@@ -15,7 +15,8 @@ const copyright = `
 *                                                                                                                               *
 * Licensed under the GNU General Public License v3.0.                                                                           *
 * More info at: https://choosealicense.com/licenses/gpl-3.0/                                                                    *
-* Tuval Framework Created By Tuvalsoft in 2019                                                                                  *
+* Tuval Framework Created By Tuvalsoft in 2019   
+* Blocknote widget                                                                               *
 ******************************************************************************************************************************@*/
 `;
 const path = require('path');
@@ -76,6 +77,8 @@ const umdConfig = {
         '@realmocean/richtexteditor': 'realmocean$richtexteditor',
         '@realmocean/gantt': 'realmocean$gantt',
         '@realmocean/editor': 'realmocean$editor',
+
+        '@celmino/ui': 'celmino$ui',
 
 
         'react': 'tuval$react',

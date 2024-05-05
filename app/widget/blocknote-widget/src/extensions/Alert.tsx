@@ -9,6 +9,7 @@ import React from "react";
 import { HiOutlineGlobeAlt } from "react-icons/hi";
 import { UIWidget, VStack } from "@tuval/forms";
 
+
 // The types of alerts that users can choose from.
 export const alertTypes = [
     {

@@ -35,22 +35,11 @@ import { Heading, TextField, LoadingButton } from "@realmocean/atlaskit";
 import { useListFlows, useListProcesses } from "../hooks/useListFlows";
 import { moment } from "@tuval/core";
 
-import { BlockNoteView, useCreateBlockNote } from "@blocknote/react";
 
 
 export class AppletController extends UIController {
     public override LoadView(): UIView {
-        const editor = useCreateBlockNote();
-
-        return (
-            ScrollView({ axes: cVertical, alignment: cTopLeading })(
-                HStack({ alignment: cTopLeading })(
-                    ReactView(
-                        <BlockNoteView editor={editor} />
-                    )
-                )
-            )
-        )
+       
         const { applet, settings, isLoading: isAppletLoading } = useApplet();
         const { navigate } = useAppletNavigate();
 

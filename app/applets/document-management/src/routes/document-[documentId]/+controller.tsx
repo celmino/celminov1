@@ -2,7 +2,7 @@ import { UIController, UIView, useParams, Routes, Text, UIWidget, VStack, ReactV
 import { ActionPanel } from "../../views/ActionPanel";
 import { DocumentHeader } from "../../views/ViewHeader";
 import React from "react";
-import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
+import { useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 import { SimpleImage } from "../../tools/SimplePlugin";
@@ -41,8 +41,10 @@ export class DocumentController extends UIController {
         })
 
         const { updateDocument } = useUpdateDocument(workspaceId);
+
+        const { documents: applets, isLoading: isAppletsLoading } = useListDocuments(workspaceId, 'workspace', 'applets');
         return (
-            (isDocumentLoading || isLoading) ? Fragment() :
+            (isDocumentLoading || isLoading || isAppletsLoading) ? Fragment() :
                 ReactView(
                     <DialogStack>
                         {
@@ -62,7 +64,7 @@ export class DocumentController extends UIController {
                                 UIViewBuilder(() => {
                                     const { openDialog } = useDialogStack();
                                     return (
-                                       
+
                                         window.location.hash ?
                                             UIWidget(document?.viewer)
                                                 .config({
@@ -70,6 +72,7 @@ export class DocumentController extends UIController {
                                                     clamp: true,
                                                     workspaceId: workspaceId,
                                                     appletId: appletId,
+                                                    applets,
                                                     tools: {
                                                         image: {
                                                             class: InlineImage,

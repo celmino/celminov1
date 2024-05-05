@@ -13,7 +13,7 @@ import {
 
 import React from 'react';
 
-import { BlockNoteEditor, BlockNoteSchema, defaultBlockSpecs, filterSuggestionItems } from '@blocknote/core';
+import { BlockNoteEditor, BlockNoteSchema, defaultBlockSpecs, defaultInlineContentSpecs, filterSuggestionItems, insertOrUpdateBlock } from '@blocknote/core';
 import { Alert, getCustomSlashMenuItems } from "./extensions/Alert";
 import { RiAlertFill } from "react-icons/ri";
 
@@ -22,32 +22,105 @@ import {
   FormattingToolbar,
   FormattingToolbarController,
   useCreateBlockNote,
-  blockTypeSelectItems,
-  BlockTypeSelectItem,
+  //blockTypeSelectItems,
+  //BlockTypeSelectItem,
   SuggestionMenuController,
+  getDefaultReactSlashMenuItems,
+  DefaultReactSuggestionItem,
 } from "@blocknote/react";
+import { Mention, TaskList } from './extensions/Mention';
 
 let filterTimeout;
+
+const schema = BlockNoteSchema.create({
+  blockSpecs: {
+    // Adds all default blocks.
+    ...defaultBlockSpecs,
+    // Adds the Alert block.
+    alert: Alert,
+  },
+  inlineContentSpecs: {
+    // Adds all default inline content.
+    ...defaultInlineContentSpecs,
+    // Adds the mention tag.
+    mention: Mention,
+    tasklist: TaskList,
+  },
+});
+
+
+// Function which gets all users for the mentions menu.
+const getMentionMenuItems = (
+  editor: typeof schema.BlockNoteEditor
+): DefaultReactSuggestionItem[] => {
+  const users = ["Steve", "Bob", "Joe", "Mike"];
+
+  return users.map((user) => ({
+    title: user,
+    onItemClick: () => {
+      editor.insertInlineContent([
+        {
+          type: "mention",
+          props: {
+            user,
+          },
+        },
+        " ", // add a space after the mention
+      ]);
+    },
+  }));
+};
+
+const getTaskListMenuItems = (
+  editor: typeof schema.BlockNoteEditor, applets
+): DefaultReactSuggestionItem[] => {
+
+  return applets.map((applet) => ({
+    title: applet.name,
+    onItemClick: () => {
+      editor.insertInlineContent([
+        {
+          type: "tasklist",
+          props: {
+            user: applet,
+          },
+        },
+        " ", // add a space after the mention
+      ]);
+    },
+  }));
+};
+
+
+// Slash menu item to insert an Alert block
+const insertAlert = (editor: typeof schema.BlockNoteEditor) => ({
+  title: "Alert",
+  onItemClick: () => {
+    insertOrUpdateBlock(editor, {
+      type: "alert",
+    });
+  },
+  aliases: [
+    "alert",
+    "notification",
+    "emphasize",
+    "warning",
+    "error",
+    "info",
+    "success",
+  ],
+  group: "Other",
+  icon: <RiAlertFill />,
+});
+
+
 
 export class EditorJsController extends UIController {
   public override LoadView(): UIView {
 
 
+    const { onChange = void 0, defaultValue = null, tools, scrollable = true, clamp = false, applets } = this.props.config || {};
 
-
-    // Our schema with block specs, which contain the configs and implementations
-    // for blocks that we want our editor to use.
-    const schema = BlockNoteSchema.create({
-      blockSpecs: {
-        // Adds all default blocks.
-        ...defaultBlockSpecs,
-        // Adds the Alert block.
-        alert: Alert,
-      },
-    });
-
-
-    const { onChange = void 0, defaultValue = null, tools, scrollable = true, clamp = false } = this.props.config || {};
     const editor = useCreateBlockNote({
       schema,
       initialContent: defaultValue
@@ -62,7 +135,7 @@ export class EditorJsController extends UIController {
         ScrollView({ axes: cVertical, alignment: cTop })(
           HStack({ alignment: cTop })(
             ReactView(
-              <BlockNoteView editor={editor} formattingToolbar={false} slashMenu={false} editable={false}
+              <BlockNoteView editor={editor} formattingToolbar={true} slashMenu={false} editable={true}
                 onChange={() => {
                   clearTimeout(filterTimeout)
                   filterTimeout = setTimeout(() => {
@@ -73,25 +146,20 @@ export class EditorJsController extends UIController {
               >
                 <SuggestionMenuController
                   triggerCharacter={"/"}
-                  // Replaces the default Slash Menu items with our custom ones.
                   getItems={async (query) =>
-                    filterSuggestionItems(getCustomSlashMenuItems(editor as any), query)
+                    // Gets all default slash menu items and `insertAlert` item.
+                    filterSuggestionItems(
+                      [...getDefaultReactSlashMenuItems(editor), insertAlert(editor)],
+                      query
+                    )
                   }
                 />
-                <FormattingToolbarController
-                  formattingToolbar={() => (
-                    <FormattingToolbar
-                      blockTypeSelectItems={[
-                        ...blockTypeSelectItems,
-                        {
-                          name: "Alert",
-                          type: "alert",
-                          icon: RiAlertFill,
-                          isSelected: (block) => block.type === "alert",
-                        } satisfies BlockTypeSelectItem,
-                      ]}
-                    />
-                  )}
+                <SuggestionMenuController
+                  triggerCharacter={"@"}
+                  getItems={async (query) =>
+                    // Gets the mentions menu items
+                    filterSuggestionItems([...getMentionMenuItems(editor), ...getTaskListMenuItems(editor, applets)], query)
+                  }
                 />
               </BlockNoteView>
             )
