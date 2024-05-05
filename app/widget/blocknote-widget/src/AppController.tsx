@@ -7,6 +7,7 @@ import {
   cTop,
   cTopLeading,
   cVertical,
+  useDialogStack,
   useMemo,
   useState
 } from '@tuval/forms';
@@ -75,6 +76,7 @@ const getTaskListMenuItems = (
   editor: typeof schema.BlockNoteEditor, applets
 ): DefaultReactSuggestionItem[] => {
 
+
   return applets.map((applet) => ({
     title: applet.name,
     onItemClick: () => {
@@ -90,6 +92,33 @@ const getTaskListMenuItems = (
     },
   }));
 };
+
+// Slash menu item to insert an Alert block
+const insertTaskList = (editor: typeof schema.BlockNoteEditor, applet) => ({
+  title: "Task List",
+  onItemClick: () => {
+    editor.insertInlineContent([
+      {
+        type: "tasklist",
+        props: {
+          user: applet,
+        },
+      },
+      " ", // add a space after the mention
+    ]);
+  },
+  aliases: [
+    "alert",
+    "notification",
+    "emphasize",
+    "warning",
+    "error",
+    "info",
+    "success",
+  ],
+  group: "Other",
+  icon: <RiAlertFill />,
+});
 
 
 // Slash menu item to insert an Alert block
@@ -126,6 +155,10 @@ export class EditorJsController extends UIController {
       initialContent: defaultValue
     });
 
+  
+
+
+
     /*   const editor = useMemo(() => {
         return BlockNoteEditor.create({ initialContent: defaultValue });
       }, [defaultValue]); */
@@ -149,7 +182,9 @@ export class EditorJsController extends UIController {
                   getItems={async (query) =>
                     // Gets all default slash menu items and `insertAlert` item.
                     filterSuggestionItems(
-                      [...getDefaultReactSlashMenuItems(editor), insertAlert(editor)],
+                      [...getDefaultReactSlashMenuItems(editor), insertAlert(editor),
+                        insertTaskList(editor, applets)
+                      ],
                       query
                     )
                   }

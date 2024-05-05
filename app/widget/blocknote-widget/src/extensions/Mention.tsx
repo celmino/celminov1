@@ -1,8 +1,15 @@
 import { createReactInlineContentSpec } from "@blocknote/react";
-import { useAppletNavigate } from "@celmino/ui";
-import { ReactView, UIViewBuilder, urlFriendly, useNavigate } from "@tuval/forms";
+import { useAppletNavigate, useRealm } from "@celmino/ui";
+import { HStack, PopupButton, ReactView, Text, UIViewBuilder, VStack, urlFriendly, useDialogStack, useNavigate, useState } from "@tuval/forms";
 import React from "react";
+import { Menu } from "@mantine/core";
 
+const AppletTypes = {
+    'com.celmino.applet.csp': 'CSP',
+    'com.celmino.applet.task-list': 'Task List',
+    'com.celmino.applet.google-drive': 'Google Drive',
+    'com.celmino.applet.document-management': 'Documents',
+}
 export const Mention = createReactInlineContentSpec(
     {
         type: "mention",
@@ -37,14 +44,20 @@ export const TaskList = createReactInlineContentSpec(
         render: (props: any) => (
             UIViewBuilder(() => {
                 const navigate = useNavigate();
+                const { openDialog } = useDialogStack();
+                const { realm } = useRealm();
+                const [open, setOpen] = useState(false);
+
                 return (
-                    ReactView(
-                        <span style={{cursor:'pointer'}} onClick={()=> navigate(`/@realm/${urlFriendly(props.inlineContent.props.user.name)}-[${props.inlineContent.props.user.$id}]`)}>
-                            <b>
-                                {`Task list → ${props.inlineContent.props.user.name}`}
-                            </b>
-                        </span>
-                    )
+                    VStack(
+                        Text(`${AppletTypes[props.inlineContent.props.user.type]} → ${props.inlineContent.props.user.name}`)
+                    ) 
+                    .background('yellow')
+                    .borderBottom('1px solid rgba(33,37,38,.3)')
+                    .fontWeight('500')
+                    .width().height()
+                    .display('inline')
+                 
                 )
             }).render()
 
