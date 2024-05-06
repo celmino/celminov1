@@ -55,10 +55,10 @@ export class LandingController extends UIController {
                         Spacer(),
                         HStack(
                             Text('Log in')
-                                .padding('0 2rem')
+                                .padding('0 5px')
                                 .lineHeight('1.6')
                                 .fontFamily('Graphik Regular,sans-serif')
-                                .fontSize('1.8rem').foregroundColor('#090e13')
+                                .fontSize(18).foregroundColor('#090e13')
                         )
                             .width()
                             .height()
@@ -68,12 +68,12 @@ export class LandingController extends UIController {
                         HStack(
                             Text('Sign up')
                                 .fontFamily('Graphik Medium,sans-serif')
-                                .fontSize('1.8rem')
+                                .fontSize(18)
                                 .foregroundColor('#242938')
-                                .lineHeight('3.4rem')
+                                .lineHeight('34px')
 
                         )
-                            .padding('.5rem 2.5rem')
+                            .padding('5px 25px')
                             .width()
                             .border('solid 2px #242938')
                             .onClick(() => navigate('/signup')),
@@ -87,14 +87,14 @@ export class LandingController extends UIController {
                     VStack({ alignment: cTopLeading })(
                         VStack({ alignment: cLeading, spacing: 20 })(
                             HStack(
-                                Text('Build your company brain').fontFamily('"Hagrid", sans-serif').fontSize('8rem').foregroundColor('#090e13').lineHeight('1.1')
+                                Text('Build your company brain').fontFamily('"Hagrid", sans-serif').fontSize(80).foregroundColor('#090e13').lineHeight('1.1')
                                   //  .maxLines(2)
                             ).height().maxWidth('80%'),
                             HStack({ alignment: cLeading })(
                                 Text('Open source alternative to Monday.com, Click Up and Notion with self-hosting and data ownership.').lineHeight('1.6')
                                    // .maxLines(2)
                                     .fontFamily('Graphik Regular,sans-serif')
-                                    .fontSize('3.2rem').foregroundColor('#090e13')
+                                    .fontSize(32).foregroundColor('#090e13')
                             )
                                 .paddingTop('1rem')
                                 .paddingBottom('3rem')
