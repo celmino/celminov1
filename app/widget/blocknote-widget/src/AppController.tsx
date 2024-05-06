@@ -33,6 +33,7 @@ import {
 import { Mention, TaskList } from './extensions/Mention';
 import { SelectTasklistDialog } from './dialogs/SelectTasklistDialog';
 import { HiOutlineGlobeAlt } from 'react-icons/hi';
+import { AppletInfos } from './extensions/AppletInfos';
 
 let filterTimeout;
 
@@ -85,7 +86,7 @@ const getTaskListMenuItems = (
     id: applet.$id,
     title: applet.name,
     aliases: ["helloworld", "hw"],
-    group: "Other",
+    group: AppletInfos[applet.type]?.name ?? 'Other',
     icon: UIWidget("com.tuvalsoft.widget.icons")
       .config({
         selectedIcon: applet?.iconName,

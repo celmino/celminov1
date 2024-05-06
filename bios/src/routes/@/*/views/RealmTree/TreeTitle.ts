@@ -11,7 +11,7 @@ export const TreeTitle = (title: string,spaceId: string, appletsOpen: boolean, s
 
     return (
         HStack({ alignment: cLeading })(
-            Text('title')
+            Text(title)
                 .fontSize(12)
                 .fontWeight('600')
                 .foregroundColor('rgb(80, 90, 100)'),

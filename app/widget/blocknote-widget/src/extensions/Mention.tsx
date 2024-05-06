@@ -1,16 +1,12 @@
 import { createReactInlineContentSpec } from "@blocknote/react";
 import { useAppletNavigate, useRealm } from "@celmino/ui";
-import { HStack, PopupButton, ReactView, Text, UIViewBuilder, VStack, urlFriendly, useDialogStack, useNavigate, useState } from "@tuval/forms";
+import { HStack, PopupButton, ReactView, Text, UIViewBuilder, UIWidget, VStack, cHorizontal, urlFriendly, useDialogStack, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { Menu } from "@mantine/core";
 import { MdMenu } from "react-icons/md";
+import { AppletInfos } from "./AppletInfos";
 
-const AppletTypes = {
-    'com.celmino.applet.csp': 'CSP',
-    'com.celmino.applet.task-list': 'Task List',
-    'com.celmino.applet.google-drive': 'Google Drive',
-    'com.celmino.applet.document-management': 'Documents',
-}
+
 export const Mention = createReactInlineContentSpec(
     {
         type: "mention",
@@ -51,14 +47,35 @@ export const TaskList = createReactInlineContentSpec(
 
                 return (
 
-                    VStack(
-                        Text(`${AppletTypes[props.inlineContent.props.applet?.type]} → ${props.inlineContent.props.applet?.name}`),
+                    VStack({spacing:5})(
+                        UIWidget("com.tuvalsoft.widget.icons")
+                            .config({
+                                readonly: true,
+                                selectedIcon: props.inlineContent.props.applet?.iconName,
+                                color: props.inlineContent.props.applet?.bg_color,
+                                selectedCategory: props.inlineContent.props.applet?.iconCategory,
+                                width: 24,
+                                height: 24
+                            }),
+                        VStack(
+                            Text(`${AppletInfos[props.inlineContent.props.applet?.type]?.name} → ${props.inlineContent.props.applet?.name}`)
+                        )
+                            .width().height()
+                            .borderBottom('1px solid rgba(33,37,38,.3)')
+
+                        ,
                     )
-                        .background('yellow')
-                        .borderBottom('1px solid rgba(33,37,38,.3)')
-                        .fontWeight('500')
+                        // .background('yellow')
+                        .cursor('pointer')
+                        .padding(cHorizontal, 2)
+
+                        .fontSize(16)
+                        .fontWeight('600')
                         .width().height()
-                        .display('inline')
+                        .display('-webkit-inline-box')
+                        .top('3px')
+
+
                 )
 
 
