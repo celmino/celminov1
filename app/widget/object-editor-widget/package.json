@@ -131,6 +131,8 @@
     },
     "dependencies": {
         "@celmino/sdk": "^20.3.282",
-        "@realmocean/antd": "^21.0.32"
+        "@celmino/ui": "^1.0.58",
+        "@realmocean/antd": "^21.0.34",
+        "@realmocean/sdk": "^1.0.149"
     }
 }

@@ -58,7 +58,7 @@ export const TaskList = createReactInlineContentSpec(
                                 height: 24
                             }),
                         VStack(
-                            Text(`${AppletInfos[props.inlineContent.props.applet?.type]?.name} → ${props.inlineContent.props.applet?.name}`)
+                            Text(`${AppletInfos[props.inlineContent.props.applet?.tree_widget]?.name} → ${props.inlineContent.props.applet?.name}`)
                         )
                             .width().height()
                             .borderBottom('1px solid rgba(33,37,38,.3)')

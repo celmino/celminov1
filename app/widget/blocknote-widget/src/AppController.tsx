@@ -34,6 +34,7 @@ import { Mention, TaskList } from './extensions/Mention';
 import { SelectTasklistDialog } from './dialogs/SelectTasklistDialog';
 import { HiOutlineGlobeAlt } from 'react-icons/hi';
 import { AppletInfos } from './extensions/AppletInfos';
+import { is } from '@tuval/core';
 
 let filterTimeout;
 
@@ -77,31 +78,55 @@ const getMentionMenuItems = (
 };
 
 const getTaskListMenuItems = (
-  editor: typeof schema.BlockNoteEditor, applets
+  editor: typeof schema.BlockNoteEditor, treeItems: any[], query
 ): DefaultReactSuggestionItem[] => {
 
+  const getNameFromId = (id) => {
+    
+    const treeItem = treeItems.find(treeItem => treeItem.$id === id);
+    if (treeItem != null) {
+      return treeItem.name;
+    }
+    return 'Not Found';
+  }
+  const getParentPath = (treeItem) => {
+    if (!is.nullOrEmpty(treeItem.fullPath)) {
+      const paths: string[] = treeItem.fullPath.split('/');
+      const names = [];
+      paths.forEach(path => {
+        if (!is.nullOrEmpty(path)) {
+          names.push(getNameFromId(path));
+        }
+      });
 
-  return applets.map((applet) => ({
-    key: applet.$id,
-    id: applet.$id,
-    title: applet.name,
+      return names.join('->');
+    }
+
+    return '';
+
+  }
+
+  return treeItems.map((treeItem) => ({
+    key: treeItem.$id,
+    id: treeItem.$id,
+    title: treeItem.name,
     aliases: ["helloworld", "hw"],
-    group: AppletInfos[applet.type]?.name ?? 'Other',
+    group: 'Items', // AppletInfos[treeItem.tree_widget]?.name ?? 'Other',
     icon: UIWidget("com.tuvalsoft.widget.icons")
       .config({
-        selectedIcon: applet?.iconName,
-        color: applet?.bg_color,
-        selectedCategory: applet?.iconCategory,
+        selectedIcon: treeItem?.iconName,
+        color: treeItem?.iconColor,
+        selectedCategory: treeItem?.iconCategory,
         width: 24,
         height: 24
       }).render(),
-    subtext: "Used to insert a block with 'Hello World' below.",
+    subtext: getParentPath(treeItem),
     onItemClick: () => {
       editor.insertInlineContent([
         {
           type: "tasklist",
           props: {
-             applet,
+            applet: treeItem,
           },
         },
         " ", // add a space after the mention
@@ -168,7 +193,7 @@ export class EditorJsController extends UIController {
   public override LoadView(): UIView {
 
 
-    const { onChange = void 0, defaultValue = null, tools, scrollable = true, clamp = false, applets } = this.props.config || {};
+    const { onChange = void 0, defaultValue = null, tools, scrollable = true, clamp = false, applets, treeItems } = this.props.config || {};
 
     const editor = useCreateBlockNote({
       schema,
@@ -220,7 +245,7 @@ export class EditorJsController extends UIController {
                 <SuggestionMenuController
                   triggerCharacter={"#"}
                   getItems={async (query) => {
-                    return filterSuggestionItems([...getTaskListMenuItems(editor, applets)], query)
+                    return filterSuggestionItems([...getTaskListMenuItems(editor, treeItems, query)], query)
                   }
                   }
                 />

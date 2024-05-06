@@ -13,9 +13,7 @@ import { ObjectHeader } from './views/ObjectHeader';
 export class MyTestController extends UIController {
     public override LoadView(): UIView {
 
-
-        const info = useRenderInfo("App");
-
+        const {realm} = useRealm
         const { objectId, fields, views = [], powerUps = [], selectedViewIndex = 0,objectViews = [],
             description = null, onDescriptionChange = void 0 }: IConfig = this.props.config || {};
 
@@ -37,43 +35,75 @@ export class MyTestController extends UIController {
                         HStack({ alignment: cTopLeading, spacing: 12 })(
                             VStack({ alignment: cTopLeading })(
                                 ObjectHeader(),
-                                /* Text('open').onClick(() => {
-                                    openDialog({
-                                        title: 'Open',
-                                        view: Text('hello')
-                                    })
-                                }), */
-                                // Text(JSON.stringify(info)),
+                             
                                  HStack({ alignment: cLeading })(
-                                    UIWidget('com.celmino.widget.tab-view')
+                                    UIWidget('com.celmino.widget.blocknote')
+                                    .config({
+                                        defaultValue:null,
+                                        clamp: true,
+                                        workspaceId: workspaceId,
+                                        appletId: appletId,
+                                        applets,
+                                        treeItems,
+                                        tools: {
+                                            image: {
+                                                class: InlineImage,
+                                                inlineToolbar: true,
+                                                config: {
+                                                    embed: {
+                                                        display: true,
+                                                    },
+                                                    unsplash: {
+                                                        appName: 'your_app_name',
+                                                        clientId: 'your_client_id'
+                                                    }
+                                                }
+                                            },
+                                            link: {
+                                                class: SimpleImage,
+                                                inlineToolbar: true,
+                                                shortcut: 'CMD+SHIFT+W',
+                                                config: {
+                                                    workspaceId: workspaceId,
+                                                    appletId: appletId,
+                                                    openDialog
+
+                                                },
+                                            }
+                                        },
+                                        onChange: (data) => {
+                                            console.log(data)
+                                            updateDocument({
+                                                databaseId: appletId,
+                                                collectionId: 'documentContent',
+                                                documentId: documentId,
+                                                data: {
+                                                    content: JSON.stringify(data)
+                                                }
+                                            })
+                                        }
+                                    })
+                                 /*    UIWidget('com.celmino.widget.tab-view')
                                         .config({
                                             allViews: views,
                                             views: objectViews,
-                                            ////  isLoading: isTaskViewsLoading,
-                                            //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
+                                           
                                             onChange: (index) => {
-                                                //navigate(`${getViewUrl(access_type, team_id, applet_id, view_id)}/object/${objectId}/objectView/${taskViews[index].id}`)
-                                                setWidgetController({
+                                                  setWidgetController({
                                                     controller: class extends WidgetController { }
                                                 });
-                                               // setSelectedViewIndex(index)
-                                            },
+                                              },
                                             actions: [
                                                 {
                                                     title: 'View',
                                                     onClick: () => {
                                                         SelectViewDialog.Show(views, powerUps).then((view) => {
-                                                          /*   createObjectView({
-                                                                $id: nanoid(),
-                                                                objectId: objectId,
-                                                                name: view.name,
-                                                                view: view.type,
-                                                            }) */
+                                                         
                                                         });
                                                     }
                                                 }
                                             ]
-                                        })
+                                        }) */
                                 )
                                     .allHeight(40)
                                     .overflowX('auto')

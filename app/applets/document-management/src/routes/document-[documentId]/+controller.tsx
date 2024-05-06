@@ -43,8 +43,10 @@ export class DocumentController extends UIController {
         const { updateDocument } = useUpdateDocument(workspaceId);
 
         const { documents: applets, isLoading: isAppletsLoading } = useListDocuments(workspaceId, 'workspace', 'applets');
+
+        const { documents: treeItems, isLoading: isTreeItemsLoading } = useListDocuments(workspaceId, 'workspace', 'ws_tree');
         return (
-            (isDocumentLoading || isLoading || isAppletsLoading) ? Fragment() :
+            (isDocumentLoading || isLoading || isAppletsLoading || isTreeItemsLoading) ? Fragment() :
                 ReactView(
                     <DialogStack>
                         {
@@ -73,6 +75,7 @@ export class DocumentController extends UIController {
                                                     workspaceId: workspaceId,
                                                     appletId: appletId,
                                                     applets,
+                                                    treeItems,
                                                     tools: {
                                                         image: {
                                                             class: InlineImage,

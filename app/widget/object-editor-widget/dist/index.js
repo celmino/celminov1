@@ -65,7 +65,6 @@ var MyTestController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MyTestController.prototype.LoadView = function () {
-        var info = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useRenderInfo)("App");
         var _a = this.props.config || {}, objectId = _a.objectId, fields = _a.fields, _b = _a.views, views = _b === void 0 ? [] : _b, _c = _a.powerUps, powerUps = _c === void 0 ? [] : _c, _d = _a.selectedViewIndex, selectedViewIndex = _d === void 0 ? 0 : _d, _e = _a.objectViews, objectViews = _e === void 0 ? [] : _e, _f = _a.description, description = _f === void 0 ? null : _f, _g = _a.onDescriptionChange, onDescriptionChange = _g === void 0 ? void 0 : _g;
         var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
         var _h = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)({ controller: _WidgetController__WEBPACK_IMPORTED_MODULE_1__.WidgetController }), widgetController = _h[0], setWidgetController = _h[1];
