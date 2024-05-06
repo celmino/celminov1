@@ -3,6 +3,7 @@ import { useAppletNavigate, useRealm } from "@celmino/ui";
 import { HStack, PopupButton, ReactView, Text, UIViewBuilder, VStack, urlFriendly, useDialogStack, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { Menu } from "@mantine/core";
+import { MdMenu } from "react-icons/md";
 
 const AppletTypes = {
     'com.celmino.applet.csp': 'CSP',
@@ -34,7 +35,7 @@ export const TaskList = createReactInlineContentSpec(
     {
         type: "tasklist",
         propSchema: {
-            user: {
+            applet: {
                 default: "Unknown",
             },
         },
@@ -49,16 +50,18 @@ export const TaskList = createReactInlineContentSpec(
                 const [open, setOpen] = useState(false);
 
                 return (
+
                     VStack(
-                        Text(`${AppletTypes[props.inlineContent.props.user.type]} → ${props.inlineContent.props.user.name}`)
-                    ) 
-                    .background('yellow')
-                    .borderBottom('1px solid rgba(33,37,38,.3)')
-                    .fontWeight('500')
-                    .width().height()
-                    .display('inline')
-                 
+                        Text(`${AppletTypes[props.inlineContent.props.applet?.type]} → ${props.inlineContent.props.applet?.name}`),
+                    )
+                        .background('yellow')
+                        .borderBottom('1px solid rgba(33,37,38,.3)')
+                        .fontWeight('500')
+                        .width().height()
+                        .display('inline')
                 )
+
+
             }).render()
 
         ),

@@ -16,7 +16,7 @@ export declare const TaskList: {
     config: {
         type: string;
         propSchema: {
-            user: {
+            applet: {
                 default: string;
             };
         };

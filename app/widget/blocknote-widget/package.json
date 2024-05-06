@@ -187,6 +187,7 @@
         "@blocknote/core": "^0.12.0",
         "@blocknote/react": "^0.12.0",
         "@celmino/ui": "^1.0.57",
+        "@realmocean/atlaskit": "^17.8.40",
         "@tiptap/extension-typography": "^2.2.4",
         "@tiptap/react": "^2.2.4",
         "@tiptap/starter-kit": "^2.2.4",

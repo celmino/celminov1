@@ -4,6 +4,7 @@ import {
   ReactView,
   ScrollView,
   UIController, UIView,
+  UIWidget,
   cTop,
   cTopLeading,
   cVertical,
@@ -30,6 +31,8 @@ import {
   DefaultReactSuggestionItem,
 } from "@blocknote/react";
 import { Mention, TaskList } from './extensions/Mention';
+import { SelectTasklistDialog } from './dialogs/SelectTasklistDialog';
+import { HiOutlineGlobeAlt } from 'react-icons/hi';
 
 let filterTimeout;
 
@@ -78,13 +81,26 @@ const getTaskListMenuItems = (
 
 
   return applets.map((applet) => ({
+    key: applet.$id,
+    id: applet.$id,
     title: applet.name,
+    aliases: ["helloworld", "hw"],
+    group: "Other",
+    icon: UIWidget("com.tuvalsoft.widget.icons")
+      .config({
+        selectedIcon: applet?.iconName,
+        color: applet?.bg_color,
+        selectedCategory: applet?.iconCategory,
+        width: 24,
+        height: 24
+      }).render(),
+    subtext: "Used to insert a block with 'Hello World' below.",
     onItemClick: () => {
       editor.insertInlineContent([
         {
           type: "tasklist",
           props: {
-            user: applet,
+             applet,
           },
         },
         " ", // add a space after the mention
@@ -94,18 +110,21 @@ const getTaskListMenuItems = (
 };
 
 // Slash menu item to insert an Alert block
-const insertTaskList = (editor: typeof schema.BlockNoteEditor, applet) => ({
+const insertTaskList = (editor: typeof schema.BlockNoteEditor, applets) => ({
   title: "Task List",
   onItemClick: () => {
-    editor.insertInlineContent([
-      {
-        type: "tasklist",
-        props: {
-          user: applet,
+    SelectTasklistDialog.Show(applets).then((applet) => {
+      alert(JSON.stringify(applet))
+      editor.insertInlineContent([
+        {
+          type: "tasklist",
+          props: {
+            applet,
+          },
         },
-      },
-      " ", // add a space after the mention
-    ]);
+        " ", // add a space after the mention
+      ]);
+    })
   },
   aliases: [
     "alert",
@@ -155,7 +174,8 @@ export class EditorJsController extends UIController {
       initialContent: defaultValue
     });
 
-  
+
+
 
 
 
@@ -183,7 +203,7 @@ export class EditorJsController extends UIController {
                     // Gets all default slash menu items and `insertAlert` item.
                     filterSuggestionItems(
                       [...getDefaultReactSlashMenuItems(editor), insertAlert(editor),
-                        insertTaskList(editor, applets)
+                      insertTaskList(editor, applets)
                       ],
                       query
                     )
@@ -191,9 +211,16 @@ export class EditorJsController extends UIController {
                 />
                 <SuggestionMenuController
                   triggerCharacter={"@"}
-                  getItems={async (query) =>
-                    // Gets the mentions menu items
-                    filterSuggestionItems([...getMentionMenuItems(editor), ...getTaskListMenuItems(editor, applets)], query)
+                  getItems={async (query) => {
+                    return filterSuggestionItems([...getMentionMenuItems(editor)], query)
+                  }
+                  }
+                />
+                <SuggestionMenuController
+                  triggerCharacter={"#"}
+                  getItems={async (query) => {
+                    return filterSuggestionItems([...getTaskListMenuItems(editor, applets)], query)
+                  }
                   }
                 />
               </BlockNoteView>

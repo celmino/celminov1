@@ -77,6 +77,7 @@ const umdConfig = {
         '@realmocean/richtexteditor': 'realmocean$richtexteditor',
         '@realmocean/gantt': 'realmocean$gantt',
         '@realmocean/editor': 'realmocean$editor',
+        '@realmocean/atlaskit': 'realmocean$atlaskit',
 
         '@celmino/ui': 'celmino$ui',
 
