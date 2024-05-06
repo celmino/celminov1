@@ -4,7 +4,7 @@ import { Query, Services, useCreateMagicURL, useCreateRealm, useCreateTeam, useD
 import { Button, ForEach, HStack, Heading, Input, TextField, Text, UINavigate, UIViewBuilder, VStack, useNavigate, useState, Spacer, cLeading, cHorizontal, darken, Icon, Icons, HDivider, useParams, useEffect, Spinner } from "@tuval/forms";
 import { useGetCurrentOrganization } from "../hooks/useGetCurrentOrganization";
 import { urlFriendly } from "../utils/urlFriendly";
-import { useAccount, useCreatePersonelRealm, useRealm } from "@celmino/ui";
+import { RealmServiceBroker, useAccount, useCreatePersonelRealm, useRealm } from "@celmino/ui";
 import { useGetHostName, useGetProtocol } from "../hooks/useGetProtocol";
 
 
@@ -75,7 +75,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         HStack({ alignment: cLeading, spacing: 10 })(
                                             HStack({ alignment: cLeading })(
                                                 Text(realm.name).fontFamily('"Graphik Regular", sans-serif')
-                                                .fontSize(20)
+                                                    .fontSize(20)
                                             ).height(),
                                             Icon(Icons.MoveArrowRight)
                                         )
@@ -157,58 +157,57 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                     organizationId: account?.$id,
                                 }, async (workspace) => {
 
-                                    const database = await Services.Databases.create(workspace.$id, 'workspace', 'Workspace', 'workspace');
-
-                                    await Services.Databases.createCollection(workspace.$id, database.$id, 'realmInfo', 'RealmInfo');
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'name', 255, false);
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'teamId', 255, false);
-
-
-                                    const appletCol = await Services.Databases.createCollection(workspace.$id, database.$id, 'applets', 'Applets');
-                                    const nameAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'name', 255, false);
-                                    const parent = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'parent', 255, false);
-                                    const opaAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'opa', 255, false);
-                                    const typeAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false);
-                                    const iconName = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconName', 255, false);
-                                    const iconCategory = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false);
-                                    const themeColor = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false, '-1');
-
-                                    //Tree Collection Creating
-                                    const treeCol = await Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree');
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'name', 255, false);
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false);
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false);
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false);
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false);
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'spaceId', 255, false);
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false);
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false);
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false);
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false);
-                                    await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1');
-
-                                    await Services.Databases.createDocument(workspace.$id, database.$id, 'realmInfo', workspace.$id, {
-                                        name: workspaceName,
-                                        teamId: account.$id
-                                    });
-
-
-                                    await Services.Databases.createDocument(account.$id, 'workspace', 'membership', workspace.$id, { name: workspace.name });
-
-                                    Services.Accounts.createMagicURL(account.$id, account.email).then((data: any) => {
-                                        const params = data?.message?.split('&');
-                                        const userName = params[0];
-                                        const token = params[1];
-                                        const realmId = params[3];
-
-
-                                        const protocol = useGetProtocol();
-                                        const hostName = useGetHostName();
-                                        //  window.open(`${protocol}//${workspace.$id}.${hostName}/@realm/?userId=${userName}&secret=${token}`);
-                                    });
-
-
-                                    // navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${workspace.name}-${workspace.$id}`)
+                                    RealmServiceBroker.Default.setup(account.$id, workspace.$id, workspace.name);
+                                    /*  const database = await Services.Databases.create(workspace.$id, 'workspace', 'Workspace', 'workspace');
+ 
+                                     await Services.Databases.createCollection(workspace.$id, database.$id, 'realmInfo', 'RealmInfo');
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'name', 255, false);
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, 'realmInfo', 'teamId', 255, false);
+ 
+ 
+                                     const appletCol = await Services.Databases.createCollection(workspace.$id, database.$id, 'applets', 'Applets');
+                                     const nameAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'name', 255, false);
+                                     const parent = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'parent', 255, false);
+                                     const opaAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'opa', 255, false);
+                                     const typeAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false);
+                                     const iconName = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconName', 255, false);
+                                     const iconCategory = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false);
+                                     const themeColor = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false, '-1');
+ 
+                                     //Tree Collection Creating
+                                     const treeCol = await Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree');
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'name', 255, false);
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false);
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false);
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false);
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false);
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'spaceId', 255, false);
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false);
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false);
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false);
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false);
+                                     await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1');
+ 
+                                     await Services.Databases.createDocument(workspace.$id, database.$id, 'realmInfo', workspace.$id, {
+                                         name: workspaceName,
+                                         teamId: account.$id
+                                     });
+ 
+ 
+                                     await Services.Databases.createDocument(account.$id, 'workspace', 'membership', workspace.$id, { name: workspace.name });
+ 
+                                     Services.Accounts.createMagicURL(account.$id, account.email).then((data: any) => {
+                                         const params = data?.message?.split('&');
+                                         const userName = params[0];
+                                         const token = params[1];
+                                         const realmId = params[3];
+ 
+ 
+                                         const protocol = useGetProtocol();
+                                         const hostName = useGetHostName();
+                                       });
+ 
+ */
                                 })
                             }),
                         Button().renderer(ButtonRenderer).label('Create Personel Workspace')

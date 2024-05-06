@@ -12,16 +12,15 @@ class RealmService extends RealmoceanService {
 
         const router = this.services.get('web-server').getRouter();
 
-        router.post("/com.celmino.service.realm/realm/setup", async (req, res) => {
+        router.post("/com.celmino.service.realm/setup", async (req, res) => {
 
             const accountId = req.body.accountId;
             const realmId = req.body.realmId;
             const realmName = req.body.realmName;
-            const teamId = req.body.teamId;
 
 
             try {
-                const applet = await this.setup(realmId, realmName, teamId, accountId);
+                const applet = await this.setup(realmId, realmName, accountId);
                 return res.json(applet);
             } catch (e) {
                 res.statusCode(500)
@@ -30,7 +29,7 @@ class RealmService extends RealmoceanService {
         });
     }
 
-    async setup(workspaceId: string, workspaceName: string, teamId: string, accountId: string) {
+    async setup(workspaceId: string, workspaceName: string, accountId: string) {
         const databaseService = this.databaseService;
 
 
@@ -72,7 +71,6 @@ class RealmService extends RealmoceanService {
         });
 
         await databaseService.createDocument(accountId, 'workspace', 'membership', workspaceId, { name: workspaceName });
-
 
     }
 }
