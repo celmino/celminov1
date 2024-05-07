@@ -67,9 +67,7 @@ export const ListView = () => UIViewBuilder(() => {
         VStack({ alignment: cTopLeading })(
             ViewsTab(viewId),
             (isLoading || isStatusesLoading || isFieldSettingsLoading) ? Fragment() :
-
                 UIViewBuilder(() => {
-
                     let resultFields = attributes;
                     if (viewSettings != null) {
                         resultFields = attributes
@@ -82,11 +80,7 @@ export const ListView = () => UIViewBuilder(() => {
                                 }
                             })
                     }
-
-
                     return (
-
-
                         HStack({ alignment: cTopLeading })(
                             VStack({ alignment: cTopLeading })(
                                 UIViewBuilder(() => {
