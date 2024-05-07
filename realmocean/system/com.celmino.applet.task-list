@@ -5714,6 +5714,38 @@ var useCreateView = function () {
 
 /***/ }),
 
+/***/ "./src/hooks/useGetTask.ts":
+/*!*********************************!*\
+  !*** ./src/hooks/useGetTask.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useGetTask: () => (/* binding */ useGetTask)
+/* harmony export */ });
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var useGetTask = function (taskId) {
+    var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
+    var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
+    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDocument)({
+        projectId: realm.$id,
+        databaseId: applet.$id,
+        collectionId: 'listItems',
+        documentId: taskId
+    }), document = _a.document, isLoading = _a.isLoading;
+    return { task: document, isLoading: isLoading };
+};
+
+
+/***/ }),
+
 /***/ "./src/hooks/useGetView.ts":
 /*!*********************************!*\
   !*** ./src/hooks/useGetView.ts ***!
@@ -6193,7 +6225,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _views_ListView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/ListView */ "./src/routes/lists/view-[viewId]/views/ListView.ts");
+/* harmony import */ var _views_ListView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/ListView */ "./src/routes/lists/view-[viewId]/views/ListView.tsx");
 /* harmony import */ var _hooks_useGetView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hooks/useGetView */ "./src/hooks/useGetView.ts");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
@@ -6338,10 +6370,10 @@ var KanbanView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2
 
 /***/ }),
 
-/***/ "./src/routes/lists/view-[viewId]/views/ListView.ts":
-/*!**********************************************************!*\
-  !*** ./src/routes/lists/view-[viewId]/views/ListView.ts ***!
-  \**********************************************************/
+/***/ "./src/routes/lists/view-[viewId]/views/ListView.tsx":
+/*!***********************************************************!*\
+  !*** ./src/routes/lists/view-[viewId]/views/ListView.tsx ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6356,6 +6388,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _views_ViewsTabMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../views/ViewsTabMenu */ "./src/routes/lists/views/ViewsTabMenu.ts");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -6376,6 +6425,7 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+
 
 
 
@@ -6614,50 +6664,60 @@ var ListView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__
                         }
                     },
                     onItemClick: function (item) {
-                        openDialog({
-                            title: 'Open',
-                            view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)("com.celmino.widget.object-editor")
-                                .config({
-                                objectId: item.$id,
-                                views: [],
-                                //powerUps: PowerUps,
-                                // headerIcon: Icon(OkrIcons.KeyResultIcon({ width: 36, height: 36 })),
-                                header: item.name,
-                                onHeaderChange: function (title) { alert(title); },
-                                //description: metric?.description,
-                                onDescriptionChange: function (description) {
-                                    /*  updateTask(object_id, {
-                                         description: description
-                                     }, {
-                                         onSuccess: () => {
-                                             invalidateCache();
-                                         }
-                                     }) */
-                                },
-                                fields: {
-                                    "assignee": {
-                                        type: "user",
-                                        label: 'Assignee',
+                        var _controller = /** @class */ (function (_super) {
+                            __extends(class_1, _super);
+                            function class_1() {
+                                return _super !== null && _super.apply(this, arguments) || this;
+                            }
+                            class_1.prototype.LoadView = function () {
+                                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)("com.celmino.applet.task-list", 'taskView')
+                                    .config({
+                                    taskId: item.$id,
+                                    views: [],
+                                    //powerUps: PowerUps,
+                                    // headerIcon: Icon(OkrIcons.KeyResultIcon({ width: 36, height: 36 })),
+                                    header: item.name,
+                                    onHeaderChange: function (title) { alert(title); },
+                                    //description: metric?.description,
+                                    onDescriptionChange: function (description) {
+                                        /*  updateTask(object_id, {
+                                             description: description
+                                         }, {
+                                             onSuccess: () => {
+                                                 invalidateCache();
+                                             }
+                                         }) */
                                     },
-                                    "title": {
-                                        type: "text",
-                                        label: "Title",
-                                        value: '',
-                                        onChange: function (value) {
-                                            alert(value);
-                                        }
-                                    },
-                                    "state": {
-                                        type: "select",
-                                        label: "State",
-                                        options: [],
-                                        value: null,
-                                        onChange: function (value) {
-                                            alert(value);
+                                    fields: {
+                                        "assignee": {
+                                            type: "user",
+                                            label: 'Assignee',
+                                        },
+                                        "title": {
+                                            type: "text",
+                                            label: "Title",
+                                            value: '',
+                                            onChange: function (value) {
+                                                alert(value);
+                                            }
+                                        },
+                                        "state": {
+                                            type: "select",
+                                            label: "State",
+                                            options: [],
+                                            value: null,
+                                            onChange: function (value) {
+                                                alert(value);
+                                            }
                                         }
                                     }
-                                }
-                            })
+                                }));
+                            };
+                            return class_1;
+                        }(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController));
+                        openDialog({
+                            title: 'Open',
+                            view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_controller, null))
                         });
                     },
                     items: (_a = items === null || items === void 0 ? void 0 : items.map(function (item) { return (__assign({ id: item.$id, title: item.name }, item)); })) !== null && _a !== void 0 ? _a : [],
@@ -8983,7 +9043,7 @@ var ActionsPanelButton = function (icon, action, label) {
     }));
 };
 var ActionPanel = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-    var closeDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useConfig)().closeDialog;
+    var closeDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().closeDialog;
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })(
     /*   _StatusMarker(task?.stage_id),
          EditableHeader(task?.title).size(EditableHeadingSizes.MEDIUM), */
@@ -9028,6 +9088,45 @@ var HeaderButton = function (label, icon) { return ((0,_tuval_forms__WEBPACK_IMP
     .cursor('pointer')
     .cornerRadius(6)
     .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 10)); };
+
+
+/***/ }),
+
+/***/ "./src/views/TaskHeader.ts":
+/*!*********************************!*\
+  !*** ./src/views/TaskHeader.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TaskHeader: () => (/* binding */ TaskHeader)
+/* harmony export */ });
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var fontFamily = 'ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+var TaskHeader = function (header, onHeaderChange, headerIcon) {
+    if (onHeaderChange === void 0) { onHeaderChange = void 0; }
+    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 5 })(headerIcon ? headerIcon : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)(), 
+        //  _StatusMarker(task?.stage_id),
+        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.string(header) ?
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.EditableHeader)(header).size(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.EditableHeadingSizes.MEDIUM)
+                .onChange(function (e) { return onHeaderChange(e); })
+                .fontSmoothing('auto')
+                .foregroundColor('#212526')
+                .fontSize(28).fontFamily(fontFamily).fontWeight('500')
+                .lineHeight('1.25')
+                .kerning('-0.003em')
+            :
+                _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(header) ? header() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)()).height().padding(8));
+    });
+};
 
 
 /***/ }),
@@ -9111,6 +9210,172 @@ var ViewHeader = function (header, onHeaderChange) {
             .height());
     });
 };
+
+
+/***/ }),
+
+/***/ "./src/widgets/TaskViewWidget.ts":
+/*!***************************************!*\
+  !*** ./src/widgets/TaskViewWidget.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TaskViewWidget: () => (/* binding */ TaskViewWidget)
+/* harmony export */ });
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/ActionPanel */ "./src/views/ActionPanel.tsx");
+/* harmony import */ var _views_TaskHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/TaskHeader */ "./src/views/TaskHeader.ts");
+/* harmony import */ var _hooks_useGetTask__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useGetTask */ "./src/hooks/useGetTask.ts");
+/* harmony import */ var _views_InlineTitle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/InlineTitle */ "./src/widgets/views/InlineTitle.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+var TaskViewWidget = /** @class */ (function (_super) {
+    __extends(TaskViewWidget, _super);
+    function TaskViewWidget() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    TaskViewWidget.prototype.LoadView = function () {
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
+        var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(realm.$id, 'workspace', 'applets'), applets = _a.documents, isAppletsLoading = _a.isLoading;
+        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(realm.$id, 'workspace', 'ws_tree'), treeItems = _b.documents, isTreeItemsLoading = _b.isLoading;
+        var _c = this.props.config || {}, taskId = _c.taskId, fields = _c.fields, _d = _c.views, views = _d === void 0 ? [] : _d, _e = _c.powerUps, powerUps = _e === void 0 ? [] : _e, _f = _c.selectedViewIndex, selectedViewIndex = _f === void 0 ? 0 : _f, _g = _c.objectViews, objectViews = _g === void 0 ? [] : _g, _h = _c.description, description = _h === void 0 ? null : _h, _j = _c.onDescriptionChange, onDescriptionChange = _j === void 0 ? void 0 : _j;
+        var _k = (0,_hooks_useGetTask__WEBPACK_IMPORTED_MODULE_5__.useGetTask)(taskId), task = _k.task, isLoading = _k.isLoading;
+        var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useDialogStack)().openDialog;
+        //  const [widgetController, setWidgetController] = useState<any>({ controller: WidgetController });
+        // const _WidgetController = widgetController.controller;
+        return ((isAppletsLoading || isTreeItemsLoading || isLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Spinner)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ConfigContext)(function () {
+                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })(
+                //    Text(JSON.stringify(description)),
+                (0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 12 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_views_TaskHeader__WEBPACK_IMPORTED_MODULE_4__.TaskHeader)(task.name, function () { return void 0; }, null), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_views_InlineTitle__WEBPACK_IMPORTED_MODULE_6__.InlineTitle)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-userStatus'), 'Status'), (0,_views_InlineTitle__WEBPACK_IMPORTED_MODULE_6__.InlineTitle)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-calendar'), 'Dates'), (0,_views_InlineTitle__WEBPACK_IMPORTED_MODULE_6__.InlineTitle)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-timeTracking'), 'Track Time')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_views_InlineTitle__WEBPACK_IMPORTED_MODULE_6__.InlineTitle)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-userStatus'), 'Status'), (0,_views_InlineTitle__WEBPACK_IMPORTED_MODULE_6__.InlineTitle)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-calendar'), 'Dates'), (0,_views_InlineTitle__WEBPACK_IMPORTED_MODULE_6__.InlineTitle)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-timeTracking'), 'Track Time'))).height()
+                    .padding(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)('com.tuvalsoft.widget.blocknote')
+                    .config({
+                    defaultValue: null,
+                    clamp: true,
+                    workspaceId: realm.$id,
+                    appletId: applet.$id,
+                    applets: applets,
+                    treeItems: treeItems,
+                    onChange: function (data) {
+                        console.log(data);
+                        /*  updateDocument({
+                             databaseId: appletId,
+                             collectionId: 'documentContent',
+                             documentId: documentId,
+                             data: {
+                                 content: JSON.stringify(data)
+                             }
+                         }) */
+                    }
+                }))
+                    .border('solid 1px #E8EAED')
+                    .cornerRadius(6)
+                    .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cVertical, 20))
+                    .minHeight(200)
+                    .padding(20)
+                    .height()
+                /*    UIWidget('com.celmino.widget.tab-view')
+                       .config({
+                           allViews: views,
+                           views: objectViews,
+                          
+                           onChange: (index) => {
+                                 setWidgetController({
+                                   controller: class extends WidgetController { }
+                               });
+                             },
+                           actions: [
+                               {
+                                   title: 'View',
+                                   onClick: () => {
+                                       SelectViewDialog.Show(views, powerUps).then((view) => {
+                                        
+                                       });
+                                   }
+                               }
+                           ]
+                       }) */
+                /* objectViews?.length > 0 ?
+
+                    ReactView(
+                        <_WidgetController
+                            objectId={objectId}
+                            view={objectViews?.[selectedViewIndex]?.view}
+                            defaultValue={selectedViewIndex === 0 ? description : objectViews?.[selectedViewIndex]?.data || {}}
+                            onChange={(data) => {
+                                if (selectedViewIndex === 0) {
+                                    onDescriptionChange(data);
+                                }
+                                else {
+                                   
+                                }
+                            }}
+                        ></_WidgetController>
+                    )
+
+
+                    : Fragment() */
+                )
+                    .width(null)
+                    .flexBasis('0')
+                    .flexGrow('1')
+                    .flexShrink('0')
+                    .overflowX('auto')))
+                //.padding('4px 36px 12px')
+                );
+            }).config(this.props.config));
+    };
+    return TaskViewWidget;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/widgets/views/InlineTitle.ts":
+/*!******************************************!*\
+  !*** ./src/widgets/views/InlineTitle.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   InlineTitle: () => (/* binding */ InlineTitle)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+var InlineTitle = function (icon, title) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(title)).foregroundColor('rgb(101, 111, 125)').allWidth(100)); };
 
 
 /***/ }),
@@ -9380,12 +9645,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _routes_routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./routes/+routes */ "./src/routes/+routes.ts");
 /* harmony import */ var _TreeController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TreeController */ "./src/TreeController.tsx");
+/* harmony import */ var _widgets_TaskViewWidget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./widgets/TaskViewWidget */ "./src/widgets/TaskViewWidget.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 var manifest = __webpack_require__(/*! ./manifest */ "./src/manifest.js");
@@ -9403,7 +9670,8 @@ var ProcessMining = /** @class */ (function () {
     ProcessMining.prototype.GetMainController = function () {
         return {
             tree: _TreeController__WEBPACK_IMPORTED_MODULE_1__.WorkspaceTreeWidgetController,
-            applet: _routes_routes__WEBPACK_IMPORTED_MODULE_0__.RouteController
+            applet: _routes_routes__WEBPACK_IMPORTED_MODULE_0__.RouteController,
+            taskView: _widgets_TaskViewWidget__WEBPACK_IMPORTED_MODULE_2__.TaskViewWidget
         };
     };
     ProcessMining = __decorate([

@@ -197,11 +197,11 @@ export class EditorJsController extends UIController {
 
     const editor = useCreateBlockNote({
       schema,
-      initialContent: defaultValue
+      initialContent: defaultValue,
+      placeholders: {
+        default: "Write something or type '/' for commands, '@' for mentions, '#' for referances" 
+      }
     });
-
-
-
 
 
 
@@ -211,10 +211,11 @@ export class EditorJsController extends UIController {
 
     return (
       OptionsContext(() =>
-        ScrollView({ axes: cVertical, alignment: cTop })(
+      
           HStack({ alignment: cTop })(
             ReactView(
               <BlockNoteView editor={editor} formattingToolbar={true} slashMenu={false} editable={true}
+              
                 onChange={() => {
                   clearTimeout(filterTimeout)
                   filterTimeout = setTimeout(() => {
@@ -252,8 +253,9 @@ export class EditorJsController extends UIController {
               </BlockNoteView>
             )
           )
+          .height()
             .maxWidth('1000px')
-        )
+        
 
         //.width('calc(100% - 40px)')
         // .border({ default: 'solid 1px #E2E2E2' }).tabIndex(0).cornerRadius(5)

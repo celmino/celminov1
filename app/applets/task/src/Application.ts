@@ -2,6 +2,7 @@ import { FormBuilder, UIController } from '@tuval/forms';
 import { MyTestController } from './AppController';
 import { RouteController } from './routes/+routes';
 import { WorkspaceTreeWidgetController } from './TreeController';
+import { TaskViewWidget } from './widgets/TaskViewWidget';
 
 const manifest = require('./manifest');
 
@@ -23,7 +24,8 @@ export class ProcessMining {
     public GetMainController() {
         return {
             tree: WorkspaceTreeWidgetController,
-            applet: RouteController
+            applet: RouteController,
+            taskView: TaskViewWidget
         };
     }
 }

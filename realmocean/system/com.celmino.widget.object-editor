@@ -34,10 +34,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _WidgetController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WidgetController */ "./src/WidgetController.ts");
-/* harmony import */ var _dialogs_SelectViewDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dialogs/SelectViewDialog */ "./src/dialogs/SelectViewDialog.ts");
-/* harmony import */ var _views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/ActionPanel */ "./src/views/ActionPanel.tsx");
-/* harmony import */ var _views_FieldContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/FieldContainer */ "./src/views/FieldContainer.ts");
-/* harmony import */ var _views_ObjectHeader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/ObjectHeader */ "./src/views/ObjectHeader.tsx");
+/* harmony import */ var _views_ActionPanel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/ActionPanel */ "./src/views/ActionPanel.tsx");
+/* harmony import */ var _views_FieldContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/FieldContainer */ "./src/views/FieldContainer.ts");
+/* harmony import */ var _views_ObjectHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/ObjectHeader */ "./src/views/ObjectHeader.tsx");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -59,71 +62,95 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var MyTestController = /** @class */ (function (_super) {
     __extends(MyTestController, _super);
     function MyTestController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MyTestController.prototype.LoadView = function () {
-        var _a = this.props.config || {}, objectId = _a.objectId, fields = _a.fields, _b = _a.views, views = _b === void 0 ? [] : _b, _c = _a.powerUps, powerUps = _c === void 0 ? [] : _c, _d = _a.selectedViewIndex, selectedViewIndex = _d === void 0 ? 0 : _d, _e = _a.objectViews, objectViews = _e === void 0 ? [] : _e, _f = _a.description, description = _f === void 0 ? null : _f, _g = _a.onDescriptionChange, onDescriptionChange = _g === void 0 ? void 0 : _g;
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useRealm)().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useApplet)().applet;
+        var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useListDocuments)(realm.$id, 'workspace', 'applets'), applets = _a.documents, isAppletsLoading = _a.isLoading;
+        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useListDocuments)(realm.$id, 'workspace', 'ws_tree'), treeItems = _b.documents, isTreeItemsLoading = _b.isLoading;
+        var _c = this.props.config || {}, objectId = _c.objectId, fields = _c.fields, _d = _c.views, views = _d === void 0 ? [] : _d, _e = _c.powerUps, powerUps = _e === void 0 ? [] : _e, _f = _c.selectedViewIndex, selectedViewIndex = _f === void 0 ? 0 : _f, _g = _c.objectViews, objectViews = _g === void 0 ? [] : _g, _h = _c.description, description = _h === void 0 ? null : _h, _j = _c.onDescriptionChange, onDescriptionChange = _j === void 0 ? void 0 : _j;
         var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
-        var _h = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)({ controller: _WidgetController__WEBPACK_IMPORTED_MODULE_1__.WidgetController }), widgetController = _h[0], setWidgetController = _h[1];
+        var _k = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)({ controller: _WidgetController__WEBPACK_IMPORTED_MODULE_1__.WidgetController }), widgetController = _k[0], setWidgetController = _k[1];
         var _WidgetController = widgetController.controller;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ConfigContext)(function () {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
-            //    Text(JSON.stringify(description)),
-            (0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 12 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ObjectHeader__WEBPACK_IMPORTED_MODULE_5__.ObjectHeader)(), 
-            /* Text('open').onClick(() => {
-                openDialog({
-                    title: 'Open',
-                    view: Text('hello')
-                })
-            }), */
-            // Text(JSON.stringify(info)),
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.tab-view')
-                .config({
-                allViews: views,
-                views: objectViews,
-                ////  isLoading: isTaskViewsLoading,
-                //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
-                onChange: function (index) {
-                    //navigate(`${getViewUrl(access_type, team_id, applet_id, view_id)}/object/${objectId}/objectView/${taskViews[index].id}`)
-                    setWidgetController({
-                        controller: /** @class */ (function (_super) {
-                            __extends(controller, _super);
-                            function controller() {
-                                return _super !== null && _super.apply(this, arguments) || this;
-                            }
-                            return controller;
-                        }(_WidgetController__WEBPACK_IMPORTED_MODULE_1__.WidgetController))
-                    });
-                    // setSelectedViewIndex(index)
-                },
-                actions: [
-                    {
-                        title: 'View',
-                        onClick: function () {
-                            _dialogs_SelectViewDialog__WEBPACK_IMPORTED_MODULE_2__.SelectViewDialog.Show(views, powerUps).then(function (view) {
-                                /*   createObjectView({
-                                      $id: nanoid(),
-                                      objectId: objectId,
-                                      name: view.name,
-                                      view: view.type,
-                                  }) */
-                            });
-                        }
+        return ((isAppletsLoading || isTreeItemsLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ConfigContext)(function () {
+                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
+                //    Text(JSON.stringify(description)),
+                (0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_2__.ActionPanel)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 12 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ObjectHeader__WEBPACK_IMPORTED_MODULE_4__.ObjectHeader)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.tuvalsoft.widget.blocknote')
+                    .config({
+                    defaultValue: null,
+                    clamp: true,
+                    workspaceId: realm.$id,
+                    appletId: applet.$id,
+                    applets: applets,
+                    treeItems: treeItems,
+                    onChange: function (data) {
+                        console.log(data);
+                        /*  updateDocument({
+                             databaseId: appletId,
+                             collectionId: 'documentContent',
+                             documentId: documentId,
+                             data: {
+                                 content: JSON.stringify(data)
+                             }
+                         }) */
                     }
-                ]
-            }))
-                .allHeight(40)
-                .overflowX('auto')
-                .overflowY('hidden'))
-                .width(null)
-                .flexBasis('0')
-                .flexGrow('1')
-                .flexShrink('0')
-                .overflowX('auto'), (0,_views_FieldContainer__WEBPACK_IMPORTED_MODULE_4__.FieldContainer)(fields))).padding('4px 36px 12px'));
-        }).config(this.props.config));
+                })
+                /*    UIWidget('com.celmino.widget.tab-view')
+                       .config({
+                           allViews: views,
+                           views: objectViews,
+                          
+                           onChange: (index) => {
+                                 setWidgetController({
+                                   controller: class extends WidgetController { }
+                               });
+                             },
+                           actions: [
+                               {
+                                   title: 'View',
+                                   onClick: () => {
+                                       SelectViewDialog.Show(views, powerUps).then((view) => {
+                                        
+                                       });
+                                   }
+                               }
+                           ]
+                       }) */
+                /* objectViews?.length > 0 ?
+
+                    ReactView(
+                        <_WidgetController
+                            objectId={objectId}
+                            view={objectViews?.[selectedViewIndex]?.view}
+                            defaultValue={selectedViewIndex === 0 ? description : objectViews?.[selectedViewIndex]?.data || {}}
+                            onChange={(data) => {
+                                if (selectedViewIndex === 0) {
+                                    onDescriptionChange(data);
+                                }
+                                else {
+                                   
+                                }
+                            }}
+                        ></_WidgetController>
+                    )
+
+
+                    : Fragment() */
+                )
+                    .width(null)
+                    .flexBasis('0')
+                    .flexGrow('1')
+                    .flexShrink('0')
+                    .overflowX('auto'), (0,_views_FieldContainer__WEBPACK_IMPORTED_MODULE_3__.FieldContainer)(fields)))
+                //.padding('4px 36px 12px')
+                );
+            }).config(this.props.config));
     };
     return MyTestController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
@@ -193,144 +220,6 @@ var WidgetController = /** @class */ (function (_super) {
     };
     return WidgetController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/dialogs/SelectViewDialog.ts":
-/*!*****************************************!*\
-  !*** ./src/dialogs/SelectViewDialog.ts ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   SelectViewDialog: () => (/* binding */ SelectViewDialog)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-
-var SelectViewDialog = /** @class */ (function (_super) {
-    __extends(SelectViewDialog, _super);
-    function SelectViewDialog() {
-        var _this = _super.call(this) || this;
-        _this.Header = 'Task Power Ups';
-        _this.Width = '1300px';
-        _this.Height = '70vh';
-        return _this;
-    }
-    SelectViewDialog.prototype.BindRouterParams = function (views, powerUps) {
-        this.views = views;
-        this.PowerUps = powerUps;
-        this.filtered_opas = __spreadArray(__spreadArray([], this.views, true), this.PowerUps, true);
-    };
-    SelectViewDialog.prototype.OnOK = function (applet) {
-        this.ShowDialogAsyncResolve(applet);
-        this.Hide();
-    };
-    SelectViewDialog.prototype.OnCancel = function () {
-        this.Hide();
-    };
-    SelectViewDialog.prototype.LoadView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.filtered_opas)(function (opa) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })(opa.image ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(opa.image).width(50).height(50).cornerRadius('20%')
-                    .filter('drop-shadow(2px 2px 4px rgb(0, 0, 0, 20%))') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (opa.image == null && opa.icon) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(opa.icon).fontSize(30).foregroundColor('white'))
-                    .background("#03C3AD")
-                    .width(50).height(50).cornerRadius('50%')
-                    .filter('drop-shadow(2px 2px 4px rgb(0, 0, 0, 20%))') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), opa.tag &&
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(opa.tag))
-                    .fontSize(12).fontWeight('500')
-                    .foregroundColor('#fff')
-                    .position('absolute')
-                    .left('calc(100% - 100px)')
-                    .top('-50px')
-                    .height(30).width(170).padding(5).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 10).cornerRadius(5).background('#7b68ee')
-                    .transformOrigin('left bottom')
-                    .transform('rotate(45deg)')), 
-            // .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Heading)(opa.name).h4()).allHeight(25), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Heading)(opa.description || '').h6().ellipsis(true)
-                .ellipsisMaxLines(2)).allHeight(50), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Add'))
-                // .loading(isLoading && (opa.type === this.last_added_opa_type))
-                .disabled(!opa.enabled)
-                .kind(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonType.SECONDARY)
-                .size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonSize.SMALL)
-                .width('100%')
-                .onClick(function () {
-                /*  this.SetValue('name', opa.name);
-                 this.SetValue('folder_id', this.folder_id);
-                 this.SetValue('space_id', this.space_id);
-                 this.SetValue('tenant_id', useSessionService().TenantId);
-                 this.SetValue('account_id', useSessionService().AccountId);
-                 this.SetValue('item_type', 'opa');
-                 this.SetValue('item_sub_type', opa.type);
-                 this.SetValue('app_id', getAppFullName());
-                 this.SetValue('content', '')
-
-                 this.last_added_opa_type = opa.type;
-*/
-                _this.OnOK({
-                    name: opa.name,
-                    type: opa.type
-                });
-            })).height()).height(230).width(290)
-                .padding()
-                .shadow({ hover: 'var(--box-shadow-medium)' })
-                .cornerRadius('var(--border-radius-medium)')
-                .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })
-                .overflow('hidden')).width().height().padding();
-        })).wrap('wrap').height()));
-    };
-    SelectViewDialog.Show = function (views, powerUps) {
-        var dialog = new SelectViewDialog();
-        dialog.BindRouterParams(views, powerUps);
-        return dialog.ShowDialogAsync();
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectViewDialog.prototype, "views", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectViewDialog.prototype, "PowerUps", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectViewDialog.prototype, "filtered_opas", void 0);
-    return SelectViewDialog;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView));
 
 
 
@@ -639,6 +528,17 @@ module.exports = {
 
 /***/ }),
 
+/***/ "@celmino/ui":
+/*!*****************************!*\
+  !*** external "celmino$ui" ***!
+  \*****************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = celmino$ui;
+
+/***/ }),
+
 /***/ "@realmocean/antd":
 /*!**********************************!*\
   !*** external "realmocean$antd" ***!
@@ -647,6 +547,17 @@ module.exports = {
 
 "use strict";
 module.exports = realmocean$antd;
+
+/***/ }),
+
+/***/ "@realmocean/sdk":
+/*!*********************************!*\
+  !*** external "realmocean$sdk" ***!
+  \*********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = realmocean$sdk;
 
 /***/ }),
 

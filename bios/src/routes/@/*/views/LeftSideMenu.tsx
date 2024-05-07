@@ -276,7 +276,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                             //.shadow('0px 1px 4px rgba(81,97,108,0.1), 0 0 0 1px rgba(229,232,235,0.5)')
                                             .cornerRadius(6),
                                         VStack({ alignment: cLeading })(
-                                            Text('REALM').fontSize('1rem'),
+                                            Text('REALM').fontSize(12),
                                             HStack({ alignment: cLeading })(
                                                 Text(realm?.name).fontSize(16).fontWeight('500')
                                                     .foregroundColor('rgb(21, 23, 25)')

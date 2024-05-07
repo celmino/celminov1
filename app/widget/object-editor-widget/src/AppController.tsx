@@ -1,4 +1,4 @@
-import { ConfigContext, Fragment, HStack, ReactView, Text, UIController, UIView, UIWidget, VStack, cLeading, cTopLeading, nanoid, useConfig, useDialogStack, useRenderInfo, useState } from '@tuval/forms';
+import { ConfigContext, Fragment, HStack, ReactView, Spinner, Text, UIController, UIView, UIWidget, VStack, cLeading, cTopLeading, nanoid, useConfig, useDialogStack, useRenderInfo, useState } from '@tuval/forms';
 
 
 import React from 'react';
@@ -8,12 +8,20 @@ import { SelectViewDialog } from './dialogs/SelectViewDialog';
 import { ActionPanel } from './views/ActionPanel';
 import { FieldContainer } from './views/FieldContainer';
 import { ObjectHeader } from './views/ObjectHeader';
+import { useApplet, useRealm } from '@celmino/ui';
+import { useListDocuments } from '@realmocean/sdk';
 
 
 export class MyTestController extends UIController {
     public override LoadView(): UIView {
 
-        const {realm} = useRealm
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+
+        const { documents: applets, isLoading: isAppletsLoading } = useListDocuments(realm.$id, 'workspace', 'applets');
+
+        const { documents: treeItems, isLoading: isTreeItemsLoading } = useListDocuments(realm.$id, 'workspace', 'ws_tree');
+        
         const { objectId, fields, views = [], powerUps = [], selectedViewIndex = 0,objectViews = [],
             description = null, onDescriptionChange = void 0 }: IConfig = this.props.config || {};
 
@@ -26,7 +34,7 @@ export class MyTestController extends UIController {
         const _WidgetController = widgetController.controller;
 
         return (
-           
+           (isAppletsLoading || isTreeItemsLoading) ? Spinner() :
             ConfigContext(() =>
                 VStack({ alignment: cTopLeading })(
                     //    Text(JSON.stringify(description)),
@@ -36,51 +44,26 @@ export class MyTestController extends UIController {
                             VStack({ alignment: cTopLeading })(
                                 ObjectHeader(),
                              
-                                 HStack({ alignment: cLeading })(
-                                    UIWidget('com.celmino.widget.blocknote')
+                             
+                                    UIWidget('com.tuvalsoft.widget.blocknote')
                                     .config({
                                         defaultValue:null,
                                         clamp: true,
-                                        workspaceId: workspaceId,
-                                        appletId: appletId,
+                                        workspaceId: realm.$id,
+                                        appletId: applet.$id,
                                         applets,
                                         treeItems,
-                                        tools: {
-                                            image: {
-                                                class: InlineImage,
-                                                inlineToolbar: true,
-                                                config: {
-                                                    embed: {
-                                                        display: true,
-                                                    },
-                                                    unsplash: {
-                                                        appName: 'your_app_name',
-                                                        clientId: 'your_client_id'
-                                                    }
-                                                }
-                                            },
-                                            link: {
-                                                class: SimpleImage,
-                                                inlineToolbar: true,
-                                                shortcut: 'CMD+SHIFT+W',
-                                                config: {
-                                                    workspaceId: workspaceId,
-                                                    appletId: appletId,
-                                                    openDialog
-
-                                                },
-                                            }
-                                        },
+                                      
                                         onChange: (data) => {
                                             console.log(data)
-                                            updateDocument({
+                                           /*  updateDocument({
                                                 databaseId: appletId,
                                                 collectionId: 'documentContent',
                                                 documentId: documentId,
                                                 data: {
                                                     content: JSON.stringify(data)
                                                 }
-                                            })
+                                            }) */
                                         }
                                     })
                                  /*    UIWidget('com.celmino.widget.tab-view')
@@ -104,10 +87,7 @@ export class MyTestController extends UIController {
                                                 }
                                             ]
                                         }) */
-                                )
-                                    .allHeight(40)
-                                    .overflowX('auto')
-                                    .overflowY('hidden'), 
+                             
 
                                 /* objectViews?.length > 0 ?
 
@@ -137,7 +117,8 @@ export class MyTestController extends UIController {
                                 .overflowX('auto'),
                             FieldContainer(fields)
                         )
-                    ).padding('4px 36px 12px')
+                    )
+                    //.padding('4px 36px 12px')
 
 
 

@@ -29,7 +29,7 @@ const path = require('path');
 //const DtsBundleWebpack = require('dts-bundle-webpack');
 const fs = require('fs');
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const manifest = require('./src/manifest');
 

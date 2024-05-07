@@ -102,7 +102,7 @@
         ]
     },
     "dependencies": {
-        "@celmino/ui": "^1.0.58",
+        "@celmino/ui": "^0.0.0",
         "@realmocean/antd": "^21.0.30",
         "@realmocean/atlaskit": "^17.8.39",
         "@realmocean/sdk": "^1.0.147",
