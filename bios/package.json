@@ -102,13 +102,13 @@
         ]
     },
     "dependencies": {
-        "@celmino/ui": "^0.0.0",
+        "@celmino/ui": "^1.0.59",
         "@realmocean/antd": "^21.0.30",
         "@realmocean/atlaskit": "^17.8.39",
         "@realmocean/sdk": "^1.0.147",
         "@realmocean/vibe": "^2.82.61",
         "@tuval/core": "^0.0.103",
-        "@tuval/forms": "^1.0.179",
+        "@tuval/forms": "^1.0.182",
         "@uiw/react-split": "^5.9.3",
         "ifdef-loader": "^2.3.2",
         "is-valid-domain": "^0.1.6",

@@ -1,6 +1,6 @@
 import { AppletContext, useApplet } from '@celmino/ui';
 import { ModuleLoader } from '@tuval/core';
-import { HStack, ReactView, Spinner, UIFormController, UIView, VStack, cTopLeading, useEffect, useLocation, useParams, useState } from '@tuval/forms';
+import { HStack, LoadingWidgets, ReactView, Spinner, UIFormController, UIView, VStack, WidgetCache, cTopLeading, useEffect, useLocation, useParams, useState } from '@tuval/forms';
 import React, { Fragment } from 'react';
 import usePromise from "react-promise-suspense";
 //import { useGetApplet } from '@celmino/sdk';
@@ -44,47 +44,65 @@ export function getAppName() {
     }
 }
 
-const AppCache = {}
+
 export const Paths = {}
 
-export const OpaLoader = ({ opa_name }) => {
-    //const { opa_name } = useParams();
-    //let opa_name = 'com.tuvalsoft.opa.task';
-    const location = useLocation();
+export const OpaLoader = ({ widget, type = 'applet' }) => {
+    var controllerPromise = function (widget, type) {
+        return new Promise(function (resolve, reject) {
 
-    const controllerPromise = new Promise((resolve, reject) => {
-        if (AppCache[opa_name]) {
-            resolve(AppCache[opa_name]);
-        } else {
-            const app_path = `/realmocean/store/@/open-testing/${opa_name}`;
-            // alert(app_path)
-            const app_path_local = `/system/${opa_name}`;
-            ModuleLoader.LoadBundledModule(app_path_local, opa_name).then((_app: any) => {
-                if (_app != null) {
-                    const app = new _app();
-                    if (app.GetMainController()['applet'] != null) {
-                        AppCache[opa_name] = app.GetMainController()['applet'];
-                    } else {
-                        AppCache[opa_name] = app.GetMainController();
-                    }
-                    resolve(AppCache[opa_name]);
+            if (WidgetCache[widget]) {
+
+                if (type == null) {
+                    resolve(WidgetCache[widget]);
                 } else {
-
+                    resolve(WidgetCache[widget][type]);
                 }
-            });
-        }
 
-        /*   setTimeout(() => {
-              const app = AppStore.find(app => app.name === app_name)
-              resolve(app.controller)
-          }, 2000
-          ) */
-    })
+            } else if (LoadingWidgets[widget]) {
+                LoadingWidgets[widget].push(resolve);
+            }
+            else {
 
-    const fetchController = input => controllerPromise.then(res => res);
-    const contoller: any = usePromise(fetchController, [opa_name]);
+                const app_path = `/realmocean/store/widget/open-testing/${widget}`;
+                // alert(app_path)
+                const app_path_local = `/system/${widget}`;
 
-    return (<OPA name={opa_name} controller={contoller} ></OPA>)
+                LoadingWidgets[widget] = [];
+                // const app_path_local = `/static/applications/${widget}`;
+                ModuleLoader.LoadBundledModule(/* is.localhost() ? */ app_path_local /* : app_path */, widget).then((_app: any) => {
+                    if (_app != null) {
+                        const app = new _app();
+                        const controller = app.GetMainController();
+                        WidgetCache[widget] = controller;
+                        LoadingWidgets[widget].forEach(resolve => resolve(controller));
+                        delete LoadingWidgets[widget];
+                        if (type == null) {
+                            resolve(controller);
+                        } else {
+                            resolve(controller[type]);
+                        }
+                    } else {
+
+                    }
+                });
+            }
+
+            /*   setTimeout(() => {
+                  const app = AppStore.find(app => app.name === app_name)
+                  resolve(app.controller)
+              }, 2000
+              ) */
+        });
+    };
+
+
+
+    const fetchController = (widget, type) => controllerPromise(widget, type);
+
+    const contoller: any = usePromise(fetchController, [widget, type]);
+
+    return (<OPA name={widget} controller={contoller} ></OPA>)
 };
 
 export class AppletController extends UIFormController {
@@ -92,7 +110,7 @@ export class AppletController extends UIFormController {
     public override LoadView(): UIView {
 
         const { appletId } = useParams();
-       
+
 
 
         return (
@@ -118,7 +136,7 @@ export class AppletController extends UIFormController {
                                                     </Fragment>
                                                 } >
                                                     <ErrorBoundary>
-                                                        <OpaLoader opa_name={applet.type}></OpaLoader>
+                                                        <OpaLoader widget={applet.type}></OpaLoader>
                                                     </ErrorBoundary>
                                                 </React.Suspense>
                                             ).frame(true).width('100%').height('100%')
