@@ -1,1 +1,1 @@
-export declare const ListView: () => import("@tuval/forms").UIViewBuilderClass;
+export declare const ListView: (viewId: string) => import("@tuval/forms").UIViewBuilderClass;

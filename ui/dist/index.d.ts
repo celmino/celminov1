@@ -134,6 +134,11 @@ export const useCreateApplet: () => {
     };
 };
 
+export const useGetApplet: (realmId: string, appletId: string) => {
+    applet: IApplet;
+    isLoading: boolean;
+};
+
 export const ListApplet: {
     name: string;
     type: string;
@@ -300,7 +305,7 @@ export function PersonelRealmContext(childFunc: () => UIView): PersonelRealmCont
 
 export const PersonelRealmContextProvider: React.Context<any>;
 
-export function AppletContext(childFunc: () => UIView): AppletContextClass;
+export function AppletContext(childFunc: (applet: IApplet) => UIView): AppletContextClass;
 
 export const AppletContextProvider: React.Context<any>;
 export const useApplet: () => {
@@ -332,6 +337,23 @@ export function UserContext(childFunc: () => UIView): UserContextClass;
 
 export const UserContextProvider: React.Context<any>;
 
+export function WidgetContext(childFunc: () => UIView): WidgetContextClass;
+
+export const WidgetContextProvider: React.Context<any>;
+export const useWidget: () => {
+    isWidget;
+};
+
+export interface IApplet {
+    $id: string;
+    name: string;
+    opa: string;
+    type: string;
+    iconName: string;
+    iconCategory: string;
+    themeColor: string;
+}
+
 export class OrganizationContextClass extends UIView {
     /** @internal */
     vp_ChildFunc: () => UIView;
@@ -358,8 +380,8 @@ export class AppletContextClass extends UIView {
     vp_AppletId: string;
     appletId(value: string): this;
     /** @internal */
-    vp_ChildFunc: () => UIView;
-    childFunc(value: () => UIView): this;
+    vp_ChildFunc: (applet: IApplet) => UIView;
+    childFunc(value: (applet: IApplet) => UIView): this;
     render(): React.JSX.Element;
 }
 
@@ -388,6 +410,16 @@ export class AnonymousContextClass extends UIView {
 }
 
 export class UserContextClass extends UIView {
+    /** @internal */
+    vp_ChildFunc: () => UIView;
+    childFunc(value: () => UIView): this;
+    render(): React.JSX.Element;
+}
+
+export class WidgetContextClass extends UIView {
+    /** @internal */
+    vp_AppletId: string;
+    appletId(value: string): this;
     /** @internal */
     vp_ChildFunc: () => UIView;
     childFunc(value: () => UIView): this;

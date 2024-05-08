@@ -3,6 +3,7 @@ import { MyTestController } from './AppController';
 import { RouteController } from './routes/+routes';
 import { WorkspaceTreeWidgetController } from './TreeController';
 import { TaskViewWidget } from './widgets/TaskViewWidget';
+import { TaskListViewWidget } from './widgets/TaskListView/TaslListViewWidget';
 
 const manifest = require('./manifest');
 
@@ -25,7 +26,8 @@ export class ProcessMining {
         return {
             tree: WorkspaceTreeWidgetController,
             applet: RouteController,
-            taskView: TaskViewWidget
+            taskView: TaskViewWidget,
+            taskListView: TaskListViewWidget
         };
     }
 }

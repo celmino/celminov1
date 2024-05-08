@@ -1,4 +1,4 @@
-import { useRealm, useApplet, useAccount, SelectSiderDialog } from "@celmino/ui";
+import { useRealm, useApplet, useAccount, SelectSiderDialog, useWidget } from "@celmino/ui";
 import { useListDocuments, Query, useCreateDocument, useUpdateDocument, useCreateStringAttribute, useCreateRelationshipAttribute, useCreateIntegerAttribute } from "@realmocean/sdk";
 import { Fragment, HStack, Icon, ReactView, SvgIcon, UIController, UIView, UIViewBuilder, UIWidget, VStack, cTop, cTopLeading, useDialogStack, useParams } from "@tuval/forms";
 import { ViewsTab } from "../../views/ViewsTabMenu";
@@ -20,9 +20,9 @@ function replaceNonMatchingCharacters(originalText) {
     return replacedText;
 }
 
-export const ListView = () => UIViewBuilder(() => {
+export const ListView = ( viewId: string ) => UIViewBuilder(() => {
 
-    const { viewId } = useParams();
+    const { isWidget } = useWidget();
     const { realm } = useRealm();
     const { applet } = useApplet();
     const workspaceId = realm.$id;
@@ -65,7 +65,7 @@ export const ListView = () => UIViewBuilder(() => {
 
     return (
         VStack({ alignment: cTopLeading })(
-            ViewsTab(viewId),
+            isWidget ? Fragment() : ViewsTab(viewId),
             (isLoading || isStatusesLoading || isFieldSettingsLoading) ? Fragment() :
                 UIViewBuilder(() => {
                     let resultFields = attributes;

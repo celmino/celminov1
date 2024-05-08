@@ -26,6 +26,19 @@ export const Mention = createReactInlineContentSpec(
     }
 );
 
+const getAppletWidget = (applet) => {
+
+    if (applet?.tree_widget === 'com.celmino.applet.task-list') {
+        return (
+            UIWidget('com.celmino.applet.task-list', 'taskListView').config({
+                appletId: applet?.$id
+            })
+        )
+    }
+
+    return Text('Applet Not Found')
+
+}
 
 export const TaskList = createReactInlineContentSpec(
     {
@@ -47,7 +60,7 @@ export const TaskList = createReactInlineContentSpec(
 
                 return (
 
-                    VStack({spacing:5})(
+                    VStack({ spacing: 5 })(
                         UIWidget("com.tuvalsoft.widget.icons")
                             .config({
                                 readonly: true,
@@ -62,6 +75,12 @@ export const TaskList = createReactInlineContentSpec(
                         )
                             .width().height()
                             .borderBottom('1px solid rgba(33,37,38,.3)')
+                            .onClick(()=>{
+                                openDialog({
+                                    title: props.inlineContent.props.applet?.name,
+                                    view: getAppletWidget(props.inlineContent.props.applet)
+                                })
+                            })
 
                         ,
                     )

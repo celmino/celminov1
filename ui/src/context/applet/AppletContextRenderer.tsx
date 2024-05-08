@@ -15,8 +15,8 @@ class Controller extends UIController {
 }
 
 
-const Proxy = ({ control }) => (
-    control.vp_ChildFunc().render()
+const Proxy = ({applet,  control }) => (
+    control.vp_ChildFunc(applet).render()
 )
 
 
@@ -35,7 +35,7 @@ function AppletContextRenderer({ control }: { control: AppletContextClass }) {
             (
                 <AppletContextProvider.Provider value={{ applet }}>
 
-                    <Proxy control={control}></Proxy>
+                    <Proxy applet={applet} control={control}></Proxy>
 
                 </AppletContextProvider.Provider >
             ) : <Fragment />
