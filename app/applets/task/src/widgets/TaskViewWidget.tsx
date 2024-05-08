@@ -55,11 +55,11 @@ export class TaskViewWidget extends UIController {
                                     ).height()
                                         .padding(20),
 
-                                    VStack({ alignment: cTopLeading })(
+                                    VStack({ alignment: cTopLeading, spacing: 10 })(
                                         HStack({spacing: 5})(
                                             Icon(DescriptionIcon),
-                                            Text('Description').foregroundColor('rgb(101, 111, 125)')
-                                        ).width().height(),
+                                            Text('Description')
+                                        ).width().height().foregroundColor('rgb(101, 111, 125)'),
                                         VStack({ alignment: cTopLeading })(
                                             UIWidget('com.tuvalsoft.widget.blocknote')
                                                 .config({

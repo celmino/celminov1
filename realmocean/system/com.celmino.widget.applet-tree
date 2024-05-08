@@ -5294,33 +5294,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   TreeNode2: () => (/* binding */ TreeNode2)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Icons */ "./src/Icons.tsx");
 
 
 
 
-var TreeNode2 = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-    var node = treeNodeProps.node, _a = treeNodeProps.isLoading, isLoading = _a === void 0 ? false : _a, _b = treeNodeProps.isEditing, isEditing = _b === void 0 ? false : _b, _c = treeNodeProps.isSelected, isSelected = _c === void 0 ? false : _c, _d = treeNodeProps.title, title = _d === void 0 ? '' : _d, _e = treeNodeProps.level, level = _e === void 0 ? 0 : _e, _f = treeNodeProps.menuModel, menuModel = _f === void 0 ? [] : _f, _g = treeNodeProps.subNode, subNode = _g === void 0 ? function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(); } : _g, _h = treeNodeProps.nodeType, nodeType = _h === void 0 ? 'root' : _h, _j = treeNodeProps.titleChanged, titleChanged = _j === void 0 ? function () { return void 0; } : _j, _k = treeNodeProps.editingChanged, editingChanged = _k === void 0 ? function () { return void 0; } : _k, _l = treeNodeProps.iconName, iconName = _l === void 0 ? '' : _l, _m = treeNodeProps.iconCategory, iconCategory = _m === void 0 ? '' : _m, _o = treeNodeProps.requestIcon, requestIcon = _o === void 0 ? function () { return void 0; } : _o, _p = treeNodeProps.requestNavigation, requestNavigation = _p === void 0 ? function () { return void 0; } : _p, _q = treeNodeProps.requestMenu, requestMenu = _q === void 0 ? function () { return []; } : _q, _r = treeNodeProps.requestEditMenu, requestEditMenu = _r === void 0 ? function () { return null; } : _r;
-    var _s = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), expanded = _s[0], setExpanded = _s[1];
+var TreeNode2 = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
+    var node = treeNodeProps.node, _a = treeNodeProps.isLoading, isLoading = _a === void 0 ? false : _a, _b = treeNodeProps.isEditing, isEditing = _b === void 0 ? false : _b, _c = treeNodeProps.isSelected, isSelected = _c === void 0 ? false : _c, _d = treeNodeProps.title, title = _d === void 0 ? '' : _d, _e = treeNodeProps.level, level = _e === void 0 ? 0 : _e, _f = treeNodeProps.menuModel, menuModel = _f === void 0 ? [] : _f, _g = treeNodeProps.subNode, subNode = _g === void 0 ? function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)(); } : _g, _h = treeNodeProps.nodeType, nodeType = _h === void 0 ? 'root' : _h, _j = treeNodeProps.titleChanged, titleChanged = _j === void 0 ? function () { return void 0; } : _j, _k = treeNodeProps.editingChanged, editingChanged = _k === void 0 ? function () { return void 0; } : _k, _l = treeNodeProps.iconName, iconName = _l === void 0 ? '' : _l, _m = treeNodeProps.iconCategory, iconCategory = _m === void 0 ? '' : _m, _o = treeNodeProps.requestIcon, requestIcon = _o === void 0 ? function () { return void 0; } : _o, _p = treeNodeProps.requestNavigation, requestNavigation = _p === void 0 ? function () { return void 0; } : _p, _q = treeNodeProps.requestMenu, requestMenu = _q === void 0 ? function () { return []; } : _q, _r = treeNodeProps.requestEditMenu, requestEditMenu = _r === void 0 ? function () { return null; } : _r;
+    var _s = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(false), expanded = _s[0], setExpanded = _s[1];
     var menu = requestMenu(node);
     var editMenu = requestEditMenu(node);
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 2 })(
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 2 })(
     // Title
-    (isEditing && _tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.string(title)) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(title), newTitle = _a[0], setNewTitle = _a[1];
+    (isEditing && _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.string(title)) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
+        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(title), newTitle = _a[0], setNewTitle = _a[1];
         //  const { updateDocument } = useUpdateDocument(workspaceId);
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)()
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)()
             .border('0')
             .fontSize(14)
             // .fontWeight('500')
             .marginLeft(-2)
-            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, 3)
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cVertical, 3)
             .value(newTitle)
             .onChange(function (value) { return setNewTitle(value); })
             .outline({ focus: 'none' })
@@ -5361,8 +5361,8 @@ var TreeNode2 = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPOR
         }));
     })
         :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.string(title) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(title)
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 5 })(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.string(title) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_0__.Text)(title)
                     .fontWeight(isSelected ? '400' : '400')
                     .fontSize(nodeType === 'root' ? 14 : 14)
                     .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
@@ -5375,19 +5375,19 @@ var TreeNode2 = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPOR
                 requestNavigation();
             })
                 .overflow('hidden')
-                .height(), (menu == null && editMenu == null) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((menu == null || menu.length === 0) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)()
+                .height(), (menu == null && editMenu == null) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() :
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTrailing })((menu == null || menu.length === 0) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.MenuButton)()
                 .model(menu)
-                .icon(_Icons__WEBPACK_IMPORTED_MODULE_3__.AddIcon), (editMenu == null || editMenu.length === 0) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)()
+                .icon(_Icons__WEBPACK_IMPORTED_MODULE_3__.AddIcon), (editMenu == null || editMenu.length === 0) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.MenuButton)()
                 .model(editMenu)
                 .icon(_Icons__WEBPACK_IMPORTED_MODULE_3__.EditIcon))
             .onClick(function (e) {
             e.preventDefault();
             e.stopPropagation();
         })
-            .allWidth(64).height(32).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 5)
+            .allWidth(64).height(32).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cHorizontal, 5)
             .display('var(--show-space-action-buttons)'))
         .transition('transform .12s ease-in-out')
         //.width('calc(100% - 0px)')
@@ -5405,8 +5405,8 @@ var TreeNode2 = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPOR
         .variable("--display-icon", { default: 'visible', hover: 'hidden' })
         .variable("--opacity-caret", { default: '0', hover: '1' })
         .variable("--opacity-icon", { default: '1', hover: '0' }), expanded ?
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(subNode(nodeType))
-            .height() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })(subNode(nodeType))
+            .height() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)())
         .height());
 }); };
 

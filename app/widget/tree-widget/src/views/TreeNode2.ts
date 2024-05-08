@@ -1,16 +1,14 @@
-import { useUpdateDocument } from "@realmocean/sdk";
-import { DynoDialog } from "@realmocean/ui";
-import {
-    Fragment, HStack, IMenuItemModel, Icon, Icons, Loader, LoaderSizes, MenuButton, Spacer, SvgIcon, TextField, UIView, UIViewBuilder, UIWidget, VStack, cHorizontal, cLeading, cTopLeading,
-    cTrailing, cVertical, useState
-} from "@tuval/forms";
-import { AddDocumentDialog } from "../dialogs/AddDocumentDialog";
-import { AddFolderDialog } from "../dialogs/AddFolderDialog";
 import { Text } from "@realmocean/vibe";
 import { is } from "@tuval/core";
-import { WorkbenchIcons } from "../WorkbenchIcons";
+import {
+    Fragment, HStack, IMenuItemModel,
+    MenuButton,
+    TextField, UIView, UIViewBuilder,
+    VStack, cHorizontal, cLeading, cTopLeading,
+    cTrailing, cVertical, useState
+} from "@tuval/forms";
 import { AddIcon, EditIcon } from "../Icons";
-import { useRealmTree } from "@celmino/ui";
+
 
 export interface TreeNodeProps {
     node?: any;
@@ -53,7 +51,7 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
             HStack({ alignment: cLeading, spacing: 2 })(
                 // Title
                 (isEditing && is.string(title)) ? UIViewBuilder(() => {
-                    const [newTitle, setNewTitle] = useState(title);
+                    const [newTitle, setNewTitle] = useState<string>( title as any);
                     //  const { updateDocument } = useUpdateDocument(workspaceId);
                     return (
                         HStack({ alignment: cLeading })(
@@ -120,7 +118,7 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                     HStack({ alignment: cLeading, spacing: 5 })(
                         is.string(title) ?
                             HStack({ alignment: cLeading })(
-                                Text(title)
+                                Text(title as any)
                                     .fontWeight(isSelected ? '400' : '400')
                                     .fontSize(nodeType === 'root' ? 14 : 14)
                                     .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
@@ -130,7 +128,7 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
 
                                 //.width('calc(100% - 40px)')
                                 .allHeight(28)
-                            : title
+                            : title as UIView
                     )
                         .onClick(() => {
                             requestNavigation();

@@ -49,14 +49,10 @@ export class WorkspaceTreeWidgetController extends UIController {
         const { updateDatabase } = useUpdateDatabase(workspaceId);
 
         const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'wm_tree');
-       // const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
-       // const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
-
-        const { setCanDrag } = useRealmTree();
+    
+       // const { setCanDrag } = useRealmTree();
 
         return (
-            
-
                 UIWidget('com.celmino.widget.applet-tree')
                     .config({
                         node: item,
