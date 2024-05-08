@@ -182,7 +182,7 @@ services:
   realmocean_services:
     container_name: realmocean-services
     <<: *x-logging
-    image: realmocean/services:1.0
+    image: realmocean/services:1.1
     labels:
       - "traefik.enable=true"
       - "traefik.constraint-label-stack=realmocean"

@@ -36,7 +36,8 @@ class AppletService extends RealmoceanService {
                 const applet = await this.createApplet(realmId, appletId, schema);
                 return res.json(applet);
             } catch (e) {
-                res.statusCode(500)
+                console.error(e);
+                res.statusCode = 500;
                 return res.json(e);
             }
         });
