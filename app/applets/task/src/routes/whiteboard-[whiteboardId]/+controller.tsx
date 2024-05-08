@@ -1,4 +1,4 @@
-import { useApplet, useRealm } from "@celmino/ui";
+import { useApplet, useRealm } from "@celmino/platform";
 import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 import { DialogStack, Fragment, ReactView, UIController, UIView, UIWidget, VStack, useParams } from "@tuval/forms";

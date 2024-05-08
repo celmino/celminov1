@@ -1,8 +1,7 @@
-import { AppletContext, useApplet, useGetApplet, useWidget, WidgetContext } from "@celmino/ui";
-import { HStack, Spinner, Text, UIController, UIView, UIViewBuilder, VStack, cLeading, cTop } from "@tuval/forms";
-import { ViewHeader } from "../../views/ViewHeader";
-import { ListView } from "../../routes/lists/view-[viewId]/views/ListView";
+import { useApplet, WidgetContext } from "@celmino/platform";
+import { cLeading, cTop, HStack, Spinner, Text, UIController, UIView, UIViewBuilder, VStack } from "@tuval/forms";
 import { useListViews } from "../../hooks/useListViews";
+import { ListView } from "../../routes/lists/view-[viewId]/views/ListView";
 import { ActionPanel } from "../../views/ActionPanel";
 
 

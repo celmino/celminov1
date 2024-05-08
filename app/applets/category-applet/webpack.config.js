@@ -76,7 +76,7 @@ const umdConfig = {
         '@realmocean/ui': 'realmocean$ui',
         '@realmocean/antd': 'realmocean$antd',
 
-        '@celmino/ui': 'celmino$ui',
+        '@celmino/platform': 'celmino$platform',
         
 
 

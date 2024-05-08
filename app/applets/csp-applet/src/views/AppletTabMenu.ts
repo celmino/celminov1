@@ -1,4 +1,4 @@
-import { TabMenu, useAppletNavigate } from "@celmino/ui";
+import { TabMenu, useAppletNavigate } from "@celmino/platform";
 import { SvgIcon, UIViewBuilder } from "@tuval/forms";
 import { OverviewIcon, TaskIcon } from "../resources/Icons";
 

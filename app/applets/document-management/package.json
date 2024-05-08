@@ -145,7 +145,7 @@
         "webpack-cli": "^4.7.2"
     },
     "dependencies": {
-        "@celmino/ui": "^1.0.64",
+        "@celmino/platform": "^1.0.65",
         "@celmino/workprotocol": "^0.0.118",
         "@cyntler/react-doc-viewer": "^1.14.1",
         "@emotion/react": "^11.10.6",

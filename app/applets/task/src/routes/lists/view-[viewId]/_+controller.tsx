@@ -1,8 +1,8 @@
 
-import { useApplet, useRealm } from '@celmino/ui';
+import { useApplet, useRealm } from '@celmino/platform';
 import { useGetDocument } from '@realmocean/sdk';
 import { ModuleLoader } from '@tuval/core';
-import { cTopLeading, HStack, ReactView, Spinner, Text, UIFormController, UIView, useEffect, useLocation, useParams, useState, VStack } from '@tuval/forms';
+import { HStack, ReactView, Spinner, Text, UIFormController, UIView, VStack, cTopLeading, useEffect, useLocation, useParams, useState } from '@tuval/forms';
 import React, { Fragment } from 'react';
 import usePromise from "react-promise-suspense";
 

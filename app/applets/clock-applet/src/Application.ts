@@ -1,6 +1,6 @@
 
 
-import { FormBuilder } from '@celmino/ui';
+import { FormBuilder } from '@celmino/platform';
 import { RouteController } from './routes/+routes';
 import { TreeController } from './TreeController';
 

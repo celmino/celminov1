@@ -1,7 +1,6 @@
-import { UIController } from '@tuval/forms';
+import { FormBuilder } from '@celmino/platform';
 import { MyTestController } from './AppController';
 import { SaveItemAction } from './views/TaskTable/components/BoardSection';
-import { FormBuilder } from '@celmino/ui';
 
 
 const manifest = require('./manifest');

@@ -1,4 +1,4 @@
-import { AppletContext, useApplet } from '@celmino/ui';
+import { AppletContext, useApplet } from '@celmino/platform';
 import { ModuleLoader } from '@tuval/core';
 import { HStack, LoadingWidgets, ReactView, Spinner, UIFormController, UIView, VStack, WidgetCache, cTopLeading, useEffect, useLocation, useParams, useState } from '@tuval/forms';
 import React, { Fragment } from 'react';

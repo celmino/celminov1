@@ -1,5 +1,4 @@
 import {
-    Fragment,
     Icon,
     SvgIcon,
     UIController, UIView,
@@ -7,8 +6,8 @@ import {
     useState
 } from '@tuval/forms';
 
-import { AboutDialog, ListApplet, SelectAppletDialog, useApplet, useAppletNavigate, useRealm, useRealmTree } from '@celmino/ui';
-import { useCreateDocument, useGetDocument, useGetOrganization, useGetRealm, useUpdateDatabase, useUpdateDocument } from '@realmocean/sdk';
+import { AboutDialog, ListApplet, SelectAppletDialog, useApplet, useAppletNavigate, useRealm, useRealmTree } from '@celmino/platform';
+import { useCreateDocument, useGetOrganization, useUpdateDatabase, useUpdateDocument } from '@realmocean/sdk';
 
 import { EventBus } from '@tuval/core';
 /* import { AddBoardDialog } from './dialogs/AddBoardDialog';

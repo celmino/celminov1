@@ -1,4 +1,4 @@
-import { useApplet, useRealm } from "@celmino/ui";
+import { useApplet, useRealm } from "@celmino/platform";
 import { ITask } from "./models/ITask";
 import { useGetDocument } from "@realmocean/sdk";
 

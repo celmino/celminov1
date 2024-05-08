@@ -1,10 +1,9 @@
+import { useApplet, useRealm } from "@celmino/platform";
+import { useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 import { UIController, UINavigate, UIView, UIViewBuilder, UIWidget, VStack, cTopLeading, useDialogStack } from "@tuval/forms";
-import { SimpleImage } from "../tools/SimplePlugin";
 import { ActionPanel } from "../views/ActionPanel";
 import { DocumentHeader } from "../views/ViewHeader";
-import { useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
-import { useApplet, useRealm } from "@celmino/ui";
 
 
 export class DocumentViewWidget extends UIController {

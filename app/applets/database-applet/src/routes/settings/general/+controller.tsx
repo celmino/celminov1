@@ -2,7 +2,6 @@ import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
 import { Text as VibeText } from "@realmocean/vibe";
 import { EventBus } from "@tuval/core";
 import { HStack, ReactView, TextField, UIFormController, UIWidget, VStack, cLeading, cTopLeading, useParams } from "@tuval/forms";
-import { ColorSelect } from '@celmino/ui'
 import Circle from '@uiw/react-color-circle';
 import React from "react";
 

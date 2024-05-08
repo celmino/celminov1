@@ -1,5 +1,5 @@
-import { SelectAppletDialog } from "@celmino/ui";
-import { HStack, Icon, Text, UIViewBuilder, VStack, cLeading, cTop, cTopLeading } from "@tuval/forms";
+import { SelectAppletDialog } from "@celmino/platform";
+import { HStack, Icon, Text, UIViewBuilder, VStack, cLeading, cTop } from "@tuval/forms";
 
 
 export const EmptyView = (workspaceId: string, spaceId: string) => UIViewBuilder(() => {

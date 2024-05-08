@@ -1,9 +1,9 @@
-import { FormBuilder } from "@celmino/ui";
-import { useFormState, LoadingButton } from "@realmocean/atlaskit";
-import { CspBroker, JiraBroker, useCreateDocument, EncryptionBroker } from "@realmocean/sdk";
+import { FormBuilder } from "@celmino/platform";
+import { LoadingButton, useFormState } from "@realmocean/atlaskit";
+import { CspBroker, EncryptionBroker, JiraBroker, useCreateDocument } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 import { UIViewBuilder, nanoid, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
-import objectPath from 'object-path'
+import objectPath from 'object-path';
 
 const brokers = {
     'com.celmino.connection.jira': JiraBroker,

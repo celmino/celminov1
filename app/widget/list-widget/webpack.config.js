@@ -79,7 +79,7 @@ const umdConfig = {
         '@realmocean/atlaskit': 'realmocean$atlaskit',
 
         '@realmocean/sdk': 'realmocean$sdk',
-        '@celmino/ui': 'celmino$ui',
+        '@celmino/platform': 'celmino$platform',
 
         'react': 'tuval$react',
         'react-dom/client': 'tuval$react$dom',

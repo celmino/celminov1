@@ -1,7 +1,7 @@
-import { DynoDialog } from "@celmino/ui";
+import { DynoDialog } from "@celmino/platform";
 import { SvgIcon } from "@tuval/forms";
-import { AddFolderDialog } from "../dialogs/AddFolderDialog";
 import { AddDocumentDialog, AddWhiteboardDialog } from "../dialogs/AddDocumentDialog";
+import { AddFolderDialog } from "../dialogs/AddFolderDialog";
 import { AddMarkdownDialog } from "../dialogs/AddMarkdownDialog";
 
 //import { opas } from "./Opas";

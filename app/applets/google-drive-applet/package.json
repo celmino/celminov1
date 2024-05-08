@@ -101,7 +101,7 @@
         ]
     },
     "dependencies": {
-        "@celmino/ui": "^1.0.46",
+        "@celmino/platform": "^1.0.65",
         "@realmocean/atlaskit": "^17.8.1",
         "@realmocean/sdk": "^1.0.128",
         "@tuval/core": "^0.0.103",

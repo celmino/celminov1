@@ -1,4 +1,4 @@
-import { ColorSelect, useApplet, useRealm } from "@celmino/ui";
+import { ColorSelect, useApplet, useRealm } from "@celmino/platform";
 import { useUpdateDocument } from "@realmocean/sdk";
 import { EventBus } from "@tuval/core";
 

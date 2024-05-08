@@ -1,9 +1,7 @@
 import { createReactInlineContentSpec } from "@blocknote/react";
-import { AppletContext, WidgetContext, useAppletNavigate, useRealm } from "@celmino/ui";
-import { HStack, PopupButton, ReactView, Text, UIViewBuilder, UIWidget, VStack, cHorizontal, urlFriendly, useDialogStack, useNavigate, useState } from "@tuval/forms";
+import { AppletContext, WidgetContext, useRealm } from "@celmino/platform";
+import { Text, UIViewBuilder, UIWidget, VStack, cHorizontal, useDialogStack, useNavigate, useState } from "@tuval/forms";
 import React from "react";
-import { Menu } from "@mantine/core";
-import { MdMenu } from "react-icons/md";
 import { AppletInfos } from "./AppletInfos";
 
 

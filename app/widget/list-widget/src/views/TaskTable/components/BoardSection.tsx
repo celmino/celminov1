@@ -1,18 +1,17 @@
 
+import { NewFieldMenuView } from '@celmino/platform';
 import { useDroppable } from '@dnd-kit/core';
 import {
     SortableContext,
     verticalListSortingStrategy
 } from '@dnd-kit/sortable';
-import { EventBus } from '@tuval/core';
-import { Button, ForEach, Fragment, HStack, Icon, Icons, ReactView, Spacer, Text, Fragment as UIFragment, UIViewBuilder, UIWidget, VStack, cLeading, cTopLeading, useDialog, useEffect, useFormBuilder, useFormController, useNavigate, useOptions, useParams, useState } from '@tuval/forms';
-import React, { Fragment as ReactFragment } from 'react';
-import SortableTaskItem from './SortableTaskItem';
-import { DynoDialog } from "@celmino/ui";
 import { DatePickerRenderer } from '@realmocean/antd';
-import { NewFieldMenuView } from '@celmino/ui';
+import { EventBus } from '@tuval/core';
+import { Button, ForEach, Fragment, HStack, Icon, Icons, ReactView, Text, UIViewBuilder, VStack, cLeading, cTopLeading, useDialog, useEffect, useFormBuilder, useFormController, useNavigate, useOptions, useParams, useState } from '@tuval/forms';
+import React, { Fragment as ReactFragment } from 'react';
 import { EditTaskItem } from '../EditTaskItem';
 import { BoardSectionTitle } from '../views/BoardSectionTitle';
+import SortableTaskItem from './SortableTaskItem';
 
 
 
@@ -133,7 +132,7 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                                         .allWidth(100).height(30)
                                 ), */
                                 HStack(
-                                    NewFieldMenuView({
+                                    (NewFieldMenuView as any)({
                                         view: (menuIsOpen) =>
                                             HStack(
                                                 Text('+').fontSize(18).fontWeight('500').cursor('pointer')

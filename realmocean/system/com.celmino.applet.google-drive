@@ -15,7 +15,8 @@
 *                                                                                                                               *
 * Licensed under the GNU General Public License v3.0.                                                                           *
 * More info at: https://choosealicense.com/licenses/gpl-3.0/                                                                    *
-* Tuval Framework Created By Tuvalsoft in 2019                                                                                  *
+* Tuval Framework Created By Tuvalsoft in 2019   
+* Google Drive Applet                                                                               *
 ******************************************************************************************************************************@*/
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
@@ -33,8 +34,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @celmino/platform */ "@celmino/platform");
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_celmino_platform__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
@@ -74,11 +75,11 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     WorkspaceTreeWidgetController.prototype.LoadView = function () {
-        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_1__.useAppletNavigate)().navigate;
+        var navigate = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_1__.useAppletNavigate)().navigate;
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _a[0], setIsEditing = _a[1];
         var isLoading = false;
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_1__.useRealm)().realm;
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_1__.useApplet)().applet;
+        var realm = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_1__.useRealm)().realm;
+        var applet = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_1__.useApplet)().applet;
         var workspaceId = realm.$id;
         var appletId = applet.$id;
         var _b = this.props.config || {}, organizationId = _b.organizationId, onItemSelected = _b.onItemSelected, item = _b.item;
@@ -90,7 +91,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
         var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useCreateDocument)(workspaceId, appletId, 'wm_tree').createDocument;
         // const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
         // const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
-        var setCanDrag = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_1__.useRealmTree)().setCanDrag;
+        var setCanDrag = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_1__.useRealmTree)().setCanDrag;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.applet-tree')
             .config({
             node: item,
@@ -179,7 +180,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                         title: 'Applet',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.AppletIcon).foregroundColor('#7C828D'),
                         onClick: function () {
-                            _celmino_ui__WEBPACK_IMPORTED_MODULE_1__.SelectAppletDialog.Show(workspaceId, appletId).then(function (applet) {
+                            _celmino_platform__WEBPACK_IMPORTED_MODULE_1__.SelectAppletDialog.Show(workspaceId, appletId).then(function (applet) {
                                 createTreeItem({
                                     documentId: applet.$id,
                                     data: {
@@ -239,7 +240,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                 {
                     title: 'About',
                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                    onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_1__.AboutDialog.Show(_celmino_ui__WEBPACK_IMPORTED_MODULE_1__.ListApplet); }
+                    onClick: function () { return _celmino_platform__WEBPACK_IMPORTED_MODULE_1__.AboutDialog.Show(_celmino_platform__WEBPACK_IMPORTED_MODULE_1__.ListApplet); }
                 }
             ]; }
         }));
@@ -358,17 +359,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AppletController: () => (/* binding */ AppletController)
 /* harmony export */ });
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/ActionPanel */ "./src/views/ActionPanel.tsx");
-/* harmony import */ var _views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/ViewHeader */ "./src/views/ViewHeader.ts");
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/platform */ "@celmino/platform");
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_platform__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _views_ActionPanel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/ActionPanel */ "./src/views/ActionPanel.tsx");
 /* harmony import */ var _views_FolderView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/FolderView */ "./src/views/FolderView.tsx");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _views_ViewHeader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../views/ViewHeader */ "./src/views/ViewHeader.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -443,21 +444,21 @@ var AppletController = /** @class */ (function (_super) {
     }
     AppletController.prototype.LoadView = function () {
         var _this = this;
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useLocalStorage)("".concat(applet.$id, "-token"), null), token = _a[0], setToken = _a[1];
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDocumentTitle)('Celmino | ' + applet.name);
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet.name, function (name) {
+        var applet = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
+        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useLocalStorage)("".concat(applet.$id, "-token"), null), token = _a[0], setToken = _a[1];
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useDocumentTitle)('Celmino | ' + applet.name);
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_4__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_6__.ViewHeader)(applet.name, function (name) {
             /* updateAppletName(name, ()=> {
                 EventBus.Default.fire('applet.added', { treeItem: applet })
             }) */
-        }), token != null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIImage)('/images/google_login.svg')).width().height()
+        }), token != null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIImage)('/images/google_login.svg')).width().height()
                 .cursor('pointer')
                 .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
                 var token;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.GooleDriveBroker.Default.getUserToken()];
+                        case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.GooleDriveBroker.Default.getUserToken()];
                         case 1:
                             token = _a.sent();
                             // GooleDriveBroker.Default.setToken(token);
@@ -465,14 +466,14 @@ var AppletController = /** @class */ (function (_super) {
                             return [2 /*return*/];
                     }
                 });
-            }); })), token == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-                var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useListGDriveFolders)('root', token), folders = _a.folders, isLoading = _a.isLoading;
-                var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useListGDriveFiles)('root', token), files = _b.files, isFilesLoading = _b.isLoading;
-                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading }).apply(void 0, __spreadArray(__spreadArray([], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(folders)(function (folder) {
-                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-                        var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialogStack)().openDialog;
-                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIImage)(folder.iconLink.replace('16', '32')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(folder.name)
+            }); })), token == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
+                var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListGDriveFolders)('root', token), folders = _a.folders, isLoading = _a.isLoading;
+                var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListGDriveFiles)('root', token), files = _b.files, isFilesLoading = _b.isLoading;
+                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading }).apply(void 0, __spreadArray(__spreadArray([], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(folders)(function (folder) {
+                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
+                        var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useDialogStack)().openDialog;
+                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIImage)(folder.iconLink.replace('16', '32')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(folder.name)
                             .foregroundColor('rgb(31, 31, 31)'))
                             .allHeight(50)
                             .borderBottom('solid 1px #CCCCCC55')
@@ -480,21 +481,21 @@ var AppletController = /** @class */ (function (_super) {
                             .onClick(function () {
                             openDialog({
                                 title: 'Open',
-                                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+                                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
                                     return (0,_views_FolderView__WEBPACK_IMPORTED_MODULE_5__.FolderView)(folder);
                                 })
                             });
                         }));
                     });
-                }), false), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(files)(function (file) {
-                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIImage)(file.iconLink.replace('16', '32'))
+                }), false), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(files)(function (file) {
+                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIImage)(file.iconLink.replace('16', '32'))
                         .imageHeight(24)
                         .imageWidth(24)
                         .allWidth(24)
                         .allHeight(24))
                         .allWidth(32)
                         .allHeight(32)
-                        .padding(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(file.name)
+                        .padding(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(file.name)
                         .foregroundColor('rgb(31, 31, 31)'))
                         .background({ hover: '#F0F1F1' })
                         .allHeight(50)
@@ -505,7 +506,7 @@ var AppletController = /** @class */ (function (_super) {
             .render())));
     };
     return AppletController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController));
 
 
 
@@ -588,8 +589,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   SettingsController: () => (/* binding */ SettingsController),
 /* harmony export */   getSettingsName: () => (/* binding */ getSettingsName)
 /* harmony export */ });
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/platform */ "@celmino/platform");
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_platform__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../resources/Icons */ "./src/resources/Icons.tsx");
@@ -640,7 +641,7 @@ var SettingsController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     SettingsController.prototype.LoadView = function () {
-        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate)().navigate;
+        var navigate = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate)().navigate;
         var menu = [
             {
                 id: 'general',
@@ -811,8 +812,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   GeneralSettingsController: () => (/* binding */ GeneralSettingsController)
 /* harmony export */ });
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/platform */ "@celmino/platform");
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_platform__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
@@ -844,8 +845,8 @@ var GeneralSettingsController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     GeneralSettingsController.prototype.LoadView = function () {
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
+        var realm = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
+        var applet = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
         var workspaceId = realm.$id;
         var appletId = applet.$id;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
@@ -911,7 +912,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
             //.background('#FCE8E8')
             .width(44).height(44).cornerRadius(5))
             .height()
-            .margin('0 0 30px'), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.ColorSelect)({
+            .margin('0 0 30px'), (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_0__.ColorSelect)({
             onSelect: function (color) {
                 updateDocument({
                     databaseId: 'workspace',
@@ -1352,8 +1353,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @celmino/platform */ "@celmino/platform");
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_celmino_platform__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
@@ -1367,8 +1368,8 @@ var ViewHeader = function (header, onHeaderChange) {
     if (onHeaderChange === void 0) { onHeaderChange = void 0; }
     return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
         var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_1__.useRealm)().realm;
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_1__.useApplet)().applet;
+        var realm = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_1__.useRealm)().realm;
+        var applet = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_1__.useApplet)().applet;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDocument)(realm.$id).updateDocument;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
         /*   HStack({ alignment: cLeading, spacing: 5 })(
@@ -1459,14 +1460,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ "@celmino/ui":
-/*!*****************************!*\
-  !*** external "celmino$ui" ***!
-  \*****************************/
+/***/ "@celmino/platform":
+/*!***********************************!*\
+  !*** external "celmino$platform" ***!
+  \***********************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = celmino$ui;
+module.exports = celmino$platform;
 
 /***/ }),
 

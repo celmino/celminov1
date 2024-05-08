@@ -2,7 +2,7 @@ import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
 import { Text as VibeText } from "@realmocean/vibe";
 import { EventBus } from "@tuval/core";
 import { HStack, TextField, UIFormController, UIWidget, VStack, cLeading, cTopLeading, useParams } from "@tuval/forms";
-import { ColorSelect } from '@celmino/ui'
+import { ColorSelect } from '@celmino/platform'
 
 export class GeneralSettingsController extends UIFormController {
     public LoadView() {

@@ -1,4 +1,4 @@
-import { useApplet } from "@celmino/ui";
+import { useApplet } from "@celmino/platform";
 import {
     DialogStack,
     ReactView,

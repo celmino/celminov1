@@ -1,4 +1,4 @@
-import { FormBuilder } from "@celmino/ui";
+import { FormBuilder } from "@celmino/platform";
 import { LoadingButton, useFormState } from "@realmocean/atlaskit";
 import { useCreateDocument } from "@realmocean/sdk";
 import { EventBus } from "@tuval/core";

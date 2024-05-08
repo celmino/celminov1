@@ -1,6 +1,6 @@
 import { Button, DialogPosition, HStack, PopupButton, Spacer, Text, TextField, UIViewBuilder, VStack, cLeading, cTopLeading, cTrailing, useOptions, useState } from "@tuval/forms";
 
-import { ColorView } from '@celmino/ui';
+import { ColorView } from '@celmino/platform';
 
 
 export const BoardSectionTitle = (status) => {

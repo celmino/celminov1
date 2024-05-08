@@ -1,4 +1,4 @@
-import { SelectAppletDialog, useAccount, useRealm } from "@celmino/ui";
+import { SelectAppletDialog, useAccount, useRealm } from "@celmino/platform";
 import { HStack, cLeading, Spacer, Fragment, Icon, Icons, cHorizontal, cVertical, Text, UIViewBuilder } from "@tuval/forms";
 import { UpIcon } from "../../../../../assets/Icons";
 

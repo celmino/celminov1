@@ -1,6 +1,6 @@
 import { UIController, UIRouteOutlet, UIView, Text } from "@tuval/forms";
 import { CelminoController, Guard } from "../../CelminoController";
-import { AccountContext, PersonelRealmContext, RealmContext, UserContext } from "@celmino/ui";
+import { AccountContext, PersonelRealmContext, RealmContext, UserContext } from "@celmino/platform";
 //import { LoginGuard } from "../../guards/LoginGuard";
 
 

@@ -1,4 +1,4 @@
-import { useApplet, useRealm } from "@celmino/ui";
+import { useApplet, useRealm } from "@celmino/platform";
 import { Models, useCreateCollection, useGetDatabase, useListCollections } from "@realmocean/sdk";
 import {
     HStack,

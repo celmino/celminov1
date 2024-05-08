@@ -1,15 +1,8 @@
-import { UIController, UIView, useParams, Routes, Text, UIWidget, VStack, ReactView, DialogStack, Fragment, HStack, ForEach, cTopLeading, cLeading, useDialogStack, UIViewBuilder, Icon, SvgIcon } from "@tuval/forms";
-import { ActionPanel } from "../../views/ActionPanel";
-import { DocumentHeader } from "../../views/ViewHeader";
-import React from "react";
+import { useApplet, useRealm } from "@celmino/platform";
 import { Query, useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
-import { is } from "@tuval/core";
-import { ProxyController } from "./ProxyController";
-import { FolderName } from "./view/FolderName";
-import { FolderHeader } from "./view/FolderHeader";
-import { DocumentName } from "./view/DocumentName";
+import { DialogStack, Fragment, HStack, Icon, ReactView, SvgIcon, Text, UIController, UIView, cLeading, useParams } from "@tuval/forms";
+import React from "react";
 import { FolderView } from "./view/FolderView";
-import { useApplet, useRealm } from "@celmino/ui";
 
 export class FolderController extends UIController {
 

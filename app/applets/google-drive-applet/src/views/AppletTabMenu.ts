@@ -1,10 +1,10 @@
-import { TabMenu, useAppletNavigate } from "@celmino/ui";
+import { TabMenu, useAppletNavigate } from "@celmino/platform";
 import { SvgIcon, UIViewBuilder } from "@tuval/forms";
 import { OverviewIcon, TaskIcon } from "../resources/Icons";
 
 
 export const AppletTabMenu = (selectedKey: string) => UIViewBuilder(() => {
-    const {navigate} = useAppletNavigate();
+    const { navigate } = useAppletNavigate();
     return (
         TabMenu().menuItems([
             {
@@ -33,6 +33,6 @@ export const AppletTabMenu = (selectedKey: string) => UIViewBuilder(() => {
             }
         ])
             .selectedKey(selectedKey)
-            .onSelect(item=> navigate(item.key))
+            .onSelect(item => navigate(item.key))
     )
 })

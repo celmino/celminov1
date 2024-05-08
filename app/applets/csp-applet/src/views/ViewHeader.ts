@@ -1,7 +1,7 @@
 
-import { EditableHeader, EditableHeadingSizes, Fragment, HStack, UIViewBuilder, UIWidget, VStack, cLeading, cTopLeading, useDialogStack } from "@tuval/forms";
+import { EditableHeader, EditableHeadingSizes, Fragment, HStack, UIViewBuilder, UIWidget, cLeading, useDialogStack } from "@tuval/forms";
 
-import { useApplet, useRealm } from "@celmino/ui";
+import { useApplet, useRealm } from "@celmino/platform";
 import { useUpdateDocument } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 

@@ -103,7 +103,7 @@
     "dependencies": {
         "@blocknote/core": "^0.12.4",
         "@blocknote/react": "^0.12.4",
-        "@celmino/ui": "^1.0.56",
+        "@celmino/platform": "^1.0.65",
         "@realmocean/atlaskit": "^17.8.40",
         "@realmocean/sdk": "^1.0.149",
         "@tuval/core": "^0.0.103",

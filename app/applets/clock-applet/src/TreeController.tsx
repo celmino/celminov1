@@ -1,17 +1,18 @@
 import {
-    HDivider,
     HStack,
     MenuButton,
     ReactView,
     Spacer,
     SvgIcon,
-    Text, TextField, UIController, UIView, UIViewBuilder, cHorizontal, cLeading, cVertical, useEffect, useNavigate, useState
+    Text, TextField, UIController, UIView,
+    cHorizontal, cLeading, cVertical,
+    useState
 } from '@tuval/forms';
 
-import { Query, Services, useGetDocument, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
+import { useApplet, useAppletNavigate, useDeleteApplet } from '@celmino/platform';
+import { useGetRealm, useUpdateDocument } from '@realmocean/sdk';
 import { EventBus, is } from '@tuval/core';
 import React from 'react';
-import { useApplet, useAppletNavigate, useDeleteApplet } from '@celmino/ui'
 
 export const EditIcon = () => (
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.5 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm5 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm3.5 1.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"></path></svg>

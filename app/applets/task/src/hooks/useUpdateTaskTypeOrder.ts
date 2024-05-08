@@ -1,4 +1,4 @@
-import { useRealm, useApplet } from "@celmino/ui";
+import { useRealm, useApplet } from "@celmino/platform";
 import { useCreateDocument, useUpdateDocument } from "@realmocean/sdk";
 import { Optional } from "@tuval/core";
 import { IView } from "./models/IView";

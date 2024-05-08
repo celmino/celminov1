@@ -9,7 +9,7 @@ import {
 import { useUpdateDocument } from '@realmocean/sdk';
 
 
-import { DynoDialog, useApplet, useAppletNavigate, useRealm } from '@celmino/ui';
+import { DynoDialog, useApplet, useAppletNavigate, useRealm } from '@celmino/platform';
 import { EventBus } from '@tuval/core';
 import { AddCollectionDialog } from './dialogs/AddCollectionDialog';
 import { TableIcon } from './resources/Icons';

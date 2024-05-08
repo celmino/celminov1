@@ -1,4 +1,4 @@
-import { useAccount } from "@celmino/ui";
+import { useAccount } from "@celmino/platform";
 import { useCreateDatabase, useListAccountMemberships } from "@realmocean/sdk";
 import { Button, Fragment, Text, UINavigate, UIView, VStack } from "@tuval/forms";
 import { CelminoController } from "../../CelminoController";

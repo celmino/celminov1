@@ -1,7 +1,7 @@
+import { useAppletNavigate } from "@celmino/platform";
 import { DialogPosition, ForEach, Fragment, HStack, Icon, PopupButton, SvgIcon, Text, UIViewBuilder, VStack, cLeading, cTopLeading, urlFriendly, useMediaQuery, useState } from "@tuval/forms";
-import { useListViews } from "../../../hooks/useListViews";
-import { useAppletNavigate } from "@celmino/ui";
 import { useCreateView } from "../../../hooks/useCreateView";
+import { useListViews } from "../../../hooks/useListViews";
 import { ViewOptions } from "./ViewOptions";
 
 

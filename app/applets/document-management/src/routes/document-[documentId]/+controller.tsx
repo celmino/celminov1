@@ -1,13 +1,12 @@
-import { UIController, UIView, useParams, Routes, Text, UIWidget, VStack, ReactView, DialogStack, Fragment, cTopLeading, UIViewBuilder, HStack, Button, useDialogStack, TextField, useState, useNavigate, useEffect, UINavigate } from "@tuval/forms";
-import { ActionPanel } from "../../views/ActionPanel";
-import { DocumentHeader } from "../../views/ViewHeader";
-import React, {Fragment as RF} from "react";
+import { useApplet, useRealm, useWidget } from "@celmino/platform";
 import { useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
 import { is } from "@tuval/core";
-import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
-import { SimpleImage } from "../../tools/SimplePlugin";
+import { DialogStack, Fragment, ReactView, UIController, UINavigate, UIView, UIViewBuilder, UIWidget, VStack, cTopLeading, useDialogStack, useParams } from "@tuval/forms";
 import InlineImage from 'editorjs-inline-image';
-import { useApplet, useRealm, useWidget } from "@celmino/ui";
+import React, { Fragment as RF } from "react";
+import { SimpleImage } from "../../tools/SimplePlugin";
+import { ActionPanel } from "../../views/ActionPanel";
+import { DocumentHeader } from "../../views/ViewHeader";
 
 const docs = [
     { uri: "https://url-to-my-pdf.pdf" }, // Remote file

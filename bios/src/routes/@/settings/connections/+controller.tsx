@@ -2,7 +2,7 @@ import { ForEach, HStack, ReactView, Spacer, Spinner, Text, UIController, UIImag
 import { SettingsMenu } from "../views/SettingsMenu";
 import { Heading, Button, Table } from "@realmocean/atlaskit";
 import { useListDocuments } from "@realmocean/sdk";
-import { useRealm } from "@celmino/ui";
+import { useRealm } from "@celmino/platform";
 import { SelectConnectionTypeDialog } from "./dialogs/SelectConnectionDialog";
 import React from "react";
 import { Connectors } from "./dialogs/Connectors";

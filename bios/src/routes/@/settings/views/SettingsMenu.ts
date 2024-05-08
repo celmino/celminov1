@@ -1,4 +1,4 @@
-import { useAppletNavigate, useRealmNavigate } from "@celmino/ui";
+import { useRealmNavigate } from "@celmino/platform";
 import { ForEach, HDivider, HStack, Icon, Text, VStack, cHorizontal, cLeading, cTopLeading } from "@tuval/forms";
 import { AISettingsIcon, BackIcon, ExportSettingsIcon, GeneralSettingsIcon, ImportSettingsIcon, SecuritySettingsIcon, UsersSettingIcon } from "./SettingsIcons";
 

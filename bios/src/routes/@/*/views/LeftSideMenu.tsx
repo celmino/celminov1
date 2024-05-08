@@ -1,5 +1,5 @@
 
-import { PersonelRealmContext, useAccount, useRealm, useRealmNavigate } from "@celmino/ui";
+import { PersonelRealmContext, useAccount, useRealm, useRealmNavigate } from "@celmino/platform";
 import { useCreateTeam, useCreateTeamMembership, useDeleteSession, useUpdatePrefs } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 import {

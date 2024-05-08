@@ -1,6 +1,5 @@
-import { useApplet, useRealm } from "@celmino/ui";
-import { Query, useListDocuments } from "@realmocean/sdk";
-import { ITaskStatus } from "./models/ITaskStatus";
+import { useApplet, useRealm } from "@celmino/platform";
+import { useListDocuments } from "@realmocean/sdk";
 import { IView } from "./models/IView";
 
 

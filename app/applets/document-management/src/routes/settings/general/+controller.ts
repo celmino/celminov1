@@ -1,7 +1,7 @@
-import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
+import { useApplet, useRealm } from '@celmino/platform';
+import { useUpdateDocument } from "@realmocean/sdk";
 import { EventBus } from "@tuval/core";
-import { HStack, TextField, UIFormController,Text, UIWidget, VStack, cLeading, cTopLeading, useParams } from "@tuval/forms";
-import { ColorSelect, useApplet, useRealm } from '@celmino/ui'
+import { HStack, Text, TextField, UIFormController, UIWidget, VStack, cLeading, cTopLeading } from "@tuval/forms";
 
 export class GeneralSettingsController extends UIFormController {
     public LoadView() {

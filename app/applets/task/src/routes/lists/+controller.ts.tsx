@@ -1,25 +1,13 @@
 import {
     Fragment,
-    HStack,
-    Icon, SvgIcon,
     Text,
     UIFormController,
     UINavigate,
     UIView,
-    UIViewBuilder,
-    UIWidget,
-    VStack,
-    cTop,
-    cTopLeading,
-    urlFriendly,
-    useDialogStack
+    urlFriendly
 } from "@tuval/forms";
 
 
-import { SelectSiderDialog, useAccount, useApplet, useRealm } from '@celmino/ui';
-import { Query, useCreateDocument, useCreateRelationshipAttribute, useCreateStringAttribute, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
-import { AppletTabMenu } from "../../views/AppletTabMenu";
-import { ViewsTab } from "./views/ViewsTabMenu";
 import { useListViews } from "../../hooks/useListViews";
 
 function replaceNonMatchingCharacters(originalText) {

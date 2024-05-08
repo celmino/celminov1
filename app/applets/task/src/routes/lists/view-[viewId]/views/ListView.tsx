@@ -1,10 +1,8 @@
-import { useRealm, useApplet, useAccount, SelectSiderDialog, useWidget, AppletContext } from "@celmino/ui";
-import { useListDocuments, Query, useCreateDocument, useUpdateDocument, useCreateStringAttribute, useCreateRelationshipAttribute, useCreateIntegerAttribute } from "@realmocean/sdk";
-import { Fragment, HStack, Icon, ReactView, SvgIcon, UIController, UIView, UIViewBuilder, UIWidget, VStack, cTop, cTopLeading, useDialogStack, useParams } from "@tuval/forms";
-import { ViewsTab } from "../../views/ViewsTabMenu";
-import { EventBus } from "@tuval/core";
-import { TaskViewWidget } from "../../../../widgets/TaskViewWidget";
+import { AppletContext, SelectSiderDialog, useAccount, useApplet, useRealm, useWidget } from "@celmino/platform";
+import { Query, useCreateDocument, useCreateIntegerAttribute, useCreateRelationshipAttribute, useCreateStringAttribute, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
+import { Fragment, HStack, Icon, ReactView, SvgIcon, UIController, UIView, UIViewBuilder, UIWidget, VStack, cTop, cTopLeading, useDialogStack } from "@tuval/forms";
 import React from "react";
+import { ViewsTab } from "../../views/ViewsTabMenu";
 
 
 function replaceNonMatchingCharacters(originalText) {

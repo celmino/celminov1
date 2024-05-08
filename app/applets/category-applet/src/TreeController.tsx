@@ -7,7 +7,7 @@ import {
     useState
 } from '@tuval/forms';
 
-import { useApplet, useAppletNavigate, useDeleteApplet, useRealm } from '@celmino/ui';
+import { useApplet, useAppletNavigate, useDeleteApplet, useRealm } from '@celmino/platform';
 import { useUpdateDocument } from '@realmocean/sdk';
 import { EventBus, is } from '@tuval/core';
 import React from 'react';

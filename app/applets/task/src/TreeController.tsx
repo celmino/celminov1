@@ -1,5 +1,4 @@
 import {
-    Fragment,
     Icon,
     SvgIcon,
     UIController, UIView,
@@ -7,8 +6,8 @@ import {
     useState
 } from '@tuval/forms';
 
-import { AboutDialog, DynoDialog, ListApplet, SelectAppletDialog, useApplet, useAppletNavigate, useRealm, useRealmTree } from '@celmino/ui';
-import { useCreateDocument, useGetDocument, useGetOrganization, useGetRealm, useUpdateDatabase, useUpdateDocument } from '@realmocean/sdk';
+import { AboutDialog, DynoDialog, ListApplet, SelectAppletDialog, useApplet, useAppletNavigate, useRealm, useRealmTree } from '@celmino/platform';
+import { useCreateDocument, useGetOrganization, useUpdateDatabase, useUpdateDocument } from '@realmocean/sdk';
 
 import { EventBus } from '@tuval/core';
 /* import { AddBoardDialog } from './dialogs/AddBoardDialog';
@@ -17,9 +16,9 @@ import { AddFolderDialog } from './dialogs/AddFolderDialog';
 import { AddListDialog } from './dialogs/AddListDialog';
 import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
 import { AddWhiteboardDialog } from './dialogs/AddWhiteboardDialog'; */
-import { AppletIcon, BoardIcon, CalendarIcon, FeedIcon, ListIcon, ReportIcon, SprintIcon, TableIcon, TimelineIcon } from './resources/Icons';
-import { getAppletId, getListId, isAppletOnly, isAppletSettings } from './utils';
 import { AddListDialog } from './dialogs/AddListDialog';
+import { AppletIcon, ListIcon, SprintIcon } from './resources/Icons';
+import { getAppletId, getListId, isAppletOnly, isAppletSettings } from './utils';
 
 
 

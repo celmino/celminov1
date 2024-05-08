@@ -3420,134 +3420,6 @@ var AddCollectionDialog = function (workspaceId, appletId) { return ({
 
 /***/ }),
 
-/***/ "./src/dialogs/AddCollection/actions/SaveCollectionAction.ts":
-/*!*******************************************************************!*\
-  !*** ./src/dialogs/AddCollection/actions/SaveCollectionAction.ts ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SaveCollectionAction": () => (/* binding */ SaveCollectionAction)
-/* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-
-
-var SaveCollectionAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var invalidateResource = null;
-    var formMutate = null;
-    var createMutate = null;
-    var updateMutate = null;
-    var isFormMutateExcuting = false;
-    var isFormLoading = false;
-    var views = [];
-    var _a = formMeta, protocol = _a.protocol, resource = _a.resource, method = _a.method;
-    var _b = formController.GetFormData(), databaseId = _b.databaseId, name = _b.name, workspaceId = _b.workspaceId;
-    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateCollection)(workspaceId), createCollection = _c.createCollection, isLoading = _c.isLoading;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Collection'))
-        .loading(isLoading)
-        .onClick(function () {
-        if (databaseId == null) {
-            alert('Collection is null');
-            return;
-        }
-        createCollection({
-            databaseId: databaseId,
-            name: name,
-            permissions: [
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission.read(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission.update(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission.update(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission["delete"](_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission["delete"](_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
-            ],
-            enabled: true
-        }, function () {
-            dialog.Hide();
-        });
-    }));
-}); };
-
-
-/***/ }),
-
-/***/ "./src/dialogs/AddCollection/actions/SaveDocumentAction.ts":
-/*!*****************************************************************!*\
-  !*** ./src/dialogs/AddCollection/actions/SaveDocumentAction.ts ***!
-  \*****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SaveDocumentAction": () => (/* binding */ SaveDocumentAction)
-/* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-
-var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    var invalidateResource = null;
-    var formMutate = null;
-    var createMutate = null;
-    var updateMutate = null;
-    var isFormMutateExcuting = false;
-    var isFormLoading = false;
-    var views = [];
-    var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, workspaceId = _a.workspaceId;
-    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, collectionId), createDocument = _b.createDocument, isLoading = _b.isLoading;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Document_'))
-        .loading(isLoading)
-        .onClick(function () {
-        var data = __assign({}, formController.GetFormData());
-        delete data.databaseId;
-        delete data.collectionId;
-        delete data.workspaceId;
-        if (databaseId == null) {
-            alert('Collection is null');
-            return;
-        }
-        createDocument({
-            data: __assign({}, data),
-            permissions: [
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission.read(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission.update(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any()),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Permission["delete"](_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Role.any())
-            ]
-        }, function () {
-            dialog.Hide();
-        });
-    }));
-}); };
-
-
-/***/ }),
-
 /***/ "./src/dialogs/AddTextAttributeDialog.ts":
 /*!***********************************************!*\
   !*** ./src/dialogs/AddTextAttributeDialog.ts ***!
@@ -3699,7 +3571,7 @@ var AppletController = /** @class */ (function (_super) {
             //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
             onChange: function (index) {
                 setSelectedCollection(collections[index]);
-                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/collection-").concat(collections[index].$id));
+                navigate("/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/collection-").concat(collections[index].$id));
                 /*    setWidgetController({
                        controller: class extends WidgetController { }
                    });
@@ -4377,43 +4249,43 @@ var SettingsController = /** @class */ (function (_super) {
             {
                 id: 'general',
                 title: 'General',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/general"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/general"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Document Types',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
             },
             {
                 id: 'features',
                 title: 'Features',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/features"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/features"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'collections',
                 title: 'Collections',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/collections"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/collections"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Integrations',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
             },
             {
                 id: 'security',
                 title: 'Security & Permissions ',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/security"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/security"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-protectedAlt')
             },
             {
                 id: 'import',
                 title: 'Imports / Exports',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
             },
         ];
@@ -4462,8 +4334,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @celmino/platform */ "@celmino/platform");
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_celmino_platform__WEBPACK_IMPORTED_MODULE_4__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -4554,7 +4426,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
             .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Theme Color')
             .fontSize(16).fontWeight('600')
             .foregroundColor('rgb(42, 46, 52)')
-            .lineHeight(32)).height().width(300), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.ColorSelect)({
+            .lineHeight(32)).height().width(300), (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_4__.ColorSelect)({
             onSelect: function (color) {
                 updateDocument({
                     databaseId: 'workspace',
@@ -4609,14 +4481,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ "@celmino/ui":
-/*!*****************************!*\
-  !*** external "celmino$ui" ***!
-  \*****************************/
+/***/ "@celmino/platform":
+/*!***********************************!*\
+  !*** external "celmino$platform" ***!
+  \***********************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = celmino$ui;
+module.exports = celmino$platform;
 
 /***/ }),
 
@@ -4765,22 +4637,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ProcessMining": () => (/* binding */ ProcessMining)
 /* harmony export */ });
-/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/ui */ "@realmocean/ui");
-/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _dialogs_AddCollection_actions_SaveCollectionAction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dialogs/AddCollection/actions/SaveCollectionAction */ "./src/dialogs/AddCollection/actions/SaveCollectionAction.ts");
-/* harmony import */ var _dialogs_AddCollection_actions_SaveDocumentAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dialogs/AddCollection/actions/SaveDocumentAction */ "./src/dialogs/AddCollection/actions/SaveDocumentAction.ts");
-/* harmony import */ var _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialogs/AddTextAttributeDialog */ "./src/dialogs/AddTextAttributeDialog.ts");
-/* harmony import */ var _routes_routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./routes/+routes */ "./src/routes/+routes.ts");
+/* harmony import */ var _routes_routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./routes/+routes */ "./src/routes/+routes.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
-
-
 
 var manifest = __webpack_require__(/*! ./manifest */ "./src/manifest.js");
 function App(manifest) {
@@ -4795,7 +4658,7 @@ var ProcessMining = /** @class */ (function () {
     function ProcessMining() {
     }
     ProcessMining.prototype.GetMainController = function () {
-        return _routes_routes__WEBPACK_IMPORTED_MODULE_4__.RouteController;
+        return _routes_routes__WEBPACK_IMPORTED_MODULE_0__.RouteController;
     };
     ProcessMining = __decorate([
         App(manifest)
@@ -4803,10 +4666,6 @@ var ProcessMining = /** @class */ (function () {
     return ProcessMining;
 }());
 
-//FormBuilder.injectView('liststatus', ListStatusWidget)
-_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('ca_saveCollection', _dialogs_AddCollection_actions_SaveCollectionAction__WEBPACK_IMPORTED_MODULE_1__.SaveCollectionAction);
-_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('ca_SaveDocument', _dialogs_AddCollection_actions_SaveDocumentAction__WEBPACK_IMPORTED_MODULE_2__.SaveDocumentAction);
-_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('ca_saveTextField', _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_3__.SaveTextFieldAction);
 
 })();
 

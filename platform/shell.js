@@ -12,7 +12,7 @@ if (shell.exec('npm run wbuild').code !== 0) {
 }
 
 
-shell.cp('-Rf', './dist/index.js',  `../realmocean/system/celmino-ui.js`);
+shell.cp('-Rf', './dist/index.js',  `../realmocean/system/celmino-platform.js`);
 
 
 shell.cd('../runtime');

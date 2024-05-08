@@ -5,6 +5,6 @@ export declare class DynoDialog extends DialogView {
     BindRouterParams(formData: any): void;
     OnOK(): void;
     OnCancel(): void;
-    LoadView(): import("@tuval/forms").VStackClass | import("@tuval/forms").UISpinnerClass;
+    LoadView(): import("@tuval/forms").UISpinnerClass | import("@tuval/forms").VStackClass;
     static Show(formData: any, width?: string): Promise<any>;
 }

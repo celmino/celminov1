@@ -1,4 +1,4 @@
-import { useApplet, useRealm } from "@celmino/ui";
+import { useApplet, useRealm } from "@celmino/platform";
 import { Text } from "@realmocean/vibe";
 import { ForEach, HStack, Heading, Icon, SvgIcon, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate } from "@tuval/forms";
 

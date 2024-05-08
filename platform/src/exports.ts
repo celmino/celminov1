@@ -16,8 +16,8 @@ if (is.workerContext()) {
 /// #endif
 
 
-globalObject['celmino$ui'] = forms;
-ModuleLoader.FireModuleLoadedEvent('celmino$ui',forms);
+globalObject['celmino$platform'] = forms;
+ModuleLoader.FireModuleLoadedEvent('celmino$platform',forms);
 if (is.workerContext()) {
     console.log('celmino ui yüklendi.');
     //console.log(globalObject['tuval$forms']);

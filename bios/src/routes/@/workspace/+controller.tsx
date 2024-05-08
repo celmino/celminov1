@@ -1,12 +1,11 @@
-import { ProjectContext, Query, useDeleteCache, useDeleteSessions, useGetMe, useListAccountMemberships, useListAccounts, useListRealms, useListTeams, useUpdatePrefs } from "@realmocean/sdk";
+import { ProjectContext, Query, useDeleteCache, useGetMe, useListAccountMemberships, useListRealms, useListTeams, useUpdatePrefs } from "@realmocean/sdk";
 
+import { RealmContext, useOrganization, useRealm } from '@celmino/platform';
 import { is } from "@tuval/core";
 import { Button, DialogPosition, ForEach, HStack, Icon, Icons, PopupButton, ReactView, Spacer, SvgIcon, Text, UIController, UINavigate, UIRouteOutlet, UIScene, UIView, UIViewBuilder, VStack, cHorizontal, cLeading, cTop, cTopLeading, cVertical, useNavigate, useParams } from "@tuval/forms";
 import React from "react";
 import { CreateOrganizationView } from "../../../views/CreateOrganizationView";
-import { useGetCurrentOrganization } from "../../../hooks/useGetCurrentOrganization";
 import { CreateWorkspaceView } from "../../../views/CreateWorkspaceView";
-import { RealmContext, useOrganization, useRealm } from '@celmino/ui';
 
 let _hideHandle = null;
 export class WorkspaceLayoutController extends UIController {

@@ -1,7 +1,7 @@
 
 import { EditableHeader, EditableHeadingSizes, Fragment, HStack, UIViewBuilder, UIWidget, VStack, cLeading, cTopLeading, useDialogStack } from "@tuval/forms";
 
-import { useApplet, useRealm } from "@celmino/ui";
+import { useApplet, useRealm } from "@celmino/platform";
 import { useUpdateDocument } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 
@@ -13,7 +13,7 @@ export const ViewHeader = (header, onHeaderChange: any = void 0) => UIViewBuilde
     const { realm } = useRealm();
     const { applet } = useApplet();
     const { updateDocument } = useUpdateDocument(realm.$id);
-  
+
 
     return (
         VStack({ alignment: cTopLeading })(
@@ -67,7 +67,7 @@ export const ViewHeader = (header, onHeaderChange: any = void 0) => UIViewBuilde
                 )
                     .background('white')
                     .height()
-                    //.paddingBottom('10px'),
+                //.paddingBottom('10px'),
                 /*    HStack({ alignment: cLeading, spacing: 10 })(
                        HStack({ spacing: 5 })(
                            HStack(

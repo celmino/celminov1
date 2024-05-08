@@ -1,6 +1,5 @@
-import { PersonelRealmContext, RealmContext, useAccount, useRealm } from "@celmino/ui";
-import { useCreateMagicURL } from "@realmocean/sdk";
-import { Fragment, HStack, UIController, UIRouteOutlet, UIView, cTopLeading } from "@tuval/forms";
+import { PersonelRealmContext, RealmContext } from "@celmino/platform";
+import { HStack, UIController, UIRouteOutlet, UIView, cTopLeading } from "@tuval/forms";
 import { LeftSideMenuView } from "../../*/views/LeftSideMenu";
 
 export class WorkspaceController extends UIController {

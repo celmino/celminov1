@@ -1,15 +1,14 @@
 import {
-    FormBuilder,
     SvgIcon,
     UIController, UIView,
     UIWidget,
     urlFriendly,
-    useNavigate, useState
+    useState
 } from '@tuval/forms';
 
-import { Services, useGetDocument, useGetRealm, useUpdateDocument } from '@realmocean/sdk';
+import { useAccount, useApplet, useAppletNavigate, useDeleteApplet, useRealm } from '@celmino/platform';
+import { Services, useUpdateDocument } from '@realmocean/sdk';
 import { EventBus, is } from '@tuval/core';
-import { useApplet, useAppletNavigate, useRealm, useDeleteApplet, useAccount } from '@celmino/ui';
 import { ContextMenu } from './views/ContextMenu';
 
 

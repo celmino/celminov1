@@ -80,7 +80,7 @@ const umdConfig = {
         '@realmocean/ui': 'realmocean$ui',
         '@realmocean/atlaskit': 'realmocean$atlaskit',
 
-        '@celmino/ui': 'celmino$ui',
+        '@celmino/platform': 'celmino$platform',
 
 
         'react': 'tuval$react',

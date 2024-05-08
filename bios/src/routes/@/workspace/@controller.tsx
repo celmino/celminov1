@@ -1,4 +1,4 @@
-import { AnonymousContext, RealmContext, useRealm } from '@celmino/ui';
+import { AnonymousContext, RealmContext, useRealm } from '@celmino/platform';
 import { ProjectContext } from "@realmocean/sdk";
 import { Text, UIController, UIRouteOutlet, UIView, UIViewBuilder, useNavigate } from "@tuval/forms";
 

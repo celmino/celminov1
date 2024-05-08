@@ -17,7 +17,7 @@ import {
     useState
 } from "@tuval/forms";
 
-import { DynoDialog, useOrganization, useRealm } from "@celmino/ui";
+import { DynoDialog, useOrganization, useRealm } from "@celmino/platform";
 import { EventBus } from "@tuval/core";
 import React from "react";
 import { AddCollectionDialog } from "../../dialogs/AddCollectionDialog";

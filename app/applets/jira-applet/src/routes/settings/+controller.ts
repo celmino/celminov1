@@ -1,5 +1,5 @@
 
-import { useAppletNavigate } from "@celmino/ui";
+import { useAppletNavigate } from "@celmino/platform";
 import { ForEach, HStack, Heading, Icon, Text, UIFormController, UIRouteOutlet, VStack, cLeading, cTopLeading } from "@tuval/forms";
 import { MembersIcon, SettingsIcon, StatusesIcon, TabsIcon } from "../../resources/Icons";
 

@@ -1,4 +1,4 @@
-import { useApplet, useRealm } from "@celmino/ui";
+import { useApplet, useRealm } from "@celmino/platform";
 import { LoadingButton, Radio, Select, TextField } from "@realmocean/atlaskit";
 import { CspBroker, Query, useCreateDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
 import { Fragment, HStack, Spinner, Text, UIController, UIViewBuilder, VStack, cHorizontal, cLeading, cTopLeading, cVertical, useState } from "@tuval/forms";

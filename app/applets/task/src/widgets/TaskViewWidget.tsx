@@ -1,17 +1,20 @@
-import { useRealm, useApplet } from "@celmino/ui";
+import { useApplet, useRealm } from "@celmino/platform";
 import { useListDocuments } from "@realmocean/sdk";
-import { ConfigContext, HStack, Icon, Spinner, SvgIcon, Text, UIController, UIView, UIWidget, VStack, cLeading, cTopLeading, cVertical, useDialogStack, useState } from "@tuval/forms";
+import { ConfigContext, HStack, Icon, Spinner, SvgIcon, Text, UIController, UIView, UIWidget, VStack, cTopLeading, cVertical, useDialogStack } from "@tuval/forms";
+import { useGetTask } from "../hooks/useGetTask";
 import { ActionPanel } from "../views/ActionPanel";
 import { TaskHeader } from "../views/TaskHeader";
-import { useGetTask } from "../hooks/useGetTask";
 import { InlineTitle } from "./views/InlineTitle";
+import React from "react";
 
 
+const DescriptionIcon = () => (
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" aria-hidden="true" ><g><path d="M10.7 6.571h5.6a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.555.837.837 0 0 0-.205-.556A.664.664 0 0 0 16.3 5h-5.6a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .208.074.408.205.555.131.148.31.23.495.23Zm0 7.857h-7a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .209.074.409.205.556.131.147.31.23.495.23h7a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.556.837.837 0 0 0-.205-.555.664.664 0 0 0-.495-.23Zm5.6-3.142H3.7a.663.663 0 0 0-.495.23.837.837 0 0 0-.205.555c0 .209.074.409.205.556.131.147.31.23.495.23h12.6a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.556.837.837 0 0 0-.205-.555.663.663 0 0 0-.495-.23Zm0-3.143h-5.6a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .208.074.408.205.555.131.147.31.23.495.23h5.6a.664.664 0 0 0 .495-.23A.837.837 0 0 0 17 8.93a.837.837 0 0 0-.205-.556.664.664 0 0 0-.495-.23ZM8.6 3.314H3.8a.8.8 0 1 0 0 1.6h1.6v4a.8.8 0 1 0 1.6 0v-4h1.6a.8.8 0 0 0 0-1.6Z"></path></g></svg>)
 export class TaskViewWidget extends UIController {
     public override LoadView(): UIView {
 
         const { realm } = useRealm();
-     
+
         const { applet } = useApplet();
         const { documents: applets, isLoading: isAppletsLoading } = useListDocuments(realm.$id, 'workspace', 'applets');
 
@@ -52,8 +55,12 @@ export class TaskViewWidget extends UIController {
                                     ).height()
                                         .padding(20),
 
-                                    HStack(
-                                        HStack({ alignment: cTopLeading })(
+                                    VStack({ alignment: cTopLeading })(
+                                        HStack({spacing: 5})(
+                                            Icon(DescriptionIcon),
+                                            Text('Description').foregroundColor('rgb(101, 111, 125)')
+                                        ).width().height(),
+                                        VStack({ alignment: cTopLeading })(
                                             UIWidget('com.tuvalsoft.widget.blocknote')
                                                 .config({
                                                     defaultValue: null,
@@ -80,7 +87,7 @@ export class TaskViewWidget extends UIController {
                                             .cornerRadius(6)
                                             .padding(cVertical, 20)
                                     )
-                                        .minHeight(200)
+                                        .minHeight(300)
 
                                         .padding(20)
                                         .height()

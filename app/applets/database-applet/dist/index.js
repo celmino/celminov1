@@ -5027,7 +5027,8 @@ Swatch.displayName = 'Swatch';
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-/** @license React v16.14.0
+/**
+ * @license React
  * react-jsx-runtime.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -5047,54 +5048,21 @@ var React = __webpack_require__(/*! react */ "react");
 // ATTENTION
 // When adding new symbols to this file,
 // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
-// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
-var REACT_ELEMENT_TYPE = 0xeac7;
-var REACT_PORTAL_TYPE = 0xeaca;
-exports.Fragment = 0xeacb;
-var REACT_STRICT_MODE_TYPE = 0xeacc;
-var REACT_PROFILER_TYPE = 0xead2;
-var REACT_PROVIDER_TYPE = 0xeacd;
-var REACT_CONTEXT_TYPE = 0xeace;
-var REACT_FORWARD_REF_TYPE = 0xead0;
-var REACT_SUSPENSE_TYPE = 0xead1;
-var REACT_SUSPENSE_LIST_TYPE = 0xead8;
-var REACT_MEMO_TYPE = 0xead3;
-var REACT_LAZY_TYPE = 0xead4;
-var REACT_BLOCK_TYPE = 0xead9;
-var REACT_SERVER_BLOCK_TYPE = 0xeada;
-var REACT_FUNDAMENTAL_TYPE = 0xead5;
-var REACT_SCOPE_TYPE = 0xead7;
-var REACT_OPAQUE_ID_TYPE = 0xeae0;
-var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
-var REACT_OFFSCREEN_TYPE = 0xeae2;
-var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
-
-if (typeof Symbol === 'function' && Symbol.for) {
-  var symbolFor = Symbol.for;
-  REACT_ELEMENT_TYPE = symbolFor('react.element');
-  REACT_PORTAL_TYPE = symbolFor('react.portal');
-  exports.Fragment = symbolFor('react.fragment');
-  REACT_STRICT_MODE_TYPE = symbolFor('react.strict_mode');
-  REACT_PROFILER_TYPE = symbolFor('react.profiler');
-  REACT_PROVIDER_TYPE = symbolFor('react.provider');
-  REACT_CONTEXT_TYPE = symbolFor('react.context');
-  REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
-  REACT_SUSPENSE_TYPE = symbolFor('react.suspense');
-  REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
-  REACT_MEMO_TYPE = symbolFor('react.memo');
-  REACT_LAZY_TYPE = symbolFor('react.lazy');
-  REACT_BLOCK_TYPE = symbolFor('react.block');
-  REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
-  REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
-  REACT_SCOPE_TYPE = symbolFor('react.scope');
-  REACT_OPAQUE_ID_TYPE = symbolFor('react.opaque.id');
-  REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
-  REACT_OFFSCREEN_TYPE = symbolFor('react.offscreen');
-  REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
-}
-
-var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+// The Symbol used to tag the ReactElement-like types.
+var REACT_ELEMENT_TYPE = Symbol.for('react.element');
+var REACT_PORTAL_TYPE = Symbol.for('react.portal');
+var REACT_FRAGMENT_TYPE = Symbol.for('react.fragment');
+var REACT_STRICT_MODE_TYPE = Symbol.for('react.strict_mode');
+var REACT_PROFILER_TYPE = Symbol.for('react.profiler');
+var REACT_PROVIDER_TYPE = Symbol.for('react.provider');
+var REACT_CONTEXT_TYPE = Symbol.for('react.context');
+var REACT_FORWARD_REF_TYPE = Symbol.for('react.forward_ref');
+var REACT_SUSPENSE_TYPE = Symbol.for('react.suspense');
+var REACT_SUSPENSE_LIST_TYPE = Symbol.for('react.suspense_list');
+var REACT_MEMO_TYPE = Symbol.for('react.memo');
+var REACT_LAZY_TYPE = Symbol.for('react.lazy');
+var REACT_OFFSCREEN_TYPE = Symbol.for('react.offscreen');
+var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
 var FAUX_ITERATOR_SYMBOL = '@@iterator';
 function getIteratorFn(maybeIterable) {
   if (maybeIterable === null || typeof maybeIterable !== 'object') {
@@ -5114,11 +5082,13 @@ var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FI
 
 function error(format) {
   {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
+    {
+      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        args[_key2 - 1] = arguments[_key2];
+      }
 
-    printWarning('error', format, args);
+      printWarning('error', format, args);
+    }
   }
 }
 
@@ -5127,23 +5097,16 @@ function printWarning(level, format, args) {
   // update consoleWithStackDev.www.js as well.
   {
     var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-    var stack = '';
-
-    if (currentlyValidatingElement) {
-      var name = getComponentName(currentlyValidatingElement.type);
-      var owner = currentlyValidatingElement._owner;
-      stack += describeComponentFrame(name, currentlyValidatingElement._source, owner && getComponentName(owner.type));
-    }
-
-    stack += ReactDebugCurrentFrame.getStackAddendum();
+    var stack = ReactDebugCurrentFrame.getStackAddendum();
 
     if (stack !== '') {
       format += '%s';
       args = args.concat([stack]);
-    }
+    } // eslint-disable-next-line react-internal/safe-string-coercion
+
 
     var argsWithFormat = args.map(function (item) {
-      return '' + item;
+      return String(item);
     }); // Careful: RN currently depends on this prefix
 
     argsWithFormat.unshift('Warning: ' + format); // We intentionally don't use spread (or .apply) directly because it
@@ -5154,9 +5117,23 @@ function printWarning(level, format, args) {
   }
 }
 
-// Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
+// -----------------------------------------------------------------------------
 
 var enableScopeAPI = false; // Experimental Create Event Handle API.
+var enableCacheElement = false;
+var enableTransitionTracing = false; // No known bugs, but needs performance testing
+
+var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
+// stuff. Intended to enable React core members to more easily debug scheduling
+// issues in DEV builds.
+
+var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
+
+var REACT_MODULE_REFERENCE;
+
+{
+  REACT_MODULE_REFERENCE = Symbol.for('react.module.reference');
+}
 
 function isValidElementType(type) {
   if (typeof type === 'string' || typeof type === 'function') {
@@ -5164,12 +5141,16 @@ function isValidElementType(type) {
   } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
 
 
-  if (type === exports.Fragment || type === REACT_PROFILER_TYPE || type === REACT_DEBUG_TRACING_MODE_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || type === REACT_LEGACY_HIDDEN_TYPE || enableScopeAPI ) {
+  if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || enableDebugTracing  || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || enableLegacyHidden  || type === REACT_OFFSCREEN_TYPE || enableScopeAPI  || enableCacheElement  || enableTransitionTracing ) {
     return true;
   }
 
   if (typeof type === 'object' && type !== null) {
-    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_BLOCK_TYPE || type[0] === REACT_SERVER_BLOCK_TYPE) {
+    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
+    // types supported by any Flight configuration anywhere since
+    // we don't know which Flight build this will end up being used
+    // with.
+    type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== undefined) {
       return true;
     }
   }
@@ -5177,51 +5158,24 @@ function isValidElementType(type) {
   return false;
 }
 
+function getWrappedName(outerType, innerType, wrapperName) {
+  var displayName = outerType.displayName;
 
-var BEFORE_SLASH_RE = /^(.*)[\\\/]/;
-function describeComponentFrame (name, source, ownerName) {
-  var sourceInfo = '';
-
-  if (source) {
-    var path = source.fileName;
-    var fileName = path.replace(BEFORE_SLASH_RE, '');
-
-    {
-      // In DEV, include code for a common special case:
-      // prefer "folder/index.js" instead of just "index.js".
-      if (/^index\./.test(fileName)) {
-        var match = path.match(BEFORE_SLASH_RE);
-
-        if (match) {
-          var pathBeforeSlash = match[1];
-
-          if (pathBeforeSlash) {
-            var folderName = pathBeforeSlash.replace(BEFORE_SLASH_RE, '');
-            fileName = folderName + '/' + fileName;
-          }
-        }
-      }
-    }
-
-    sourceInfo = ' (at ' + fileName + ':' + source.lineNumber + ')';
-  } else if (ownerName) {
-    sourceInfo = ' (created by ' + ownerName + ')';
+  if (displayName) {
+    return displayName;
   }
 
-  return '\n    in ' + (name || 'Unknown') + sourceInfo;
-}
-
-var Resolved = 1;
-function refineResolvedLazyComponent(lazyComponent) {
-  return lazyComponent._status === Resolved ? lazyComponent._result : null;
-}
-
-function getWrappedName(outerType, innerType, wrapperName) {
   var functionName = innerType.displayName || innerType.name || '';
-  return outerType.displayName || (functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName);
-}
+  return functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName;
+} // Keep in sync with react-reconciler/getComponentNameFromFiber
 
-function getComponentName(type) {
+
+function getContextName(type) {
+  return type.displayName || 'Context';
+} // Note that the reconciler package should generally prefer to use getComponentNameFromFiber() instead.
+
+
+function getComponentNameFromType(type) {
   if (type == null) {
     // Host root, text node or just invalid type.
     return null;
@@ -5229,7 +5183,7 @@ function getComponentName(type) {
 
   {
     if (typeof type.tag === 'number') {
-      error('Received an unexpected object in getComponentName(). ' + 'This is likely a bug in React. Please file an issue.');
+      error('Received an unexpected object in getComponentNameFromType(). ' + 'This is likely a bug in React. Please file an issue.');
     }
   }
 
@@ -5242,14 +5196,14 @@ function getComponentName(type) {
   }
 
   switch (type) {
-    case exports.Fragment:
+    case REACT_FRAGMENT_TYPE:
       return 'Fragment';
 
     case REACT_PORTAL_TYPE:
       return 'Portal';
 
     case REACT_PROFILER_TYPE:
-      return "Profiler";
+      return 'Profiler';
 
     case REACT_STRICT_MODE_TYPE:
       return 'StrictMode';
@@ -5259,56 +5213,414 @@ function getComponentName(type) {
 
     case REACT_SUSPENSE_LIST_TYPE:
       return 'SuspenseList';
+
   }
 
   if (typeof type === 'object') {
     switch (type.$$typeof) {
       case REACT_CONTEXT_TYPE:
-        return 'Context.Consumer';
+        var context = type;
+        return getContextName(context) + '.Consumer';
 
       case REACT_PROVIDER_TYPE:
-        return 'Context.Provider';
+        var provider = type;
+        return getContextName(provider._context) + '.Provider';
 
       case REACT_FORWARD_REF_TYPE:
         return getWrappedName(type, type.render, 'ForwardRef');
 
       case REACT_MEMO_TYPE:
-        return getComponentName(type.type);
+        var outerName = type.displayName || null;
 
-      case REACT_BLOCK_TYPE:
-        return getComponentName(type.render);
+        if (outerName !== null) {
+          return outerName;
+        }
+
+        return getComponentNameFromType(type.type) || 'Memo';
 
       case REACT_LAZY_TYPE:
         {
-          var thenable = type;
-          var resolvedThenable = refineResolvedLazyComponent(thenable);
+          var lazyComponent = type;
+          var payload = lazyComponent._payload;
+          var init = lazyComponent._init;
 
-          if (resolvedThenable) {
-            return getComponentName(resolvedThenable);
+          try {
+            return getComponentNameFromType(init(payload));
+          } catch (x) {
+            return null;
           }
-
-          break;
         }
+
+      // eslint-disable-next-line no-fallthrough
     }
   }
 
   return null;
 }
 
+var assign = Object.assign;
+
+// Helpers to patch console.logs to avoid logging during side-effect free
+// replaying on render function. This currently only patches the object
+// lazily which won't cover if the log function was extracted eagerly.
+// We could also eagerly patch the method.
+var disabledDepth = 0;
+var prevLog;
+var prevInfo;
+var prevWarn;
+var prevError;
+var prevGroup;
+var prevGroupCollapsed;
+var prevGroupEnd;
+
+function disabledLog() {}
+
+disabledLog.__reactDisabledLog = true;
+function disableLogs() {
+  {
+    if (disabledDepth === 0) {
+      /* eslint-disable react-internal/no-production-logging */
+      prevLog = console.log;
+      prevInfo = console.info;
+      prevWarn = console.warn;
+      prevError = console.error;
+      prevGroup = console.group;
+      prevGroupCollapsed = console.groupCollapsed;
+      prevGroupEnd = console.groupEnd; // https://github.com/facebook/react/issues/19099
+
+      var props = {
+        configurable: true,
+        enumerable: true,
+        value: disabledLog,
+        writable: true
+      }; // $FlowFixMe Flow thinks console is immutable.
+
+      Object.defineProperties(console, {
+        info: props,
+        log: props,
+        warn: props,
+        error: props,
+        group: props,
+        groupCollapsed: props,
+        groupEnd: props
+      });
+      /* eslint-enable react-internal/no-production-logging */
+    }
+
+    disabledDepth++;
+  }
+}
+function reenableLogs() {
+  {
+    disabledDepth--;
+
+    if (disabledDepth === 0) {
+      /* eslint-disable react-internal/no-production-logging */
+      var props = {
+        configurable: true,
+        enumerable: true,
+        writable: true
+      }; // $FlowFixMe Flow thinks console is immutable.
+
+      Object.defineProperties(console, {
+        log: assign({}, props, {
+          value: prevLog
+        }),
+        info: assign({}, props, {
+          value: prevInfo
+        }),
+        warn: assign({}, props, {
+          value: prevWarn
+        }),
+        error: assign({}, props, {
+          value: prevError
+        }),
+        group: assign({}, props, {
+          value: prevGroup
+        }),
+        groupCollapsed: assign({}, props, {
+          value: prevGroupCollapsed
+        }),
+        groupEnd: assign({}, props, {
+          value: prevGroupEnd
+        })
+      });
+      /* eslint-enable react-internal/no-production-logging */
+    }
+
+    if (disabledDepth < 0) {
+      error('disabledDepth fell below zero. ' + 'This is a bug in React. Please file an issue.');
+    }
+  }
+}
+
+var ReactCurrentDispatcher = ReactSharedInternals.ReactCurrentDispatcher;
+var prefix;
+function describeBuiltInComponentFrame(name, source, ownerFn) {
+  {
+    if (prefix === undefined) {
+      // Extract the VM specific prefix used by each line.
+      try {
+        throw Error();
+      } catch (x) {
+        var match = x.stack.trim().match(/\n( *(at )?)/);
+        prefix = match && match[1] || '';
+      }
+    } // We use the prefix to ensure our stacks line up with native stack frames.
+
+
+    return '\n' + prefix + name;
+  }
+}
+var reentry = false;
+var componentFrameCache;
+
+{
+  var PossiblyWeakMap = typeof WeakMap === 'function' ? WeakMap : Map;
+  componentFrameCache = new PossiblyWeakMap();
+}
+
+function describeNativeComponentFrame(fn, construct) {
+  // If something asked for a stack inside a fake render, it should get ignored.
+  if ( !fn || reentry) {
+    return '';
+  }
+
+  {
+    var frame = componentFrameCache.get(fn);
+
+    if (frame !== undefined) {
+      return frame;
+    }
+  }
+
+  var control;
+  reentry = true;
+  var previousPrepareStackTrace = Error.prepareStackTrace; // $FlowFixMe It does accept undefined.
+
+  Error.prepareStackTrace = undefined;
+  var previousDispatcher;
+
+  {
+    previousDispatcher = ReactCurrentDispatcher.current; // Set the dispatcher in DEV because this might be call in the render function
+    // for warnings.
+
+    ReactCurrentDispatcher.current = null;
+    disableLogs();
+  }
+
+  try {
+    // This should throw.
+    if (construct) {
+      // Something should be setting the props in the constructor.
+      var Fake = function () {
+        throw Error();
+      }; // $FlowFixMe
+
+
+      Object.defineProperty(Fake.prototype, 'props', {
+        set: function () {
+          // We use a throwing setter instead of frozen or non-writable props
+          // because that won't throw in a non-strict mode function.
+          throw Error();
+        }
+      });
+
+      if (typeof Reflect === 'object' && Reflect.construct) {
+        // We construct a different control for this case to include any extra
+        // frames added by the construct call.
+        try {
+          Reflect.construct(Fake, []);
+        } catch (x) {
+          control = x;
+        }
+
+        Reflect.construct(fn, [], Fake);
+      } else {
+        try {
+          Fake.call();
+        } catch (x) {
+          control = x;
+        }
+
+        fn.call(Fake.prototype);
+      }
+    } else {
+      try {
+        throw Error();
+      } catch (x) {
+        control = x;
+      }
+
+      fn();
+    }
+  } catch (sample) {
+    // This is inlined manually because closure doesn't do it for us.
+    if (sample && control && typeof sample.stack === 'string') {
+      // This extracts the first frame from the sample that isn't also in the control.
+      // Skipping one frame that we assume is the frame that calls the two.
+      var sampleLines = sample.stack.split('\n');
+      var controlLines = control.stack.split('\n');
+      var s = sampleLines.length - 1;
+      var c = controlLines.length - 1;
+
+      while (s >= 1 && c >= 0 && sampleLines[s] !== controlLines[c]) {
+        // We expect at least one stack frame to be shared.
+        // Typically this will be the root most one. However, stack frames may be
+        // cut off due to maximum stack limits. In this case, one maybe cut off
+        // earlier than the other. We assume that the sample is longer or the same
+        // and there for cut off earlier. So we should find the root most frame in
+        // the sample somewhere in the control.
+        c--;
+      }
+
+      for (; s >= 1 && c >= 0; s--, c--) {
+        // Next we find the first one that isn't the same which should be the
+        // frame that called our sample function and the control.
+        if (sampleLines[s] !== controlLines[c]) {
+          // In V8, the first line is describing the message but other VMs don't.
+          // If we're about to return the first line, and the control is also on the same
+          // line, that's a pretty good indicator that our sample threw at same line as
+          // the control. I.e. before we entered the sample frame. So we ignore this result.
+          // This can happen if you passed a class to function component, or non-function.
+          if (s !== 1 || c !== 1) {
+            do {
+              s--;
+              c--; // We may still have similar intermediate frames from the construct call.
+              // The next one that isn't the same should be our match though.
+
+              if (c < 0 || sampleLines[s] !== controlLines[c]) {
+                // V8 adds a "new" prefix for native classes. Let's remove it to make it prettier.
+                var _frame = '\n' + sampleLines[s].replace(' at new ', ' at '); // If our component frame is labeled "<anonymous>"
+                // but we have a user-provided "displayName"
+                // splice it in to make the stack more readable.
+
+
+                if (fn.displayName && _frame.includes('<anonymous>')) {
+                  _frame = _frame.replace('<anonymous>', fn.displayName);
+                }
+
+                {
+                  if (typeof fn === 'function') {
+                    componentFrameCache.set(fn, _frame);
+                  }
+                } // Return the line we found.
+
+
+                return _frame;
+              }
+            } while (s >= 1 && c >= 0);
+          }
+
+          break;
+        }
+      }
+    }
+  } finally {
+    reentry = false;
+
+    {
+      ReactCurrentDispatcher.current = previousDispatcher;
+      reenableLogs();
+    }
+
+    Error.prepareStackTrace = previousPrepareStackTrace;
+  } // Fallback to just using the name if we couldn't make it throw.
+
+
+  var name = fn ? fn.displayName || fn.name : '';
+  var syntheticFrame = name ? describeBuiltInComponentFrame(name) : '';
+
+  {
+    if (typeof fn === 'function') {
+      componentFrameCache.set(fn, syntheticFrame);
+    }
+  }
+
+  return syntheticFrame;
+}
+function describeFunctionComponentFrame(fn, source, ownerFn) {
+  {
+    return describeNativeComponentFrame(fn, false);
+  }
+}
+
+function shouldConstruct(Component) {
+  var prototype = Component.prototype;
+  return !!(prototype && prototype.isReactComponent);
+}
+
+function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
+
+  if (type == null) {
+    return '';
+  }
+
+  if (typeof type === 'function') {
+    {
+      return describeNativeComponentFrame(type, shouldConstruct(type));
+    }
+  }
+
+  if (typeof type === 'string') {
+    return describeBuiltInComponentFrame(type);
+  }
+
+  switch (type) {
+    case REACT_SUSPENSE_TYPE:
+      return describeBuiltInComponentFrame('Suspense');
+
+    case REACT_SUSPENSE_LIST_TYPE:
+      return describeBuiltInComponentFrame('SuspenseList');
+  }
+
+  if (typeof type === 'object') {
+    switch (type.$$typeof) {
+      case REACT_FORWARD_REF_TYPE:
+        return describeFunctionComponentFrame(type.render);
+
+      case REACT_MEMO_TYPE:
+        // Memo may contain any component type so we recursively resolve it.
+        return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn);
+
+      case REACT_LAZY_TYPE:
+        {
+          var lazyComponent = type;
+          var payload = lazyComponent._payload;
+          var init = lazyComponent._init;
+
+          try {
+            // Lazy may contain any component type so we recursively resolve it.
+            return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
+          } catch (x) {}
+        }
+    }
+  }
+
+  return '';
+}
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
 var loggedTypeFailures = {};
 var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-var currentlyValidatingElement = null;
 
 function setCurrentlyValidatingElement(element) {
   {
-    currentlyValidatingElement = element;
+    if (element) {
+      var owner = element._owner;
+      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+      ReactDebugCurrentFrame.setExtraStackFrame(stack);
+    } else {
+      ReactDebugCurrentFrame.setExtraStackFrame(null);
+    }
   }
 }
 
 function checkPropTypes(typeSpecs, values, location, componentName, element) {
   {
     // $FlowFixMe This is okay but Flow doesn't know it.
-    var has = Function.call.bind(Object.prototype.hasOwnProperty);
+    var has = Function.call.bind(hasOwnProperty);
 
     for (var typeSpecName in typeSpecs) {
       if (has(typeSpecs, typeSpecName)) {
@@ -5320,6 +5632,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, element) {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
           if (typeof typeSpecs[typeSpecName] !== 'function') {
+            // eslint-disable-next-line react-internal/prod-error-codes
             var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' + 'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.');
             err.name = 'Invariant Violation';
             throw err;
@@ -5353,8 +5666,80 @@ function checkPropTypes(typeSpecs, values, location, componentName, element) {
   }
 }
 
+var isArrayImpl = Array.isArray; // eslint-disable-next-line no-redeclare
+
+function isArray(a) {
+  return isArrayImpl(a);
+}
+
+/*
+ * The `'' + value` pattern (used in in perf-sensitive code) throws for Symbol
+ * and Temporal.* types. See https://github.com/facebook/react/pull/22064.
+ *
+ * The functions in this module will throw an easier-to-understand,
+ * easier-to-debug exception with a clear errors message message explaining the
+ * problem. (Instead of a confusing exception thrown inside the implementation
+ * of the `value` object).
+ */
+// $FlowFixMe only called in DEV, so void return is not possible.
+function typeName(value) {
+  {
+    // toStringTag is needed for namespaced types like Temporal.Instant
+    var hasToStringTag = typeof Symbol === 'function' && Symbol.toStringTag;
+    var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || 'Object';
+    return type;
+  }
+} // $FlowFixMe only called in DEV, so void return is not possible.
+
+
+function willCoercionThrow(value) {
+  {
+    try {
+      testStringCoercion(value);
+      return false;
+    } catch (e) {
+      return true;
+    }
+  }
+}
+
+function testStringCoercion(value) {
+  // If you ended up here by following an exception call stack, here's what's
+  // happened: you supplied an object or symbol value to React (as a prop, key,
+  // DOM attribute, CSS property, string ref, etc.) and when React tried to
+  // coerce it to a string using `'' + value`, an exception was thrown.
+  //
+  // The most common types that will cause this exception are `Symbol` instances
+  // and Temporal objects like `Temporal.Instant`. But any object that has a
+  // `valueOf` or `[Symbol.toPrimitive]` method that throws will also cause this
+  // exception. (Library authors do this to prevent users from using built-in
+  // numeric operators like `+` or comparison operators like `>=` because custom
+  // methods are needed to perform accurate arithmetic or comparison.)
+  //
+  // To fix the problem, coerce this object or symbol value to a string before
+  // passing it to React. The most reliable way is usually `String(value)`.
+  //
+  // To find which value is throwing, check the browser or debugger console.
+  // Before this exception was thrown, there should be `console.error` output
+  // that shows the type (Symbol, Temporal.PlainDate, etc.) that caused the
+  // problem and how that type was used: key, atrribute, input value prop, etc.
+  // In most cases, this console output also shows the component and its
+  // ancestor components where the exception happened.
+  //
+  // eslint-disable-next-line react-internal/safe-string-coercion
+  return '' + value;
+}
+function checkKeyStringCoercion(value) {
+  {
+    if (willCoercionThrow(value)) {
+      error('The provided key is an unsupported type %s.' + ' This value must be coerced to a string before before using it here.', typeName(value));
+
+      return testStringCoercion(value); // throw (to help callers find troubleshooting comments)
+    }
+  }
+}
+
 var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
 var RESERVED_PROPS = {
   key: true,
   ref: true,
@@ -5400,10 +5785,10 @@ function hasValidKey(config) {
 function warnIfStringRefCannotBeAutoConverted(config, self) {
   {
     if (typeof config.ref === 'string' && ReactCurrentOwner.current && self && ReactCurrentOwner.current.stateNode !== self) {
-      var componentName = getComponentName(ReactCurrentOwner.current.type);
+      var componentName = getComponentNameFromType(ReactCurrentOwner.current.type);
 
       if (!didWarnAboutStringRefs[componentName]) {
-        error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', getComponentName(ReactCurrentOwner.current.type), config.ref);
+        error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', getComponentNameFromType(ReactCurrentOwner.current.type), config.ref);
 
         didWarnAboutStringRefs[componentName] = true;
       }
@@ -5542,10 +5927,18 @@ function jsxDEV(type, config, maybeKey, source, self) {
     // key is explicitly declared to be undefined or not.
 
     if (maybeKey !== undefined) {
+      {
+        checkKeyStringCoercion(maybeKey);
+      }
+
       key = '' + maybeKey;
     }
 
     if (hasValidKey(config)) {
+      {
+        checkKeyStringCoercion(config.key);
+      }
+
       key = '' + config.key;
     }
 
@@ -5592,7 +5985,15 @@ var ReactCurrentOwner$1 = ReactSharedInternals.ReactCurrentOwner;
 var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
 
 function setCurrentlyValidatingElement$1(element) {
-  currentlyValidatingElement = element;
+  {
+    if (element) {
+      var owner = element._owner;
+      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+      ReactDebugCurrentFrame$1.setExtraStackFrame(stack);
+    } else {
+      ReactDebugCurrentFrame$1.setExtraStackFrame(null);
+    }
+  }
 }
 
 var propTypesMisspellWarningShown;
@@ -5608,6 +6009,7 @@ var propTypesMisspellWarningShown;
  * @final
  */
 
+
 function isValidElement(object) {
   {
     return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
@@ -5617,7 +6019,7 @@ function isValidElement(object) {
 function getDeclarationErrorAddendum() {
   {
     if (ReactCurrentOwner$1.current) {
-      var name = getComponentName(ReactCurrentOwner$1.current.type);
+      var name = getComponentNameFromType(ReactCurrentOwner$1.current.type);
 
       if (name) {
         return '\n\nCheck the render method of `' + name + '`.';
@@ -5697,7 +6099,7 @@ function validateExplicitKey(element, parentType) {
 
     if (element && element._owner && element._owner !== ReactCurrentOwner$1.current) {
       // Give the component that originally created this child.
-      childOwner = " It was passed a child from " + getComponentName(element._owner.type) + ".";
+      childOwner = " It was passed a child from " + getComponentNameFromType(element._owner.type) + ".";
     }
 
     setCurrentlyValidatingElement$1(element);
@@ -5724,7 +6126,7 @@ function validateChildKeys(node, parentType) {
       return;
     }
 
-    if (Array.isArray(node)) {
+    if (isArray(node)) {
       for (var i = 0; i < node.length; i++) {
         var child = node[i];
 
@@ -5787,12 +6189,12 @@ function validatePropTypes(element) {
 
     if (propTypes) {
       // Intentionally inside to avoid triggering lazy initializers:
-      var name = getComponentName(type);
+      var name = getComponentNameFromType(type);
       checkPropTypes(propTypes, element.props, 'prop', name, element);
     } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
       propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
 
-      var _name = getComponentName(type);
+      var _name = getComponentNameFromType(type);
 
       error('Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', _name || 'Unknown');
     }
@@ -5859,10 +6261,10 @@ function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
 
       if (type === null) {
         typeString = 'null';
-      } else if (Array.isArray(type)) {
+      } else if (isArray(type)) {
         typeString = 'array';
       } else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
-        typeString = "<" + (getComponentName(type.type) || 'Unknown') + " />";
+        typeString = "<" + (getComponentNameFromType(type.type) || 'Unknown') + " />";
         info = ' Did you accidentally export a JSX literal instead of a component?';
       } else {
         typeString = typeof type;
@@ -5888,7 +6290,7 @@ function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
 
       if (children !== undefined) {
         if (isStaticChildren) {
-          if (Array.isArray(children)) {
+          if (isArray(children)) {
             for (var i = 0; i < children.length; i++) {
               validateChildKeys(children[i], type);
             }
@@ -5905,7 +6307,7 @@ function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
       }
     }
 
-    if (type === exports.Fragment) {
+    if (type === REACT_FRAGMENT_TYPE) {
       validateFragmentProps(element);
     } else {
       validatePropTypes(element);
@@ -5934,6 +6336,7 @@ var jsx =  jsxWithValidationDynamic ; // we may want to special case jsxs intern
 
 var jsxs =  jsxWithValidationStatic ;
 
+exports.Fragment = REACT_FRAGMENT_TYPE;
 exports.jsx = jsx;
 exports.jsxs = jsxs;
   })();
@@ -6065,8 +6468,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @celmino/platform */ "@celmino/platform");
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_celmino_platform__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _dialogs_AddCollectionDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dialogs/AddCollectionDialog */ "./src/dialogs/AddCollectionDialog.ts");
@@ -6100,11 +6503,11 @@ var TreeController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     TreeController.prototype.LoadView = function () {
-        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_2__.useAppletNavigate)().navigate;
+        var navigate = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_2__.useAppletNavigate)().navigate;
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _a[0], setIsEditing = _a[1];
         var _b = this.props.config || {}, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected, item = _b.item;
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_2__.useRealm)().realm;
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_2__.useApplet)().applet;
+        var realm = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_2__.useRealm)().realm;
+        var applet = (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_2__.useApplet)().applet;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.applet-tree')
@@ -6151,7 +6554,7 @@ var TreeController = /** @class */ (function (_super) {
                         {
                             title: 'Collection',
                             icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_5__.TableIcon).foregroundColor('#7C828D'),
-                            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddCollectionDialog__WEBPACK_IMPORTED_MODULE_4__.AddCollectionDialog)(workspaceId, appletId)); }
+                            onClick: function () { return _celmino_platform__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddCollectionDialog__WEBPACK_IMPORTED_MODULE_4__.AddCollectionDialog)(workspaceId, appletId)); }
                         }
                     ];
                 },
@@ -7027,25 +7430,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   CollectionController: () => (/* binding */ CollectionController),
 /* harmony export */   replaceNonMatchingCharacters: () => (/* binding */ replaceNonMatchingCharacters)
 /* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
-/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Icons */ "./src/Icons.tsx");
-/* harmony import */ var _views_ColorItemView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/ColorItemView */ "./src/routes/collection-[collectionId]/views/ColorItemView.ts");
+/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
+/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @celmino/platform */ "@celmino/platform");
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_celmino_platform__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Icons */ "./src/Icons.tsx");
 /* harmony import */ var _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../dialogs/AddTextAttributeDialog */ "./src/dialogs/AddTextAttributeDialog.ts");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _views_FieldViews_Text__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./views/FieldViews/Text */ "./src/routes/collection-[collectionId]/views/FieldViews/Text.ts");
+/* harmony import */ var _views_ColorItemView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/ColorItemView */ "./src/routes/collection-[collectionId]/views/ColorItemView.ts");
+/* harmony import */ var _views_FieldViews_MultiSelectView__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./views/FieldViews/MultiSelectView */ "./src/routes/collection-[collectionId]/views/FieldViews/MultiSelectView.ts");
 /* harmony import */ var _views_FieldViews_Richtext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./views/FieldViews/Richtext */ "./src/routes/collection-[collectionId]/views/FieldViews/Richtext.tsx");
 /* harmony import */ var _views_FieldViews_Select__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./views/FieldViews/Select */ "./src/routes/collection-[collectionId]/views/FieldViews/Select.tsx");
-/* harmony import */ var _views_FieldViews_MultiSelectView__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./views/FieldViews/MultiSelectView */ "./src/routes/collection-[collectionId]/views/FieldViews/MultiSelectView.ts");
+/* harmony import */ var _views_FieldViews_Text__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./views/FieldViews/Text */ "./src/routes/collection-[collectionId]/views/FieldViews/Text.ts");
 var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
@@ -7099,7 +7502,6 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
-
 /* import { AddBooleanFieldDialog } from "../dialogs/AddBooleanFieldDialog";
 import { AddDatetimeFieldDialog } from "../dialogs/AddDatetimeField";
 import { AddNumberFieldDialog } from "../dialogs/AddNumberFieldDialog";
@@ -7137,25 +7539,25 @@ var colors = [
     '#FC551F',
     '#B04E31'
 ];
-var root = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    height: 100%;\n"], ["\n    height: 100%;\n"])));
-var wrapper = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    height: 100%;\n"], ["\n    height: 100%;\n"])));
-var tableStyle = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    border-spacing: 0px;\n    width: 100%;\n"], ["\n    border-spacing: 0px;\n    width: 100%;\n"])));
-var headerCell = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    font-family:\"Inter var\", sans-serif;\n    font-feature-settings: \"cv02\", \"cv03\", \"cv04\", \"cv11\";\n    text-align: left;\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n    font-weight: 700;\n    color: rgb(109, 122, 131);\n    background: #F9FAFB;\n    transition: box-shadow 0.2s;\n"], ["\n    font-family:\"Inter var\", sans-serif;\n    font-feature-settings: \"cv02\", \"cv03\", \"cv04\", \"cv11\";\n    text-align: left;\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n    font-weight: 700;\n    color: rgb(109, 122, 131);\n    background: #F9FAFB;\n    transition: box-shadow 0.2s;\n"])));
-var bodyRow = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    background: #ffffff;\n    color: #4b5563;\n    transition: box-shadow 0.2s;\n"], ["\n    background: #ffffff;\n    color: #4b5563;\n    transition: box-shadow 0.2s;\n"])));
-var bodyCell = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n"], ["\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n"])));
-var paginator = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n    border-width: 0 0 1px 0;\n    border-radius: 0;\n\n    & .p-paginator-first {\n        background-color: transparent;\n        border: 0 none;\n        color: #6b7280;\n        min-width: 3rem;\n        height: 3rem;\n        margin: 0.143rem;\n        transition: box-shadow 0.2s;\n        border-radius: 50%;\n    }\n\n"], ["\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n    border-width: 0 0 1px 0;\n    border-radius: 0;\n\n    & .p-paginator-first {\n        background-color: transparent;\n        border: 0 none;\n        color: #6b7280;\n        min-width: 3rem;\n        height: 3rem;\n        margin: 0.143rem;\n        transition: box-shadow 0.2s;\n        border-radius: 50%;\n    }\n\n"])));
+var root = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    height: 100%;\n"], ["\n    height: 100%;\n"])));
+var wrapper = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.css)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    height: 100%;\n"], ["\n    height: 100%;\n"])));
+var tableStyle = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.css)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    border-spacing: 0px;\n    width: 100%;\n"], ["\n    border-spacing: 0px;\n    width: 100%;\n"])));
+var headerCell = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.css)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    font-family:\"Inter var\", sans-serif;\n    font-feature-settings: \"cv02\", \"cv03\", \"cv04\", \"cv11\";\n    text-align: left;\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n    font-weight: 700;\n    color: rgb(109, 122, 131);\n    background: #F9FAFB;\n    transition: box-shadow 0.2s;\n"], ["\n    font-family:\"Inter var\", sans-serif;\n    font-feature-settings: \"cv02\", \"cv03\", \"cv04\", \"cv11\";\n    text-align: left;\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n    font-weight: 700;\n    color: rgb(109, 122, 131);\n    background: #F9FAFB;\n    transition: box-shadow 0.2s;\n"])));
+var bodyRow = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.css)(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    background: #ffffff;\n    color: #4b5563;\n    transition: box-shadow 0.2s;\n"], ["\n    background: #ffffff;\n    color: #4b5563;\n    transition: box-shadow 0.2s;\n"])));
+var bodyCell = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.css)(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n"], ["\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n"])));
+var paginator = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.css)(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n    border-width: 0 0 1px 0;\n    border-radius: 0;\n\n    & .p-paginator-first {\n        background-color: transparent;\n        border: 0 none;\n        color: #6b7280;\n        min-width: 3rem;\n        height: 3rem;\n        margin: 0.143rem;\n        transition: box-shadow 0.2s;\n        border-radius: 50%;\n    }\n\n"], ["\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n    border-width: 0 0 1px 0;\n    border-radius: 0;\n\n    & .p-paginator-first {\n        background-color: transparent;\n        border: 0 none;\n        color: #6b7280;\n        min-width: 3rem;\n        height: 3rem;\n        margin: 0.143rem;\n        transition: box-shadow 0.2s;\n        border-radius: 50%;\n    }\n\n"])));
 function getAttributeIcon(type) {
     switch (type) {
         case 'text':
-            return _Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.TextAttribute;
+            return _Icons__WEBPACK_IMPORTED_MODULE_6__.Icons.TextAttribute;
         case 'integer':
-            return _Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.NumberAttribute;
+            return _Icons__WEBPACK_IMPORTED_MODULE_6__.Icons.NumberAttribute;
         case 'boolean':
-            return _Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.CheckboxAttribute;
+            return _Icons__WEBPACK_IMPORTED_MODULE_6__.Icons.CheckboxAttribute;
         case 'datetime':
-            return _Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.DateAttribute;
+            return _Icons__WEBPACK_IMPORTED_MODULE_6__.Icons.DateAttribute;
         default:
-            return _Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.TextAttribute;
+            return _Icons__WEBPACK_IMPORTED_MODULE_6__.Icons.TextAttribute;
     }
 }
 var _hideHandle = null;
@@ -7166,39 +7568,39 @@ var CollectionController = /** @class */ (function (_super) {
     }
     CollectionController.prototype.LoadView = function () {
         var _a;
-        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useParams)(), workspaceId = _b.workspaceId, databaseId = _b.appletId, collectionId = _b.collectionId;
-        var database = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDatabase)(workspaceId, databaseId).database;
-        var deleteAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useDeleteAttribute)(workspaceId).deleteAttribute;
-        var updateCollection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateCollection)(workspaceId).updateCollection;
-        var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, collectionId).createDocument;
-        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId).updateDocument;
+        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.useParams)(), workspaceId = _b.workspaceId, databaseId = _b.appletId, collectionId = _b.collectionId;
+        var database = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDatabase)(workspaceId, databaseId).database;
+        var deleteAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteAttribute)(workspaceId).deleteAttribute;
+        var updateCollection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateCollection)(workspaceId).updateCollection;
+        var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, databaseId, collectionId).createDocument;
+        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
         //const { createDocument } = useCreateDocument(workspaceId);
-        var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDocuments)(workspaceId, databaseId, collectionId, [
-            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.limit(1000)
+        var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, databaseId, collectionId, [
+            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(1000)
         ]), documents = _c.documents, isLoading = _c.isLoading;
-        var fields = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDocuments)(workspaceId, databaseId, 'fields', [
-            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
+        var fields = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, databaseId, 'fields', [
+            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('collectionId', collectionId)
         ]).documents;
-        var createStringAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId).createStringAttribute;
-        var createField = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields', [
-            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
+        var createStringAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateStringAttribute)(workspaceId).createStringAttribute;
+        var createField = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, databaseId, 'fields', [
+            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('collectionId', collectionId)
         ]).createDocument;
-        var collection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetCollection)(workspaceId, databaseId, collectionId).collection;
-        var _d = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)((_a = collection === null || collection === void 0 ? void 0 : collection.name) !== null && _a !== void 0 ? _a : 'New Collection'), collectionName = _d[0], setCollectionName = _d[1];
-        var _e = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false), showDialog = _e[0], setShowDialog = _e[1];
+        var collection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetCollection)(workspaceId, databaseId, collectionId).collection;
+        var _d = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)((_a = collection === null || collection === void 0 ? void 0 : collection.name) !== null && _a !== void 0 ? _a : 'New Collection'), collectionName = _d[0], setCollectionName = _d[1];
+        var _e = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(false), showDialog = _e[0], setShowDialog = _e[1];
         var index = 1;
-        return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Geometry)(function (_a) {
+        return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.ReactView)(react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Geometry)(function (_a) {
                 var x = _a.x, y = _a.y;
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading, spacing: 5 })(showDialog ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading, spacing: 10 })(
+                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading, spacing: 5 })(showDialog ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading, spacing: 10 })(
                     //Text(JSON.stringify(params))
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Input)()
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Input)()
                         .autoFocus(true)
-                        .renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.InputRenderer)
+                        .renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__.InputRenderer)
                         .value(collection === null || collection === void 0 ? void 0 : collection.name)
                         .fontSize(18)
-                        .prefix((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.Collection))
+                        .prefix((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_6__.Icons.Collection))
                         .onChange(function (e) { return setCollectionName(e.target.value); })
                         .onBlur(function (value) {
                         if (collectionName !== '' && collectionName !== (collection === null || collection === void 0 ? void 0 : collection.name)) {
@@ -7208,7 +7610,7 @@ var CollectionController = /** @class */ (function (_super) {
                                 name: collectionName
                             });
                         }
-                    }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading, spacing: 2 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ForEach)(colors)(function (color) { return ((0,_views_ColorItemView__WEBPACK_IMPORTED_MODULE_6__.ColorItemView)(color)); })).wrap('wrap')))
+                    }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading, spacing: 2 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.ForEach)(colors)(function (color) { return ((0,_views_ColorItemView__WEBPACK_IMPORTED_MODULE_8__.ColorItemView)(color)); })).wrap('wrap')))
                         .onClickAway(function () {
                         if (collectionName !== '' && collectionName !== (collection === null || collection === void 0 ? void 0 : collection.name)) {
                             updateCollection({
@@ -7229,11 +7631,11 @@ var CollectionController = /** @class */ (function (_super) {
                         .height(200)
                         .cornerRadius(8)
                         .padding(12)
-                    : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Fragment)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.Collection))
+                    : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_6__.Icons.Collection))
                     // .background('#FCE8E8')
                     .width(32)
                     .height(32)
-                    .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(collection === null || collection === void 0 ? void 0 : collection.name)
+                    .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Text)(collection === null || collection === void 0 ? void 0 : collection.name)
                     .fontSize(18)
                     .fontWeight('500')
                     .foregroundColor('#212526')
@@ -7243,11 +7645,11 @@ var CollectionController = /** @class */ (function (_super) {
                     setShowDialog(true);
                 }))
                     .width();
-            })).width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)('com.tuvalsoft.widget.editorjs')
+            })).width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)('com.tuvalsoft.widget.editorjs')
                 .config({
                 scrollable: false
-            })), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.NewFieldMenuView)({
-                view: function (menuIsOpen) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.Plus).foregroundColor(menuIsOpen ? 'white' : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('New Field')
+            })), (0,_celmino_platform__WEBPACK_IMPORTED_MODULE_2__.NewFieldMenuView)({
+                view: function (menuIsOpen) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_6__.Icons.Plus).foregroundColor(menuIsOpen ? 'white' : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Text)('New Field')
                     .foregroundColor(menuIsOpen ? 'white' : '')
                     .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
                     .fontSize(14)
@@ -7274,7 +7676,7 @@ var CollectionController = /** @class */ (function (_super) {
                 .paddingTop('12px')
                 .paddingRight('24px')
                 .paddingBottom('8px')
-                .borderBottom('1px solid rgba(0,0,0,.05)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cAll, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIDataTable)()
+                .borderBottom('1px solid rgba(0,0,0,.05)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cAll, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIDataTable)()
                 .dataTablePT({
                 root: root,
                 wrapper: wrapper,
@@ -7292,31 +7694,31 @@ var CollectionController = /** @class */ (function (_super) {
                     header: '',
                     align: 'right',
                     body: function (row) {
-                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTrailing })(row['type'] === 'addRow' ?
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.Plus) :
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(row['indexNo']))
+                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTrailing })(row['type'] === 'addRow' ?
+                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_6__.Icons.Plus) :
+                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Text)(row['indexNo']))
                             .paddingRight('8px')
                             .height(38));
                     },
                     editor: function (row) {
-                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(row['indexNo']));
+                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Text)(row['indexNo']));
                     }
                 }], (fields !== null && fields !== void 0 ? fields : []).map(function (column, index) {
                 return {
                     field: column.key,
                     dataType: column.type,
                     width: '220px',
-                    header: function (data) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(getAttributeIcon(column.type))
+                    header: function (data) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(getAttributeIcon(column.type))
                         .width(20)
-                        .height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(column.name)
+                        .height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Text)(column.name)
                         .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
                         .foregroundColor('rgb(109, 122, 131)')
-                        .fontSize(14)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.MenuButton)()
+                        .fontSize(14)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.MenuButton)()
                         .model([
                         {
                             title: 'Edit',
                             onClick: function () {
-                                _celmino_ui__WEBPACK_IMPORTED_MODULE_8__.DynoDialog.Show((0,_dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_7__.AddTextFieldDialog)(workspaceId, databaseId, collectionId));
+                                _celmino_platform__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_7__.AddTextFieldDialog)(workspaceId, databaseId, collectionId));
                             }
                         },
                         {
@@ -7331,7 +7733,7 @@ var CollectionController = /** @class */ (function (_super) {
                             }
                         }
                     ])
-                        .icon(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icons.Menu))
+                        .icon(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icons.Menu))
                         .width()
                         .opacity('var(--hoverOpacity)'))
                         .padding(8)
@@ -7347,18 +7749,18 @@ var CollectionController = /** @class */ (function (_super) {
                             return (0,_views_FieldViews_Select__WEBPACK_IMPORTED_MODULE_11__.SelectFieldView)(workspaceId, databaseId, collectionId, fields, column, index, row);
                         }
                         else if (column.type === 'multiselect') {
-                            return (0,_views_FieldViews_MultiSelectView__WEBPACK_IMPORTED_MODULE_12__.MultiSelectFieldView)(workspaceId, databaseId, collectionId, fields, column, index, row);
+                            return (0,_views_FieldViews_MultiSelectView__WEBPACK_IMPORTED_MODULE_9__.MultiSelectFieldView)(workspaceId, databaseId, collectionId, fields, column, index, row);
                         }
                         else if (column.type === 'boolean') {
                             var values = row[column.key];
-                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.CheckBox)().checked(row[column.key]));
+                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.CheckBox)().checked(row[column.key]));
                         }
                         else if (column.type === 'relationship') {
                             var values = row[column.key];
-                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ForEach)(values)(function (value) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.Relation))
+                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.ForEach)(values)(function (value) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_6__.Icons.Relation))
                                 .width()
                                 .height()
-                                .foregroundColor('rgb(79, 175, 84)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(value.Name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.RightArrow))
+                                .foregroundColor('rgb(79, 175, 84)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Text)(value.Name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_6__.Icons.RightArrow))
                                 .width()
                                 .height()
                                 .border('solid 1px #E9EBED')
@@ -7366,23 +7768,23 @@ var CollectionController = /** @class */ (function (_super) {
                                 .padding(2)); })));
                         }
                         else {
-                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
+                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
                                 if (row.type === 'addRow' && column.key === 'name') {
-                                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('To add a new row, press Shift+Enter')).onClick(function () {
+                                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Text)('To add a new row, press Shift+Enter')).onClick(function () {
                                         createDocument({
-                                            documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.nanoid)(),
+                                            documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.nanoid)(),
                                             data: {
                                                 name: ''
                                             }
                                         }, function (document) {
-                                            _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('editCell', { editingCell: column.$id, editingRow: document.$id });
+                                            _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('editCell', { editingCell: column.$id, editingRow: document.$id });
                                             /* setEditingCell(column.$id);
                                             setEditingRow(document.$id); */
                                         });
                                     }));
                                 }
                                 else {
-                                    return (0,_views_FieldViews_Text__WEBPACK_IMPORTED_MODULE_9__.TextFieldView)(workspaceId, databaseId, collectionId, fields, column, index, row);
+                                    return (0,_views_FieldViews_Text__WEBPACK_IMPORTED_MODULE_12__.TextFieldView)(workspaceId, databaseId, collectionId, fields, column, index, row);
                                 }
                             })));
                         }
@@ -7392,16 +7794,16 @@ var CollectionController = /** @class */ (function (_super) {
                 .model(documents.map(function (document, index) {
                 var _a, _b;
                 return __assign({ indexNo: index + 1, nextRowId: (_a = documents[index + 1]) === null || _a === void 0 ? void 0 : _a.$id, prevRowId: (_b = documents[index - 1]) === null || _b === void 0 ? void 0 : _b.$id }, document);
-            })))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('Create Document'))
+            })))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Text)('Create Document'))
                 //.renderer(TestRenderer)
                 .onClick(function () {
                 createDocument({
-                    documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.nanoid)(),
+                    documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.nanoid)(),
                     data: {
                         name: ''
                     }
                 }, function (document) {
-                    _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('editCell', { editingCell: fields[0].$id, editingRow: document.$id });
+                    _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('editCell', { editingCell: fields[0].$id, editingRow: document.$id });
                 });
                 /*  const _fields = {};
  
@@ -7476,7 +7878,7 @@ var CollectionController = /** @class */ (function (_super) {
             })).render())));
     };
     return CollectionController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIFormController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIFormController));
 
 var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7;
 
@@ -8686,14 +9088,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ "@celmino/ui":
-/*!*****************************!*\
-  !*** external "celmino$ui" ***!
-  \*****************************/
+/***/ "@celmino/platform":
+/*!***********************************!*\
+  !*** external "celmino$platform" ***!
+  \***********************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = celmino$ui;
+module.exports = celmino$platform;
 
 /***/ }),
 
@@ -8925,8 +9327,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ProcessMining: () => (/* binding */ ProcessMining)
 /* harmony export */ });
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/platform */ "@celmino/platform");
+/* harmony import */ var _celmino_platform__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_platform__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _TreeController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TreeController */ "./src/TreeController.ts");
 /* harmony import */ var _routes_routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes/+routes */ "./src/routes/+routes.ts");
 /* harmony import */ var _dialogs_AddCollectionDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialogs/AddCollectionDialog */ "./src/dialogs/AddCollectionDialog.ts");
@@ -8965,7 +9367,7 @@ var ProcessMining = /** @class */ (function () {
 }());
 
 //FormBuilder.injectView('liststatus', ListStatusWidget)
-_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction(_dialogs_AddCollectionDialog__WEBPACK_IMPORTED_MODULE_3__.SaveCollectionAction);
+_celmino_platform__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction(_dialogs_AddCollectionDialog__WEBPACK_IMPORTED_MODULE_3__.SaveCollectionAction);
 
 })();
 

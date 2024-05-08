@@ -1,5 +1,5 @@
 
-import { FormBuilder } from '@celmino/ui';
+import { FormBuilder } from '@celmino/platform';
 import { TreeController } from './TreeController';
 import { RouteController } from './routes/+routes';
 import { SaveCollectionAction } from './dialogs/AddCollectionDialog';
