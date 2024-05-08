@@ -11,8 +11,8 @@ export class TaskViewWidget extends UIController {
     public override LoadView(): UIView {
 
         const { realm } = useRealm();
+     
         const { applet } = useApplet();
-
         const { documents: applets, isLoading: isAppletsLoading } = useListDocuments(realm.$id, 'workspace', 'applets');
 
         const { documents: treeItems, isLoading: isTreeItemsLoading } = useListDocuments(realm.$id, 'workspace', 'ws_tree');

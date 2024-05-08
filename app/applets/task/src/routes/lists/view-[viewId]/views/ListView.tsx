@@ -1,4 +1,4 @@
-import { useRealm, useApplet, useAccount, SelectSiderDialog, useWidget } from "@celmino/ui";
+import { useRealm, useApplet, useAccount, SelectSiderDialog, useWidget, AppletContext } from "@celmino/ui";
 import { useListDocuments, Query, useCreateDocument, useUpdateDocument, useCreateStringAttribute, useCreateRelationshipAttribute, useCreateIntegerAttribute } from "@realmocean/sdk";
 import { Fragment, HStack, Icon, ReactView, SvgIcon, UIController, UIView, UIViewBuilder, UIWidget, VStack, cTop, cTopLeading, useDialogStack, useParams } from "@tuval/forms";
 import { ViewsTab } from "../../views/ViewsTabMenu";
@@ -20,7 +20,7 @@ function replaceNonMatchingCharacters(originalText) {
     return replacedText;
 }
 
-export const ListView = ( viewId: string ) => UIViewBuilder(() => {
+export const ListView = (viewId: string) => UIViewBuilder(() => {
 
     const { isWidget } = useWidget();
     const { realm } = useRealm();
@@ -308,63 +308,67 @@ export const ListView = ( viewId: string ) => UIViewBuilder(() => {
                                                             }, () => void 0)
                                                         })
                                                     }
-                                                  
+
                                                 },
                                                 onItemClick: (item) => {
                                                     const _controller = class extends UIController {
                                                         public LoadView(): UIView {
                                                             return (
                                                                 UIWidget("com.celmino.applet.task-list", 'taskView')
-                                                                .config({
-                                                                    taskId: item.$id,
-                                                                    views: [],
-                                                                    //powerUps: PowerUps,
-                                                                    // headerIcon: Icon(OkrIcons.KeyResultIcon({ width: 36, height: 36 })),
-                                                                    header: item.name,
-                                                                    onHeaderChange: (title) => { alert(title) },
-                                                                    //description: metric?.description,
-                                                                    onDescriptionChange: (description) => {
-                                                                        /*  updateTask(object_id, {
-                                                                             description: description
-                                                                         }, {
-                                                                             onSuccess: () => {
-                                                                                 invalidateCache();
-                                                                             }
-                                                                         }) */
-                                                                    },
-                                                                    fields: {
-                                                                        "assignee": {
-                                                                            type: "user",
-                                                                            label: 'Assignee',
+                                                                    .config({
+                                                                        taskId: item.$id,
+                                                                        views: [],
+                                                                        //powerUps: PowerUps,
+                                                                        // headerIcon: Icon(OkrIcons.KeyResultIcon({ width: 36, height: 36 })),
+                                                                        header: item.name,
+                                                                        onHeaderChange: (title) => { alert(title) },
+                                                                        //description: metric?.description,
+                                                                        onDescriptionChange: (description) => {
+                                                                            /*  updateTask(object_id, {
+                                                                                 description: description
+                                                                             }, {
+                                                                                 onSuccess: () => {
+                                                                                     invalidateCache();
+                                                                                 }
+                                                                             }) */
                                                                         },
-                                                                        "title": {
-                                                                            type: "text",
-                                                                            label: "Title",
-                                                                            value: '',
-                                                                            onChange: (value) => {
-                                                                                alert(value)
-                                                                            }
-                                                                        },
-                                                                        "state": {
-                                                                            type: "select",
-                                                                            label: "State",
-                                                                            options: [],
-                                                                            value: null,
-                                                                            onChange: (value) => {
-                                                                                alert(value)
+                                                                        fields: {
+                                                                            "assignee": {
+                                                                                type: "user",
+                                                                                label: 'Assignee',
+                                                                            },
+                                                                            "title": {
+                                                                                type: "text",
+                                                                                label: "Title",
+                                                                                value: '',
+                                                                                onChange: (value) => {
+                                                                                    alert(value)
+                                                                                }
+                                                                            },
+                                                                            "state": {
+                                                                                type: "select",
+                                                                                label: "State",
+                                                                                options: [],
+                                                                                value: null,
+                                                                                onChange: (value) => {
+                                                                                    alert(value)
+                                                                                }
                                                                             }
                                                                         }
-                                                                    }
-                                                                })
+                                                                    })
                                                             )
                                                         }
                                                     }
                                                     openDialog({
                                                         title: 'Open',
-                                                        view: ReactView(
-                                                            <_controller></_controller>
-                                                        )
-                                                      
+                                                        view:
+                                                            AppletContext(() =>
+                                                                ReactView(
+                                                                    <_controller></_controller>
+                                                                )
+                                                            ).appletId(applet.$id)
+
+
                                                     })
                                                 },
                                                 items: items?.map(item => ({ id: item.$id, title: item.name, ...item })) ?? [],

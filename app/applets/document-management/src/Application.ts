@@ -4,6 +4,8 @@ import { TreeController } from './TreeController';
 import { SaveDocumentAction } from './dialogs/AddDocumentDialog';
 import { SaveFolderAction } from './dialogs/AddFolderDialog';
 import { RouteController } from './routes/+routes';
+import { DocumentViewWidget } from './widgets/DocumentViewWidget';
+import { DocumentController } from './routes/document-[documentId]/+controller';
 
 const manifest = require('./manifest');
 
@@ -25,7 +27,8 @@ export class ProcessMining {
     public GetMainController() {
         return {
             applet: RouteController,
-            tree: TreeController
+            tree: TreeController,
+            documentView: DocumentController
         };
     }
 }

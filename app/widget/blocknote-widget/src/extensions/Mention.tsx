@@ -1,5 +1,5 @@
 import { createReactInlineContentSpec } from "@blocknote/react";
-import { useAppletNavigate, useRealm } from "@celmino/ui";
+import { AppletContext, WidgetContext, useAppletNavigate, useRealm } from "@celmino/ui";
 import { HStack, PopupButton, ReactView, Text, UIViewBuilder, UIWidget, VStack, cHorizontal, urlFriendly, useDialogStack, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { Menu } from "@mantine/core";
@@ -34,6 +34,13 @@ const getAppletWidget = (applet) => {
                 appletId: applet?.$id
             })
         )
+    } else if (applet?.tree_widget === 'com.celmino.applet.document-management' && applet?.type === 'document') {
+        return (
+            UIWidget('com.celmino.applet.document-management', 'documentView').config({
+                documentId: applet?.$id
+            })
+        )
+
     }
 
     return Text('Applet Not Found')
@@ -75,10 +82,15 @@ export const TaskList = createReactInlineContentSpec(
                         )
                             .width().height()
                             .borderBottom('1px solid rgba(33,37,38,.3)')
-                            .onClick(()=>{
+                            .onClick(() => {
                                 openDialog({
                                     title: props.inlineContent.props.applet?.name,
-                                    view: getAppletWidget(props.inlineContent.props.applet)
+                                    view:
+                                        WidgetContext(() =>
+                                            AppletContext(() =>
+                                                getAppletWidget(props.inlineContent.props.applet)
+                                            ).appletId(props.inlineContent.props.applet.appletId)
+                                        )
                                 })
                             })
 

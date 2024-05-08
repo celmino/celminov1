@@ -1,13 +1,13 @@
 import { UIController, UIView, useParams, Routes, Text, UIWidget, VStack, ReactView, DialogStack, Fragment, cTopLeading, UIViewBuilder, HStack, Button, useDialogStack, TextField, useState, useNavigate, useEffect, UINavigate } from "@tuval/forms";
 import { ActionPanel } from "../../views/ActionPanel";
 import { DocumentHeader } from "../../views/ViewHeader";
-import React from "react";
+import React, {Fragment as RF} from "react";
 import { useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 import { SimpleImage } from "../../tools/SimplePlugin";
 import InlineImage from 'editorjs-inline-image';
-import { useApplet, useRealm } from "@celmino/ui";
+import { useApplet, useRealm, useWidget } from "@celmino/ui";
 
 const docs = [
     { uri: "https://url-to-my-pdf.pdf" }, // Remote file
@@ -18,7 +18,8 @@ export class DocumentController extends UIController {
 
     public override LoadView(): UIView {
 
-        const { documentId = this.props.documentId } = useParams();
+        const { isWidget } = useWidget();
+        const { documentId } = isWidget ? this.props.config : useParams();
 
         const { realm } = useRealm();
         const { applet } = useApplet();
@@ -45,10 +46,12 @@ export class DocumentController extends UIController {
         const { documents: applets, isLoading: isAppletsLoading } = useListDocuments(workspaceId, 'workspace', 'applets');
 
         const { documents: treeItems, isLoading: isTreeItemsLoading } = useListDocuments(workspaceId, 'workspace', 'ws_tree');
+
+        const Stack = isWidget ? RF : DialogStack;
         return (
             (isDocumentLoading || isLoading || isAppletsLoading || isTreeItemsLoading) ? Fragment() :
                 ReactView(
-                    <DialogStack>
+                    <Stack>
                         {
                             VStack({ alignment: cTopLeading })(
                                 ActionPanel(),
@@ -122,7 +125,7 @@ export class DocumentController extends UIController {
                                 .background('white')
                                 .render()
                         }
-                    </DialogStack>
+                    </Stack>
                 )
 
 

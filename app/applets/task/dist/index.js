@@ -6717,7 +6717,9 @@ var ListView = function (viewId) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODU
                         }(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController));
                         openDialog({
                             title: 'Open',
-                            view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_controller, null))
+                            view: (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
+                                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_controller, null));
+                            }).appletId(applet.$id)
                         });
                     },
                     items: (_a = items === null || items === void 0 ? void 0 : items.map(function (item) { return (__assign({ id: item.$id, title: item.name }, item)); })) !== null && _a !== void 0 ? _a : [],
@@ -9229,9 +9231,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _views_ViewHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../views/ViewHeader */ "./src/views/ViewHeader.tsx");
-/* harmony import */ var _routes_lists_view_viewId_views_ListView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../routes/lists/view-[viewId]/views/ListView */ "./src/routes/lists/view-[viewId]/views/ListView.tsx");
-/* harmony import */ var _hooks_useListViews__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../hooks/useListViews */ "./src/hooks/useListViews.ts");
+/* harmony import */ var _routes_lists_view_viewId_views_ListView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../routes/lists/view-[viewId]/views/ListView */ "./src/routes/lists/view-[viewId]/views/ListView.tsx");
+/* harmony import */ var _hooks_useListViews__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hooks/useListViews */ "./src/hooks/useListViews.ts");
+/* harmony import */ var _views_ActionPanel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../views/ActionPanel */ "./src/views/ActionPanel.tsx");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -9252,30 +9254,29 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+var fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif';
 var TaskListViewWidget = /** @class */ (function (_super) {
     __extends(TaskListViewWidget, _super);
     function TaskListViewWidget() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     TaskListViewWidget.prototype.LoadView = function () {
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
         var _a = this.props.config, realmId = _a.realmId, appletId = _a.appletId;
         // const { applet, isLoading } = useGetApplet(realmId, appletId);
         return ((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.WidgetContext)(function () {
-            return (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function (applet) {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-                    var _a = (0,_hooks_useListViews__WEBPACK_IMPORTED_MODULE_4__.useListViews)(), views = _a.views, isLoading = _a.isLoading;
-                    return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spinner)() :
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTop })(
-                        //   ActionPanel(),
-                        (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_2__.ViewHeader)(applet.name, function (name) {
-                            /* updateAppletName(name, () => {
-                                EventBus.Default.fire('applet.added', { treeItem: applet })
-                            }) */
-                        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_routes_lists_view_viewId_views_ListView__WEBPACK_IMPORTED_MODULE_3__.ListView)(views[0].$id))
-                            .background('#F8FAFC'))));
-                });
-            })
-                .appletId(appletId);
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+                var _a = (0,_hooks_useListViews__WEBPACK_IMPORTED_MODULE_3__.useListViews)(), views = _a.views, isLoading = _a.isLoading;
+                return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spinner)() :
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTop })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_4__.ActionPanel)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(applet.name).fontSmoothing('auto')
+                        .foregroundColor('#212526')
+                        .fontSize(24).fontFamily(fontFamily).fontWeight('500')
+                        .lineHeight('1.25')
+                        .kerning('-0.003em')).height().padding()
+                        .borderBottom('1px solid rgba(0,0,0,.05)')
+                        .padding('4px 16px 12px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_routes_lists_view_viewId_views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView)(views[0].$id))
+                        .background('#F8FAFC'))));
+            });
         }));
     };
     return TaskListViewWidget;
