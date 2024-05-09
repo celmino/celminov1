@@ -1,5 +1,4 @@
 import { useCreateDocument, useUpdateDocument } from "@realmocean/sdk";
-import { Dropdown } from "@realmocean/vibe";
 import { EventBus, is } from "@tuval/core";
 import { ForEach, HStack, Text, UIViewBuilder, cLeading, nanoid, useEffect, useState } from "@tuval/forms";
 import { useCallback } from 'react';
@@ -77,10 +76,10 @@ export const MultiSelectFieldView = (workspaceId, databaseId, collectionId, fiel
                 } else {
                     return (
                         isEdit ?
-                            Dropdown().width('100%')
+                        Text('Dropdown')
+                           /*  Dropdown().width('100%')
                                 .padding(0)
-                                //.defaultValue(field.fieldInfo.options?.find((option) => option.value === row[field.key]))
-                                .options(field.fieldInfo.options ?? [])
+                                 .options(field.fieldInfo.options ?? [])
                                 .onChange((values: { label: string, value: string }[]) => {
                                     const valuesForSave = values.map((value) => value.value).join(',');
 
@@ -101,7 +100,7 @@ export const MultiSelectFieldView = (workspaceId, databaseId, collectionId, fiel
                                         // setIsEdit(false);
                                     } else {
                                     }
-                                }) as any
+                                }) as any */
                             :
                             HStack({ alignment: cLeading })(
                                 UIViewBuilder(() => {

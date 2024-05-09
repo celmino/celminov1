@@ -1,5 +1,5 @@
-import { Text } from "@realmocean/vibe";
-import { ForEach, HStack, Heading, HeadingSizes, Icon, SvgIcon, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate, useParams } from "@tuval/forms";
+
+import { ForEach, HStack, Heading, Text, Icon, SvgIcon, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate, useParams } from "@tuval/forms";
 
 export function getSettingsName() {
     var url = window.location.href;

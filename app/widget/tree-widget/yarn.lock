@@ -1623,22 +1623,6 @@
     monday-ui-react-core "^2.82.0"
     to-string-loader "^1.2.0"
 
-"@realmocean/vibe@^2.82.62":
-  version "2.82.62"
-  resolved "https://registry.npmjs.org/@realmocean/vibe/-/vibe-2.82.62.tgz"
-  integrity sha512-frCawYi2iTG4n19GWAyBrZjCm4PIpraedSX7GjasySaOH/wxvoMkcUk4NGA32YzCS1kNB1vB4lFfVeaDrQdcyA==
-  dependencies:
-    "@realmocean/data" "^0.0.3"
-    "@realmocean/dropdowns" "^0.0.20"
-    "@realmocean/excelexport" "^0.0.2"
-    "@realmocean/navigations" "^0.0.3"
-    "@tuval/forms" "^1.0.159"
-    antd "^5.8.4"
-    css-loader "^6.9.0"
-    dayjs "^1.11.9"
-    monday-ui-react-core "^2.82.0"
-    to-string-loader "^1.2.0"
-
 "@storybook/channels@7.6.10":
   version "7.6.10"
   resolved "https://registry.npmjs.org/@storybook/channels/-/channels-7.6.10.tgz"

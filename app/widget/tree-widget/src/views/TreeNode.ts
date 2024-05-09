@@ -1,15 +1,14 @@
-import { useUpdateDocument } from "@realmocean/sdk";
-import { DynoDialog } from "@realmocean/ui";
+
+import { is } from "@tuval/core";
 import {
-    Fragment, HStack, IMenuItemModel, Icon, Icons, Loader, LoaderSizes, MenuButton, Spacer, SvgIcon, TextField, UIView, UIViewBuilder, UIWidget, VStack, cHorizontal, cLeading, cTopLeading,
+    Text,
+    Fragment, HStack, IMenuItemModel, Icon,
+    Loader, LoaderSizes, MenuButton, Spacer,
+    TextField, UIView, UIViewBuilder, UIWidget, VStack, cHorizontal, cLeading, cTopLeading,
     cTrailing, cVertical, useState
 } from "@tuval/forms";
-import { AddDocumentDialog } from "../dialogs/AddDocumentDialog";
-import { AddFolderDialog } from "../dialogs/AddFolderDialog";
-import { Text } from "@realmocean/vibe";
-import { is } from "@tuval/core";
-import { WorkbenchIcons } from "../WorkbenchIcons";
 import { AddIcon, EditIcon } from "../Icons";
+import { WorkbenchIcons } from "../WorkbenchIcons";
 
 export interface TreeNodeProps {
     nodeType?: string;

@@ -28,6 +28,8 @@ const path = require('path');
 //const DtsBundleWebpack = require('dts-bundle-webpack');
 const fs = require('fs');
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const manifest = require('./src/manifest');
 
 const umdConfig = {
@@ -76,12 +78,13 @@ const umdConfig = {
         '@realmocean/ui': 'realmocean$ui',
         '@realmocean/antd': 'realmocean$antd',
         
-        '@celmino/ui': 'celmino$ui',
+        '@celmino/platform': 'celmino$platform',
         '@realmocean/elasticui':'realmocean$elasticui',
         '@realmocean/atlaskit': 'realmocean$atlaskit',
 
         'react': 'tuval$react',
         'react-dom/client': 'tuval$react$dom',
+        'react-dom': 'tuval$react$_dom'
     },
     module: {
         rules: [
@@ -168,7 +171,9 @@ const umdConfig = {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    plugins: [{
+    plugins: [
+        // new BundleAnalyzerPlugin(),
+        {
         apply: (compiler) => {
             compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
                 const file = './dist/index.js';

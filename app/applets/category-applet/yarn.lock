@@ -1428,7 +1428,7 @@
     to-string-loader "^1.2.0"
     web-vitals "^3.5.2"
 
-"@realmocean/vibe@2.82.50", "@realmocean/vibe@^2.82.45":
+"@realmocean/vibe@2.82.50":
   version "2.82.50"
   resolved "https://registry.npmjs.org/@realmocean/vibe/-/vibe-2.82.50.tgz"
   integrity sha512-d4crezTbjPPnLx2/UArudbLWby4GWQC9vjcE3W8TY3MbtQKLcjp/vW4K651L6SAw+elIZslCk9A5SEh8tSYgmg==

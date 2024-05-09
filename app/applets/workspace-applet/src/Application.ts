@@ -1,10 +1,10 @@
 
-import { FormBuilder } from '@celmino/ui';
+import { FormBuilder } from '@celmino/platform';
+import { TreeController } from './TreeController';
 import { SaveCollectionAction } from './dialogs/AddCollection/actions/SaveCollectionAction';
 import { SaveDocumentAction } from './dialogs/AddCollection/actions/SaveDocumentAction';
 import { SaveTextFieldAction } from './dialogs/AddTextAttributeDialog';
 import { RouteController } from './routes/+routes';
-import { TreeController } from './TreeController';
 
 const manifest = require('./manifest');
 

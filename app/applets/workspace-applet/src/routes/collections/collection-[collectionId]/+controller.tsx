@@ -1,14 +1,15 @@
+import { InputRenderer } from "@realmocean/antd";
 import {
-    Models, Query, useCreateDatabase, useCreateDocument, useCreateStringAttribute, useDeleteAttribute, useGetCollection,
+    Models, Query,
+    useCreateDocument, useCreateStringAttribute, useDeleteAttribute, useGetCollection,
     useGetDatabase, useListDocuments, useUpdateCollection, useUpdateDocument
 } from "@realmocean/sdk";
-import { DatePickerRenderer, InputRenderer } from "@realmocean/antd";
 //import { ButtonRenderer as TestRenderer } from "@realmocean/elasticui";
-import { EventBus, is } from "@tuval/core";
+import { DynoDialog, NewFieldMenuView, useApplet, useRealm } from "@celmino/platform";
+import { EventBus } from "@tuval/core";
 import {
     Button,
     CheckBox,
-    DialogPosition,
     DialogStack,
     ForEach,
     Fragment,
@@ -17,7 +18,6 @@ import {
     Icon,
     Input,
     MenuButton,
-    PopupButton,
     ReactView,
     ScrollView,
     Text,
@@ -25,10 +25,8 @@ import {
     UIDataTable,
     UIFormController, UIView,
     UIViewBuilder,
-    UIWidget,
     VStack,
     cAll,
-    cHorizontal,
     cLeading,
     cTopLeading,
     cTrailing,
@@ -36,17 +34,14 @@ import {
     nanoid,
     useParams
 } from "@tuval/forms";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Icons } from "../../../Icons";
-import { ColorItemView } from "./views/ColorItemView";
 import { AddTextFieldDialog } from "../../../dialogs/AddTextAttributeDialog";
-import { DynoDialog, FormBuilder, NewFieldMenuView, useApplet, useRealm } from "@celmino/ui";
-import { TextField } from "@realmocean/vibe";
-import { TextFieldView } from "./views/FieldViews/Text";
-import { RichTextFieldView } from "./views/FieldViews/Richtext";
-import React from "react";
-import { SelectFieldView } from "./views/FieldViews/Select";
+import { ColorItemView } from "./views/ColorItemView";
 import { MultiSelectFieldView } from "./views/FieldViews/MultiSelectView";
+import { RichTextFieldView } from "./views/FieldViews/Richtext";
+import { SelectFieldView } from "./views/FieldViews/Select";
+import { TextFieldView } from "./views/FieldViews/Text";
 
 /* import { AddBooleanFieldDialog } from "../dialogs/AddBooleanFieldDialog";
 import { AddDatetimeFieldDialog } from "../dialogs/AddDatetimeField";

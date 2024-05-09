@@ -1,6 +1,7 @@
-import { Text } from "@realmocean/vibe";
+
 import { is } from "@tuval/core";
 import {
+    Text,
     Fragment, HStack, IMenuItemModel,
     MenuButton,
     TextField, UIView, UIViewBuilder,

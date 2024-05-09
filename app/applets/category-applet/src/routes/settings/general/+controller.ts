@@ -1,6 +1,5 @@
 import { ColorSelect, useApplet, useRealm } from '@celmino/platform';
 import { useUpdateDocument } from "@realmocean/sdk";
-import { Text as VibeText } from "@realmocean/vibe";
 import { EventBus } from "@tuval/core";
 import { HStack, TextField, UIFormController, UIWidget, VStack, cLeading, cTopLeading } from "@tuval/forms";
 
@@ -18,14 +17,14 @@ export class GeneralSettingsController extends UIFormController {
         return (
             VStack({ alignment: cTopLeading })(
                 HStack({ alignment: cLeading })(
-                    (VibeText as any)('General').fontSize(24).fontWeight('600')
+                    (Text as any)('General').fontSize(24).fontWeight('600')
                         .foregroundColor('rgb(42, 46, 52)')
                         .lineHeight(32)
                 )
                     .height()
                     .margin('0 0 30px'),
                 HStack({ alignment: cLeading })(
-                    (VibeText as any)('Applet').fontSize(20).fontWeight('600')
+                    (Text as any)('Applet').fontSize(20).fontWeight('600')
                         .foregroundColor('rgb(42, 46, 52)')
                         .lineHeight(32)
                 )
@@ -33,7 +32,7 @@ export class GeneralSettingsController extends UIFormController {
                     .margin('0 0 30px'),
                 HStack({ alignment: cLeading, spacing: 10 })(
                     HStack({ alignment: cLeading })(
-                        (VibeText as any)('Name').fontSize(16).fontWeight('600')
+                        (Text as any)('Name').fontSize(16).fontWeight('600')
                             .foregroundColor('rgb(42, 46, 52)')
                             .lineHeight(32)
                     ).height().width(300),
@@ -52,7 +51,7 @@ export class GeneralSettingsController extends UIFormController {
 
                 HStack({ alignment: cLeading, spacing: 10 })(
                     HStack({ alignment: cLeading })(
-                        (VibeText as any)('Icon').fontSize(16).fontWeight('600')
+                        (Text as any)('Icon').fontSize(16).fontWeight('600')
                             .foregroundColor('rgb(42, 46, 52)')
                             .lineHeight(32)
                     ).height().width(300),
@@ -102,7 +101,7 @@ export class GeneralSettingsController extends UIFormController {
                     .margin('0 0 30px'),
                 HStack({ alignment: cLeading, spacing: 10 })(
                     HStack({ alignment: cLeading })(
-                        (VibeText as any)('Theme Color')
+                        (Text as any)('Theme Color')
                             .fontSize(16).fontWeight('600')
                             .foregroundColor('rgb(42, 46, 52)')
                             .lineHeight(32),

@@ -1,6 +1,6 @@
 import { useCreateDocument, useUpdateCollection, useUpdateDocument } from "@realmocean/sdk";
 import { HStack, cLeading, UIViewBuilder, nanoid, Text, useState, useEffect, } from "@tuval/forms";
-import { TextField } from "@realmocean/vibe";
+import { TextField } from "@realmocean/atlaskit";
 import { useCallback } from 'react'
 import { EventBus } from "@tuval/core";
 
@@ -73,7 +73,7 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                     return (
                         isEdit ?
                             TextField()
-                                .placeHolder(field.name)
+                               // .placeHolder(field.name)
                                 .autoFocus(true)
                                 .value(row[field.key])
                                 .onKeyDown((e) => {
@@ -151,7 +151,7 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
 
 
                                 })
-                                .onBlur((e) => {
+                                .onBlur((e: any) => {
                                     if (e.target.value !== row[field.key]) {
 
                                         updateDocument({

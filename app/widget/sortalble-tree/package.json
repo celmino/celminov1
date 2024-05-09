@@ -29,6 +29,7 @@
     "react-dnd": "^7.7.0",
     "react-dnd-html5-backend": "^7.0.1",
     "react-sortable-tree-theme-file-explorer": "^2.0.0",
-    "to-string-loader": "^1.2.0"
+    "to-string-loader": "^1.2.0",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

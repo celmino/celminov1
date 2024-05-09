@@ -1,13 +1,12 @@
-import { UIController, UIView, useParams, Routes, Text, UIWidget, VStack, ReactView, DialogStack, Fragment, cTopLeading, UIViewBuilder, HStack, Button, useDialogStack, TextField, useState } from "@tuval/forms";
+import { useApplet, useRealm } from "@celmino/platform";
+import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
+import { EventBus } from "@tuval/core";
+import { DialogStack, Fragment, HStack, ReactView, UIController, UIView, UIViewBuilder, UIWidget, VStack, cTopLeading, useDialogStack } from "@tuval/forms";
+
+import React from "react";
+import { SimpleImage } from "../../tools/SimplePlugin";
 import { ActionPanel } from "../../views/ActionPanel";
 import { DocumentHeader } from "../../views/ViewHeader";
-import React from "react";
-import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
-import { EventBus, is } from "@tuval/core";
-import { SimpleImage } from "../../tools/SimplePlugin";
-import InlineImage from 'editorjs-inline-image';
-import { Editor } from './view/Editor';
-import { useApplet, useRealm } from "@celmino/ui";
 
 const docs = [
     { uri: "https://url-to-my-pdf.pdf" }, // Remote file
@@ -112,58 +111,6 @@ export class HomeController extends UIController {
                                 UIViewBuilder(() => {
                                     const { openDialog } = useDialogStack();
                                     return (
-                                        /*  VStack({ alignment: cTopLeading })(
-                                             UIWidget('com.celmino.widget.tldraw')
-                                                 .config({
- 
- 
-                                                 })
-                                         ) */
-
-                                        UIWidget('com.tuvalsoft.widget.editorjs')
-                                            .config({
-                                                defaultValue: null,//is.nullOrEmpty(content?.content) ? null : JSON.parse(content.content),
-                                                clamp: true,
-                                                workspaceId: workspaceId,
-                                                appletId: appletId,
-                                                tools: {
-                                                    image: {
-                                                        class: InlineImage,
-                                                        inlineToolbar: true,
-                                                        config: {
-                                                            embed: {
-                                                                display: true,
-                                                            },
-                                                            unsplash: {
-                                                                appName: 'your_app_name',
-                                                                clientId: 'your_client_id'
-                                                            }
-                                                        }
-                                                    },
-                                                    link: {
-                                                        class: SimpleImage,
-                                                        inlineToolbar: true,
-                                                        shortcut: 'CMD+SHIFT+W',
-                                                        config: {
-                                                            workspaceId: workspaceId,
-                                                            appletId: appletId,
-                                                            openDialog
-
-                                                        },
-                                                    }
-                                                },
-                                                onChange: (data) => {
-                                                    console.log(data)
-                                                    updateDocument({
-                                                        databaseId: appletId,
-                                                        collectionId: 'dm_document_contents',
-                                                        documentId: appletId,
-                                                        data: {
-                                                            content: JSON.stringify(data)
-                                                        }
-                                                    })
-                                                }
-                                            }),
                                         HStack({ alignment: cTopLeading })(
                                             UIWidget('com.tuvalsoft.widget.editor-tuval')
                                                 .config({
