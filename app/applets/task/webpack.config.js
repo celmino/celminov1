@@ -145,6 +145,10 @@ const umdConfig = {
                     }
                 }]
             },
+            {
+                test: /\.html$/i,
+                loader: "html-loader",
+            }
             /*  {
                test: /\.(woff|woff2|eot|ttf|otf)$/,
                use: [

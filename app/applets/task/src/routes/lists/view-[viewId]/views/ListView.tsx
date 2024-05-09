@@ -1,9 +1,11 @@
 import { AppletContext, SelectSiderDialog, useAccount, useApplet, useRealm, useWidget } from "@celmino/platform";
-import { Query, useCreateDocument, useCreateIntegerAttribute, useCreateRelationshipAttribute, useCreateStringAttribute, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
+import { EmailBroker, Query, useCreateDocument, useCreateIntegerAttribute, useCreateRelationshipAttribute, useCreateStringAttribute, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
 import { Fragment, HStack, Icon, ReactView, SvgIcon, UIController, UIView, UIViewBuilder, UIWidget, VStack, cTop, cTopLeading, useDialogStack } from "@tuval/forms";
 import React from "react";
 import { ViewsTab } from "../../views/ViewsTabMenu";
 
+//@ts-ignore
+import html from "../../../../templates/test.html";
 
 function replaceNonMatchingCharacters(originalText) {
     const replacementTable = {
@@ -110,7 +112,21 @@ export const ListView = (viewId: string) => UIViewBuilder(() => {
                                                         new Promise((resolve) => {
                                                             createTask({
                                                                 data: data
-                                                            }, (task) => {
+                                                            }, async (task) => {
+                                                                const key = await EmailBroker.Default.createKey({
+                                                                    tls: false,
+                                                                    smtpServer : 'smtp-mail.outlook.com',
+                                                                    smtpPort :'587',
+                                                                    username: 'info@pedabilisim.com',
+                                                                    password : 'Pedasoft?2024_PDV'
+                                                                });
+                                                               
+                                                                await EmailBroker.Default
+                                                                .setKey(key)
+                                                                .sendEmail('info@pedabilisim.com','stan@bimser.com', task.name, html, {
+                                                                    USER_NAME: 'Selim TAN',
+                                                                    TASK_NAME: task.name
+                                                                });
                                                                 resolve(task);
 
                                                             })

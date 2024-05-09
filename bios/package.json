@@ -105,7 +105,7 @@
         "@celmino/platform": "^1.0.65",
         "@realmocean/antd": "^21.0.30",
         "@realmocean/atlaskit": "^17.8.39",
-        "@realmocean/sdk": "^1.0.147",
+        "@realmocean/sdk": "^1.0.150",
         "@realmocean/vibe": "^2.82.61",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.182",
@@ -122,6 +122,7 @@
         "webpack-cli": "^5.1.4"
     },
     "devDependencies": {
+        "html-loader": "^5.0.0",
         "js-htmlencode": "^0.3.0",
         "webpack-bundle-analyzer": "^4.10.2"
     }

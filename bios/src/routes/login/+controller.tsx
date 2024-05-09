@@ -9,6 +9,10 @@ import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
 //import { Secrets } from "./mysecret";
 
+
+
+
+
 const LeftLogo = () => (
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="207" viewBox="0 0 1000 207">
         <g transform="matrix(1,0,0,1,-0.6060605238602648,-0.3879324329129332)"><svg viewBox="0 0 396 82" data-background-color="#ffffff" preserveAspectRatio="xMidYMid meet" height="207" width="1000"><g id="tight-bounds" transform="matrix(1,0,0,1,0.24000003255142133,0.15367371738580005)"><svg viewBox="0 0 395.5199999999999 81.69265256522837" height="81.69265256522837" width="395.5199999999999"><g><svg viewBox="0 0 461.5680879257202 95.33455057168447" height="81.69265256522837" width="395.5199999999999"><g><svg viewBox="0 0 461.5680879257202 95.33455057168447" height="95.33455057168447" width="461.5680879257202"><g id="textblocktransform"><svg viewBox="0 0 461.5680879257202 95.33455057168447" height="95.33455057168447" width="461.5680879257202" id="textblock"><g><svg viewBox="0 0 461.5680879257202 58.89519999999999" height="58.89519999999999" width="461.5680879257202"><g><svg><g></g><g></g></svg></g>
@@ -80,7 +84,6 @@ var subDomain = /:\/\/([^\/]+)/.exec(window.location.href)[1];
 
 export class LoginController extends CelminoController {
     public override LoadView(): UIView {
-
 
         const { me, isLoading, isError: isAccountError } = useGetMe('console');
 
@@ -192,6 +195,8 @@ export class LoginController extends CelminoController {
                                         .foregroundColor('white')
                                         .onClick(async () => {
 
+
+                                           
                                           /*   const key = await CspBroker.Default
                                                 .createKey({
                                                     domain: 'https://dev.bimser.net',
@@ -211,9 +216,10 @@ export class LoginController extends CelminoController {
                                                     token:'ATATT3xFfGF0q3K6vpX1eh8OVaXT5Dlgs6iycpw1HIuHYtPt0SRKplbJ5OgZ4WHPmITJZJRThJ_1HBAIOBTzOHWoZBDHwacJX91Kfhs9Wl9L_gtmTISeQHO9buHv5W46LR92IJ1PMXUniHSfda7252rDK9iV65Fs8MFe3FcIIN906OJQxj_LJAQ=831834E0'
                                                 }); */
 
-                                                JiraBroker.Default.setKey('92e187e5c14071dcd21ce8a2469492a1d6b53eec9af8b78ed086be22294751a055711d7c19aa8a0bc73054875f58a16b06d4d21ce9f6e92dc8dcda589e652c2f36fe16d6122f4cba2ef321b46a4b5e94b0697fc4d429229e546d012ad6408be19ee10dcc1e0c6deb88f93f630d00c7f5ee690440846ba6f200d2953657a41a20c1b8c62f99247bf8d05b37e0d01fd3eedae3fb959482daaf5f1015f453bb16e52d8e972b42fd67b95e76f4b486147f95b47334fe46787659ec6aba62974bdab9d99699400b81509df6ccb96ac7f84778b5db6174d7a5d7b7f4c71c6407c793a33ea3029c6d699d7e538380152166608a0439ab9e6d1c9e0e3fac5c84fe3074723c350d28c3c4a0e488ba59ec46b232686aeaf7ee1b854f67');
-                                                await JiraBroker.Default.getProjects();
-                                               // console.log(key)
+                                               // JiraBroker.Default.setKey('92e187e5c14071dcd21ce8a2469492a1d6b53eec9af8b78ed086be22294751a055711d7c19aa8a0bc73054875f58a16b06d4d21ce9f6e92dc8dcda589e652c2f36fe16d6122f4cba2ef321b46a4b5e94b0697fc4d429229e546d012ad6408be19ee10dcc1e0c6deb88f93f630d00c7f5ee690440846ba6f200d2953657a41a20c1b8c62f99247bf8d05b37e0d01fd3eedae3fb959482daaf5f1015f453bb16e52d8e972b42fd67b95e76f4b486147f95b47334fe46787659ec6aba62974bdab9d99699400b81509df6ccb96ac7f84778b5db6174d7a5d7b7f4c71c6407c793a33ea3029c6d699d7e538380152166608a0439ab9e6d1c9e0e3fac5c84fe3074723c350d28c3c4a0e488ba59ec46b232686aeaf7ee1b854f67');
+                                               // await JiraBroker.Default.getProjects();
+                                               
+                                                // console.log(key)
 
 
 

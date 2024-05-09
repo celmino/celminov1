@@ -106,7 +106,7 @@
         "@dnd-kit/sortable": "^8.0.0",
         "@headlessui/react": "^1.7.18",
         "@realmocean/atlaskit": "^17.8.27",
-        "@realmocean/sdk": "^1.0.92",
+        "@realmocean/sdk": "^1.0.152",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.180",
         "react-promise-suspense": "^0.3.4",
@@ -115,5 +115,8 @@
         "webpack": "^5.90.3",
         "webpack-bundle-analyzer": "^4.10.2",
         "webpack-cli": "^5.1.4"
+    },
+    "devDependencies": {
+        "html-loader": "^5.0.0"
     }
 }

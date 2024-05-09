@@ -37,10 +37,10 @@ const opts = {
 
 
 const webConfig = {
-  //  target: 'web',
+    //  target: 'web',
     //target: 'es5',
     mode: 'development',
-   // devtool: 'source-map',  
+    // devtool: 'source-map',  
     entry: './src/index.tsx',
     externals: {
         '@tuval/core': 'tuval$core',
@@ -81,8 +81,8 @@ const webConfig = {
         '@realmocean/gantt': 'realmocean$gantt',
 
         '@realmocean/imageeditor': 'realmocean$imageeditor',
-        '@realmocean/antd':'realmocean$antd',
-        '@realmocean/atlaskit':'realmocean$atlaskit',
+        '@realmocean/antd': 'realmocean$antd',
+        '@realmocean/atlaskit': 'realmocean$atlaskit',
         '@realmocean/sdk': 'realmocean$sdk',
         '@realmocean/ui': 'realmocean$ui',
         '@celmino/platform': 'celmino$platform',
@@ -107,11 +107,11 @@ const webConfig = {
                 exclude: /node_modules/,
 
             },
-           /*  {
-                test: /\.(wasm|eot|woff|woff2|svg|ttf)([\?]?.*)$/,
-                type: 'javascript/auto',
-                loader: 'arraybuffer-loader',
-            }, */
+            /*  {
+                 test: /\.(wasm|eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                 type: 'javascript/auto',
+                 loader: 'arraybuffer-loader',
+             }, */
             {
                 test: /\.css$/,
                 use: ['to-string-loader', 'css-loader']
@@ -136,6 +136,10 @@ const webConfig = {
                     }
                 }]
             },
+            {
+                test: /\.html$/i,
+                loader: "html-loader",
+            }
             /* {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: [
@@ -162,32 +166,32 @@ const webConfig = {
         path: path.resolve(__dirname, 'dist_web'),
     },
     plugins: [
-      //    new BundleAnalyzerPlugin(),
-         {
-        apply: (compiler) => {
-            compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
-                const file = './dist_web/index.js';
-                var data = fs.readFileSync(file); //read existing contents into data
-                //var fd = fs.openSync(file, 'w+');
-                var buffer = new Buffer(copyright);
-                fs.writeFileSync(file, buffer);
-                fs.appendFileSync(file, data);
+        //    new BundleAnalyzerPlugin(),
+        {
+            apply: (compiler) => {
+                compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
+                    const file = './dist_web/index.js';
+                    var data = fs.readFileSync(file); //read existing contents into data
+                    //var fd = fs.openSync(file, 'w+');
+                    var buffer = new Buffer(copyright);
+                    fs.writeFileSync(file, buffer);
+                    fs.appendFileSync(file, data);
 
-                var bufferEnd = new Buffer(`
+                    var bufferEnd = new Buffer(`
                 tuval$core.ModuleLoader.FireModuleLoadedEvent('${manifest.application.name}', tuval$core['__APPS__']['${manifest.application.name}']);
                 `);
-                fs.appendFileSync(file, bufferEnd);
-                /*  fs.appendFile('./dist/index.js', `
-        tuval$core.ModuleLoader.FireModuleLoadedEvent('${manifest.application.name}', tuval$core['__APPS__']['${manifest.application.name}']);
-`, (err) => {
-        if (err) throw err;
-        console.log('The lyrics were updated!');
-    }); */
-            });
+                    fs.appendFileSync(file, bufferEnd);
+                    /*  fs.appendFile('./dist/index.js', `
+            tuval$core.ModuleLoader.FireModuleLoadedEvent('${manifest.application.name}', tuval$core['__APPS__']['${manifest.application.name}']);
+    `, (err) => {
+            if (err) throw err;
+            console.log('The lyrics were updated!');
+        }); */
+                });
+            }
         }
-    }
 
-]
+    ]
 };
 
-module.exports = [webConfig /* webClientConfig */ /* umdConfig */ /* , umdWebProcess */ ];
+module.exports = [webConfig /* webClientConfig */ /* umdConfig */ /* , umdWebProcess */];
