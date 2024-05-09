@@ -5355,30 +5355,6 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                 updateAppletName(title, function () {
                     _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('applet.added', { treeItem: item });
                 });
-                /*    updateDatabase({
-                       databaseId: appletId,
-                       name: title
-                   }, () => {
-                       updateDocument({
-                           databaseId: 'workspace',
-                           collectionId: 'applets',
-                           documentId: appletId,
-                           data: {
-                               name: title
-                           }
-                       }, () => {
-                           updateDocument({
-                               databaseId: 'workspace',
-                               collectionId: 'ws_tree',
-                               documentId: item.$id,
-                               data: {
-                                   name: title
-                               }
-                           }, () => {
-                               EventBus.Default.fire('applet.added', { treeItem: item })
-                           })
-                       })
-                   }) */
             },
             subNodes: function (TreeNode, level, nodeType, parentId, workspaceId, appletId) {
                 return [];
@@ -5389,47 +5365,15 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                         title: 'Add to Task List',
                         type: 'Title'
                     },
-                    /*  {
-                         title: 'Table',
-                         icon: Icon(TableIcon).foregroundColor('#7C828D'),
-                         //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                     },
-*/
-                    /*  {
-                         title: 'Board',
-                         icon: Icon(BoardIcon).foregroundColor('#7C828D'),
-                         //onClick: () => DynoDialog.Show(AddBoardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                     }, */
                     {
                         title: 'List',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_5__.ListIcon).foregroundColor('#7C828D'),
-                        //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                     },
                     {
                         title: 'Sprint',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_5__.SprintIcon).foregroundColor('#7C828D'),
                         onClick: function () { return _celmino_platform__WEBPACK_IMPORTED_MODULE_1__.DynoDialog.Show((0,_dialogs_AddListDialog__WEBPACK_IMPORTED_MODULE_4__.AddListDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                     },
-                    /*   {
-                          title: 'Timeline',
-                          icon: Icon(TimelineIcon).foregroundColor('#7C828D'),
-                          //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                      },
-                      {
-                          title: 'Calendar',
-                          icon: Icon(CalendarIcon).foregroundColor('#7C828D'),
-                          //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                      },
-                      {
-                          title: 'Report',
-                          icon: Icon(ReportIcon).foregroundColor('#7C828D'),
-                          //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                      },
-                      {
-                          title: 'Feed',
-                          icon: Icon(FeedIcon).foregroundColor('#7C828D'),
-                          //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                      }, */
                     {
                         type: 'Divider'
                     },
@@ -5459,7 +5403,6 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                             navigate("");
                             break;
                         case 'list':
-                            //  navigate(`/@/${process(realm?.name)}-${workspaceId}/${process(applet)}-${appletId}/list/${item.$id}`);
                             break;
                         case 'board':
                             navigate("/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.parent, "/view/").concat(item.$id));
@@ -5485,7 +5428,6 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                     title: 'Rename',
                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__edit', '#151719', '18px', '18px'),
                     onClick: function () {
-                        // setCanDrag(false);
                         setIsEditing(true);
                     }
                 },

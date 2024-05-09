@@ -1,6 +1,7 @@
 import {
     Icon,
     SvgIcon,
+    Text,
     UIController, UIView,
     UIWidget,
     useState
@@ -53,7 +54,8 @@ export class WorkspaceTreeWidgetController extends UIController {
        // const { setCanDrag } = useRealmTree();
 
         return (
-                UIWidget('com.celmino.widget.applet-tree')
+           
+                 UIWidget('com.celmino.widget.applet-tree')
                     .config({
                         node: item,
                         workspaceId,
@@ -68,31 +70,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                             updateAppletName(title, ()=> {
                                 EventBus.Default.fire('applet.added', { treeItem: item })
                             })
-                         /*    updateDatabase({
-                                databaseId: appletId,
-                                name: title
-                            }, () => {
-                                updateDocument({
-                                    databaseId: 'workspace',
-                                    collectionId: 'applets',
-                                    documentId: appletId,
-                                    data: {
-                                        name: title
-                                    }
-                                }, () => {
-                                    updateDocument({
-                                        databaseId: 'workspace',
-                                        collectionId: 'ws_tree',
-                                        documentId: item.$id,
-                                        data: {
-                                            name: title
-                                        }
-                                    }, () => {
-                                        EventBus.Default.fire('applet.added', { treeItem: item })
-                                    })
-                                })
-                            }) */
-
+                        
                         },
                         subNodes: (TreeNode, level, nodeType, parentId, workspaceId, appletId) => {
                             return []
@@ -103,47 +81,17 @@ export class WorkspaceTreeWidgetController extends UIController {
                                     title: 'Add to Task List',
                                     type: 'Title'
                                 },
-                               /*  {
-                                    title: 'Table',
-                                    icon: Icon(TableIcon).foregroundColor('#7C828D'),
-                                    //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                                },
- */
-                               /*  {
-                                    title: 'Board',
-                                    icon: Icon(BoardIcon).foregroundColor('#7C828D'),
-                                    //onClick: () => DynoDialog.Show(AddBoardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                                }, */
+                           
                                 {
                                     title: 'List',
                                     icon: Icon(ListIcon).foregroundColor('#7C828D'),
-                                    //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                                },
+                                 },
                                 {
                                     title: 'Sprint',
                                     icon: Icon(SprintIcon).foregroundColor('#7C828D'),
                                     onClick: () => DynoDialog.Show(AddListDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                                 },
-                              /*   {
-                                    title: 'Timeline',
-                                    icon: Icon(TimelineIcon).foregroundColor('#7C828D'),
-                                    //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                                },
-                                {
-                                    title: 'Calendar',
-                                    icon: Icon(CalendarIcon).foregroundColor('#7C828D'),
-                                    //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                                },
-                                {
-                                    title: 'Report',
-                                    icon: Icon(ReportIcon).foregroundColor('#7C828D'),
-                                    //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                                },
-                                {
-                                    title: 'Feed',
-                                    icon: Icon(FeedIcon).foregroundColor('#7C828D'),
-                                    //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
-                                }, */
+                             
                                 {
                                     type: 'Divider'
                                 },
@@ -180,8 +128,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                                         navigate(``);
                                         break;
                                     case 'list':
-                                        //  navigate(`/@/${process(realm?.name)}-${workspaceId}/${process(applet)}-${appletId}/list/${item.$id}`);
-                                        break;
+                                         break;
                                     case 'board':
                                         navigate(`/@/workspace/${workspaceId}/applet/${appletId}/list/${item.parent}/view/${item.$id}`);
                                         break;
@@ -209,8 +156,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                                 title: 'Rename',
                                 icon: SvgIcon('svg-sprite-global__edit', '#151719', '18px', '18px'),
                                 onClick: () => {
-                                    // setCanDrag(false);
-                                    setIsEditing(true);
+                                     setIsEditing(true);
 
                                 }
                             },
@@ -229,7 +175,7 @@ export class WorkspaceTreeWidgetController extends UIController {
 
                         ]
 
-                    })
+                    }) 
 
         )
 

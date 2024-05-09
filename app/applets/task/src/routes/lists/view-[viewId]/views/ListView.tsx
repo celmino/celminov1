@@ -1,6 +1,6 @@
 import { AppletContext, SelectSiderDialog, useAccount, useApplet, useRealm, useWidget } from "@celmino/platform";
 import { EmailBroker, Query, useCreateDocument, useCreateIntegerAttribute, useCreateRelationshipAttribute, useCreateStringAttribute, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
-import { Fragment, HStack, Icon, ReactView, SvgIcon, UIController, UIView, UIViewBuilder, UIWidget, VStack, cTop, cTopLeading, useDialogStack } from "@tuval/forms";
+import { Fragment, HStack, Icon, ReactView, SvgIcon, Text, UIController, UIView, UIViewBuilder, UIWidget, VStack, cTop, cTopLeading, useDialogStack } from "@tuval/forms";
 import React from "react";
 import { ViewsTab } from "../../views/ViewsTabMenu";
 

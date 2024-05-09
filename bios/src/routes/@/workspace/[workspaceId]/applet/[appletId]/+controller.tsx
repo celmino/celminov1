@@ -1,10 +1,16 @@
 import { AppletContext, useApplet } from '@celmino/platform';
 import { ModuleLoader } from '@tuval/core';
-import { HStack, LoadingWidgets, ReactView, Spinner, UIFormController, UIView, VStack, WidgetCache, cTopLeading, useEffect, useLocation, useParams, useState } from '@tuval/forms';
+import {
+    HStack, ReactView, Spinner, UIFormController, UIView,
+    UIWidget,
+    VStack, cTopLeading, useEffect, useLocation, useParams, useState
+} from '@tuval/forms';
 import React, { Fragment } from 'react';
 import usePromise from "react-promise-suspense";
 //import { useGetApplet } from '@celmino/sdk';
 
+const LoadingWidgets = {};
+const WidgetCache = {};
 export interface IOPA {
     name: string;
     content: string;
@@ -111,8 +117,6 @@ export class AppletController extends UIFormController {
 
         const { appletId } = useParams();
 
-
-
         return (
             AppletContext(() => {
                 const { applet } = useApplet();
@@ -125,21 +129,23 @@ export class AppletController extends UIFormController {
                                 VStack(
                                     VStack({ alignment: cTopLeading })(
                                         HStack({ alignment: cTopLeading })(
-                                            ReactView(
-                                                <React.Suspense fallback={
-                                                    <Fragment>
-                                                        {
-                                                            VStack(
-                                                                Spinner()
-                                                            ).render()
-                                                        }
-                                                    </Fragment>
-                                                } >
-                                                    <ErrorBoundary>
-                                                        <OpaLoader widget={applet.type}></OpaLoader>
-                                                    </ErrorBoundary>
-                                                </React.Suspense>
-                                            ).frame(true).width('100%').height('100%')
+                                            UIWidget(applet.type, 'applet')
+                                                .config({})
+                                            /*  ReactView(
+                                                 <React.Suspense fallback={
+                                                     <Fragment>
+                                                         {
+                                                             VStack(
+                                                                 Spinner()
+                                                             ).render()
+                                                         }
+                                                     </Fragment>
+                                                 } >
+                                                     <ErrorBoundary>
+                                                         <OpaLoader widget={applet.type}></OpaLoader>
+                                                     </ErrorBoundary>
+                                                 </React.Suspense>
+                                             ).frame(true).width('100%').height('100%') */
                                         )
                                     ).overflow('hidden')
 
