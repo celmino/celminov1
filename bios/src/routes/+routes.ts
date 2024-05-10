@@ -7,7 +7,6 @@ import { OrganizationController } from "./@/organization/[organizationId]/+contr
 import { AppletController } from "./@/workspace/[workspaceId]/applet/[appletId]/+controller"
 import { RedirectToAppController } from "./RedirectToAppController"
 import { LoginController } from "./login/+controller"
-import { SignupController } from "./signup/+controller"
 import { WorkspaceSelectController } from "./@/workspace/select/+controller"
 import { OrganizationSelectController } from "./@/organization/select/+controller"
 import { LayoutController, PersonelRealmLayoutController, PublicLayoutController, RealmLayoutController } from "./@/+controller"
@@ -25,6 +24,7 @@ import { SecuritySettingController } from "./@/settings/security/+controller"
 import { UsersController } from "./@/settings/users/+controller"
 import { InviteController } from "./invite/+controller"
 import { ConnectionsController } from "./@/settings/connections/+controller"
+import { SignupController } from "./signup/+controller"
 
 
 export class HomeController extends UIController {

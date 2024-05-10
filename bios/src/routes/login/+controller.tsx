@@ -1,13 +1,13 @@
 import {
-    GithubBroker, QdmsBroker, Services, useCreateEmailSession, useGetMe, useUpdateName,
-    GooleDriveBroker, JiraBroker, MiningBroker, EmailBroker, QDMS,
-    CspBroker
-}
-    from "@realmocean/sdk";
-import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
+    Services, useCreateEmailSession,
+    useCreateRecovery,
+    useGetMe, useUpdateName
+} from "@realmocean/sdk";
+import { Fragment, HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, UINavigate, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
-import { CelminoController, Guard } from "../../CelminoController";
+import { CelminoController } from "../../CelminoController";
 //import { Secrets } from "./mysecret";
+import { TextField } from '@realmocean/atlaskit'
 
 
 
@@ -94,6 +94,8 @@ export class LoginController extends CelminoController {
 
         const { updateName } = useUpdateName('console');
 
+        const { createRecovery } = useCreateRecovery('console');
+
         return (
             isLoading ? Fragment() : !isAccountError ? UINavigate('/app/login-success')
                 :
@@ -112,18 +114,18 @@ export class LoginController extends CelminoController {
                             }),
                         VStack(
                             HStack(
-                                Heading('Sign in').fontSize('6rem').foregroundColor('#090e13').lineHeight('1.4')
+                                Heading('Sign in').fontSize(60).foregroundColor('#090e13').lineHeight('1.4')
                                     .fontFamily('"Hagrid", sans-serif')
                             ).height().marginBottom('.7rem'),
                             VStack({ spacing: 20 })(
 
                                 HStack({ spacing: 10 })(
                                     Icon(GoogleLogo),
-                                    Text('Sign in with Google').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')
+                                    Text('Sign in with Google').fontFamily('"Graphik Regular", sans-serif').fontSize(20)
                                 ).height(48).width('100%')
-                                    .minWidth('32rem')
-                                    .maxWidth('40rem')
-                                    .marginBottom('2rem')
+                                    .minWidth(320)
+                                    .maxWidth(400)
+                                    .marginBottom(20)
                                     .cursor('pointer')
                                     .background('white')
                                     .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
@@ -139,8 +141,8 @@ export class LoginController extends CelminoController {
                                     Icon(MicrosoftLogo),
                                     Text('Sign in with Microsoft').fontFamily('"Graphik Regular", sans-serif').fontSize(20)
                                 ).height(48).width('100%')
-                                    .minWidth('32rem')
-                                    .maxWidth('40rem')
+                                    .minWidth(320)
+                                    .maxWidth(400)
                                     .cursor('pointer')
                                     .background('white')
                                     .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
@@ -152,74 +154,77 @@ export class LoginController extends CelminoController {
                                         )
 
                                     }),
-                            ).height().width().paddingTop('3rem'),
+                            ).height().width().paddingTop('30px'),
                             VStack({ alignment: cLeading })(
                                 HStack(
                                     HDivider().height(1).background('rgba(125, 141, 154, 0.1)'),
-                                    Text('OR').padding('0 20px'),
+                                    Text('OR').minWidth('30px').textAlign('center'),
                                     HDivider().height(1).background('rgba(125, 141, 154, 0.1)')
 
-                                ).padding('2.4rem 0').maxWidth('40rem').height(),
+                                ).padding('24px 0').maxWidth(400).height(),
                                 VStack({ alignment: cLeading, spacing: 10 })(
 
-                                    TextField().fontSize('1.8rem')
+                                    TextField().fontSize(18)
                                         .allHeight(40)
-                                        //  .placeholder('Enter your email')
+
                                         .transition('all 0.3s ease-in-out')
                                         .border('none')
                                         .borderBottom({ hover: '2px solid #162330' })
                                         .background('white')
                                         .outline({ focus: 'none' })
-                                        .padding('0 1.5rem').width(332)
-                                        .onChange(e => setEmail(e))
-                                ).height().marginBottom('1.5rem'),
+                                        .padding('0 15px').width(332)
+                                        .onChange((e: any) => setEmail(e.target.value))
+                                ).height().marginBottom('15px'),
                                 VStack({ alignment: cLeading, spacing: 10 })(
 
-                                    SecureField().fontSize(16).padding(10)
-                                        .onChange(e => setPassword(e))
+                                      SecureField().fontSize(16)
+                                         .onChange(e => setPassword(e)) 
                                 ).height()
-                                    .marginBottom('1.5rem'),
+                                    .marginBottom('15px'),
                                 VStack({ alignment: cLeading, spacing: 10 })(
                                     HStack(
                                         Text('Sign in with email')
                                             .fontFamily('"Graphik Regular", sans-serif')
 
-                                            .fontSize('2rem')
+                                            .fontSize(20)
                                     )
                                         .height()
                                         .cursor('pointer')
-                                        .lineHeight('4.8rem')
-                                        .padding('0 5rem')
+                                        .lineHeight('48px')
+                                        .padding('0 50px')
                                         .background('#242938')
                                         .cornerRadius(3)
                                         .foregroundColor('white')
                                         .onClick(async () => {
 
+                                            createRecovery({
+                                                email: 'team@celmino.io',
+                                                url: 'http://localhost'
+                                            })
 
-                                           
-                                          /*   const key = await CspBroker.Default
-                                                .createKey({
-                                                    domain: 'https://dev.bimser.net',
-                                                    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBdXRoZW50aWNhdGlvblR5cGUiOiIxIiwiSW5zdGFuY2UiOiJkZXYiLCJJbnRlcm5hbFVzZXJJZCI6IjQiLCJJbnRlcm5hbFVzZXJuYW1lIjoicmd1ciIsIlBvc2l0aW9ucyI6IltdIiwiRGVsZWdhdGlvbklkIjoiIiwiVG9rZW5JZCI6IjJhMjAxZGJlLTAxOGEtNDYwMS04YjU0LTkyYTZiYTlkYjdmMiIsIlVzZXJuYW1lIjoicmd1ciIsIlVzZXJJZCI6IjQiLCJUaW1lVG9MaXZlIjoiODY0MDAwMDAiLCJTY29wZSI6IjMiLCJuYmYiOjE3MTQ0MTE1NTksImV4cCI6MTcxNDQ5Nzk1OSwiaXNzIjoiQmltc2VyIMOHw7Z6w7xtIiwiYXVkIjoiU3luZXJneSBVc2VycyJ9.q-hZcBvKbIu8nMuPeie8_AqYvw5kgIXn-YaSDC3Ui9w',
-                                                    eData: 'k1locoKLE4dVg9kmquJp3LWYzFVXmzJ46BwSuzNKEptxs8+gLZO9ONk/tdlDEWJSaMx7NBf8sNAzyyyW4RCsZOkPGU3BsuRO2mFrjPCDvewng68pktys1/6CXjQNWr9cwaRVRqn43smAUn0cEE+pBN+O4cRg5hj9+QVdH7y+9Dk='
-                                                }) */
-/* 
-                                                {
-                                                    "accessKey": "92e18be5df553a88d24ebebe4293d8fdc3ee64fe9ee2ea83df9fe3262f055eb6523a503043ab841a8b3e4cd04944996d05fed4579cbdd010fcc8fc07b3600a291bd0238e100569a204f73cce102a60c2f56968acac6f3b987a63022c9e67bae8b0b53b93235877c9e5ab1d5e5c00f8ddce745873815f82f113cfb10055cc603cddbff611a20a13f2eb5c04c6f83788f3d1daa2f7b4b0f1b0710017f44bb53de644f6b5386af86bb1406ed5aebd1848e2985905c95f68762aa8788b3b883be7ba89b9ab434e8f6d9dd6e08460fea21761cdcc031a96f0e2acfbbc395a52deb78c029f2c824d55ae7b0cd5f24b254040df0626f7c44226cf34109f28fbef236a094f5f782ebfdcb2c4bfbb79ec6fd54d11379e909b26fa2a5f42ec430f0a3a28301722777aa7f2fa99c73a0553538388dace7b0aa12dc88761f87125fe0cf856cde878e416db3dc40c5f9363ef6cdab8a2743fdf9c364092b53866ec19ac17750b0ea6a4bbf1d8e13eb7950b5a97211936a511ec3d40889f2df9dce02fea05d8567754bfef8367cf6280a8706feb411f1203553f67441d0d3cf3a1980fcaf5246a3a014b523ea5c69c222ea0d34194685c6cb4d5841dfb7c033ac86ca73332a49b9d7033f739cf3a87c19a9d9f76acf991f68c194f3cc55e549e0c3afcb40ca69c59fe9c1d48db3d0767f0e93ae0e916b65b56a87368f81032c77b6ea4cd15763c615413e529b82d073683bbf36059de1747142f605f902baee4ffb1d365909253ff3b140143b1380856426ff0a424847d705baffc0721749fda22d3e5b0528bd1922ed740a772fa1ff5a3889af30679148a73293031aef8b496271cbd9605a0028ec50757748754659d6a8cee5eaf263bfeeda72a9dd55eec59dbf0e55738603d6a368845a6ca94d2d178e025afe9f3dffff4a0dd8848a875736ad5eb19b3e6ea0df4a228f6f0f32352195a7e504588fbf12a1045ef021f791a4361c9de70ae97c2d2ba2a4cfc4adbad9e478c046a6850f8b3f54cfde625a4362a19d31fe1cec01dbb"
-                                                } */
+                                            /*   const key = await CspBroker.Default
+                                                  .createKey({
+                                                      domain: 'https://dev.bimser.net',
+                                                      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBdXRoZW50aWNhdGlvblR5cGUiOiIxIiwiSW5zdGFuY2UiOiJkZXYiLCJJbnRlcm5hbFVzZXJJZCI6IjQiLCJJbnRlcm5hbFVzZXJuYW1lIjoicmd1ciIsIlBvc2l0aW9ucyI6IltdIiwiRGVsZWdhdGlvbklkIjoiIiwiVG9rZW5JZCI6IjJhMjAxZGJlLTAxOGEtNDYwMS04YjU0LTkyYTZiYTlkYjdmMiIsIlVzZXJuYW1lIjoicmd1ciIsIlVzZXJJZCI6IjQiLCJUaW1lVG9MaXZlIjoiODY0MDAwMDAiLCJTY29wZSI6IjMiLCJuYmYiOjE3MTQ0MTE1NTksImV4cCI6MTcxNDQ5Nzk1OSwiaXNzIjoiQmltc2VyIMOHw7Z6w7xtIiwiYXVkIjoiU3luZXJneSBVc2VycyJ9.q-hZcBvKbIu8nMuPeie8_AqYvw5kgIXn-YaSDC3Ui9w',
+                                                      eData: 'k1locoKLE4dVg9kmquJp3LWYzFVXmzJ46BwSuzNKEptxs8+gLZO9ONk/tdlDEWJSaMx7NBf8sNAzyyyW4RCsZOkPGU3BsuRO2mFrjPCDvewng68pktys1/6CXjQNWr9cwaRVRqn43smAUn0cEE+pBN+O4cRg5hj9+QVdH7y+9Dk='
+                                                  }) */
+                                            /* 
+                                                                                            {
+                                                                                                "accessKey": "92e18be5df553a88d24ebebe4293d8fdc3ee64fe9ee2ea83df9fe3262f055eb6523a503043ab841a8b3e4cd04944996d05fed4579cbdd010fcc8fc07b3600a291bd0238e100569a204f73cce102a60c2f56968acac6f3b987a63022c9e67bae8b0b53b93235877c9e5ab1d5e5c00f8ddce745873815f82f113cfb10055cc603cddbff611a20a13f2eb5c04c6f83788f3d1daa2f7b4b0f1b0710017f44bb53de644f6b5386af86bb1406ed5aebd1848e2985905c95f68762aa8788b3b883be7ba89b9ab434e8f6d9dd6e08460fea21761cdcc031a96f0e2acfbbc395a52deb78c029f2c824d55ae7b0cd5f24b254040df0626f7c44226cf34109f28fbef236a094f5f782ebfdcb2c4bfbb79ec6fd54d11379e909b26fa2a5f42ec430f0a3a28301722777aa7f2fa99c73a0553538388dace7b0aa12dc88761f87125fe0cf856cde878e416db3dc40c5f9363ef6cdab8a2743fdf9c364092b53866ec19ac17750b0ea6a4bbf1d8e13eb7950b5a97211936a511ec3d40889f2df9dce02fea05d8567754bfef8367cf6280a8706feb411f1203553f67441d0d3cf3a1980fcaf5246a3a014b523ea5c69c222ea0d34194685c6cb4d5841dfb7c033ac86ca73332a49b9d7033f739cf3a87c19a9d9f76acf991f68c194f3cc55e549e0c3afcb40ca69c59fe9c1d48db3d0767f0e93ae0e916b65b56a87368f81032c77b6ea4cd15763c615413e529b82d073683bbf36059de1747142f605f902baee4ffb1d365909253ff3b140143b1380856426ff0a424847d705baffc0721749fda22d3e5b0528bd1922ed740a772fa1ff5a3889af30679148a73293031aef8b496271cbd9605a0028ec50757748754659d6a8cee5eaf263bfeeda72a9dd55eec59dbf0e55738603d6a368845a6ca94d2d178e025afe9f3dffff4a0dd8848a875736ad5eb19b3e6ea0df4a228f6f0f32352195a7e504588fbf12a1045ef021f791a4361c9de70ae97c2d2ba2a4cfc4adbad9e478c046a6850f8b3f54cfde625a4362a19d31fe1cec01dbb"
+                                                                                            } */
                                             /* CspBroker.Default.setKey(key);
                                             CspBroker.Default.getProjects(); */
 
-                                              /*   const key = await JiraBroker.Default.createKey({
-                                                    host:'https://tuvalsoft.atlassian.net',
-                                                    username:'stanoncloud@gmail.com',
-                                                    token:'ATATT3xFfGF0q3K6vpX1eh8OVaXT5Dlgs6iycpw1HIuHYtPt0SRKplbJ5OgZ4WHPmITJZJRThJ_1HBAIOBTzOHWoZBDHwacJX91Kfhs9Wl9L_gtmTISeQHO9buHv5W46LR92IJ1PMXUniHSfda7252rDK9iV65Fs8MFe3FcIIN906OJQxj_LJAQ=831834E0'
-                                                }); */
+                                            /*   const key = await JiraBroker.Default.createKey({
+                                                  host:'https://tuvalsoft.atlassian.net',
+                                                  username:'stanoncloud@gmail.com',
+                                                  token:'ATATT3xFfGF0q3K6vpX1eh8OVaXT5Dlgs6iycpw1HIuHYtPt0SRKplbJ5OgZ4WHPmITJZJRThJ_1HBAIOBTzOHWoZBDHwacJX91Kfhs9Wl9L_gtmTISeQHO9buHv5W46LR92IJ1PMXUniHSfda7252rDK9iV65Fs8MFe3FcIIN906OJQxj_LJAQ=831834E0'
+                                              }); */
 
-                                               // JiraBroker.Default.setKey('92e187e5c14071dcd21ce8a2469492a1d6b53eec9af8b78ed086be22294751a055711d7c19aa8a0bc73054875f58a16b06d4d21ce9f6e92dc8dcda589e652c2f36fe16d6122f4cba2ef321b46a4b5e94b0697fc4d429229e546d012ad6408be19ee10dcc1e0c6deb88f93f630d00c7f5ee690440846ba6f200d2953657a41a20c1b8c62f99247bf8d05b37e0d01fd3eedae3fb959482daaf5f1015f453bb16e52d8e972b42fd67b95e76f4b486147f95b47334fe46787659ec6aba62974bdab9d99699400b81509df6ccb96ac7f84778b5db6174d7a5d7b7f4c71c6407c793a33ea3029c6d699d7e538380152166608a0439ab9e6d1c9e0e3fac5c84fe3074723c350d28c3c4a0e488ba59ec46b232686aeaf7ee1b854f67');
-                                               // await JiraBroker.Default.getProjects();
-                                               
-                                                // console.log(key)
+                                            // JiraBroker.Default.setKey('92e187e5c14071dcd21ce8a2469492a1d6b53eec9af8b78ed086be22294751a055711d7c19aa8a0bc73054875f58a16b06d4d21ce9f6e92dc8dcda589e652c2f36fe16d6122f4cba2ef321b46a4b5e94b0697fc4d429229e546d012ad6408be19ee10dcc1e0c6deb88f93f630d00c7f5ee690440846ba6f200d2953657a41a20c1b8c62f99247bf8d05b37e0d01fd3eedae3fb959482daaf5f1015f453bb16e52d8e972b42fd67b95e76f4b486147f95b47334fe46787659ec6aba62974bdab9d99699400b81509df6ccb96ac7f84778b5db6174d7a5d7b7f4c71c6407c793a33ea3029c6d699d7e538380152166608a0439ab9e6d1c9e0e3fac5c84fe3074723c350d28c3c4a0e488ba59ec46b232686aeaf7ee1b854f67');
+                                            // await JiraBroker.Default.getProjects();
+
+                                            // console.log(key)
 
 
 
@@ -343,7 +348,7 @@ export class LoginController extends CelminoController {
                                         }),
                                     HStack({ alignment: cLeading })(
                                         Text('Reset password')
-                                            .fontSize('1.6rem')
+                                            .fontSize(16)
                                             .fontFamily('"Graphik Regular", sans-serif')
                                             .cursor('pointer')
                                             .onClick(() => {
@@ -354,7 +359,7 @@ export class LoginController extends CelminoController {
                                             }),
                                         Spacer(),
                                         Text('Sign up')
-                                            .fontSize('1.6rem')
+                                            .fontSize(16)
                                             .fontFamily('"Graphik Regular", sans-serif')
                                             .cursor('pointer')
                                             .onClick(() => {
@@ -369,17 +374,17 @@ export class LoginController extends CelminoController {
                                 ).height(),
                                 /*  isError && Text(error?.message),
                                  isSuccess && UINavigate('/') */
-                            ).width().height()
+                            ).allWidth(320).height()
                         ).height().marginTop('10rem'),
 
 
 
                     )
-                        .paddingTop('14rem')
+                        .paddingTop('140px')
                         .paddingRight('calc(50% - 660px)')
                         .paddingLeft('calc(50% - 660px)')
                         .minHeight('100vh'),
-                    HStack().height('9rem')
+                    HStack().height('90px')
                         .position('absolute')
                         .bottom('0px')
                         .background('linear-gradient(0deg,#fff 42.67%,hsla(0,0%,100%,.8) 60.67%,hsla(0,0%,100%,0))')

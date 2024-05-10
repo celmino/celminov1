@@ -3,7 +3,7 @@ import { Services, useCreateAccount, useCreateEmailSession, useCreateOrganizatio
 import { is } from "@tuval/core";
 import { urlFriendly } from "../../utils/urlFriendly";
 
-export class SignupController extends UIController {
+export class _SignupController extends UIController {
     public override LoadView(): UIView {
 
         const { createAccount, isSuccess: isCreateAccountSuccess, isError: isCreateAccountError, error: createAccountError } = useCreateAccount('console');
