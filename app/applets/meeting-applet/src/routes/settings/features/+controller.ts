@@ -1,5 +1,4 @@
-import { ForEach, HStack, UIFormController, UIImage, VStack, cLeading, cTop, cTopLeading } from "@tuval/forms";
-import { Text } from "@realmocean/vibe";
+import { ForEach, HStack, Text, UIFormController, UIImage, VStack, cLeading, cTop, cTopLeading } from "@tuval/forms";
 
 
 const settings = [

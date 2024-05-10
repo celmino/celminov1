@@ -1,6 +1,6 @@
 import { cLeading, cTopLeading, Fragment, HStack, Spacer, Spinner, Text, TextAlignment, UIController, UIRouteOutlet, UIView, UIWidget, urlFriendly, useParams, useState, VStack } from "@tuval/forms";
 
-import { useApplet, useAppletNavigate } from "@celmino/ui";
+import { useApplet, useAppletNavigate } from "@celmino/platform";
 import { useGetDocument } from "@realmocean/sdk";
 import { moment } from "@tuval/core";
 

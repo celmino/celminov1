@@ -1,7 +1,6 @@
-import { useApplet, useRealm } from "@celmino/ui";
+import { useApplet, useRealm } from "@celmino/platform";
 import { useUpdateDocument } from "@realmocean/sdk";
-import { Text } from "@realmocean/vibe";
-import { HStack, TextField, UIFormController, UIWidget, VStack, cLeading, cTopLeading } from "@tuval/forms";
+import { HStack, Text, TextField, UIFormController, UIWidget, VStack, cLeading, cTopLeading } from "@tuval/forms";
 
 export class GeneralSettingsController extends UIFormController {
     public LoadView() {

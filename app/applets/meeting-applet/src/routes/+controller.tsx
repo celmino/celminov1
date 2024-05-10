@@ -3,7 +3,7 @@ import { MeetingsIcon, OverviewIcon } from "../assets/Icons";
 import React from "react";
 import { ActionPanel } from "./views/ActionPanel";
 import { ViewHeader } from "../views/ViewHeader";
-import { useApplet } from "@celmino/ui";
+import { useApplet } from "@celmino/platform";
 
 
 

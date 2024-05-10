@@ -1,6 +1,5 @@
-import { useApplet, useRealm } from "@celmino/ui";
-import { Text } from "@realmocean/vibe";
-import { ForEach, HStack, Heading, HeadingSizes, Icon, SvgIcon, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate, useParams } from "@tuval/forms";
+import { useApplet, useRealm } from "@celmino/platform";
+import { ForEach, HStack, Heading, Icon, SvgIcon, Text, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate } from "@tuval/forms";
 
 export function getSettingsName() {
     var url = window.location.href;

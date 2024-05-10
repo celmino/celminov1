@@ -1,6 +1,6 @@
-import { HStack, ForEach, Icon, UIViewBuilder, Text, MenuButton, Icons, cHorizontal } from "@tuval/forms";
-import { OverviewIcon, MeetingsIcon, TaskIcon, FilesIcon, FeedIcon } from "../../assets/Icons";
-import { TabMenu, useAppletNavigate } from "@celmino/ui";
+import { TabMenu, useAppletNavigate } from "@celmino/platform";
+import { ForEach, HStack, Icon, Icons, MenuButton, Text, UIViewBuilder, cHorizontal } from "@tuval/forms";
+import { FeedIcon, FilesIcon, MeetingsIcon, OverviewIcon, TaskIcon } from "../../assets/Icons";
 
 const menu = [
     {

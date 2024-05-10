@@ -11,7 +11,7 @@ import { useCreateDocument, useGetDocument, useUpdateDocument } from '@realmocea
 
 import { EventBus } from '@tuval/core';
 //import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
-import { AboutDialog, DynoDialog, FeedApplet, useAppletNavigate, useOrganization, useRealm } from '@celmino/ui';
+import { AboutDialog, DynoDialog, FeedApplet, useAppletNavigate, useOrganization, useRealm } from '@celmino/platform';
 import { AddMeetingSpace } from './dialogs/AddMeetingSpace';
 
 

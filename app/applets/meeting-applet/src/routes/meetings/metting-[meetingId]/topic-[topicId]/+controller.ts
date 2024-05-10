@@ -1,10 +1,25 @@
-import { UIController, UIView, useState, useParams, HStack, cTopLeading, VStack, cLeading, EditableHeader, 
-    EditableHeadingSizes, Spacer, MenuButton, Icon, cHorizontal, UIWidget, Fragment } from "@tuval/forms";
+import {
+    EditableHeader,
+    EditableHeadingSizes,
+    Fragment,
+    HStack,
+    Icon,
+    MenuButton,
+    Spacer,
+    Text,
+    UIController, UIView,
+    UIWidget,
+    VStack,
+    cHorizontal,
+    cLeading,
+    cTopLeading,
+    useParams,
+    useState
+} from "@tuval/forms";
 
+import { useApplet, useRealm } from "@celmino/platform";
 import { useGetDocument } from "@realmocean/sdk";
-import { Text } from "@realmocean/vibe";
 import { AssignUser } from "../../../../views/AssignUser";
-import { useApplet, useRealm } from "@celmino/ui";
 
 const findTopic = (items: any[], topic_id) => {
     if (items == null) return null;

@@ -1,9 +1,9 @@
 import { DatePickerRenderer } from '@realmocean/antd';
 import { useCreateDocument } from "@realmocean/sdk";
-import { Text } from "@realmocean/vibe";
 import { moment } from "@tuval/core";
 import {
     Button,
+    Text,
     UIViewBuilder,
     nanoid,
     useDialog,

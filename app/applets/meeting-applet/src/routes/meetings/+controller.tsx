@@ -1,14 +1,12 @@
-import { DynoDialog, useApplet, useAppletNavigate, useRealm } from '@celmino/ui';
+import { DynoDialog, useApplet, useAppletNavigate, useRealm } from '@celmino/platform';
 import { ButtonRenderer, SegmentedRenderer } from '@realmocean/antd';
-import { Text } from "@realmocean/vibe";
 import { moment } from "@tuval/core";
-import { Button, DialogStack, ForEach, Fragment, HStack, Icons, MenuButton, ReactView, Segmented, Spacer, Spinner, UIController, UIRouteOutlet, UIView, UIViewBuilder, VStack, cHorizontal, cLeading, cTop, cTopLeading, useDialogStack, useParams } from "@tuval/forms";
+import { Button, ForEach, Fragment, HStack, Icons, MenuButton, Segmented, Spacer, Spinner, Text, UIController, UIRouteOutlet, UIView, UIViewBuilder, VStack, cHorizontal, cLeading, cTop, useDialogStack, useParams } from "@tuval/forms";
 import React from "react";
 import { AddMeetingDialog } from "../../dialogs/AddMeetingDialog";
 
-import { Query, useListDocuments } from "@realmocean/sdk";
+import { useListDocuments } from "@realmocean/sdk";
 import { EmptyView } from "../../views/EmptyView";
-import { ActionPanel } from "../views/ActionPanel";
 import { Menu } from '../views/Menu';
 
 export class MeetingsController extends UIController {

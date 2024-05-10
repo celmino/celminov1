@@ -101,11 +101,10 @@
         ]
     },
     "dependencies": {
-        "@celmino/ui": "^1.0.44",
+        "@celmino/platform": "^1.0.66",
         "@realmocean/antd": "^21.0.30",
         "@realmocean/elasticui": "21.0.37",
         "@realmocean/sdk": "1.0.81",
-        "@realmocean/vibe": "^2.82.61",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.179",
         "@uiw/react-color-circle": "^2.1.0",
