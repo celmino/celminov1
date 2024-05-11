@@ -11,6 +11,7 @@ cd /install
 
 docker cp  ./realmocean  realmocean-dev:/usr/src/code/app
 docker cp  ./realmocean/services  realmocean-services:/usr/app/src
+docker cp  ./realmocean/ai_components  realmocean-ai:/server/src/components
 
 cd ./realmocean/services 
 
