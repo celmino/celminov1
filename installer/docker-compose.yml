@@ -297,7 +297,6 @@ services:
 
   realmocean_ai:
     container_name: realmocean-ai
-    <<: *x-logging
     image: realmocean/ai:1.0
     labels:
       - "traefik.enable=true"
