@@ -105,7 +105,7 @@
         "@celmino/platform": "^1.0.65",
         "@realmocean/antd": "^21.0.30",
         "@realmocean/atlaskit": "^17.8.39",
-        "@realmocean/sdk": "^1.0.159",
+        "@realmocean/sdk": "^1.0.160",
         "@realmocean/vibe": "^2.82.61",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.182",
