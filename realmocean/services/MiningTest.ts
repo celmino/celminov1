@@ -45,25 +45,24 @@ examine thoroughly,400,Sean,4,Fluxicon Nitro,examine thoroughly,Sean,2011-01-08 
 decide,200,Sara,4,Fluxicon Nitro,decide,Sara,2011-01-09 12:02:00+01:00
 reject request,200,Ellen,4,Fluxicon Nitro,reject request,Ellen,2011-01-12 15:44:00+01:00`
 
- class ConfigService extends BaseService {
+ class ConfigService extends RealmoceanService {
 
     public async init() {
         console.log('mining test');
         //var someEncodedString = Buffer.from(csv, 'utf-8').toString();
-        const mining  = this.services.get('mining-service');
-        const logId = await mining.loadCsv(csv.trim());
+        //const mining  = this.miningService.get('mining-service');
+        const logId = await this.miningService.loadCsv(csv.trim());
        
        
 
        
-        console.log( await mining.getMedianCaseDuration(logId))
+        console.log( await this.miningService.getMedianCaseDuration(logId))
 
         
     }
-    public static get Name(): string {
-        return 'mining-service-test';
+    public  get uid(): string {
+        return 'com.celmino.service.mining-test';
     }
-
     
 }
 

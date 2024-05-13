@@ -4,13 +4,13 @@ function delay(time) {
 }
 
 class RealmService extends RealmoceanService {
-    public static get Name(): string {
+    public  get uid(): string {
         return 'com.celmino.service.realm';
     }
 
     async init() {
 
-        const router = this.services.get('web-server').getRouter();
+        const router = this.webServer.getRouter();
 
         router.post("/com.celmino.service.realm/setup", async (req, res) => {
 

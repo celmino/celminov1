@@ -2,6 +2,8 @@ import { FormBuilder } from "@celmino/platform";
 import { FormHeader, TextField } from "@realmocean/atlaskit";
 import { DialogView, ForEach, HStack, Text, UIImage, UIViewBuilder, VStack, ViewProperty, cLeading, cTopLeading, useState } from "@tuval/forms";
 import { Connectors } from "./Connectors";
+import { useListConnectors, useListServices } from "@realmocean/sdk";
+import { SaveConnectionAction } from "./SaveConnectionAction";
 
 
 
@@ -32,6 +34,7 @@ export class SelectConnectionTypeDialog extends DialogView {
     }
 
     public override LoadView() {
+        const { connectors } = useListConnectors();
         const [form, setForm] = useState<any>();
         return (
             form == null ?
@@ -40,10 +43,10 @@ export class SelectConnectionTypeDialog extends DialogView {
                     TextField().label('Application')
                         .placeholder('Start typing to browse applications'),
                     VStack({ alignment: cTopLeading })(
-                        ...ForEach(Object.getOwnPropertyNames(Connectors))((connectorName, index) =>
+                        ...ForEach(connectors)((connector, index) =>
                             HStack({ alignment: cLeading, spacing: 10 })(
-                                UIImage(Connectors[connectorName].image).width(32).height(32),
-                                Text(Connectors[connectorName].name)
+                                UIImage(connector.image).width(32).height(32),
+                                Text(connector.name)
                             )
                                 .cursor('pointer')
                                 .padding(5)
@@ -54,8 +57,19 @@ export class SelectConnectionTypeDialog extends DialogView {
                                 .background({ hover: '#d6e4edcc' })
                                 .height()
                                 .onClick(() => {
-                                    setForm(Connectors[connectorName].dialog(this.workspaceId));
-                                    //  DynoDialog.Show(connector.dialog('1'))
+
+                                    // setForm(Connectors[connectorName].dialog(this.workspaceId));
+                                    setForm(Object.assign(connector.dialog, {
+                                        workspaceId: this.workspaceId,
+                                        "actions": [
+                                            {
+                                                "label": "Save",
+                                                "type": SaveConnectionAction.Id,
+
+                                            }
+                                        ],
+                                    }));
+
                                 })
 
                         )

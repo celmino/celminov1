@@ -6,13 +6,13 @@ function delay(time) {
 }
 
 class AppletService extends RealmoceanService {
-    public static get Name(): string {
-        return 'applet-service';
+    public  get uid(): string {
+        return 'com.celmino.service.applet';
     }
     async init() {
         const myTest = new MyTestClass();
         myTest.print();
-        const router = this.services.get('web-server').getRouter();
+        const router = this.webServer.getRouter();
      
 
 

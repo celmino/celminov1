@@ -1,7 +1,9 @@
 import { DatabaseService } from "./DatabaseService";
 import { EmailService } from "./EmailService";
+import { MiningService } from "./MiningService";
 import { ScheduleService } from "./ScheduleService";
 import { SchemaService } from "./SchemaService";
+import { WebServerService } from "./WebServerService";
 
 
 declare global {
@@ -12,6 +14,8 @@ declare global {
         databaseService: DatabaseService;
         schemaService: SchemaService;
         emailService: EmailService;
-        scheduleService: ScheduleService
+        scheduleService: ScheduleService;
+        webServer: WebServerService;
+        miningService: MiningService;
     }
 }

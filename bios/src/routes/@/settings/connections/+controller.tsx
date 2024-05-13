@@ -58,7 +58,6 @@ export class ConnectionsController extends UIController {
     const { realm } = useRealm();
     const { documents, isLoading } = useListDocuments(realm.$id, 'workspace', 'connections');
 
-
     return (
       isLoading ? Spinner() :
         UIViewBuilder(() => {
