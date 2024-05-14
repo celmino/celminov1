@@ -9,8 +9,8 @@ const url = window.location.port != null ?
 
 export class AppletServiceBroker extends Client {
 
-    public static get Default(): AppletServiceBroker {
-        return new AppletServiceBroker();
+    public static get Default() {
+        return new this();
     }
 
     headers: any = {
