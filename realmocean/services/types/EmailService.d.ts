@@ -7,6 +7,9 @@ interface EmailServiceAccessObject {
 }
 export interface EmailService extends RealmoceanService<EmailServiceAccessObject> {
 
-     sendEmail(from_email: string,
-        to_email: string, subject: string, htmlTemplate: string, values: any): Promise<any>;
+    sendEmail(accessKey: string,
+        from_email: string,
+        to_email: string, subject: string, html: string, values: any) : Promise<any>;
+
+ 
 }
