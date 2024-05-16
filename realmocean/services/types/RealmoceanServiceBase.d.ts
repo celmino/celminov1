@@ -17,6 +17,6 @@ declare global {
         scheduleService: ScheduleService;
         webServer: WebServerService;
         miningService: MiningService;
-        createKey(params: T): Promise<any>;
+        createKey(params: T): string;
     }
 }
