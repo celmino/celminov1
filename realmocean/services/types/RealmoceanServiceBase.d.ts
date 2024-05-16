@@ -8,7 +8,7 @@ import { WebServerService } from "./WebServerService";
 
 declare global {
     const module: {exports: any};
-    export class RealmoceanService {
+    export class RealmoceanService<T = any> {
         Name: string;
         services: any;
         databaseService: DatabaseService;
@@ -17,5 +17,6 @@ declare global {
         scheduleService: ScheduleService;
         webServer: WebServerService;
         miningService: MiningService;
+        createKey(params: T): Promise<any>;
     }
 }
