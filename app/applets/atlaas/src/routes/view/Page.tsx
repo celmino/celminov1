@@ -187,7 +187,9 @@ const App = () => {
                 id: getId(),
                 type: 'textnode',
                 position,
-                data: { label: component.name },
+                data: { label: component.name,
+                    ...component
+                 },
             };
 
             console.log("Node created: ", newNode);
@@ -317,7 +319,7 @@ const App = () => {
 
 
     return (
-        <div className="flex flex-row min-h-screen lg:flex-row" style={{width:'100%'}}>
+        <div className="flex flex-row min-h-screen lg:flex-row" style={{width:'100%', background:'#F8F8F8'}}>
             <Sidebar
                 nodeName={nodeName}
                 setNodeName={setNodeName}
@@ -326,6 +328,7 @@ const App = () => {
             />
             <div className="flex-grow h-screen" ref={reactFlowWrapper}>
                 <ReactFlow
+                color={"yellow"}
                     nodes={nodes}
                     nodeTypes={nodeTypes}
                     edges={edges}
@@ -349,17 +352,18 @@ const App = () => {
                             }))
                         );
                     }}
-                    fitView
+                    
+                     fitView
                     snapToGrid={true}
                     defaultEdgeOptions={{
-                        type: 'straight',
+                        type: 'simplebezier',
                         markerEnd: {
                             type: MarkerType.ArrowClosed,
                         }
                     }}
 
                 >
-                    <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
+                    <Background color="transparent" gap={12} size={1} />
                     <Controls />
                     <MiniMap zoomable pannable />
                     <Panel position="top-right">

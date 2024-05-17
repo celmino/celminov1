@@ -206,6 +206,7 @@ services:
 
     volumes:
       - ./realmocean/services:/usr/app/src/services
+      - ./realmocean/components:/usr/app/src/components
 
     environment:
       - _APP_NAME

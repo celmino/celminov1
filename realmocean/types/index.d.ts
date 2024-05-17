@@ -19,4 +19,8 @@ declare global {
         miningService: MiningService;
         createKey(params: T): string;
     }
+
+    export class BaseComponent {
+        services: any;
+    }
 }

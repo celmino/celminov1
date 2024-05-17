@@ -239,10 +239,12 @@ const AccordionDemo = ({ onDragStart }) => {
                           VStack(
                             ...ForEach(Object.getOwnPropertyNames(groups))(group =>
                               VStack({ alignment: cLeading })(
-                                Text(group).textTransform('uppercase').fontSize(12).foregroundColor('#525252').fontWeight('700'),
+                                HStack({ alignment: cLeading })(
+                                  Text(group).textTransform('uppercase').fontSize(12).foregroundColor('#525252').fontWeight('700')
+                                ).height().marginTop(10),
                                 ...ForEach(groups[group])((component: any) =>
                                   HStack(
-                                    
+
                                     HStack(
                                       UIImage(component.service.icon ?? '')
                                         .allWidth(20).allHeight(20)

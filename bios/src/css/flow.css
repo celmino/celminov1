@@ -22,7 +22,7 @@
     --xy-background-pattern-dots-color-default: #91919a;
     --xy-background-pattern-lines-color-default: #eee;
     --xy-background-pattern-cross-color-default: #e2e2e2;
-    background-color: var(--xy-background-color, var(--xy-background-color-default));
+    background-color: transparent !important;
     --xy-node-border-default: 1px solid #bbb;
     --xy-node-border-selected-default: 1px solid #555;
   

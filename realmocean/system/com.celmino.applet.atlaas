@@ -42179,38 +42179,6 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/icons/Evernote/EvernoteIcon.tsx":
-/*!*********************************************!*\
-  !*** ./src/icons/Evernote/EvernoteIcon.tsx ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-var SvgEvernoteIcon = function (props) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", __assign({ xmlns: "http://www.w3.org/2000/svg", width: "1em", height: "1em", fill: "#7fce2c", viewBox: "0 0 32 32" }, props),
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M29.343 16.818c.1 1.695-.08 3.368-.305 5.045-.225 1.712-.508 3.416-.964 5.084-.3 1.067-.673 2.1-1.202 3.074-.65 1.192-1.635 1.87-2.992 1.924l-3.832.036c-.636-.017-1.278-.146-1.9-.297-1.192-.3-1.862-1.1-2.06-2.3a8.976 8.976 0 0 1 .04-3.264c.252-1.23 1-1.96 2.234-2.103.817-.1 1.65-.077 2.476-.1.205-.007.275.098.203.287a2.695 2.695 0 0 0-.098 1.623c.053.207-.023.307-.26.305a7.77 7.77 0 0 0-1.123.053c-.636.086-.96.47-.96 1.112 0 .205.026.416.066.622.103.507.45.78.944.837 1.123.127 2.247.138 3.37-.05.675-.114 1.08-.54 1.16-1.208.152-1.3.155-2.587-.228-3.845-.33-1.092-1.006-1.565-2.134-1.7l-3.36-.54c-1.06-.193-1.7-.887-1.92-1.9-.13-.572-.14-1.17-.214-1.757-.013-.106-.074-.208-.1-.3-.04.1-.106.212-.117.326-.066.68-.053 1.373-.185 2.04-.16.8-.404 1.566-.67 2.33-.185.535-.616.837-1.205.8a37.76 37.76 0 0 1-7.123-1.353l-.64-.207c-.927-.26-1.487-.903-1.74-1.787l-1-3.853-.74-4.3c-.115-.755-.2-1.523-.083-2.293.154-1.112.914-1.903 2.04-1.964l3.558-.062c.127 0 .254.003.373-.026a1.23 1.23 0 0 0 1.01-1.255l-.05-3.036c-.048-1.576.8-2.38 2.156-2.622a10.58 10.58 0 0 1 4.91.26c.933.275 1.467.923 1.715 1.83.058.22.146.3.37.287l2.582.01 3.333.37c.686.095 1.364.25 2.032.42 1.165.298 1.793 1.112 1.962 2.256l.357 3.355.3 5.577.01 2.277zm-4.534-1.155c-.02-.666-.07-1.267-.444-1.784a1.66 1.66 0 0 0-2.469-.15c-.364.4-.494.88-.564 1.4-.008.034.106.126.16.126l.8-.053c.768.007 1.523.113 2.25.393.066.026.136.04.265.077zM8.787 1.154a3.82 3.82 0 0 0-.278 1.592l.05 2.934c.005.357-.075.45-.433.45L5.1 6.156c-.583 0-1.143.1-1.554.278l5.2-5.332c.02.013.04.033.06.053z" }))); };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SvgEvernoteIcon);
-
-
-/***/ }),
-
 /***/ "./src/routes/+controller.tsx":
 /*!************************************!*\
   !*** ./src/routes/+controller.tsx ***!
@@ -42529,7 +42497,7 @@ var App = function () {
             id: getId(),
             type: 'textnode',
             position: position,
-            data: { label: component.name },
+            data: __assign({ label: component.name }, component),
         };
         console.log("Node created: ", newNode);
         setNodes(function (nds) { return nds.concat(newNode); });
@@ -42610,21 +42578,21 @@ var App = function () {
             return nextEdges;
         });
     }, [getClosestEdge]);
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "flex flex-row min-h-screen lg:flex-row", style: { width: '100%' } },
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "flex flex-row min-h-screen lg:flex-row", style: { width: '100%', background: '#F8F8F8' } },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], { nodeName: nodeName, setNodeName: setNodeName, selectedNode: selectedElements[0], setSelectedElements: setSelectedElements }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "flex-grow h-screen", ref: reactFlowWrapper },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(reactflow__WEBPACK_IMPORTED_MODULE_3__.ReactFlow, { nodes: nodes, nodeTypes: nodeTypes, edges: edges, onNodesChange: onNodesChange, onEdgesChange: onEdgesChange, onNodeDrag: onNodeDrag, onNodeDragStop: onNodeDragStop, onConnect: onConnect, onInit: setReactFlowInstance, onDrop: onDrop, onDragOver: onDragOver, style: rfStyle, onNodeClick: onNodeClick, onPaneClick: function () {
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(reactflow__WEBPACK_IMPORTED_MODULE_3__.ReactFlow, { color: "yellow", nodes: nodes, nodeTypes: nodeTypes, edges: edges, onNodesChange: onNodesChange, onEdgesChange: onEdgesChange, onNodeDrag: onNodeDrag, onNodeDragStop: onNodeDragStop, onConnect: onConnect, onInit: setReactFlowInstance, onDrop: onDrop, onDragOver: onDragOver, style: rfStyle, onNodeClick: onNodeClick, onPaneClick: function () {
                     setSelectedElements([]); // Reset selected elements when clicking on pane
                     setNodes(function (nodes) {
                         return nodes.map(function (n) { return (__assign(__assign({}, n), { selected: false })); });
                     });
                 }, fitView: true, snapToGrid: true, defaultEdgeOptions: {
-                    type: 'straight',
+                    type: 'simplebezier',
                     markerEnd: {
                         type: reactflow__WEBPACK_IMPORTED_MODULE_3__.MarkerType.ArrowClosed,
                     }
                 } },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(reactflow__WEBPACK_IMPORTED_MODULE_4__.Background, { variant: reactflow__WEBPACK_IMPORTED_MODULE_4__.BackgroundVariant.Dots, gap: 12, size: 1 }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(reactflow__WEBPACK_IMPORTED_MODULE_4__.Background, { color: "transparent", gap: 12, size: 1 }),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement(reactflow__WEBPACK_IMPORTED_MODULE_5__.Controls, null),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement(reactflow__WEBPACK_IMPORTED_MODULE_6__.MiniMap, { zoomable: true, pannable: true }),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement(reactflow__WEBPACK_IMPORTED_MODULE_3__.Panel, { position: "top-right" },
@@ -42656,13 +42624,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var reactflow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactflow */ "./node_modules/@reactflow/core/dist/esm/index.mjs");
-/* harmony import */ var _icons_Evernote_EvernoteIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../icons/Evernote/EvernoteIcon */ "./src/icons/Evernote/EvernoteIcon.tsx");
+/* harmony import */ var reactflow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactflow */ "./node_modules/@reactflow/core/dist/esm/index.mjs");
 var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
 };
-
 
 
 
@@ -42672,19 +42638,23 @@ var handleRClassName = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.css)(templat
 ])));
 //custome node
 function TextNode(_a) {
+    var _b, _c, _d, _e, _f;
     var data = _a.data, selected = _a.selected;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_icons_Evernote_EvernoteIcon__WEBPACK_IMPORTED_MODULE_2__["default"], { fill: "white", width: '40px', height: '40px' })), react__WEBPACK_IMPORTED_MODULE_1___default().createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null,
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement(reactflow__WEBPACK_IMPORTED_MODULE_3__.Handle, { id: "a", type: "target", position: reactflow__WEBPACK_IMPORTED_MODULE_3__.Position.Left, className: handleLClassName }),
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement(reactflow__WEBPACK_IMPORTED_MODULE_3__.Handle, { id: "b", type: "source", position: reactflow__WEBPACK_IMPORTED_MODULE_3__.Position.Right, className: handleRClassName })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(data.label)
-        .whiteSpace('nowrap'))
-        .top('60px')
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)((_b = data.service) === null || _b === void 0 ? void 0 : _b.icon).allWidth(30).allHeight(30)).width().height(), react__WEBPACK_IMPORTED_MODULE_1___default().createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null,
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement(reactflow__WEBPACK_IMPORTED_MODULE_2__.Handle, { id: "a", type: "target", position: reactflow__WEBPACK_IMPORTED_MODULE_2__.Position.Left, className: handleLClassName }),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement(reactflow__WEBPACK_IMPORTED_MODULE_2__.Handle, { id: "b", type: "source", position: reactflow__WEBPACK_IMPORTED_MODULE_2__.Position.Right, className: handleRClassName })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(data.label).fontSize(12).fontWeight('500')
+        .whiteSpace('nowrap')
+        .foregroundColor('#33333377')
+        .fontFamily('Inter, Helvetica Neue, Helvetica, Arial, sans-serif'))
+        .top('70px')
         .width().height()
         .position('absolute'))
-        .background('#C73A63')
+        .filter('drop-shadow(4px 10px 10px rgba(0, 0, 0, 0.3))')
+        .background((_d = (_c = data.service) === null || _c === void 0 ? void 0 : _c.theme) !== null && _d !== void 0 ? _d : '')
         .allWidth(64)
         .allHeight(64)
         .cornerRadius('50%')
-        .border('solid 3px white')
+        .border("solid 3px ".concat((_f = (_e = data.service) === null || _e === void 0 ? void 0 : _e.theme) !== null && _f !== void 0 ? _f : 'white'))
         .render());
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TextNode);
@@ -42806,7 +42776,7 @@ var AccordionDemo = function (_a) {
                                     groups[component.groupName].push(component);
                                 });
                                 return (_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(Object.getOwnPropertyNames(groups))(function (group) {
-                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(group).textTransform('uppercase').fontSize(12).foregroundColor('#525252').fontWeight('700')], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(groups[group])(function (component) {
+                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(group).textTransform('uppercase').fontSize(12).foregroundColor('#525252').fontWeight('700')).height().marginTop(10)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(groups[group])(function (component) {
                                         var _a, _b;
                                         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIImage)((_a = component.service.icon) !== null && _a !== void 0 ? _a : '')
                                             .allWidth(20).allHeight(20))

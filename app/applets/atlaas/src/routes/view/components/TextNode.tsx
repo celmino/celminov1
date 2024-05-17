@@ -1,4 +1,4 @@
-import { HStack, Icon, ReactView, Text, VStack, css } from "@tuval/forms";
+import { HStack, Icon, ReactView, Text, UIImage, VStack, css } from "@tuval/forms";
 import React, { Fragment } from "react";
 import { Handle, Position } from "reactflow";
 import SvgEvernoteIcon from "../../../icons/Evernote/EvernoteIcon";
@@ -28,9 +28,10 @@ const handleRClassName = css`
 function TextNode({ data, selected }) {
   return (
     VStack(
-      ReactView(
-        <SvgEvernoteIcon fill={"white"} width={'40px'} height={'40px'}></SvgEvernoteIcon>
-      ),
+      HStack(
+        UIImage(data.service?.icon).allWidth(30).allHeight(30)
+      ).width().height()
+      ,
       <Fragment>
         <Handle
           id="a"
@@ -47,18 +48,24 @@ function TextNode({ data, selected }) {
         />
       </Fragment>,
       HStack(
-        Text(data.label)
-        .whiteSpace('nowrap')
+        Text(data.label).fontSize(12).fontWeight('500')
+          .whiteSpace('nowrap')
+          .foregroundColor('#33333377')
+          .fontFamily('Inter, Helvetica Neue, Helvetica, Arial, sans-serif')
       )
-      .top('60px')
-      .width().height()
-      .position('absolute')
+     
+        .top('70px')
+        .width().height()
+        .position('absolute')
+        
     )
-      .background('#C73A63')
+
+    .filter('drop-shadow(4px 10px 10px rgba(0, 0, 0, 0.3))')
+      .background(data.service?.theme ?? '')
       .allWidth(64)
       .allHeight(64)
       .cornerRadius('50%')
-      .border('solid 3px white')
+      .border(`solid 3px ${data.service?.theme ?? 'white'}`)
       .render()
 
 

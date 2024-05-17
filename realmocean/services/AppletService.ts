@@ -9,6 +9,19 @@ class AppletService extends RealmoceanService {
     public  get uid(): string {
         return 'com.celmino.service.applet';
     }
+    
+      get displayName(): string {
+        return 'Applet Service'
+      }
+    
+      get theme(): string {
+        return "#7B68EE";
+      }
+    
+      get icon(): string {
+        return "/images/services/mining.png";
+      }
+
     async init() {
         const myTest = new MyTestClass();
         myTest.print();
