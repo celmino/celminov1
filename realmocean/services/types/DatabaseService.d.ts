@@ -1,4 +1,5 @@
 
+  
 export interface DatabaseService {
     create(projectId: string, databaseId: string, name: string, enabled?: boolean);
     createCollection(projectId: string, databaseId: string, collectionId: string, name: string, permissions?: string[], documentSecurity?: boolean, enabled?: boolean) ;
