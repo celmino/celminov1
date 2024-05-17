@@ -111,7 +111,7 @@ export class GeneralSettingsController extends UIFormController {
                     )
                         .height()
                         .margin('0 0 30px'),
-                    ColorSelect({
+                    (ColorSelect as any)({
                         onSelect: (color) => {
                             updateDocument({
                                 databaseId: 'workspace',

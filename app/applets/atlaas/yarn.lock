@@ -1824,10 +1824,10 @@
   resolved "https://registry.npmjs.org/@realmocean/navigations/-/navigations-0.0.3.tgz"
   integrity sha512-zsNno1NP0GIP53xaFy0m+DpqPiyGD0bOb8TFl5PjjiUd/ndlPbupoZdligDHvCAIJ2U7v+NnJ9LWO6OA8sChUQ==
 
-"@realmocean/sdk@^1.0.128":
-  version "1.0.128"
-  resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.128.tgz"
-  integrity sha512-b6Eh68xYnWI+hBveaFOPVXDanbLDQEPl29WrJqQWLTsIDKiHoq/3lFhVEX7wKJcd/2socIpQF+FXGjS29AkW/Q==
+"@realmocean/sdk@^1.0.149":
+  version "1.0.149"
+  resolved "https://registry.yarnpkg.com/@realmocean/sdk/-/sdk-1.0.149.tgz#666a8a4e676aea84025fa390c64b8c8576206fa1"
+  integrity sha512-xv71Gh+Vo3oCZxbrc3m/EgYkue7rTZxZxQ8YHS3iReuHSNfvVTTOv6W+Yn5jOctXecA3vMK4wjpa/j21WhLJbg==
   dependencies:
     "@editorjs/image" "^2.8.1"
     "@editorjs/inline-code" "^1.4.0"
@@ -1849,10 +1849,10 @@
     to-string-loader "^1.2.0"
     web-vitals "^3.5.2"
 
-"@realmocean/sdk@^1.0.149":
-  version "1.0.149"
-  resolved "https://registry.yarnpkg.com/@realmocean/sdk/-/sdk-1.0.149.tgz#666a8a4e676aea84025fa390c64b8c8576206fa1"
-  integrity sha512-xv71Gh+Vo3oCZxbrc3m/EgYkue7rTZxZxQ8YHS3iReuHSNfvVTTOv6W+Yn5jOctXecA3vMK4wjpa/j21WhLJbg==
+"@realmocean/sdk@^1.0.164":
+  version "1.0.164"
+  resolved "https://registry.yarnpkg.com/@realmocean/sdk/-/sdk-1.0.164.tgz#346344da6a2570a9fb1ee9ebae6f131d73b218e0"
+  integrity sha512-vlmK5n0FfWfZfK1Q88dCz/AFNzkCgpN5mPajTN0zdm14+Dt1zOKc3Rg8XDUzLen6Fr2xR+mj9ghEEr2pyvpphQ==
   dependencies:
     "@editorjs/image" "^2.8.1"
     "@editorjs/inline-code" "^1.4.0"
@@ -2001,6 +2001,33 @@
     react-dom "^18.2.0"
     react-sortable-hoc "^2.0.0"
     trackjs "^3.10.1"
+
+"@tuval/forms@^1.0.183":
+  version "1.0.183"
+  resolved "https://registry.yarnpkg.com/@tuval/forms/-/forms-1.0.183.tgz#e847c642a8472593ab887821b4a7c20b8d261a04"
+  integrity sha512-Gi0aNLqGtzPilelF1Lv3v9PQAZ2LMW1d7xrSNyaI6LXuKL3MgSm1keEpebx515bD1V1bvvH9npxK3W31Spk2zA==
+  dependencies:
+    "@codemirror/lang-json" "^6.0.1"
+    "@dnd-kit/core" "^6.0.8"
+    "@dnd-kit/modifiers" "^6.0.1"
+    "@dnd-kit/sortable" "^7.0.2"
+    "@dnd-kit/utilities" "^3.2.1"
+    "@tanstack/react-query" "^4.35.7"
+    "@types/react" "^18.0.27"
+    dayjs "^1.11.9"
+    handlebars "^4.7.7"
+    history "^5.3.0"
+    http-server "^14.1.1"
+    json-beautify "^1.1.1"
+    monday-ui-react-core "^2.82.0"
+    nanoid "^4.0.2"
+    object-path "^0.11.8"
+    primereact "10.2.1"
+    react "^18.2.0"
+    react-dom "^18.2.0"
+    react-sortable-hoc "^2.0.0"
+    trackjs "^3.10.1"
+    usehooks-ts "^3.1.0"
 
 "@types/babel__core@^7.0.0":
   version "7.20.5"
@@ -3327,6 +3354,20 @@ css-loader@^6.9.0:
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-6.11.0.tgz#33bae3bf6363d0a7c2cf9031c96c744ff54d85ba"
   integrity sha512-CTJ+AEQJjq5NzLga5pE39qdiSV56F8ywCIsqNIRF0r7BDgWsN25aazToqAFg7ZrtA/U016xudB3ffgweORxX7g==
+  dependencies:
+    icss-utils "^5.1.0"
+    postcss "^8.4.33"
+    postcss-modules-extract-imports "^3.1.0"
+    postcss-modules-local-by-default "^4.0.5"
+    postcss-modules-scope "^3.2.0"
+    postcss-modules-values "^4.0.0"
+    postcss-value-parser "^4.2.0"
+    semver "^7.5.4"
+
+css-loader@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-7.1.1.tgz#de4163c0cb765c03d7957eb9e0a49c7f354948c7"
+  integrity sha512-OxIR5P2mjO1PSXk44bWuQ8XtMK4dpEqpIyERCx3ewOo3I8EmbcxMPUc5ScLtQfgXtOojoMv57So4V/C02HQLsw==
   dependencies:
     icss-utils "^5.1.0"
     postcss "^8.4.33"
@@ -6554,6 +6595,13 @@ sass-loader@^13.3.2:
   dependencies:
     neo-async "^2.6.2"
 
+sass-loader@^14.2.1:
+  version "14.2.1"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-14.2.1.tgz#db9ad96b56dc1c1ea546101e76375d5b008fec70"
+  integrity sha512-G0VcnMYU18a4N7VoNDegg2OuMjYtxnqzQWARVWCIVSZwJeiL9kg8QMsuIZOplsJgTzZLF6jGxI3AClj8I9nRdQ==
+  dependencies:
+    neo-async "^2.6.2"
+
 sass@^1.63.6, sass@^1.70.0:
   version "1.71.1"
   resolved "https://registry.npmjs.org/sass/-/sass-1.71.1.tgz"
@@ -6850,6 +6898,11 @@ style-loader@^3.3.3:
   version "3.3.4"
   resolved "https://registry.npmjs.org/style-loader/-/style-loader-3.3.4.tgz"
   integrity sha512-0WqXzrsMTyb8yjZJHDqwmnwRJvhALK9LfRtRc6B4UTWe8AijYLZYZ9thuJTZc2VfQWINADW/j+LiJnfy2RoC1w==
+
+style-loader@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-4.0.0.tgz#0ea96e468f43c69600011e0589cb05c44f3b17a5"
+  integrity sha512-1V4WqhhZZgjVAVJyt7TdDPZoPBPNHbekX4fWnCJL1yQukhCeZhJySUL+gL9y6sNdN95uEOS83Y55SqHcP7MzLA==
 
 style-mod@^4.0.0, style-mod@^4.1.0:
   version "4.1.2"

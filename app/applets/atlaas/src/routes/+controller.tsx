@@ -14,7 +14,7 @@ import {
 import React from "react";
 import { ActionPanel } from "../views/ActionPanel";
 import { ViewHeader } from "../views/ViewHeader";
-import App from "./view/flow";
+import App from "./view/Page";
 
 
 export class AppletController extends UIController {
@@ -36,9 +36,9 @@ export class AppletController extends UIController {
                                     EventBus.Default.fire('applet.added', { treeItem: applet })
                                 }) */
                             }),
-                            ReactView(
+                             ReactView(
                                 <App></App>
-                               )
+                               ) 
 
                         )
                             .render()

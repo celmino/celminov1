@@ -1,10 +1,8 @@
 import { HStack, Icon, ReactView, Text, VStack, css } from "@tuval/forms";
 import React, { Fragment } from "react";
 import { Handle, Position } from "reactflow";
-import { AirbyteIcon } from "../../../../../icons/Airbyte";
-import SvgAirbyte from "../../../../../icons/Airbyte/Airbyte";
-import SvgAzure from "../../../../../icons/Azure/Azure";
-import SvgEvernoteIcon from "../../../../../icons/Evernote/EvernoteIcon";
+import SvgEvernoteIcon from "../../../icons/Evernote/EvernoteIcon";
+
 
 const handleLClassName = css`
 & {

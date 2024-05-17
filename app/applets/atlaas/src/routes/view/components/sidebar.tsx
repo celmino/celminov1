@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from "react";
-import { useListComponents } from '@realmocean/sdk'
-import { ForEach, HStack, ReactView, Text, TextAlignment, VStack, cLeading, cTopLeading, css } from "@tuval/forms";
-import { is } from "@tuval/core";
 import * as Accordion from '@radix-ui/react-accordion';
+import { ChevronDownIcon, Cross2Icon } from "@radix-ui/react-icons";
+import { useListComponents } from '@realmocean/sdk';
+import { is } from "@tuval/core";
+import { ForEach, HStack, ReactView, Text, TextAlignment, VStack, cLeading, cTopLeading, css } from "@tuval/forms";
 import classNames from "classnames";
-import { ChevronDownIcon, Cross2Icon, MixerHorizontalIcon } from "@radix-ui/react-icons";
-import SvgEvernoteIcon from "../../../../../icons/Evernote/EvernoteIcon";
+import React, { Fragment, useState } from "react";
+
 import * as Popover from '@radix-ui/react-popover';
 
 const className = css`
@@ -220,12 +220,15 @@ const AccordionDemo = ({ onDragStart }) => {
                             .cornerRadius(6)
                             .background('white')
                             .draggable(true)
-                            .onDragStart((event) => {
+                             .onDragStart((event) => {
                               setDragging(true);
                               onDragStart(event, JSON.stringify(component));
                             })
                             .onDragEnd(() => {
                               setDragging(false);
+                            }) 
+                            .onDragOver((event)=> {
+                              event.preventDefault();
                             })
                             .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
                             .cursor('grab')

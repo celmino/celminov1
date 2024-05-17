@@ -317,7 +317,7 @@ const App = () => {
 
 
     return (
-        <div className="flex flex-row min-h-screen lg:flex-row">
+        <div className="flex flex-row min-h-screen lg:flex-row" style={{width:'100%'}}>
             <Sidebar
                 nodeName={nodeName}
                 setNodeName={setNodeName}

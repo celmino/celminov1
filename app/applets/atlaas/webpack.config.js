@@ -113,21 +113,6 @@ const umdConfig = {
                     "style-loader",
                     // Translates CSS into CommonJS
                     "css-loader",
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    [
-                                        "postcss-preset-env",
-                                        {
-                                            // Options
-                                        },
-                                    ],
-                                ],
-                            },
-                        },
-                    },
                     // Compiles Sass to CSS
                     "sass-loader",
                 ],

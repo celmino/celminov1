@@ -85,6 +85,7 @@ export const ActionsPanelButton = (icon, action = void 0, label = null) => (
                 .foregroundColor('#212526') : Fragment()
 
     )
+    .draggable(true)
         .foregroundColor('rgb(109, 122, 131)')
         .cursor('pointer')
         .cornerRadius(6)

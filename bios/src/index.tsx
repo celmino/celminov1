@@ -2,7 +2,7 @@ import { EventBus } from '@tuval/core';
 import { StartBios } from '@tuval/forms';
 
 import { MainController } from './NewBiosController';
- import './css/global.scss';
+//import './css/global.scss';
 
 declare var gapi;
 
@@ -47,7 +47,7 @@ const params: any = new Proxy(new URLSearchParams(window.location.search), {
 
 window.addEventListener("load", (event) => {
 
-       
+
 
     StartBios(MainController);
 
