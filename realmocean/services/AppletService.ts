@@ -67,6 +67,7 @@ class AppletService extends RealmoceanService {
 
         appletId = applet.$id;
 
+        
         // Create Applet Tree Item Document
         await this.databaseService.createDocument(realmId, 'workspace', 'ws_tree', appletId, {
             name: schema.name,
