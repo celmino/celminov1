@@ -10,6 +10,7 @@ import {
     HStack,
     Icon,
     PopupButton,
+    ReactView,
     ScrollView,
     SvgIcon,
     Text,
@@ -247,200 +248,206 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
             return (
                 !matches ? Fragment() :
-                    VStack({ alignment: cTopLeading })(
-                        /* HStack().width(200).height(100).background('yellow')
-                            .onClick(() => {
-                               // createTeam({id:'admins', name:'admins'})
-                               createTeamMembership({teamId:'admins',roles:[],url:'http://localhost:9501', email:'stanoncloud@gmail.com'})
-                            }), */
-                        VStack({ alignment: cTopLeading, spacing: 5 })(
-                            HStack(
-                                PopupButton(
-
-                                    HStack({ alignment: cLeading, spacing: 6 })(
-                                        HStack(
-                                            UIWidget("com.tuvalsoft.widget.icons")
-                                                .config({
-                                                    readonly: true,
-                                                    selectedIcon: 'bookmark', //iconInfo.iconName,
-                                                    selectedCategory: 'Icons',//iconInfo.iconCategory,
-                                                    width: 32,
-                                                    height: 32,
-                                                    padding: 1,
-                                                    color: '#0E7169',
-                                                    onChange: (iconInfo) => {
-                                                        setIconInfo(iconInfo)
-                                                    }
-                                                })
-                                        ).width(36).height(36)
-                                            //.shadow('0px 1px 4px rgba(81,97,108,0.1), 0 0 0 1px rgba(229,232,235,0.5)')
-                                            .cornerRadius(6),
-                                        VStack({ alignment: cLeading })(
-                                            Text('REALM').fontSize(12),
-                                            HStack({ alignment: cLeading })(
-                                                Text(realm?.name).fontSize(16).fontWeight('500')
-                                                    .foregroundColor('rgb(21, 23, 25)')
-                                                    .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol'),
-                                            ).height()
-                                        ).height(),
-                                        Icon(DownIcon)
-
-                                    )
-                                        .height().cursor('pointer')
-                                        .padding(cHorizontal, 10)
-                                        .padding(cVertical, 5)
-                                        .background({ hover: '#E8EAED' })
-                                        .cornerRadius(6)
-
-                                )(
-                                    UIViewBuilder(() => {
-                                        // const { me } = useGetMe('console');
-
-                                        return (
-                                            VStack({ alignment: cTopLeading })(
-                                                VStack(
-                                                    HStack({ alignment: cLeading, spacing: 5 })(
-                                                        HStack().width(30).height(30).cornerRadius('50%').background('gray'),
-                                                        VStack({ alignment: cLeading })(
-                                                            Text(realm.name).fontSize(14).foregroundColor('#212526'),
-                                                            Text(account.email).fontSize(12).foregroundColor('#6d7a83'),
-                                                        )
-                                                    ).padding(5)
-                                                        .cornerRadius(6)
-                                                        .background({ hover: '#ECEEEF' }),
-                                                    HStack({ alignment: cLeading, spacing: 5 })(
-                                                        Icon(SvgIcon('cu3-icon-settings')),
-                                                        Text('Settings')
-                                                    )
-                                                        .cursor('pointer')
-                                                        .padding(5)
-                                                        .height()
-                                                        .onClick(() => {
-                                                            navigate('settings/general')
-
-                                                        }),
-                                                ).padding(5),
-                                                HDivider().height(1).background('#ECEDEE'),
-                                                VStack({ alignment: cTopLeading })(
-                                                    HStack({ alignment: cLeading, spacing: 5 })(
-                                                        Icon(SvgIcon('cu3-icon-settings')),
-                                                        Text('Change Realm')
-                                                    )
-                                                        .cursor('pointer')
-                                                        .padding(5)
-                                                        .height()
-                                                        .onClick(() => {
-                                                            const protocol = useGetProtocol();
-                                                            const domainName = useGetHDomainName();
-                                                            window.location.href = window.location.href.indexOf('localhost') > -1 ? `${protocol}//${domainName}/app` : 'https://celmino.io/app'
-
-                                                        }),
-                                                    HStack({ alignment: cLeading, spacing: 5 })(
-                                                        Icon(SvgIcon('cu3-icon-settings')),
-                                                        Text('Logout')
-                                                    )
-                                                        .cursor('pointer')
-                                                        .padding(5)
-                                                        .height()
-                                                        .onClick(() => {
-                                                            const protocol = useGetProtocol();
-                                                            const domainName = useGetHDomainName();
-
-                                                          
-                                                            deleteSession({ sessionId: 'current' }, () => {
-                                                                window.location.href = window.location.href.indexOf('localhost') > -1 ? `${protocol}//${domainName}/logout` : 'https://celmino.io/logout'
-                                                            });
-
-
-                                                        }),
-                                                    ...ForEach(/* realms */[])(realm => (
-                                                        HStack({ alignment: cLeading })(
-                                                            Text(realm.name)
-
-                                                        ).background({ hover: '#E8EAED' })
-                                                            .cursor('pointer')
-                                                            .padding(5)
-                                                            .onClick(() => {
-
-                                                                updatePrefs({
-                                                                    prefs: {
-                                                                        ...(account?.prefs ? account?.prefs : {}),
-                                                                        workspace: realm.$id
-                                                                    }
-                                                                })
-                                                                _hideHandle();
-                                                                // navigate(`/@/workspace/${realm.$id}`)
-                                                            })
-                                                    ))
-                                                )
-                                                    //  .onClick(() => navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`))
-                                                    .padding()
-                                            ).width(250)
-                                        )
-                                    })
-                                )
-                                    .hideHandle(hideHandle => _hideHandle = hideHandle)
-                                    .dialogPosition(DialogPosition.BOTTOM)
-                            )
-                                .height()
-                                .padding('8px 8px 8px 0px'),
-
-                            isAnonymous ? Fragment() :
+                    ReactView(
+                        <div id={"AAAA"}>
+                            {
                                 VStack({ alignment: cTopLeading })(
-                                    HDivider().height(1).background('#ECEDEE'),
-                                    VStack({ alignment: cTopLeading, spacing: 2 })(
-                                        ...ForEach(topMenu)(menuItem =>
-                                            HStack({ alignment: cLeading, spacing: 8 })(
-                                                Icon(menuItem.icon),
-                                                Text(menuItem.title)
-                                                    .foregroundColor('rgb(21, 23, 25)')
-                                                    .fontFamily('"system-ui",-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif')
+                                    /* HStack().width(200).height(100).background('yellow')
+                                        .onClick(() => {
+                                            // createTeam({id:'admins', name:'admins'})
+                                            createTeamMembership({ teamId: 'admins', roles: [], url: 'http://localhost:9501', email: 'stanoncloud@gmail.com' })
+                                        }), */
+                                    VStack({ alignment: cTopLeading, spacing: 5 })(
+                                        HStack(
+                                            PopupButton(
+
+                                                HStack({ alignment: cLeading, spacing: 6 })(
+                                                    HStack(
+                                                        UIWidget("com.tuvalsoft.widget.icons")
+                                                            .config({
+                                                                readonly: true,
+                                                                selectedIcon: 'bookmark', //iconInfo.iconName,
+                                                                selectedCategory: 'Icons',//iconInfo.iconCategory,
+                                                                width: 32,
+                                                                height: 32,
+                                                                padding: 1,
+                                                                color: '#0E7169',
+                                                                onChange: (iconInfo) => {
+                                                                    setIconInfo(iconInfo)
+                                                                }
+                                                            })
+                                                    ).width(36).height(36)
+                                                        //.shadow('0px 1px 4px rgba(81,97,108,0.1), 0 0 0 1px rgba(229,232,235,0.5)')
+                                                        .cornerRadius(6),
+                                                    VStack({ alignment: cLeading })(
+                                                        Text('REALM').fontSize(12),
+                                                        HStack({ alignment: cLeading })(
+                                                            Text(realm?.name).fontSize(16).fontWeight('500')
+                                                                .foregroundColor('rgb(21, 23, 25)')
+                                                                .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol'),
+                                                        ).height()
+                                                    ).height(),
+                                                    Icon(DownIcon)
+
+                                                )
+                                                    .height().cursor('pointer')
+                                                    .padding(cHorizontal, 10)
+                                                    .padding(cVertical, 5)
+                                                    .background({ hover: '#E8EAED' })
+                                                    .cornerRadius(6)
+
+                                            )(
+                                                UIViewBuilder(() => {
+                                                    // const {me} = useGetMe('console');
+
+                                                    return (
+                                                        VStack({ alignment: cTopLeading })(
+                                                            VStack(
+                                                                HStack({ alignment: cLeading, spacing: 5 })(
+                                                                    HStack().width(30).height(30).cornerRadius('50%').background('gray'),
+                                                                    VStack({ alignment: cLeading })(
+                                                                        Text(realm.name).fontSize(14).foregroundColor('#212526'),
+                                                                        Text(account.email).fontSize(12).foregroundColor('#6d7a83'),
+                                                                    )
+                                                                ).padding(5)
+                                                                    .cornerRadius(6)
+                                                                    .background({ hover: '#ECEEEF' }),
+                                                                HStack({ alignment: cLeading, spacing: 5 })(
+                                                                    Icon(SvgIcon('cu3-icon-settings')),
+                                                                    Text('Settings')
+                                                                )
+                                                                    .cursor('pointer')
+                                                                    .padding(5)
+                                                                    .height()
+                                                                    .onClick(() => {
+                                                                        navigate('settings/general')
+
+                                                                    }),
+                                                            ).padding(5),
+                                                            HDivider().height(1).background('#ECEDEE'),
+                                                            VStack({ alignment: cTopLeading })(
+                                                                HStack({ alignment: cLeading, spacing: 5 })(
+                                                                    Icon(SvgIcon('cu3-icon-settings')),
+                                                                    Text('Change Realm')
+                                                                )
+                                                                    .cursor('pointer')
+                                                                    .padding(5)
+                                                                    .height()
+                                                                    .onClick(() => {
+                                                                        const protocol = useGetProtocol();
+                                                                        const domainName = useGetHDomainName();
+                                                                        window.location.href = window.location.href.indexOf('localhost') > -1 ? `${protocol}//${domainName}/app` : 'https://celmino.io/app'
+
+                                                                    }),
+                                                                HStack({ alignment: cLeading, spacing: 5 })(
+                                                                    Icon(SvgIcon('cu3-icon-settings')),
+                                                                    Text('Logout')
+                                                                )
+                                                                    .cursor('pointer')
+                                                                    .padding(5)
+                                                                    .height()
+                                                                    .onClick(() => {
+                                                                        const protocol = useGetProtocol();
+                                                                        const domainName = useGetHDomainName();
+
+
+                                                                        deleteSession({ sessionId: 'current' }, () => {
+                                                                            window.location.href = window.location.href.indexOf('localhost') > -1 ? `${protocol}//${domainName}/logout` : 'https://celmino.io/logout'
+                                                                        });
+
+
+                                                                    }),
+                                                                ...ForEach(/* realms */[])(realm => (
+                                                                    HStack({ alignment: cLeading })(
+                                                                        Text(realm.name)
+
+                                                                    ).background({ hover: '#E8EAED' })
+                                                                        .cursor('pointer')
+                                                                        .padding(5)
+                                                                        .onClick(() => {
+
+                                                                            updatePrefs({
+                                                                                prefs: {
+                                                                                    ...(account?.prefs ? account?.prefs : {}),
+                                                                                    workspace: realm.$id
+                                                                                }
+                                                                            })
+                                                                            _hideHandle();
+                                                                            // navigate(`/@/workspace/${realm.$id}`)
+                                                                        })
+                                                                ))
+                                                            )
+                                                                //  .onClick(() => navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`))
+                                                                .padding()
+                                                        ).width(250)
+                                                    )
+                                                })
                                             )
-                                                .allHeight(28)
-                                                .padding('6px 5px')
-                                                .background({ hover: '#E8EAED' })
-                                                .cornerRadius(6)
-                                                .cursor('pointer')
-                                                .margin('0 8px')
+                                                .hideHandle(hideHandle => _hideHandle = hideHandle)
+                                                .dialogPosition(DialogPosition.BOTTOM)
                                         )
+                                            .height()
+                                            .padding('8px 8px 8px 0px'),
 
-                                    ).paddingTop('6px')
+                                        isAnonymous ? Fragment() :
+                                            VStack({ alignment: cTopLeading })(
+                                                HDivider().height(1).background('#ECEDEE'),
+                                                VStack({ alignment: cTopLeading, spacing: 2 })(
+                                                    ...ForEach(topMenu)(menuItem =>
+                                                        HStack({ alignment: cLeading, spacing: 8 })(
+                                                            Icon(menuItem.icon),
+                                                            Text(menuItem.title)
+                                                                .foregroundColor('rgb(21, 23, 25)')
+                                                                .fontFamily('"system-ui",-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif')
+                                                        )
+                                                            .allHeight(28)
+                                                            .padding('6px 5px')
+                                                            .background({ hover: '#E8EAED' })
+                                                            .cornerRadius(6)
+                                                            .cursor('pointer')
+                                                            .margin('0 8px')
+                                                    )
+
+                                                ).paddingTop('6px')
+                                            )
+                                                //.padding()
+                                                .height(),
+
+
+                                        ScrollView({ axes: cVertical, alignment: cTopLeading })
+                                            (
+                                                VStack({ alignment: cTopLeading })
+                                                    (
+
+                                                        // My Space
+                                                        isAnonymous ? Fragment() :
+
+                                                            PersonelRealmContext(() =>
+                                                                RealmTree('My Space', '@private')
+                                                            ),
+
+
+                                                        // Team Space
+                                                        account.$id === realm.$id ? Fragment() : isAnonymous ? Fragment() :
+                                                            RealmTree('Team Space', "@team", true),
+                                                        // Public Space
+
+                                                        RealmTree('Public Space', "@public"),
+                                                        HStack().height(50)
+                                                    )
+                                                    .height()
+                                            )
+                                    )
                                 )
-                                    //.padding()
-                                    .height(),
-
-
-                            ScrollView({ axes: cVertical, alignment: cTopLeading })
-                                (
-                                    VStack({ alignment: cTopLeading })
-                                        (
-                                          
-                                                // My Space
-                                                isAnonymous ? Fragment() :
-
-                                                    PersonelRealmContext(() =>
-                                                        RealmTree('My Space', '@private')
-                                                    ),
-
-
-                                            // Team Space
-                                            account.$id === realm.$id ? Fragment() :  isAnonymous ? Fragment() :
-                                                RealmTree('Team Space', "@team", true),
-                                            // Public Space
-
-                                            RealmTree('Public Space', "@public"),
-                                            HStack().height(50)
-                                        )
-                                        .height()
-                                )
-                        )
+                                    .fontFamily(fontFamily)
+                                    .allWidth(282)
+                                    .transition('width .3s cubic-bezier(.2,0,0,1) 0s')
+                                    .background('#F7F8F9')
+                                    .borderRight('1px solid rgba(0,0,0,0.05)')
+                                    .transition('width .2s ease-in-out').render()
+                            }
+                        </div>
                     )
-                        .fontFamily(fontFamily)
-                        .allWidth(282)
-                        .transition('width .3s cubic-bezier(.2,0,0,1) 0s')
-                        .background('#F7F8F9')
-                        .borderRight('1px solid rgba(0,0,0,0.05)')
-                        .transition('width .2s ease-in-out')
             )
         }
 

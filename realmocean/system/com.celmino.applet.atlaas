@@ -42743,6 +42743,15 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
         }
     return t;
 };
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 
 
 
@@ -42751,57 +42760,84 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
 
 
 
-var className = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n & {\n  width:100%;\n }\n\n.PopoverClose {\n  font-family: inherit;\n  border-radius: 100%;\n  height: 25px;\n  width: 25px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: var(--violet-11);\n  position: absolute;\n  top: 5px;\n  right: 5px;\n}\n.PopoverClose:hover {\n  background-color: var(--violet-4);\n}\n.PopoverClose:focus {\n  box-shadow: 0 0 0 2px var(--violet-7);\n}\n\n.IconButton {\n  font-family: inherit;\n  height: 35px;\n  width: 100%;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: var(--violet-11);\n  box-shadow: 0 2px 10px var(--black-a7);\n}\n.IconButton:hover {\n  background-color: var(--violet-3);\n}\n\n\n.Fieldset {\n  display: flex;\n  gap: 20px;\n  align-items: center;\n}\n\n.Label {\n  font-size: 13px;\n  color: var(--violet-11);\n  width: 75px;\n}\n\n.Input {\n  width: 100%;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  flex: 1;\n  border-radius: 4px;\n  padding: 0 10px;\n  font-size: 13px;\n  line-height: 1;\n  color: var(--violet-11);\n  box-shadow: 0 0 0 1px var(--violet-7);\n  height: 25px;\n}\n.Input:focus {\n  box-shadow: 0 0 0 2px var(--violet-8);\n}\n\n.Text {\n  margin: 0;\n  color: var(--mauve-12);\n  font-size: 15px;\n  line-height: 19px;\n  font-weight: 500;\n}\n\n@keyframes slideUpAndFade {\n  from {\n    opacity: 0;\n    transform: translateY(2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n@keyframes slideRightAndFade {\n  from {\n    opacity: 0;\n    transform: translateX(-2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n\n@keyframes slideDownAndFade {\n  from {\n    opacity: 0;\n    transform: translateY(-2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n@keyframes slideLeftAndFade {\n  from {\n    opacity: 0;\n    transform: translateX(2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n"], ["\n & {\n  width:100%;\n }\n\n.PopoverClose {\n  font-family: inherit;\n  border-radius: 100%;\n  height: 25px;\n  width: 25px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: var(--violet-11);\n  position: absolute;\n  top: 5px;\n  right: 5px;\n}\n.PopoverClose:hover {\n  background-color: var(--violet-4);\n}\n.PopoverClose:focus {\n  box-shadow: 0 0 0 2px var(--violet-7);\n}\n\n.IconButton {\n  font-family: inherit;\n  height: 35px;\n  width: 100%;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: var(--violet-11);\n  box-shadow: 0 2px 10px var(--black-a7);\n}\n.IconButton:hover {\n  background-color: var(--violet-3);\n}\n\n\n.Fieldset {\n  display: flex;\n  gap: 20px;\n  align-items: center;\n}\n\n.Label {\n  font-size: 13px;\n  color: var(--violet-11);\n  width: 75px;\n}\n\n.Input {\n  width: 100%;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  flex: 1;\n  border-radius: 4px;\n  padding: 0 10px;\n  font-size: 13px;\n  line-height: 1;\n  color: var(--violet-11);\n  box-shadow: 0 0 0 1px var(--violet-7);\n  height: 25px;\n}\n.Input:focus {\n  box-shadow: 0 0 0 2px var(--violet-8);\n}\n\n.Text {\n  margin: 0;\n  color: var(--mauve-12);\n  font-size: 15px;\n  line-height: 19px;\n  font-weight: 500;\n}\n\n@keyframes slideUpAndFade {\n  from {\n    opacity: 0;\n    transform: translateY(2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n@keyframes slideRightAndFade {\n  from {\n    opacity: 0;\n    transform: translateX(-2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n\n@keyframes slideDownAndFade {\n  from {\n    opacity: 0;\n    transform: translateY(-2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n@keyframes slideLeftAndFade {\n  from {\n    opacity: 0;\n    transform: translateX(2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n"])));
-var contentClass = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n\n\n  border-radius: 4px;\n  padding: 20px;\n  width: 460px;\n  background-color: white;\n  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 60px 0px;\n  animation-duration: 400ms;\n  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);\n  will-change: transform, opacity;\n\n&[data-state='open'][data-side='top'] {\n  animation-name: slideDownAndFade;\n}\n&[data-state='open'][data-side='right'] {\n  animation-name: slideLeftAndFade;\n}\n&[data-state='open'][data-side='bottom'] {\n  animation-name: slideUpAndFade;\n}\n&[data-state='open'][data-side='left'] {\n  animation-name: slideRight\n"], ["\n\n\n  border-radius: 4px;\n  padding: 20px;\n  width: 460px;\n  background-color: white;\n  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 60px 0px;\n  animation-duration: 400ms;\n  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);\n  will-change: transform, opacity;\n\n&[data-state='open'][data-side='top'] {\n  animation-name: slideDownAndFade;\n}\n&[data-state='open'][data-side='right'] {\n  animation-name: slideLeftAndFade;\n}\n&[data-state='open'][data-side='bottom'] {\n  animation-name: slideUpAndFade;\n}\n&[data-state='open'][data-side='left'] {\n  animation-name: slideRight\n"])));
+var className = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n & {\n  width:100%;\n }\n\n\n\n.IconButton {\n  font-family: inherit;\n  height: 35px;\n  width: 100%;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: var(--violet-11);\n  box-shadow: 0 2px 10px var(--black-a7);\n}\n.IconButton:hover {\n  background-color: var(--violet-3);\n}\n\n\n.Fieldset {\n  display: flex;\n  gap: 20px;\n  align-items: center;\n}\n\n.Label {\n  font-size: 13px;\n  color: var(--violet-11);\n  width: 75px;\n}\n\n.Input {\n  width: 100%;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  flex: 1;\n  border-radius: 4px;\n  padding: 0 10px;\n  font-size: 13px;\n  line-height: 1;\n  color: var(--violet-11);\n  box-shadow: 0 0 0 1px var(--violet-7);\n  height: 25px;\n}\n.Input:focus {\n  box-shadow: 0 0 0 2px var(--violet-8);\n}\n\n.Text {\n  margin: 0;\n  color: var(--mauve-12);\n  font-size: 15px;\n  line-height: 19px;\n  font-weight: 500;\n}\n\n@keyframes slideUpAndFade {\n  from {\n    opacity: 0;\n    transform: translateY(2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n@keyframes slideRightAndFade {\n  from {\n    opacity: 0;\n    transform: translateX(-2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n\n@keyframes slideDownAndFade {\n  from {\n    opacity: 0;\n    transform: translateY(-2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n@keyframes slideLeftAndFade {\n  from {\n    opacity: 0;\n    transform: translateX(2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n"], ["\n & {\n  width:100%;\n }\n\n\n\n.IconButton {\n  font-family: inherit;\n  height: 35px;\n  width: 100%;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: var(--violet-11);\n  box-shadow: 0 2px 10px var(--black-a7);\n}\n.IconButton:hover {\n  background-color: var(--violet-3);\n}\n\n\n.Fieldset {\n  display: flex;\n  gap: 20px;\n  align-items: center;\n}\n\n.Label {\n  font-size: 13px;\n  color: var(--violet-11);\n  width: 75px;\n}\n\n.Input {\n  width: 100%;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  flex: 1;\n  border-radius: 4px;\n  padding: 0 10px;\n  font-size: 13px;\n  line-height: 1;\n  color: var(--violet-11);\n  box-shadow: 0 0 0 1px var(--violet-7);\n  height: 25px;\n}\n.Input:focus {\n  box-shadow: 0 0 0 2px var(--violet-8);\n}\n\n.Text {\n  margin: 0;\n  color: var(--mauve-12);\n  font-size: 15px;\n  line-height: 19px;\n  font-weight: 500;\n}\n\n@keyframes slideUpAndFade {\n  from {\n    opacity: 0;\n    transform: translateY(2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n@keyframes slideRightAndFade {\n  from {\n    opacity: 0;\n    transform: translateX(-2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n\n@keyframes slideDownAndFade {\n  from {\n    opacity: 0;\n    transform: translateY(-2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n@keyframes slideLeftAndFade {\n  from {\n    opacity: 0;\n    transform: translateX(2px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n"])));
+var contentClass = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n\n  border-radius: 4px;\n  padding: 20px;\n  width: 460px;\n  background-color: white;\n  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 60px 0px;\n  animation-duration: 400ms;\n  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);\n  will-change: transform, opacity;\n\n&[data-state='open'][data-side='top'] {\n  animation-name: slideDownAndFade;\n}\n&[data-state='open'][data-side='right'] {\n  animation-name: slideLeftAndFade;\n}\n&[data-state='open'][data-side='bottom'] {\n  animation-name: slideUpAndFade;\n}\n&[data-state='open'][data-side='left'] {\n  animation-name: slideRight\n"], ["\n\n  border-radius: 4px;\n  padding: 20px;\n  width: 460px;\n  background-color: white;\n  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 60px 0px;\n  animation-duration: 400ms;\n  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);\n  will-change: transform, opacity;\n\n&[data-state='open'][data-side='top'] {\n  animation-name: slideDownAndFade;\n}\n&[data-state='open'][data-side='right'] {\n  animation-name: slideLeftAndFade;\n}\n&[data-state='open'][data-side='bottom'] {\n  animation-name: slideUpAndFade;\n}\n&[data-state='open'][data-side='left'] {\n  animation-name: slideRight\n"])));
 var PopoverArrowClass = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n  border-color: transparent;\n  border-width: 10px;\n  top: 100%;\n  border-top-color: white;\n  margin-left: -10px;\n\n"], ["\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n  border-color: transparent;\n  border-width: 10px;\n  top: 100%;\n  border-top-color: white;\n  margin-left: -10px;\n\n"])));
+var popoverCloseClass = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n\n  font-family: inherit;\n  border-radius: 100%;\n  height: 25px;\n  width: 25px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: var(--violet-11);\n  position: absolute;\n  top: 5px;\n  right: 5px;\n\n&:hover {\n  background-color: var(--violet-4);\n}\n&:focus {\n  box-shadow: 0 0 0 2px var(--violet-7);\n}\n\n"], ["\n\n  font-family: inherit;\n  border-radius: 100%;\n  height: 25px;\n  width: 25px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: var(--violet-11);\n  position: absolute;\n  top: 5px;\n  right: 5px;\n\n&:hover {\n  background-color: var(--violet-4);\n}\n&:focus {\n  box-shadow: 0 0 0 2px var(--violet-7);\n}\n\n"])));
 var AccordionDemo = function (_a) {
     var onDragStart = _a.onDragStart;
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false), dragging = _b[0], setDragging = _b[1];
     var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListComponents)(), components = _c.components, isLoading = _c.isLoading;
-    var groupNames = {};
+    var services = {};
     components === null || components === void 0 ? void 0 : components.forEach(function (component) {
-        if (!_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.array(groupNames[component.serviceName])) {
-            groupNames[component.serviceName] = [];
+        if (!_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.array(services[component.serviceName])) {
+            services[component.serviceName] = [];
         }
-        groupNames[component.serviceName].push(component);
+        services[component.serviceName].push(component);
     });
     return (isLoading ? react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", null, "Loading...") :
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(Object.getOwnPropertyNames(groupNames))(function (service) {
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 15 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(Object.getOwnPropertyNames(services))(function (service) {
+            var _a, _b, _c, _d;
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", { className: className },
                 react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_radix_ui_react_popover__WEBPACK_IMPORTED_MODULE_5__.Root, null,
                     react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_radix_ui_react_popover__WEBPACK_IMPORTED_MODULE_5__.Trigger, { asChild: true },
-                        react__WEBPACK_IMPORTED_MODULE_4___default().createElement("button", { className: "IconButton", "aria-label": "Update dimensions" }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(service))
+                        react__WEBPACK_IMPORTED_MODULE_4___default().createElement("button", { className: "IconButton", "aria-label": "Update dimensions" }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIImage)((_b = (_a = services[service][0]) === null || _a === void 0 ? void 0 : _a.service.icon) !== null && _b !== void 0 ? _b : '')
+                            .allWidth(20).allHeight(20))
+                            .cornerRadius('50%')
+                            .width(32).height(32)
+                            .background((_d = (_c = services[service][0]) === null || _c === void 0 ? void 0 : _c.service.theme) !== null && _d !== void 0 ? _d : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(service))
+                            .padding(6)
+                            .background('white')
+                            .cornerRadius(6)
                             .height(40)
+                            .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
                             .render())),
                     react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_radix_ui_react_popover__WEBPACK_IMPORTED_MODULE_5__.Portal, null,
                         react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_radix_ui_react_popover__WEBPACK_IMPORTED_MODULE_5__.Content, { className: contentClass, sideOffset: 5, side: "right", align: "start" },
-                            react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_radix_ui_react_popover__WEBPACK_IMPORTED_MODULE_5__.Close, { className: "PopoverClose", "aria-label": "Close" },
+                            react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_radix_ui_react_popover__WEBPACK_IMPORTED_MODULE_5__.Close, { className: popoverCloseClass, "aria-label": "Close" },
                                 react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_radix_ui_react_icons__WEBPACK_IMPORTED_MODULE_6__.Cross2Icon, null)),
-                            _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(groupNames[service])(function (component) {
-                                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(component.name).fontSize(14).lineHeight(24), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Receives data passed to the function MAKE_FUNCTION or INTEGROMAT used in a sheet. Sheets Add-On required.')
-                                    .multilineTextAlignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextAlignment.leading)
-                                    .foregroundColor('rgb(134, 134, 134)').fontSize('11.8px').lineHeight(19)).minHeight(50)
-                                    .cornerRadius(6)
-                                    .background('white')
-                                    .draggable(true)
-                                    .onDragStart(function (event) {
-                                    setDragging(true);
-                                    onDragStart(event, JSON.stringify(component));
-                                })
-                                    .onDragEnd(function () {
-                                    setDragging(false);
-                                })
-                                    .onDragOver(function (event) {
-                                    event.preventDefault();
-                                })
-                                    .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
-                                    .cursor('grab')
-                                    .margin(6)
-                                    .padding(5);
-                            })).allWidth(420)
-                                .render(),
+                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
+                                var _a;
+                                var groups = {};
+                                (_a = services[service]) === null || _a === void 0 ? void 0 : _a.forEach(function (component) {
+                                    if (!_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.array(groups[component.groupName])) {
+                                        groups[component.groupName] = [];
+                                    }
+                                    groups[component.groupName].push(component);
+                                });
+                                return (_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(Object.getOwnPropertyNames(groups))(function (group) {
+                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(group).textTransform('uppercase').fontSize(12).foregroundColor('#525252').fontWeight('700')], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(groups[group])(function (component) {
+                                        var _a, _b;
+                                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIImage)((_a = component.service.icon) !== null && _a !== void 0 ? _a : '')
+                                            .allWidth(20).allHeight(20))
+                                            .cornerRadius('50%')
+                                            .allWidth(32).allHeight(32)
+                                            .background((_b = component.service.theme) !== null && _b !== void 0 ? _b : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(component.name).fontSize(14).lineHeight(24), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Receives data passed to the function MAKE_FUNCTION or INTEGROMAT used in a sheet. Sheets Add-On required.')
+                                            .multilineTextAlignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextAlignment.leading)
+                                            .foregroundColor('rgb(134, 134, 134)').fontSize('11.8px').lineHeight(19)).minHeight(50)
+                                            .cornerRadius(6)
+                                            .background('white')
+                                            .draggable(true)
+                                            .onDragStart(function (event) {
+                                            setDragging(true);
+                                            onDragStart(event, JSON.stringify(component));
+                                        })
+                                            .onDragEnd(function () {
+                                            setDragging(false);
+                                        })
+                                            .onDragOver(function (event) {
+                                            event.preventDefault();
+                                        })
+                                            .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
+                                            .cursor('grab')
+                                            .margin(6)
+                                            .padding(5));
+                                    }), false)).height();
+                                })).allWidth(420));
+                            }).render(),
                             react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_radix_ui_react_popover__WEBPACK_IMPORTED_MODULE_5__.Arrow, { className: PopoverArrowClass }))))));
-        })).width(200)
+        })).padding()
+            .width(250)
             .render());
 };
 var AccordionTrigger = react__WEBPACK_IMPORTED_MODULE_4___default().forwardRef(function (_a, forwardedRef) {
@@ -42844,7 +42880,7 @@ function Sidebar(_a) {
     react__WEBPACK_IMPORTED_MODULE_4___default().createElement(react__WEBPACK_IMPORTED_MODULE_4__.Fragment, null,
         react__WEBPACK_IMPORTED_MODULE_4___default().createElement(AccordionDemo, { onDragStart: onDragStart })))));
 }
-var templateObject_1, templateObject_2, templateObject_3;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4;
 
 
 /***/ }),

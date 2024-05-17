@@ -2,7 +2,7 @@ import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon, Cross2Icon } from "@radix-ui/react-icons";
 import { useListComponents } from '@realmocean/sdk';
 import { is } from "@tuval/core";
-import { ForEach, HStack, ReactView, Text, TextAlignment, VStack, cLeading, cTopLeading, css } from "@tuval/forms";
+import { ForEach, HStack, ReactView, Text, TextAlignment, UIImage, UIViewBuilder, VStack, cLeading, cTopLeading, css } from "@tuval/forms";
 import classNames from "classnames";
 import React, { Fragment, useState } from "react";
 
@@ -13,25 +13,7 @@ const className = css`
   width:100%;
  }
 
-.PopoverClose {
-  font-family: inherit;
-  border-radius: 100%;
-  height: 25px;
-  width: 25px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--violet-11);
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-.PopoverClose:hover {
-  background-color: var(--violet-4);
-}
-.PopoverClose:focus {
-  box-shadow: 0 0 0 2px var(--violet-7);
-}
+
 
 .IconButton {
   font-family: inherit;
@@ -133,7 +115,6 @@ const className = css`
 
 const contentClass = css`
 
-
   border-radius: 4px;
   padding: 20px;
   width: 460px;
@@ -170,75 +151,143 @@ const PopoverArrowClass = css`
 
 `
 
+const popoverCloseClass = css`
+
+  font-family: inherit;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--violet-11);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+&:hover {
+  background-color: var(--violet-4);
+}
+&:focus {
+  box-shadow: 0 0 0 2px var(--violet-7);
+}
+
+`
 
 const AccordionDemo = ({ onDragStart }) => {
   const [dragging, setDragging] = useState(false);
   const { components, isLoading } = useListComponents();
-  const groupNames = {};
+  const services = {};
   components?.forEach((component: any) => {
-    if (!is.array(groupNames[component.serviceName])) {
-      groupNames[component.serviceName] = [];
+    if (!is.array(services[component.serviceName])) {
+      services[component.serviceName] = [];
     }
-    groupNames[component.serviceName].push(component);
+    services[component.serviceName].push(component);
   })
 
 
 
   return (
     isLoading ? <div>Loading...</div> :
-      VStack({ alignment: cTopLeading, spacing: 10 })(
-        ...ForEach(Object.getOwnPropertyNames(groupNames))(service =>
+      VStack({ alignment: cTopLeading, spacing: 15 })(
+        ...ForEach(Object.getOwnPropertyNames(services))(service =>
           ReactView(
             <div className={className}>
               <Popover.Root>
                 <Popover.Trigger asChild>
                   <button className="IconButton" aria-label="Update dimensions">
                     {
-                      HStack(
+                      HStack({ alignment: cLeading, spacing: 10 })(
+                        HStack(
+                          UIImage(services[service][0]?.service.icon ?? '')
+                            .allWidth(20).allHeight(20)
+                        )
+                          .cornerRadius('50%')
+                          .width(32).height(32)
+                          .background(services[service][0]?.service.theme ?? ''),
                         Text(service)
                       )
+                        .padding(6)
+
+                        .background('white')
+                        .cornerRadius(6)
                         .height(40)
+                        .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
                         .render()
                     }
                   </button>
                 </Popover.Trigger>
                 <Popover.Portal>
                   <Popover.Content className={contentClass} sideOffset={5} side="right" align="start">
-                    <Popover.Close className="PopoverClose" aria-label="Close">
+                    <Popover.Close className={popoverCloseClass} aria-label="Close">
                       <Cross2Icon />
                     </Popover.Close>
                     {
-                      VStack(
-                        ...ForEach(groupNames[service])((component: any) =>
-                          VStack({ alignment: cLeading })(
+                      UIViewBuilder(() => {
+                        const groups = {};
 
-                            Text(component.name).fontSize(14).lineHeight(24),
-                            Text('Receives data passed to the function MAKE_FUNCTION or INTEGROMAT used in a sheet. Sheets Add-On required.')
-                              .multilineTextAlignment(TextAlignment.leading)
-                              .foregroundColor('rgb(134, 134, 134)').fontSize('11.8px').lineHeight(19)
-                          ).minHeight(50)
-                            .cornerRadius(6)
-                            .background('white')
-                            .draggable(true)
-                             .onDragStart((event) => {
-                              setDragging(true);
-                              onDragStart(event, JSON.stringify(component));
-                            })
-                            .onDragEnd(() => {
-                              setDragging(false);
-                            }) 
-                            .onDragOver((event)=> {
-                              event.preventDefault();
-                            })
-                            .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
-                            .cursor('grab')
-                            .margin(6)
-                            .padding(5)
+                        services[service]?.forEach((component: any) => {
+
+                          if (!is.array(groups[component.groupName])) {
+                            groups[component.groupName] = [];
+                          }
+                          groups[component.groupName].push(component);
+                        })
+
+                        return (
+
+                          VStack(
+                            ...ForEach(Object.getOwnPropertyNames(groups))(group =>
+                              VStack({ alignment: cLeading })(
+                                Text(group).textTransform('uppercase').fontSize(12).foregroundColor('#525252').fontWeight('700'),
+                                ...ForEach(groups[group])((component: any) =>
+                                  HStack(
+                                    
+                                    HStack(
+                                      UIImage(component.service.icon ?? '')
+                                        .allWidth(20).allHeight(20)
+                                    )
+                                      .cornerRadius('50%')
+                                      .allWidth(32).allHeight(32)
+                                      .background(component.service.theme ?? ''),
+
+
+                                    VStack({ alignment: cLeading })(
+                                      Text(component.name).fontSize(14).lineHeight(24),
+                                      Text('Receives data passed to the function MAKE_FUNCTION or INTEGROMAT used in a sheet. Sheets Add-On required.')
+                                        .multilineTextAlignment(TextAlignment.leading)
+                                        .foregroundColor('rgb(134, 134, 134)').fontSize('11.8px').lineHeight(19)
+                                    ).minHeight(50)
+                                      .cornerRadius(6)
+                                      .background('white')
+                                      .draggable(true)
+                                      .onDragStart((event) => {
+                                        setDragging(true);
+                                        onDragStart(event, JSON.stringify(component));
+                                      })
+                                      .onDragEnd(() => {
+                                        setDragging(false);
+                                      })
+                                      .onDragOver((event) => {
+                                        event.preventDefault();
+                                      })
+                                      .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
+                                      .cursor('grab')
+                                      .margin(6)
+                                      .padding(5)
+                                  )
+                                )
+                              ).height()
+
+                            )
+
+
+                          )
+                            .allWidth(420)
+
                         )
 
-                      )
-                      .allWidth(420)
-                      .render()
+                      }).render()
                     }
 
                     <Popover.Arrow className={PopoverArrowClass} />
@@ -250,7 +299,8 @@ const AccordionDemo = ({ onDragStart }) => {
 
         )
       )
-        .width(200)
+        .padding()
+        .width(250)
         .render()
 
   )

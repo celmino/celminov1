@@ -39,7 +39,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const umdConfig = {
     target: 'web',
-    // mode: 'development',
+     mode: 'development',
     devtool: 'source-map',
     //devtool: 'none',
     entry: manifest.application.path,

@@ -8,6 +8,7 @@ import { findDOMNode } from 'react-dom';
 import { getDepth } from './tree-data-utils';
 import { memoizedInsertNode } from './memoized-tree-data-utils';
 
+
 export default class DndManager {
   treeRef: any;
   constructor(treeRef) {
@@ -15,7 +16,7 @@ export default class DndManager {
   }
 
   static wrapRoot(el) {
-    return dragDropContext(HTML5Backend)(el);
+    return dragDropContext(HTML5Backend,{window:  document.getElementById('AAAA')})(el);
   }
 
   get startDrag() {
