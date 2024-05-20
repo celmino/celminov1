@@ -1,5 +1,5 @@
 import { PersonelRealmContext, RealmContext } from "@celmino/platform";
-import { HStack, UIController, UIRouteOutlet, UIView, cTopLeading } from "@tuval/forms";
+import { HStack, UIController, UIRouteOutlet, UIView, UIWidget, cTopLeading } from "@tuval/forms";
 import { LeftSideMenuView } from "../../*/views/LeftSideMenu";
 
 export class WorkspaceController extends UIController {
@@ -14,7 +14,7 @@ export class WorkspaceController extends UIController {
                 HStack({ alignment: cTopLeading })(
                     //  isAnonymous ? Fragment() :
                     LeftSideMenuView('Home'),
-                    UIRouteOutlet().width("100%").height("100%")
+                     UIRouteOutlet().width("100%").height("100%")
                 )
             )
         )

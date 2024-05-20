@@ -77,6 +77,7 @@ const umdConfig = {
 
         'react': 'tuval$react',
         'react-dom/client': 'tuval$react$dom',
+        'react-dom': 'tuval$react$_dom'
     },
     module: {
         rules: [

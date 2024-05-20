@@ -1,4 +1,4 @@
-import { HStack, UIController, UIRoute, UIRouteOutlet, UIRoutes, UIView, cTopLeading } from "@tuval/forms"
+import { HStack, UIController, UIRoute, UIRouteOutlet, UIRoutes, UIView, UIWidget, cTopLeading } from "@tuval/forms"
 
 import { LogoutController } from "./logout/+controller"
 import { WorkspaceLayoutController } from "./@/workspace/+controller"
@@ -32,7 +32,7 @@ export class HomeController extends UIController {
         return (
             HStack({ alignment: cTopLeading })(
                 LeftSideMenuView('Home'),
-                UIRouteOutlet().width("100%").height("100%")
+               UIRouteOutlet().width("100%").height("100%")
             )
         )
     }

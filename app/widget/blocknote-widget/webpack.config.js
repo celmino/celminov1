@@ -153,7 +153,7 @@ const umdConfig = {
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-       // new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin(),
         {
             apply: (compiler) => {
                 compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {

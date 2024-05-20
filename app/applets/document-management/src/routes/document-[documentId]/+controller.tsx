@@ -67,59 +67,59 @@ export class DocumentController extends UIController {
 
                                 UIViewBuilder(() => {
                                     const { openDialog } = useDialogStack();
+                                    // return UIWidget("com.tuvalsoft.widget.whiteboard").config({})
                                     return (
 
                                         window.location.hash ?
-                                            ScrollView({ alignment: cTopLeading, axes: cVertical })(
-                                                VStack({ alignment: cTop })(
-                                                    UIWidget(document?.viewer)
-                                                        .config({
-                                                            defaultValue: is.nullOrEmpty(content?.content) ? null : JSON.parse(content.content),
-                                                            clamp: true,
-                                                            workspaceId: workspaceId,
-                                                            appletId: appletId,
-                                                            applets,
-                                                            treeItems,
-                                                            tools: {
-                                                                image: {
-                                                                    class: InlineImage,
-                                                                    inlineToolbar: true,
-                                                                    config: {
-                                                                        embed: {
-                                                                            display: true,
-                                                                        },
-                                                                        unsplash: {
-                                                                            appName: 'your_app_name',
-                                                                            clientId: 'your_client_id'
-                                                                        }
-                                                                    }
-                                                                },
-                                                                link: {
-                                                                    class: SimpleImage,
-                                                                    inlineToolbar: true,
-                                                                    shortcut: 'CMD+SHIFT+W',
-                                                                    config: {
-                                                                        workspaceId: workspaceId,
-                                                                        appletId: appletId,
-                                                                        openDialog
 
-                                                                    },
-                                                                }
-                                                            },
-                                                            onChange: (data) => {
-                                                                console.log(data)
-                                                                updateDocument({
-                                                                    databaseId: appletId,
-                                                                    collectionId: 'documentContent',
-                                                                    documentId: documentId,
-                                                                    data: {
-                                                                        content: JSON.stringify(data)
-                                                                    }
-                                                                })
+                                            UIWidget(document?.viewer)
+                                                .config({
+                                                    defaultValue: is.nullOrEmpty(content?.content) ? null : JSON.parse(content.content),
+                                                    clamp: true,
+                                                    workspaceId: workspaceId,
+                                                    appletId: appletId,
+                                                    applets,
+                                                    treeItems,
+                                                    /*   tools: {
+                                                          image: {
+                                                              class: InlineImage,
+                                                              inlineToolbar: true,
+                                                              config: {
+                                                                  embed: {
+                                                                      display: true,
+                                                                  },
+                                                                  unsplash: {
+                                                                      appName: 'your_app_name',
+                                                                      clientId: 'your_client_id'
+                                                                  }
+                                                              }
+                                                          },
+                                                          link: {
+                                                              class: SimpleImage,
+                                                              inlineToolbar: true,
+                                                              shortcut: 'CMD+SHIFT+W',
+                                                              config: {
+                                                                  workspaceId: workspaceId,
+                                                                  appletId: appletId,
+                                                                  openDialog
+
+                                                              },
+                                                          }
+                                                      }, */
+                                                    onChange: (data) => {
+                                                        console.log(data)
+                                                        updateDocument({
+                                                            databaseId: appletId,
+                                                            collectionId: 'documentContent',
+                                                            documentId: documentId,
+                                                            data: {
+                                                                content: JSON.stringify(data)
                                                             }
                                                         })
-                                                ).height()
-                                            )
+                                                    }
+                                                })
+
+
 
                                             : UINavigate('##')
                                     )

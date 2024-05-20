@@ -5,6 +5,7 @@ import {
   ScrollView,
   UIController, UIView,
   UIWidget,
+  VStack,
   cTop,
   cTopLeading,
   cVertical,
@@ -82,7 +83,7 @@ const getTaskListMenuItems = (
 ): DefaultReactSuggestionItem[] => {
 
   const getNameFromId = (id) => {
-    
+
     const treeItem = treeItems.find(treeItem => treeItem.$id === id);
     if (treeItem != null) {
       return treeItem.name;
@@ -199,7 +200,7 @@ export class EditorJsController extends UIController {
       schema,
       initialContent: defaultValue,
       placeholders: {
-        default: "Write something or type '/' for commands, '@' for mentions, '#' for referances" 
+        default: "Write something or type '/' for commands, '@' for mentions, '#' for referances"
       }
     });
 
@@ -211,51 +212,56 @@ export class EditorJsController extends UIController {
 
     return (
       OptionsContext(() =>
-      
-          HStack({ alignment: cTop })(
-            ReactView(
-              <BlockNoteView editor={editor} formattingToolbar={true} slashMenu={false} editable={true}
-              
-                onChange={() => {
-                  clearTimeout(filterTimeout)
-                  filterTimeout = setTimeout(() => {
-                    onChange(editor.document);
-                  }, 5000)
 
-                }}
-              >
-                <SuggestionMenuController
-                  triggerCharacter={"/"}
-                  getItems={async (query) =>
-                    // Gets all default slash menu items and `insertAlert` item.
-                    filterSuggestionItems(
-                      [...getDefaultReactSlashMenuItems(editor), insertAlert(editor),
-                      insertTaskList(editor, applets)
-                      ],
-                      query
-                    )
-                  }
-                />
-                <SuggestionMenuController
-                  triggerCharacter={"@"}
-                  getItems={async (query) => {
-                    return filterSuggestionItems([...getMentionMenuItems(editor)], query)
-                  }
-                  }
-                />
-                <SuggestionMenuController
-                  triggerCharacter={"#"}
-                  getItems={async (query) => {
-                    return filterSuggestionItems([...getTaskListMenuItems(editor, treeItems, query)], query)
-                  }
-                  }
-                />
-              </BlockNoteView>
+        VStack({alignment:cTop})(
+          ScrollView({ alignment: cTop, axes: cVertical })(
+            HStack({ alignment: cTop })(
+              ReactView(
+                <BlockNoteView editor={editor} formattingToolbar={true} slashMenu={false} editable={true}
+
+                  onChange={() => {
+                    clearTimeout(filterTimeout)
+                    filterTimeout = setTimeout(() => {
+                      onChange(editor.document);
+                    }, 5000)
+
+                  }}
+                >
+                  <SuggestionMenuController
+                    triggerCharacter={"/"}
+                    getItems={async (query) =>
+                      // Gets all default slash menu items and `insertAlert` item.
+                      filterSuggestionItems(
+                        [...getDefaultReactSlashMenuItems(editor), insertAlert(editor),
+                        insertTaskList(editor, applets)
+                        ],
+                        query
+                      )
+                    }
+                  />
+                  <SuggestionMenuController
+                    triggerCharacter={"@"}
+                    getItems={async (query) => {
+                      return filterSuggestionItems([...getMentionMenuItems(editor)], query)
+                    }
+                    }
+                  />
+                  <SuggestionMenuController
+                    triggerCharacter={"#"}
+                    getItems={async (query) => {
+                      return filterSuggestionItems([...getTaskListMenuItems(editor, treeItems, query)], query)
+                    }
+                    }
+                  />
+                </BlockNoteView>
+              )
             )
+              .height()
+              .maxWidth('1000px')
           )
-          .height()
-            .maxWidth('1000px')
-        
+        )
+
+
 
         //.width('calc(100% - 40px)')
         // .border({ default: 'solid 1px #E2E2E2' }).tabIndex(0).cornerRadius(5)

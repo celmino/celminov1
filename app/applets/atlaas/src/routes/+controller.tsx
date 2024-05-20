@@ -29,7 +29,7 @@ export class AppletController extends UIController {
             ReactView(
                 <DialogStack>
                     {
-                        VStack({ alignment: cTopLeading, spacing: 10 })(
+                        VStack({ alignment: cTopLeading})(
                             ActionPanel(),
                             ViewHeader(applet.name, (name) => {
                                 /* updateAppletName(name, ()=> {
