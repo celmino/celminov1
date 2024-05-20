@@ -1,7 +1,7 @@
 import { useApplet, useRealm, useWidget } from "@celmino/platform";
 import { useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
 import { is } from "@tuval/core";
-import { DialogStack, Fragment, ReactView, UIController, UINavigate, UIView, UIViewBuilder, UIWidget, VStack, cTopLeading, useDialogStack, useParams } from "@tuval/forms";
+import { DialogStack, Fragment, ReactView, ScrollView, UIController, UINavigate, UIView, UIViewBuilder, UIWidget, VStack, cTop, cTopLeading, cVertical, useDialogStack, useParams } from "@tuval/forms";
 import InlineImage from 'editorjs-inline-image';
 import React, { Fragment as RF } from "react";
 import { SimpleImage } from "../../tools/SimplePlugin";
@@ -70,52 +70,57 @@ export class DocumentController extends UIController {
                                     return (
 
                                         window.location.hash ?
-                                            UIWidget(document?.viewer)
-                                                .config({
-                                                    defaultValue: is.nullOrEmpty(content?.content) ? null : JSON.parse(content.content),
-                                                    clamp: true,
-                                                    workspaceId: workspaceId,
-                                                    appletId: appletId,
-                                                    applets,
-                                                    treeItems,
-                                                    tools: {
-                                                        image: {
-                                                            class: InlineImage,
-                                                            inlineToolbar: true,
-                                                            config: {
-                                                                embed: {
-                                                                    display: true,
+                                            ScrollView({ alignment: cTopLeading, axes: cVertical })(
+                                                VStack({ alignment: cTop })(
+                                                    UIWidget(document?.viewer)
+                                                        .config({
+                                                            defaultValue: is.nullOrEmpty(content?.content) ? null : JSON.parse(content.content),
+                                                            clamp: true,
+                                                            workspaceId: workspaceId,
+                                                            appletId: appletId,
+                                                            applets,
+                                                            treeItems,
+                                                            tools: {
+                                                                image: {
+                                                                    class: InlineImage,
+                                                                    inlineToolbar: true,
+                                                                    config: {
+                                                                        embed: {
+                                                                            display: true,
+                                                                        },
+                                                                        unsplash: {
+                                                                            appName: 'your_app_name',
+                                                                            clientId: 'your_client_id'
+                                                                        }
+                                                                    }
                                                                 },
-                                                                unsplash: {
-                                                                    appName: 'your_app_name',
-                                                                    clientId: 'your_client_id'
-                                                                }
-                                                            }
-                                                        },
-                                                        link: {
-                                                            class: SimpleImage,
-                                                            inlineToolbar: true,
-                                                            shortcut: 'CMD+SHIFT+W',
-                                                            config: {
-                                                                workspaceId: workspaceId,
-                                                                appletId: appletId,
-                                                                openDialog
+                                                                link: {
+                                                                    class: SimpleImage,
+                                                                    inlineToolbar: true,
+                                                                    shortcut: 'CMD+SHIFT+W',
+                                                                    config: {
+                                                                        workspaceId: workspaceId,
+                                                                        appletId: appletId,
+                                                                        openDialog
 
+                                                                    },
+                                                                }
                                                             },
-                                                        }
-                                                    },
-                                                    onChange: (data) => {
-                                                        console.log(data)
-                                                        updateDocument({
-                                                            databaseId: appletId,
-                                                            collectionId: 'documentContent',
-                                                            documentId: documentId,
-                                                            data: {
-                                                                content: JSON.stringify(data)
+                                                            onChange: (data) => {
+                                                                console.log(data)
+                                                                updateDocument({
+                                                                    databaseId: appletId,
+                                                                    collectionId: 'documentContent',
+                                                                    documentId: documentId,
+                                                                    data: {
+                                                                        content: JSON.stringify(data)
+                                                                    }
+                                                                })
                                                             }
                                                         })
-                                                    }
-                                                })
+                                                ).height()
+                                            )
+
                                             : UINavigate('##')
                                     )
                                 })
