@@ -36,7 +36,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const umdConfig = {
     target: 'web',
-    mode: 'development',
+   // mode: 'development',
     devtool: 'source-map',
     //devtool: 'none',
     entry: manifest.application.path,
@@ -153,7 +153,7 @@ const umdConfig = {
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-        new BundleAnalyzerPlugin(),
+       // new BundleAnalyzerPlugin(),
         {
             apply: (compiler) => {
                 compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {

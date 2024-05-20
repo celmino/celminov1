@@ -4,7 +4,6 @@ import "./style.scss";
 export declare const alertTypes: readonly [{
     readonly title: "Warning";
     readonly value: "warning";
-    readonly icon: import("react-icons").IconType;
     readonly color: "#e69819";
     readonly backgroundColor: {
         readonly light: "#fff6e6";
@@ -13,7 +12,6 @@ export declare const alertTypes: readonly [{
 }, {
     readonly title: "Error";
     readonly value: "error";
-    readonly icon: import("react-icons").IconType;
     readonly color: "#d80d0d";
     readonly backgroundColor: {
         readonly light: "#ffe6e6";
@@ -22,7 +20,6 @@ export declare const alertTypes: readonly [{
 }, {
     readonly title: "Info";
     readonly value: "info";
-    readonly icon: import("react-icons").IconType;
     readonly color: "#507aff";
     readonly backgroundColor: {
         readonly light: "#e6ebff";
@@ -31,7 +28,6 @@ export declare const alertTypes: readonly [{
 }, {
     readonly title: "Success";
     readonly value: "success";
-    readonly icon: import("react-icons").IconType;
     readonly color: "#0bc10b";
     readonly backgroundColor: {
         readonly light: "#e6ffe6";

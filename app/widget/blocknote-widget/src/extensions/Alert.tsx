@@ -1,12 +1,10 @@
 import { BlockNoteEditor, PartialBlock, defaultProps } from "@blocknote/core";
 import { DefaultReactSuggestionItem, createReactBlockSpec, getDefaultReactSlashMenuItems } from "@blocknote/react";
 import { Menu } from "@mantine/core";
-import { MdCancel, MdCheckCircle, MdError, MdInfo } from "react-icons/md";
 
 import "./style.scss";
 
 import React from "react";
-import { HiOutlineGlobeAlt } from "react-icons/hi";
 import { UIWidget, VStack } from "@tuval/forms";
 
 
@@ -15,7 +13,7 @@ export const alertTypes = [
     {
         title: "Warning",
         value: "warning",
-        icon: MdError,
+       // icon: MdError,
         color: "#e69819",
         backgroundColor: {
             light: "#fff6e6",
@@ -25,7 +23,7 @@ export const alertTypes = [
     {
         title: "Error",
         value: "error",
-        icon: MdCancel,
+       // icon: MdCancel,
         color: "#d80d0d",
         backgroundColor: {
             light: "#ffe6e6",
@@ -35,7 +33,7 @@ export const alertTypes = [
     {
         title: "Info",
         value: "info",
-        icon: MdInfo,
+       // icon: MdInfo,
         color: "#507aff",
         backgroundColor: {
             light: "#e6ebff",
@@ -45,7 +43,7 @@ export const alertTypes = [
     {
         title: "Success",
         value: "success",
-        icon: MdCheckCircle,
+       // icon: MdCheckCircle,
         color: "#0bc10b",
         backgroundColor: {
             light: "#e6ffe6",
@@ -73,7 +71,7 @@ export const Alert = createReactBlockSpec(
             const alertType = alertTypes.find(
                 (a) => a.value === props.block.props.type
             )!;
-            const Icon = alertType.icon;
+            //const Icon = alertType.icon;
 
             return (
                 VStack(
@@ -83,11 +81,11 @@ export const Alert = createReactBlockSpec(
                             <Menu withinPortal={false} zIndex={999999}>
                                 <Menu.Target>
                                     <div className={"alert-icon-wrapper"} contentEditable={false}>
-                                        <Icon
+                                      {/*   <Icon
                                             className={"alert-icon"}
                                             data-alert-icon-type={props.block.props.type}
                                             size={32}
-                                        />
+                                        /> */}
                                     </div>
                                 </Menu.Target>
                                 {/*Dropdown to change the Alert type*/}
@@ -95,17 +93,17 @@ export const Alert = createReactBlockSpec(
                                     <Menu.Label>Alert Type</Menu.Label>
                                     <Menu.Divider />
                                     {alertTypes.map((type) => {
-                                        const ItemIcon = type.icon;
+                                        //const ItemIcon = type.icon;
 
                                         return (
                                             <Menu.Item
                                                 key={type.value}
-                                                leftSection={
+                                               /*  leftSection={
                                                     <ItemIcon
                                                         className={"alert-icon"}
                                                         data-alert-icon-type={type.value}
                                                     />
-                                                }
+                                                } */
                                                 onClick={() =>
                                                     props.editor.updateBlock(props.block, {
                                                         type: "alert",
@@ -147,7 +145,7 @@ const insertAlertItem = (editor: BlockNoteEditor) => ({
     },
     aliases: ["helloworld", "hw"],
     group: "Other",
-    icon: <HiOutlineGlobeAlt size={18} />,
+   // icon: <HiOutlineGlobeAlt size={18} />,
     subtext: "Used to insert a block with 'Hello World' below.",
 });
 

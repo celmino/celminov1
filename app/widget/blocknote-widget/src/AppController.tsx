@@ -7,35 +7,27 @@ import {
   UIWidget,
   VStack,
   cTop,
-  cTopLeading,
-  cVertical,
-  useDialogStack,
-  useMemo,
-  useState
+  cVertical
 } from '@tuval/forms';
 
 import React from 'react';
 
-import { BlockNoteEditor, BlockNoteSchema, defaultBlockSpecs, defaultInlineContentSpecs, filterSuggestionItems, insertOrUpdateBlock } from '@blocknote/core';
-import { Alert, getCustomSlashMenuItems } from "./extensions/Alert";
-import { RiAlertFill } from "react-icons/ri";
+import { BlockNoteSchema, defaultBlockSpecs, defaultInlineContentSpecs, filterSuggestionItems, insertOrUpdateBlock } from '@blocknote/core';
+
+import { Alert } from "./extensions/Alert";
 
 import {
   BlockNoteView,
-  FormattingToolbar,
-  FormattingToolbarController,
-  useCreateBlockNote,
+  DefaultReactSuggestionItem,
   //blockTypeSelectItems,
   //BlockTypeSelectItem,
   SuggestionMenuController,
   getDefaultReactSlashMenuItems,
-  DefaultReactSuggestionItem,
+  useCreateBlockNote
 } from "@blocknote/react";
-import { Mention, TaskList } from './extensions/Mention';
-import { SelectTasklistDialog } from './dialogs/SelectTasklistDialog';
-import { HiOutlineGlobeAlt } from 'react-icons/hi';
-import { AppletInfos } from './extensions/AppletInfos';
 import { is } from '@tuval/core';
+import { SelectTasklistDialog } from './dialogs/SelectTasklistDialog';
+import { Mention, TaskList } from './extensions/Mention';
 
 let filterTimeout;
 
@@ -163,7 +155,7 @@ const insertTaskList = (editor: typeof schema.BlockNoteEditor, applets) => ({
     "success",
   ],
   group: "Other",
-  icon: <RiAlertFill />,
+ // icon: <RiAlertFill />,
 });
 
 
@@ -185,7 +177,7 @@ const insertAlert = (editor: typeof schema.BlockNoteEditor) => ({
     "success",
   ],
   group: "Other",
-  icon: <RiAlertFill />,
+  //icon: <RiAlertFill />,
 });
 
 
