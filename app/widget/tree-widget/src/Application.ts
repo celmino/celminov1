@@ -1,6 +1,5 @@
 import {  UIController } from '@tuval/forms';
 import { MyTestController } from './AppController';
-import { FormBuilder } from '@realmocean/ui';
 import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
 import { SaveFolderAction } from './dialogs/AddFolderDialog';
 import { SaveDocumentAction } from './dialogs/AddDocumentDialog';
@@ -27,11 +26,11 @@ export class RatingWidget {
     }
 }
 
-FormBuilder.injectAction('saveSpace', SaveSpaceAction);
+/* FormBuilder.injectAction('saveSpace', SaveSpaceAction);
 FormBuilder.injectAction('dm_saveFolder', SaveFolderAction);
 FormBuilder.injectAction('saveDocument', SaveDocumentAction);
 FormBuilder.injectAction('saveWhiteboard', SaveWhiteboardAction);
-
+ */
 
 
 

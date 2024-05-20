@@ -2,7 +2,6 @@ import {
     Models, useCreateDocument, useDeleteAttribute, useGetCollection,
     useGetDatabase, useListDocuments, useUpdateCollection
 } from "@realmocean/sdk";
-import { DynoDialog } from "@realmocean/ui";
 import { ButtonRenderer, DatePickerRenderer, InputRenderer } from "@realmocean/antd";
 import { is } from "@tuval/core";
 import {
@@ -35,6 +34,7 @@ import { useState } from "react";
 import { Icons } from "../../Icons";
 import { ColorItemView } from "./views/ColorItemView";
 import { AddTextFieldDialog } from "../../dialogs/AddTextAttributeDialog";
+import { DynoDialog } from "@celmino/platform";
 
 /* import { AddBooleanFieldDialog } from "../dialogs/AddBooleanFieldDialog";
 import { AddDatetimeFieldDialog } from "../dialogs/AddDatetimeField";

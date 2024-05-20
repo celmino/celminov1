@@ -12,13 +12,13 @@ import {
 } from '@tuval/forms';
 import React from 'react';
 import { Icons } from './Icons';
-import { DynoDialog } from '@realmocean/ui';
 import { AddBooleanFieldDialog } from './dialogs/AddBooleanFieldDialog';
 import { AddDatetimeFieldDialog } from './dialogs/AddDatetimeField';
 import { AddNumberFieldDialog } from './dialogs/AddNumberFieldDialog';
 import { AddTextFieldDialog } from './dialogs/AddTextFieldDialog';
 import { DefaultLabelView } from './views/DefaultView';
 import { AddFormulaField } from './dialogs/AddFormulaField';
+import { DynoDialog } from '@celmino/platform';
 
 
 let _hideHandle = null;

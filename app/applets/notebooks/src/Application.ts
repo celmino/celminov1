@@ -1,4 +1,5 @@
-import { FormBuilder } from '@realmocean/ui';
+
+import { FormBuilder } from '@celmino/platform';
 import { SaveNoteAction } from './dialogs/AddNoteDialog';
 import { RouteController } from './routes/+routes';
 import { ListStatusWidget } from './widget/ListStatusWidget';

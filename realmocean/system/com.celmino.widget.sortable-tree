@@ -26142,7 +26142,13 @@ var DndManager = /** @class */ (function () {
         this.treeRef = treeRef;
     }
     DndManager.wrapRoot = function (el) {
-        return (0,react_dnd__WEBPACK_IMPORTED_MODULE_0__.DragDropContext)(react_dnd_html5_backend__WEBPACK_IMPORTED_MODULE_1__["default"], { window: document.getElementById('AAAA') })(el);
+        var a = document.getElementById('AAAA');
+        return (0,react_dnd__WEBPACK_IMPORTED_MODULE_0__.DragDropContext)(react_dnd_html5_backend__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            window: Object.assign(a, {
+                clearTimeout: function (func) { return window.clearTimeout(func); },
+                document: window.document
+            })
+        })(el);
     };
     Object.defineProperty(DndManager.prototype, "startDrag", {
         get: function () {

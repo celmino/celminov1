@@ -4,7 +4,7 @@ import { RouteController } from './routes/+routes';
 import { WorkspaceTreeWidgetController } from './TreeController';
 
 const manifest = require('./manifest');
-import './styles/global.scss';
+//import './styles/global.scss';
 declare var tuval$core;
 
 function App(manifest: any) {

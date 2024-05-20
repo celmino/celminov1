@@ -14,7 +14,7 @@ import {
     useState
 } from "@tuval/forms";
 import { AddCollectionDialog } from "../dialogs/AddCollection/AddCollectionDialog";
-import { DynoDialog } from "@realmocean/ui";
+import { DynoDialog } from "@celmino/platform";
 
 
 export class AppletController extends UIFormController {

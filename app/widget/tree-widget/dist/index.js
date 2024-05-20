@@ -287,256 +287,6 @@ var WorkbenchIcons;
 
 /***/ }),
 
-/***/ "./src/dialogs/AddDocumentDialog.ts":
-/*!******************************************!*\
-  !*** ./src/dialogs/AddDocumentDialog.ts ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AddDocumentDialog: () => (/* binding */ AddDocumentDialog),
-/* harmony export */   SaveDocumentAction: () => (/* binding */ SaveDocumentAction)
-/* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-
-var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    var invalidateResource = null;
-    var formMutate = null;
-    var createMutate = null;
-    var updateMutate = null;
-    var isFormMutateExcuting = false;
-    var isFormLoading = false;
-    var views = [];
-    var workspaceId = formMeta.workspaceId, appletId = formMeta.appletId;
-    var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'dm_tree').createDocument;
-    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'dm_documents'), createDocument = _a.createDocument, isLoading = _a.isLoading;
-    var createDocumentContent = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'dm_document_contents').createDocument;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save'))
-        .loading(isLoading)
-        .onClick(function () {
-        var data = __assign({}, formController.GetFormData());
-        createDocument({
-            data: __assign({}, data)
-        }, function (document) {
-            createDocumentContent({
-                documentId: document.$id,
-                data: {
-                    content: ''
-                }
-            }, function (document) {
-                createTreeItem({
-                    documentId: document.$id,
-                    data: __assign(__assign({}, data), { type: 'document' })
-                }, function () { return dialog.Hide(); });
-            });
-        });
-    }));
-}); };
-var AddDocumentDialog = function (workspaceId, appletId, parent, path) {
-    if (workspaceId == null) {
-        alert("spaceId is null");
-    }
-    else {
-        return {
-            "title": 'Create document',
-            "workspaceId": workspaceId,
-            "appletId": appletId,
-            /*   "mutation":"_create_workspace", */
-            "actions": [
-                {
-                    "label": "Save",
-                    "type": "saveDocument",
-                    /*  "successActions": [{
-                         "type": "hide"
-                     },
-                     {
-                         "type": "navigate",
-                         "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
-                     }
-                     ] */
-                    /*  "successActions": [{
-                     "type": "hide"
-                 },
-                 {
-                     "type": "navigate",
-                     "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
-                 }
-                 ] */
-                }
-            ],
-            "fieldMap": {
-                "list_name": {
-                    "label": "name",
-                    "type": "text",
-                    "name": "name"
-                },
-                "parent": {
-                    "name": "parent",
-                    "type": "virtual",
-                    "value": parent
-                },
-                "path": {
-                    "name": "path",
-                    "type": "virtual",
-                    "value": path
-                },
-                /*   "description": {
-                      "label": "Description",
-                      "type": "text",
-                      "multiline": true,
-                      "name": "description"
-                  } */
-            }
-        };
-    }
-};
-
-
-/***/ }),
-
-/***/ "./src/dialogs/AddFolderDialog.ts":
-/*!****************************************!*\
-  !*** ./src/dialogs/AddFolderDialog.ts ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AddFolderDialog: () => (/* binding */ AddFolderDialog),
-/* harmony export */   SaveFolderAction: () => (/* binding */ SaveFolderAction)
-/* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-
-var SaveFolderAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    var invalidateResource = null;
-    var formMutate = null;
-    var createMutate = null;
-    var updateMutate = null;
-    var isFormMutateExcuting = false;
-    var isFormLoading = false;
-    var views = [];
-    var workspaceId = formMeta.workspaceId, appletId = formMeta.appletId;
-    var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'dm_tree').createDocument;
-    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'dm_folders'), createDocument = _a.createDocument, isLoading = _a.isLoading;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Folder'))
-        .loading(isLoading)
-        .onClick(function () {
-        var data = __assign({}, formController.GetFormData());
-        createDocument({
-            data: __assign({}, data)
-        }, function (folder) {
-            createTreeItem({
-                documentId: folder.$id,
-                data: __assign(__assign({}, data), { type: 'folder' })
-            }, function () { return dialog.Hide(); });
-        });
-    }));
-}); };
-var AddFolderDialog = function (workspaceId, appletId, parent, path) {
-    if (workspaceId == null) {
-        alert("spaceId is null");
-    }
-    else {
-        return {
-            "title": 'Create folder',
-            "workspaceId": workspaceId,
-            "appletId": appletId,
-            /*   "mutation":"_create_workspace", */
-            "actions": [
-                {
-                    "label": "Save",
-                    "type": "dm_saveFolder",
-                    /*  "successActions": [{
-                         "type": "hide"
-                     },
-                     {
-                         "type": "navigate",
-                         "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
-                     }
-                     ] */
-                    /*  "successActions": [{
-                     "type": "hide"
-                 },
-                 {
-                     "type": "navigate",
-                     "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
-                 }
-                 ] */
-                }
-            ],
-            "fieldMap": {
-                "path": {
-                    "name": "path",
-                    "type": "virtual",
-                    "value": path
-                },
-                "folder_name": {
-                    "label": "Name",
-                    "type": "text",
-                    "name": "name"
-                },
-                "parent": {
-                    "name": "parent",
-                    "type": "virtual",
-                    "value": parent
-                },
-                /*   "description": {
-                      "label": "Description",
-                      "type": "text",
-                      "multiline": true,
-                      "name": "description"
-                  } */
-            }
-        };
-    }
-};
-
-
-/***/ }),
-
 /***/ "./src/dialogs/AddSpaceDialog.ts":
 /*!***************************************!*\
   !*** ./src/dialogs/AddSpaceDialog.ts ***!
@@ -628,135 +378,6 @@ var AddSpaceDialog = function (workspaceId, path) { return ({
           }, */
     }
 }); };
-
-
-/***/ }),
-
-/***/ "./src/dialogs/AddWhiteboardDialog.ts":
-/*!********************************************!*\
-  !*** ./src/dialogs/AddWhiteboardDialog.ts ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AddWhiteboardDialog: () => (/* binding */ AddWhiteboardDialog),
-/* harmony export */   SaveWhiteboardAction: () => (/* binding */ SaveWhiteboardAction)
-/* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-
-var SaveWhiteboardAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    var invalidateResource = null;
-    var formMutate = null;
-    var createMutate = null;
-    var updateMutate = null;
-    var isFormMutateExcuting = false;
-    var isFormLoading = false;
-    var views = [];
-    var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, workspaceId = _a.workspaceId, appletId = _a.appletId;
-    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'wm_whiteboards'), createDocument = _b.createDocument, isLoading = _b.isLoading;
-    var createDocumentContent = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'wm_whiteboard_contents').createDocument;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save'))
-        .loading(isLoading)
-        .onClick(function () {
-        var data = __assign({}, formController.GetFormData());
-        delete data.databaseId;
-        delete data.collectionId;
-        delete data.workspaceId;
-        createDocument({
-            data: __assign({}, data)
-        }, function (document) {
-            createDocumentContent({
-                documentId: document.$id,
-                data: {
-                    content: ''
-                }
-            }, function () { return dialog.Hide(); });
-        });
-    }));
-}); };
-var AddWhiteboardDialog = function (workspaceId, parent, path) {
-    if (workspaceId == null) {
-        alert("spaceId is null");
-    }
-    else {
-        return {
-            "title": 'Create whiteboard',
-            /*   "mutation":"_create_workspace", */
-            "actions": [
-                {
-                    "label": "Save",
-                    "type": "saveWhiteboard",
-                    /*  "successActions": [{
-                         "type": "hide"
-                     },
-                     {
-                         "type": "navigate",
-                         "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
-                     }
-                     ] */
-                    /*  "successActions": [{
-                     "type": "hide"
-                 },
-                 {
-                     "type": "navigate",
-                     "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
-                 }
-                 ] */
-                }
-            ],
-            "fieldMap": {
-                "workspaceId": {
-                    "name": "workspaceId",
-                    "type": "virtual",
-                    "value": workspaceId
-                },
-                "list_name": {
-                    "label": "name",
-                    "type": "text",
-                    "name": "name"
-                },
-                "parent": {
-                    "name": "parent",
-                    "type": "virtual",
-                    "value": parent
-                },
-                "path": {
-                    "name": "path",
-                    "type": "virtual",
-                    "value": path
-                },
-                /*   "description": {
-                      "label": "Description",
-                      "type": "text",
-                      "multiline": true,
-                      "name": "description"
-                  } */
-            }
-        };
-    }
-};
 
 
 /***/ }),
@@ -1139,17 +760,6 @@ module.exports = realmocean$sdk;
 
 /***/ }),
 
-/***/ "@realmocean/ui":
-/*!********************************!*\
-  !*** external "realmocean$ui" ***!
-  \********************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = realmocean$ui;
-
-/***/ }),
-
 /***/ "@tuval/core":
 /*!*****************************!*\
   !*** external "tuval$core" ***!
@@ -1262,24 +872,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   RatingWidget: () => (/* binding */ RatingWidget)
 /* harmony export */ });
-/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/ui */ "@realmocean/ui");
-/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dialogs/AddSpaceDialog */ "./src/dialogs/AddSpaceDialog.ts");
-/* harmony import */ var _dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dialogs/AddFolderDialog */ "./src/dialogs/AddFolderDialog.ts");
-/* harmony import */ var _dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialogs/AddDocumentDialog */ "./src/dialogs/AddDocumentDialog.ts");
-/* harmony import */ var _dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dialogs/AddWhiteboardDialog */ "./src/dialogs/AddWhiteboardDialog.ts");
-/* harmony import */ var _AppController2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AppController2 */ "./src/AppController2.ts");
+/* harmony import */ var _AppController2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppController2 */ "./src/AppController2.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
-
-
-
 
 var manifest = __webpack_require__(/*! ./manifest */ "./src/manifest.js");
 function App(manifest) {
@@ -1294,7 +893,7 @@ var RatingWidget = /** @class */ (function () {
     function RatingWidget() {
     }
     RatingWidget.prototype.GetMainController = function () {
-        return _AppController2__WEBPACK_IMPORTED_MODULE_5__.AppController2;
+        return _AppController2__WEBPACK_IMPORTED_MODULE_0__.AppController2;
     };
     RatingWidget = __decorate([
         App(manifest)
@@ -1302,10 +901,11 @@ var RatingWidget = /** @class */ (function () {
     return RatingWidget;
 }());
 
-_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('saveSpace', _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_1__.SaveSpaceAction);
-_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('dm_saveFolder', _dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_2__.SaveFolderAction);
-_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('saveDocument', _dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.SaveDocumentAction);
-_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('saveWhiteboard', _dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_4__.SaveWhiteboardAction);
+/* FormBuilder.injectAction('saveSpace', SaveSpaceAction);
+FormBuilder.injectAction('dm_saveFolder', SaveFolderAction);
+FormBuilder.injectAction('saveDocument', SaveDocumentAction);
+FormBuilder.injectAction('saveWhiteboard', SaveWhiteboardAction);
+ */
 
 })();
 

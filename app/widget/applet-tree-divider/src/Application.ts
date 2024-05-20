@@ -1,6 +1,4 @@
-import {  UIController } from '@tuval/forms';
 import { WorkspaceTreeWidgetController } from './ModuleController';
-import { FormBuilder } from '@realmocean/ui';
 
 
 const manifest = require('./manifest');

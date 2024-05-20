@@ -16,7 +16,15 @@ export default class DndManager {
   }
 
   static wrapRoot(el) {
-    return dragDropContext(HTML5Backend,{window:  document.getElementById('AAAA')})(el);
+
+    const a = document.getElementById('AAAA');
+
+    return dragDropContext(HTML5Backend, {
+      window: Object.assign(a, {
+        clearTimeout: (func) => window.clearTimeout(func),
+        document: window.document
+      })
+    })(el);
   }
 
   get startDrag() {
@@ -100,7 +108,7 @@ export default class DndManager {
 
       blocksOffset = Math.round(
         (direction * monitor.getDifferenceFromInitialOffset().x) /
-          dropTargetProps.scaffoldBlockPxWidth
+        dropTargetProps.scaffoldBlockPxWidth
       );
     }
 

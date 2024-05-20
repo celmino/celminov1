@@ -24,6 +24,7 @@ export class WorkspaceTreeWidgetController extends UIController {
 
     public override LoadView(): UIView {
 
+     
         const { navigate } = useAppletNavigate();
 
         const [isEditing, setIsEditing] = useState(false);

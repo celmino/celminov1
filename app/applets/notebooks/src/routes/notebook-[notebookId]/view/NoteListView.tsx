@@ -1,10 +1,10 @@
 import { Query, useCreateDocument, useGetDocument, useListDocuments } from "@realmocean/sdk";
-import { DynoDialog } from "@realmocean/ui";
 import { Button, ForEach, HStack, Heading, Icon, Spacer, Text, UIViewBuilder, VStack, cLeading, cTopLeading, useNavigate, useParams } from "@tuval/forms";
 import { AddNoteDialog } from "../../../dialogs/AddNoteDialog";
 import { Button as VibeButton, Text as VibeText, TextType, TypographyColor } from '@realmocean/vibe';
 import { moment } from "@tuval/core";
 import React from "react";
+import { DynoDialog } from "@celmino/platform";
 
 
 export const NotebookIcon = props => (

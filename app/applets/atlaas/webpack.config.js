@@ -32,8 +32,6 @@ const manifest = require('./src/manifest');
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-
-
 const umdConfig = {
     target: 'web',
     mode: 'development',
@@ -77,8 +75,8 @@ const umdConfig = {
         '@realmocean/richtexteditor': 'realmocean$richtexteditor',
         '@realmocean/gantt': 'realmocean$gantt',
         '@realmocean/sdk': 'realmocean$sdk',
-        '@realmocean/ui': 'realmocean$ui',
         '@realmocean/atlaskit': 'realmocean$atlaskit',
+        '@realmocean/atlaas': 'realmocean$atlaas',
 
         '@celmino/platform': 'celmino$platform',
 
