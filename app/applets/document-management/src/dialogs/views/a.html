@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to HTML Form</title>
+</head>
+<body>
+    <div id="formContainer"></div>
+
+    <script>
+        const jsonTemplate = {
+            "title": 'Create document',
+            "workspaceId": "workspaceId",
+            "appletId": "appletId",
+            "actions": [
+                {
+                    "label": "Save",
+                    "type": "SaveDocumentAction.Id"
+                }
+            ],
+            "fieldMap": {
+                "list_name": {
+                    "label": "name",
+                    "type": "text",
+                    "name": "name"
+                },
+                "list_select": {
+                    "label": "select",
+                    "type": "text",
+                    "name": "name"
+                },
+                
+                "type": {
+                    "name": "type",
+                    "type": "virtual",
+                    "value": "type"
+                },
+                "parent": {
+                    "name": "parent",
+                    "type": "virtual",
+                    "value": "parent"
+                },
+                "path": {
+                    "name": "path",
+                    "type": "virtual",
+                    "value": "path"
+                },
+                "viewer": {
+                    "name": "viewer",
+                    "type": "virtual",
+                    "value": "viewer"
+                }
+            }
+        };
+
+        function createForm(jsonTemplate) {
+            const formContainer = document.getElementById('formContainer');
+            const form = document.createElement('form');
+            
+            for (const key in jsonTemplate.fieldMap) {
+                const field = jsonTemplate.fieldMap[key];
+                const label = document.createElement('label');
+                label.textContent = field.label || field.name;
+
+                if (field.type === 'text') {
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.name = field.name;
+                    form.appendChild(label);
+                    form.appendChild(input);
+                } else if (field.type === 'virtual') {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = field.name;
+                    input.value = field.value;
+                    form.appendChild(input);
+                }
+
+                form.appendChild(document.createElement('br'));
+            }
+
+            jsonTemplate.actions.forEach(action => {
+                const button = document.createElement('button');
+                button.type = 'button'; // Change to 'submit' if needed
+                button.textContent = action.label;
+                button.addEventListener('click', () => {
+                    alert(`Action type: ${action.type}`);
+                    // Implement action handling logic here
+                });
+                form.appendChild(button);
+            });
+
+            formContainer.appendChild(form);
+        }
+
+        createForm(jsonTemplate);
+    </script>
+</body>
+</html>
