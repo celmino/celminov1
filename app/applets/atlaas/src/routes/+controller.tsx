@@ -17,6 +17,7 @@ import { ViewHeader } from "../views/ViewHeader";
 import { Atlaas } from "@realmocean/atlaas";
 
 
+
 export class AppletController extends UIController {
     public override LoadView(): UIView {
         const { applet } = useApplet();
