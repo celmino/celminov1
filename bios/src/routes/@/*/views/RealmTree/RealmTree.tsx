@@ -408,7 +408,7 @@ export const RealmTree = (title: string, spaceId: string, isOpen: boolean = fals
 
             )
                 .ref(ref)
-                .marginLeft(5)
+                .padding('0 12px')
                 .height()
     )
 }

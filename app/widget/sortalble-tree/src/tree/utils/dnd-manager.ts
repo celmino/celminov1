@@ -19,12 +19,12 @@ export default class DndManager {
 
     const a = document.getElementById('AAAA');
 
-    return dragDropContext(HTML5Backend, {
+    return dragDropContext(HTML5Backend/* , {
       window: Object.assign(a, {
         clearTimeout: (func) => window.clearTimeout(func),
         document: window.document
       })
-    })(el);
+    } */)(el);
   }
 
   get startDrag() {
