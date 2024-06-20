@@ -1,6 +1,6 @@
 
 export const DatabaseApplet = {
-    name: 'Database',
+    name: 'Data Store',
     type: 'Applet',
     tree_type: 'com.celmino.applet.database',
     applet_type: 'com.celmino.applet.database',

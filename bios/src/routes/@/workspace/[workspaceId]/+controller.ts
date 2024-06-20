@@ -14,7 +14,7 @@ export class WorkspaceController extends UIController {
                 HStack({ alignment: cTopLeading })(
                     //  isAnonymous ? Fragment() :
                     LeftSideMenuView('Home'),
-                     UIRouteOutlet().width("100%").height("100%")
+                     UIRouteOutlet().width("100%").height("100%").background('#FFFFFF')
                 )
             )
         )

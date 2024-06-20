@@ -61,7 +61,8 @@ export class ConnectionsController extends UIController {
     return (
       isLoading ? Spinner() :
         UIViewBuilder(() => {
-          const rows = documents?.map((document: any, index: number) => ({
+          const rows = 
+          documents?.map((document: any, index: number) => ({
             key: document.$id,
             isHighlighted: false,
             cells: [
@@ -120,7 +121,7 @@ export class ConnectionsController extends UIController {
                 ),
               }, */
             ]
-          }));
+          })) ?? [];
 
           console.log(rows)
           return (
@@ -139,9 +140,9 @@ export class ConnectionsController extends UIController {
                       })
                   ).height(),
                   VStack({ alignment: cTopLeading })(
-                    Table().rows(rows)
+                   Table().rows(rows)
                       .head(createHead(true) as any)
-                    ,
+                    , 
                     /*   ...ForEach(documents)(con => 
                           HStack({alignment:cLeading})(
                               HStack({alignment:cLeading})(
